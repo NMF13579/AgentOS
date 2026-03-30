@@ -14,41 +14,46 @@
 ---
 
 ## Структура пакета
-
-```
 / (корень)
-├── START.md              ← агент читает первым
-├── CLAUDE.md             ← контракт агента
-├── HANDOFF.md            ← передача контекста между сессиями
-├── CHANGELOG.md          ← история изменений
-├── llms.txt              ← маяк для всех агентов
-└── SYSTEM_PROMPT.md      ← вставить в system prompt инструмента
+├── START.md ← агент читает первым
+├── CLAUDE.md ← контракт агента
+├── HANDOFF.md ← передача контекста между сессиями
+├── CHANGELOG.md ← история изменений
+├── llms.txt ← маяк для всех агентов
+└── SYSTEM_PROMPT.md ← вставить в system prompt инструмента
 
 docs/
-├── PROJECT-INTERVIEW.md  ← интервью при старте проекта
-├── OWNER-GUIDE.md        ← шпаргалка для владельца (читаешь ты)
-├── AGENT-BOOTSTRAP.md    ← самодиагностика агента
-├── WORKFLOW.md           ← конвейер задач
-├── ROADMAP.md            ← дорожная карта
-├── PLANNING.md           ← планирование фичи
-├── TASK-TEMPLATE.md      ← шаблон атомарной задачи
-├── ARCHITECTURE.md       ← архитектура проекта
-├── SECURITY_POLICY.md    ← политика безопасности
-├── REVIEW-CHECKLIST.md   ← чеклист перед деплоем
-├── DECISIONS.md          ← журнал архитектурных решений
-└── AGENTS.md             ← карта ролей агентов
+├── PROJECT-INTERVIEW.md ← интервью при старте проекта
+├── OWNER-GUIDE.md ← шпаргалка для владельца (читаешь ты)
+├── AGENT-BOOTSTRAP.md ← самодиагностика агента
+├── WORKFLOW.md ← конвейер задач
+├── ROADMAP.md ← дорожная карта
+├── PLANNING.md ← планирование фичи
+├── TASK-TEMPLATE.md ← шаблон атомарной задачи
+├── ARCHITECTURE.md ← архитектура проекта
+├── SECURITY_POLICY.md ← политика безопасности
+├── REVIEW-CHECKLIST.md ← чеклист перед деплоем
+├── DECISIONS.md ← журнал архитектурных решений
+├── AGENTS.md ← карта ролей агентов
+├── DECISION-GUIDE.md ← гид по выбору технологий и решений
+├── EXPLAINER-GLOSSARY.md ← глоссарий терминов для не-программистов
+├── PM-DIALOG-STYLE.md ← стиль диалога агента (PM-режим)
+└── STACK-PRESETS.md ← готовые пресеты технологических стеков
 
 memory-bank/
-├── index-memory-bank.md  ← оглавление memory bank
-├── languages.md          ← стек и версии
-├── integrations.md       ← внешние сервисы
-├── features.md           ← история фич
-├── fixes.md              ← история багов
-├── project-status.md     ← текущий статус
-└── security.md           ← аудиты и инциденты
+├── index-memory-bank.md ← оглавление memory bank
+├── languages.md ← стек и версии
+├── integrations.md ← внешние сервисы
+├── features.md ← история фич
+├── fixes.md ← история багов
+├── project-status.md ← текущий статус
+├── security.md ← аудиты и инциденты
+└── deferred-decisions.md ← отложенные архитектурные решения
 
-tasks/                    ← задачи агентов (TASK-XXX.md)
-```
+tasks/ ← задачи агентов (TASK-XXX.md)
+└── TASK-000-EXAMPLE.md ← пример заполненной задачи
+
+text
 
 ---
 
@@ -73,5 +78,5 @@ tasks/                    ← задачи агентов (TASK-XXX.md)
 
 ---
 
-> Создан для вайб-кодеров — врачей, дизайнеров, менеджеров и всех
+> Создан для вайб-кодеров — врачей, дизайнеров, менеджеров и всех,
 > кто строит продукты с помощью ИИ без глубокого погружения в код.
