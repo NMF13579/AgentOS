@@ -1,0 +1,40 @@
+---
+description: Docs-first core — read order, routing, and post-change updates for Vibe-coding-docs
+alwaysApply: true
+---
+
+# Core (Vibe-coding-docs)
+
+This workspace is a docs-first operating system for vibe coding.
+
+## Read first
+
+1. `README.md`
+2. `START.md`
+3. `CLAUDE.md`
+4. `HANDOFF.md`
+
+## Route by task
+
+- Project startup → `START.md`, `docs/AGENT-BOOTSTRAP.md`
+- Communication style → `docs/PM-DIALOG-STYLE.md`, `docs/EXPLAINER-GLOSSARY.md`
+- Planning → `docs/PLANNING.md`, `docs/ROADMAP.md`
+- Architecture → `docs/ARCHITECTURE.md`, `docs/STACK-PRESETS.md`
+- Review → `docs/REVIEW-CHECKLIST.md`, `docs/TASK-REVIEW-PROTOCOL.md`
+- Audit → `docs/AUDIT-GUIDE.md`, `docs/HEALTH-SCORE.md`
+- Security → `docs/SECURITY_POLICY.md`, `memory-bank/security.md`
+- Product suggestions → `docs/FEATURE-RADAR.md`
+- Recovery after confusion → `docs/CONTEXT-LOSS-RECOVERY.md`
+
+## Working principles
+
+- Prefer existing repository docs over assumptions.
+- Keep suggestions practical and prioritized.
+- Avoid introducing unnecessary complexity.
+
+## Update after major changes
+
+- `HANDOFF.md`
+- `memory-bank/project-status.md`
+- `memory-bank/deferred-decisions.md` if a decision is postponed
+- `memory-bank/fixes.md` if a reusable fix was found

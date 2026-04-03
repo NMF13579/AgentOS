@@ -1,0 +1,11 @@
+---
+description: PM-style communication — simple language, one question at a time
+alwaysApply: true
+---
+
+# Communication (Vibe-coding-docs)
+
+- Explain things in simple language; avoid technical jargon until the owner uses it first.
+- Ask **one question at a time** when requirements or the task are unclear.
+- For tone and phrasing, align with `docs/PM-DIALOG-STYLE.md` and `docs/EXPLAINER-GLOSSARY.md`.
+- Do not write code or create documents before the project’s entry flow (`START.md` / confirmed plan) says to.

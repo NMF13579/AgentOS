@@ -1,4 +1,4 @@
-> Последнее обновление: YYYY-MM-DD
+> Последнее обновление: 2026-04-03
 
 # FEATURES
 
@@ -13,5 +13,12 @@
 ```
 
 ## Фичи
+
+### Инструкции для агентов и IDE (Copilot, Cursor, Claude, Gemini)
+
+- Задача: структура репозитория
+- Дата завершения: 2026-04-03
+- Статус: завершена
+- Изменённые файлы: `GEMINI.md`, `.github/copilot-instructions.md`, `.github/instructions/frontend.instructions.md`, `.github/instructions/backend.instructions.md`, `.cursor/rules/00-core.mdc`, `.cursor/rules/10-communication.mdc`, `.cursor/rules/20-audit.mdc`, `.claude/agents/audit-agent.md`, `.claude/agents/feature-advisor-agent.md`, `memory-bank/lessons-learned.md`, `memory-bank/index-memory-bank.md`
 
 *(добавлять по мере разработки)*

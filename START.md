@@ -1,5 +1,22 @@
 # START — запуск проекта
 
+## Если работаешь с AI-инструментами
+
+Этот пакет документации специально заточен под разные AI-среды.
+
+- **Claude Code**  
+  Читает `CLAUDE.md` и может использовать `.claude/agents/*` (audit-agent, feature-advisor-agent).
+
+- **Cursor**  
+  Использует правила из `.cursor/rules/*` (00-core, 10-communication, 20-audit).
+
+- **GitHub Copilot**  
+  Читает `.github/copilot-instructions.md` и path-specific инструкции из `.github/instructions/*`.
+
+- **Gemini и похожие системы**  
+  Для них есть адаптер `GEMINI.md`.
+
+Во всех случаях основной источник истины — документы в `docs/*` и состояние в `memory-bank/*`.
 > Этот файл агент читает ПЕРВЫМ при старте нового проекта.
 > Определяет весь конвейер: от идеи до первого кода.
 
