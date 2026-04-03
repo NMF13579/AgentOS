@@ -1,256 +1,269 @@
 #!/usr/bin/env node
 
 /**
- * template-sync.js — синхронизация файлов из шаблона Vibe-coding-docs
+ * TEMPLATE SYNC — Синхронизатор файлов Vibe Coding Docs
+ *
+ * Копирует только новые файлы из шаблона в целевой проект.
+ * Существующие файлы не перезаписываются.
  *
  * Использование:
- *   node template-sync.js <source> <target> [--dry-run]
- *
- * Опции:
- *   --dry-run   Показать что будет скопировано, ничего не менять
+ *   node template-sync.js <source-dir> <target-dir> [--dry-run]
  *
  * Примеры:
- *   node template-sync.js ../vibe-coding-docs . --dry-run
- *   node template-sync.js ../vibe-coding-docs .
+ *   node template-sync.js ./vibe-docs ./my-project
+ *   node template-sync.js ./vibe-docs ./my-project --dry-run
  */
 
 const fs = require('fs');
 const path = require('path');
 
-// ─── Конфигурация ───────────────────────────────────────────────────────────
+// ============================================================================
+// КОНФИГУРАЦИЯ
+// ============================================================================
 
 const IGNORE_PATTERNS = [
-  '.git',
-  'node_modules',
-  '.env',
-  '.env.local',
-  '.env.*',
-  '.DS_Store',
-  'template-sync.js',
-  'template-sync-report.md',
-  'TEMPLATE-SYNC-GUIDE.md',
-  'TEMPLATE-SYNC-INTEGRATION.md',
-  'package-lock.json',
-  'yarn.lock',
+  /^\.git\//,
+  /^node_modules\//,
+  /^\.env/,
+  /^\.DS_Store$/,
+  /^Thumbs\.db$/,
+  /setup\.js$/,
+  /template-sync\.js$/,
+  /README-TEMPLATE\.md$/,
 ];
 
-// Файлы которые НИКОГДА не копируются (специфичны для шаблона, не для проекта)
-const NEVER_COPY = [
-  'README.md',
-  'CHANGELOG.md',
-  'llms.txt',
-];
+const REPORT_FILENAME = 'template-sync-report.md';
 
-// ─── Утилиты ────────────────────────────────────────────────────────────────
+// ============================================================================
+// УТИЛИТЫ
+// ============================================================================
 
-function shouldIgnore(name) {
-  return IGNORE_PATTERNS.some(pattern => {
-    if (pattern.includes('*')) {
-      const regex = new RegExp('^' + pattern.replace('.', '\\.').replace('*', '.*') + '$');
-      return regex.test(name);
-    }
-    return name === pattern;
-  });
+function shouldIgnore(filePath) {
+  return IGNORE_PATTERNS.some(pattern => pattern.test(filePath));
 }
 
-function shouldNeverCopy(relPath) {
-  const basename = path.basename(relPath);
-  return NEVER_COPY.includes(basename);
-}
+function getAllFiles(dir, baseDir = '') {
+  let files = [];
 
-function walkDir(dir, base = dir, results = []) {
+  if (!fs.existsSync(dir)) {
+    return files;
+  }
+
   const entries = fs.readdirSync(dir, { withFileTypes: true });
+
   for (const entry of entries) {
-    if (shouldIgnore(entry.name)) continue;
     const fullPath = path.join(dir, entry.name);
-    const relPath = path.relative(base, fullPath);
+    const relativePath = path.join(baseDir, entry.name);
+
+    if (shouldIgnore(relativePath)) {
+      continue;
+    }
+
     if (entry.isDirectory()) {
-      walkDir(fullPath, base, results);
+      files = files.concat(getAllFiles(fullPath, relativePath));
     } else {
-      results.push(relPath);
+      files.push(relativePath);
     }
   }
-  return results;
+
+  return files;
 }
 
-function ensureDir(filePath) {
-  const dir = path.dirname(filePath);
+function ensureDir(dir) {
   if (!fs.existsSync(dir)) {
     fs.mkdirSync(dir, { recursive: true });
   }
 }
 
-function formatSize(bytes) {
-  if (bytes < 1024) return `${bytes}B`;
-  return `${(bytes / 1024).toFixed(1)}KB`;
+function copyFile(src, dst) {
+  ensureDir(path.dirname(dst));
+  fs.copyFileSync(src, dst);
 }
 
-// ─── Основная логика ────────────────────────────────────────────────────────
+// ============================================================================
+// ОСНОВНАЯ ЛОГИКА
+// ============================================================================
 
-function sync(sourceDir, targetDir, dryRun) {
+function syncTemplates(sourceDir, targetDir, dryRun = false) {
+  console.log('🔄 TEMPLATE SYNC — начало синхронизации\n');
+  console.log(`📂 Источник: ${sourceDir}`);
+  console.log(`📂 Целевой:  ${targetDir}`);
+  console.log(`🔍 Режим:    ${dryRun ? 'DRY-RUN (без изменений)' : 'НОРМАЛЬНЫЙ'}`);
+  console.log('');
+
+  // Проверка директорий
   if (!fs.existsSync(sourceDir)) {
-    console.error(`❌ Источник не найден: ${sourceDir}`);
-    process.exit(1);
-  }
-  if (!fs.existsSync(targetDir)) {
-    console.error(`❌ Целевая директория не найдена: ${targetDir}`);
+    console.error(`❌ Ошибка: директория источника не найдена: ${sourceDir}`);
     process.exit(1);
   }
 
-  const sourceFiles = walkDir(sourceDir);
+  ensureDir(targetDir);
 
-  const results = {
-    copied: [],
-    skipped_exists: [],
-    skipped_never: [],
-    errors: [],
-  };
+  // Получить все файлы
+  const sourceFiles = getAllFiles(sourceDir);
+  const targetFiles = getAllFiles(targetDir);
+  const targetFilesSet = new Set(targetFiles);
 
-  for (const relPath of sourceFiles) {
-    if (shouldNeverCopy(relPath)) {
-      results.skipped_never.push(relPath);
-      continue;
-    }
+  console.log(`📊 Файлы в источнике: ${sourceFiles.length}`);
+  console.log(`📊 Файлы в целевом:   ${targetFiles.length}`);
+  console.log('');
 
-    const targetPath = path.join(targetDir, relPath);
+  // Определить какие файлы нужно добавить
+  const filesToAdd = sourceFiles.filter(file => !targetFilesSet.has(file));
+  const filesToSkip = sourceFiles.filter(file => targetFilesSet.has(file));
 
-    if (fs.existsSync(targetPath)) {
-      results.skipped_exists.push(relPath);
-      continue;
-    }
+  console.log(`✅ Файлы к добавлению: ${filesToAdd.length}`);
+  console.log(`⏭️  Файлы к пропуску:   ${filesToSkip.length}`);
+  console.log('');
 
-    if (!dryRun) {
-      try {
-        ensureDir(targetPath);
-        fs.copyFileSync(path.join(sourceDir, relPath), targetPath);
-        results.copied.push(relPath);
-      } catch (err) {
-        results.errors.push({ file: relPath, error: err.message });
-      }
+  // Выполнить копирование (или показать что было бы скопировано)
+  const copied = [];
+  const skipped = [];
+
+  for (const file of filesToAdd) {
+    const src = path.join(sourceDir, file);
+    const dst = path.join(targetDir, file);
+
+    if (dryRun) {
+      console.log(`  [DRY-RUN] + ${file}`);
     } else {
-      results.copied.push(relPath);
+      copyFile(src, dst);
+      console.log(`  ✓ ${file}`);
     }
+    copied.push(file);
   }
 
-  return results;
+  for (const file of filesToSkip) {
+    skipped.push(file);
+  }
+
+  // Создать отчёт
+  const report = generateReport({
+    sourceDir,
+    targetDir,
+    dryRun,
+    timestamp: new Date().toISOString(),
+    copied,
+    skipped,
+    totalSource: sourceFiles.length,
+    totalTarget: targetFiles.length,
+  });
+
+  if (!dryRun) {
+    const reportPath = path.join(targetDir, REPORT_FILENAME);
+    fs.writeFileSync(reportPath, report);
+    console.log('');
+    console.log(`📄 Отчёт сохранён: ${reportPath}`);
+  }
+
+  // Итоги
+  console.log('');
+  console.log('═'.repeat(60));
+  if (dryRun) {
+    console.log(`DRY-RUN: было бы скопировано ${copied.length} файлов`);
+  } else {
+    console.log(`✅ Готово! Добавлено ${copied.length} файлов`);
+  }
+  console.log('═'.repeat(60));
+
+  return {
+    copied: copied.length,
+    skipped: skipped.length,
+    total: copied.length + skipped.length,
+  };
 }
 
-function buildReport(results, sourceDir, targetDir, dryRun, startTime) {
-  const elapsed = ((Date.now() - startTime) / 1000).toFixed(2);
-  const date = new Date().toISOString().slice(0, 19).replace('T', ' ');
-  const mode = dryRun ? 'DRY RUN (без изменений)' : 'ПРИМЕНЕНО';
+function generateReport(data) {
+  const {
+    sourceDir,
+    targetDir,
+    dryRun,
+    timestamp,
+    copied,
+    skipped,
+    totalSource,
+    totalTarget,
+  } = data;
 
-  const lines = [
-    `# Отчёт синхронизации шаблона`,
-    ``,
-    `**Дата:** ${date}`,
-    `**Режим:** ${mode}`,
-    `**Источник:** ${path.resolve(sourceDir)}`,
-    `**Цель:** ${path.resolve(targetDir)}`,
-    `**Время:** ${elapsed}s`,
-    ``,
-    `---`,
-    ``,
-    `## Итог`,
-    ``,
-    `| Статус | Кол-во |`,
-    `|--------|--------|`,
-    `| ✅ Скопировано (новые файлы) | ${results.copied.length} |`,
-    `| ⏭️ Пропущено (файл уже есть) | ${results.skipped_exists.length} |`,
-    `| 🚫 Исключено (системные) | ${results.skipped_never.length} |`,
-    `| ❌ Ошибок | ${results.errors.length} |`,
-    ``,
-  ];
+  return `# Template Sync Report
 
-  if (results.copied.length > 0) {
-    lines.push(`## ✅ ${dryRun ? 'Будет скопировано' : 'Скопировано'}`);
-    lines.push(``);
-    for (const f of results.copied) lines.push(`- \`${f}\``);
-    lines.push(``);
-  }
+**Дата:** ${timestamp}
+**Режим:** ${dryRun ? 'DRY-RUN (без изменений)' : 'Нормальный'}
 
-  if (results.skipped_exists.length > 0) {
-    lines.push(`## ⏭️ Пропущено (уже существует)`);
-    lines.push(``);
-    for (const f of results.skipped_exists) lines.push(`- \`${f}\``);
-    lines.push(``);
-  }
+## Источники
 
-  if (results.errors.length > 0) {
-    lines.push(`## ❌ Ошибки`);
-    lines.push(``);
-    for (const e of results.errors) lines.push(`- \`${e.file}\`: ${e.error}`);
-    lines.push(``);
-  }
+- **Источник:** \`${sourceDir}\`
+- **Целевой:** \`${targetDir}\`
 
-  return lines.join('\n');
+## Статистика
+
+| Метрика | Значение |
+|---------|----------|
+| Файлов в источнике | ${totalSource} |
+| Файлов в целевом | ${totalTarget} |
+| Добавлено | ${copied.length} |
+| Пропущено (уже есть) | ${skipped.length} |
+
+## Добавленные файлы (${copied.length})
+
+\`\`\`
+${copied.length > 0 ? copied.map(f => '+ ' + f).join('\n') : '(нет)'}
+\`\`\`
+
+## Пропущенные файлы (${skipped.length})
+
+Эти файлы уже существуют в целевом проекте и не перезаписывались:
+
+\`\`\`
+${skipped.length > 0 ? skipped.map(f => '- ' + f).join('\n') : '(нет)'}
+\`\`\`
+
+---
+
+## Как использовать этот отчёт
+
+1. **Проверь добавленные файлы** — они новые и не конфликтуют с существующими
+2. **Обнови документацию** — если добавились новые docs/ файлы
+3. **Обнови HANDOFF.md** — добавь запись о синхронизации
+4. **Закоммить изменения** — все файлы готовы к коммиту
+
+## Команда для отката
+
+Если что-то пошло не так, откати последний коммит:
+
+\`\`\`bash
+git reset --hard HEAD~1
+\`\`\`
+`;
 }
 
-// ─── CLI ────────────────────────────────────────────────────────────────────
+// ============================================================================
+// ЗАПУСК
+// ============================================================================
 
 function main() {
   const args = process.argv.slice(2);
 
-  if (args.length < 2 || args.includes('--help') || args.includes('-h')) {
-    console.log([
-      'Использование: node template-sync.js <source> <target> [--dry-run]',
-      '',
-      'Аргументы:',
-      '  source    Путь к репозиторию Vibe-coding-docs (шаблон)',
-      '  target    Путь к целевому проекту',
-      '',
-      'Опции:',
-      '  --dry-run   Показать что будет скопировано, ничего не менять',
-      '  --help      Показать эту справку',
-      '',
-      'Примеры:',
-      '  node template-sync.js ../vibe-coding-docs . --dry-run',
-      '  node template-sync.js ../vibe-coding-docs /path/to/project',
-    ].join('\n'));
-    process.exit(0);
+  if (args.length < 2) {
+    console.log(`
+Использование:
+  node template-sync.js <source-dir> <target-dir> [--dry-run]
+
+Примеры:
+  node template-sync.js ./vibe-docs ./my-project
+  node template-sync.js ./vibe-docs ./my-project --dry-run
+
+Опции:
+  --dry-run    Показать что было бы скопировано, без реальных изменений
+`);
+    process.exit(1);
   }
 
-  const sourceDir = path.resolve(args[0]);
-  const targetDir = path.resolve(args[1]);
+  const sourceDir = args[0];
+  const targetDir = args[1];
   const dryRun = args.includes('--dry-run');
-  const startTime = Date.now();
 
-  console.log(`\n🔄 Синхронизация шаблона${dryRun ? ' (DRY RUN)' : ''}`);
-  console.log(`   Источник: ${sourceDir}`);
-  console.log(`   Цель:     ${targetDir}\n`);
-
-  const results = sync(sourceDir, targetDir, dryRun);
-
-  // Вывод в консоль
-  if (results.copied.length > 0) {
-    console.log(`${dryRun ? '📋 Будет скопировано' : '✅ Скопировано'} (${results.copied.length}):`);
-    results.copied.forEach(f => console.log(`   + ${f}`));
-    console.log('');
-  }
-
-  if (results.errors.length > 0) {
-    console.log(`❌ Ошибки (${results.errors.length}):`);
-    results.errors.forEach(e => console.log(`   ! ${e.file}: ${e.error}`));
-    console.log('');
-  }
-
-  const elapsed = ((Date.now() - startTime) / 1000).toFixed(2);
-  console.log(`📊 Итог: +${results.copied.length} новых, =${results.skipped_exists.length} пропущено, ${results.errors.length} ошибок (${elapsed}s)`);
-
-  // Сохранение отчёта
-  const reportPath = path.join(targetDir, 'template-sync-report.md');
-  const report = buildReport(results, sourceDir, targetDir, dryRun, startTime);
-
-  if (!dryRun || results.copied.length > 0) {
-    if (!dryRun) {
-      fs.writeFileSync(reportPath, report, 'utf8');
-      console.log(`\n📄 Отчёт сохранён: template-sync-report.md`);
-    } else {
-      console.log('\n💡 Сухой запуск завершён. Для применения уберите --dry-run');
-    }
-  }
-
-  if (results.errors.length > 0) process.exit(1);
+  syncTemplates(sourceDir, targetDir, dryRun);
 }
 
 main();
