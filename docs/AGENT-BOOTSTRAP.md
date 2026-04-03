@@ -22,14 +22,16 @@
 
 ## Чеклист
 
-### Критичные
+### Критичные (все уровни)
 - [ ] /START.md
 - [ ] /CLAUDE.md — заполнен стек?
 - [ ] /docs/WORKFLOW.md
-- [ ] /docs/ARCHITECTURE.md — заполнены разделы 1–4?
-- [ ] /docs/SECURITY_POLICY.md
 - [ ] /HANDOFF.md
+
+### Критичные (Уровень 1 и выше)
 - [ ] /docs/ROADMAP.md — заполнена цель и текущий этап?
+- [ ] /docs/ARCHITECTURE.md — заполнены разделы 1–4?
+- [ ] /docs/SECURITY_POLICY.md (если данные чувствительные)
 
 ### Важные
 - [ ] /docs/PLANNING.md
