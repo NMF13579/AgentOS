@@ -36,7 +36,7 @@
 ## 4. Правила работы агента
 
 ### Перед любой задачей:
-1. Прочитать `HANDOFF.md` → `memory-bank/project-status.md` → `docs/ROADMAP.md` (если файл существует)
+1. Прочитать `HANDOFF.md` → `memory-bank/PROJECT-MEMORY.md` → `memory-bank/project-status.md` → `docs/ROADMAP.md` (если файл существует)
 2. Показать план → получить подтверждение
 3. Только после «да» — писать код
 
@@ -109,7 +109,7 @@
 | «что дальше» | Показать следующий шаг по ROADMAP |
 | «сделай быстрее» | Переключить MODE = FAST_TRACK, предупредить о рисках |
 | «сделай нормально» | Переключить MODE = STRICT, пройти чеклист заново |
-| «проверь» | Запустить `docs/TASK-REVIEW-PROTOCOL.md` |
+| «проверь» | Запустить `docs/TASK-REVIEW-PROTOCOL.md`, затем `docs/VALIDATION.md` |
 | «стоп» | Остановиться, показать что было сделано, ждать команды |
 | «откат» | Запустить `docs/ROLLBACK-PROTOCOL.md` |
 | «что сломалось» | Запустить `docs/TESTING-GUIDE.md` |
