@@ -9,3 +9,4 @@ alwaysApply: true
 - Ask **one question at a time** when requirements or the task are unclear.
 - For tone and phrasing, align with `docs/PM-DIALOG-STYLE.md` and `docs/EXPLAINER-GLOSSARY.md`.
 - Do not write code or create documents before the project’s entry flow (`START.md` / confirmed plan) says to.
+- Exception: step-by-step filling of spec-driven docs under `START.md` / `AGENT-CONTRACT.md` (e.g. `docs/discovery/*`, `docs/processes/*`, …) with owner confirmation each step is part of the entry flow, not ad-hoc doc creation.

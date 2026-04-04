@@ -20,6 +20,8 @@
 > Этот файл агент читает ПЕРВЫМ при старте нового проекта.
 > Определяет весь конвейер: от идеи до первого кода.
 
+В **очередной сессии** уже идущего проекта сначала смотрят `HANDOFF.md` и `memory-bank/project-status.md` (как в правилах Cursor), затем продолжают по согласованному плану — без смены конвейера из `START.md`.
+
 ---
 
 ## Триггер
@@ -49,7 +51,38 @@
 | Валидация результата   | `docs/VALIDATION.md` |
 | Ошибка в процессе      | `docs/ERROR-TYPES.md` |
 | Долгая память проекта  | `memory-bank/PROJECT-MEMORY.md` |
-| Перед деплоем          | `docs/RELEASE-CHECKLIST.md` |
+| Перед деплоем          | `docs/RELEASE-CHECKLIST.md` (общий шаблон); чеклист конкретного продукта — `docs/deploy/DEPLOY-CHECKLIST.md` (см. `docs/DOCS-MAP.md`) |
+| Полный MVP-пайплайн (профиль → деплой) | `AGENT-CONTRACT.md` и дерево `docs/discovery`, `docs/processes`, `docs/ux`, `docs/specs`, `docs/qa`, `docs/deploy` |
+
+---
+
+## MVP blueprint — модульная структура документов
+
+Путь от профиля до деплоя с исходниками в репозитории (см. также `AGENT-CONTRACT.md`).
+
+| Этап | Цель | Выходные файлы |
+|------|------|----------------|
+| 0. Профиль | Подстроить интервью | `docs/discovery/USER-PROFILE.md` |
+| 1. Быстрый старт | Идея и цель MVP | `docs/discovery/VISION.md`, черновик `docs/discovery/MVP-SCOPE.md` |
+| 2. Гипотеза и research | Проверить нужность идеи | `docs/discovery/HYPOTHESIS-RESEARCH.md` |
+| 3. Интервью | Контекст и ограничения | `docs/discovery/INTERVIEW-SUMMARY.md` |
+| 4. Процессы | Предметная область | `docs/processes/PROCESSES.md`, `docs/processes/ROLES.md` |
+| 5. UX из процессов | Потоки и экраны | `docs/ux/UX-DESIGN-GUIDE.md`, `docs/ux/UX-FLOWS-DESKTOP.md`, `docs/ux/UX-FLOWS-MOBILE.md`, `docs/ux/SCREEN-MAP.md` |
+| 6. Проверка UX | Сверка с процессами | `docs/ux/UI-CHECKLIST.md`, `docs/ux/UX-GAP-REPORT.md` |
+| 7. Спека | Задача на разработку | `docs/specs/SPEC.md`, `docs/specs/ARCHITECTURE.md`, `docs/discovery/MVP-SCOPE.md` |
+| 8. Тесты | Проверка по процессам | `docs/qa/TEST-SCENARIOS.md`, `docs/qa/RELEASE-BLOCKERS.md` |
+| 9. Деплой | Готовность к релизу | `docs/deploy/DEPLOY-CHECKLIST.md`, `docs/deploy/RELEASE-NOTES.md`, `docs/deploy/RUNBOOK.md` |
+| 10. Post-launch | Оценка после запуска | контекст scope в `docs/discovery/MVP-SCOPE.md`; итог — `docs/POST-LAUNCH-REVIEW.md` |
+
+### Три режима старта
+
+1. **Быстрый старт** — есть идея, мало времени на полный discovery: что за идея, для кого, боль, платформа; выход: `docs/discovery/USER-PROFILE.md`, `docs/discovery/VISION.md`, черновик `docs/discovery/MVP-SCOPE.md`.
+2. **Идея + проверка гипотезы** — сначала быстрый старт, затем веб-исследование; выход: `docs/discovery/VISION.md`, `docs/discovery/HYPOTHESIS-RESEARCH.md`, решение: делать / не делать / сузить scope.
+3. **Полный пакет** — весь pipeline по этапам; каждый следующий модуль — только после подтверждения владельца.
+
+Код продукта при необходимости ведётся в `src/`; остальная методология шаблона (`docs/*`, `memory-bank/*`) остаётся параллельным слоем.
+
+---
 
 ## Этап 0 — Определение ситуации
 
