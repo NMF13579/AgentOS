@@ -29,6 +29,13 @@ This repository is a docs-first operating system for vibe coding.
 - Product suggestions → `docs/FEATURE-RADAR.md`, `memory-bank/features.md`
 - Recovery after confusion → `docs/CONTEXT-LOSS-RECOVERY.md`
 
+## Notes
+
+Specialized sub-agents (audit-agent, feature-advisor-agent, session-guard-agent)
+are available only in Claude Code and cannot be invoked by Copilot.
+Use the corresponding docs directly:
+audit → `docs/AUDIT-GUIDE.md`, features → `docs/FEATURE-RADAR.md`.
+
 ## Update after major changes
 
 - `HANDOFF.md`

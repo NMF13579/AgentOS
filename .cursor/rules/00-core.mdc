@@ -36,8 +36,16 @@ onTaskComplete (after every completed task — automatic):
 - Review → `docs/REVIEW-CHECKLIST.md`, `docs/TASK-REVIEW-PROTOCOL.md`
 - Audit → `docs/AUDIT-GUIDE.md`, `docs/HEALTH-SCORE.md`
 - Security → `docs/SECURITY_POLICY.md`, `memory-bank/security.md`
-- Product suggestions → `docs/FEATURE-RADAR.md`
+- Product suggestions → `docs/FEATURE-RADAR.md`, `memory-bank/features.md`
 - Recovery after confusion → `docs/CONTEXT-LOSS-RECOVERY.md`
+
+## Notes
+
+Specialized sub-agents (audit-agent, feature-advisor-agent, session-guard-agent)
+are available only in Claude Code and cannot be invoked from Cursor.
+Use the corresponding docs directly:
+audit → `docs/AUDIT-GUIDE.md`, features → `docs/FEATURE-RADAR.md`,
+context guard → follow `CLAUDE.md` save triggers manually.
 
 ## Working principles
 

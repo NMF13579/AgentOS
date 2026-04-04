@@ -31,4 +31,11 @@ This repository uses a docs-first structure for vibe coding.
 
 - `HANDOFF.md`
 - `memory-bank/project-status.md`
-- `memory-bank/fixes.md`
+- `memory-bank/fixes.md` — если найден баг или откат
+- `memory-bank/deferred-decisions.md` — если решение отложено
+
+## Notes
+
+Specialized sub-agents (audit-agent, feature-advisor-agent, session-guard-agent)
+are available only in Claude Code. In other environments use the corresponding docs directly:
+audit → `docs/AUDIT-GUIDE.md`, features → `docs/FEATURE-RADAR.md`.
