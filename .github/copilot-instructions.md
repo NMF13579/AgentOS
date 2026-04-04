@@ -19,15 +19,22 @@ This repository is a docs-first operating system for vibe coding.
 
 ## Route by task
 
-- Project startup → `START.md`, `docs/AGENT-BOOTSTRAP.md`
+- Project startup (new project or existing code) → `START.md` Этап 0, `docs/AGENT-BOOTSTRAP.md`
 - Communication style → `docs/PM-DIALOG-STYLE.md`, `docs/EXPLAINER-GLOSSARY.md`
 - Planning → `docs/PLANNING.md`, `docs/ROADMAP.md`
 - Architecture → `docs/ARCHITECTURE.md`, `docs/STACK-PRESETS.md`
 - Review → `docs/REVIEW-CHECKLIST.md`, `docs/TASK-REVIEW-PROTOCOL.md`
 - Audit → `docs/AUDIT-GUIDE.md`, `docs/HEALTH-SCORE.md`
 - Security → `docs/SECURITY_POLICY.md`, `memory-bank/security.md`
-- Product suggestions → `docs/FEATURE-RADAR.md`
+- Product suggestions → `docs/FEATURE-RADAR.md`, `memory-bank/features.md`
 - Recovery after confusion → `docs/CONTEXT-LOSS-RECOVERY.md`
+
+## Notes
+
+Specialized sub-agents (audit-agent, feature-advisor-agent, session-guard-agent)
+are available only in Claude Code and cannot be invoked by Copilot.
+Use the corresponding docs directly:
+audit → `docs/AUDIT-GUIDE.md`, features → `docs/FEATURE-RADAR.md`.
 
 ## Update after major changes
 
