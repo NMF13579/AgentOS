@@ -6,7 +6,7 @@
 
 ## Общие правила
 
-1. Порядок чтения: CLAUDE.md → START.md → ARCHITECTURE.md → SECURITY_POLICY.md
+1. Порядок чтения: CLAUDE.md → START.md → `docs/ARCHITECTURE.md` → `docs/SECURITY_POLICY.md`
 2. Не изменять архитектуру без явного запроса
 3. Не писать код до подтверждения плана
 4. После выполнения — обновлять memory-bank/

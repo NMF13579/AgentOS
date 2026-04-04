@@ -122,4 +122,14 @@
 - **Безопасность**  
   → `docs/SECURITY_POLICY.md`, `memory-bank/security.md`
 
+- **MVP-пайплайн (профиль → discovery → процессы → UX → спека → QA → деплой)**  
+  → `AGENT-CONTRACT.md`, затем по этапам:
+  - `docs/discovery/USER-PROFILE.md`
+  - `docs/discovery/VISION.md`, `HYPOTHESIS-RESEARCH.md`, `INTERVIEW-SUMMARY.md`, `MVP-SCOPE.md`
+  - `docs/processes/PROCESSES.md`, `ROLES.md`
+  - `docs/ux/UX-DESIGN-GUIDE.md`, `UX-FLOWS-DESKTOP.md`, `UX-FLOWS-MOBILE.md`, `SCREEN-MAP.md`, `UI-CHECKLIST.md`, `UX-GAP-REPORT.md`
+  - `docs/specs/SPEC.md`, `ARCHITECTURE.md`, `DECISIONS.md`
+  - `docs/qa/TEST-SCENARIOS.md`, `RELEASE-BLOCKERS.md`
+  - `docs/deploy/DEPLOY-CHECKLIST.md`, `RELEASE-NOTES.md`, `RUNBOOK.md`
+
 `SYSTEM_PROMPT.md` не дублирует содержимое этих файлов — он задаёт общий способ работы для AI-системы и направляет к нужной документации только тогда, когда эти документы реально доступны в контексте.

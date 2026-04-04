@@ -63,6 +63,7 @@
 | Всё перепуталось, нужен recovery | [`docs/CONTEXT-LOSS-RECOVERY.md`](./docs/CONTEXT-LOSS-RECOVERY.md) |
 | Нужно откатить изменения | [`docs/ROLLBACK-PROTOCOL.md`](./docs/ROLLBACK-PROTOCOL.md) |
 | Аудит проекта | [`docs/AUDIT-GUIDE.md`](./docs/AUDIT-GUIDE.md) |
+| Процессы и UX (spec-driven) | Если хочешь вести проект по процессам и UX — начни с [`docs/DOCS-MAP.md`](./docs/DOCS-MAP.md) и [`AGENT-CONTRACT.md`](./AGENT-CONTRACT.md). |
 
 ---
 
