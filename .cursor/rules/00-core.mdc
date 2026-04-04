@@ -1,0 +1,75 @@
+---
+description: Docs-first core — read order, routing, and post-change updates for Vibe-coding-docs
+alwaysApply: true
+---
+
+# Core (Vibe-coding-docs)
+
+This workspace is a docs-first operating system for vibe coding.
+
+## Session lifecycle
+
+onSessionStart (every new session — automatic, no command needed):
+  - Read HANDOFF.md and memory-bank/project-status.md
+  - Read memory-bank/lessons-learned.md if it exists
+  - If same task unclosed again → warn: "⚠️ Задача [name] идёт уже несколько сессий. Разбить или продолжить?"
+  - Summarize current state in 3-5 lines
+  - Suggest next 1-3 actions
+  - Wait for owner's choice — do not write code until confirmed
+
+onTaskComplete (after every completed task — automatic):
+  - Update HANDOFF.md and memory-bank/project-status.md
+  - Update additional files per CLAUDE.md Автосохранение table
+  - Confirm: "Контекст сохранён ✅"
+
+onSaveReminder (remind if any of these):
+  - 10+ file edits since last HANDOFF.md update
+  - Plan of 3+ steps completed without updating HANDOFF.md
+  → remind: "⚠️ Контекст не сохранялся. Сохранить сейчас?"
+
+onAuditRequest ("проверь проект", "аудит", "здоровье"):
+  - Read and run docs/AUDIT-GUIDE.md protocol
+
+onFeatureRequest ("что добавить", "что дальше", after phase close):
+  - Read docs/FEATURE-RADAR.md + memory-bank/features.md
+  - Suggest top 3 with reasoning
+
+## Read first
+
+1. `README.md`
+2. `START.md`
+3. `CLAUDE.md`
+4. `HANDOFF.md`
+
+## Route by task
+
+- Project startup (new project or existing code) → `START.md` Этап 0, `docs/AGENT-BOOTSTRAP.md`
+- Communication style → `docs/PM-DIALOG-STYLE.md`, `docs/EXPLAINER-GLOSSARY.md`
+- Planning → `docs/PLANNING.md`, `docs/ROADMAP.md`
+- Architecture → `docs/ARCHITECTURE.md`, `docs/STACK-PRESETS.md`
+- Review → `docs/REVIEW-CHECKLIST.md`, `docs/TASK-REVIEW-PROTOCOL.md`
+- Audit → `docs/AUDIT-GUIDE.md`, `docs/HEALTH-SCORE.md`
+- Security → `docs/SECURITY_POLICY.md`, `memory-bank/security.md`
+- Product suggestions → `docs/FEATURE-RADAR.md`, `memory-bank/features.md`
+- Recovery after confusion → `docs/CONTEXT-LOSS-RECOVERY.md`
+
+## Notes
+
+Specialized sub-agents (audit-agent, feature-advisor-agent, session-guard-agent)
+are available only in Claude Code and cannot be invoked from Cursor.
+Use the corresponding docs directly:
+audit → `docs/AUDIT-GUIDE.md`, features → `docs/FEATURE-RADAR.md`,
+context guard → follow `CLAUDE.md` save triggers manually.
+
+## Working principles
+
+- Prefer existing repository docs over assumptions.
+- Keep suggestions practical and prioritized.
+- Avoid introducing unnecessary complexity.
+
+## Update after major changes
+
+- `HANDOFF.md`
+- `memory-bank/project-status.md`
+- `memory-bank/deferred-decisions.md` if a decision is postponed
+- `memory-bank/fixes.md` if a reusable fix was found

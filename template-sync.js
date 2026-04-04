@@ -9,6 +9,13 @@
  * Использование:
  *   node template-sync.js <source-dir> <target-dir> [--dry-run]
  *
+ * 
+ * Копирует только новые файлы из шаблона в целевой проект.
+ * Существующие файлы не перезаписываются.
+ * 
+ * Использование:
+ *   node template-sync.js <source-dir> <target-dir> [--dry-run]
+ * 
  * Примеры:
  *   node template-sync.js ./vibe-docs ./my-project
  *   node template-sync.js ./vibe-docs ./my-project --dry-run
@@ -30,6 +37,7 @@ const IGNORE_PATTERNS = [
   /setup\.js$/,
   /template-sync\.js$/,
   /README-TEMPLATE\.md$/,
+  /README-TEMPLATE\.md$/, // если есть файл с инструкциями
 ];
 
 const REPORT_FILENAME = 'template-sync-report.md';
@@ -45,6 +53,7 @@ function shouldIgnore(filePath) {
 function getAllFiles(dir, baseDir = '') {
   let files = [];
 
+  
   if (!fs.existsSync(dir)) {
     return files;
   }
