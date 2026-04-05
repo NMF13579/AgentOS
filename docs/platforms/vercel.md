@@ -83,7 +83,7 @@ Local → Staging (preview) → Production.
 
 ## 5. Smoke‑test на Vercel
 
-Агент использует чеклист из `docs/DEPLOY.md` и сценарии из `docs/user-flows.md`:
+Агент использует чеклист из `docs/DEPLOY.md` и сценарии из `docs/USER-FLOWS.md`:
 
 Минимум:
 
