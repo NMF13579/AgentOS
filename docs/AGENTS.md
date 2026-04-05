@@ -10,6 +10,7 @@
 2. Не изменять архитектуру без явного запроса
 3. Не писать код до подтверждения плана
 4. После выполнения — обновлять memory-bank/
+5. При любом изменении файлов в `docs/` — обновить `docs/DOCS-MAP.md` в том же коммите.
 
 ---
 
@@ -25,7 +26,7 @@
 
 **Reviewer** — проверяет по REVIEW-CHECKLIST.md, блокирует деплой при 🔴
 
-**Docs Agent** — обновляет CHANGELOG, HANDOFF, memory-bank/
+**Docs Agent** — обновляет CHANGELOG, HANDOFF, memory-bank/, DOCS-MAP.md
 
 ---
 
