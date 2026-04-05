@@ -46,6 +46,7 @@
 - [ ] /CLAUDE.md — заполнен стек?
 - [ ] /docs/WORKFLOW.md
 - [ ] /HANDOFF.md
+- [ ] /docs/ANTI-PATTERNS.md — прочитать перед выбором подхода к решению
 
 ### Критичные (Уровень 1 и выше)
 - [ ] /docs/ROADMAP.md — заполнена цель и текущий этап?
@@ -56,6 +57,7 @@
 - [ ] /docs/PLANNING.md
 - [ ] /docs/TASK-TEMPLATE.md
 - [ ] /docs/REVIEW-CHECKLIST.md
+- [ ] /docs/PM-DIALOG-STYLE.md — стиль диалога и тон общения с владельцем
 - [ ] /memory-bank/project-status.md
 - [ ] /memory-bank/languages.md
 - [ ] /memory-bank/integrations.md
