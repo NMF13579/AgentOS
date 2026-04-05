@@ -50,6 +50,7 @@
 
 | Дата | Задача | Результат |
 |------|--------|----------|
+| 2026-04-05 | AGENTS.md: обновить правила docs-сопровождения | В `docs/AGENTS.md` добавлен п.5 в «Общие правила» (обновлять `docs/DOCS-MAP.md` при изменениях в `docs/`) и обновлена роль `Docs Agent` (добавлен `DOCS-MAP.md`); строка и блок из запроса не найдены в текущем файле |
 | 2026-04-05 | AGENT-BOOTSTRAP: добавить ANTI-PATTERNS и PM-DIALOG-STYLE | В `docs/AGENT-BOOTSTRAP.md` добавлены пункты `/docs/ANTI-PATTERNS.md` в «Критичные (все уровни)» и `/docs/PM-DIALOG-STYLE.md` в «Важные» |
 | 2026-04-05 | UX-CHECKLIST-INDEX: добавить STARTER/ONBOARDING/PERMISSIONS | В `docs/standards/UX-CHECKLIST-INDEX.md` добавлены: раздел `0. Точка входа для агента` (`UX-CHECKLIST-STARTER-FLOW.md`), пункт `UX-CHECKLIST-ONBOARDING.md` в базовых чек-листах и пункт `UX-CHECKLIST-PERMISSIONS-AND-ACCESS.md` в доменных ролях |
 | 2026-04-05 | DOCS-MAP: привести vercel.md в таблицу платформ | В разделе «Связь с Vibe-coding-docs» заменён линейный блок на таблицу выбора платформ (Timeweb Cloud / Vercel) рядом с универсальными правилами `docs/DEPLOY.md` |
