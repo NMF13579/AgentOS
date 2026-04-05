@@ -64,6 +64,8 @@
 | Файл | Назначение |
 |------|------------|
 | `docs/user-flows.md` | Готовые сценарии тестирования: авторизация, CRUD, навигация, smoke-тест перед релизом |
+| `docs/OWNER-CHEATSHEET.md` | Команды и подсказки для владельца проекта |
+| `docs/cheatsheet.html` | Визуальная шпаргалка по процессу |
 
 ---
 
@@ -106,6 +108,10 @@
 | `specs/DECISIONS.md` | 2 | Зафиксированные решения |
 | `qa/TEST-SCENARIOS.md` | 2 | Сценарии проверки |
 | `qa/RELEASE-BLOCKERS.md` | 2 | Критичные стопоры перед релизом |
+| `docs/AGENTS.md` | 2 | Карта ролей агентов и правила многоагентной работы |
+| `docs/ENV.md` | 2 | Описание переменных окружения и правила хранения секретов |
+| `docs/MONITORING.md` | 2 | Базовый мониторинг после релиза и сигналы для отката |
+| `docs/AUDIT-CHECKLIST.md` | 2 | Расширенный чеклист проверки качества и готовности |
 | `docs/user-flows.md` | 2 | Ключевые пользовательские сценарии для smoke-теста |
 | `deploy/DEPLOY-CHECKLIST.md` | 2 | Контроль перед выкладкой |
 | `deploy/RELEASE-NOTES.md` | 2 | Содержание версии для людей |
@@ -115,6 +121,7 @@
 ## Связь с Vibe-coding-docs
 
 Папки `discovery` … `deploy` и этот файл — ваша **spec-driven** цепочка под продукт; общие правила шаблона (старт сессии, интервью, дорожная карта, аудит) по-прежнему живут в корне репозитория и в `docs/*` вроде `START.md`, `WORKFLOW.md`, `PM-DIALOG-STYLE.md` — они дополняют эти документы, но не заменяют их.
+При UX-работе смотри также: `memory-bank/open-ui-questions.md`, `memory-bank/ui-inventory.md`, `memory-bank/atomic-decisions.md`, `memory-bank/PROJECT-MEMORY.md`.
 
 **Деплой — смежная цепочка (онбординг и MCP):** `docs/deploy/SETUP-ALL.md` → `ENV-SETUP.md` / `MCP-SETUP.md` → `DEPLOY-MCP-UNIVERSAL.md` → `DEPLOY-TIMEWEB.md`; универсальные правила — `docs/DEPLOY.md`, платформа Timeweb — `docs/platforms/timeweb-cloud.md` (см. также таблицу артефактов в `DEPLOY.md`).
 

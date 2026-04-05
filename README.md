@@ -64,6 +64,8 @@
 | Не знаешь, что написать агенту | [`docs/OWNER-CHEATSHEET.md`](./docs/OWNER-CHEATSHEET.md) или [`docs/cheatsheet.html`](./docs/cheatsheet.html) |
 | Где мы остановились? | [`HANDOFF.md`](./HANDOFF.md) → [`memory-bank/project-status.md`](./memory-bank/project-status.md) |
 | Планирование и дорожная карта | [`docs/ROADMAP.md`](./docs/ROADMAP.md), [`docs/PLANNING.md`](./docs/PLANNING.md) |
+| История изменений шаблона | [`CHANGELOG.md`](./CHANGELOG.md) |
+| Прямая подача в LLM | [`llms.txt`](./llms.txt) |
 | Задача начала расползаться | [`SCOPE-CREEP-GUARD.md`](./SCOPE-CREEP-GUARD.md) |
 | Всё перепуталось, нужен recovery | [`docs/CONTEXT-LOSS-RECOVERY.md`](./docs/CONTEXT-LOSS-RECOVERY.md) |
 | Нужно откатить изменения | [`docs/ROLLBACK-PROTOCOL.md`](./docs/ROLLBACK-PROTOCOL.md) |
