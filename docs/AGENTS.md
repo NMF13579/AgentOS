@@ -39,3 +39,24 @@
     → [Docs Agent] → документы
     → [Владелец] → деплой ОК
 ```
+
+## Cursor Cloud specific instructions
+
+This is a **documentation-only template** ("Vibe-coding-docs"). There is no application to build or run as a service. The `src/` directory is empty (placeholder for future product code).
+
+### Executable components
+
+Two Node.js utility scripts in the repo root use only built-in modules (no `npm install` needed):
+
+- `setup.js` — interactive setup wizard (requires TTY; do **not** run non-interactively)
+- `template-sync.js` — copies new template files from a source dir to a target project
+
+Run with: `node template-sync.js <source> <target> [--dry-run]`
+
+### No lint / test / build
+
+There are no linters, test frameworks, or build steps configured. The only runtime requirement is **Node.js 14+** (pre-installed in Cloud VMs).
+
+### GitHub Actions
+
+A single workflow `.github/workflows/memory-sync.yml` checks HANDOFF.md freshness on push. It runs in CI only, nothing to invoke locally.
