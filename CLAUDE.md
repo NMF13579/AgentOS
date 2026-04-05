@@ -83,7 +83,7 @@
 - **Архитектура и стек**  
   → `docs/ARCHITECTURE.md`, `docs/STACK-PRESETS.md`
 - **Решения и развилки**  
-  → `docs/DECISION-GUIDE.md`, `docs/DECISIONS.md`, `memory-bank/deferred-decisions.md`
+  → `docs/DECISION-GUIDE.md`, `docs/DECISIONS.md` *(шаблон)*, `docs/specs/DECISIONS.md` *(продукт)*, `memory-bank/deferred-decisions.md`
 - **Тестирование и качество**  
   → `docs/TESTING-GUIDE.md`, `docs/REVIEW-CHECKLIST.md`, `docs/TASK-REVIEW-PROTOCOL.md`
 - **Откат изменений**  
@@ -91,7 +91,7 @@
 - **Аудит и здоровье проекта**  
   → `docs/AUDIT-GUIDE.md`, `docs/HEALTH-SCORE.md`
 - **Scope creep и анти‑паттерны**  
-  → `docs/SCOPE-CREEP-GUARD.md`, `docs/ANTI-PATTERNS.md`
+  → `SCOPE-CREEP-GUARD.md`, `docs/ANTI-PATTERNS.md`
 - **Безопасность**  
   → `docs/SECURITY_POLICY.md`, `memory-bank/security.md`
 - **Подсказки по фичам**  

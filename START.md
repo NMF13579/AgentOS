@@ -46,7 +46,7 @@
 | Диагностика готовности | `docs/AGENT-BOOTSTRAP.md` |
 | Ошибка или поломка     | `docs/TESTING-GUIDE.md → docs/ROLLBACK-PROTOCOL.md` |
 | Потеря контекста       | `docs/CONTEXT-LOSS-RECOVERY.md` |
-| Запрос новой функции   | `docs/SCOPE-CREEP-GUARD.md` |
+| Запрос новой функции   | `SCOPE-CREEP-GUARD.md` |
 | Задача завершена       | `docs/TASK-REVIEW-PROTOCOL.md` |
 | Валидация результата   | `docs/VALIDATION.md` |
 | Ошибка в процессе      | `docs/ERROR-TYPES.md` |
