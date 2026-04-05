@@ -40,7 +40,7 @@ npm run sync-template          # выполнить
 
 **Файлы в порядке чтения:**
 1. **QUICK-START.md** (5 минут) — Общее описание
-2. **QUICK-START.md** (подробная версия) (15 минут) — Архитектура инструмента
+2. **TEMPLATE-SYNC-GUIDE.md** (15 минут) — Архитектура инструмента
 3. **template-sync.js** — Исходный код (350 строк)
 
 ---
@@ -111,7 +111,7 @@ npm run sync-template          # Выполнить
 **Быстрая помощь:** QUICK-START.md
 **Подробная документация:** TEMPLATE-SYNC-GUIDE.md
 **Работа с агентом:** TEMPLATE-SYNC-INTEGRATION.md
-**Техническое понимание:** QUICK-START.md (подробная версия)
+**Техническое понимание:** TEMPLATE-SYNC-GUIDE.md
 
 ---
 
@@ -182,7 +182,7 @@ QUICK-START.md → TEMPLATE-SYNC-GUIDE.md → использование ✓
 
 ### Уровень 2 — Разработчик (30 мин)
 ```
-Все документы → QUICK-START.md (подробная версия) → модификация скрипта ✓
+Все документы → TEMPLATE-SYNC-GUIDE.md → модификация скрипта ✓
 ```
 
 ### Уровень 3 — Агент/CI (20 мин)
@@ -203,7 +203,7 @@ INDEX.md (ты здесь)
     ├→ QUICK-START.md (2 минуты)
     ├→ TEMPLATE-SYNC-GUIDE.md (10 минут)
     ├→ TEMPLATE-SYNC-INTEGRATION.md (для агентов)
-    └→ QUICK-START.md (для разработчиков — подробное описание)
+    └→ TEMPLATE-SYNC-GUIDE.md (для разработчиков — подробное описание)
 ```
 
 ---
