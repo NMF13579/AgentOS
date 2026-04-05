@@ -58,6 +58,8 @@
 - [ ] /docs/TASK-TEMPLATE.md
 - [ ] /docs/REVIEW-CHECKLIST.md
 - [ ] /docs/PM-DIALOG-STYLE.md — стиль диалога и тон общения с владельцем
+- [ ] /docs/DECISION-GUIDE.md — справочник развилок: что выбрать и почему
+- [ ] /docs/EXPLAINER-GLOSSARY.md — словарь терминов простым языком
 - [ ] /memory-bank/project-status.md
 - [ ] /memory-bank/languages.md
 - [ ] /memory-bank/integrations.md
