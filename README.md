@@ -109,6 +109,11 @@
 - Все документы → [`docs/`](./docs/)
 - Память проекта → [`memory-bank/`](./memory-bank/)
 
+**Документация по синхронизации шаблона:**
+- `TEMPLATE-SYNC-GUIDE.md` — полная инструкция с примерами
+- `TEMPLATE-SYNC-INTEGRATION.md` — как использовать с агентами (Claude Code, Cursor)
+- `INDEX.md` — навигация по всем файлам инструмента
+
 ### Поддерживаемые AI-среды
 
 - **Claude Code** → `CLAUDE.md`, `.claude/agents/*`
