@@ -70,7 +70,7 @@
 - `deploy/DEPLOY-CHECKLIST.md`
 - `deploy/RELEASE-NOTES.md`
 - `deploy/RUNBOOK.md`
-- `POST-LAUNCH-REVIEW.md`
+- `docs/POST-LAUNCH-REVIEW.md`
 
 > см. `docs/POST-LAUNCH-REVIEW.md`
 
@@ -106,10 +106,11 @@
 | `specs/DECISIONS.md` | 2 | Зафиксированные решения |
 | `qa/TEST-SCENARIOS.md` | 2 | Сценарии проверки |
 | `qa/RELEASE-BLOCKERS.md` | 2 | Критичные стопоры перед релизом |
+| `docs/user-flows.md` | 2 | Ключевые пользовательские сценарии для smoke-теста |
 | `deploy/DEPLOY-CHECKLIST.md` | 2 | Контроль перед выкладкой |
 | `deploy/RELEASE-NOTES.md` | 2 | Содержание версии для людей |
 | `deploy/RUNBOOK.md` | 2 | Эксплуатация и типовые сбои |
-| `POST-LAUNCH-REVIEW.md` | 2 | Разбор после запуска и фактов использования |
+| `docs/POST-LAUNCH-REVIEW.md` | 2 | Разбор после запуска и фактов использования |
 
 ## Связь с Vibe-coding-docs
 
