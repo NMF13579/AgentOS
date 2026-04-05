@@ -50,11 +50,15 @@
 
 | Дата | Задача | Результат |
 |------|--------|----------|
-| 2026-04-04 | Цепочка деплоя: DEPLOY-TIMEWEB, MCP-SETUP, rename timeweb-cloud, DEPLOY.md / DOCS-MAP / SETUP-ALL | Ссылки SETUP-ALL ведут в существующие файлы |
-| 2026-04-04 | Согласованность START + communication rules (пути MVP, сессия vs новый проект, spec-driven исключение) | START.md и 10-communication.mdc без смены пользовательского конвейера |
-| 2026-04-04 | Разложен full-mvp-process-blueprint по дереву docs (profile (устарело — переименовано в docs/discovery), discovery, processes, ux, specs, qa, deploy) | Добавлены шаблоны этапов, AGENT-CONTRACT.md, src/.gitkeep; START.md и SYSTEM_PROMPT.md дополнены ссылками на пайплайн |
-| 2026-04-03 | Структура инструкций: Copilot, Cursor rules, Claude agents, GEMINI, lessons-learned | Добавлены файлы по согласованной схеме репозитория |
-|      |        |          |
+| 2026-04-05 | AGENTS.md: обновить правила docs-сопровождения | В `docs/AGENTS.md` добавлен п.5 в «Общие правила» (обновлять `docs/DOCS-MAP.md` при изменениях в `docs/`) и обновлена роль `Docs Agent` (добавлен `DOCS-MAP.md`); строка и блок из запроса не найдены в текущем файле |
+| 2026-04-05 | AGENT-BOOTSTRAP: добавить ANTI-PATTERNS и PM-DIALOG-STYLE | В `docs/AGENT-BOOTSTRAP.md` добавлены пункты `/docs/ANTI-PATTERNS.md` в «Критичные (все уровни)» и `/docs/PM-DIALOG-STYLE.md` в «Важные» |
+| 2026-04-05 | UX-CHECKLIST-INDEX: добавить STARTER/ONBOARDING/PERMISSIONS | В `docs/standards/UX-CHECKLIST-INDEX.md` добавлены: раздел `0. Точка входа для агента` (`UX-CHECKLIST-STARTER-FLOW.md`), пункт `UX-CHECKLIST-ONBOARDING.md` в базовых чек-листах и пункт `UX-CHECKLIST-PERMISSIONS-AND-ACCESS.md` в доменных ролях |
+| 2026-04-05 | DOCS-MAP: привести vercel.md в таблицу платформ | В разделе «Связь с Vibe-coding-docs» заменён линейный блок на таблицу выбора платформ (Timeweb Cloud / Vercel) рядом с универсальными правилами `docs/DEPLOY.md` |
+| 2026-04-05 | DEPLOY/DOCS-MAP: выбор платформы деплоя + Vercel в навигации | В `docs/DEPLOY.md` убрана пометка «в разработке» для Vercel, добавлен блок «Выбор платформы деплоя»; в `docs/DOCS-MAP.md` добавлена строка `docs/platforms/vercel.md` |
+| 2026-04-05 | Последовательные задачи по навигации (3 блока) | Переименован `docs/user-flows.md`→`docs/USER-FLOWS.md` с обновлением ссылок, `docs/ORPHAN-FILES-REPORT.md` добавлен в `docs/DOCS-MAP.md`, в `README.md` добавлен блок про TEMPLATE-SYNC документы |
+| 2026-04-05 | INDEX.md: удаление дубля QUICK-START.md | Удалена дублирующая строка QUICK-START.md в таблице порядка чтения |
+| 2026-04-05 | Исправление ссылок и навигации по docs-map | Исправлены пути в `CLAUDE.md`/`START.md`, добавлены навигационные ссылки в `README.md` и `docs/DOCS-MAP.md`, подтверждено наличие всех файлов из блока заглушек |
+| 2026-04-05 | Аудит и исправление ссылок docs-first шаблона | Исправлен путь в `CLAUDE.md`, собран `docs/ORPHAN-FILES-REPORT.md`, подтверждено что файлы из списка уже существуют в репозитории |
 
 ---
 

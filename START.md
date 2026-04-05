@@ -46,11 +46,11 @@
 | Диагностика готовности | `docs/AGENT-BOOTSTRAP.md` |
 | Ошибка или поломка     | `docs/TESTING-GUIDE.md → docs/ROLLBACK-PROTOCOL.md` |
 | Потеря контекста       | `docs/CONTEXT-LOSS-RECOVERY.md` |
-| Запрос новой функции   | `docs/SCOPE-CREEP-GUARD.md` |
+| Запрос новой функции   | `SCOPE-CREEP-GUARD.md` |
 | Задача завершена       | `docs/TASK-REVIEW-PROTOCOL.md` |
 | Валидация результата   | `docs/VALIDATION.md` |
 | Ошибка в процессе      | `docs/ERROR-TYPES.md` |
-| Долгая память проекта  | `memory-bank/PROJECT-MEMORY.md` |
+| Долгая память проекта  | `memory-bank/PROJECT-MEMORY.md` *(создаётся агентом при инициализации)* |
 | Перед деплоем          | `docs/RELEASE-CHECKLIST.md` (общий шаблон); чеклист конкретного продукта — `docs/deploy/DEPLOY-CHECKLIST.md` (см. `docs/DOCS-MAP.md`) |
 | Полный MVP-пайплайн (профиль → деплой) | `AGENT-CONTRACT.md` и дерево `docs/discovery`, `docs/processes`, `docs/ux`, `docs/specs`, `docs/qa`, `docs/deploy` |
 
@@ -410,7 +410,7 @@
 
 **Этап 5 — Пользовательские сценарии**
 
-Создаёт `docs/user-flows.md`:
+Создаёт `docs/USER-FLOWS.md`:
 - Основные пользовательские пути
 - B2B и B2C потоки (если применимо)
 - Happy path и критические решения
