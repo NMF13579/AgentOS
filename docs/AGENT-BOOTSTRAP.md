@@ -66,6 +66,8 @@
 - [ ] /docs/TASK-REVIEW-PROTOCOL.md — протокол проверки перед закрытием задачи
 - [ ] /docs/VALIDATION.md — объективная проверка: работает / не работает
 - [ ] /docs/ROLLBACK-PROTOCOL.md — инструкция при «всё сломалось» / «откати»
+- [ ] /docs/TESTING-GUIDE.md — чеклист проверки после каждой задачи
+- [ ] /docs/USER-FLOWS.md — ключевые сценарии для smoke-теста перед релизом
 - [ ] /memory-bank/project-status.md
 - [ ] /memory-bank/languages.md
 - [ ] /memory-bank/integrations.md
