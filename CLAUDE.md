@@ -75,7 +75,7 @@
 - **Общий процесс работы**  
   → `docs/WORKFLOW.md`  
 - **Интервью и прояснение продукта**  
-  → `docs/PROJECT-INTERVIEW.md`, `docs/OWNER-GUIDE.md`, `docs/OWNER-CHEATSHEET.md`
+  → `docs/PROJECT-INTERVIEW.md`, `INTERVIEWER.md`, `INTERVIEW-GUARDIAN.md`, `docs/adapters/CLAUDE-INTERVIEW-CONTROL.md` (обязательный self-check стража после каждого шага; при **❌** — stop-block); `docs/OWNER-GUIDE.md`, `docs/OWNER-CHEATSHEET.md`
 - **Стиль общения и объяснений**  
   → `docs/PM-DIALOG-STYLE.md`, `docs/EXPLAINER-GLOSSARY.md`
 - **Планирование и roadmap**  
@@ -98,6 +98,10 @@
   → `docs/FEATURE-RADAR.md`, `memory-bank/features.md`
 - **Восстановление контекста, если всё перепуталось**  
   → `docs/CONTEXT-LOSS-RECOVERY.md`, `docs/AGENT-BOOTSTRAP.md`
+
+## Контроль интервью (не OpenCode)
+
+Если ведёшь интервью по `docs/PROJECT-INTERVIEW.md` без отдельного агента guardian: в **каждом** ответе выполняй протокол из `docs/adapters/CLAUDE-INTERVIEW-CONTROL.md` (таблица из `INTERVIEW-GUARDIAN.md`, вердикт ✅/⚠️/❌). При критическом **❌** не переходи к следующему вопросу маршрута до исправления.
 
 ## Использование subagents
 

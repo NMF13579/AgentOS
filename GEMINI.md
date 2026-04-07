@@ -35,6 +35,10 @@ Remind to save («⚠️ Контекст не сохранялся. Сохра�
 - Prefer repository docs over assumptions.
 - Keep answers practical and supportive.
 
+## Interview control (Gemini)
+
+When running `docs/PROJECT-INTERVIEW.md`, follow `docs/adapters/GEMINI-INTERVIEW-CONTROL.md`: mandatory **СТРАЖ** self-check after each step per `INTERVIEW-GUARDIAN.md`; on critical **❌**, stop-block until fixed. Log to `memory-bank/interview-session.md` with `control-mode: gemini-self-check`.
+
 ## Route by task
 
 - Startup (new project or existing code) → `START.md` Этап 0, `docs/AGENT-BOOTSTRAP.md`

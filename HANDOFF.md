@@ -4,12 +4,15 @@
 
 ## Что мы делали в последний раз
 
-```text
-- Обновили `docs/AGENTS.md` по запросу владельца.
-- Добавили 5-й пункт в «Общие правила» про обязательное обновление `docs/DOCS-MAP.md` при правках в `docs/`.
-- Расширили описание роли `Docs Agent`: добавлен `DOCS-MAP.md`.
-- Проверили файл: запрошенных строки/блока «Правила сопровождения документации» в текущей версии нет.
-```
+- **Кросс-IDE контроль интервью (план Cross IDE Interview Guard):** единый `INTERVIEW-GUARDIAN.md` + обязательный self-check в Cursor/Copilot/Claude/Gemini через `docs/adapters/*`; stop-block при ❌; обновлены `INTERVIEWER.md`, `START.md`, `docs/PROJECT-INTERVIEW.md`, `.cursor/rules/10-communication.mdc`, `.github/copilot-instructions.md`, `CLAUDE.md`, `GEMINI.md`, `docs/DOCS-MAP.md`, `README-PLACEMENT.md`, шаблон `interview-session.md` (поле `control-mode`).
+- **Выравнивание interview-документов (план Interview docs alignment):** единый канонический лог `memory-bank/interview-session.md`; `project-context-draft.md` — редирект; синхронизированы `docs/PROJECT-INTERVIEW.md` и `START.md` (журнал, этап 0 vs служебный лог, этапы 4–5 Level 1, пути VISION); уточнены `INTERVIEWER.md` / `INTERVIEW-GUARDIAN.md` (START как вход, резюме+«Правильно понимаю?», ссылка на «Команды-модули»); в `opencode.json` в prompt интервьюера добавлен `START.md`; обновлены `README-PLACEMENT.md`, `docs/DOCS-MAP.md`, `memory-bank/index-memory-bank.md`.
+- Добавлен `README-PLACEMENT.md` в корень: зафиксирована структура размещения файлов интервью-агентов, связи между ними, правила для `opencode.json`, порядок запуска и рекомендации по модели guardian.
+- Настроили инфраструктуру интервью-агентов для OpenCode:
+  - добавлен `opencode.json` с секцией `agent.interviewer` и `agent.guardian`;
+  - создан `INTERVIEWER.md` (протокол интервью + вызов `@guardian`);
+  - создан `INTERVIEW-GUARDIAN.md` (inline-чеклист + вердикты ✅/⚠️/❌);
+  - добавлен `memory-bank/interview-session.md` как файл накопления ответов.
+- Привязки в prompts настроены к: `docs/PROJECT-INTERVIEW.md`, `AGENT-CONTRACT.md`, `HANDOFF.md`, `SCOPE-CREEP-GUARD.md`.
 
 ## Что уже работает
 
@@ -22,15 +25,16 @@
 
 ## Где мы остановились
 
-- Текущая задача завершена и зафиксирована в PR: `docs/AGENTS.md` обновлён по двум применимым пунктам из запроса.
+- Базовая конфигурация готова; следующий шаг — тестовый запуск команды «@interviewer начни интервью» в OpenCode.
 
 ## Следующий лучший шаг
 
-- По команде владельца: либо уточнить источник для отсутствующего блока «Правила сопровождения документации», либо продолжить точечные правки docs-навигации.
+- Проверить живой прогон: 1-2 шага интервью и убедиться, что `@guardian` реально вызывается после каждого шага.
+- Если всё ок — согласовать формат итоговой сводки интервью перед переносом в продуктовые документы.
 
 ## Риски и вопросы
 
-- Существенных рисков по текущей задаче нет; правки локальные и без переписывания разделов.
+- Риск №1: OpenCode может требовать дополнительный синтаксис для автоматического вызова subagent; при необходимости уточнить в локальной документации OpenCode.
 
 ## Применимые уроки
 

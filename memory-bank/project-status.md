@@ -50,6 +50,10 @@
 
 | Дата | Задача | Результат |
 |------|--------|----------|
+| 2026-04-06 | Cross IDE Interview Guard: адаптеры + self-check + stop-block | Созданы `docs/adapters/*`, правки INTERVIEWER/GUARDIAN/PROJECT-INTERVIEW/START, Cursor/Copilot/CLAUDE/GEMINI, DOCS-MAP, README-PLACEMENT, `control-mode` в interview-session |
+| 2026-04-06 | Interview docs alignment: единый лог, START/PROJECT-INTERVIEW, OpenCode, DOCS-MAP | Канон `interview-session.md`, stub `project-context-draft.md`, правки PROJECT-INTERVIEW/START/INTERVIEWER/GUARDIAN/README-PLACEMENT/opencode.json/DOCS-MAP/index-memory-bank |
+| 2026-04-04 | Добавить README-PLACEMENT.md с картой размещения interview-агентов | В корень добавлен `README-PLACEMENT.md` со структурой, связями `opencode.json`, запуском и рекомендацией по моделям guardian |
+| 2026-04-04 | OpenCode interview agents: добавить INTERVIEWER/GUARDIAN + opencode agent config | Созданы `INTERVIEWER.md`, `INTERVIEW-GUARDIAN.md`, `memory-bank/interview-session.md`; добавлен `opencode.json` с `agent.interviewer` и `agent.guardian` (guardian на `anthropic/claude-opus-4-5`) |
 | 2026-04-05 | AGENTS.md: обновить правила docs-сопровождения | В `docs/AGENTS.md` добавлен п.5 в «Общие правила» (обновлять `docs/DOCS-MAP.md` при изменениях в `docs/`) и обновлена роль `Docs Agent` (добавлен `DOCS-MAP.md`); строка и блок из запроса не найдены в текущем файле |
 | 2026-04-05 | AGENT-BOOTSTRAP: добавить ANTI-PATTERNS и PM-DIALOG-STYLE | В `docs/AGENT-BOOTSTRAP.md` добавлены пункты `/docs/ANTI-PATTERNS.md` в «Критичные (все уровни)» и `/docs/PM-DIALOG-STYLE.md` в «Важные» |
 | 2026-04-05 | UX-CHECKLIST-INDEX: добавить STARTER/ONBOARDING/PERMISSIONS | В `docs/standards/UX-CHECKLIST-INDEX.md` добавлены: раздел `0. Точка входа для агента` (`UX-CHECKLIST-STARTER-FLOW.md`), пункт `UX-CHECKLIST-ONBOARDING.md` в базовых чек-листах и пункт `UX-CHECKLIST-PERMISSIONS-AND-ACCESS.md` в доменных ролях |

@@ -14,6 +14,23 @@
 - `processes/PROCESSES.md`
 - `processes/ROLES.md`
 
+### Стартовое интервью и кросс-IDE контроль (до заполнения discovery)
+
+| Артефакт | Назначение |
+|----------|------------|
+| [`PROJECT-INTERVIEW.md`](PROJECT-INTERVIEW.md) | Маршрут вопросов и этапов интервью |
+| [`INTERVIEW-GUARDIAN.md`](../INTERVIEW-GUARDIAN.md) | Единый чеклист стража (7 пунктов); **stop-block** при критическом ❌ |
+| [`adapters/README.md`](adapters/README.md) | Индекс адаптеров: self-check в Cursor / Copilot / Claude / Gemini |
+| `adapters/CURSOR-INTERVIEW-CONTROL.md` и др. | Обязательный формат ответа и self-check без subagent |
+| `memory-bank/interview-session.md` | **Сырой журнал** ответов по шагам (канон для черновика интервью); поле `control-mode` |
+| `memory-bank/project-context-draft.md` | Устаревшее имя — редирект на `interview-session.md` |
+| Корень: `START.md`, `AGENT-CONTRACT.md`, `INTERVIEWER.md`, `INTERVIEW-GUARDIAN.md`, `opencode.json`, [`README-PLACEMENT.md`](../README-PLACEMENT.md) | Вход, контракт, OpenCode (опционально), карта размещения |
+
+**Режимы контроля:** **OpenCode** — отдельный агент `guardian` или `@guardian`. **Остальные IDE** — тот же чеклист как **self-check** в каждом ответе интервьюера (см. `docs/adapters/*`).
+
+**Поток данных:** сырой лог в `interview-session.md` → после подтверждения резюме (см. `PROJECT-INTERVIEW.md`) → структурированные файлы **контура 1** (`discovery/USER-PROFILE.md`, `discovery/VISION.md`, `discovery/INTERVIEW-SUMMARY.md` и т.д.).  
+`discovery/INTERVIEW-SUMMARY.md` — это **итог/выжимка** для цепочки discovery, а не замена журналу `interview-session.md`.
+
 ## Контур 2 — Delivery и реализация
 
 - `ux/UX-DESIGN-GUIDE.md`
@@ -80,6 +97,7 @@
 
 | Файл | Контур | Для чего |
 |------|--------|----------|
+| `memory-bank/interview-session.md` | 1 (черновик) | Пошаговый журнал интервью до переноса в discovery |
 | `discovery/USER-PROFILE.md` | 1 | Подстроить вопросы и язык под владельца |
 | `discovery/VISION.md` | 1 | Идея, аудитория, боль, критерий успеха |
 | `discovery/HYPOTHESIS-RESEARCH.md` | 1 | Проверка, стоит ли делать продукт |

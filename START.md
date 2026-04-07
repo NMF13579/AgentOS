@@ -22,6 +22,17 @@
 
 В **очередной сессии** уже идущего проекта сначала смотрят `HANDOFF.md` и `memory-bank/project-status.md` (как в правилах Cursor), затем продолжают по согласованному плану — без смены конвейера из `START.md`.
 
+### Кросс-IDE контроль интервью
+
+При ведении интервью по [`docs/PROJECT-INTERVIEW.md`](docs/PROJECT-INTERVIEW.md) после **каждого** шага обязательна проверка по [`INTERVIEW-GUARDIAN.md`](INTERVIEW-GUARDIAN.md):
+
+- **OpenCode:** отдельный агент guardian в `opencode.json` или вызов `@guardian` — см. [`README-PLACEMENT.md`](README-PLACEMENT.md).
+- **Cursor, GitHub Copilot, Claude, Gemini:** обязательный **self-check** в ответе агента по инструкциям в [`docs/adapters/`](docs/adapters/) (`CURSOR-`, `COPILOT-`, `CLAUDE-`, `GEMINI-INTERVIEW-CONTROL.md`).
+
+Правило **stop-block:** при **❌** нельзя переходить к следующему вопросу маршрута, пока шаг не исправлен и проверка не пройдена.
+
+Журнал шагов: [`memory-bank/interview-session.md`](memory-bank/interview-session.md).
+
 ---
 
 ## Триггер
@@ -386,7 +397,7 @@
 Агент ведёт расширенное интервью на основе `docs/PROJECT-INTERVIEW.md`:
 - Блоки 0–4 из PROJECT-INTERVIEW.md как основа
 - На Level 2 добавляются вопросы глубже: B2B/B2C, конкурентный контекст, модели монетизации
-- Агент фиксирует ответы в черновик `memory-bank/project-context-draft.md`
+- Агент фиксирует ответы в журнал `memory-bank/interview-session.md` (см. `docs/PROJECT-INTERVIEW.md`)
 
 Файлы пока не создаются. Переход к Этапу 3 только после явного «всё верно» от владельца.
 
