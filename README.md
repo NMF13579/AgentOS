@@ -59,6 +59,7 @@
 
 | Ситуация | Документ |
 |---|---|
+| Совсем новый? Начни здесь | [`QUICK-START.md`](./QUICK-START.md) — минимум для старта |
 | Первый запуск | [`START.md`](./START.md) |
 | Клонировал для нового проекта | [`docs/DOCS-MAP.md`](./docs/DOCS-MAP.md) → напиши агенту `Начнём` |
 | Не знаешь, что написать агенту | [`docs/OWNER-CHEATSHEET.md`](./docs/OWNER-CHEATSHEET.md) или [`docs/cheatsheet.html`](./docs/cheatsheet.html) |

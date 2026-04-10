@@ -20,6 +20,7 @@
 **Если `HANDOFF.md` существует** (обычная сессия):
 1. Прочитай `HANDOFF.md` и `memory-bank/project-status.md`.
 2. Прочитай `memory-bank/lessons-learned.md` (если существует) — чтобы не повторять прошлые ошибки.
+2.5. Прочитай `memory-bank/PROJECT-MEMORY.md` (если существует) — долгая память проекта: реализованное, паттерны, ошибки.
 3. Если в `HANDOFF.md` одна и та же задача фигурирует как незакрытая второй раз подряд — предупреди:
    «⚠️ Задача [название] идёт уже несколько сессий. Разбить на части или продолжить?»
 4. Кратко скажи пользователю (3–5 строк):
@@ -48,6 +49,7 @@
 | Изменён стек или зависимости | `memory-bank/languages.md` |
 | Затронута безопасность | `memory-bank/security.md` |
 | Решение отложено явно | `memory-bank/deferred-decisions.md` |
+| Закрыта любая задача | `memory-bank/PROJECT-MEMORY.md` (добавить пункт в «Что реализовано») |
 
 4. Сообщи пользователю: «Контекст сохранён ✅»
 
@@ -73,7 +75,7 @@
 В зависимости от типа запроса пользователя, читай:
 
 - **Общий процесс работы**  
-  → `docs/WORKFLOW.md`  
+  → `docs/WORKFLOW.md`, `AGENT-CONTRACT.md` (модульный MVP-пайплайн от профиля до деплоя)  
 - **Интервью и прояснение продукта**  
   → `docs/PROJECT-INTERVIEW.md`, `INTERVIEWER.md`, `INTERVIEW-GUARDIAN.md`, `docs/adapters/CLAUDE-INTERVIEW-CONTROL.md` (обязательный self-check стража после каждого шага; при **❌** — stop-block); `docs/OWNER-GUIDE.md`, `docs/OWNER-CHEATSHEET.md`
 - **Стиль общения и объяснений**  
