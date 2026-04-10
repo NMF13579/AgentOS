@@ -1,6 +1,6 @@
 # Project Status
 
-> Updated: 2026-04-10 (аудит v2)
+> Updated: 2026-04-10 (Cursor CLAUDE-WORKFLOW + v0.3.1)
 
 ## Слои
 
@@ -12,11 +12,17 @@
 
 ## Текущий этап
 
-Стабилизация шаблона документации завершена. Двойной аудит (v1 + v2) проведён, все найденные проблемы исправлены. `llms.txt` — 30 маршрутов. CHANGELOG — v0.2.1.
+Добавлен поток **Claude Code**: `project/PROJECT.md`, `stages/01-04` с `BOOT.md`, `shared/`, `README-NEW-ARCHITECTURE.md`, `CHECKLIST.md`. `CLAUDE.md` и `llms.txt` обновлены. CHANGELOG — **v0.3.1**. Аудит v1+v2 по-прежнему закрыт.
 
 ## Последнее действие (2026-04-10)
 
-Аудит v2 — доисправление после перепроверки:
+- `.cursor/CLAUDE-WORKFLOW.md` — мост для Cursor к `CLAUDE.md` и `stages/*/BOOT.md`.
+
+Ранее — архитектура Claude Code (единый PROJECT.md, этапные BOOT, shared):
+- Новые каталоги: `project/`, `stages/`, `shared/`; переписан `CLAUDE.md`.
+- `README.md`: ссылки на `navigation.md` заменены на `LAYER-1/tools/template-sync-index.md`.
+
+Ранее — аудит v2 — доисправление после перепроверки:
 - Исправлены 6 устаревших ссылок на `memory-bank/*` и `docs/*` в 4 файлах
 - Добавлены 4 маршрута в `llms.txt` (testing-guide, decision-guide, owner, agent-bootstrap)
 - Обновлён CHANGELOG.md → v0.2.1

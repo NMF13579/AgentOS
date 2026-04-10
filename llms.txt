@@ -8,6 +8,18 @@
 
 - [HANDOFF.md](./HANDOFF.md) — где остановились, следующий шаг
 
+## Claude Code — единое ТЗ и этапы (узкий контекст)
+
+- [README-NEW-ARCHITECTURE.md](./README-NEW-ARCHITECTURE.md) — как устроен поток Claude Code
+- [project/PROJECT.md](./project/PROJECT.md) — живое ТЗ продукта (Discovery, UX, Specs, Deploy, Decisions)
+- Этап интервью → [stages/01-interview/BOOT.md](./stages/01-interview/BOOT.md)
+- Этап UX → [stages/02-ux/BOOT.md](./stages/02-ux/BOOT.md)
+- Этап разработки → [stages/03-dev/BOOT.md](./stages/03-dev/BOOT.md)
+- Этап деплоя → [stages/04-deploy/BOOT.md](./stages/04-deploy/BOOT.md)
+- Общие правила всех этапов → [shared/README.md](./shared/README.md)
+- Перед релизом → [CHECKLIST.md](./CHECKLIST.md)
+- Работаешь в **Cursor** → [.cursor/CLAUDE-WORKFLOW.md](./.cursor/CLAUDE-WORKFLOW.md) (тот же поток, что в [CLAUDE.md](./CLAUDE.md))
+
 ## Маршруты по ситуации (читать ТОЛЬКО один нужный файл)
 
 - Первый запуск проекта       → [LAYER-1/interview-system.md](./LAYER-1/interview-system.md)
