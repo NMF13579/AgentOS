@@ -42,6 +42,18 @@
 
 ---
 
+## С чего начать — выбери свою роль
+
+| Роль | Ситуация | Твой путь |
+|---|---|---|
+| 🩺 Врач / медик | Хочу автоматизировать рутину или сделать медицинский сервис | [`QUICK-START.md`](./QUICK-START.md) → [`LAYER-1/ux-checklist-medical.md`](./LAYER-1/ux-checklist-medical.md) → [`stages/01-interview/BOOT.md`](./stages/01-interview/BOOT.md) |
+| 🎨 Дизайнер / творческий | Есть идея продукта, хочу прототип без кода | [`QUICK-START.md`](./QUICK-START.md) → [`LAYER-1/interview-system.md`](./LAYER-1/interview-system.md) → [`LAYER-2/specs/`](./LAYER-2/specs/) |
+| 📋 Менеджер / предприниматель | Хочу проверить идею и дойти до MVP быстро | [`QUICK-START.md`](./QUICK-START.md) → [`project/PROJECT.md`](./project/PROJECT.md) → [`LAYER-1/decision-guide.md`](./LAYER-1/decision-guide.md) |
+| 🔁 Уже начал, потерял контекст | Проект есть, но что-то пошло не так или сессия прервалась | [`HANDOFF.md`](./HANDOFF.md) → [`LAYER-1/context-recovery.md`](./LAYER-1/context-recovery.md) → [`FAQ.md`](./FAQ.md) |
+| 🛠️ Хочу разобраться глубже | Понимаю базу, хочу настроить агента под себя | [`CLAUDE.md`](./CLAUDE.md) → [`LAYER-1/agent-contract.md`](./LAYER-1/agent-contract.md) → [`LAYER-1/workflow.md`](./LAYER-1/workflow.md) |
+
+---
+
 ## Самые полезные команды
 
 | Команда | Что делает |
