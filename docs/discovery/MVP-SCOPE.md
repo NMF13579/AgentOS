@@ -4,7 +4,7 @@
 > Status: not-started
 > Filled by: agent + user
 > Needs approval: yes
-> Next: `processes/PROCESSES.md`
+> Next: `discovery/INTERVIEW-SUMMARY.md`
 
 > Заполняется после согласования VISION.md.
 > Агент предлагает черновик, пользователь подтверждает или правит.

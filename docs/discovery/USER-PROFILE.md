@@ -4,7 +4,7 @@
 > Status: not-started
 > Filled by: agent + user
 > Needs approval: yes
-> Next: `discovery/VISION.md`
+> Next: `processes/PROCESSES.md`
 
 > Описывает реального человека, а не абстрактную персону.
 > Помогает агенту подстраивать язык и приоритеты под конкретный контекст.
