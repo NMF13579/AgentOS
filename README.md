@@ -92,7 +92,6 @@
 | Claude Code | `CLAUDE.md` уже в корне — всё готово |
 | Lovable | Knowledge → System Instructions |
 | Bolt | Project Settings → AI Instructions |
-| Gemini | Используй [`GEMINI.md`](./GEMINI.md) |
 
 </details>
 
@@ -116,7 +115,6 @@
 - **Claude Code** → `CLAUDE.md`, `.claude/agents/*`, [`CLAUDE-CODE-FLOW.md`](./CLAUDE-CODE-FLOW.md)
 - **Cursor** → `.cursor/rules/*` и [`.cursor/CLAUDE-WORKFLOW.md`](./.cursor/CLAUDE-WORKFLOW.md)
 - **GitHub Copilot** → `.github/copilot-instructions.md`
-- **Gemini** → `GEMINI.md`
 
 </details>
 
