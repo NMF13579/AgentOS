@@ -18,6 +18,7 @@
 - Этап деплоя → [stages/04-deploy/BOOT.md](./stages/04-deploy/BOOT.md)
 - Общие правила всех этапов → [shared/README.md](./shared/README.md)
 - Перед релизом → [CHECKLIST.md](./CHECKLIST.md)
+- Работаешь в **Cursor** → [.cursor/CLAUDE-WORKFLOW.md](./.cursor/CLAUDE-WORKFLOW.md) (тот же поток, что в [CLAUDE.md](./CLAUDE.md))
 
 ## Маршруты по ситуации (читать ТОЛЬКО один нужный файл)
 

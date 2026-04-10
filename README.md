@@ -120,7 +120,7 @@
 ### Поддерживаемые AI-среды
 
 - **Claude Code** → `CLAUDE.md`, `.claude/agents/*`
-- **Cursor** → `.cursor/rules/*`
+- **Cursor** → `.cursor/rules/*` и [`.cursor/CLAUDE-WORKFLOW.md`](./.cursor/CLAUDE-WORKFLOW.md) (ссылка на поток из [`CLAUDE.md`](./CLAUDE.md))
 - **GitHub Copilot** → `.github/copilot-instructions.md`
 - **Gemini** → `GEMINI.md`
 

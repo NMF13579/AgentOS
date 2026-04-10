@@ -1,6 +1,6 @@
 # Project Status
 
-> Updated: 2026-04-10 (Claude Code architecture + v0.3.0)
+> Updated: 2026-04-10 (Cursor CLAUDE-WORKFLOW + v0.3.1)
 
 ## Слои
 
@@ -12,11 +12,13 @@
 
 ## Текущий этап
 
-Добавлен поток **Claude Code**: `project/PROJECT.md`, `stages/01-04` с `BOOT.md`, `shared/`, `README-NEW-ARCHITECTURE.md`, `CHECKLIST.md`. `CLAUDE.md` и `llms.txt` обновлены. CHANGELOG — **v0.3.0**. Аудит v1+v2 по-прежнему закрыт.
+Добавлен поток **Claude Code**: `project/PROJECT.md`, `stages/01-04` с `BOOT.md`, `shared/`, `README-NEW-ARCHITECTURE.md`, `CHECKLIST.md`. `CLAUDE.md` и `llms.txt` обновлены. CHANGELOG — **v0.3.1**. Аудит v1+v2 по-прежнему закрыт.
 
 ## Последнее действие (2026-04-10)
 
-Архитектура Claude Code (единый PROJECT.md, этапные BOOT, shared):
+- `.cursor/CLAUDE-WORKFLOW.md` — мост для Cursor к `CLAUDE.md` и `stages/*/BOOT.md`.
+
+Ранее — архитектура Claude Code (единый PROJECT.md, этапные BOOT, shared):
 - Новые каталоги: `project/`, `stages/`, `shared/`; переписан `CLAUDE.md`.
 - `README.md`: ссылки на `navigation.md` заменены на `LAYER-1/tools/template-sync-index.md`.
 

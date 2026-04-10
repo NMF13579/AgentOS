@@ -37,6 +37,13 @@ text
 
 ## История
 
+[0.3.1] — 2026-04-10
+Добавлено
+- [`.cursor/CLAUDE-WORKFLOW.md`](./.cursor/CLAUDE-WORKFLOW.md) — для Cursor: ссылка на [`CLAUDE.md`](./CLAUDE.md) и этапы `stages/*/BOOT.md`.
+
+Изменено
+- [`README.md`](./README.md) — в блоке AI-сред упоминание `CLAUDE-WORKFLOW.md`.
+
 [0.3.0] — 2026-04-10
 Добавлено
 - Поток **Claude Code**: единое ТЗ [`project/PROJECT.md`](./project/PROJECT.md), этапы [`stages/01-interview`](./stages/01-interview/BOOT.md) … [`stages/04-deploy`](./stages/04-deploy/BOOT.md) с `BOOT.md`, общие правила [`shared/`](./shared/README.md).

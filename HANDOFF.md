@@ -4,6 +4,8 @@
 
 ## Что мы делали в последний раз (2026-04-10)
 
+**Cursor → Claude workflow:** добавлен [`.cursor/CLAUDE-WORKFLOW.md`](./.cursor/CLAUDE-WORKFLOW.md) со ссылкой на [`CLAUDE.md`](./CLAUDE.md) и этапы `stages/*/BOOT.md`; README обновлён. CHANGELOG **v0.3.1**.
+
 **Архитектура Claude Code (docs-first, один `PROJECT.md`):**
 
 - Добавлены `project/PROJECT.md` (шаблон с секциями discovery / ux / specs / deploy / decisions, `LOCKED`, `❓ НЕ ОПРЕДЕЛЕНО`), `project/archive/`.
