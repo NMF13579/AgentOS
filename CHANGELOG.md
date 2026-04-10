@@ -37,6 +37,16 @@ text
 
 ## История
 
+[0.3.0] — 2026-04-10
+Добавлено
+- Поток **Claude Code**: единое ТЗ [`project/PROJECT.md`](./project/PROJECT.md), этапы [`stages/01-interview`](./stages/01-interview/BOOT.md) … [`stages/04-deploy`](./stages/04-deploy/BOOT.md) с `BOOT.md`, общие правила [`shared/`](./shared/README.md).
+- [`README-NEW-ARCHITECTURE.md`](./README-NEW-ARCHITECTURE.md) — краткий обзор; [`CHECKLIST.md`](./CHECKLIST.md) — чеклист перед деплоем.
+- [`CLAUDE.md`](./CLAUDE.md) переписан под Plan → Confirm → Execute, `LOCKED`, `❓ НЕ ОПРЕДЕЛЕНО`, smoke-test и приоритет источников.
+
+Изменено
+- [`llms.txt`](./llms.txt) — блок маршрутов Claude Code к `project/`, `stages/`, `shared/`, `CHECKLIST.md`.
+- [`README.md`](./README.md) — строка про Claude Code; ссылки `LAYER-1/navigation.md` → `LAYER-1/tools/template-sync-index.md`.
+
 [0.2.1] — 2026-04-10
 Исправлено
 - 8 битых UPPERCASE-ссылок в `project-interview.md` → строчные имена файлов.

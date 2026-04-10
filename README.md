@@ -2,7 +2,7 @@
 
 [![Use this template](https://img.shields.io/badge/use%20this%20template-2ea44f?style=for-the-badge&logo=github)](https://github.com/NMF13579/Vibe-coding-docs/generate)
 
-[![Documentation](https://img.shields.io/badge/documentation-DOCS--MAP-0366d6?style=flat&logo=readthedocs)](./LAYER-1/navigation.md)
+[![Documentation](https://img.shields.io/badge/documentation-DOCS--MAP-0366d6?style=flat&logo=readthedocs)](./LAYER-1/tools/template-sync-index.md)
 
 > Шаблон документации для работы с AI-агентами: помогает вести проект от идеи до MVP без хаоса и потери контекста.
 
@@ -61,8 +61,9 @@
 |---|---|
 | Совсем новый? Начни здесь | [`QUICK-START.md`](./QUICK-START.md) — минимум для старта |
 | Точка входа для агента | [`llms.txt`](./llms.txt) → [`HANDOFF.md`](./HANDOFF.md) |
+| **Claude Code: одно ТЗ + этапы** | [`README-NEW-ARCHITECTURE.md`](./README-NEW-ARCHITECTURE.md) → [`project/PROJECT.md`](./project/PROJECT.md) → [`stages/01-interview/BOOT.md`](./stages/01-interview/BOOT.md) |
 | Первый запуск / конвейер | [`LAYER-1/workflow.md`](./LAYER-1/workflow.md) |
-| Клонировал для нового проекта | [`LAYER-1/navigation.md`](./LAYER-1/navigation.md) → напиши агенту `Начнём` |
+| Клонировал для нового проекта | [`LAYER-1/tools/template-sync-index.md`](./LAYER-1/tools/template-sync-index.md) → напиши агенту `Начнём` |
 | Не знаешь, что написать агенту | [`LAYER-1/owner.md`](./LAYER-1/owner.md) или [`FAQ.md`](./FAQ.md) |
 | Где мы остановились? | [`HANDOFF.md`](./HANDOFF.md) → [`LAYER-3/project-status.md`](./LAYER-3/project-status.md) |
 | Планирование и дорожная карта | [`LAYER-2/specs/roadmap.md`](./LAYER-2/specs/roadmap.md), [`LAYER-2/specs/planning.md`](./LAYER-2/specs/planning.md) |
@@ -73,7 +74,7 @@
 | Всё перепуталось, нужен recovery | [`LAYER-1/context-recovery.md`](./LAYER-1/context-recovery.md) |
 | Нужно откатить изменения | [`LAYER-1/error-handling.md`](./LAYER-1/error-handling.md) |
 | Аудит проекта | [`LAYER-1/audit.md`](./LAYER-1/audit.md) |
-| Процессы и UX (spec-driven) | Если хочешь вести проект по процессам и UX — начни с [`LAYER-1/navigation.md`](./LAYER-1/navigation.md) и [`LAYER-1/agent-contract.md`](./LAYER-1/agent-contract.md). |
+| Процессы и UX (spec-driven) | Если хочешь вести проект по процессам и UX — начни с [`LAYER-1/tools/template-sync-index.md`](./LAYER-1/tools/template-sync-index.md) и [`LAYER-1/agent-contract.md`](./LAYER-1/agent-contract.md). |
 
 ---
 
@@ -114,7 +115,7 @@
 
 **Документация по синхронизации шаблона:**
 - [`LAYER-1/tools/template-sync.md`](./LAYER-1/tools/template-sync.md) — полная инструкция и интеграция
-- [`LAYER-1/navigation.md`](./LAYER-1/navigation.md) — навигация по файлам шаблона
+- [`LAYER-1/tools/template-sync-index.md`](./LAYER-1/tools/template-sync-index.md) — навигация по файлам шаблона
 
 ### Поддерживаемые AI-среды
 
