@@ -1,24 +1,28 @@
 # Project Status
 
-> Updated: 2026-04-10 (Cursor CLAUDE-WORKFLOW + v0.3.1)
+> Updated: 2026-04-10 (Аудит v3 by Perplexity)
 
 ## Слои
 
-- Discovery: 🟡 — артефакты в `LAYER-2/discovery/`; заполнять по интервью.
+- Discovery: 🟡 — артефакты в `LAYER-2/discovery/`; файлы непустые (шаблоны с структурой); заполнять по интервью.
 - Specs: 🟡 — `LAYER-2/specs/`; архитектура и решения ведутся по мере работы.
-- UX: 🟡 — `LAYER-2/ux/` + чеклисты в `LAYER-1/ux-checklist-{core,accessibility,medical,interactions}.md`.
-- QA: 🟡 — `LAYER-2/qa/` (сценарии, блокеры, post-launch).
+- UX: 🟡 — `LAYER-2/ux/` + чеклисты в `LAYER-1/ux-checklist-{core,accessibility,medical,interactions}.md`. Хорошая UX-база (USER-FLOWS, UX-DESIGN-GUIDE). ATOMS/MOLECULES/ORGANISMS/TEMPLATES — пустые шаблоны.
+- QA: 🔴 — `LAYER-2/qa/` — все 3 файла (тest-scenarios, release-blockers, post-launch-review) содержат только структуру без данных. Требует заполнения.
 - Deploy: 🟡 — `LAYER-1/deploy-guide.md` + `LAYER-1/tools/deploy/` + `LAYER-2/specs/deploy-config.md`.
+- Lessons: 🔴 — `LAYER-3/lessons.md` содержит только шаблон. Реальные уроки не зафиксированы.
 
 ## Текущий этап
 
-Добавлен поток **Claude Code**: `project/PROJECT.md`, `stages/01-04` с `BOOT.md`, `shared/`, `README-NEW-ARCHITECTURE.md`, `CHECKLIST.md`. `CLAUDE.md` и `llms.txt` обновлены. CHANGELOG — **v0.3.1**. Аудит v1+v2 по-прежнему закрыт.
+Проведён полный аудит v3 (2026-04-10). Структура здорова. Два открытых пробела: пустой QA-слой и пустой `lessons.md`. CHANGELOG — **v0.3.1**. Аудиты v1+v2 закрыты.
 
 ## Последнее действие (2026-04-10)
 
-- `.cursor/CLAUDE-WORKFLOW.md` — мост для Cursor к `CLAUDE.md` и `stages/*/BOOT.md`.
+**Аудит v3 (Perplexity):**
+- Прочитаны: HANDOFF.md, project-status.md, lessons.md, fixes.md, llms.txt, все директории LAYER-1/2/3.
+- Обновлены: HANDOFF.md, project-status.md, lessons.md, fixes.md.
+- Найдено: `src/` без документации; QA-шаблоны пустые; `lessons.md` не заполнен.
 
-Ранее — архитектура Claude Code (единый PROJECT.md, этапные BOOT, shared):
+Ранее — `.cursor/CLAUDE-WORKFLOW.md` — мост для Cursor к `CLAUDE.md` и `stages/*/BOOT.md`:
 - Новые каталоги: `project/`, `stages/`, `shared/`; переписан `CLAUDE.md`.
 - `README.md`: ссылки на `navigation.md` заменены на `LAYER-1/tools/template-sync-index.md`.
 
@@ -26,13 +30,11 @@
 - Исправлены 6 устаревших ссылок на `memory-bank/*` и `docs/*` в 4 файлах
 - Добавлены 4 маршрута в `llms.txt` (testing-guide, decision-guide, owner, agent-bootstrap)
 - Обновлён CHANGELOG.md → v0.2.1
-- Исправлены ссылки `LAYER-1/navigation.md` → `LAYER-1/tools/template-sync-index.md` в agents.md
 
 Аудит v1 (ранее):
 - 8 битых ссылок в `project-interview.md`
 - Удалена `docs/` (21 файл), перенесены 2 уникальных
 - 5 маршрутов в `llms.txt`
-- Embedded-дубли в architecture/decisions
 - navigation.md → template-sync-index.md
 - Удалены: SCOPE-CREEP-GUARD.md, opencode.json
 - Ветка: `claude/audit-documentation-105k7`
