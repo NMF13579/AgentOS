@@ -16,4 +16,6 @@
 
 ## Последнее действие
 
-См. `LAYER-3/session-log.md` и `HANDOFF.md`.
+- Обновлены `validation.md` / `validation-rules.md` (шапки, ссылки), `project-interview.md` (таблица после интервью + порядок), `llms.txt` (маршруты validation).
+
+См. также `LAYER-3/session-log.md` и `HANDOFF.md`.

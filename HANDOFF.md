@@ -4,8 +4,9 @@
 
 ## Что мы делали в последний раз
 
-- **Реструктуризация репозитория (слои LAYER-1 / LAYER-2 / LAYER-3):** единая точка входа `llms.txt`; инструкции агента в `LAYER-1/`; ТЗ и продуктовые шаблоны в `LAYER-2/`; память сессий в `LAYER-3/`; папка `docs/` и `memory-bank/` убраны в пользу новых путей; корень очищен до набора из README, QUICK-START, HANDOFF, llms.txt, CLAUDE, GEMINI, CHANGELOG, LICENSE, FAQ.
-- Обновлены ссылки в `CLAUDE.md`, `.cursor/rules/*`, `.github/*`, `opencode.json`, адаптерах `LAYER-1/tools/adapters/*`.
+- **Validation:** в `LAYER-2/specs/validation.md` и `validation-rules.md` — статус `active`, триггеры в шапке, перекрёстные ссылки; в `llms.txt` добавлены отдельные маршруты на оба файла.
+- **Интервью:** в `LAYER-2/discovery/project-interview.md` в таблицу «После интервью» добавлены `roles.md` и `processes.md`, обновлён порядок заполнения (USER-PROFILE → roles → processes → VISION → MVP-SCOPE).
+- **UX-чеклисты:** уже разбиты на четыре файла `LAYER-1/ux-checklist-{core,accessibility,medical,interactions}.md` (монолит `ux-checklist.md` отсутствует); маршруты в `llms.txt` актуальны.
 
 ## Что уже работает
 
@@ -14,7 +15,7 @@
 
 ## Где мы остановились
 
-- Реализация плана реструктуризации завершена (все этапы 1–9). Осталось при желании прогнать сценарии в IDE и подчистить `LAYER-1/navigation.md`.
+- Документы validation, таблица после интервью и маршруты в `llms.txt` обновлены. При желании — прогон сценариев в IDE и подчистка `LAYER-1/navigation.md`.
 
 ## Следующий лучший шаг
 

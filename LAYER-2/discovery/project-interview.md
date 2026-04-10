@@ -271,12 +271,13 @@
 | Тема интервью | Файл для записи |
 |---------------|-----------------|
 | Кто пользователь, боли, задачи | `LAYER-2/discovery/USER-PROFILE.md` |
+| Роли пользователей в системе | `LAYER-2/discovery/roles.md` |
+| Рабочие процессы и сценарии | `LAYER-2/discovery/processes.md` |
 | Идея и видение продукта | `VISION.md` (корень) или `LAYER-2/discovery/VISION.md` в модульном пайплайне |
 | Гипотезы и конкуренты | `LAYER-2/discovery/HYPOTHESIS-RESEARCH.md` |
 | Ключевые цитаты пользователей | `LAYER-2/discovery/INTERVIEW-SUMMARY.md` |
 | Что входит в MVP | `LAYER-2/discovery/MVP-SCOPE.md` |
 
-**Порядок заполнения:** сначала USER-PROFILE.md → видение (корневой `VISION.md` или `LAYER-2/discovery/VISION.md`) → MVP-SCOPE.md.
-Остальные — по наличию данных из интервью.
+**Порядок заполнения:** сначала USER-PROFILE.md → roles.md → processes.md → видение (корневой `VISION.md` или `LAYER-2/discovery/VISION.md`) → MVP-SCOPE.md. Остальные — по наличию данных из интервью.
 
 ---

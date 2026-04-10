@@ -19,6 +19,8 @@
 > Список готового функционала. Агент добавляет пункт после каждой закрытой задачи.
 
 - Трёхслойная структура документации шаблона: `LAYER-1/` (инструкции агента), `LAYER-2/` (ТЗ), `LAYER-3/` (память); точка входа `llms.txt`; скрипты в `LAYER-1/tools/`.
+- UX-чеклист разбит на `LAYER-1/ux-checklist-core.md`, `ux-checklist-accessibility.md`, `ux-checklist-medical.md`, `ux-checklist-interactions.md`; в `llms.txt` — четыре маршрута.
+- `LAYER-2/specs/validation.md` и `validation-rules.md` связаны перекрёстными ссылками, статус `active`, маршруты в `llms.txt`; в `project-interview.md` после интервью указаны `roles.md` и `processes.md` и порядок заполнения.
 
 ---
 
