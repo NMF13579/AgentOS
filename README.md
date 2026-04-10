@@ -39,6 +39,7 @@
 | 📋 Менеджер / предприниматель | Хочу проверить идею и дойти до MVP быстро | [`QUICK-START-NOVICE.md`](./QUICK-START-NOVICE.md) → [`project/PROJECT.md`](./project/PROJECT.md) |
 | 🔁 Уже начал, потерял контекст | Проект есть, но что-то пошло не так | [`HANDOFF.md`](./HANDOFF.md) → [`LAYER-1/context-recovery.md`](./LAYER-1/context-recovery.md) → [`FAQ.md`](./FAQ.md) |
 | 🛠️ Разработчик | Понимаю базу, хочу настроить агента под себя | [`QUICK-START.md`](./QUICK-START.md) → [`CLAUDE.md`](./CLAUDE.md) → [`LAYER-1/workflow.md`](./LAYER-1/workflow.md) |
+| 🤖 Claude Code (этапы) | Хочу вести проект по этапам: интервью → UX → разработка → деплой | [`CLAUDE-CODE-FLOW.md`](./CLAUDE-CODE-FLOW.md) → [`stages/01-interview/BOOT.md`](./stages/01-interview/BOOT.md) |
 
 ---
 
@@ -63,7 +64,7 @@
 | Совсем новый? Начни здесь | [`QUICK-START-NOVICE.md`](./QUICK-START-NOVICE.md) — без терминала |
 | Технический старт | [`QUICK-START.md`](./QUICK-START.md) — для разработчиков |
 | Точка входа для агента | [`llms.txt`](./llms.txt) → [`HANDOFF.md`](./HANDOFF.md) |
-| Claude Code: одно ТЗ + этапы | [`README-NEW-ARCHITECTURE.md`](./README-NEW-ARCHITECTURE.md) → [`project/PROJECT.md`](./project/PROJECT.md) → [`stages/01-interview/BOOT.md`](./stages/01-interview/BOOT.md) |
+| Claude Code: пошаговый флоу (этапы) | [`CLAUDE-CODE-FLOW.md`](./CLAUDE-CODE-FLOW.md) → [`project/PROJECT.md`](./project/PROJECT.md) → [`stages/01-interview/BOOT.md`](./stages/01-interview/BOOT.md) |
 | Первый запуск / конвейер | [`LAYER-1/workflow.md`](./LAYER-1/workflow.md) |
 | Клонировал для нового проекта | [`LAYER-1/tools/template-sync-index.md`](./LAYER-1/tools/template-sync-index.md) → напиши агенту `Начнём` |
 | Не знаешь, что написать агенту | [`LAYER-1/owner.md`](./LAYER-1/owner.md) или [`FAQ.md`](./FAQ.md) |
@@ -112,7 +113,7 @@
 - [`LAYER-1/tools/template-sync-index.md`](./LAYER-1/tools/template-sync-index.md) — навигация по файлам
 
 **Поддерживаемые AI-среды:**
-- **Claude Code** → `CLAUDE.md`, `.claude/agents/*`
+- **Claude Code** → `CLAUDE.md`, `.claude/agents/*`, [`CLAUDE-CODE-FLOW.md`](./CLAUDE-CODE-FLOW.md)
 - **Cursor** → `.cursor/rules/*` и [`.cursor/CLAUDE-WORKFLOW.md`](./.cursor/CLAUDE-WORKFLOW.md)
 - **GitHub Copilot** → `.github/copilot-instructions.md`
 - **Gemini** → `GEMINI.md`
