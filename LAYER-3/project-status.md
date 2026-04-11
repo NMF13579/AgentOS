@@ -1,6 +1,6 @@
 # Project Status
 
-> Updated: 2026-04-11 — `install.sh` + README «Установка»; `LAYER-1/self-verification.md` + пункт в `CLAUDE.md`
+> Updated: 2026-04-11 — SETUP-ALL.md (новички: деплой, выбор платформы, коммит/пуш)
 
 ## Текущий этап
 
@@ -17,4 +17,4 @@
 
 ## Последнее действие
 
-Инструкция самопроверки для агента при коде: `LAYER-1/self-verification.md`; подключена в блок «Автозапуск сессии» в `CLAUDE.md`.
+Точечные дополнения в `LAYER-1/tools/deploy/SETUP-ALL.md` для новичков (деплой, Vercel/Timeweb/VPS, термины коммит/пуш).
