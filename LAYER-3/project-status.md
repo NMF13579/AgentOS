@@ -1,6 +1,6 @@
 # Project Status
 
-> Updated: 2026-04-11 — SETUP-ALL.md (новички: деплой, выбор платформы, коммит/пуш)
+> Updated: 2026-04-11 — BOOT.md: выход из этапа; 03-dev testing-guide / anti-patterns
 
 ## Текущий этап
 
@@ -17,4 +17,4 @@
 
 ## Последнее действие
 
-Точечные дополнения в `LAYER-1/tools/deploy/SETUP-ALL.md` для новичков (деплой, Vercel/Timeweb/VPS, термины коммит/пуш).
+Чеклисты «Выход из этапа» в `stages/01–04/BOOT.md`; hub-ссылки в `stages/03-dev/testing-guide.md` и `anti-patterns.md`.
