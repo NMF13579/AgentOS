@@ -276,14 +276,14 @@ a:hover {
 }
 
 .view {
-  display: none;
+  display: none !important;
   opacity: 0;
   transform: translateY(10px);
   animation: none;
 }
 
 .view.is-active {
-  display: block;
+  display: block !important;
   animation: viewEnter var(--transition-view) ease forwards;
 }
 
