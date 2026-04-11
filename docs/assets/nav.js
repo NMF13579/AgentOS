@@ -219,11 +219,7 @@
     bindCopyButtons();
 
     window.addEventListener("hashchange", onHashChange);
-    if (!window.location.hash || window.location.hash === "#") {
-      window.location.replace(window.location.pathname + window.location.search + "#home");
-    } else {
-      onHashChange();
-    }
+    onHashChange();
 
     initIcons();
   }
