@@ -3,7 +3,7 @@
 
 > ⚠️ ОБСЛУЖИВАНИЕ: при добавлении файла в LAYER-1/, LAYER-2/ или stages/ — добавить маршрут в этот файл.
 > Последнее обновление: 2026-04-11
-> Файлов в LAYER-1/: 28
+> Файлов в LAYER-1/: 28 | Маршрутов в LAYER-2/: 9
 
 > Шаблон документации для AI-агентов.
 > Читай только этот файл первым. Затем следуй маршруту под свою ситуацию.
@@ -47,6 +47,10 @@
 - Шаблон для новой фичи → [LAYER-2/specs/features/_template.md](./LAYER-2/specs/features/_template.md)
 - Работа с пользователем      → [LAYER-1/dialog-style.md](./LAYER-1/dialog-style.md)
 - Описание бизнес-процессов   → [LAYER-2/discovery/processes.md](./LAYER-2/discovery/processes.md) (и при необходимости [roles.md](./LAYER-2/discovery/roles.md))
+- Видение продукта, «северная звезда», для кого и зачем → [LAYER-2/discovery/vision.md](./LAYER-2/discovery/vision.md)
+- MVP скоуп: что входит в первую версию, что за бортом  → [LAYER-2/discovery/mvp-scope.md](./LAYER-2/discovery/mvp-scope.md)
+- Профиль пользователя, целевая аудитория               → [LAYER-2/discovery/user-profile.md](./LAYER-2/discovery/user-profile.md)
+- UX-дизайн гайд: экраны, компоненты, флоу              → [LAYER-2/ux/UX-DESIGN-GUIDE.md](./LAYER-2/ux/UX-DESIGN-GUIDE.md)
 - Полный конвейер задач, этапы MVP, рабочий workflow → [LAYER-1/workflow.md](./LAYER-1/workflow.md)
 - Антипаттерны, что не делать → [LAYER-1/anti-patterns.md](./LAYER-1/anti-patterns.md)
 - Безопасность, секреты, чувствительные данные → [LAYER-1/security.md](./LAYER-1/security.md)
