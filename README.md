@@ -1,136 +1,147 @@
-# Vibe-coding-docs
-
-## Установка
-
-```bash
-curl -fsSL https://raw.githubusercontent.com/NMF13579/Vibe-coding-docs/main/install.sh | bash
-```
-
-> Шаблон документации для работы с AI-агентами: от идеи до MVP без хаоса и потери контекста.  
-> Создан для вайб-кодеров — врачей, дизайнеров, менеджеров и всех, кто строит продукты с ИИ без глубокого погружения в код.
-
----
+<!-- 
+  🔍 SEARCH TAGS / ПОИСКОВЫЕ ТЕГИ
+  EN: vibe coding, AI agent documentation, no-code, LLM workflow, Claude Code, Cursor IDE,
+      medical IT, MVP template, AI-assisted development, prompt engineering, context management,
+      agent orchestration, AI tools, project template, documentation framework
+  RU: вайб-кодинг, документация для AI-агентов, без кода, шаблон проекта, управление контекстом,
+      медицинские IT, MVP шаблон, разработка с ИИ, агентная разработка, Клод Код, Курсор
+-->
 
 <div align="center">
 
-[![Я новичок — начать здесь](https://img.shields.io/badge/🔰_Я_новичок_—_начать_здесь-2ea44f?style=for-the-badge)](./QUICK-START-NOVICE.md)
-[![Я разработчик](https://img.shields.io/badge/🛠_Я_разработчик-0366d6?style=for-the-badge)](./QUICK-START.md)
-[![FAQ](https://img.shields.io/badge/❓_Частые_вопросы-6e40c9?style=for-the-badge)](./FAQ.md)
+<img src="https://img.shields.io/badge/-%F0%9F%A7%A0%20Vibe--coding--docs-1a1a2e?style=for-the-badge&logoColor=white" height="50" alt="Vibe-coding-docs"/>
 
-[![Use this template](https://img.shields.io/badge/use%20this%20template-238636?style=flat-square&logo=github)](https://github.com/NMF13579/Vibe-coding-docs/generate)
-[![Documentation](https://img.shields.io/badge/docs-DOCS--MAP-0366d6?style=flat-square&logo=readthedocs)](./LAYER-1/tools/template-sync-index.md)
+**AI-agent documentation template · from idea to MVP without chaos**  
+*Шаблон документации для AI-агентов · от идеи до MVP без хаоса*
+
+*For doctors, designers, managers — anyone building with AI, no deep coding required*  
+*Для врачей, дизайнеров, менеджеров — всех, кто строит с ИИ без погружения в код*
+
+<br/>
+
+[![Stars](https://img.shields.io/github/stars/NMF13579/Vibe-coding-docs?style=flat-square&logo=github&label=stars)](https://github.com/NMF13579/Vibe-coding-docs/stargazers)
+[![Forks](https://img.shields.io/github/forks/NMF13579/Vibe-coding-docs?style=flat-square&logo=github&label=forks)](https://github.com/NMF13579/Vibe-coding-docs/network)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue?style=flat-square)](./LICENSE)
+[![Topics](https://img.shields.io/badge/topics-vibe--coding_·_AI_·_no--code_·_LLM-555?style=flat-square)](#)
 
 </div>
 
 ---
 
-## Что это такое
+## 🚀 Quick Start · Быстрый старт
 
-Этот репозиторий — рабочий шаблон, который помогает:
+<div align="center">
 
-- запускать новый проект структурированно, не теряя мысли;
-- сохранять контекст между сессиями — агент «помнит», где остановились;
-- фиксировать задачи, решения и статус проекта;
-- работать с AI-агентами предсказуемо, по правилам, а не «как получится».
+[![🔰 I'm a beginner · Я новичок](https://img.shields.io/badge/🔰_I'm_a_beginner_·_Я_новичок-2ea44f?style=for-the-badge&logoColor=white)](./QUICK-START-NOVICE.md)
+[![🛠 Developer · Разработчик](https://img.shields.io/badge/🛠_Developer_·_Разработчик-0366d6?style=for-the-badge&logoColor=white)](./QUICK-START.md)
+[![❓ FAQ](https://img.shields.io/badge/❓_FAQ-6e40c9?style=for-the-badge&logoColor=white)](./FAQ.md)
 
----
+<br/>
 
-## С чего начать — выбери свою роль
+[![⭐ Use this template · Использовать шаблон](https://img.shields.io/badge/⭐_Use_this_template_·_Использовать_шаблон-238636?style=for-the-badge&logo=github&logoColor=white)](https://github.com/NMF13579/Vibe-coding-docs/generate)
+[![📋 Docs Map · Карта документов](https://img.shields.io/badge/📋_Docs_Map_·_Карта_документов-0366d6?style=for-the-badge&logo=readthedocs&logoColor=white)](./LAYER-1/tools/template-sync-index.md)
 
-| Роль | Ситуация | Твой путь |
-|---|---|---|
-| 🔰 Первый раз | Нет опыта с кодом и агентами | [`QUICK-START-NOVICE.md`](./QUICK-START-NOVICE.md) — 3 шага без терминала |
-| 🩺 Врач / медик | Хочу автоматизировать рутину или сделать медицинский сервис | [`QUICK-START-NOVICE.md`](./QUICK-START-NOVICE.md) → [`LAYER-1/ux-checklist-medical.md`](./LAYER-1/ux-checklist-medical.md) |
-| 🎨 Дизайнер / творческий | Есть идея продукта, хочу прототип без кода | [`QUICK-START-NOVICE.md`](./QUICK-START-NOVICE.md) → [`LAYER-1/interview-system.md`](./LAYER-1/interview-system.md) |
-| 📋 Менеджер / предприниматель | Хочу проверить идею и дойти до MVP быстро | [`QUICK-START-NOVICE.md`](./QUICK-START-NOVICE.md) → [`project/PROJECT.md`](./project/PROJECT.md) |
-| 🔁 Уже начал, потерял контекст | Проект есть, но что-то пошло не так | [`HANDOFF.md`](./HANDOFF.md) → [`LAYER-1/context-recovery.md`](./LAYER-1/context-recovery.md) → [`FAQ.md`](./FAQ.md) |
-| 🛠️ Разработчик | Понимаю базу, хочу настроить агента под себя | [`QUICK-START.md`](./QUICK-START.md) → [`CLAUDE.md`](./CLAUDE.md) → [`LAYER-1/workflow.md`](./LAYER-1/workflow.md) |
-| 🤖 Claude Code (этапы) | Хочу вести проект по этапам: интервью → UX → разработка → деплой | [`CLAUDE-CODE-FLOW.md`](./CLAUDE-CODE-FLOW.md) → [`stages/01-interview/BOOT.md`](./stages/01-interview/BOOT.md) |
+</div>
 
 ---
 
-## Самые полезные команды
+## 👤 Choose your role · Выбери свою роль
 
-| Команда | Что делает |
-|---|---|
-| `Начнём` | Запустить новый проект |
-| `Восстанови контекст` | Начать сессию по существующему проекту |
-| `Сохрани контекст` | Закончить сессию без потерь |
-| `Всё верно` / `Ок` | Подтвердить план или следующий шаг |
-| `Всё сломалось` | Откатить изменения, когда что-то пошло не так |
-| `Проверь готовность к релизу` | Финальная проверка перед деплоем |
+<div align="center">
+
+| | Role / Роль | Path / Путь |
+|:---:|:---|:---|
+| [![](https://img.shields.io/badge/🔰_First_time_·_Первый_раз-2ea44f?style=flat-square)](./QUICK-START-NOVICE.md) | No coding or agent experience / Нет опыта с кодом | [QUICK-START-NOVICE.md](./QUICK-START-NOVICE.md) — 3 steps, no terminal |
+| [![](https://img.shields.io/badge/🩺_Doctor_·_Врач-e05c00?style=flat-square)](./QUICK-START-NOVICE.md) | Automate clinical routine or build medical service / Медицинский сервис | [NOVICE](./QUICK-START-NOVICE.md) → [ux-checklist-medical.md](./LAYER-1/ux-checklist-medical.md) |
+| [![](https://img.shields.io/badge/🎨_Designer_·_Дизайнер-8b44ac?style=flat-square)](./QUICK-START-NOVICE.md) | Product idea, want prototype without code / Прототип без кода | [NOVICE](./QUICK-START-NOVICE.md) → [interview-system.md](./LAYER-1/interview-system.md) |
+| [![](https://img.shields.io/badge/📋_Manager_·_Менеджер-d4ac0d?style=flat-square)](./QUICK-START-NOVICE.md) | Validate idea and reach MVP fast / Идея → MVP быстро | [NOVICE](./QUICK-START-NOVICE.md) → [PROJECT.md](./project/PROJECT.md) |
+| [![](https://img.shields.io/badge/🔁_Lost_context_·_Потерял_контекст-c0392b?style=flat-square)](./HANDOFF.md) | Project exists but something went wrong / Что-то пошло не так | [HANDOFF.md](./HANDOFF.md) → [context-recovery.md](./LAYER-1/context-recovery.md) |
+| [![](https://img.shields.io/badge/🛠️_Developer_·_Разработчик-0366d6?style=flat-square)](./QUICK-START.md) | Know the basics, want to customize the agent / Настроить агента | [QUICK-START.md](./QUICK-START.md) → [CLAUDE.md](./CLAUDE.md) |
+| [![](https://img.shields.io/badge/🤖_Claude_Code-1a1a2e?style=flat-square)](./CLAUDE-CODE-FLOW.md) | Run project in stages: interview → UX → deploy / По этапам | [CLAUDE-CODE-FLOW.md](./CLAUDE-CODE-FLOW.md) → [BOOT.md](./stages/01-interview/BOOT.md) |
+
+</div>
 
 ---
 
-<details>
-<summary>📂 Куда смотреть дальше — полная карта документов</summary>
+## ⚡ Installation · Установка
 
-| Ситуация | Документ |
-|---|---|
-| Совсем новый? Начни здесь | [`QUICK-START-NOVICE.md`](./QUICK-START-NOVICE.md) — без терминала |
-| Технический старт | [`QUICK-START.md`](./QUICK-START.md) — для разработчиков |
-| Точка входа для агента | [`llms.txt`](./llms.txt) → [`HANDOFF.md`](./HANDOFF.md) |
-| Claude Code: пошаговый флоу (этапы) | [`CLAUDE-CODE-FLOW.md`](./CLAUDE-CODE-FLOW.md) → [`project/PROJECT.md`](./project/PROJECT.md) → [`stages/01-interview/BOOT.md`](./stages/01-interview/BOOT.md) |
-| Первый запуск / конвейер | [`LAYER-1/workflow.md`](./LAYER-1/workflow.md) |
-| Клонировал для нового проекта | [`LAYER-1/tools/template-sync-index.md`](./LAYER-1/tools/template-sync-index.md) → напиши агенту `Начнём` |
-| Не знаешь, что написать агенту | [`LAYER-1/owner.md`](./LAYER-1/owner.md) или [`FAQ.md`](./FAQ.md) |
-| Где мы остановились? | [`HANDOFF.md`](./HANDOFF.md) → [`LAYER-3/project-status.md`](./LAYER-3/project-status.md) |
-| Планирование и дорожная карта | [`LAYER-2/specs/roadmap.md`](./LAYER-2/specs/roadmap.md), [`LAYER-2/specs/planning.md`](./LAYER-2/specs/planning.md) |
-| История изменений шаблона | [`CHANGELOG.md`](./CHANGELOG.md) |
-| Прямая подача в LLM | [`llms.txt`](./llms.txt) |
-| Частые ситуации (FAQ) | [`FAQ.md`](./FAQ.md) |
-| Задача начала расползаться | [`LAYER-1/scope-guard.md`](./LAYER-1/scope-guard.md) |
-| Всё перепуталось, нужен recovery | [`LAYER-1/context-recovery.md`](./LAYER-1/context-recovery.md) |
-| Нужно откатить изменения | [`LAYER-1/error-handling.md`](./LAYER-1/error-handling.md) |
-| Аудит проекта | [`LAYER-1/audit.md`](./LAYER-1/audit.md), [`LAYER-1/audit-checklist.md`](./LAYER-1/audit-checklist.md) |
-| Процессы и UX (spec-driven) | [`LAYER-1/agent-contract.md`](./LAYER-1/agent-contract.md) |
+```bash
+curl -fsSL https://raw.githubusercontent.com/NMF13579/Vibe-coding-docs/main/install.sh | bash
+```
 
-</details>
+> Or click **[Use this template](https://github.com/NMF13579/Vibe-coding-docs/generate)** above — no terminal needed.  
+> *Или нажми Use this template выше — без терминала.*
 
-<details>
-<summary>⚙️ Вставить в настройки AI-инструмента</summary>
+---
 
-Для лучшей работы агента вставь содержимое [`LAYER-1/system-prompt.md`](./LAYER-1/system-prompt.md) в системный промпт своего инструмента:
+## 💬 Agent Commands · Команды агента
 
-| Инструмент | Куда вставить |
-|---|---|
-| Cursor | Settings → Rules for AI |
-| Claude Code | `CLAUDE.md` уже в корне — всё готово |
-| Lovable | Knowledge → System Instructions |
-| Bolt | Project Settings → AI Instructions |
+<div align="center">
 
-</details>
+| Command / Команда | Action / Действие |
+|:---:|:---|
+| [![](https://img.shields.io/badge/Start_·_Начнём-2ea44f?style=flat-square)](./QUICK-START-NOVICE.md) | Launch a new project / Запустить новый проект |
+| [![](https://img.shields.io/badge/Restore_context_·_Восстанови_контекст-0366d6?style=flat-square)](./HANDOFF.md) | Resume an existing project session / Начать сессию по существующему проекту |
+| [![](https://img.shields.io/badge/Save_context_·_Сохрани_контекст-5c6bc0?style=flat-square)](./HANDOFF.md) | End session without losing progress / Закончить сессию без потерь |
+| [![](https://img.shields.io/badge/Everything_broke_·_Всё_сломалось-c0392b?style=flat-square)](./LAYER-1/error-handling.md) | Roll back changes when something went wrong / Откатить изменения |
+| [![](https://img.shields.io/badge/Check_release_readiness_·_Проверь_готовность-e67e22?style=flat-square)](./LAYER-1/audit-checklist.md) | Final check before deploy / Финальная проверка перед деплоем |
 
-<details>
-<summary>🔧 Для продвинутой настройки</summary>
+</div>
 
-Если хочешь детальнее настроить поведение агента или понять внутреннюю логику:
+---
 
-- Правила агента → [`CLAUDE.md`](./CLAUDE.md)
-- Системный промпт → [`LAYER-1/system-prompt.md`](./LAYER-1/system-prompt.md)
-- Карта ролей агентов → [`LAYER-1/agents.md`](./LAYER-1/agents.md)
-- Инструкции агента (слой 1) → [`LAYER-1/`](./LAYER-1/)
-- ТЗ продукта (слой 2) → [`LAYER-2/`](./LAYER-2/)
-- Память проекта → [`LAYER-3/`](./LAYER-3/)
+## 🗂️ Docs Map · Карта документов
 
-**Документация по синхронизации шаблона:**
-- [`LAYER-1/tools/template-sync.md`](./LAYER-1/tools/template-sync.md) — полная инструкция
-- [`LAYER-1/tools/template-sync-index.md`](./LAYER-1/tools/template-sync-index.md) — навигация по файлам
+<div align="center">
 
-**Поддерживаемые AI-среды:**
-- **Claude Code** → `CLAUDE.md`, `.claude/agents/*`, [`CLAUDE-CODE-FLOW.md`](./CLAUDE-CODE-FLOW.md)
-- **Cursor** → `.cursor/rules/*` и [`.cursor/CLAUDE-WORKFLOW.md`](./.cursor/CLAUDE-WORKFLOW.md)
-- **GitHub Copilot** → `.github/copilot-instructions.md`
+| Situation / Ситуация | Document / Документ |
+|:---|:---:|
+| Brand new? / Совсем новый? | [![](https://img.shields.io/badge/QUICK--START--NOVICE-2ea44f?style=flat-square)](./QUICK-START-NOVICE.md) |
+| Developer setup / Технический старт | [![](https://img.shields.io/badge/QUICK--START-0366d6?style=flat-square)](./QUICK-START.md) |
+| Agent entry point / Точка входа агента | [![](https://img.shields.io/badge/llms.txt-555?style=flat-square)](./llms.txt) [![](https://img.shields.io/badge/HANDOFF-0366d6?style=flat-square)](./HANDOFF.md) |
+| Claude Code stage flow / Флоу по этапам | [![](https://img.shields.io/badge/CLAUDE--CODE--FLOW-1a1a2e?style=flat-square)](./CLAUDE-CODE-FLOW.md) [![](https://img.shields.io/badge/BOOT.md-555?style=flat-square)](./stages/01-interview/BOOT.md) |
+| Where did we stop? / Где остановились? | [![](https://img.shields.io/badge/HANDOFF-0366d6?style=flat-square)](./HANDOFF.md) [![](https://img.shields.io/badge/project--status-555?style=flat-square)](./LAYER-3/project-status.md) |
+| Scope is creeping / Задача расползается | [![](https://img.shields.io/badge/scope--guard-e67e22?style=flat-square)](./LAYER-1/scope-guard.md) |
+| Everything confused / Всё перепуталось | [![](https://img.shields.io/badge/context--recovery-c0392b?style=flat-square)](./LAYER-1/context-recovery.md) |
+| Roll back changes / Откатить изменения | [![](https://img.shields.io/badge/error--handling-c0392b?style=flat-square)](./LAYER-1/error-handling.md) |
+| Roadmap & planning / Дорожная карта | [![](https://img.shields.io/badge/roadmap-8b44ac?style=flat-square)](./LAYER-2/specs/roadmap.md) |
+| Changelog / История изменений | [![](https://img.shields.io/badge/CHANGELOG-555?style=flat-square)](./CHANGELOG.md) |
+| Project audit / Аудит проекта | [![](https://img.shields.io/badge/audit-e05c00?style=flat-square)](./LAYER-1/audit.md) [![](https://img.shields.io/badge/audit--checklist-e05c00?style=flat-square)](./LAYER-1/audit-checklist.md) |
 
-</details>
+</div>
 
-<details>
-<summary>📐 Принципы работы агента</summary>
+---
 
-- Агент не пишет код без подтверждённого плана.
-- Один вопрос за раз — агент не засыпает списком.
-- Документы заполняются, не остаются пустыми шаблонами.
-- `LAYER-2/specs/roadmap.md` защищает от расползания проекта.
-- `LAYER-2/specs/decisions.md` останавливает повторное обсуждение уже принятых решений.
+## 🤖 Supported AI Tools · Поддерживаемые среды
 
-</details>
+<div align="center">
+
+[![Claude Code](https://img.shields.io/badge/Claude_Code-1a1a2e?style=for-the-badge&logo=anthropic&logoColor=white)](./CLAUDE.md)
+[![Cursor](https://img.shields.io/badge/Cursor-0366d6?style=for-the-badge&logoColor=white)](./QUICK-START.md)
+[![GitHub Copilot](https://img.shields.io/badge/GitHub_Copilot-238636?style=for-the-badge&logo=github&logoColor=white)](./.github/copilot-instructions.md)
+[![Lovable](https://img.shields.io/badge/Lovable-e05c00?style=for-the-badge&logoColor=white)](./LAYER-1/system-prompt.md)
+[![Bolt](https://img.shields.io/badge/Bolt-8b44ac?style=for-the-badge&logoColor=white)](./LAYER-1/system-prompt.md)
+
+</div>
+
+---
+
+## 📐 Agent Principles · Принципы агента
+
+- 🚫 **No code without a confirmed plan** · *Агент не пишет код без подтверждённого плана*
+- 💬 **One question at a time** · *Один вопрос за раз — агент не засыпает списком*
+- 📄 **Documents get filled in**, not left as empty templates · *Документы заполняются, не остаются пустыми шаблонами*
+- 🛡️ `roadmap.md` **protects against scope creep** · *Защищает от расползания проекта*
+- 🔒 `decisions.md` **stops re-discussing settled decisions** · *Останавливает повторное обсуждение*
+
+---
+
+<div align="center">
+
+Made with ❤️ for vibe-coders · *Сделано для вайб-кодеров*
+
+[![Issues](https://img.shields.io/badge/Issues-c0392b?style=flat-square&logo=github&logoColor=white)](https://github.com/NMF13579/Vibe-coding-docs/issues)
+[![Discussions](https://img.shields.io/badge/Discussions-0366d6?style=flat-square&logo=github&logoColor=white)](https://github.com/NMF13579/Vibe-coding-docs/discussions)
+[![Use Template](https://img.shields.io/badge/Use_this_template-238636?style=flat-square&logo=github&logoColor=white)](https://github.com/NMF13579/Vibe-coding-docs/generate)
+
+</div>
