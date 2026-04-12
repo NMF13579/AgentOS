@@ -1,0 +1,42 @@
+---
+description: Block code without plan — mirrors Claude Code plan→review→confirm→execute cycle
+alwaysApply: true
+---
+
+# Plan Gate
+
+NEVER write code, create files, or run commands before a plan is confirmed.
+
+## Required cycle (every task)
+
+1. **PLAN** — write a numbered list: what will change, which files, why
+2. **REVIEW** — show risks, alternatives, what will NOT be changed
+3. **CONFIRM** — wait for explicit owner approval ("да", "ok", "go", "делай")
+4. **EXECUTE** — only after confirmation
+
+## Triggers that require a new plan
+
+- Any new feature or change request
+- Switching to a different file than planned
+- Discovering the task is larger than described
+- Any doubt about scope
+
+## Hard blocks
+
+- Do NOT start executing if the plan was not confirmed
+- Do NOT expand scope mid-task — stop and ask
+- Do NOT create new files outside the confirmed plan
+- Do NOT refactor code that was not part of the plan
+
+## Format
+
+```
+📋 ПЛАН
+1. [файл/действие] — [почему]
+2. ...
+
+⚠️ РИСКИ
+- ...
+
+Подтверждаешь? (да / нет / изменить)
+```
