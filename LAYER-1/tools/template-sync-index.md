@@ -252,7 +252,7 @@ node setup.js
 ---
 
 **Версия:** 1.0.0  
-**Обновлено:** 2026-04-03  
+**Обновлено:** 2026-04-16  
 **Статус:** ✅ Готово к использованию
 
 
@@ -329,6 +329,7 @@ node setup.js
 - `SPEC.md` — спецификация фич/модулей.
 - `ACCESS-RULES.md` — правила доступа и роли.
 - `COMPONENT-STATES.md`, `VALIDATION-RULES.md` — состояния и валидация.
+- `features/_template.md` — шаблон описания новой фичи (заполняется Team Lead + Developer до кодирования).
 
 **Правило:**
 - Эти файлы заполняются **после** того, как согласованы discovery-документы.
@@ -414,17 +415,16 @@ node setup.js
 | `LAYER-1/stack-presets.md` | instruction | При выборе технологического стека |
 | `LAYER-1/dialog-style.md` | instruction | При ведении диалога с владельцем проекта |
 | `LAYER-1/task-protocol.md` | template | При создании задач |
-| `LAYER-1/task-protocol.md` | instruction | При проверке выполненных задач перед закрытием |
+| `LAYER-1/task-protocol.md` | instruction | При проверке выполненных задач перед закрытием и перед каждым релизом |
 | `LAYER-1/testing-guide.md` | instruction | При написании тестов и проверке после задачи |
 | `LAYER-2/specs/validation.md` | instruction | При написании правил валидации |
-| `LAYER-1/error-handling.md` | instruction | При классификации ошибок: тип → действие |
-| `LAYER-1/error-handling.md` | instruction | При откате релиза («всё сломалось») |
-| `LAYER-1/task-protocol.md` | instruction | Перед каждым релизом |
+| `LAYER-1/error-handling.md` | instruction | При классификации ошибок и откате релиза («всё сломалось») |
 | `LAYER-1/security.md` | instruction | При работе с персональными данными и доступами |
 | `LAYER-2/specs/roadmap.md` | project-record | После принятия MVP-решений — дорожная карта |
 | `LAYER-1/audit.md` | instruction | Протокол полного аудита (AUDIT-FULL), шаги и правила |
 | `LAYER-1/audit-checklist.md` | instruction | Чек-лист структуры, шесть направлений, таблица HEALTH-SCORE |
 | `LAYER-1/tools/adapters/` | instruction | При работе в Cursor / Copilot / Claude / Gemini — IDE-специфичный self-check |
+| `LAYER-2/specs/features/_template.md` | template | При описании новой фичи до начала кодирования (заполняет Team Lead + Developer) |
 
 ---
 
@@ -502,6 +502,7 @@ node setup.js
 - `specs/SPEC.md`
 - `specs/ARCHITECTURE.md`
 - `specs/DECISIONS.md`
+- `specs/features/_template.md`
 - `qa/TEST-SCENARIOS.md`
 - `qa/RELEASE-BLOCKERS.md`
 
@@ -557,6 +558,7 @@ node setup.js
 | `specs/SPEC.md` | 2 | project-record | Требования к продукту |
 | `specs/ARCHITECTURE.md` | 2 | project-record | Устройство системы |
 | `specs/DECISIONS.md` | 2 | project-record | Зафиксированные решения |
+| `specs/features/_template.md` | 2 | template | Шаблон описания новой фичи — заполняется до начала кодирования |
 | `qa/TEST-SCENARIOS.md` | 2 | project-record | Сценарии проверки |
 | `qa/RELEASE-BLOCKERS.md` | 2 | project-record | Критичные стопоры перед релизом |
 | `LAYER-1/agents.md` | 2 | instruction | Карта ролей агентов и правила многоагентной работы |
@@ -576,13 +578,10 @@ node setup.js
 | `LAYER-1/glossary.md` | 0 | instruction | Словарь терминов простым языком |
 | `LAYER-1/stack-presets.md` | 0 | instruction | Готовые наборы инструментов по типу проекта |
 | `LAYER-1/dialog-style.md` | 0 | instruction | Стиль диалога с владельцем |
-| `LAYER-1/task-protocol.md` | 0 | template | Шаблон задачи |
-| `LAYER-1/task-protocol.md` | 0 | instruction | Протокол проверки перед закрытием задачи |
+| `LAYER-1/task-protocol.md` | 0 | template / instruction | Шаблон задачи; протокол проверки перед закрытием и перед релизом |
 | `LAYER-1/testing-guide.md` | 0 | instruction | Чеклист проверки после каждой задачи |
 | `LAYER-2/specs/validation.md` | 0 | instruction | Объективная проверка: работает / не работает |
-| `LAYER-1/error-handling.md` | 0 | instruction | Классификация ошибок: тип → действие |
-| `LAYER-1/error-handling.md` | 0 | instruction | Инструкция при «всё сломалось» / «откати» |
-| `LAYER-1/task-protocol.md` | 0 | instruction | Чеклист перед каждым релизом |
+| `LAYER-1/error-handling.md` | 0 | instruction | Классификация ошибок; инструкция при «всё сломалось» / «откати» |
 | `LAYER-1/security.md` | 0 | instruction | Безопасность и работа с чувствительными данными |
 | `LAYER-2/specs/roadmap.md` | 0 | project-record | Дорожная карта после принятия MVP-решений |
 | `LAYER-1/audit.md` | 0 | instruction | Протокол аудита (AUDIT-FULL) |

@@ -88,6 +88,7 @@
 ```
 [Владелец] → задача → [Team Lead] → план
     → [Developer] + [Database Agent] → код
+    → [Medical Reviewer] → compliance (если фича затрагивает медицинский домен)
     → [Tester] → тесты
     → [Reviewer] → чеклист
     → [Docs Agent] → документы
