@@ -62,16 +62,13 @@
 ### Важные
 - [ ] /LAYER-2/specs/planning.md
 - [ ] /LAYER-1/task-protocol.md
-- [ ] /LAYER-1/task-protocol.md
 - [ ] /LAYER-1/dialog-style.md — стиль диалога и тон общения с владельцем
 - [ ] /LAYER-1/decision-guide.md — справочник развилок: что выбрать и почему
 - [ ] /LAYER-1/glossary.md — словарь терминов простым языком
 - [ ] /LAYER-1/error-handling.md — классификация ошибок: тип → действие
 - [ ] /LAYER-1/stack-presets.md — готовые наборы инструментов по типу проекта
 - [ ] /LAYER-2/discovery/project-interview.md — протокол интервью при старте нового проекта
-- [ ] /LAYER-1/task-protocol.md — протокол проверки перед закрытием задачи
 - [ ] /LAYER-2/specs/validation.md — объективная проверка: работает / не работает
-- [ ] /LAYER-1/error-handling.md — инструкция при «всё сломалось» / «откати»
 - [ ] /LAYER-1/testing-guide.md — чеклист проверки после каждой задачи
 - [ ] /LAYER-2/ux/user-flows.md — ключевые сценарии для smoke-теста перед релизом
 - [ ] /LAYER-3/project-status.md
