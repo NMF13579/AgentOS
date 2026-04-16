@@ -1,10 +1,10 @@
 # Project Status
 
-> Updated: (заполняется агентом)
+> Updated: 2026-04-16
 
 ## Текущий этап
 
-(заполняется агентом после первого интервью)
+Шаблон документации Vibe-coding-docs — применены патчи **Итерация 1**, **Итерация 2** и **Итерация 3 — Опыт и масштабирование** (аудит деградации документов, мед-диалог и before/after, пост-деплой rollback, развилки 15–17).
 
 ## Слои
 
@@ -17,4 +17,4 @@
 
 ## Последнее действие
 
-(заполняется агентом)
+2026-04-16 — Итерация 3: `audit-checklist.md`, `dialog-style.md`, `ROLLBACK-PROTOCOL-POST-DEPLOY.md`, `llms.txt`, `deploy-guide.md`, `template-sync-index.md`, `decision-guide.md`; обновлены `HANDOFF.md` и этот файл.

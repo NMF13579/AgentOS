@@ -34,6 +34,7 @@
 - Конфликт инструкций         → [LAYER-1/agent-contract.md](./LAYER-1/agent-contract.md)
 - Потеря контекста            → [LAYER-1/context-recovery.md](./LAYER-1/context-recovery.md)
 - Деплой                      → [LAYER-1/deploy-guide.md](./LAYER-1/deploy-guide.md)
+- Откат после деплоя (прод сломан) → [LAYER-1/tools/deploy/ROLLBACK-PROTOCOL-POST-DEPLOY.md](./LAYER-1/tools/deploy/ROLLBACK-PROTOCOL-POST-DEPLOY.md)
 - Роли агентов, запреты, Medical Reviewer, pipeline → [LAYER-1/agents.md](./LAYER-1/agents.md)
 - UX: структура экранов, формы, навигация, стандарты → [LAYER-1/ux-checklist-core.md](./LAYER-1/ux-checklist-core.md)
 - UX: доступность, мобильный UX, пустые состояния   → [LAYER-1/ux-checklist-accessibility.md](./LAYER-1/ux-checklist-accessibility.md)

@@ -419,10 +419,13 @@ node setup.js
 | `LAYER-1/testing-guide.md` | instruction | При написании тестов и проверке после задачи |
 | `LAYER-2/specs/validation.md` | instruction | При написании правил валидации |
 | `LAYER-1/error-handling.md` | instruction | При классификации ошибок и откате релиза («всё сломалось») |
+| `shared/priority-order.md` | instruction | Канон иерархии источников при конфликте инструкций; статус: актуально |
+| `shared/ai-failure-modes.md` | instruction | Сбои LLM-агентов (галлюцинации, drift, роли); статус: актуально |
 | `LAYER-1/security.md` | instruction | При работе с персональными данными и доступами |
 | `LAYER-2/specs/roadmap.md` | project-record | После принятия MVP-решений — дорожная карта |
 | `LAYER-1/audit.md` | instruction | Протокол полного аудита (AUDIT-FULL), шаги и правила |
-| `LAYER-1/audit-checklist.md` | instruction | Чек-лист структуры, шесть направлений, таблица HEALTH-SCORE |
+| `LAYER-1/audit-checklist.md` | instruction | Чек-лист структуры, семь направлений, таблица HEALTH-SCORE |
+| `LAYER-1/tools/deploy/ROLLBACK-PROTOCOL-POST-DEPLOY.md` | instruction | Откат после неудачного деплоя в проде; деструктивные шаги — только с явным «да» владельца |
 | `LAYER-1/tools/adapters/` | instruction | При работе в Cursor / Copilot / Claude / Gemini — IDE-специфичный self-check |
 | `LAYER-2/specs/features/_template.md` | template | При описании новой фичи до начала кодирования (заполняет Team Lead + Developer) |
 

@@ -12,7 +12,9 @@
 
 ## Общие правила
 
-1. Порядок чтения: CLAUDE.md → `llms.txt` / `LAYER-1/workflow.md` → `LAYER-2/specs/architecture.md` → `LAYER-1/security.md`
+1. Порядок чтения и приоритет источников — см. `shared/priority-order.md`.
+   Обязательный порядок старта: CLAUDE.md → project/PROJECT.md →
+   HANDOFF.md → llms.txt → LAYER-2/specs/architecture.md → LAYER-1/security.md
 2. Не изменять архитектуру без явного запроса
 3. Не писать код до подтверждения плана
 4. После выполнения — обновлять LAYER-3/
