@@ -4,7 +4,7 @@
 
 ## Текущий этап
 
-Шаблон документации Vibe-coding-docs — применены патчи **Итерация 1**, **Итерация 2** и **Итерация 3 — Опыт и масштабирование** (аудит деградации документов, мед-диалог и before/after, пост-деплой rollback, развилки 15–17).
+Шаблон документации Vibe-coding-docs — закрыт **Этап 5**: финальная валидация ссылок и терминологии, релизные чеклисты и changelog синхронизированы, подготовлен итоговый `AUDIT-REPORT.md`, релизный статус `v1.1.0` зафиксирован.
 
 ## Слои
 
@@ -17,4 +17,4 @@
 
 ## Последнее действие
 
-2026-04-16 — Итерация 3: `audit-checklist.md`, `dialog-style.md`, `ROLLBACK-PROTOCOL-POST-DEPLOY.md`, `llms.txt`, `deploy-guide.md`, `template-sync-index.md`, `decision-guide.md`; обновлены `HANDOFF.md` и этот файл.
+2026-04-16 — Этап 5: `CHECKLIST.md`, `LAYER-1/audit-checklist.md`, `CHANGELOG.md`, `README.md`; создан `AUDIT-REPORT.md`; обновлены `HANDOFF.md` и этот файл.

@@ -33,7 +33,7 @@
 <div align="center">
 
 [![🔰 I'm a beginner · Я новичок](https://img.shields.io/badge/🔰_I'm_a_beginner_·_Я_новичок-2ea44f?style=for-the-badge&logoColor=white)](./QUICK-START-NOVICE.md)
-[![🛠 Developer · Разработчик](https://img.shields.io/badge/🛠_Developer_·_Разработчик-0366d6?style=for-the-badge&logoColor=white)](./QUICK-START.md)
+[![🖱️ GUI Quick Start · Быстрый GUI старт](https://img.shields.io/badge/🖱️_GUI_Quick_Start_·_Быстрый_старт-0366d6?style=for-the-badge&logoColor=white)](./QUICK-START.md)
 [![❓ FAQ](https://img.shields.io/badge/❓_FAQ-6e40c9?style=for-the-badge&logoColor=white)](./FAQ.md)
 
 <br/>
@@ -44,6 +44,48 @@
 </div>
 
 ---
+
+## Статус проекта
+
+`✅ Стабильная версия: v1.1.0 (готов к использованию)`
+
+### 🔄 Что нового в v1.1.0
+
+- GUI-онбординг для новичков: [`ONBOARDING-WIZARD.md`](./ONBOARDING-WIZARD.md)
+- Юридический и security-контур: [`LEGAL-152FZ.md`](./LAYER-1/LEGAL-152FZ.md), [`PROMPT-SECURITY.md`](./LAYER-1/PROMPT-SECURITY.md), [`ROLLBACK.md`](./LAYER-1/ROLLBACK.md)
+- Learning loop и инциденты: [`LEARNING-LOOP.md`](./LEARNING-LOOP.md), [`incidents/incident-template.md`](./incidents/incident-template.md)
+- Архитектура и глоссарий: [`ARCHITECTURE.md`](./ARCHITECTURE.md), [`GLOSSARY.md`](./GLOSSARY.md)
+
+---
+
+### Ключевые материалы
+
+- Архитектура фреймворка: [`ARCHITECTURE.md`](./ARCHITECTURE.md)
+- Глоссарий для не-технических ролей: [`GLOSSARY.md`](./GLOSSARY.md)
+
+### GUI-поток запуска (без терминала)
+
+1. Открой папку проекта в Cursor/Claude Code.
+2. Нажми `Cmd/Ctrl + K`.
+3. Вставь шаблон из `QUICK-START.md`.
+4. Нажми **Run** и подтверди предложенный следующий шаг.
+
+Для продвинутой кастомизации (LLM, `.cursor/`, `.claude/`, MCP, CLI):  
+[`ADVANCED-SETUP.md`](./ADVANCED-SETUP.md)
+
+---
+
+## 📚 Навигация по документации
+
+- Быстрый онбординг: [`ONBOARDING-WIZARD.md`](./ONBOARDING-WIZARD.md)
+- Базовый GUI-старт: [`QUICK-START.md`](./QUICK-START.md)
+- Продвинутая настройка: [`ADVANCED-SETUP.md`](./ADVANCED-SETUP.md)
+- Релизный чеклист: [`CHECKLIST.md`](./CHECKLIST.md)
+- Цикл обучения на инцидентах: [`LEARNING-LOOP.md`](./LEARNING-LOOP.md)
+- Шаблон записи инцидента: [`incidents/incident-template.md`](./incidents/incident-template.md)
+- Адаптация под другой домен: [`DOMAIN-ADAPTER.md`](./DOMAIN-ADAPTER.md)
+- Архитектурная схема: [`ARCHITECTURE.md`](./ARCHITECTURE.md)
+- Глоссарий терминов: [`GLOSSARY.md`](./GLOSSARY.md)
 
 ## 👤 Choose your role · Выбери свою роль
 
@@ -97,11 +139,18 @@ curl -fsSL https://raw.githubusercontent.com/NMF13579/Vibe-coding-docs/main/inst
 | Situation / Ситуация | Document / Документ |
 |:---|:---:|
 | Brand new? / Совсем новый? | [![](https://img.shields.io/badge/QUICK--START--NOVICE-2ea44f?style=flat-square)](./QUICK-START-NOVICE.md) |
-| Developer setup / Технический старт | [![](https://img.shields.io/badge/QUICK--START-0366d6?style=flat-square)](./QUICK-START.md) |
+| Developer setup / Технический старт | [![](https://img.shields.io/badge/QUICK--START-0366d6?style=flat-square)](./QUICK-START.md) [![](https://img.shields.io/badge/ADVANCED--SETUP-555?style=flat-square)](./ADVANCED-SETUP.md) |
 | Agent entry point / Точка входа агента | [![](https://img.shields.io/badge/llms.txt-555?style=flat-square)](./llms.txt) [![](https://img.shields.io/badge/HANDOFF-0366d6?style=flat-square)](./HANDOFF.md) |
 | Claude Code stage flow / Флоу по этапам | [![](https://img.shields.io/badge/CLAUDE--CODE--FLOW-1a1a2e?style=flat-square)](./CLAUDE-CODE-FLOW.md) [![](https://img.shields.io/badge/BOOT.md-555?style=flat-square)](./stages/01-interview/BOOT.md) |
 | Where did we stop? / Где остановились? | [![](https://img.shields.io/badge/HANDOFF-0366d6?style=flat-square)](./HANDOFF.md) [![](https://img.shields.io/badge/project--status-555?style=flat-square)](./LAYER-3/project-status.md) |
 | Scope is creeping / Задача расползается | [![](https://img.shields.io/badge/scope--guard-e67e22?style=flat-square)](./LAYER-1/scope-guard.md) |
+| Onboarding для новичков | [![](https://img.shields.io/badge/ONBOARDING--WIZARD-2ea44f?style=flat-square)](./ONBOARDING-WIZARD.md) |
+| 152-ФЗ и мед-комплаенс | [![](https://img.shields.io/badge/LEGAL--152FZ-e05c00?style=flat-square)](./LAYER-1/LEGAL-152FZ.md) |
+| Prompt injection безопасность | [![](https://img.shields.io/badge/PROMPT--SECURITY-c0392b?style=flat-square)](./LAYER-1/PROMPT-SECURITY.md) |
+| Learning loop по инцидентам | [![](https://img.shields.io/badge/LEARNING--LOOP-5c6bc0?style=flat-square)](./LEARNING-LOOP.md) |
+| Domain adapter | [![](https://img.shields.io/badge/DOMAIN--ADAPTER-8b44ac?style=flat-square)](./DOMAIN-ADAPTER.md) |
+| Архитектура фреймворка | [![](https://img.shields.io/badge/ARCHITECTURE-0366d6?style=flat-square)](./ARCHITECTURE.md) |
+| Глоссарий терминов | [![](https://img.shields.io/badge/GLOSSARY-555?style=flat-square)](./GLOSSARY.md) |
 | Everything confused / Всё перепуталось | [![](https://img.shields.io/badge/context--recovery-c0392b?style=flat-square)](./LAYER-1/context-recovery.md) |
 | Roll back changes / Откатить изменения | [![](https://img.shields.io/badge/error--handling-c0392b?style=flat-square)](./LAYER-1/error-handling.md) |
 | Roadmap & planning / Дорожная карта | [![](https://img.shields.io/badge/roadmap-8b44ac?style=flat-square)](./LAYER-2/specs/roadmap.md) |
