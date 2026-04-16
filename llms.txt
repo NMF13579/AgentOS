@@ -2,7 +2,7 @@
 # Vibe-coding-docs
 
 > ⚠️ ОБСЛУЖИВАНИЕ: при добавлении файла в LAYER-1/, LAYER-2/ или stages/ — добавить маршрут в этот файл.
-> Последнее обновление: 2026-04-11
+> Последнее обновление: 2026-04-16
 > Файлов в LAYER-1/: 28 | Маршрутов в LAYER-2/: 9
 
 > Шаблон документации для AI-агентов.
@@ -34,6 +34,7 @@
 - Конфликт инструкций         → [LAYER-1/agent-contract.md](./LAYER-1/agent-contract.md)
 - Потеря контекста            → [LAYER-1/context-recovery.md](./LAYER-1/context-recovery.md)
 - Деплой                      → [LAYER-1/deploy-guide.md](./LAYER-1/deploy-guide.md)
+- Роли агентов, запреты, Medical Reviewer, pipeline → [LAYER-1/agents.md](./LAYER-1/agents.md)
 - UX: структура экранов, формы, навигация, стандарты → [LAYER-1/ux-checklist-core.md](./LAYER-1/ux-checklist-core.md)
 - UX: доступность, мобильный UX, пустые состояния   → [LAYER-1/ux-checklist-accessibility.md](./LAYER-1/ux-checklist-accessibility.md)
 - UX: медицина, роли, права, дашборды               → [LAYER-1/ux-checklist-medical.md](./LAYER-1/ux-checklist-medical.md)

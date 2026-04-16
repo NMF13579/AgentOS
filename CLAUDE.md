@@ -182,6 +182,7 @@
 Как и раньше, детальные гайды лежат в слоях — используй по запросу или через `llms.txt`:
 
 - Процесс и модули: `LAYER-1/workflow.md`, `LAYER-1/agent-contract.md` (также сжато в `shared/`).
+- Роли агентов, запреты, Medical Reviewer, pipeline: `LAYER-1/agents.md`.
 - Интервью: `LAYER-2/discovery/project-interview.md`, `LAYER-1/interview-system.md`, `LAYER-1/tools/adapters/CLAUDE-INTERVIEW-CONTROL.md`.
 - Стиль: `LAYER-1/dialog-style.md`, `LAYER-1/glossary.md`.
 - Планирование: `LAYER-2/specs/planning.md`, `LAYER-2/specs/roadmap.md`.
