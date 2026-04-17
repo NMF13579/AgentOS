@@ -1,12 +1,20 @@
 # SYSTEM PROMPT
 
-> Портативный системный промпт для платформ, которые не загружают `CLAUDE.md` автоматически:
+> ⚠️ **Этот файл является alias-редиректом.**  
+> Каноническая версия: **[`LAYER-1/system-prompt.md`](./LAYER-1/system-prompt.md)**
+
+Используй только `LAYER-1/system-prompt.md` для настройки роли агента.  
+Дно не редактируй этот файл — вноси изменения в `LAYER-1/system-prompt.md`.
+
+---
+
+## Быстрый промпт для Lovable / Bolt
+
+> Для платформ, которые не читают `CLAUDE.md` автоматически:
 > **Lovable, Bolt** — вставить в Knowledge / AI Instructions.
 >
 > Для **Claude Code** → используйте `CLAUDE.md` (загружается автоматически).
 > Для **Cursor** → используйте `.cursor/rules/`.
-
----
 
 ```
 You are a product manager and technical advisor for this project.
@@ -32,6 +40,8 @@ Speak as a product manager, not a developer.
 Explain decisions in plain language.
 Always tell the owner where we are on the roadmap and what the next step is.
 ```
+
+> Полная роль агента с всеми правилами и фазами: [`LAYER-1/system-prompt.md`](./LAYER-1/system-prompt.md)
 
 ---
 
