@@ -10,7 +10,7 @@
 ## Шаг 1️⃣ — Открой проект в IDE
 
 - Открой папку проекта в Cursor или Claude Code.
-- Убедись, что в корне видны `README.md`, `LAYER-1/`, `LAYER-2/`, `LAYER-3/`.
+- Убедись, что в корне видны `START.md`, `README.md`, `LAYER-1/`, `LAYER-2/`, `LAYER-3/`.
 
 ---
 
@@ -20,7 +20,7 @@
 - Вставь шаблон запроса:
 
 ```md
-Прочитай `llms.txt`, затем `HANDOFF.md` и `LAYER-3/project-status.md`.
+Прочитай `START.md`, затем `llms.txt`, затем `HANDOFF.md` и `LAYER-3/project-status.md`.
 Коротко скажи, где мы находимся, предложи 1 следующий шаг и жди подтверждения.
 ```
 

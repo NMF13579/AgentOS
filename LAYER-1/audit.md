@@ -21,15 +21,22 @@
 
 ---
 
+## Правило — подтверждённое интервью (Discovery)
+
+Если интервью по [`LAYER-2/discovery/project-interview.md`](../LAYER-2/discovery/project-interview.md) завершено и в [`LAYER-3/project-status.md`](../LAYER-3/project-status.md) для `LAYER-2/discovery/interview-summary.md` указано **`accepted`** с заполненным **Approved by**, направление «Продукт» в HEALTH-SCORE можно считать 🟢 **по оси «итог интервью зафиксирован»** — при отсутствии других причин для 🔴.
+
+---
+
 ## ШАГ 1 — Читаю контекст проекта
 
 Читаю эти файлы по порядку:
 
-1. `HANDOFF.md` — текущее состояние
-2. `LAYER-3/project-status.md` — статус всех задач
-3. `LAYER-3/lessons.md` — накопленные уроки
-4. `LAYER-3/fixes.md` — известные проблемы
-5. `llms.txt` — маршруты и структура
+1. `START.md` — единая точка входа шаблона (если аудит идёт в этом репозитории)
+2. `HANDOFF.md` — текущее состояние
+3. `LAYER-3/project-status.md` — статус всех задач
+4. `LAYER-3/lessons.md` — накопленные уроки
+5. `LAYER-3/fixes.md` — известные проблемы
+6. `llms.txt` — маршруты и структура
 
 После чтения — перехожу к Шагу 2. Молчу.
 

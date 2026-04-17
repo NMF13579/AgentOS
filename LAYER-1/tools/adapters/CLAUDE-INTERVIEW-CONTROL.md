@@ -1,35 +1,21 @@
 > Trigger: интервью в Claude без отдельного guardian  
-> Read-time: ~5 min  
+> Read-time: ~2 min  
 > Filled-by: agent  
 > Needs-approval: no  
-> Next: `LAYER-1/interview-system.md`
+> Next: [`../../interview-system.md`](../../interview-system.md)
 
-# Claude (Code / чат с репозиторием) — контроль интервью (self-check стража)
+# Claude (Code / чат с репозиторием) — дельта
 
-## Когда применять
+Общее ядро: [**README.md**](./README.md#adapter-core).
 
-Когда интервью ведётся через Claude с доступом к этому репозиторию и без OpenCode subagent «guardian». Проверка — **self-check** по тем же правилам, что в [`LAYER-1/interview-system.md`](../../../LAYER-1/interview-system.md).
+## Когда
 
-## Читать перед интервью
+Интервью через Claude с доступом к этому репозиторию, без отдельного subagent «guardian».
 
-1. [`llms.txt`](../../../llms.txt)
-2. [`CLAUDE.md`](../../../CLAUDE.md) — общий контракт сессии.
-3. [`LAYER-2/discovery/project-interview.md`](../../../LAYER-2/discovery/project-interview.md)
-4. [`LAYER-1/interview-system.md`](../../../LAYER-1/interview-system.md)
-5. [`LAYER-1/interview-system.md`](../../../LAYER-1/interview-system.md)
-6. [`LAYER-1/agent-contract.md`](../../../LAYER-1/agent-contract.md)
+## Дополнительно к ядру
 
-## Обязательный формат каждого ответа
-
-1. Вопрос владельцу (один шаг по маршруту).
-2. Блок **СТРАЖ**: таблица 7 пунктов из `LAYER-1/interview-system.md` с отметками и доказательствами.
-3. Вердикт: `СТРАЖ: ✅` / `⚠️` / `❌`.
-4. При **❌** — **stop-block**: только исправленный вопрос и снова чеклист; без следующего пункта `project-interview.md`.
-
-## Stop-block
-
-См. раздел «Правило stop-block» в [`LAYER-1/interview-system.md`](../../../LAYER-1/interview-system.md).
+- [`CLAUDE.md`](../../../CLAUDE.md) — контракт сессии.
 
 ## Журнал
 
-[`LAYER-3/interview-session.md`](../../../LAYER-3/interview-session.md); `control-mode: claude-self-check`.
+[`../../../LAYER-3/interview-session.md`](../../../LAYER-3/interview-session.md) — укажите `control-mode: claude-self-check`.

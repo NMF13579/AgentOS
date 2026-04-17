@@ -24,7 +24,7 @@
 ## Что сделано после аудита
 
 - **Единая точка входа:** [`START.md`](./START.md); карта маршрутов: [`llms.txt`](./llms.txt).
-- **Приоритет при конфликте инструкций:** канон [`shared/priority-order.md`](./shared/priority-order.md); выровнено с [`.cursor/rules/32-document-priority.mdc`](./.cursor/rules/32-document-priority.mdc).
+- **Приоритет при конфликте инструкций:** канон [`shared/priority-order.md`](./shared/priority-order.md); выровнено с [`.cursor/rules/50-doc-priority.mdc`](./.cursor/rules/50-doc-priority.mdc).
 - **Внутренние markdown-ссылки:** пройдена пакетная правка путей и имён файлов; поддерживается автопроверка (цель — 0 битых целей).
 - **Природа репозитория:** явно разделены «каркас шаблона» и «продукт после копирования» в [`HANDOFF.md`](./HANDOFF.md) и [`LAYER-3/project-status.md`](./LAYER-3/project-status.md).
 - **Совместимость:** [`GEMINI.md`](./GEMINI.md); редирект [`memory-bank/project-status.md`](./memory-bank/project-status.md) → `LAYER-3/project-status.md`.

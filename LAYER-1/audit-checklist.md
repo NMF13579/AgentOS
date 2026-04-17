@@ -74,6 +74,7 @@
 - Для кого он делается?
 - Описан ли текущий этап?
 - Не вышел ли проект за рамки изначального плана?
+- Если интервью Discovery уже проведено: подтверждён ли итог в [`LAYER-2/discovery/interview-summary.md`](../LAYER-2/discovery/interview-summary.md) владельцем и отражено ли это в [`LAYER-3/project-status.md`](../LAYER-3/project-status.md) (строка артефакта = `accepted`, заполнено **Approved by**)? Иначе по этой оси — минимум 🟡 до явного согласия (см. [`project-interview.md`](../LAYER-2/discovery/project-interview.md) → Confirmation).
 
 ### Направление 2 — Архитектура
 

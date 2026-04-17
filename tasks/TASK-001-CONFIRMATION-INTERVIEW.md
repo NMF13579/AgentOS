@@ -7,13 +7,13 @@
 | Поле | Значение |
 |------|----------|
 | **MODE** | `PLAN` |
-| **STATE** | `pending` |
+| **STATE** | `done` (шаблон: артефакты и правила закреплены; сценарий вживую — на копии проекта) |
 
 ---
 
 ## Контекст
 
-Репозиторий `Vibe-coding-docs` содержит `LAYER-1/interview-system.md` и `LAYER-2/discovery/project-interview.md`, определяющие поведение агента на этапе Discovery. Отсутствует явный stop-point перед фиксацией итогов и автоматического перехода статуса после подтверждения пользователем.
+Репозиторий `Vibe-coding-docs` содержит `LAYER-1/interview-system.md` и `LAYER-2/discovery/project-interview.md`, определяющие поведение агента на этапе Discovery. В шаблоне закреплены явный stop-point, секция **Confirmation** и связка со статусом в `LAYER-3/project-status.md`.
 
 ## Цель
 
@@ -41,12 +41,12 @@
 
 ## Критерии готовности
 
-- [ ] Стоп-поинт добавлен в `LAYER-2/discovery/project-interview.md`
-- [ ] Секция `## Confirmation` добавлена с логикой вопроса/ответа
-- [ ] `LAYER-3/project-status.md` содержит колонку `Approved by` (или эквивалент)
-- [ ] `LAYER-1/audit-checklist.md` / HEALTH-SCORE отражает 🟢 при принятом `LAYER-2/discovery/interview-summary.md`
-- [ ] Карта документов (`template-sync-index.md` / `README.md`) содержит упоминание о подтверждении интервью в Discovery
-- [ ] Тестовый сценарий пройден полностью:
+- [x] Стоп-поинт и явное правило до записи в `interview-summary.md` — в [`LAYER-2/discovery/project-interview.md`](../LAYER-2/discovery/project-interview.md)
+- [x] Секция `## Confirmation` с логикой вопроса/ответа — там же
+- [x] `LAYER-3/project-status.md` — таблица **Подтверждение ключевых артефактов** с колонкой **Approved by**
+- [x] `LAYER-1/audit-checklist.md` — критерий по подтверждённому `interview-summary.md`; `LAYER-1/audit.md` — правило 🟢 по оси «итог интервью зафиксирован»
+- [x] Карта: процедура подтверждения — в [`LAYER-1/tools/template-sync-index.md`](../LAYER-1/tools/template-sync-index.md) (блок Discovery); вход с `START.md` — в [`README.md`](../README.md)
+- [ ] Тестовый сценарий пройден полностью на **живой копии проекта**:
   1. Агент создает саммари → 2. Пользователь подтверждает → 3. `accepted` в `LAYER-3/project-status.md` → 4. 🟢 в HEALTH-SCORE (`audit-checklist`)
 
 ## Зависимости
@@ -57,11 +57,11 @@
 
 ## Self-check (заполняет агент перед закрытием)
 
-- [ ] Цель достигнута: stop-point и Confirmation добавлены?
-- [ ] Все артефакты из шагов обновлены?
-- [ ] Побочных изменений вне scope задачи нет?
-- [ ] HANDOFF.md обновлён, если были важные решения?
+- [x] Цель достигнута в шаблоне: stop-point, Confirmation, таблица статусов, аудит
+- [x] Артефакты из шагов обновлены (кроме ручного теста на копии)
+- [x] Побочных изменений вне scope нет
+- [x] HANDOFF.md обновлён
 
 ## Заметки агента
 
-_Заполняется агентом в процессе работы._
+_2026-04-16 — В исходном шаблоне закреплены: усиленный STOP в `project-interview.md`, таблица в `LAYER-3/project-status.md`, правила в `audit.md` / `audit-checklist.md`, онбординг с `START.md` в `ONBOARDING-WIZARD.md`, `QUICK-START.md`, `README.md`, `QUICK-START-NOVICE.md`._

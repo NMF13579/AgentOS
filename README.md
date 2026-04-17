@@ -30,6 +30,17 @@
 
 ## 🚀 Quick Start · Быстрый старт
 
+---
+
+> **Не знаешь с чего начать?**
+>
+> | Если ты... | Твой первый файл |
+> |---|---|
+> | Никогда не работал с AI-агентами | [QUICK-START-NOVICE.md](./QUICK-START-NOVICE.md) — 3 шага, без терминала |
+> | Уже пробовал Cursor или Claude Code | [QUICK-START.md](./QUICK-START.md) — быстрая настройка |
+
+---
+
 <div align="center">
 
 [![🔰 I'm a beginner · Я новичок](https://img.shields.io/badge/🔰_I'm_a_beginner_·_Я_новичок-2ea44f?style=for-the-badge&logoColor=white)](./QUICK-START-NOVICE.md)
@@ -66,9 +77,10 @@
 ### GUI-поток запуска (без терминала)
 
 1. Открой папку проекта в Cursor/Claude Code.
-2. Нажми `Cmd/Ctrl + K`.
-3. Вставь шаблон из `QUICK-START.md`.
-4. Нажми **Run** и подтверди предложенный следующий шаг.
+2. Опционально открой в корне [`START.md`](./START.md) — единая точка входа шаблона.
+3. Нажми `Cmd/Ctrl + K`.
+4. Вставь шаблон из [`QUICK-START.md`](./QUICK-START.md) (там сначала `START.md`, затем `llms.txt`).
+5. Нажми **Run** и подтверди предложенный следующий шаг.
 
 Для продвинутой кастомизации (LLM, `.cursor/`, `.claude/`, MCP, CLI):  
 [`ADVANCED-SETUP.md`](./ADVANCED-SETUP.md)
@@ -172,6 +184,15 @@ curl -fsSL https://raw.githubusercontent.com/NMF13579/Vibe-coding-docs/main/inst
 [![Bolt](https://img.shields.io/badge/Bolt-8b44ac?style=for-the-badge&logoColor=white)](./LAYER-1/system-prompt.md)
 
 </div>
+
+| IDE / Среда | Файл конфигурации | Уровень поддержки |
+|---|---|---|
+| Claude Code | [CLAUDE.md](./CLAUDE.md), [.claude/](./.claude/) | ✅ Полная |
+| Cursor | [.cursor/rules/](./.cursor/rules/) | ✅ Полная |
+| GitHub Copilot | [copilot-instructions.md](./.github/copilot-instructions.md) | ✅ Полная |
+| OpenCode | [opencode.json](./opencode.json) | ⚠️ Базовая |
+| Gemini | [GEMINI.md](./GEMINI.md) | ⚠️ Минимальная |
+| Lovable / Bolt | [system-prompt.md](./LAYER-1/system-prompt.md) | ⚠️ Через system prompt |
 
 ---
 

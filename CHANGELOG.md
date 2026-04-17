@@ -61,6 +61,8 @@ text
 ### 📚 Документация
 - Все файлы добавлены в навигацию `README.md`
 - Проведена сквозная проверка ссылок и терминологии
+- Закреплена связка Discovery: stop-point и Confirmation в `LAYER-2/discovery/project-interview.md`, таблица подтверждений с **Approved by** в `LAYER-3/project-status.md`, правила HEALTH-SCORE в `LAYER-1/audit.md` и `LAYER-1/audit-checklist.md`
+- GUI-онбординг и быстрый старт: в шаблонах запроса первым читается `START.md`, затем `llms.txt` (`ONBOARDING-WIZARD.md`, `QUICK-START.md`, `README.md`, `QUICK-START-NOVICE.md`)
 
 [0.3.2] — 2026-04-10
 Изменено

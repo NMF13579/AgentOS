@@ -62,6 +62,11 @@ Use the corresponding docs directly:
 audit → `LAYER-1/audit.md` + `LAYER-1/audit-checklist.md`, features → `LAYER-1/feature-radar.md`,
 context guard → follow `CLAUDE.md` save triggers manually.
 
+Canonical rules (one source per concern):
+- Stage routing → `40-stage-routing.mdc` only (31 removed)
+- Document priority → `50-doc-priority.mdc` only (32 removed)
+- Scope guard → `60-scope-guard.mdc` only (33 removed)
+
 ## Working principles
 
 - Prefer existing repository docs over assumptions.

@@ -5,4 +5,4 @@
 
 ## Статус
 
-Смотри [`LAYER-3/project-status.md`](../LAYER-3/project-status.md) (обновлено 2026-04-16: финальная выверка — `TASK-001`, `levels-guide.md`, `mvp-scope` / `post-launch-review`; см. также [`HANDOFF.md`](../HANDOFF.md)).
+Смотри [`LAYER-3/project-status.md`](../LAYER-3/project-status.md) (обновлено 2026-04-17: `FIX-PLAN.md`; сверка `stages/` vs `40-stage-routing.mdc`; см. [`HANDOFF.md`](../HANDOFF.md)).

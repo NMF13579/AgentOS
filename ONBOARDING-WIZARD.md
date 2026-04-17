@@ -17,7 +17,7 @@
 1. Открой Cursor.
 2. Нажми `File` → `Open Folder`.
 3. Выбери папку проекта.
-4. Убедись, что слева видны `README.md`, `LAYER-1/`, `LAYER-2/`, `LAYER-3/`.
+4. Убедись, что слева видны `START.md`, `README.md`, `LAYER-1/`, `LAYER-2/`, `LAYER-3/`.
 
 ### Вариант B: Claude Code (GUI)
 
@@ -46,7 +46,7 @@
 2. Вставь шаблон:
 
 ```md
-Прочитай `README.md`, `llms.txt`, `HANDOFF.md`, `LAYER-3/project-status.md`.
+Прочитай `START.md`, затем `llms.txt`, затем `HANDOFF.md` и `LAYER-3/project-status.md`.
 Моя цель: [впиши цель].
 ПДн: [да/нет].
 Интеграции: [перечисли или "не нужны"].
