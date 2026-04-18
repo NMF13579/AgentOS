@@ -23,7 +23,7 @@ Blockers:
 - ""
 
 Что сделано в последней сессии:
-- Итерация 3: audit-checklist, dialog-style медблок, rollback-protocol, decision-guide развилки 15-17
+- Канонизация adapter-файлов: логика в LAYER-1/session-lifecycle, plan-and-scope-gate, stage-routing, instruction-priority, read-order-and-triggers; state-transitions.md; блок health-аудита в audit.md; адаптеры — только entry point
 
 Что должен сделать следующий агент первым шагом:
 - Прочитать LAYER-3/STATE.md
@@ -38,6 +38,7 @@ Blockers:
 |---|---|---|---|
 | 2026-04-18 | MAINTENANCE | Итерация 3 завершена | Итерация 1 state-machine |
 | 2026-04-18 | MAINTENANCE | В ARCHITECTURE.md: State Control Plane + Принцип каноничности (роли файлов) | Итерация 1 state-machine |
+| 2026-04-18 | MAINTENANCE | IDE entry points → указатели; новые модули LAYER-1/ для логики сессии, плана, этапов, приоритетов | Итерация 1 state-machine |
 
 ---
 

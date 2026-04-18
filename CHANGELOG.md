@@ -46,6 +46,11 @@ text
 ### Добавлено
 - `ARCHITECTURE.md`: раздел **State Control Plane** (компоненты control plane, три домена состояния) и **Принцип каноничности** (роли `llms.txt`, `STATE.md`, `project-status.md`, `HANDOFF.md`; правило нового правила).
 
+## [adapter-canonicalization] — 2026-04-18
+### Изменено
+- `CLAUDE.md`, `.github/copilot-instructions.md`, `GEMINI.md`, `AGENTS.md`, `.cursor/rules/*.mdc`: только entry point (bootstrap + canonical sources).
+- `LAYER-1/`: добавлены `session-lifecycle.md`, `plan-and-scope-gate.md`, `stage-routing.md`, `instruction-priority.md`, `read-order-and-triggers.md`, `state-transitions.md`; в `audit.md` — блок «Фокус: аудит здоровья / готовности»; в `agent-rules.md` — ссылки на эти модули.
+
 ## [1.1.1] - 2026-04-17
 ### Изменено
 - Чеклист аудита объединён с протоколом AUDIT-FULL: раздел «Чеклист аудита» в `LAYER-1/audit.md`; файл `LAYER-1/audit-checklist.md` удалён; маршруты (`llms.txt`, README, правила IDE и др.) обновлены.

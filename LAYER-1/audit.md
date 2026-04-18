@@ -21,6 +21,22 @@
 
 ---
 
+## Фокус: аудит здоровья / готовности
+
+Когда задача — оценка здоровья документации или готовности (без полного AUDIT-FULL, если владелец не выбрал его выше), читать по порядку:
+
+1. `LAYER-1/audit.md` (этот файл — протокол и **«Чеклист аудита»**)
+2. `LAYER-1/task-protocol.md`
+3. `LAYER-1/security.md`
+4. `LAYER-3/project-status.md`
+5. `LAYER-3/security.md` (если есть)
+
+Ответ простым языком: что уже надёжно, чего не хватает, где риски, **один** лучший следующий шаг. Честно указать, если данных мало.
+
+Для сценария с агентом в Claude Code см. `.claude/agents/audit-agent.md` (если используется).
+
+---
+
 ## Правило — подтверждённое интервью (Discovery)
 
 Если интервью по [`LAYER-2/discovery/project-interview.md`](../LAYER-2/discovery/project-interview.md) завершено и в [`LAYER-3/project-status.md`](../LAYER-3/project-status.md) для `LAYER-2/discovery/interview-summary.md` указано **`accepted`** с заполненным **Approved by**, направление «Продукт» в HEALTH-SCORE можно считать 🟢 **по оси «итог интервью зафиксирован»** — при отсутствии других причин для 🔴.

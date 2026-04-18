@@ -46,6 +46,8 @@
 ---
 <!-- конец протокола — ниже существующее содержимое agent-rules.md -->
 
+Канон вынесен из adapter-файлов: [`session-lifecycle.md`](./session-lifecycle.md), [`plan-and-scope-gate.md`](./plan-and-scope-gate.md), [`stage-routing.md`](./stage-routing.md), [`instruction-priority.md`](./instruction-priority.md), [`read-order-and-triggers.md`](./read-order-and-triggers.md); переходы — [`state-transitions.md`](./state-transitions.md).
+
 > Trigger: Старт сессии, конфликт инструкций, модульный пайплайн
 > Read-time: ~20 min
 > Filled-by: agent / both

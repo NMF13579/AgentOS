@@ -1,6 +1,6 @@
 # Project Status
 
-> Updated: 2026-04-18 (ARCHITECTURE State Control Plane)
+> Updated: 2026-04-18 (adapter canonicalization LAYER-1)
 
 ## Текущий этап
 
@@ -27,6 +27,8 @@
 Пояснение: знаки `❓` в исходном шаблоне ожидаемы до начала реального проекта.
 
 ## Последнее действие
+
+2026-04-18 — **Адаптеры → LAYER-1:** логика из `CLAUDE.md`, Copilot, `GEMINI.md`, `AGENTS.md`, `.cursor/rules/*.mdc` вынесена в `session-lifecycle.md`, `plan-and-scope-gate.md`, `stage-routing.md`, `instruction-priority.md`, `read-order-and-triggers.md`; `state-transitions.md`; блок в `audit.md`; адаптеры заменены на entry template. См. [`HANDOFF.md`](../HANDOFF.md).
 
 2026-04-18 — **ARCHITECTURE:** в [`ARCHITECTURE.md`](../ARCHITECTURE.md) после «Поток данных и решений» добавлены **State Control Plane** (компоненты, три домена) и **Принцип каноничности** (роли `llms.txt`, STATE, project-status, HANDOFF; правило нового правила). См. [`HANDOFF.md`](../HANDOFF.md).
 
