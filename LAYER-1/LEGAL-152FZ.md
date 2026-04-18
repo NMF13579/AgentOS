@@ -88,5 +88,5 @@
 
 ## Связанные документы
 
-- Медицинский UX: [`LAYER-1/ux-checklist-medical.md`](./ux-checklist-medical.md)
+- Медицинский UX: [`LAYER-1/ux-checklist-medical.md`](./LAYER-1/ux-checklist-medical.md)
 - Техническая безопасность: [`security.md`](./security.md)
