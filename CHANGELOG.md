@@ -37,6 +37,10 @@ text
 
 ## История
 
+## [agent-bootstrap-deprecated-stub] — 2026-04-19
+### Изменено
+- `LAYER-1/agent-bootstrap.md`: stub DEPRECATED → канон в `agent-rules.md`; мост «Наследие agent-bootstrap.md» в `agent-rules.md` после STATE AUTHORITY TABLE.
+
 ## [agent-rules-bootstrap-v3] — 2026-04-19
 ### Добавлено
 - `LAYER-1/agent-rules.md`: префикс BOOTSTRAP (event-dictionary / state-transitions, roadmap, CONTEXT_RESTORED), блок при отсутствии `STATE.md`, таблица **STATE AUTHORITY TABLE** (ответственность за файлы).

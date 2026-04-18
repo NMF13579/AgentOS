@@ -28,6 +28,8 @@
 
 ## Последнее действие
 
+2026-04-19 — **agent-bootstrap:** восстановлен stub [`agent-bootstrap.md`](../LAYER-1/agent-bootstrap.md) (DEPRECATED → `agent-rules.md`); в [`agent-rules.md`](../LAYER-1/agent-rules.md) — мост «Наследие agent-bootstrap.md». См. [`HANDOFF.md`](../HANDOFF.md).
+
 2026-04-19 — **agent-rules:** в начало [`agent-rules.md`](../LAYER-1/agent-rules.md) добавлены расширенный BOOTSTRAP (roadmap, CONTEXT_RESTORED, ветка «если нет STATE.md»), **STATE AUTHORITY TABLE** (кто обновляет какие файлы). См. [`HANDOFF.md`](../HANDOFF.md).
 
 2026-04-19 — **HANDOFF:** сброс к шаблону TASK-001 (Session History 2 строки); расширенный снимок в [`CHANGELOG.md`](../CHANGELOG.md) → `## [2026-04-19] Pre-state-layer history`. См. [`HANDOFF.md`](../HANDOFF.md).
