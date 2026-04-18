@@ -1,3 +1,30 @@
+# TERMINAL SESSION SNAPSHOT
+<!-- Заполняется агентом при завершении каждой сессии -->
+<!-- Следующий агент начинает чтение именно отсюда -->
+
+## State при завершении сессии
+Project state: ""
+Session state: HANDOFF
+Task state: ""
+Active task: ""
+Last transition: "" → ""
+Last event: ""
+
+## Next allowed actions
+- ""
+
+## Blockers
+- ""
+
+## Что сделано в этой сессии
+- ""
+
+## Что должен сделать следующий агент первым шагом
+- ""
+
+---
+<!-- ниже существующее содержимое HANDOFF.md -->
+
 # HANDOFF — где мы остановились
 
 ## Project Name
@@ -8,6 +35,10 @@
 > Агент обновляет этот файл после каждой сессии.
 
 ## Что мы делали в последний раз
+
+**HANDOFF.md — TERMINAL SESSION SNAPSHOT** (2026-04-18):
+
+- В начало [`HANDOFF.md`](./HANDOFF.md) добавлен блок **TERMINAL SESSION SNAPSHOT** (state при завершении, next allowed actions, blockers, итог сессии, первый шаг следующего агента; поля в стиле `Project state` / `Session state`).
 
 **Оптимизация документов — ШАГ 1д** (2026-04-17):
 
@@ -142,4 +173,4 @@
 
 ## Применимые уроки
 
-- Перед началом сессии: `LAYER-3/project-status.md`, `LAYER-3/lessons.md`, `LAYER-3/session-log.md`.
+- Перед началом сессии: верх [`HANDOFF.md`](./HANDOFF.md) (**TERMINAL SESSION SNAPSHOT**), `LAYER-3/project-status.md`, `LAYER-3/lessons.md`, `LAYER-3/session-log.md`.
