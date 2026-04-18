@@ -47,7 +47,7 @@
 - Деплой                      → [LAYER-1/deploy-guide.md](./LAYER-1/deploy-guide.md)
 - Откат после деплоя (прод сломан) → [LAYER-1/tools/deploy/ROLLBACK-PROTOCOL-POST-DEPLOY.md](./LAYER-1/tools/deploy/ROLLBACK-PROTOCOL-POST-DEPLOY.md)
 - Роли агентов, запреты, Medical Reviewer, pipeline → [LAYER-1/agents.md](./LAYER-1/agents.md)
-- UX: все чеклисты (структура экранов, a11y, мобильный, медицина, таблицы, поиск, оглавление) → [LAYER-1/ux-checklist-core.md](./LAYER-1/ux-checklist-core.md) (внутри — разделы `# UX-CHECKLIST-…`; оглавление: `# UX-CHECKLIST-INDEX.md`)
+- UX: все чеклисты (структура экранов, a11y, мобильный, медицина, таблицы, поиск, оглавление) → [LAYER-1/ux-checklist-core.md](./LAYER-1/ux-checklist-core.md) (основные разделы — внутри; medical — [LAYER-1/ux-checklist-medical.md](./LAYER-1/ux-checklist-medical.md); оглавление: `# UX-CHECKLIST-INDEX.md`)
 - Аудит проекта               → [LAYER-1/audit.md](./LAYER-1/audit.md)
 - Проверка пакета в новой AI-среде → [LAYER-1/audit.md](./LAYER-1/audit.md) (раздел «Чеклист аудита»)
 - Проверка задачи             → [LAYER-1/task-protocol.md](./LAYER-1/task-protocol.md)
