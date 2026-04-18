@@ -1,6 +1,6 @@
 # Project Status
 
-> Updated: 2026-04-19 (atomic-decisions.md)
+> Updated: 2026-04-19 (roadmap.md формальный)
 
 ## Текущий этап
 
@@ -27,6 +27,8 @@
 Пояснение: знаки `❓` в исходном шаблоне ожидаемы до начала реального проекта.
 
 ## Последнее действие
+
+2026-04-19 — **roadmap:** [`roadmap.md`](./roadmap.md) — формальный список задач (формат TASK-NNN, Backlog с TASK-001, Done). См. [`HANDOFF.md`](../HANDOFF.md).
 
 2026-04-19 — **atomic-decisions:** создан [`atomic-decisions.md`](./atomic-decisions.md) — журнал атомарных решений (шаблон записи, статусы ACTIVE / SUPERSEDED / REVERTED). См. [`HANDOFF.md`](../HANDOFF.md).
 

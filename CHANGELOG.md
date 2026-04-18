@@ -49,6 +49,10 @@ text
 ### Добавлено
 - `LAYER-3/atomic-decisions.md`: журнал решений по развилкам из `decision-guide.md`, шаблон строки, статусы ACTIVE / SUPERSEDED / REVERTED.
 
+## [roadmap-formal] — 2026-04-19
+### Изменено
+- `LAYER-3/roadmap.md`: формальный roadmap с форматом задачи, Backlog (TASK-001), секция Done.
+
 ## [2026-04-19] — 2026-04-19
 ### Изменено
 - `HANDOFF.md`: новый Terminal Snapshot (TASK-001), Session History, Persistent Context; предыдущая версия — в конце файла под `## [2026-04-19] Pre-state-layer history`.
