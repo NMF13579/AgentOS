@@ -1,6 +1,6 @@
 # Project Status
 
-> Updated: 2026-04-19 (roadmap.md формальный)
+> Updated: 2026-04-19 (HANDOFF reset + CHANGELOG archive)
 
 ## Текущий этап
 
@@ -27,6 +27,8 @@
 Пояснение: знаки `❓` в исходном шаблоне ожидаемы до начала реального проекта.
 
 ## Последнее действие
+
+2026-04-19 — **HANDOFF:** сброс к шаблону TASK-001 (Session History 2 строки); расширенный снимок в [`CHANGELOG.md`](../CHANGELOG.md) → `## [2026-04-19] Pre-state-layer history`. См. [`HANDOFF.md`](../HANDOFF.md).
 
 2026-04-19 — **roadmap:** [`roadmap.md`](./roadmap.md) — формальный список задач (формат TASK-NNN, Backlog с TASK-001, Done). См. [`HANDOFF.md`](../HANDOFF.md).
 

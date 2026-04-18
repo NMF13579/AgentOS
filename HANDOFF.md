@@ -40,9 +40,6 @@ Blockers: нет
 |---|---|---|---|
 | 2026-04-18 | MAINTENANCE | Итерация 3 завершена | State Layer Migration |
 | 2026-04-19 | MAINTENANCE | Архитектурный анализ, план итерации 1 | TASK-001 |
-| 2026-04-19 | MAINTENANCE | `state-transitions.md`: полные машины Project/Session/Task + illegal | TASK-001 |
-| 2026-04-19 | MAINTENANCE | `atomic-decisions.md`: журнал атомарных решений (шаблон + статусы) | TASK-001 |
-| 2026-04-19 | MAINTENANCE | `roadmap.md`: формальный список задач, TASK-001 в Backlog | TASK-001 |
 
 ---
 
