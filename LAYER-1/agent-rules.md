@@ -1,3 +1,105 @@
+---
+# BOOTSTRAP PROTOCOL
+<!-- Выполняется строго до любых других действий в любой сессии -->
+<!-- События из event-dictionary.md, переходы из state-transitions.md -->
+
+## Шаги (порядок строгий):
+1. Прочитать LAYER-3/STATE.md
+   → определить Project / Session / Task state
+   → проверить forbidden и next_allowed_actions
+2. Прочитать LAYER-3/project-status.md (narrative)
+3. Прочитать LAYER-3/roadmap.md (активные задачи)
+4. Прочитать LAYER-3/session-log.md
+5. Если active_task не пустой → прочитать описание задачи
+6. Сообщить пользователю:
+   - Project state / Session state / Task state
+   - Active task (если есть)
+   - Next allowed actions
+   - Blockers (если есть)
+7. Выполнить переход Session: BOOTSTRAP → CONTEXT_LOADED (событие: CONTEXT_RESTORED)
+8. [BOOTSTRAP COMPLETE] — только теперь начинать работу
+
+## Если STATE.md не существует:
+→ Сообщить: "STATE.md не найден. Требуется инициализация state layer."
+→ Предложить выполнить П-2 из плана State Layer Migration.
+→ Не начинать работу до создания STATE.md.
+
+---
+
+# STATE AUTHORITY TABLE
+<!-- Кто что обновляет и когда -->
+
+| Файл | Кто обновляет | Когда |
+|---|---|---|
+| LAYER-3/STATE.md | агент | при каждом переходе состояния |
+| HANDOFF.md Terminal | агент | конец каждой сессии |
+| LAYER-3/session-log.md | агент | конец каждой сессии |
+| LAYER-3/project-status.md | агент | завершение задачи |
+| LAYER-3/roadmap.md | пользователь добавляет, агент обновляет статус | по ходу работы |
+| LAYER-3/atomic-decisions.md | агент | при прохождении развилки |
+| LAYER-1/* | владелец | при изменении политики |
+| CLAUDE.md / .cursorrules / AGENTS.md | владелец | при изменении IDE |
+| llms.txt | владелец | при добавлении нового маршрута |
+
+### Наследие `agent-bootstrap.md`
+
+Исторический файл **`agent-bootstrap.md`** (до слияния в этот документ) задавал расширенную диагностику: `shared/priority-order.md`, `lessons` / `fixes` / `features`, матрица IDE, **чеклист**, **формат отчёта**, **вопросы для пробелов**, блок **«Предложение следующих шагов»** и правило вывода **`[BOOTSTRAP COMPLETE]`**. Всё это сохранено ниже в разделе **«1. Инициализация агента (bootstrap)»** — отдельных уникальных разделов сверх этого префикса **не осталось**.
+
+Если достаточно **STATE-first** цепочки в начале файла — раздел 1 можно не дублировать в одной сессии; при потере контекста, уровне 1+ или симптомах из `context-recovery.md` выполняй **полный** раздел 1 как прежний `agent-bootstrap.md`.
+
+---
+<!-- конец добавленного блока — ниже следует существующее содержимое -->
+
+# BOOTSTRAP PROTOCOL
+<!-- Выполняется строго до любых других действий -->
+
+## Шаги (порядок строгий):
+1. Прочитать LAYER-3/STATE.md
+   → определить Project / Session / Task state
+   → проверить forbidden и next_allowed_actions
+2. Прочитать LAYER-3/project-status.md
+3. Прочитать LAYER-3/session-log.md
+4. Прочитать LAYER-3/atomic-decisions.md
+5. Прочитать активную задачу (если active_task не пустой)
+6. Сообщить пользователю:
+   - текущий Project state
+   - текущий Task state
+   - next_allowed_actions
+   - блокеры (если есть)
+7. Перевести Session state: BOOTSTRAP → CONTEXT_LOADED
+8. [BOOTSTRAP COMPLETE] — только теперь начинать работу
+
+---
+
+# STATE AUTHORITY
+
+| Переход | Инициатор | Подтверждение пользователя |
+|---|---|---|
+| INIT → DISCOVERY | агент | нет |
+| DISCOVERY → PLANNING | агент | нет |
+| PLANNING → DEVELOPMENT | агент | ДА — явное "да" |
+| DEVELOPMENT → REVIEW | агент | нет |
+| REVIEW → RELEASE_READY | агент после audit | нет |
+| RELEASE_READY → MAINTENANCE | агент | ДА — явное "да" |
+| любая → ERROR | агент | нет |
+| AWAITING_CONFIRMATION → EXECUTING | агент | ДА — явное "да" |
+
+---
+
+# HANDOFF PROTOCOL
+
+При завершении каждой сессии:
+1. Обновить LAYER-3/STATE.md (все три домена)
+2. Дописать в LAYER-3/session-log.md: [YYYY-MM-DD] [state] [сделано] [следующий шаг]
+3. Обновить LAYER-3/project-status.md
+4. Перевести Session state → HANDOFF
+5. Обновить Terminal Snapshot в HANDOFF.md
+
+---
+<!-- конец протокола — ниже существующее содержимое agent-rules.md -->
+
+Канон вынесен из adapter-файлов: [`session-lifecycle.md`](./session-lifecycle.md), [`plan-and-scope-gate.md`](./plan-and-scope-gate.md), [`stage-routing.md`](./stage-routing.md), [`instruction-priority.md`](./instruction-priority.md), [`read-order-and-triggers.md`](./read-order-and-triggers.md), [`cursor-auto-actions.md`](./cursor-auto-actions.md); переходы — [`state-transitions.md`](./state-transitions.md).
+
 > Trigger: Старт сессии, конфликт инструкций, модульный пайплайн
 > Read-time: ~20 min
 > Filled-by: agent / both

@@ -1,6 +1,6 @@
 # Project Status
 
-> Updated: 2026-04-18 (LAYER-3/STATE.md)
+> Updated: 2026-04-19 (merge state layer → dev; см. HANDOFF)
 
 ## Текущий этап
 
@@ -28,7 +28,39 @@
 
 ## Последнее действие
 
-2026-04-18 — **STATE.md:** добавлен [`STATE.md`](./STATE.md) — машиночитаемое состояние проекта/сессии/задачи и guards для агентов. Черновой PR: https://github.com/NMF13579/Vibe-coding-docs/pull/21. См. [`HANDOFF.md`](../HANDOFF.md).
+2026-04-19 — **Merge в dev:** влита ветка `cursor/handoff-three-zone-restructure-e7fa` (state layer, HANDOFF-контракт, roadmap, atomic-decisions, event-dictionary, унификация IDE entry). См. [`HANDOFF.md`](../HANDOFF.md).
+
+2026-04-18 — **STATE.md:** добавлен [`STATE.md`](./STATE.md) — машиночитаемое состояние проекта/сессии/задачи и guards для агентов. PR: https://github.com/NMF13579/Vibe-coding-docs/pull/21. См. [`HANDOFF.md`](../HANDOFF.md).
+
+2026-04-19 — **Entry points + канон:** `CLAUDE.md`, `AGENTS.md`, `GEMINI.md`, Copilot, `.cursor/*` (rules + CLAUDE-WORKFLOW), `.claude/agents/*` — единый шаблон с `Navigation: llms.txt`; логика из `.claude/agents` и `CLAUDE-WORKFLOW` вынесена в `audit.md`, `session-lifecycle.md`, `cursor-auto-actions.md`. См. [`HANDOFF.md`](../HANDOFF.md).
+
+2026-04-19 — **agent-bootstrap:** восстановлен stub [`agent-bootstrap.md`](../LAYER-1/agent-bootstrap.md) (DEPRECATED → `agent-rules.md`); в [`agent-rules.md`](../LAYER-1/agent-rules.md) — мост «Наследие agent-bootstrap.md». См. [`HANDOFF.md`](../HANDOFF.md).
+
+2026-04-19 — **agent-rules:** в начало [`agent-rules.md`](../LAYER-1/agent-rules.md) добавлены расширенный BOOTSTRAP (roadmap, CONTEXT_RESTORED, ветка «если нет STATE.md»), **STATE AUTHORITY TABLE** (кто обновляет какие файлы). См. [`HANDOFF.md`](../HANDOFF.md).
+
+2026-04-19 — **HANDOFF:** сброс к шаблону TASK-001 (Session History 2 строки); расширенный снимок в [`CHANGELOG.md`](../CHANGELOG.md) → `## [2026-04-19] Pre-state-layer history`. См. [`HANDOFF.md`](../HANDOFF.md).
+
+2026-04-19 — **roadmap:** [`roadmap.md`](./roadmap.md) — формальный список задач (формат TASK-NNN, Backlog с TASK-001, Done). См. [`HANDOFF.md`](../HANDOFF.md).
+
+2026-04-19 — **atomic-decisions:** создан [`atomic-decisions.md`](./atomic-decisions.md) — журнал атомарных решений (шаблон записи, статусы ACTIVE / SUPERSEDED / REVERTED). См. [`HANDOFF.md`](../HANDOFF.md).
+
+2026-04-19 — **state-transitions.md:** полная машина состояний (Project / Session / Task), illegal transitions и правила агента; события только из [`event-dictionary.md`](../LAYER-1/event-dictionary.md). См. [`HANDOFF.md`](../HANDOFF.md).
+
+2026-04-19 — **STATE.md v2:** [`STATE.md`](./STATE.md) переписан как **формальное** состояние (приоритет над этим файлом при конфликте); Session **BOOTSTRAP**, Task пустой, новый guard `close_task_without_review`, формат Transition Log `YYYY-MM-DD | Domain | Event | From → To`. Снимок сессии и TASK-001 — по-прежнему в [`HANDOFF.md`](../HANDOFF.md) до следующего перехода в STATE.
+
+2026-04-19 — **HANDOFF / STATE / roadmap:** новый контракт в [`HANDOFF.md`](../HANDOFF.md); [`STATE.md`](./STATE.md) — Task PLANNED, TASK-001; добавлен [`roadmap.md`](./roadmap.md); архив прежнего HANDOFF в [`CHANGELOG.md`](../CHANGELOG.md). См. [`HANDOFF.md`](../HANDOFF.md).
+
+2026-04-18 — **event-dictionary:** добавлен [`event-dictionary.md`](../LAYER-1/event-dictionary.md) — канон событий для переходов; см. [`state-transitions.md`](../LAYER-1/state-transitions.md). См. [`HANDOFF.md`](../HANDOFF.md).
+
+2026-04-18 — **llms.txt:** полная замена на навигационный индекс (bootstrap, situation routes, canonical sources). См. [`HANDOFF.md`](../HANDOFF.md).
+
+2026-04-18 — **Адаптеры → LAYER-1:** логика из `CLAUDE.md`, Copilot, `GEMINI.md`, `AGENTS.md`, `.cursor/rules/*.mdc` вынесена в `session-lifecycle.md`, `plan-and-scope-gate.md`, `stage-routing.md`, `instruction-priority.md`, `read-order-and-triggers.md`; `state-transitions.md`; блок в `audit.md`; адаптеры заменены на entry template. См. [`HANDOFF.md`](../HANDOFF.md).
+
+2026-04-18 — **ARCHITECTURE:** в [`ARCHITECTURE.md`](../ARCHITECTURE.md) после «Поток данных и решений» добавлены **State Control Plane** (компоненты, три домена) и **Принцип каноничности** (роли `llms.txt`, STATE, project-status, HANDOFF; правило нового правила). См. [`HANDOFF.md`](../HANDOFF.md).
+
+2026-04-18 — **HANDOFF / STATE:** [`HANDOFF.md`](../HANDOFF.md) — контракт из трёх зон (snapshot, history, persistent); журнал перенесён в [`CHANGELOG.md`](../CHANGELOG.md); [`STATE.md`](./STATE.md) — MAINTENANCE, iteration-1-state-machine.
+
+2026-04-18 — **agent-rules:** в начало [`agent-rules.md`](../LAYER-1/agent-rules.md) добавлены BOOTSTRAP, STATE AUTHORITY и HANDOFF протоколы (STATE.md, Terminal Snapshot). См. [`HANDOFF.md`](../HANDOFF.md).
 
 2026-04-17 — **Оптимизация ШАГ 1д + скан ссылок:** все UX-чеклисты в [`ux-checklist-core.md`](../LAYER-1/ux-checklist-core.md); удалены отдельные UX-файлы; скан относительных ссылок в `*.md` / `*.mdc` / `*.txt` — 0 битых. См. [`HANDOFF.md`](../HANDOFF.md).
 

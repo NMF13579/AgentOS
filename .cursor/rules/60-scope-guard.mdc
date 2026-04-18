@@ -3,40 +3,24 @@ description: Protect scope — no silent expansion, no unrequested refactoring
 alwaysApply: true
 ---
 
-# Scope Guard
+# 60-scope-guard.mdc — Agent Entry Point
 
-Do exactly what was confirmed. Nothing more.
+## Bootstrap (strict order)
+1. Read LAYER-3/STATE.md
+2. Read LAYER-3/project-status.md
+3. Read LAYER-1/agent-rules.md
+4. Follow LAYER-1/state-transitions.md
 
-## Hard rules
+## Canonical sources
+- Logic:         LAYER-1/
+- State:         LAYER-3/STATE.md
+- Architecture:  ARCHITECTURE.md
+- Handoff:       HANDOFF.md
+- Navigation:    llms.txt
 
-- **One task at a time** — complete current task before accepting the next
-- **No silent refactoring** — if you notice an improvement outside scope, log it, do not do it
-- **No new dependencies** — do not add packages, libraries, or services not in the plan
-- **No file creation outside plan** — every new file must be in the confirmed plan
-- **No config changes** — do not touch `.env`, CI, or infra files unless explicitly confirmed
+## Rule
+Project logic → LAYER-1/
+IDE-specific config → this file only
 
-## When scope grows during execution
-
-Stop immediately. Report:
-
-```
-🚧 СТОП — задача оказалась шире плана
-
-Обнаружил: [что нашёл]
-Это затрагивает: [файлы/компоненты]
-
-Варианты:
-А) Продолжить только текущий план, остальное — в следующую задачу
-Б) Обновить план и подтвердить снова
-
-Что делаем?
-```
-
-## Deferred log
-
-Every out-of-scope improvement must be logged:
-- In `LAYER-3/deferred-decisions.md` if it is an architectural choice
-- In `LAYER-3/features.md` if it is a feature idea
-- In `LAYER-3/fixes.md` if it is a known bug or tech debt
-
-Do not log in chat — only in files so it survives the session.
+> This file contains only pointers. No project logic here.
+---

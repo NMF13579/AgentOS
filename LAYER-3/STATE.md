@@ -1,21 +1,21 @@
-# STATE.md — Текущее состояние проекта
-<!-- Обновляется агентом при каждом переходе. Не редактировать вручную. -->
-<!-- Агент обязан прочитать этот файл ПЕРВЫМ при старте каждой сессии. -->
+# STATE.md — Формальное состояние системы
+<!-- АГЕНТ ЧИТАЕТ ЭТОТ ФАЙЛ ПЕРВЫМ при каждом старте сессии. -->
+<!-- Обновляется агентом при каждом переходе состояния. -->
+<!-- Не редактировать вручную без крайней необходимости. -->
+<!-- При конфликте с project-status.md → этот файл имеет приоритет. -->
 
 ---
 
-## Project State
-state: INIT
-sub_state: ""
-last_event: PROJECT_CREATED
-last_updated: ""
+## Project
+state: MAINTENANCE
+last_event: ITERATION_3_COMPLETED
+last_updated: 2026-04-19
 
-## Session State
+## Session
 state: BOOTSTRAP
 last_event: ""
-mode: ""
 
-## Task State
+## Task
 active_task: ""
 state: ""
 risk: ""
@@ -26,14 +26,13 @@ forbidden:
   - write_code_before_planning
   - release_without_audit
   - skip_self_verification
+  - close_task_without_review
 
-## Next Allowed Actions
-- read_START.md
-- launch_interview
+next_allowed_actions:
+  - read_HANDOFF.md
+  - read_project_status
+  - start_new_task_from_roadmap
 
 ## Transition Log
-- date: ""
-  domain: Project
-  from: "-"
-  to: INIT
-  event: PROJECT_CREATED
+<!-- Формат: YYYY-MM-DD | Domain | Event | From → To -->
+- 2026-04-19 | Project | ITERATION_3_COMPLETED | DEVELOPMENT → MAINTENANCE

@@ -1,80 +1,50 @@
----
 # Vibe-coding-docs
+> Navigation index. Not a policy source.
+> Логика: LAYER-1/ | Состояние: LAYER-3/ | Архитектура: ARCHITECTURE.md
 
-> ⚠️ ОБСЛУЖИВАНИЕ: при добавлении файла в LAYER-1/, LAYER-2/ или stages/ — добавить маршрут в этот файл.
-> Последнее обновление: 2026-04-17
-> Файлов в LAYER-1/ (markdown): 52 | Ссылок на LAYER-2/ в списке маршрутов ниже: 13
+---
 
-> Шаблон документации для AI-агентов.
-> Старт сессии: сначала `START.md`, затем этот файл.
+## Bootstrap (строгий порядок)
+1. LAYER-3/STATE.md
+2. LAYER-3/project-status.md
+3. LAYER-1/agent-rules.md
+4. HANDOFF.md
 
-## Всегда читать после START.md
+---
 
-- [HANDOFF.md](./HANDOFF.md) — состояние шаблона и следующий шаг
-- [LAYER-3/project-status.md](./LAYER-3/project-status.md) — статус пакета шаблона
+## Situation routes
 
-## Главная модель шаблона
+| Ситуация | Файл |
+|---|---|
+| Первый запуск | LAYER-1/interview-system.md |
+| Продолжение работы | LAYER-3/project-status.md |
+| Ошибка / откат | LAYER-1/error-handling.md |
+| Задача расползается | LAYER-1/scope-guard.md |
+| Потеря контекста | LAYER-1/context-recovery.md |
+| Конфликт инструкций | LAYER-1/agent-contract.md |
+| Деплой | LAYER-1/deploy-guide.md |
+| Откат после деплоя | LAYER-1/tools/deploy/ROLLBACK-PROTOCOL-POST-DEPLOY.md |
+| Аудит | LAYER-1/audit.md |
+| UX и экраны | LAYER-1/ux-checklist-core.md |
+| Безопасность | LAYER-1/security.md |
+| Тестирование | LAYER-1/testing-guide.md |
+| Workflow и этапы MVP | LAYER-1/workflow.md |
+| Антипаттерны | LAYER-1/anti-patterns.md |
+| Принятие решений | LAYER-1/decision-guide.md |
+| Роли агентов | LAYER-1/agents.md |
 
-- Основной поток: `shared/` + `stages/` + `project/PROJECT.md`
-- Полная библиотека правил: `LAYER-1/`, `LAYER-2/`, `LAYER-3/`
-- При конфликте приоритетов: [shared/priority-order.md](./shared/priority-order.md)
+---
 
-## Дополнительные маршруты и совместимость
+## Если маршрут не найден
 
-- Аудит ветки dev, сводка исправлений → [AUDIT-REPORT-DEV.md](./AUDIT-REPORT-DEV.md)
+Поищи по ключевому слову в LAYER-1/ или спроси владельца проекта.
+Не угадывай и не действуй без ориентира.
 
-## Claude Code — единое ТЗ и этапы (узкий контекст)
+---
 
-- [CLAUDE-CODE-FLOW.md](./CLAUDE-CODE-FLOW.md) — как устроен поток Claude Code
-- [project/PROJECT.md](./project/PROJECT.md) — живое ТЗ продукта (Discovery, UX, Specs, Deploy, Decisions)
-- Этап интервью → [stages/01-interview/BOOT.md](./stages/01-interview/BOOT.md)
-- Этап UX → [stages/02-ux/BOOT.md](./stages/02-ux/BOOT.md)
-- Этап разработки → [stages/03-dev/BOOT.md](./stages/03-dev/BOOT.md)
-- Этап деплоя → [stages/04-deploy/BOOT.md](./stages/04-deploy/BOOT.md)
-- Общие правила всех этапов → [shared/README.md](./shared/README.md)
-- Перед релизом → [CHECKLIST.md](./CHECKLIST.md)
-- Работаешь в **Cursor** → [.cursor/CLAUDE-WORKFLOW.md](./.cursor/CLAUDE-WORKFLOW.md) (тот же поток, что в [CLAUDE.md](./CLAUDE.md))
-
-## Маршруты по ситуации (читать ТОЛЬКО один нужный файл)
-
-- Первый запуск проекта       → [LAYER-1/interview-system.md](./LAYER-1/interview-system.md)
-- Продолжение работы          → [LAYER-3/project-status.md](./LAYER-3/project-status.md)
-- Ошибка или откат            → [LAYER-1/error-handling.md](./LAYER-1/error-handling.md)
-- Задача расползается         → [LAYER-1/scope-guard.md](./LAYER-1/scope-guard.md)
-- Выбор стека/архитектуры     → [LAYER-1/stack-presets.md](./LAYER-1/stack-presets.md)
-- Конфликт инструкций         → [LAYER-1/agent-rules.md](./LAYER-1/agent-rules.md)
-- Потеря контекста            → [LAYER-1/context-recovery.md](./LAYER-1/context-recovery.md)
-- Деплой                      → [LAYER-1/deploy-guide.md](./LAYER-1/deploy-guide.md)
-- Откат после деплоя (прод сломан) → [LAYER-1/tools/deploy/ROLLBACK-PROTOCOL-POST-DEPLOY.md](./LAYER-1/tools/deploy/ROLLBACK-PROTOCOL-POST-DEPLOY.md)
-- Роли агентов, запреты, Medical Reviewer, pipeline → [LAYER-1/agents.md](./LAYER-1/agents.md)
-- UX: все чеклисты (структура экранов, a11y, мобильный, медицина, таблицы, поиск, оглавление) → [LAYER-1/ux-checklist-core.md](./LAYER-1/ux-checklist-core.md)
-- Аудит проекта               → [LAYER-1/audit.md](./LAYER-1/audit.md)
-- Проверка пакета в новой AI-среде → [LAYER-1/audit.md](./LAYER-1/audit.md) (раздел «Чеклист аудита»)
-- Проверка задачи             → [LAYER-1/task-protocol.md](./LAYER-1/task-protocol.md)
-- Проверка результата, валидация задачи, PASS/FAIL, тест сценария → [LAYER-2/specs/validation.md](./LAYER-2/specs/validation.md)
-- Правила валидации полей, сообщения об ошибках форм → [LAYER-2/specs/validation-rules.md](./LAYER-2/specs/validation-rules.md)
-- Спеки фич (что и зачем, до разбивки на задачи) → [LAYER-2/specs/features/](./LAYER-2/specs/features/)
-- Шаблон для новой фичи → [LAYER-2/specs/features/_template.md](./LAYER-2/specs/features/_template.md)
-- Работа с пользователем      → [LAYER-1/dialog-style.md](./LAYER-1/dialog-style.md)
-- Описание бизнес-процессов   → [LAYER-2/discovery/processes.md](./LAYER-2/discovery/processes.md) (и при необходимости [roles.md](./LAYER-2/discovery/roles.md))
-- Видение продукта, «северная звезда», для кого и зачем → [LAYER-2/discovery/vision.md](./LAYER-2/discovery/vision.md)
-- MVP скоуп: что входит в первую версию, что за бортом  → [LAYER-2/discovery/mvp-scope.md](./LAYER-2/discovery/mvp-scope.md)
-- Профиль пользователя, целевая аудитория               → [LAYER-2/discovery/user-profile.md](./LAYER-2/discovery/user-profile.md)
-- UX-дизайн гайд: экраны, компоненты, флоу              → [LAYER-2/ux/UX-DESIGN-GUIDE.md](./LAYER-2/ux/UX-DESIGN-GUIDE.md)
-- Полный конвейер задач, этапы MVP, рабочий workflow → [LAYER-1/workflow.md](./LAYER-1/workflow.md)
-- Антипаттерны, что не делать → [LAYER-1/anti-patterns.md](./LAYER-1/anti-patterns.md)
-- Безопасность, секреты, чувствительные данные → [LAYER-1/security.md](./LAYER-1/security.md)
-- 152-ФЗ, персональные данные, медкомплаенс → [LAYER-1/LEGAL-152FZ.md](./LAYER-1/LEGAL-152FZ.md)
-- Prompt injection, защита промптов         → [LAYER-1/security.md](./LAYER-1/security.md) (раздел «Защита от prompt injection»)
-- Откат изменений (не деплой)               → [LAYER-1/error-handling.md](./LAYER-1/error-handling.md) (раздел «Процедура отката»)
-- Архитектура фреймворка                    → [ARCHITECTURE.md](./ARCHITECTURE.md)
-- Глоссарий терминов                        → [GLOSSARY.md](./GLOSSARY.md)
-- Адаптация под другой домен                → [DOMAIN-ADAPTER.md](./DOMAIN-ADAPTER.md)
-- Быстрый старт сессии (1 экран)            → [HANDOFF-SHORT.md](./HANDOFF-SHORT.md)
-- Глоссарий, термины простым языком → [LAYER-1/glossary.md](./LAYER-1/glossary.md)
-- Что добавить дальше, следующие фичи → [LAYER-1/feature-radar.md](./LAYER-1/feature-radar.md)
-- Тестирование, сценарии, чеклисты качества → [LAYER-1/testing-guide.md](./LAYER-1/testing-guide.md)
-- Развилки, выбор решений, гайд по принятию решений → [LAYER-1/decision-guide.md](./LAYER-1/decision-guide.md)
-- Гайд для владельца проекта, FAQ → [LAYER-1/owner.md](./LAYER-1/owner.md)
-- Диагностика агента, bootstrap при потере контекста → [LAYER-1/agent-rules.md](./LAYER-1/agent-rules.md)
-- Все UX Medical ссылки → [LAYER-1/ux-checklist-medical.md](./LAYER-1/ux-checklist-medical.md)
+## Canonical sources
+- Logic:        LAYER-1/
+- State:        LAYER-3/STATE.md
+- Status:       LAYER-3/project-status.md
+- Architecture: ARCHITECTURE.md
+- Handoff:      HANDOFF.md

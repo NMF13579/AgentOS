@@ -3,40 +3,24 @@ description: Docs over assumptions — canonical instruction priority + prefer r
 alwaysApply: true
 ---
 
-# Document Priority
+# 50-doc-priority.mdc — Agent Entry Point
 
-Repository documents are the single source of truth. Internal model knowledge is a fallback only.
+## Bootstrap (strict order)
+1. Read LAYER-3/STATE.md
+2. Read LAYER-3/project-status.md
+3. Read LAYER-1/agent-rules.md
+4. Follow LAYER-1/state-transitions.md
 
-## Conflict resolution (canonical)
+## Canonical sources
+- Logic:         LAYER-1/
+- State:         LAYER-3/STATE.md
+- Architecture:  ARCHITECTURE.md
+- Handoff:       HANDOFF.md
+- Navigation:    llms.txt
 
-Full hierarchy: [`shared/priority-order.md`](../../shared/priority-order.md).
+## Rule
+Project logic → LAYER-1/
+IDE-specific config → this file only
 
-When instructions conflict, follow this order (1 = highest):
-
-1. Active task file in `tasks/TASK-XXX.md`, if there is an open task
-2. `project/PROJECT.md` + `HANDOFF.md` + `LAYER-3/project-status.md`
-3. Active `stages/*/BOOT.md` (`priority` in frontmatter)
-4. `shared/scope-guard.md` → `shared/agent-contract.md` → stage-local doc → `shared/workflow.md`
-5. Topic-specific file in `LAYER-1/` or `LAYER-2/`
-6. `CLAUDE.md` and `LAYER-1/system-prompt.md`
-
-If two sources at the same level disagree, stop and ask the owner which wins. Do not pick silently.
-
-## Before answering any question about the project
-
-- Resolve conflicts using the canonical order above, then look for the answer in the repo.
-- Cite the file: "По `LAYER-3/project-status.md`:..."
-- If docs conflict with each other → flag it, do not silently pick one
-- If docs are missing info → say what is missing and where it should be added
-
-## Self-verification before every code response
-
-Run this checklist mentally before writing code:
-
-- [ ] Did I read the relevant `BOOT.md` for this stage?
-- [ ] Did I check `LAYER-2/specs/architecture.md` for stack decisions?
-- [ ] Did I check `LAYER-3/deferred-decisions.md` for relevant postponed choices?
-- [ ] Is my plan consistent with `HANDOFF.md` current task?
-- [ ] Am I within confirmed scope?
-
-If any item is unchecked → read the missing doc first, then reply.
+> This file contains only pointers. No project logic here.
+---
