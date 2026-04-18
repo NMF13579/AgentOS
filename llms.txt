@@ -47,7 +47,7 @@
 - Деплой                      → [LAYER-1/deploy-guide.md](./LAYER-1/deploy-guide.md)
 - Откат после деплоя (прод сломан) → [LAYER-1/tools/deploy/ROLLBACK-PROTOCOL-POST-DEPLOY.md](./LAYER-1/tools/deploy/ROLLBACK-PROTOCOL-POST-DEPLOY.md)
 - Роли агентов, запреты, Medical Reviewer, pipeline → [LAYER-1/agents.md](./LAYER-1/agents.md)
-- UX: все чеклисты (структура экранов, a11y, мобильный, медицина, таблицы, поиск, оглавление) → [LAYER-1/ux-checklist-core.md](./LAYER-1/ux-checklist-core.md) (внутри — разделы `# UX-CHECKLIST-…`; оглавление: `# UX-CHECKLIST-INDEX.md`)
+- UX: все чеклисты (структура экранов, a11y, мобильный, медицина, таблицы, поиск, оглавление) → [LAYER-1/ux-checklist-core.md](./LAYER-1/ux-checklist-core.md)
 - Аудит проекта               → [LAYER-1/audit.md](./LAYER-1/audit.md)
 - Проверка пакета в новой AI-среде → [LAYER-1/audit.md](./LAYER-1/audit.md) (раздел «Чеклист аудита»)
 - Проверка задачи             → [LAYER-1/task-protocol.md](./LAYER-1/task-protocol.md)
@@ -77,24 +77,4 @@
 - Развилки, выбор решений, гайд по принятию решений → [LAYER-1/decision-guide.md](./LAYER-1/decision-guide.md)
 - Гайд для владельца проекта, FAQ → [LAYER-1/owner.md](./LAYER-1/owner.md)
 - Диагностика агента, bootstrap при потере контекста → [LAYER-1/agent-rules.md](./LAYER-1/agent-rules.md)
-
-## Если подходящего маршрута нет
-
-**Не останавливайся и не предполагай — сначала ищи:**
-
-```bash
-rg -l "[тема запроса]" LAYER-1 --glob "*.md"
-rg -l "[тема запроса]" LAYER-2 --glob "*.md"
-```
-
-→ Прочитать первый релевантный результат.  
-→ Если grep ничего не нашёл — спросить владельца, не выдумывать.
-
-## Принципы агента
-
-- Один вопрос за раз
-- Не писать код без подтверждённого плана
-- При неясности — спросить, не предполагать
-- Приоритет источников: [shared/priority-order.md](./shared/priority-order.md)
-
----
+- Все UX Medical ссылки → [LAYER-1/ux-checklist-medical.md](./LAYER-1/ux-checklist-medical.md)
