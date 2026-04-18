@@ -37,6 +37,11 @@ text
 
 ## История
 
+## [1.1.1] - 2026-04-17
+### Изменено
+- Чеклист аудита объединён с протоколом AUDIT-FULL: раздел «Чеклист аудита» в `LAYER-1/audit.md`; файл `LAYER-1/audit-checklist.md` удалён; маршруты (`llms.txt`, README, правила IDE и др.) обновлены.
+- UX-чеклисты объединены в `LAYER-1/ux-checklist-core.md`; удалены `LAYER-1/ux-checklist-accessibility.md`, `ux-checklist-medical.md`, `ux-checklist-interactions.md`; `stages/02-ux/` — указатель на канон; обновлены `llms.txt`, `install.sh`, карта шаблона и перекрёстные ссылки.
+
 ## [1.1.0] - 2026-04-16
 ### 🔴 Критические исправления
 - Устранено противоречие «новичок vs терминал» (#1)

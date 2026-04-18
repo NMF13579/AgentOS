@@ -12,12 +12,11 @@ description: Проверяет состояние пакета документ
 1. `README.md`
 2. `CLAUDE.md`
 3. `HANDOFF.md`
-4. `LAYER-1/audit.md`
-5. `LAYER-1/audit-checklist.md`
-6. `LAYER-1/task-protocol.md`
-7. `LAYER-1/security.md`
-8. `LAYER-3/project-status.md`
-9. `LAYER-3/security.md`
+4. `LAYER-1/audit.md` (протокол и раздел «Чеклист аудита»)
+5. `LAYER-1/task-protocol.md`
+6. `LAYER-1/security.md`
+7. `LAYER-3/project-status.md`
+8. `LAYER-3/security.md`
 
 ## Что проверить
 

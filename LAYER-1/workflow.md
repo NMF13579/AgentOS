@@ -2,7 +2,7 @@
 > Read-time: ~45 min
 > Filled-by: agent
 > Needs-approval: no
-> Next: LAYER-1/agent-contract.md
+> Next: LAYER-1/agent-rules.md
 
 # WORKFLOW
 
@@ -345,7 +345,7 @@
 
 **Этап 6 — Диагностика**
 
-Запустить `LAYER-1/agent-bootstrap.md`. Показать отчёт готовности.
+Запустить `LAYER-1/agent-rules.md`. Показать отчёт готовности.
 
 **Этап 7 — Первая задача**
 
@@ -498,7 +498,7 @@
 2. Создать системный промпт рабочего пространства
 3. Создать `LAYER-3/` с languages.md, integrations.md, project-status.md
 4. Создать `LAYER-2/specs/roadmap.md`
-5. Запустить `LAYER-1/agent-bootstrap.md` → отчёт готовности
+5. Запустить `LAYER-1/agent-rules.md` → отчёт готовности
 
 **Этап 10 — Первая задача**
 
@@ -657,7 +657,7 @@
 
 **Этап 5 — Диагностика**
 
-Запустить `LAYER-1/agent-bootstrap.md`. Показать отчёт готовности.
+Запустить `LAYER-1/agent-rules.md`. Показать отчёт готовности.
 
 **Этап 6 — Рабочий режим**
 

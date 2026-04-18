@@ -62,4 +62,4 @@
 
 - Для сбоев выполнения: [`error-handling.md`](./LAYER-1/error-handling.md)
 - Для восстановления контекста: [`context-recovery.md`](./LAYER-1/context-recovery.md)
-- Для безопасного отката: [`ROLLBACK.md`](./LAYER-1/ROLLBACK.md)
+- Для безопасного отката: [`error-handling.md`](./LAYER-1/error-handling.md) — раздел «Процедура отката»

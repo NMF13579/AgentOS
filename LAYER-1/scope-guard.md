@@ -2,7 +2,7 @@
 > Read-time: ~10 min
 > Filled-by: agent
 > Needs-approval: no
-> Next: LAYER-1/agent-contract.md
+> Next: LAYER-1/agent-rules.md
 
 # SCOPE-CREEP-GUARD — Защита от расползания задач
 
@@ -63,7 +63,7 @@
    - «Продолжить с расширением скоупа»
    - «Откатить»
    - «Уточнить»
-5. **Фиксация решения** в рабочем контексте задачи (и при откате — по [`ROLLBACK.md`](./ROLLBACK.md)).
+5. **Фиксация решения** в рабочем контексте задачи (и при откате — по [`error-handling.md`](./error-handling.md), раздел «Процедура отката»).
 
 Фраза-шаблон:
 

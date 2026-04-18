@@ -34,4 +34,4 @@
 
 - [`AUDIT-REPORT.md`](./AUDIT-REPORT.md) — итоговый отчёт по этапам и качеству релиза шаблона.
 - [`LAYER-1/audit.md`](./LAYER-1/audit.md) — методология аудита уже **скопированного** проекта.
-- [`LAYER-1/audit-checklist.md`](./LAYER-1/audit-checklist.md) — чеклист проверки пакета в новой AI-среде.
+- [`LAYER-1/audit.md`](./LAYER-1/audit.md) — протокол аудита и чеклист (раздел «Чеклист аудита»), в т.ч. для новой AI-среды.

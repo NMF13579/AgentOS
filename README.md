@@ -56,7 +56,7 @@
 ### 🔄 Что нового в v1.1.0
 
 - GUI-онбординг для новичков: [`ONBOARDING-WIZARD.md`](./ONBOARDING-WIZARD.md)
-- Юридический и security-контур: [`LEGAL-152FZ.md`](./LAYER-1/LEGAL-152FZ.md), [`PROMPT-SECURITY.md`](./LAYER-1/PROMPT-SECURITY.md), [`ROLLBACK.md`](./LAYER-1/ROLLBACK.md)
+- Юридический и security-контур: [`LEGAL-152FZ.md`](./LAYER-1/LEGAL-152FZ.md), prompt injection: [`security.md`](./LAYER-1/security.md), откат: [`error-handling.md`](./LAYER-1/error-handling.md) («Процедура отката»)
 - Learning loop и инциденты: [`LEARNING-LOOP.md`](./LEARNING-LOOP.md), [`incidents/incident-template.md`](./incidents/incident-template.md)
 - Архитектура и глоссарий: [`ARCHITECTURE.md`](./ARCHITECTURE.md), [`GLOSSARY.md`](./GLOSSARY.md)
 
@@ -99,7 +99,7 @@
 | | Role / Роль | Path / Путь |
 |:---:|:---|:---|
 | [![](https://img.shields.io/badge/🔰_First_time_·_Первый_раз-2ea44f?style=flat-square)](./QUICK-START-NOVICE.md) | No coding or agent experience / Нет опыта с кодом | [QUICK-START-NOVICE.md](./QUICK-START-NOVICE.md) — 3 steps, no terminal |
-| [![](https://img.shields.io/badge/🩺_Doctor_·_Врач-e05c00?style=flat-square)](./QUICK-START-NOVICE.md) | Automate clinical routine or build medical service / Медицинский сервис | [NOVICE](./QUICK-START-NOVICE.md) → [ux-checklist-medical.md](./LAYER-1/ux-checklist-medical.md) |
+| [![](https://img.shields.io/badge/🩺_Doctor_·_Врач-e05c00?style=flat-square)](./QUICK-START-NOVICE.md) | Automate clinical routine or build medical service / Медицинский сервис | [NOVICE](./QUICK-START-NOVICE.md) → [ux-checklist-core.md](./LAYER-1/ux-checklist-core.md) (медицина: раздел `# UX-CHECKLIST-MEDICAL.md`) |
 | [![](https://img.shields.io/badge/🎨_Designer_·_Дизайнер-8b44ac?style=flat-square)](./QUICK-START-NOVICE.md) | Product idea, want prototype without code / Прототип без кода | [NOVICE](./QUICK-START-NOVICE.md) → [interview-system.md](./LAYER-1/interview-system.md) |
 | [![](https://img.shields.io/badge/📋_Manager_·_Менеджер-d4ac0d?style=flat-square)](./QUICK-START-NOVICE.md) | Validate idea and reach MVP fast / Идея → MVP быстро | [NOVICE](./QUICK-START-NOVICE.md) → [PROJECT.md](./project/PROJECT.md) |
 | [![](https://img.shields.io/badge/🔁_Lost_context_·_Потерял_контекст-c0392b?style=flat-square)](./HANDOFF.md) | Project exists but something went wrong / Что-то пошло не так | [HANDOFF.md](./HANDOFF.md) → [context-recovery.md](./LAYER-1/context-recovery.md) |
@@ -131,7 +131,7 @@ curl -fsSL https://raw.githubusercontent.com/NMF13579/Vibe-coding-docs/main/inst
 | [![](https://img.shields.io/badge/Restore_context_·_Восстанови_контекст-0366d6?style=flat-square)](./HANDOFF.md) | Resume an existing project session / Начать сессию по существующему проекту |
 | [![](https://img.shields.io/badge/Save_context_·_Сохрани_контекст-5c6bc0?style=flat-square)](./HANDOFF.md) | End session without losing progress / Закончить сессию без потерь |
 | [![](https://img.shields.io/badge/Everything_broke_·_Всё_сломалось-c0392b?style=flat-square)](./LAYER-1/error-handling.md) | Roll back changes when something went wrong / Откатить изменения |
-| [![](https://img.shields.io/badge/Check_release_readiness_·_Проверь_готовность-e67e22?style=flat-square)](./LAYER-1/audit-checklist.md) | Final check before deploy / Финальная проверка перед деплоем |
+| [![](https://img.shields.io/badge/Check_release_readiness_·_Проверь_готовность-e67e22?style=flat-square)](./LAYER-1/audit.md) | Final check before deploy / Финальная проверка перед деплоем |
 
 </div>
 
@@ -151,7 +151,7 @@ curl -fsSL https://raw.githubusercontent.com/NMF13579/Vibe-coding-docs/main/inst
 | Scope is creeping / Задача расползается | [![](https://img.shields.io/badge/scope--guard-e67e22?style=flat-square)](./LAYER-1/scope-guard.md) |
 | Onboarding для новичков | [![](https://img.shields.io/badge/ONBOARDING--WIZARD-2ea44f?style=flat-square)](./ONBOARDING-WIZARD.md) |
 | 152-ФЗ и мед-комплаенс | [![](https://img.shields.io/badge/LEGAL--152FZ-e05c00?style=flat-square)](./LAYER-1/LEGAL-152FZ.md) |
-| Prompt injection безопасность | [![](https://img.shields.io/badge/PROMPT--SECURITY-c0392b?style=flat-square)](./LAYER-1/PROMPT-SECURITY.md) |
+| Prompt injection безопасность | [![](https://img.shields.io/badge/security_·_prompts-c0392b?style=flat-square)](./LAYER-1/security.md) |
 | Learning loop по инцидентам | [![](https://img.shields.io/badge/LEARNING--LOOP-5c6bc0?style=flat-square)](./LEARNING-LOOP.md) |
 | Domain adapter | [![](https://img.shields.io/badge/DOMAIN--ADAPTER-8b44ac?style=flat-square)](./DOMAIN-ADAPTER.md) |
 | Архитектура фреймворка | [![](https://img.shields.io/badge/ARCHITECTURE-0366d6?style=flat-square)](./ARCHITECTURE.md) |
@@ -160,7 +160,7 @@ curl -fsSL https://raw.githubusercontent.com/NMF13579/Vibe-coding-docs/main/inst
 | Roll back changes / Откатить изменения | [![](https://img.shields.io/badge/error--handling-c0392b?style=flat-square)](./LAYER-1/error-handling.md) |
 | Roadmap & planning / Дорожная карта | [![](https://img.shields.io/badge/roadmap-8b44ac?style=flat-square)](./LAYER-2/specs/roadmap.md) |
 | Changelog / История изменений | [![](https://img.shields.io/badge/CHANGELOG-555?style=flat-square)](./CHANGELOG.md) |
-| Project audit / Аудит проекта | [![](https://img.shields.io/badge/audit-e05c00?style=flat-square)](./LAYER-1/audit.md) [![](https://img.shields.io/badge/audit--checklist-e05c00?style=flat-square)](./LAYER-1/audit-checklist.md) |
+| Project audit / Аудит проекта | [![](https://img.shields.io/badge/audit-e05c00?style=flat-square)](./LAYER-1/audit.md) [![](https://img.shields.io/badge/audit--checklist-e05c00?style=flat-square)](./LAYER-1/audit.md) |
 
 </div>
 

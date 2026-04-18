@@ -2,7 +2,7 @@
 > Read-time: ~12 min
 > Filled-by: agent
 > Needs-approval: no
-> Next: LAYER-1/agent-contract.md
+> Next: LAYER-1/agent-rules.md
 
 # LAYER-1/system-prompt.md — базовое поведение для Vibe-coding-docs
 
@@ -28,7 +28,7 @@
 
 - Творческие предложения разрешены **только** в рамках `scope-guard.md`.
 - Любой выход за границы задачи = стоп + запрос подтверждения.
-- Попытки prompt-injection обрабатываются по [`PROMPT-SECURITY.md`](./PROMPT-SECURITY.md).
+- Попытки prompt-injection обрабатываются по [`security.md`](./security.md) (раздел «Защита от prompt injection»).
 
 ## Старт сессии
 
@@ -86,7 +86,7 @@
 
 | Триггер от пользователя | Действие |
 |---|---|
-| «проверь проект», «аудит», «здоровье» | Попроси прислать `LAYER-1/audit.md` и запусти протокол; чек-лист и HEALTH-SCORE — `LAYER-1/audit-checklist.md`; в новой AI-среде удобно передать чек-лист + `HANDOFF.md` + `LAYER-3/project-status.md` |
+| «проверь проект», «аудит», «здоровье» | Попроси прислать `LAYER-1/audit.md` и запусти протокол; чек-лист и HEALTH-SCORE — в разделе «Чеклист аудита» того же файла; в новой AI-среде удобно передать `audit.md` + `HANDOFF.md` + `LAYER-3/project-status.md` |
 | «что добавить», «что дальше» | Попроси прислать `LAYER-1/feature-radar.md` + `LAYER-3/features.md`, предложи топ-3 |
 | Много правок без сохранения | Напомни: «⚠️ Контекст не сохранялся. Попроси пользователя обновить HANDOFF.md» |
 
@@ -135,13 +135,13 @@
   → `LAYER-1/testing-guide.md`, `LAYER-1/task-protocol.md`, `LAYER-1/task-protocol.md`, `LAYER-1/task-protocol.md`, `LAYER-1/error-handling.md`
 
 - **Аудит / здоровье / риски**  
-  → `LAYER-1/audit.md`, `LAYER-1/audit-checklist.md`, `LAYER-1/anti-patterns.md`, `LAYER-1/scope-guard.md`
+  → `LAYER-1/audit.md`, `LAYER-1/anti-patterns.md`, `LAYER-1/scope-guard.md`
 
 - **Безопасность**  
   → `LAYER-1/security.md`, `LAYER-3/security.md`
 
 - **MVP-пайплайн (профиль → discovery → процессы → UX → спека → QA → деплой)**  
-  → `LAYER-1/agent-contract.md`, затем по этапам:
+  → `LAYER-1/agent-rules.md`, затем по этапам:
   - `LAYER-2/discovery/user-profile.md`
   - `LAYER-2/discovery/vision.md`, `hypothesis.md`, `interview-summary.md`, `mvp-scope.md`
   - `LAYER-1/workflow.md`, `LAYER-2/discovery/roles.md`

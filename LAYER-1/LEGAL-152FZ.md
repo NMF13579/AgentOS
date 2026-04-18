@@ -88,5 +88,5 @@
 
 ## Связанные документы
 
-- Медицинский UX: [`ux-checklist-medical.md`](./ux-checklist-medical.md)
+- Медицинский UX: [`ux-checklist-core.md`](./ux-checklist-core.md) (раздел `# UX-CHECKLIST-MEDICAL.md`)
 - Техническая безопасность: [`security.md`](./security.md)

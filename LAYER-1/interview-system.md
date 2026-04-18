@@ -304,7 +304,7 @@
 | Развилка с выбором | `LAYER-1/decision-guide.md` |
 | Незнакомый термин | `LAYER-1/glossary.md` |
 | Стиль общения | `LAYER-1/dialog-style.md` |
-| Диагностика готовности | `LAYER-1/agent-bootstrap.md` |
+| Диагностика готовности | `LAYER-1/agent-rules.md` (разд. 1) |
 | Ошибка или поломка     | `LAYER-1/testing-guide.md → LAYER-1/error-handling.md` |
 | Потеря контекста       | `LAYER-1/context-recovery.md` |
 | Запрос новой функции   | `LAYER-1/scope-guard.md` |
@@ -313,7 +313,7 @@
 | Ошибка в процессе      | `LAYER-1/error-handling.md` |
 | Долгая память проекта  | `LAYER-3/PROJECT-MEMORY.md` *(создаётся агентом при инициализации)* |
 | Перед деплоем          | `LAYER-1/task-protocol.md` (общий шаблон); чеклист конкретного продукта — `LAYER-1/tools/deploy/DEPLOY-CHECKLIST.md` (см. `LAYER-1/tools/template-sync-index.md` / [`llms.txt`](../llms.txt)) |
-| Полный MVP-пайплайн (профиль → деплой) | `LAYER-1/agent-contract.md` и дерево `LAYER-2/discovery` (в т.ч. `processes.md`, `roles.md`), `LAYER-2/ux`, `LAYER-2/specs`, `LAYER-2/qa`, `LAYER-1/tools/deploy` |
+| Полный MVP-пайплайн (профиль → деплой) | `LAYER-1/agent-rules.md` (разд. 2) и дерево `LAYER-2/discovery` (в т.ч. `processes.md`, `roles.md`), `LAYER-2/ux`, `LAYER-2/specs`, `LAYER-2/qa`, `LAYER-1/tools/deploy` |
 
 ---
 
@@ -419,7 +419,7 @@ MEDICAL:
 
 ## MVP blueprint — модульная структура документов
 
-Путь от профиля до деплоя с исходниками в репозитории (см. также `LAYER-1/agent-contract.md`).
+Путь от профиля до деплоя с исходниками в репозитории (см. также `LAYER-1/agent-rules.md`).
 
 | Этап | Цель | Выходные файлы |
 |------|------|----------------|

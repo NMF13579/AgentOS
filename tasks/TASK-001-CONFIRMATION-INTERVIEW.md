@@ -17,7 +17,7 @@
 
 ## Цель
 
-Добавить в `LAYER-2/discovery/project-interview.md` явный stop-point и секцию `## Confirmation`, обновить `LAYER-3/project-status.md` и при необходимости `LAYER-1/audit-checklist.md` (HEALTH-SCORE), а также карту в `LAYER-1/tools/template-sync-index.md` / `README.md`, чтобы статус `accepted` выставлялся только после явного согласия пользователя.
+Добавить в `LAYER-2/discovery/project-interview.md` явный stop-point и секцию `## Confirmation`, обновить `LAYER-3/project-status.md` и при необходимости раздел «Чеклист аудита» в `LAYER-1/audit.md` (HEALTH-SCORE), а также карту в `LAYER-1/tools/template-sync-index.md` / `README.md`, чтобы статус `accepted` выставлялся только после явного согласия пользователя.
 
 ## Шаги
 
@@ -44,10 +44,10 @@
 - [x] Стоп-поинт и явное правило до записи в `interview-summary.md` — в [`LAYER-2/discovery/project-interview.md`](../LAYER-2/discovery/project-interview.md)
 - [x] Секция `## Confirmation` с логикой вопроса/ответа — там же
 - [x] `LAYER-3/project-status.md` — таблица **Подтверждение ключевых артефактов** с колонкой **Approved by**
-- [x] `LAYER-1/audit-checklist.md` — критерий по подтверждённому `interview-summary.md`; `LAYER-1/audit.md` — правило 🟢 по оси «итог интервью зафиксирован»
+- [x] `LAYER-1/audit.md` — критерий по подтверждённому `interview-summary.md` (в разделе «Чеклист аудита»); в основном тексте `audit.md` — правило 🟢 по оси «итог интервью зафиксирован»
 - [x] Карта: процедура подтверждения — в [`LAYER-1/tools/template-sync-index.md`](../LAYER-1/tools/template-sync-index.md) (блок Discovery); вход с `START.md` — в [`README.md`](../README.md)
 - [ ] Тестовый сценарий пройден полностью на **живой копии проекта**:
-  1. Агент создает саммари → 2. Пользователь подтверждает → 3. `accepted` в `LAYER-3/project-status.md` → 4. 🟢 в HEALTH-SCORE (`audit-checklist`)
+  1. Агент создает саммари → 2. Пользователь подтверждает → 3. `accepted` в `LAYER-3/project-status.md` → 4. 🟢 в HEALTH-SCORE (`audit.md`, раздел чеклиста)
 
 ## Зависимости
 
@@ -64,4 +64,4 @@
 
 ## Заметки агента
 
-_2026-04-16 — В исходном шаблоне закреплены: усиленный STOP в `project-interview.md`, таблица в `LAYER-3/project-status.md`, правила в `audit.md` / `audit-checklist.md`, онбординг с `START.md` в `ONBOARDING-WIZARD.md`, `QUICK-START.md`, `README.md`, `QUICK-START-NOVICE.md`._
+_2026-04-16 — В исходном шаблоне закреплены: усиленный STOP в `project-interview.md`, таблица в `LAYER-3/project-status.md`, правила в `audit.md` (протокол и чеклист), онбординг с `START.md` в `ONBOARDING-WIZARD.md`, `QUICK-START.md`, `README.md`, `QUICK-START-NOVICE.md`._

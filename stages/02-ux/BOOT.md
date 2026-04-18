@@ -15,7 +15,7 @@ priority: scope-guard > agent-contract > local-doc > workflow
 
 1. `project/PROJECT.md` (секции 1–2 минимум)
 2. `shared/agent-contract.md`
-3. `stages/02-ux/ux-checklist-core.md` и при необходимости остальные чеклисты в этой папке
+3. `LAYER-1/ux-checklist-core.md` (все UX-чеклисты в одном файле; оглавление — раздел `# UX-CHECKLIST-INDEX.md` внутри него)
 
 ## Обязательное правило
 

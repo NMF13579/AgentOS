@@ -1,6 +1,6 @@
 # agent-contract — контракт агента (shared)
 
-> Полная версия с модулями и таблицами: [`../LAYER-1/agent-contract.md`](../LAYER-1/agent-contract.md)
+> Полная версия (bootstrap + контракт + разграничение): [`../LAYER-1/agent-rules.md`](../LAYER-1/agent-rules.md)
 
 ## Роль
 

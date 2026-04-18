@@ -1,6 +1,6 @@
 # Project Status
 
-> Updated: 2026-04-17 (Iteration 1)
+> Updated: 2026-04-17 (ШАГ 1д UX-чеклисты)
 
 ## Текущий этап
 
@@ -28,6 +28,16 @@
 
 ## Последнее действие
 
+2026-04-17 — **Оптимизация ШАГ 1д + скан ссылок:** все UX-чеклисты в [`ux-checklist-core.md`](../LAYER-1/ux-checklist-core.md); удалены отдельные UX-файлы; скан относительных ссылок в `*.md` / `*.mdc` / `*.txt` — 0 битых. См. [`HANDOFF.md`](../HANDOFF.md).
+
+2026-04-17 — **Оптимизация ШАГ 1г:** чеклист аудита в [`audit.md`](../LAYER-1/audit.md); `audit-checklist.md` удалён. См. [`HANDOFF.md`](../HANDOFF.md).
+
+2026-04-17 — **Оптимизация ШАГ 1в:** prompt injection в [`security.md`](../LAYER-1/security.md); `PROMPT-SECURITY.md` удалён. См. [`HANDOFF.md`](../HANDOFF.md).
+
+2026-04-17 — **Оптимизация ШАГ 1б:** протокол отката в [`error-handling.md`](../LAYER-1/error-handling.md); `ROLLBACK.md` удалён. См. [`HANDOFF.md`](../HANDOFF.md).
+
+2026-04-17 — **Оптимизация ШАГ 1а:** [`agent-rules.md`](../LAYER-1/agent-rules.md) (merge bootstrap + contract); обновлены ссылки; удалены старые файлы в `LAYER-1/`. См. [`HANDOFF.md`](../HANDOFF.md).
+
 2026-04-17 — **Iteration 1:** цепочка в [`error-handling.md`](../LAYER-1/error-handling.md); [`HANDOFF-SHORT.md`](../HANDOFF-SHORT.md); алиас [`SYSTEM_PROMPT.md`](../SYSTEM_PROMPT.md); маршруты в [`llms.txt`](../llms.txt); user-блок в [`self-verification.md`](../LAYER-1/self-verification.md). См. [`HANDOFF.md`](../HANDOFF.md).
 
 2026-04-17 — **Merge:** без конфликт-маркеров в [`HANDOFF-SHORT.md`](../HANDOFF-SHORT.md) и [`SYSTEM_PROMPT.md`](../SYSTEM_PROMPT.md); содержимое объединено из веток. См. [`HANDOFF.md`](../HANDOFF.md).
@@ -40,8 +50,8 @@
 
 2026-04-16 — **Адаптеры интервью:** ядро в [`LAYER-1/tools/adapters/README.md`](../LAYER-1/tools/adapters/README.md#adapter-core), дельты в `*-INTERVIEW-CONTROL.md`; обновлены [`HANDOFF.md`](../HANDOFF.md) и [`memory-bank/project-status.md`](../memory-bank/project-status.md).
 
-2026-04-16 — **TASK-001 + онбординг:** таблица подтверждений Discovery и **Approved by** в этом файле; усилены [`project-interview.md`](../LAYER-2/discovery/project-interview.md), [`audit.md`](../LAYER-1/audit.md), [`audit-checklist.md`](../LAYER-1/audit-checklist.md); `START.md` в [`ONBOARDING-WIZARD.md`](../ONBOARDING-WIZARD.md), [`QUICK-START.md`](../QUICK-START.md), [`README.md`](../README.md), [`QUICK-START-NOVICE.md`](../QUICK-START-NOVICE.md); [`CHANGELOG.md`](../CHANGELOG.md); задача [`TASK-001`](../tasks/TASK-001-CONFIRMATION-INTERVIEW.md) — закрыта по шаблону.
+2026-04-16 — **TASK-001 + онбординг:** таблица подтверждений Discovery и **Approved by** в этом файле; усилены [`project-interview.md`](../LAYER-2/discovery/project-interview.md), [`audit.md`](../LAYER-1/audit.md) (протокол и чеклист); `START.md` в [`ONBOARDING-WIZARD.md`](../ONBOARDING-WIZARD.md), [`QUICK-START.md`](../QUICK-START.md), [`README.md`](../README.md), [`QUICK-START-NOVICE.md`](../QUICK-START-NOVICE.md); [`CHANGELOG.md`](../CHANGELOG.md); задача [`TASK-001`](../tasks/TASK-001-CONFIRMATION-INTERVIEW.md) — закрыта по шаблону.
 
 2026-04-16 — **Финальная выверка маршрутов:** [`tasks/TASK-001-CONFIRMATION-INTERVIEW.md`](../tasks/TASK-001-CONFIRMATION-INTERVIEW.md); [`LAYER-1/levels-guide.md`](../LAYER-1/levels-guide.md); [`LAYER-2/discovery/mvp-scope.md`](../LAYER-2/discovery/mvp-scope.md); [`LAYER-2/qa/post-launch-review.md`](../LAYER-2/qa/post-launch-review.md); обновлены [`HANDOFF.md`](../HANDOFF.md) и [`memory-bank/project-status.md`](../memory-bank/project-status.md).
 
-2026-04-16 — **Уборка остаточного шума:** [`.cursor/rules/50-doc-priority.mdc`](../.cursor/rules/50-doc-priority.mdc) ↔ [`shared/priority-order.md`](../shared/priority-order.md); устаревшие имена в [`LAYER-1/system-prompt.md`](../LAYER-1/system-prompt.md), [`LAYER-1/interview-system.md`](../LAYER-1/interview-system.md), [`LAYER-1/tools/template-sync-index.md`](../LAYER-1/tools/template-sync-index.md), [`LAYER-1/workflow.md`](../LAYER-1/workflow.md), [`LAYER-1/agent-contract.md`](../LAYER-1/agent-contract.md), [`LAYER-1/dialog-style.md`](../LAYER-1/dialog-style.md); сжат [`LAYER-1/audit-checklist.md`](../LAYER-1/audit-checklist.md); шапка [`llms.txt`](../llms.txt); адаптеры интервью: `project-interview.md`. Ранее: `AUDIT-REPORT-DEV.md`, дубли `31/32/33` (сняты 2026-04-17), `Next` в `LAYER-2/`, скан ссылок.
+2026-04-16 — **Уборка остаточного шума:** [`.cursor/rules/50-doc-priority.mdc`](../.cursor/rules/50-doc-priority.mdc) ↔ [`shared/priority-order.md`](../shared/priority-order.md); устаревшие имена в [`LAYER-1/system-prompt.md`](../LAYER-1/system-prompt.md), [`LAYER-1/interview-system.md`](../LAYER-1/interview-system.md), [`LAYER-1/tools/template-sync-index.md`](../LAYER-1/tools/template-sync-index.md), [`LAYER-1/workflow.md`](../LAYER-1/workflow.md), [`LAYER-1/agent-rules.md`](../LAYER-1/agent-rules.md), [`LAYER-1/dialog-style.md`](../LAYER-1/dialog-style.md); сжат чеклист в [`LAYER-1/audit.md`](../LAYER-1/audit.md); шапка [`llms.txt`](../llms.txt); адаптеры интервью: `project-interview.md`. Ранее: `AUDIT-REPORT-DEV.md`, дубли `31/32/33` (сняты 2026-04-17), `Next` в `LAYER-2/`, скан ссылок.

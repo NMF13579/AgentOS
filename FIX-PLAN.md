@@ -20,7 +20,7 @@
 ## 🔲 Группа 3 — Желательные (в процессе)
 - [x] Создан этот файл `FIX-PLAN.md`
 - [ ] Синхронизированы названия этапов в stages/ и .cursor/rules/
-- [ ] Расширен `LAYER-1/ux-checklist-medical.md`: офлайн-режим, HL7 FHIR, тайм-аут сессии
+- [ ] Расширен медицинский раздел в `LAYER-1/ux-checklist-core.md` (`# UX-CHECKLIST-MEDICAL.md`): офлайн-режим, HL7 FHIR, тайм-аут сессии
 
 ## 📋 Оставшиеся задачи (следующая итерация)
 - Добавить Conflict Resolution Protocol в `LAYER-1/decision-guide.md`
