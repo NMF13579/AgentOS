@@ -1,6 +1,6 @@
 # Project Status
 
-> Updated: 2026-04-18 (agent-rules bootstrap + handoff protocol)
+> Updated: 2026-04-18 (HANDOFF трёхзонный + STATE MAINTENANCE)
 
 ## Текущий этап
 
@@ -27,6 +27,8 @@
 Пояснение: знаки `❓` в исходном шаблоне ожидаемы до начала реального проекта.
 
 ## Последнее действие
+
+2026-04-18 — **HANDOFF / STATE:** [`HANDOFF.md`](../HANDOFF.md) — контракт из трёх зон (snapshot, history, persistent); журнал перенесён в [`CHANGELOG.md`](../CHANGELOG.md); [`STATE.md`](./STATE.md) — MAINTENANCE, iteration-1-state-machine.
 
 2026-04-18 — **agent-rules:** в начало [`agent-rules.md`](../LAYER-1/agent-rules.md) добавлены BOOTSTRAP, STATE AUTHORITY и HANDOFF протоколы (STATE.md, Terminal Snapshot). См. [`HANDOFF.md`](../HANDOFF.md).
 
