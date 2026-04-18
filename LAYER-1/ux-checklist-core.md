@@ -4,6 +4,26 @@
 > Needs-approval: no
 > Next: LAYER-2/ux/
 
+---
+
+## Quick Route
+
+> Цель: быстро выбрать нужный чеклист без чтения всего файла.
+
+**Алгоритм:**
+1. Определи тип проекта — общий или медицинский
+2. Выбери стартовую точку из ссылок ниже
+3. Для медицинского — обязательно открой Medical после Default
+
+**Быстрые ссылки:**
+- [Starter Flow](#ux-checklist-starterflowmd) — с чего начать
+- [Index](#ux-checklist-indexmd) — полная карта файла
+- [Default](#ux-checklist-defaultmd) — базовый чеклист
+- [Fallback](#ux-checklist-fallbackmd) — минимальный режим
+- [Medical](./ux-checklist-medical.md) — клинический чеклист (standalone, frozen)
+
+---
+
 # UX-CHECKLIST-DEFAULT.md
 
 # UX-CHECKLIST-DEFAULT.md
