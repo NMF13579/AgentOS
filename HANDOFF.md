@@ -1,53 +1,54 @@
 # HANDOFF.md — Session Handoff Contract
-<!-- Terminal Snapshot ПЕРЕЗАПИСЫВАЕТСЯ агентом при каждом завершении сессии -->
-<!-- Session History ДОПИСЫВАЕТСЯ, не перезаписывается -->
-<!-- Persistent Context МЕНЯЕТСЯ редко -->
+<!-- Terminal Snapshot: перезаписывается агентом при каждом завершении сессии. -->
+<!-- Session History: только дозапись, одна строка на сессию. -->
+<!-- Persistent Context: меняется редко, только при изменении архитектуры. -->
 <!-- Историческое → CHANGELOG.md | Формальное состояние → LAYER-3/STATE.md -->
 
 ---
 
 ## Terminal Snapshot
-<!-- ПЕРЕЗАПИСЫВАЕТСЯ каждую сессию -->
+<!-- Агент ПЕРЕЗАПИСЫВАЕТ этот блок при завершении каждой сессии -->
 
 Project state: MAINTENANCE
 Session state: HANDOFF
-Task state: ""
-Active task: ""
+Task state: PLANNED
+Active task: TASK-001 State Layer Migration
 Last event: ITERATION_3_COMPLETED
-Last transition: DEVELOPMENT → MAINTENANCE
-
-Next allowed actions:
-- continue_iteration_1_state_machine
-
-Blockers:
-- ""
+Last transition: DEVELOPMENT → MAINTENANCE (2026-04-19)
 
 Что сделано в последней сессии:
-- Добавлен [`LAYER-1/event-dictionary.md`](./LAYER-1/event-dictionary.md) — канон событий по доменам Project / Session / Task и запрещённые события; связка с [`state-transitions.md`](./LAYER-1/state-transitions.md)
+- Итерация 3 завершена: audit-checklist (7 направлений), dialog-style медблок,
+  rollback-protocol-post-deploy, decision-guide развилки 15-17
 
 Что должен сделать следующий агент первым шагом:
-- Прочитать LAYER-3/STATE.md
-- Выполнить промты итерации 1 state-machine migration
+1. Прочитать LAYER-3/STATE.md
+2. Прочитать LAYER-3/project-status.md
+3. Прочитать LAYER-3/roadmap.md → найти TASK-001
+4. Выполнить П-7 … П-10 этой последовательности промтов
+
+Next allowed actions:
+- continue TASK-001 (State Layer Migration)
+
+Blockers: нет
 
 ---
 
 ## Session History
-<!-- ДОПИСЫВАЕТСЯ. Одна строка на сессию. -->
+<!-- Дозапись. Одна строка на сессию. Не редактировать старые записи. -->
 
 | Дата | Project state | Что сделано | Следующий шаг |
 |---|---|---|---|
-| 2026-04-18 | MAINTENANCE | Итерация 3 завершена | Итерация 1 state-machine |
-| 2026-04-18 | MAINTENANCE | В ARCHITECTURE.md: State Control Plane + Принцип каноничности (роли файлов) | Итерация 1 state-machine |
-| 2026-04-18 | MAINTENANCE | IDE entry points → указатели; новые модули LAYER-1/ для логики сессии, плана, этапов, приоритетов | Итерация 1 state-machine |
-| 2026-04-18 | MAINTENANCE | `llms.txt` переписан: navigation index, bootstrap, situation routes | Итерация 1 state-machine |
-| 2026-04-18 | MAINTENANCE | `event-dictionary.md`: канон событий для state-transitions | Итерация 1 state-machine |
+| 2026-04-18 | MAINTENANCE | Итерация 3 завершена | State Layer Migration |
+| 2026-04-19 | MAINTENANCE | Архитектурный анализ, план итерации 1 | TASK-001 |
 
 ---
 
 ## Persistent Context
-<!-- МЕНЯЕТСЯ редко -->
+<!-- Меняется только при изменении архитектуры или стека -->
 
+Тип проекта: документационный фреймворк для AI-агентов (vibe coding)
+Стек: Markdown, GitHub, агентные среды (Cursor, Claude Code, OpenCode)
 Ключевые решения: LAYER-3/atomic-decisions.md
-Архитектурные ограничения: ARCHITECTURE.md
-Стек: документационный фреймворк для AI-агентов
-Критические зависимости: LAYER-1/ (28 файлов), LAYER-2/, LAYER-3/
+Архитектура: ARCHITECTURE.md
+Критические зависимости: LAYER-1/ (28 файлов), LAYER-3/
+Принцип: agent/IDE files — adapters only, вся логика — в LAYER-1/

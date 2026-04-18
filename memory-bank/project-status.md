@@ -5,4 +5,4 @@
 
 ## Статус
 
-Смотри [`LAYER-3/project-status.md`](../LAYER-3/project-status.md) (обновлено 2026-04-18: `event-dictionary.md`; см. [`HANDOFF.md`](../HANDOFF.md)).
+Смотри [`LAYER-3/project-status.md`](../LAYER-3/project-status.md) (обновлено 2026-04-19: HANDOFF + TASK-001; см. [`HANDOFF.md`](../HANDOFF.md)).

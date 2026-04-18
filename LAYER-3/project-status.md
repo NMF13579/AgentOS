@@ -1,6 +1,6 @@
 # Project Status
 
-> Updated: 2026-04-18 (event-dictionary.md)
+> Updated: 2026-04-19 (HANDOFF + STATE TASK-001)
 
 ## Текущий этап
 
@@ -27,6 +27,8 @@
 Пояснение: знаки `❓` в исходном шаблоне ожидаемы до начала реального проекта.
 
 ## Последнее действие
+
+2026-04-19 — **HANDOFF / STATE / roadmap:** новый контракт в [`HANDOFF.md`](../HANDOFF.md); [`STATE.md`](./STATE.md) — Task PLANNED, TASK-001; добавлен [`roadmap.md`](./roadmap.md); архив прежнего HANDOFF в [`CHANGELOG.md`](../CHANGELOG.md). См. [`HANDOFF.md`](../HANDOFF.md).
 
 2026-04-18 — **event-dictionary:** добавлен [`event-dictionary.md`](../LAYER-1/event-dictionary.md) — канон событий для переходов; см. [`state-transitions.md`](../LAYER-1/state-transitions.md). См. [`HANDOFF.md`](../HANDOFF.md).
 
