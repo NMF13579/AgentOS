@@ -1,6 +1,6 @@
 # Project Status
 
-> Updated: 2026-04-18 (adapter canonicalization LAYER-1)
+> Updated: 2026-04-18 (llms.txt navigation index)
 
 ## Текущий этап
 
@@ -27,6 +27,8 @@
 Пояснение: знаки `❓` в исходном шаблоне ожидаемы до начала реального проекта.
 
 ## Последнее действие
+
+2026-04-18 — **llms.txt:** полная замена на навигационный индекс (bootstrap, situation routes, canonical sources). См. [`HANDOFF.md`](../HANDOFF.md).
 
 2026-04-18 — **Адаптеры → LAYER-1:** логика из `CLAUDE.md`, Copilot, `GEMINI.md`, `AGENTS.md`, `.cursor/rules/*.mdc` вынесена в `session-lifecycle.md`, `plan-and-scope-gate.md`, `stage-routing.md`, `instruction-priority.md`, `read-order-and-triggers.md`; `state-transitions.md`; блок в `audit.md`; адаптеры заменены на entry template. См. [`HANDOFF.md`](../HANDOFF.md).
 

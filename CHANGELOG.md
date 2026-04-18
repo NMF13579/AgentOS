@@ -51,6 +51,10 @@ text
 - `CLAUDE.md`, `.github/copilot-instructions.md`, `GEMINI.md`, `AGENTS.md`, `.cursor/rules/*.mdc`: только entry point (bootstrap + canonical sources).
 - `LAYER-1/`: добавлены `session-lifecycle.md`, `plan-and-scope-gate.md`, `stage-routing.md`, `instruction-priority.md`, `read-order-and-triggers.md`, `state-transitions.md`; в `audit.md` — блок «Фокус: аудит здоровья / готовности»; в `agent-rules.md` — ссылки на эти модули.
 
+## [llms-navigation-index] — 2026-04-18
+### Изменено
+- `llms.txt`: полностью заменён на навигационный индекс (не policy source): bootstrap, таблица situation routes, canonical sources.
+
 ## [1.1.1] - 2026-04-17
 ### Изменено
 - Чеклист аудита объединён с протоколом AUDIT-FULL: раздел «Чеклист аудита» в `LAYER-1/audit.md`; файл `LAYER-1/audit-checklist.md` удалён; маршруты (`llms.txt`, README, правила IDE и др.) обновлены.
