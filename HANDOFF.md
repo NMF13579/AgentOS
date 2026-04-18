@@ -9,6 +9,10 @@
 
 ## Что мы делали в последний раз
 
+**ARCHITECTURE.md — State Control Plane и каноничность** (2026-04-18):
+
+- В [`ARCHITECTURE.md`](./ARCHITECTURE.md) после «Поток данных и решений» добавлены разделы **State Control Plane** (гибрид LAYER-1 / LAYER-3, таблица компонентов, три домена) и **Принцип каноничности** (adapters vs policy, список adapter files).
+
 **Оптимизация документов — ШАГ 1д** (2026-04-17):
 
 - Содержимое `LAYER-1/ux-checklist-accessibility.md`, `ux-checklist-medical.md`, `ux-checklist-interactions.md` перенесено в [`LAYER-1/ux-checklist-core.md`](./LAYER-1/ux-checklist-core.md); три отдельных файла удалены; [`stages/02-ux/ux-checklist-core.md`](./stages/02-ux/ux-checklist-core.md) — указатель на канон; ссылки и `install.sh` обновлены.
