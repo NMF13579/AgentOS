@@ -8,6 +8,8 @@
 
 Документ покрывает **диагностику и bootstrap** (как войти в контекст). Локальная точка входа для контракта: `LAYER-1/agent-contract.md` (канонический source of truth пока в `shared/agent-contract.md`). Детали этапов — в `LAYER-2/`, `LAYER-1/workflow.md`, `stages/*/BOOT.md`.
 
+Канонические модули, вынесенные из adapter-файлов IDE: [`session-lifecycle.md`](./session-lifecycle.md), [`plan-and-scope-gate.md`](./plan-and-scope-gate.md), [`stage-routing.md`](./stage-routing.md), [`instruction-priority.md`](./instruction-priority.md), [`read-order-and-triggers.md`](./read-order-and-triggers.md); переходы состояния — [`state-transitions.md`](./state-transitions.md).
+
 ---
 
 ## 1. Инициализация агента (bootstrap)

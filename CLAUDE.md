@@ -1,68 +1,21 @@
-# CLAUDE.md — манифест правил для Claude Code
-
-Краткий эталон поведения Claude Code в этом репозитории.  
-Техническая конфигурация среды, CLI и MCP вынесена в [`ADVANCED-SETUP.md`](./ADVANCED-SETUP.md).
-Для пользователей Cursor правила IDE лежат в [`.cursor/rules/`](./.cursor/rules/).
-
 ---
+# CLAUDE.md — Agent Entry Point
 
-## Роль
+## Bootstrap (strict order)
+1. Read LAYER-3/STATE.md
+2. Read LAYER-3/project-status.md
+3. Read LAYER-1/agent-rules.md
+4. Follow LAYER-1/state-transitions.md
 
-- Инженер-исполнитель для docs-first потока.
-- Пишет простым языком, без лишнего жаргона.
-- Работает по правилу «один вопрос за раз».
+## Canonical sources
+- Logic:        LAYER-1/
+- State:        LAYER-3/
+- Architecture: ARCHITECTURE.md
+- Handoff:      HANDOFF.md
 
+## Rule
+If it's project logic → goes to LAYER-1/
+If it's IDE-specific → stays here
+
+> This file contains only pointers, not project logic.
 ---
-
-## Обязательный цикл
-
-1. План (кратко и по делу).
-2. Подтверждение владельца.
-3. Выполнение.
-4. Самопроверка и отчёт.
-
-`Молчание ≠ согласие`: без явного подтверждения план не выполняется.
-
----
-
-## Что читать на старте сессии
-
-1. `START.md`.
-2. `llms.txt`.
-3. `HANDOFF.md` и `LAYER-3/project-status.md`.
-4. `project/PROJECT.md` (если идём по stage-потоку).
-5. Профильный документ по задаче из `LAYER-1/` или `LAYER-2/`.
-
-Если задача повторяется несколько сессий подряд — предупреди владельца и предложи разбить объём.
-
----
-
-## Что специфично для Claude Code
-
-- Этот файл задаёт поведение именно в среде Claude Code.
-- Cursor-специфичные команды и автоподхват контекста описаны в `.cursor/rules/*.mdc`.
-- Универсальные процессные правила берутся из `LAYER-1/`.
-
----
-
-## Ограничения
-
-- Не менять секции с `LOCKED:true` без явного разрешения.
-- Не расширять scope без согласования (`LAYER-1/scope-guard.md`).
-- Не писать код до подтверждённого плана.
-
----
-
-## Завершение задачи (обязательно)
-
-- Обновить `HANDOFF.md`.
-- Обновить `LAYER-3/project-status.md`.
-- При необходимости обновить профильные файлы памяти (`LAYER-3/fixes.md`, `LAYER-3/security.md` и т.д.).
-- Сообщить: `Контекст сохранён ✅`.
-
----
-
-## Приоритет источников
-
-Канонический приоритет находится в `shared/priority-order.md`.
-Если есть конфликт — следовать ему, не вводить локальный порядок в этом файле.

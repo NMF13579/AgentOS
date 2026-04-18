@@ -1,7 +1,21 @@
-# GEMINI.md — ориентир для Google Gemini
+---
+# GEMINI.md — Agent Entry Point
 
-Поведение агента в этом репозитории совпадает с [`CLAUDE.md`](./CLAUDE.md).
+## Bootstrap (strict order)
+1. Read LAYER-3/STATE.md
+2. Read LAYER-3/project-status.md
+3. Read LAYER-1/agent-rules.md
+4. Follow LAYER-1/state-transitions.md
 
-- Карта маршрутов: [`llms.txt`](./llms.txt) и [`START.md`](./START.md).
-- Интервью и страж (self-check): [`LAYER-1/interview-system.md`](./LAYER-1/interview-system.md).
-- Адаптер для Gemini: [`LAYER-1/tools/adapters/GEMINI-INTERVIEW-CONTROL.md`](./LAYER-1/tools/adapters/GEMINI-INTERVIEW-CONTROL.md).
+## Canonical sources
+- Logic:        LAYER-1/
+- State:        LAYER-3/
+- Architecture: ARCHITECTURE.md
+- Handoff:      HANDOFF.md
+
+## Rule
+If it's project logic → goes to LAYER-1/
+If it's IDE-specific → stays here
+
+> This file contains only pointers, not project logic.
+---

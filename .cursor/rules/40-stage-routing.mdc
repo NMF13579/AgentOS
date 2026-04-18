@@ -3,34 +3,23 @@ description: Route tasks to correct stage BOOT.md — mirrors Claude Code stage 
 alwaysApply: true
 ---
 
-# Stage Routing
+# 40-stage-routing.mdc — Agent Entry Point
 
-Every project built with this framework has 4 stages. Route each task to the correct stage doc.
+## Bootstrap (strict order)
+1. Read LAYER-3/STATE.md
+2. Read LAYER-3/project-status.md
+3. Read LAYER-1/agent-rules.md
+4. Follow LAYER-1/state-transitions.md
 
-## Stage map
+## Canonical sources
+- Logic:        LAYER-1/
+- State:        LAYER-3/
+- Architecture: ARCHITECTURE.md
+- Handoff:      HANDOFF.md
 
-| Stage | Folder | BOOT.md | When to use |
-|-------|--------|---------|-------------|
-| 0 — Discovery | `stages/00-discovery/` | `BOOT.md` | New project, defining goals, interview |
-| 1 — Planning | `stages/01-planning/` | `BOOT.md` | Architecture, stack, roadmap |
-| 2 — Build | `stages/02-build/` | `BOOT.md` | Active development, features |
-| 3 — Deploy | `stages/03-deploy/` | `BOOT.md` | CI/CD, release, monitoring |
+## Rule
+If it's project logic → goes to LAYER-1/
+If it's IDE-specific → stays here
 
-## How to route
-
-1. Before starting a task, identify which stage it belongs to
-2. Read that stage's `BOOT.md` with `@stages/XX-name/BOOT.md`
-3. Follow the checklist and references inside BOOT.md
-4. If stage is unclear → ask: "Это этап [N] или [N+1]?"
-
-## Stage transition
-
-- Do NOT move to next stage until current stage checklist is done
-- On transition: update `HANDOFF.md`, `LAYER-3/project-status.md`, confirm with owner
-- Deferred items → `LAYER-3/deferred-decisions.md`
-
-## Cross-stage references
-
-- Specs live in `LAYER-2/specs/` — always check before planning
-- Decisions live in `LAYER-3/deferred-decisions.md` — read before architecture choices
-- Lessons live in `LAYER-3/lessons.md` — read before repeating past mistakes
+> This file contains only pointers, not project logic.
+---

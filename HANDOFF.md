@@ -9,6 +9,10 @@
 
 ## Что мы делали в последний раз
 
+**Adapter files → LAYER-1 + pointers** (2026-04-18):
+
+- Проектная логика из `CLAUDE.md`, `.github/copilot-instructions.md`, `GEMINI.md`, `AGENTS.md`, `.cursor/rules/*.mdc` вынесена в [`session-lifecycle.md`](./LAYER-1/session-lifecycle.md), [`plan-and-scope-gate.md`](./LAYER-1/plan-and-scope-gate.md), [`stage-routing.md`](./LAYER-1/stage-routing.md), [`instruction-priority.md`](./LAYER-1/instruction-priority.md), [`read-order-and-triggers.md`](./LAYER-1/read-order-and-triggers.md); в [`audit.md`](./LAYER-1/audit.md) — блок «Фокус: аудит здоровья». Адаптеры заменены на единый entry template; добавлены [`LAYER-3/STATE.md`](./LAYER-3/STATE.md), [`state-transitions.md`](./LAYER-1/state-transitions.md); ссылки в [`agent-rules.md`](./LAYER-1/agent-rules.md); в [`ARCHITECTURE.md`](./ARCHITECTURE.md) — **State Control Plane** и **Принцип каноничности**.
+
 **Оптимизация документов — ШАГ 1д** (2026-04-17):
 
 - Содержимое `LAYER-1/ux-checklist-accessibility.md`, `ux-checklist-medical.md`, `ux-checklist-interactions.md` перенесено в [`LAYER-1/ux-checklist-core.md`](./LAYER-1/ux-checklist-core.md); три отдельных файла удалены; [`stages/02-ux/ux-checklist-core.md`](./stages/02-ux/ux-checklist-core.md) — указатель на канон; ссылки и `install.sh` обновлены.
