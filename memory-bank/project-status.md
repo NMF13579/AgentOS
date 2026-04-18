@@ -5,4 +5,4 @@
 
 ## Статус
 
-Смотри [`LAYER-3/project-status.md`](../LAYER-3/project-status.md) (обновлено 2026-04-18: HANDOFF трёхзоны + STATE MAINTENANCE; см. [`HANDOFF.md`](../HANDOFF.md)).
+Смотри [`LAYER-3/project-status.md`](../LAYER-3/project-status.md) (обновлено 2026-04-18: ARCHITECTURE State Plane + каноничность; см. [`HANDOFF.md`](../HANDOFF.md)).

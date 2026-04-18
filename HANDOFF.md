@@ -37,6 +37,7 @@ Blockers:
 | Дата | Project state | Что сделано | Следующий шаг |
 |---|---|---|---|
 | 2026-04-18 | MAINTENANCE | Итерация 3 завершена | Итерация 1 state-machine |
+| 2026-04-18 | MAINTENANCE | В ARCHITECTURE.md: State Control Plane + Принцип каноничности (роли файлов) | Итерация 1 state-machine |
 
 ---
 

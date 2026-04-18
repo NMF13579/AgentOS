@@ -42,6 +42,10 @@ text
 - `HANDOFF.md`: трёхзонная структура (Terminal Snapshot, Session History, Persistent Context); прежний накопленный журнал и хронология перенесены в конец этого файла (раздел «Архив из HANDOFF.md»).
 - `LAYER-3/STATE.md`: выровнено под текущий снимок (MAINTENANCE, iteration-1-state-machine, ITERATION_3_COMPLETED).
 
+## [ARCHITECTURE-state-plane] — 2026-04-18
+### Добавлено
+- `ARCHITECTURE.md`: раздел **State Control Plane** (компоненты control plane, три домена состояния) и **Принцип каноничности** (роли `llms.txt`, `STATE.md`, `project-status.md`, `HANDOFF.md`; правило нового правила).
+
 ## [1.1.1] - 2026-04-17
 ### Изменено
 - Чеклист аудита объединён с протоколом AUDIT-FULL: раздел «Чеклист аудита» в `LAYER-1/audit.md`; файл `LAYER-1/audit-checklist.md` удалён; маршруты (`llms.txt`, README, правила IDE и др.) обновлены.

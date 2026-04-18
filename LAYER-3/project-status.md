@@ -1,6 +1,6 @@
 # Project Status
 
-> Updated: 2026-04-18 (HANDOFF трёхзонный + STATE MAINTENANCE)
+> Updated: 2026-04-18 (ARCHITECTURE State Control Plane)
 
 ## Текущий этап
 
@@ -27,6 +27,8 @@
 Пояснение: знаки `❓` в исходном шаблоне ожидаемы до начала реального проекта.
 
 ## Последнее действие
+
+2026-04-18 — **ARCHITECTURE:** в [`ARCHITECTURE.md`](../ARCHITECTURE.md) после «Поток данных и решений» добавлены **State Control Plane** (компоненты, три домена) и **Принцип каноничности** (роли `llms.txt`, STATE, project-status, HANDOFF; правило нового правила). См. [`HANDOFF.md`](../HANDOFF.md).
 
 2026-04-18 — **HANDOFF / STATE:** [`HANDOFF.md`](../HANDOFF.md) — контракт из трёх зон (snapshot, history, persistent); журнал перенесён в [`CHANGELOG.md`](../CHANGELOG.md); [`STATE.md`](./STATE.md) — MAINTENANCE, iteration-1-state-machine.
 
