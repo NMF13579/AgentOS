@@ -1,39 +1,60 @@
-# HANDOFF — где мы остановились
+<!-- ROLE: SESSION_CONTEXT -->
+<!-- AUTHORITY: SECONDARY -->
+<!-- STATUS: ACTIVE -->
+<!-- UPDATED_BY: agent -->
+<!-- SOURCE_OF_TRUTH: no -->
+<!-- MUST_NOT_CONTAIN: formal state как canonical (см. LAYER-3/STATE.md), полная история сессий -->
 
-## Project Name
+# HANDOFF.md — Session Handoff Contract
+<!-- Terminal Snapshot: перезаписывается агентом при каждом завершении сессии. -->
+<!-- Session History: см. LAYER-3/session-log.md -->
+<!-- Persistent Context: меняется редко, только при изменении архитектуры. -->
+<!-- Историческое → CHANGELOG.md | Формальное состояние → LAYER-3/STATE.md -->
 
-<!--VIBE_DOCS_PROJECT_NAME-->
+---
 
-> Этот файл нужен, чтобы следующая сессия (и человек, и AI) быстро поняли контекст.
-> Агент обновляет этот файл после каждой сессии.
+## Terminal Snapshot
+<!-- Агент ПЕРЕЗАПИСЫВАЕТ этот блок при завершении каждой сессии -->
 
-## Что мы делали в последний раз
+> ⚠️ HANDOFF.md не является источником состояния.
+> Перед началом работы ОБЯЗАТЕЛЬНО прочитать:
+> 1. `LAYER-3/STATE.md` — canonical state (**PRIMARY**)
+> 2. Затем этот файл — session context (**SECONDARY**)
 
-Патч **«Итерация 3 — Опыт и масштабирование»**:
+> **State (canonical):** см. `LAYER-3/STATE.md` — Project / Session / Task, `next_allowed_actions`, `forbidden`, `blockers`.
 
-- `LAYER-1/audit-checklist.md` — деградация документов (Процесс, Навигация), **Направление 7 — Свежесть документов**, строка в HEALTH-SCORE; чеклист направлений переименован в **семь**.
-- `LAYER-1/dialog-style.md` — медицинский домен (принципы, примеры, формула стопа) и блок **Before/After** (сценарии A/B/C).
-- `LAYER-1/tools/deploy/ROLLBACK-PROTOCOL-POST-DEPLOY.md` — протокол отката после неудачного деплоя в проде.
-- `llms.txt` — маршрут на новый rollback-файл.
-- `LAYER-1/deploy-guide.md` — раздел «Откат после неудачного деплоя» со ссылкой на протокол.
-- `LAYER-1/tools/template-sync-index.md` — строка для rollback-протокола; описание audit-checklist уточнено (7 направлений).
-- `LAYER-1/decision-guide.md` — развилки **15–17** (мульти-агент, переход уровней, дробление задач).
+Last event (reference, не canonical): ITERATION_3_COMPLETED
+Last transition (reference, не canonical): DEVELOPMENT → MAINTENANCE (2026-04-19)
 
-Ранее: итерации 1–2 (priority-order, конфликт задач, SEMANTIC ERROR, AI-security, медразвилки 11–14, bootstrap complete, медблок интервью, ai-failure-modes).
+Что сделано в последней сессии:
+- Миграция фаз 2–4: разведены STATE / HANDOFF / project-status; session-log append; state-aware + document governance audit в `audit.md`; `document-governance.md`; единый bootstrap в `agent-rules.md`.
+- В `dev` влита ветка `cursor/handoff-three-zone-restructure-e7fa`: разрешены конфликты в
+  `HANDOFF.md`, `LAYER-3/STATE.md`, `LAYER-3/project-status.md`, `memory-bank/project-status.md`.
+- Сохранён формальный `LAYER-3/STATE.md` (MAINTENANCE, guards, Transition Log).
+- История шаблона до state layer — в [`CHANGELOG.md`](./CHANGELOG.md) (`## [2026-04-19] Pre-state-layer history` и связанные секции).
 
-## Где мы остановились
+Что должен сделать следующий агент первым шагом:
+1. Прочитать `LAYER-3/STATE.md` (canonical state)
+2. Прочитать этот файл (`HANDOFF.md`) — контекст сессии
+3. Прочитать `LAYER-3/project-status.md` — нарратив проекта
+4. Прочитать `LAYER-3/roadmap.md` → найти TASK-001
+5. Продолжить TASK-001 (State Layer Migration) по плану владельца
 
-Четыре задачи итерации 3 выполнены. Документация по аудиту свежести, диалогу в меддомене, пост-деплой откату и организационным развилкам обновлена.
+Blockers (reference, не canonical): нет
 
-## Следующий лучший шаг
+---
 
-- При полном/быстром аудите: использовать обновлённый `LAYER-1/audit-checklist.md` и строку HEALTH-SCORE «Свежесть документов».
-- При инциденте «прод сломан после деплоя»: `LAYER-1/tools/deploy/ROLLBACK-PROTOCOL-POST-DEPLOY.md` (деструктивные git-команды — только после явного согласия владельца).
+## Session History
+> Полный лог сессий: `LAYER-3/session-log.md`
 
-## Риски и вопросы
+---
 
-- В `audit-checklist.md` в Направлении 3 и 6 частично дублируются формулировки про `HANDOFF.md` / `llms.txt` — это по тексту патча; при желании можно сжать в одну строку позже.
+## Persistent Context
+<!-- Меняется только при изменении архитектуры или стека -->
 
-## Применимые уроки
-
-- Перед началом сессии: `LAYER-3/project-status.md`, `LAYER-3/lessons.md`, `LAYER-3/session-log.md`.
+Тип проекта: документационный фреймворк для AI-агентов (vibe coding)
+Стек: Markdown, GitHub, агентные среды (Cursor, Claude Code, OpenCode)
+Ключевые решения: LAYER-3/atomic-decisions.md
+Архитектура: ARCHITECTURE.md
+Критические зависимости: LAYER-1/ (28 файлов), LAYER-3/
+Принцип: agent/IDE files — adapters only, вся логика — в LAYER-1/

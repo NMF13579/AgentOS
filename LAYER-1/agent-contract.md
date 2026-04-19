@@ -1,48 +1,11 @@
-> Trigger: Конфликт инструкций, модульный пайплайн
-> Read-time: ~12 min
-> Filled-by: both
-> Needs-approval: no
-> Next: LAYER-1/workflow.md
+# Agent Contract Binding
 
-# AGENT-CONTRACT — контракт агента для MVP-пайплайна
+This document is the Layer-1 entry point for the agent contract.
 
-Этот файл задаёт правила работы агента в рамках **модульного** процесса от профиля до деплоя. Детали этапов разложены по папкам `LAYER-2/discovery` (в т.ч. `processes.md`, `roles.md`), `LAYER-1/workflow.md`, `LAYER-2/ux`, `LAYER-2/specs`, `LAYER-2/qa`, `LAYER-1/tools/deploy`.
+Current source of truth is `shared/agent-contract.md`.
 
-## Принципы
+This file must not duplicate the full contract at this stage of migration.
 
-- Процесс **модульный**, не жёстко линейный: можно стартовать быстро и по запросу подключать исследования, процессы, UX, тесты и деплой.
-- **Один вопрос за раз**; не задавать всё списком.
-- После ответа коротко: что понял, в какой файл записал, что дальше.
-- На каждом этапе — выбор: идти дальше, остановиться или подключить дополнительный модуль.
-- Каждый следующий модуль полного пакета включается **только после подтверждения** владельца.
+## Layer-1 Specific Constraints (future)
 
-## Два контура
-
-1. **Discovery** — профиль, идея, гипотеза, интервью, процессы.
-2. **Delivery** — UX, проверка UX, спецификация, тесты, деплой, post-launch (см. раздел в `LAYER-2/discovery/MVP-SCOPE.md`).
-
-> Итоговый отчёт — в `LAYER-2/qa/post-launch-review.md`
-
-## Команды-модули (фразы владельца)
-
-| Команда / намерение | Что подключает |
-|---------------------|----------------|
-| Быстрый старт | Профиль + идея + vision |
-| Проверить гипотезу | Веб-исследование и анализ рынка |
-| Собрать интервью | Контекст и ограничения |
-| Описать процессы | `LAYER-2/discovery/processes.md` и `LAYER-2/discovery/roles.md` |
-| Сделать UX | UX-документы из процессов |
-| Проверить UX | Чеклист и gap-анализ; выбери группу: `LAYER-1/ux-checklist-core.md`, `ux-checklist-accessibility.md`, `ux-checklist-medical.md`, `ux-checklist-interactions.md` (навигация по темам — в `ux-checklist-interactions.md`, раздел INDEX) |
-| Собрать спецификацию | SPEC, MVP scope, архитектура |
-| Подготовить деплой | Чеклист, runbook, release notes; ENV: `LAYER-1/tools/deploy/ENV-SETUP.md`; онбординг: `LAYER-1/tools/deploy/SETUP-ALL.md` |
-| Post-launch review | Анализ запуска и следующая гипотеза |
-
-> см. `LAYER-2/qa/post-launch-review.md`
-
-## Стартовые режимы
-
-См. `LAYER-1/workflow.md` — раздел «MVP blueprint: три режима старта».
-
-## Приоритет с `CLAUDE.md` и `LAYER-1/system-prompt.md`
-
-Если инструкции расходятся: сначала явный документ задачи и `HANDOFF.md`, затем профильный файл из `LAYER-1/` или `LAYER-2/` для темы, затем этот контракт и системные файлы.
+- Reserved for Layer-1-only constraints during gradual migration.

@@ -230,10 +230,10 @@ if [[ "$LEVEL" == "2" ]]; then
   copy_dir_tree "$SRC/shared"
 fi
 
-# Медицинский чеклист (явно; при уровне 0 уже внутри LAYER-1, но шаг подтверждает)
+# Медицинский UX (явно; при уровне 0 уже внутри LAYER-1 в ux-checklist-core.md)
 if [[ "$MEDICAL" == "yes" ]]; then
-  printf '%b%s%b\n' "$C_YELLOW" "Медицинский проект: проверяю LAYER-1/ux-checklist-medical.md …" "$C_RESET"
-  copy_one "$SRC/LAYER-1/ux-checklist-medical.md" "LAYER-1/ux-checklist-medical.md"
+  printf '%b%s%b\n' "$C_YELLOW" "Медицинский проект: обновляю LAYER-1/ux-checklist-core.md (раздел MEDICAL) …" "$C_RESET"
+  copy_one "$SRC/LAYER-1/ux-checklist-core.md" "LAYER-1/ux-checklist-core.md"
 fi
 
 if [[ "$HANDOFF_WAS_COPIED" -eq 1 ]]; then

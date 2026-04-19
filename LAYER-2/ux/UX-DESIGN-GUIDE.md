@@ -2,13 +2,13 @@
 > Filled-by: —
 > Approved-by: —
 > Trigger: UX-проектирование, новый экран, ревью интерфейса
-> Next: LAYER-2/ux/UI-CHECKLIST.md
+> Next: [`UI-CHECKLIST.md`](./UI-CHECKLIST.md)
 
 # UX-DESIGN-GUIDE — универсальные правила интерфейса
 
 > Этот файл — постоянная инструкция агенту. Не зависит от конкретного проекта.
 > Конкретные цвета, шрифты и размеры — в разделе «Проектные решения» ниже.
-> Медицинская специфика — в `LAYER-1/ux-checklist-medical.md`.
+> Медицинская специфика — в `LAYER-1/ux-checklist-core.md` (раздел `# UX-CHECKLIST-MEDICAL.md`).
 > Состояния компонентов — в `LAYER-2/specs/component-states.md`.
 
 ---
@@ -152,7 +152,7 @@
 
 | Тема | Файл |
 |------|------|
-| Медицинская специфика UX | `LAYER-1/ux-checklist-medical.md` |
+| Медицинская специфика UX | `LAYER-1/ux-checklist-core.md` → `# UX-CHECKLIST-MEDICAL.md` |
 | Состояния конкретных компонентов | `LAYER-2/specs/component-states.md` |
 | Проверка применения правил | `LAYER-2/ux/UI-CHECKLIST.md` |
 | Пробелы и несоответствия | `LAYER-2/ux/UX-GAP-REPORT.md` |

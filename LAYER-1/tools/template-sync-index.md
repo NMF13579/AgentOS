@@ -303,32 +303,32 @@ node setup.js
 
 ### 1. Discovery (`LAYER-2/discovery/`)
 
-- `VISION.md` — зачем этот проект.
-- `MVP-SCOPE.md` — что входит в первую версию, что сознательно откладываем.
-- `HYPOTHESIS-RESEARCH.md` — есть ли смысл делать продукт (рынок, конкуренты, незакрытая боль).
-- `INTERVIEW-SUMMARY.md` — итог разговора с заказчиком/пользователем.
-- `USER-PROFILE.md` — кто реальный пользователь.
+- `vision.md` — зачем этот проект.
+- `mvp-scope.md` — что входит в первую версию, что сознательно откладываем.
+- `hypothesis.md` — есть ли смысл делать продукт (рынок, конкуренты, незакрытая боль).
+- `interview-summary.md` — итог разговора с заказчиком/пользователем.
+- `user-profile.md` — кто реальный пользователь.
 
 **Правило:**
 - Исследование может инициировать пользователь или агент.
 - Если фактов не хватает — агент формулирует запросы/бриф для внешнего поиска, а не придумывает рынок.
-- `INTERVIEW-SUMMARY.md` заполняется агентом, **затем обязательно показывается пользователю**.
+- `interview-summary.md` заполняется агентом, **затем обязательно показывается пользователю**.
 - Только после явного согласия пользователя этот файл считается подтверждённым.
 
-**Процедура подтверждения интервью (`PROJECT-INTERVIEW.md` → секция Confirmation):**
+**Процедура подтверждения интервью ([`project-interview.md`](../../LAYER-2/discovery/project-interview.md) → секция Confirmation):**
 - После Этапа 5 агент **останавливается** (STOP-блок) и показывает саммари — не фиксирует файл без ответа.
 - Агент задаёт вопрос подтверждения и ждёт ответа:
   - **«Да»** → статус `accepted`, поле `Approved by` заполняется, файл считается источником истины.
   - **«Нет / правки»** → агент принимает корректировки и повторяет саммари для повторного подтверждения.
-- Статус `accepted` и поле `Approved by` отражаются в `PROJECT-STATUS.md` (колонка **Approved by**, таблица Discovery) и в `HEALTH-SCORE.md` (светофор: `accepted` → 🟢).
+- Статус `accepted` и поле `Approved by` отражаются в [`LAYER-3/project-status.md`](../../LAYER-3/project-status.md) и при полном аудите — в таблице HEALTH-SCORE в [`LAYER-1/audit.md`](../audit.md).
 
 ### 2. Specs (`LAYER-2/specs/`)
 
 - `ARCHITECTURE.md` — архитектура именно этого проекта (стек, сущности, потоки).
 - `DECISIONS.md` — журнал ключевых решений.
-- `SPEC.md` — спецификация фич/модулей.
-- `ACCESS-RULES.md` — правила доступа и роли.
-- `COMPONENT-STATES.md`, `VALIDATION-RULES.md` — состояния и валидация.
+- `spec.md` — спецификация фич/модулей.
+- `access-rules.md` — правила доступа и роли.
+- `component-states.md`, `validation-rules.md` — состояния и валидация.
 - `features/_template.md` — шаблон описания новой фичи (заполняется Team Lead + Developer до кодирования).
 
 **Правило:**
@@ -336,12 +336,12 @@ node setup.js
 - Агент предлагает вариант, пользователь подтверждает или правит.
 - Любое решение, влияющее на архитектуру/данные/безопасность, дублируется в `DECISIONS.md`.
 
-### 3. UX (`LAYER-2/ux/` и `LAYER-1/ux-checklist-*.md`)
+### 3. UX (`LAYER-2/ux/` и `LAYER-1/ux-checklist-core.md`)
 
 - `SCREEN-MAP.md` — карта экранов и переходов.
 - `PAGES.md`, `ATOMS.md`, `MOLECULES.md`, `ORGANISMS.md`, `TEMPLATES.md` — реестр UI.
 - `UX-FLOWS-*.md` — пользовательские сценарии.
-- UX-чеклисты (instruction) — в `LAYER-1/ux-checklist-core.md`, `ux-checklist-accessibility.md`, `ux-checklist-medical.md`, `ux-checklist-interactions.md`; не заполняются данными проекта как ТЗ.
+- UX-чеклисты (instruction) — в одном файле `LAYER-1/ux-checklist-core.md` (внутри — разделы `# UX-CHECKLIST-…`, оглавление `# UX-CHECKLIST-INDEX.md`); не заполняются данными проекта как ТЗ.
 
 **Правило:**
 - Сначала `PAGES.md` и `SCREEN-MAP.md`, затем детализация по атомам/модулям.
@@ -371,8 +371,8 @@ node setup.js
 ## 3. Кто за что отвечает
 
 - **Пользователь (владелец проекта):**
-  - подтверждает `INTERVIEW-SUMMARY.md`;
-  - согласует `VISION`, `MVP-SCOPE`, ключевые архитектурные решения;
+  - подтверждает `interview-summary.md`;
+  - согласует `vision.md`, `mvp-scope.md`, ключевые архитектурные решения;
   - может исправлять любые project-record файлы.
 
 - **Агент:**
@@ -381,7 +381,7 @@ node setup.js
   - не считает документ "истиной", пока пользователь явно не согласился.
 
 - **Исследование (интернет/другие источники):**
-  - попадает в `HYPOTHESIS-RESEARCH.md` и частично в specs;
+  - попадает в `hypothesis.md` и частично в specs;
   - всегда отделяется от личного опыта пользователя.
 
 ---
@@ -407,7 +407,8 @@ node setup.js
 
 | Файл | Тип | Когда читать |
 |------|-----|-------------|
-| `LAYER-1/agent-bootstrap.md` | instruction | При старте новой сессии или потере контекста — **читать первым** |
+| `LAYER-1/agent-rules.md` | instruction | При старте новой сессии или потере контекста — **читать первым** |
+| `LAYER-1/agent-contract.md` | instruction | Локальный entrypoint контракта; source of truth пока в `shared/agent-contract.md` |
 | `LAYER-1/context-recovery.md` | instruction | При симптомах потери контекста агентом |
 | `LAYER-1/anti-patterns.md` | instruction | При сомнении в выборе подхода — чего не делать |
 | `LAYER-1/decision-guide.md` | instruction | При архитектурных развилках — что выбрать и почему |
@@ -423,8 +424,7 @@ node setup.js
 | `shared/ai-failure-modes.md` | instruction | Сбои LLM-агентов (галлюцинации, drift, роли); статус: актуально |
 | `LAYER-1/security.md` | instruction | При работе с персональными данными и доступами |
 | `LAYER-2/specs/roadmap.md` | project-record | После принятия MVP-решений — дорожная карта |
-| `LAYER-1/audit.md` | instruction | Протокол полного аудита (AUDIT-FULL), шаги и правила |
-| `LAYER-1/audit-checklist.md` | instruction | Чек-лист структуры, семь направлений, таблица HEALTH-SCORE |
+| `LAYER-1/audit.md` | instruction | Полный аудит: протокол AUDIT-FULL (шаги, правила) и раздел «Чеклист аудита» (структура, семь направлений, HEALTH-SCORE) |
 | `LAYER-1/tools/deploy/ROLLBACK-PROTOCOL-POST-DEPLOY.md` | instruction | Откат после неудачного деплоя в проде; деструктивные шаги — только с явным «да» владельца |
 | `LAYER-1/tools/adapters/` | instruction | При работе в Cursor / Copilot / Claude / Gemini — IDE-специфичный self-check |
 | `LAYER-2/specs/features/_template.md` | template | При описании новой фичи до начала кодирования (заполняет Team Lead + Developer) |
@@ -435,35 +435,35 @@ node setup.js
 
 Ниже — spec-driven цепочка: сначала понимаем проблему и процессы (контур 1), затем проектируем, строим, проверяем и выкатываем (контур 2).
 
-**Цепочка во втором контуре (по смыслу):** `processes/*` → потоки в `ux/UX-FLOWS-*.md` → `ux/SCREEN-MAP.md` → внутреннее описание экранов и блоков в `ux/*` (порядок заполнения — `ux/ATOMIC-DECOMPOSITION.md`; ведёт агент, без отдельного «дизайн-фреймворка» для владельца) → `specs/VALIDATION-RULES.md`, `specs/ACCESS-RULES.md`, `specs/COMPONENT-STATES.md` → `specs/SPEC.md` → задачи в `tasks/` и QA в `qa/*` → деплой.
+**Цепочка во втором контуре (по смыслу):** `processes/*` → потоки в `ux/UX-FLOWS-*.md` → `ux/SCREEN-MAP.md` → внутреннее описание экранов и блоков в `ux/*` (порядок заполнения — `ux/ATOMIC-DECOMPOSITION.md`; ведёт агент, без отдельного «дизайн-фреймворка» для владельца) → `specs/validation-rules.md`, `specs/access-rules.md`, `specs/component-states.md` → `specs/spec.md` → задачи в `tasks/` и QA в `qa/*` → деплой.
 
 ---
 
 ## Контур 1 — Discovery и решение проблемы
 
-- `discovery/USER-PROFILE.md`
-- `discovery/VISION.md`
-- `discovery/HYPOTHESIS-RESEARCH.md`
-- `discovery/INTERVIEW-SUMMARY.md`
-- `discovery/MVP-SCOPE.md`
+- `discovery/user-profile.md`
+- `discovery/vision.md`
+- `discovery/hypothesis.md`
+- `discovery/interview-summary.md`
+- `discovery/mvp-scope.md`
 - `LAYER-2/discovery/processes.md`, `LAYER-2/discovery/roles.md`
 
 ### Стартовое интервью и кросс-IDE контроль (до заполнения discovery)
 
 | Артефакт | Назначение |
 |----------|------------|
-| [`PROJECT-INTERVIEW.md`](PROJECT-INTERVIEW.md) | Маршрут вопросов и этапов интервью |
-| [`LAYER-1/interview-system.md`](../LAYER-1/interview-system.md) | Единый чеклист стража (7 пунктов); **stop-block** при критическом ❌ |
+| [`project-interview.md`](../../LAYER-2/discovery/project-interview.md) | Маршрут вопросов и этапов интервью |
+| [`LAYER-1/interview-system.md`](../interview-system.md) | Единый чеклист стража (7 пунктов); **stop-block** при критическом ❌ |
 | [`adapters/README.md`](adapters/README.md) | Индекс адаптеров: self-check в Cursor / Copilot / Claude / Gemini |
 | `adapters/CURSOR-INTERVIEW-CONTROL.md` и др. | Обязательный формат ответа и self-check без subagent |
 | `LAYER-3/interview-session.md` | **Сырой журнал** ответов по шагам (канон для черновика интервью); поле `control-mode` |
 | `LAYER-3/project-context-draft.md` | Устаревшее имя — редирект на `interview-session.md` |
-| Корень: `llms.txt`, `LAYER-1/agent-contract.md`, `LAYER-1/interview-system.md`, `opencode.json`, `LAYER-1/navigation.md` | Вход, контракт, OpenCode (опционально), карта размещения |
+| Корень: [`llms.txt`](../../llms.txt), [`START.md`](../../START.md), [`LAYER-1/agent-rules.md`](../agent-rules.md), [`LAYER-1/agent-contract.md`](../agent-contract.md), [`LAYER-1/interview-system.md`](../interview-system.md), `opencode.json`, [`template-sync-index.md`](./template-sync-index.md) | Вход, bootstrap, контракт, OpenCode (опционально), карта документов |
 
 **Режимы контроля:** **OpenCode** — отдельный агент `guardian` или `@guardian`. **Остальные IDE** — тот же чеклист как **self-check** в каждом ответе интервьюера (см. `LAYER-1/tools/adapters/*`).
 
-**Поток данных:** сырой лог в `interview-session.md` → после подтверждения резюме (см. `PROJECT-INTERVIEW.md`) → структурированные файлы **контура 1** (`discovery/USER-PROFILE.md`, `discovery/VISION.md`, `discovery/INTERVIEW-SUMMARY.md` и т.д.).  
-`discovery/INTERVIEW-SUMMARY.md` — это **итог/выжимка** для цепочки discovery, а не замена журналу `interview-session.md`.
+**Поток данных:** сырой лог в `interview-session.md` → после подтверждения резюме (см. [`project-interview.md`](../../LAYER-2/discovery/project-interview.md)) → структурированные файлы **контура 1** (`discovery/user-profile.md`, `discovery/vision.md`, `discovery/interview-summary.md` и т.д.).  
+`discovery/interview-summary.md` — это **итог/выжимка** для цепочки discovery, а не замена журналу `interview-session.md`.
 
 ---
 
@@ -487,22 +487,19 @@ node setup.js
 
 ## UX-стандарты и чеклисты
 
-> Библиотека готовых чеклистов. Точки входа: `LAYER-1/ux-checklist-core.md`, `ux-checklist-accessibility.md`, `ux-checklist-medical.md`, `ux-checklist-interactions.md` (оглавление — в последнем, раздел INDEX).  
+> Библиотека готовых чеклистов — `LAYER-1/ux-checklist-core.md` (оглавление: раздел `# UX-CHECKLIST-INDEX.md` внутри файла).  
 > Агент использует при команде «Проверить UX».
 
 | Файл | Когда использовать |
 |------|-------------------|
-| `LAYER-1/ux-checklist-core.md` | Базовые стандарты, легенда, fallback, MINIMAL |
-| `LAYER-1/ux-checklist-accessibility.md` | Доступность, мобильный UX, empty states, онбординг |
-| `LAYER-1/ux-checklist-medical.md` | Медицина, роли, права, дашборды |
-| `LAYER-1/ux-checklist-interactions.md` | Уведомления, таблицы, поиск, история, микротекст, INDEX |
+| `LAYER-1/ux-checklist-core.md` | Все UX-чеклисты: базовые стандарты, легенда, fallback, MINIMAL; доступность и мобильный; медицина, роли, дашборды; уведомления, таблицы, поиск, история, микротекст; INDEX и STARTER-FLOW |
 
 ---
 
-- `specs/VALIDATION-RULES.md`
-- `specs/ACCESS-RULES.md`
-- `specs/COMPONENT-STATES.md`
-- `specs/SPEC.md`
+- `specs/validation-rules.md`
+- `specs/access-rules.md`
+- `specs/component-states.md`
+- `specs/spec.md`
 - `specs/ARCHITECTURE.md`
 - `specs/DECISIONS.md`
 - `specs/features/_template.md`
@@ -535,11 +532,11 @@ node setup.js
 | Файл | Контур | Тип | Для чего |
 |------|--------|-----|----------|
 | `LAYER-3/interview-session.md` | 1 (черновик) | project-record | Пошаговый журнал интервью до переноса в discovery |
-| `discovery/USER-PROFILE.md` | 1 | project-record | Подстроить вопросы и язык под владельца |
-| `discovery/VISION.md` | 1 | project-record | Идея, аудитория, боль, критерий успеха |
-| `discovery/HYPOTHESIS-RESEARCH.md` | 1 | project-record | Проверка, стоит ли делать продукт |
-| `discovery/INTERVIEW-SUMMARY.md` | 1 | project-record | Итог разговора: сроки, риски, чувствительные данные |
-| `discovery/MVP-SCOPE.md` | 1 | project-record | Что в первой версии, что отложено |
+| `discovery/user-profile.md` | 1 | project-record | Подстроить вопросы и язык под владельца |
+| `discovery/vision.md` | 1 | project-record | Идея, аудитория, боль, критерий успеха |
+| `discovery/hypothesis.md` | 1 | project-record | Проверка, стоит ли делать продукт |
+| `discovery/interview-summary.md` | 1 | project-record | Итог разговора: сроки, риски, чувствительные данные |
+| `discovery/mvp-scope.md` | 1 | project-record | Что в первой версии, что отложено |
 | `LAYER-2/discovery/processes.md` | 1 | project-record | Как устроена работа шаг за шагом |
 | `LAYER-2/discovery/roles.md` | 1 | project-record | Роли участников продукта |
 | `ux/UX-DESIGN-GUIDE.md` | 2 | instruction | Общие правила интерфейса |
@@ -555,10 +552,10 @@ node setup.js
 | `ux/WIREFRAMES.md` | 2 | project-record | Схемы экранов (текстом или ссылками) |
 | `ux/UI-CHECKLIST.md` | 2 | instruction | Проверка UX против процессов |
 | `ux/UX-GAP-REPORT.md` | 2 | project-record | Пробелы между процессом и экранами |
-| `specs/VALIDATION-RULES.md` | 2 | project-record | Правила проверки ввода и сообщения пользователю |
-| `specs/ACCESS-RULES.md` | 2 | project-record | Кто что видит и что может |
-| `specs/COMPONENT-STATES.md` | 2 | project-record | Состояния интерфейса: загрузка, пусто, ошибка и т.д. |
-| `specs/SPEC.md` | 2 | project-record | Требования к продукту |
+| `specs/validation-rules.md` | 2 | project-record | Правила проверки ввода и сообщения пользователю |
+| `specs/access-rules.md` | 2 | project-record | Кто что видит и что может |
+| `specs/component-states.md` | 2 | project-record | Состояния интерфейса: загрузка, пусто, ошибка и т.д. |
+| `specs/spec.md` | 2 | project-record | Требования к продукту |
 | `specs/ARCHITECTURE.md` | 2 | project-record | Устройство системы |
 | `specs/DECISIONS.md` | 2 | project-record | Зафиксированные решения |
 | `specs/features/_template.md` | 2 | template | Шаблон описания новой фичи — заполняется до начала кодирования |
@@ -567,14 +564,14 @@ node setup.js
 | `LAYER-1/agents.md` | 2 | instruction | Карта ролей агентов и правила многоагентной работы |
 | `LAYER-1/deploy-guide.md` | 2 | project-record | Описание переменных окружения и правила хранения секретов |
 | `LAYER-1/deploy-guide.md` | 2 | instruction | Базовый мониторинг после релиза и сигналы для отката |
-| `LAYER-1/audit.md` | 2 | instruction | Полный аудит перед релизом / передачей (протокол AUDIT-FULL) |
-| `LAYER-1/audit-checklist.md` | 2 | instruction | Чек-лист и HEALTH-SCORE для аудита |
+| `LAYER-1/audit.md` | 2 | instruction | Полный аудит перед релизом / передачей: протокол + чеклист и HEALTH-SCORE в одном файле |
 | `LAYER-2/ux/user-flows.md` | 2 | instruction | Ключевые пользовательские сценарии для smoke-теста |
 | `deploy/DEPLOY-CHECKLIST.md` | 2 | template | Контроль перед выкладкой |
 | `deploy/RELEASE-NOTES.md` | 2 | project-record | Содержание версии для людей |
 | `deploy/RUNBOOK.md` | 2 | project-record | Эксплуатация и типовые сбои |
 | `LAYER-2/qa/post-launch-review.md` | 2 | project-record | Разбор после запуска и фактов использования |
-| `LAYER-1/agent-bootstrap.md` | 0 | instruction | Диагностика и старт агента — читать первым |
+| `LAYER-1/agent-rules.md` | 0 | instruction | Диагностика и старт агента — читать первым |
+| `LAYER-1/agent-contract.md` | 0 | instruction | Локальный entrypoint контракта; source of truth пока в `shared/agent-contract.md` |
 | `LAYER-1/context-recovery.md` | 0 | instruction | Восстановление после потери контекста |
 | `LAYER-1/anti-patterns.md` | 0 | instruction | Чего не делать при выборе решений |
 | `LAYER-1/decision-guide.md` | 0 | instruction | Справочник развилок: что выбрать и почему |
@@ -587,8 +584,7 @@ node setup.js
 | `LAYER-1/error-handling.md` | 0 | instruction | Классификация ошибок; инструкция при «всё сломалось» / «откати» |
 | `LAYER-1/security.md` | 0 | instruction | Безопасность и работа с чувствительными данными |
 | `LAYER-2/specs/roadmap.md` | 0 | project-record | Дорожная карта после принятия MVP-решений |
-| `LAYER-1/audit.md` | 0 | instruction | Протокол аудита (AUDIT-FULL) |
-| `LAYER-1/audit-checklist.md` | 0 | instruction | Чек-лист и HEALTH-SCORE (в т.ч. быстрая проверка) |
+| `LAYER-1/audit.md` | 0 | instruction | Протокол AUDIT-FULL и раздел «Чеклист аудита» (в т.ч. быстрая проверка) |
 | `LAYER-1/tools/adapters/` | 0 | instruction | IDE-специфичный self-check для Cursor / Copilot / Claude / Gemini |
 
 > **Контур 0** — базовые инструкции агента, читаются до начала любой работы.
@@ -597,7 +593,7 @@ node setup.js
 
 ## Связь с Vibe-coding-docs
 
-Папки `LAYER-2/discovery` … `LAYER-1/tools/deploy` и этот файл — ваша **spec-driven** цепочка под продукт; общие правила шаблона (старт сессии, интервью, дорожная карта, аудит) живут в корне (`llms.txt`, `HANDOFF.md`) и в `LAYER-1/` (`workflow.md`, `dialog-style.md`, `audit.md`, `audit-checklist.md` и др.) — они дополняют эти документы, но не заменяют их.  
+Папки `LAYER-2/discovery` … `LAYER-1/tools/deploy` и этот файл — ваша **spec-driven** цепочка под продукт; общие правила шаблона (старт сессии, интервью, дорожная карта, аудит) живут в корне (`llms.txt`, `HANDOFF.md`) и в `LAYER-1/` (`workflow.md`, `dialog-style.md`, `audit.md` и др.) — они дополняют эти документы, но не заменяют их.  
 При UX-работе смотри также: `LAYER-3/open-questions.md`, `LAYER-3/ui-inventory.md`, `LAYER-3/atomic-decisions.md`, `LAYER-3/PROJECT-MEMORY.md`.
 
 **Деплой — смежная цепочка (онбординг и MCP):** `LAYER-1/tools/deploy/SETUP-ALL.md` → `ENV-SETUP.md` / `MCP-SETUP.md` → `DEPLOY-MCP-UNIVERSAL.md` → `DEPLOY-TIMEWEB.md`; универсальные правила — `LAYER-1/deploy-guide.md`.

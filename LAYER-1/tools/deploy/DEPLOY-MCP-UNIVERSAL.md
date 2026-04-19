@@ -156,13 +156,13 @@ claude mcp add --scope project github -- npx -y @modelcontextprotocol/server-git
 ```
 
 Агент сам читает `LAYER-1/tools/deploy/DEPLOY-CHECKLIST.md`
-перед деплоем, если добавить в `LAYER-1/agent-contract.md` блок ниже.
+перед деплоем, если добавить в `LAYER-1/agent-rules.md` блок ниже.
 
 ---
 
-## Блок для LAYER-1/agent-contract.md
+## Блок для LAYER-1/agent-rules.md
 
-Добавь этот блок в `LAYER-1/agent-contract.md` в раздел про деплой:
+Добавь этот блок в `LAYER-1/agent-rules.md` в раздел про деплой (или в отдельный согласованный раздел):
 
 ```markdown
 ## Деплой

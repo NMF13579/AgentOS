@@ -3,17 +3,24 @@ description: When auditing documentation health, readiness, and risks — use th
 alwaysApply: false
 ---
 
-# Audit focus (Vibe-coding-docs)
+# 20-audit.mdc — Agent Entry Point
 
-When the task is an audit, health check, or “how ready are we” assessment:
+## Bootstrap (strict order)
+1. Read LAYER-3/STATE.md
+2. Read LAYER-3/project-status.md
+3. Read LAYER-1/agent-rules.md
+4. Follow LAYER-1/state-transitions.md
 
-1. `LAYER-1/audit.md` (протокол AUDIT-FULL)
-2. `LAYER-1/audit-checklist.md` (чек-лист и HEALTH-SCORE)
-3. `LAYER-1/task-protocol.md`
-4. `LAYER-1/security.md`
-5. `LAYER-3/project-status.md`
-6. `LAYER-3/security.md`
+## Canonical sources
+- Logic:         LAYER-1/
+- State:         LAYER-3/STATE.md
+- Architecture:  ARCHITECTURE.md
+- Handoff:       HANDOFF.md
+- Navigation:    llms.txt
 
-Answer in plain language: what is already solid, what is missing, where the risks are, and the single best next step. Say honestly if data is insufficient.
+## Rule
+Project logic → LAYER-1/
+IDE-specific config → this file only
 
-For a dedicated agent workflow, see `.claude/agents/audit-agent.md`.
+> This file contains only pointers. No project logic here.
+---
