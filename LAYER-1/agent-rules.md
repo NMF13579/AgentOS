@@ -50,27 +50,6 @@
 ---
 <!-- конец добавленного блока — ниже следует существующее содержимое -->
 
-# BOOTSTRAP PROTOCOL
-<!-- Выполняется строго до любых других действий -->
-
-## Шаги (порядок строгий):
-1. Прочитать LAYER-3/STATE.md
-   → определить Project / Session / Task state
-   → проверить forbidden и next_allowed_actions
-2. Прочитать LAYER-3/project-status.md
-3. Прочитать LAYER-3/session-log.md
-4. Прочитать LAYER-3/atomic-decisions.md
-5. Прочитать активную задачу (если active_task не пустой)
-6. Сообщить пользователю:
-   - текущий Project state
-   - текущий Task state
-   - next_allowed_actions
-   - блокеры (если есть)
-7. Перевести Session state: BOOTSTRAP → CONTEXT_LOADED
-8. [BOOTSTRAP COMPLETE] — только теперь начинать работу
-
----
-
 # STATE AUTHORITY
 
 | Переход | Инициатор | Подтверждение пользователя |

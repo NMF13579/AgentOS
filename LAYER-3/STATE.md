@@ -33,6 +33,9 @@ next_allowed_actions:
   - read_project_status
   - start_new_task_from_roadmap
 
+blockers:
+  - none
+
 ## Transition Log
 <!-- Формат: YYYY-MM-DD | Domain | Event | From → To -->
 - 2026-04-19 | Project | ITERATION_3_COMPLETED | DEVELOPMENT → MAINTENANCE

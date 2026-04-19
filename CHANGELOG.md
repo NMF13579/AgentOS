@@ -37,6 +37,14 @@ text
 
 ## История
 
+## [audit-state-aware] — 2026-04-19
+### Изменено
+- `LAYER-1/audit.md`: раздел **State Consistency Audit** (порядок проверок, 5 групп, чеклист, вердикты, STOP при BROKEN, governance); интеграция в Шаг 1, быструю проверку, Шаг 4 и строку **State machine (control plane)** в HEALTH-SCORE.
+- `LAYER-1/agent-rules.md`: удалён дублирующий блок `# BOOTSTRAP PROTOCOL` (оставлен один канонический в начале файла).
+- `LAYER-3/STATE.md`: явный список `blockers` для прохождения snapshot validity в аудите.
+- `llms.txt`: маршрут «Продолжение работы» — `STATE.md` → `HANDOFF.md`; в canonical sources добавлена ссылка на `audit.md`.
+- `ARCHITECTURE.md`: уточнены роли STATE и audit в State Control Plane.
+
 ## [ide-entry-points-unified] — 2026-04-19
 ### Изменено
 - Корневые и IDE entry: `CLAUDE.md`, `AGENTS.md`, `GEMINI.md`, `.github/copilot-instructions.md`, `.cursor/rules/*.mdc`, `.cursor/CLAUDE-WORKFLOW.md`, `.claude/agents/*.md` — единый шаблон (Navigation: `llms.txt`).
