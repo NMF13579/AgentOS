@@ -38,6 +38,8 @@ text
 ## История
 
 ## [migration-phases-2-4-state-governance] — 2026-04-19
+> [replaced by: bootstrap order только в `llms.txt`; `# SESSION LOAD` в `agent-rules.md` — см. стабилизация 2026-04]
+
 ### Добавлено
 - `LAYER-1/document-governance.md` — роли, authority, lifecycle, metadata, registry, 7 governance rules.
 - `LAYER-1/deprecated/legacy-bootstrap.md` — архив второго bootstrap + checklist-bootstrap.
@@ -46,7 +48,7 @@ text
 ### Изменено
 - `LAYER-3/STATE.md`, `HANDOFF.md`, `LAYER-3/project-status.md`: ROLE/AUTHORITY шапки; governance в STATE; HANDOFF без canonical state-полей; project-status — нарратив без датированной летописи.
 - `LAYER-3/session-log.md`: append-миграция Session History и «Последнее действие» из project-status.
-- `LAYER-1/agent-rules.md`: один `# BOOTSTRAP PROTOCOL`, удалён дубликат STATE/HANDOFF между таблицами и телом; шаг HANDOFF в bootstrap; metadata; §3 anti-recidivism.
+- `LAYER-1/agent-rules.md`: один `# BOOTSTRAP PROTOCOL` *(позже [replaced by: `# SESSION LOAD` + порядок чтения в `llms.txt`])*; удалён дубликат STATE/HANDOFF между таблицами и телом; шаг HANDOFF в bootstrap; metadata; §3 anti-recidivism.
 - `LAYER-1/agent-bootstrap.md`: DEPRECATED stub с REPLACED_BY.
 - `llms.txt`, `START.md`, `read-order-and-triggers.md`, `ARCHITECTURE.md`, `memory-bank/project-status.md`, `LAYER-1/context-recovery.md` — порядок STATE → HANDOFF → narrative; маршрут governance.
 
@@ -112,8 +114,8 @@ text
 
 ## [1.1.1] - 2026-04-17
 ### Изменено
-- Чеклист аудита объединён с протоколом AUDIT-FULL: раздел «Чеклист аудита» в `LAYER-1/audit.md`; файл `LAYER-1/audit-checklist.md` удалён; маршруты (`llms.txt`, README, правила IDE и др.) обновлены.
-- UX-чеклисты объединены в `LAYER-1/ux-checklist-core.md`; удалены `LAYER-1/ux-checklist-accessibility.md`, `ux-checklist-medical.md`, `ux-checklist-interactions.md`; `stages/02-ux/` — указатель на канон; обновлены `llms.txt`, `install.sh`, карта шаблона и перекрёстные ссылки.
+- Чеклист аудита объединён с протоколом AUDIT-FULL: раздел «Чеклист аудита» в `LAYER-1/audit.md`; файл `LAYER-1/audit-checklist.md` **[deprecated — удалён]**; маршруты (`llms.txt`, README, правила IDE и др.) обновлены.
+- UX-чеклисты объединены в `LAYER-1/ux-checklist-core.md`; удалены `LAYER-1/ux-checklist-accessibility.md`, **`ux-checklist-medical.md` (исторически)**, `ux-checklist-interactions.md`; *примечание 2026-04: медицинский UX снова вынесен в отдельные файлы — `LAYER-1/ux-checklist-medical.md`, `MEDICAL-SAFETY.md` и др.*; `stages/02-ux/` — указатель на канон; обновлены `llms.txt`, `install.sh`, карта шаблона и перекрёстные ссылки.
 
 ## [1.1.0] - 2026-04-16
 ### 🔴 Критические исправления
@@ -259,7 +261,7 @@ text
 
 Патч **«Этап 3 — медицинская доменная специализация»**:
 
-- Обновлён медицинский блок UX (ныне раздел `# UX-CHECKLIST-MEDICAL.md` в [`LAYER-1/ux-checklist-core.md`](./LAYER-1/ux-checklist-core.md)): убраны дубли с core, усилена клиническая специфика, добавлена секция `⚕️ Клинические сценарии`, усилены ссылки на `LEGAL-152FZ.md`.
+- Обновлён медицинский блок UX (раздел `# UX-CHECKLIST-MEDICAL.md` в [`LAYER-1/ux-checklist-core.md`](./LAYER-1/ux-checklist-core.md); *[replaced by: отдельный файл `LAYER-1/ux-checklist-medical.md` + `MEDICAL-SAFETY.md`]*): убраны дубли с core, усилена клиническая специфика, добавлена секция `⚕️ Клинические сценарии`, усилены ссылки на `LEGAL-152FZ.md`.
 - Обновлён `LAYER-1/interview-system.md`: добавлен медицинский блок интервью (тип данных, МИС/ЕГИСЗ, клинрекомендации, ответственное лицо) и авто-правило ` [РИСК: HIGH] + 152-ФЗ`.
 - Обновлён `LAYER-1/anti-patterns.md`: добавлена секция процессуальных/коммуникационных анти-паттернов для vibe-coding с последствиями и привязкой к протоколам.
 - Обновлён `LAYER-1/decision-guide.md`: добавлены встроенные определения терминов, матрица решений, развёрнутые медицинские сценарии и fallback-блок `🆘 Если не уверен`.

@@ -20,7 +20,7 @@
 - [Index](#ux-checklist-indexmd) — полная карта файла
 - [Default](#ux-checklist-defaultmd) — базовый чеклист
 - [Fallback](#ux-checklist-fallbackmd) — минимальный режим
-- [Medical](./ux-checklist-medical.md) — клинический чеклист (standalone, frozen)
+- [Medical UX](./ux-checklist-medical.md) — клинические экраны; границы ИИ — [MEDICAL-SAFETY.md](./MEDICAL-SAFETY.md)
 
 ---
 
@@ -582,7 +582,7 @@
 
 - Использовать **медицинский режим** как основной.
 - Обязательно активировать чек-листы:
-  - `UX-CHECKLIST-MEDICAL.md`
+  - `ux-checklist-medical.md` (заголовок документа: UX-CHECKLIST-MEDICAL)
   - `UX-CHECKLIST-ACCESSIBILITY.md`
   - `UX-CHECKLIST-EMPTY-STATES.md`
   - `UX-CHECKLIST-NOTIFICATIONS.md`
