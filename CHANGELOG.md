@@ -39,9 +39,10 @@ text
 
 ## [agent-rules-single-bootstrap] — 2026-04-19
 ### Изменено
-- `LAYER-1/agent-rules.md`: один канонический `# BOOTSTRAP PROTOCOL`; второй протокол и checklist-bootstrap вынесены в [`LAYER-1/deprecated/legacy-bootstrap.md`](./LAYER-1/deprecated/legacy-bootstrap.md); блок «Наследие agent-bootstrap» сокращён; правило против рецидива в разделе startup vs runtime.
+- `LAYER-1/agent-rules.md`: один канонический `# BOOTSTRAP PROTOCOL`; второй протокол и checklist-bootstrap вынесены в [`LAYER-1/deprecated/legacy-bootstrap.md`](./LAYER-1/deprecated/legacy-bootstrap.md); блок «Наследие agent-bootstrap» сокращён; правило против рецидива в разделе startup vs runtime (формулировка: канон + альтернатива не сосуществуют; вынос в `LAYER-1/deprecated/` с пометкой non-runtime).
+- `LAYER-1/deprecated/legacy-bootstrap.md`: шапка архива — `<!-- Archived: 2026-04 -->`.
 - `LAYER-1/agent-bootstrap.md`: указатели на state-first канон и архив.
-- Ссылки в `ARCHITECTURE.md`, `AUDIT-REPORT.md`, `HANDOFF.md`, `LAYER-3/project-status.md`, `LAYER-1/context-recovery.md` — выровнены под state-first bootstrap с пометками об архиве.
+- Ссылки в `ARCHITECTURE.md`, `AUDIT-REPORT.md`, `HANDOFF.md`, `LAYER-3/project-status.md`, `LAYER-1/context-recovery.md` — выровнены под state-first bootstrap; исторические упоминания с пометкой «архивирован, см. LAYER-1/deprecated/».
 
 ## [ide-entry-points-unified] — 2026-04-19
 ### Изменено
@@ -50,7 +51,7 @@ text
 
 ## [agent-bootstrap-deprecated-stub] — 2026-04-19
 ### Изменено
-- `LAYER-1/agent-bootstrap.md`: stub DEPRECATED → канон в [`LAYER-1/agent-rules.md`](./LAYER-1/agent-rules.md) (state-first bootstrap); мост «Наследие agent-bootstrap.md» в `agent-rules.md` после STATE AUTHORITY TABLE. *(Исторически; checklist-bootstrap позже вынесен в [`LAYER-1/deprecated/legacy-bootstrap.md`](./LAYER-1/deprecated/legacy-bootstrap.md) — архивирован, см. deprecated/.)*
+- `LAYER-1/agent-bootstrap.md`: stub DEPRECATED → канон в [`LAYER-1/agent-rules.md`](./LAYER-1/agent-rules.md) (state-first bootstrap); мост «Наследие agent-bootstrap.md» в `agent-rules.md` после STATE AUTHORITY TABLE. *(Исторически; checklist-bootstrap позже вынесен в [`LAYER-1/deprecated/legacy-bootstrap.md`](./LAYER-1/deprecated/legacy-bootstrap.md) — архивирован, см. LAYER-1/deprecated/.)*
 
 ## [agent-rules-bootstrap-v3] — 2026-04-19
 ### Добавлено
@@ -167,7 +168,7 @@ text
 - `LAYER-1/navigation.md` переименован → `LAYER-1/tools/template-sync-index.md`; ссылки на TEMPLATE-SYNC-*.md исправлены.
 
 Добавлено
-- 9 маршрутов в `llms.txt`: workflow, anti-patterns, security, glossary, feature-radar, testing-guide, decision-guide, owner, agent-bootstrap *(исторически; см. [`LAYER-1/agent-rules.md`](./LAYER-1/agent-rules.md) state-first bootstrap; архив — [`LAYER-1/deprecated/legacy-bootstrap.md`](./LAYER-1/deprecated/legacy-bootstrap.md))*.
+- 9 маршрутов в `llms.txt`: workflow, anti-patterns, security, glossary, feature-radar, testing-guide, decision-guide, owner, agent-bootstrap *(исторически; см. [`LAYER-1/agent-rules.md`](./LAYER-1/agent-rules.md) state-first bootstrap; архив — [`LAYER-1/deprecated/legacy-bootstrap.md`](./LAYER-1/deprecated/legacy-bootstrap.md); архивирован, см. LAYER-1/deprecated/)*.
 - Платформенный контекст в `START.md` и `SYSTEM_PROMPT.md` (deprecated-заголовки для Lovable/Bolt).
 
 Удалено
@@ -218,7 +219,7 @@ text
 
 **Оптимизация документов — ШАГ 1а** (2026-04-17):
 
-- Слияние `LAYER-1/agent-bootstrap.md` + `LAYER-1/agent-contract.md` → [`LAYER-1/agent-rules.md`](./LAYER-1/agent-rules.md) *(state-first bootstrap; исторический checklist — [`LAYER-1/deprecated/legacy-bootstrap.md`](./LAYER-1/deprecated/legacy-bootstrap.md), архивирован, см. deprecated/)*; ссылки обновлены по репозиторию; [`shared/agent-contract.md`](./shared/agent-contract.md) указывает на полную версию в `LAYER-1/`.
+- Слияние `LAYER-1/agent-bootstrap.md` + `LAYER-1/agent-contract.md` → [`LAYER-1/agent-rules.md`](./LAYER-1/agent-rules.md) *(state-first bootstrap; исторический checklist — [`LAYER-1/deprecated/legacy-bootstrap.md`](./LAYER-1/deprecated/legacy-bootstrap.md), архивирован, см. LAYER-1/deprecated/)*; ссылки обновлены по репозиторию; [`shared/agent-contract.md`](./shared/agent-contract.md) указывает на полную версию в `LAYER-1/`.
 
 **Единая точка входа** (2026-04-17):
 

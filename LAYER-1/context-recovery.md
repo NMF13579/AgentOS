@@ -25,7 +25,7 @@
 
 > ⚠️ Порядок ниже отличается от обычного старта сессии намеренно:
 > при потере контекста приоритет — текущее состояние проекта, а не роутинг.
-> Обычный state-first старт сессии: [`LAYER-1/agent-rules.md`](./agent-rules.md) (`# BOOTSTRAP PROTOCOL`).
+> Обычный state-first старт сессии: [`LAYER-1/agent-rules.md`](./agent-rules.md) — state-first bootstrap (`# BOOTSTRAP PROTOCOL`). Исторический checklist-bootstrap только в архиве (архивирован, см. LAYER-1/deprecated/) — [`legacy-bootstrap.md`](./deprecated/legacy-bootstrap.md).
 
 ### Шаг 1 — Читать в строгом порядке
 

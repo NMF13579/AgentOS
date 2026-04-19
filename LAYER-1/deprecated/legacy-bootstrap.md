@@ -2,7 +2,7 @@
 <!-- TYPE: ARCHIVAL / NON-RUNTIME -->
 <!-- REPLACED BY: LAYER-1/agent-rules.md # BOOTSTRAP PROTOCOL -->
 <!-- DO NOT USE FOR: bootstrap, runtime decisions, state transitions -->
-<!-- Дата архивирования: 2026-04 -->
+<!-- Archived: 2026-04 -->
 
 # BOOTSTRAP PROTOCOL
 <!-- Выполняется строго до любых других действий -->
