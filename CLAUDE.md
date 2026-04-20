@@ -1,13 +1,13 @@
 <!-- ROLE: ADAPTER ENTRYPOINT -->
-<!-- NOT A POLICY SOURCE -->
-<!-- Canonical bootstrap order: llms.txt -->
-<!-- Agent rules: LAYER-1/agent-rules.md -->
 <!-- AUTHORITY: NON-AUTHORITY -->
-<!-- STATUS: ACTIVE -->
-<!-- UPDATED_BY: owner -->
 <!-- SOURCE_OF_TRUTH: no -->
-<!-- MUST_NOT_CONTAIN: policy, competing read-order lists, runtime state -->
 
-# CLAUDE.md — Claude Code Entry Point
+Read `llms.txt` first. Follow it exactly. For behavior after load, use `LAYER-1/agent-rules.md`.
+Do not browse files independently.
+Do not invent structure or rules.
+If the task is clear — do it.
+If something is missing or contradictory — briefly say what is missing and stop.
 
-Навигация при старте — только в [`llms.txt`](./llms.txt). Поведение после загрузки контекста — в [`LAYER-1/agent-rules.md`](./LAYER-1/agent-rules.md).
+When validating adapters: use `scripts/ADAPTER-SPEC.md` as the only source of issue codes and fixes.
+When explaining issues: Russian first, no internal terminology, say only what is wrong / why / what to change.
+When fixing: make the smallest possible change, show only the corrected content, no commentary.

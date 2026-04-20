@@ -20,6 +20,8 @@
 
 ## Что сделано в последней сессии
 
+- Добавлены адаптер-пайплайн: `.cursor/rules/governed-repo.mdc`, единый текст для `AGENTS.md` / `CLAUDE.md` / `GEMINI.md` / `.github/copilot-instructions.md` / `.rules`, скрипты `scripts/validate-adapters.sh`, `fix-adapters.sh`, `run-all.sh`, справка `README-INSTALL.md`, каталог кодов `scripts/ADAPTER-SPEC.md`.
+
 - Добавлена governance-модель для платформенных адаптеров в `llms.txt` (один bootstrap, «тупые» адаптеры, реестр только для discovery). Созданы `LAYER-1/adapter-registry.md`, `LAYER-1/templates/adapter-template.md`, `LAYER-1/adapters/ANTIGRAVITY.md`.
 
 ---
