@@ -63,15 +63,20 @@ function hasCompetingNumberedOrder(lines, index, lowerWindowText) {
 
   if (lowerWindowText.includes('llms.txt')) return false;
 
-  if (
+  const hasBootstrapContext =
     lowerWindowText.includes('bootstrap') ||
     lowerWindowText.includes('read order') ||
-    lowerWindowText.includes('startup')
-  ) {
-    return true;
-  }
+    lowerWindowText.includes('startup');
+  if (!hasBootstrapContext) return false;
 
-  return false;
+  const hasCanonicalIntent =
+    lowerWindowText.includes('canonical') ||
+    lowerWindowText.includes('read in this sequence') ||
+    lowerWindowText.includes('defines read order') ||
+    lowerWindowText.includes('read in this order') ||
+    lowerWindowText.includes('порядок чтения');
+
+  return hasCanonicalIntent;
 }
 
 function hasAllowedLlmsReference(windowText, lineText) {
@@ -99,7 +104,8 @@ async function run() {
     }
 
     const content = fs.readFileSync(filePath, 'utf8');
-    const lines = content.split(/\r?\n/);
+    const contentWithoutCode = content.replace(/```[\s\S]*?```/g, '');
+    const lines = contentWithoutCode.split(/\r?\n/);
 
     for (const pattern of DIRECT_PATTERNS) {
       if (content.includes(pattern)) {

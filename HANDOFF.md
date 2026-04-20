@@ -39,3 +39,9 @@
 Архитектура: `ARCHITECTURE.md`  
 Критические зависимости: `LAYER-1/`, `LAYER-3/`  
 Принцип: agent/IDE files — adapters only; логика — в `LAYER-1/`.
+
+---
+
+## Update (2026-04-20)
+
+- Внедрён минимальный doc-integrity layer: `tools/doc-tests/` (3 проверки + launcher), CI workflow `.github/workflows/doc-integrity.yml`, policy-добавления в `LAYER-1/audit.md` и `LAYER-1/audit-quick.md`.
