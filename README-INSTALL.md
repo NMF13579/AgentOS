@@ -16,6 +16,9 @@
 
 ## Быстрый старт
 
+> **Зависимость:** `fix-adapters.sh` требует утилиту `jq`.
+> Установка: `brew install jq` (macOS) / `apt install jq` (Linux).
+
 chmod +x scripts/*.sh
 
 # Полный пайплайн одной командой:
