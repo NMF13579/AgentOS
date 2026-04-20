@@ -572,3 +572,14 @@
 - [ ] Документация понятна не-техническому специалисту
 - [ ] Юридические требования (152-ФЗ) покрыты
 - [ ] Механизмы безопасности и отката документированы ([`security.md`](./security.md), [`error-handling.md`](./error-handling.md))
+
+## Автоматические integrity checks
+
+Система поддерживается набором автоматических проверок, которые валидируют:
+- canonical bootstrap order задан только в llms.txt
+- внутренние markdown-ссылки указывают на существующие файлы
+- metadata (ROLE, AUTHORITY, STATUS) соответствует governance vocabulary
+- adapter-entry файлы не содержат policy или competing bootstrap
+
+Эти проверки выполняются автоматически в CI и не должны нарушаться.
+Запуск вручную: node tools/doc-tests/run-doc-tests.js
