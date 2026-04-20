@@ -125,6 +125,10 @@
 | LAYER-1/audit.md | CANONICAL_POLICY | PRIMARY | ACTIVE | owner | — |
 | LAYER-1/audit-quick.md | CANONICAL_POLICY | SECONDARY | ACTIVE | owner | Краткий ежедневный чеклист; полный протокол — audit.md |
 | LAYER-1/document-governance.md | CANONICAL_POLICY | PRIMARY | ACTIVE | owner | — |
+| LAYER-1/MEDICAL-SAFETY.md | CANONICAL_POLICY | PRIMARY | ACTIVE | owner | Границы продукта и ИИ в медицинском домене |
+| LAYER-1/UX-CHECKLIST-MEDICAL.md | CANONICAL_POLICY | SECONDARY | ACTIVE | both | Клинические экраны и сценарии поверх базового UX |
+| LAYER-1/MEDICAL-ROLES-AND-PERMISSIONS.md | CANONICAL_POLICY | SECONDARY | ACTIVE | both | RBAC и интерфейсы прав в клиническом UI |
+| LAYER-1/MEDICAL-DASHBOARDS.md | CANONICAL_POLICY | SECONDARY | ACTIVE | both | Обзоры состояния, KPI и очередей без лишней сложности |
 | CLAUDE.md | ADAPTER | NON-AUTHORITY | ACTIVE | owner | Adapter only |
 | .cursor/rules/* | ADAPTER | NON-AUTHORITY | ACTIVE | owner | Adapter only |
 | AGENTS.md | ADAPTER | NON-AUTHORITY | ACTIVE | owner | Adapter only |
