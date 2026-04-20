@@ -16,19 +16,16 @@
 
 ## Формат записи
 
-## Decision: [короткое имя]
-Date: YYYY-MM-DD
-Status: active | deprecated
-### Context
-Почему возникла задача
-### Decision
-Что выбрали и почему
-### Alternatives rejected
-Что отвергли и почему
-### Consequences
-Что это меняет в системе
-### Links
-Связанные файлы
+Используйте отдельный блок для каждой записи. Поля:
+
+- **Decision** — короткое имя (заголовок второго уровня с префиксом «Decision: …»)
+- **Date** — YYYY-MM-DD
+- **Status** — active | deprecated
+- **Context** — почему возникла задача
+- **Decision** — что выбрали и почему
+- **Alternatives rejected** — что отвергли и почему
+- **Consequences** — что это меняет в системе
+- **Links** — связанные файлы
 
 ---
 
@@ -41,4 +38,4 @@ Status: active | deprecated
 
 ## Recorded decisions
 
-(пусто — первые записи добавляются по мере работы)
+(нет записей)
