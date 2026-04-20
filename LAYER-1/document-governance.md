@@ -174,3 +174,4 @@
 5. Новый документ получает metadata до начала использования.
 6. Дублирующий authority → downgrade, deprecated или merge.
 7. При downgrade или deprecation — все ссылки на документ в navigation-файлах (`llms.txt`, `ARCHITECTURE.md` и др.) обновляются в той же операции.
+8. Governance соблюдается также через автоматические integrity checks (tools/doc-tests/).
