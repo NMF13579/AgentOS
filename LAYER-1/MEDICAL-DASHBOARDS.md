@@ -2,7 +2,7 @@
 > Read-time: ~10 min
 > Filled-by: both
 > Needs-approval: no
-> Next: [ux-checklist-medical.md](./ux-checklist-medical.md), LAYER-2/ux/
+> Next: [UX-CHECKLIST-MEDICAL.md](./UX-CHECKLIST-MEDICAL.md), LAYER-2/ux/
 
 <!-- ROLE: INSTRUCTION -->
 <!-- AUTHORITY: SECONDARY -->
@@ -74,6 +74,6 @@
 
 ## Связанные документы
 
-- [ux-checklist-medical.md](./ux-checklist-medical.md)
+- [UX-CHECKLIST-MEDICAL.md](./UX-CHECKLIST-MEDICAL.md)
 - [MEDICAL-ROLES-AND-PERMISSIONS.md](./MEDICAL-ROLES-AND-PERMISSIONS.md)
 - [MEDICAL-SAFETY.md](./MEDICAL-SAFETY.md)

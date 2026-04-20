@@ -81,7 +81,7 @@
 
 **Medical Reviewer** *(медицинский домен)* — compliance-проверка после каждой фичи с персональными данными
 > Запускается после Developer если фича затрагивает: данные пациентов, диагнозы, назначения, интеграции с МИС
-> Чеклисты: `LAYER-1/MEDICAL-SAFETY.md`, `LAYER-1/ux-checklist-medical.md`, при необходимости `LAYER-1/MEDICAL-ROLES-AND-PERMISSIONS.md`, `LAYER-1/MEDICAL-DASHBOARDS.md`
+> Чеклисты: `LAYER-1/MEDICAL-SAFETY.md`, `LAYER-1/UX-CHECKLIST-MEDICAL.md`, при необходимости `LAYER-1/MEDICAL-ROLES-AND-PERMISSIONS.md`, `LAYER-1/MEDICAL-DASHBOARDS.md`
 > НЕЛЬЗЯ: вносить правки в код — только статус ✅/⚠️/🔴 и комментарий
 > При 🔴 — блокирует деплой наравне с Reviewer
 

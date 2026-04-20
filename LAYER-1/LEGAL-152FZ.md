@@ -92,7 +92,7 @@
 ## Связанные документы
 
 - Границы медицинского продукта и ИИ: [`MEDICAL-SAFETY.md`](./MEDICAL-SAFETY.md)
-- Медицинский UX (экраны): [`ux-checklist-medical.md`](./ux-checklist-medical.md)
+- Медицинский UX (экраны): [`UX-CHECKLIST-MEDICAL.md`](./UX-CHECKLIST-MEDICAL.md)
 - Роли и доступы: [`MEDICAL-ROLES-AND-PERMISSIONS.md`](./MEDICAL-ROLES-AND-PERMISSIONS.md)
 - Дашборды: [`MEDICAL-DASHBOARDS.md`](./MEDICAL-DASHBOARDS.md)
 - Техническая безопасность: [`security.md`](./security.md)

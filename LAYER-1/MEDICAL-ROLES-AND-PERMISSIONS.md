@@ -2,7 +2,7 @@
 > Read-time: ~12 min
 > Filled-by: both
 > Needs-approval: no
-> Next: [ux-checklist-medical.md](./ux-checklist-medical.md), LAYER-2/specs/access-rules.md
+> Next: [UX-CHECKLIST-MEDICAL.md](./UX-CHECKLIST-MEDICAL.md), LAYER-2/specs/access-rules.md
 
 <!-- ROLE: INSTRUCTION -->
 <!-- AUTHORITY: SECONDARY -->
@@ -13,7 +13,7 @@
 # MEDICAL-ROLES-AND-PERMISSIONS.md
 
 Чек-листы **ролей** и **интерфейсов прав доступа** для медицинских продуктов.  
-Границы ИИ и клиники — [`MEDICAL-SAFETY.md`](./MEDICAL-SAFETY.md). Экраны и клинические паттерны — [`ux-checklist-medical.md`](./ux-checklist-medical.md).
+Границы ИИ и клиники — [`MEDICAL-SAFETY.md`](./MEDICAL-SAFETY.md). Экраны и клинические паттерны — [`UX-CHECKLIST-MEDICAL.md`](./UX-CHECKLIST-MEDICAL.md).
 
 `[x]` — по умолчанию, `[!]` — обязательно, `[ ]` — опционально.
 
@@ -49,7 +49,13 @@
 - [!] Администратор видит настройки и отчёты, но не лишние клинические детали.
 - [ ] Для каждого типа пользователя есть пример основного сценария.
 
-### 5. Правило применения (часть A)
+### 5. Ролевой медицинский UX (экраны)
+
+- [!] Интерфейсы врача, пациента и администратора разделены по целям и доступам.
+- [!] Пользователь не видит клинические данные, которые не нужны его роли.
+- [ ] Для каждой роли есть отдельный сценарий первого входа.
+
+### 6. Правило применения (часть A)
 
 - Агент проектирует интерфейс, исходя из роли, а не «универсальной» страницы для всех.
 
@@ -96,6 +102,6 @@
 ## Связанные документы
 
 - [MEDICAL-SAFETY.md](./MEDICAL-SAFETY.md)
-- [ux-checklist-medical.md](./ux-checklist-medical.md)
+- [UX-CHECKLIST-MEDICAL.md](./UX-CHECKLIST-MEDICAL.md)
 - [LEGAL-152FZ.md](./LEGAL-152FZ.md)
 - [security.md](./security.md)

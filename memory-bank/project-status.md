@@ -8,4 +8,4 @@
 
 Смотри [`LAYER-3/STATE.md`](../LAYER-3/STATE.md), затем [`HANDOFF.md`](../HANDOFF.md), затем [`LAYER-3/project-status.md`](../LAYER-3/project-status.md) (разведение ролей; см. [`HANDOFF.md`](../HANDOFF.md)).
 
-Последнее: этап 4 — таблица папок в `ARCHITECTURE.md`, Merge Gate в `CHECKLIST.md`, аудит ссылок P1; медицинский пакет — `MEDICAL-SAFETY.md`, `ux-checklist-medical.md`, роли, дашборды. Онбординг — `START.md`; агент — `llms.txt` + `agent-rules.md` (# SESSION LOAD).
+Последнее: этап 3 — канон мед. UX: `UX-CHECKLIST-MEDICAL.md`, `ux-checklist-medical.md` → redirect; этап 2 — README Quick Start → `START.md`; этап 1 — адаптеры под `llms.txt`; ранее этап 4 — таблица папок в `ARCHITECTURE.md`, Merge Gate в `CHECKLIST.md`, аудит ссылок P1; медицинский пакет — `MEDICAL-SAFETY.md`, `UX-CHECKLIST-MEDICAL.md`, роли, дашборды. Онбординг — `START.md`; агент — `llms.txt` + `agent-rules.md` (# SESSION LOAD).

@@ -7,7 +7,7 @@
 > Read-time: ~5 min
 > Filled-by: owner / agent (по запросу)
 > Needs-approval: yes (для изменений границ)
-> Next: [LEGAL-152FZ.md](./LEGAL-152FZ.md), [ux-checklist-medical.md](./ux-checklist-medical.md)
+> Next: [LEGAL-152FZ.md](./LEGAL-152FZ.md), [UX-CHECKLIST-MEDICAL.md](./UX-CHECKLIST-MEDICAL.md)
 
 # Medical Safety — Границы использования
 
@@ -49,6 +49,6 @@
 
 - [LEGAL-152FZ.md](./LEGAL-152FZ.md)
 - [security.md](./security.md)
-- [ux-checklist-medical.md](./ux-checklist-medical.md)
+- [UX-CHECKLIST-MEDICAL.md](./UX-CHECKLIST-MEDICAL.md)
 - [MEDICAL-ROLES-AND-PERMISSIONS.md](./MEDICAL-ROLES-AND-PERMISSIONS.md)
 - [MEDICAL-DASHBOARDS.md](./MEDICAL-DASHBOARDS.md)

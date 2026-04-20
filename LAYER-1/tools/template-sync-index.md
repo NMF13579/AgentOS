@@ -341,7 +341,7 @@ node setup.js
 - `SCREEN-MAP.md` — карта экранов и переходов.
 - `PAGES.md`, `ATOMS.md`, `MOLECULES.md`, `ORGANISMS.md`, `TEMPLATES.md` — реестр UI.
 - `UX-FLOWS-*.md` — пользовательские сценарии.
-- UX-чеклисты (instruction) — базово `LAYER-1/ux-checklist-core.md` (разделы `# UX-CHECKLIST-…`, оглавление `# UX-CHECKLIST-INDEX.md`); медицинские экраны/роли/дашборды — отдельные `LAYER-1/ux-checklist-medical.md`, `MEDICAL-ROLES-AND-PERMISSIONS.md`, `MEDICAL-DASHBOARDS.md`; границы ИИ — `LAYER-1/MEDICAL-SAFETY.md`. Не заполняются данными проекта как ТЗ.
+- UX-чеклисты (instruction) — базово `LAYER-1/ux-checklist-core.md` (разделы `# UX-CHECKLIST-…`, оглавление `# UX-CHECKLIST-INDEX.md`); медицинские экраны/роли/дашборды — отдельные `LAYER-1/UX-CHECKLIST-MEDICAL.md`, `MEDICAL-ROLES-AND-PERMISSIONS.md`, `MEDICAL-DASHBOARDS.md` (на case-insensitive FS отдельный файл `ux-checklist-medical.md` с тем же именем в другом регистре недоступен — канон одно: `UX-CHECKLIST-MEDICAL.md`); границы ИИ — `LAYER-1/MEDICAL-SAFETY.md`. Не заполняются данными проекта как ТЗ.
 
 **Правило:**
 - Сначала `PAGES.md` и `SCREEN-MAP.md`, затем детализация по атомам/модулям.
@@ -495,7 +495,7 @@ node setup.js
 |------|-------------------|
 | `LAYER-1/ux-checklist-core.md` | Базовые UX-чеклисты: стандарты, легенда, fallback, MINIMAL; доступность и мобильный; уведомления, таблицы, поиск, история, микротекст; INDEX и STARTER-FLOW |
 | `LAYER-1/MEDICAL-SAFETY.md` | Границы медицинского продукта и ИИ (можно / с review / нельзя) |
-| `LAYER-1/ux-checklist-medical.md` | Медицинские экраны и клинические UX-сценарии |
+| `LAYER-1/UX-CHECKLIST-MEDICAL.md` | Медицинские экраны и клинические UX-сценарии |
 | `LAYER-1/MEDICAL-ROLES-AND-PERMISSIONS.md` | Роли, права и доступы в UI |
 | `LAYER-1/MEDICAL-DASHBOARDS.md` | Дашборды, KPI, визуализация |
 

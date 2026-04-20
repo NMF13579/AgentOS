@@ -4,7 +4,7 @@
 
 ## Шаг 1: Замени специфичные чек-листы
 
-- Медицинский контур: `LAYER-1/MEDICAL-SAFETY.md`, `LAYER-1/ux-checklist-medical.md`, `LAYER-1/MEDICAL-ROLES-AND-PERMISSIONS.md`, `LAYER-1/MEDICAL-DASHBOARDS.md`.
+- Медицинский контур: `LAYER-1/MEDICAL-SAFETY.md`, `LAYER-1/UX-CHECKLIST-MEDICAL.md`, `LAYER-1/MEDICAL-ROLES-AND-PERMISSIONS.md`, `LAYER-1/MEDICAL-DASHBOARDS.md`.
 - Сохрани структуру: риски, обязательные проверки, ролевой UX, правила применения
 - Оставь одинаковую систему риск-тегов для корректного аудита
 

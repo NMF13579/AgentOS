@@ -37,6 +37,11 @@ text
 
 ## История
 
+## [docs-medical-ux-canonical-file] — 2026-04-19
+### Изменено
+- Канон медицинского UX-чеклиста: [`LAYER-1/UX-CHECKLIST-MEDICAL.md`](./LAYER-1/UX-CHECKLIST-MEDICAL.md). Содержимое прежнего `ux-checklist-medical.md` перенесено и разведено по `UX-CHECKLIST-MEDICAL.md`, `MEDICAL-ROLES-AND-PERMISSIONS.md`, `MEDICAL-DASHBOARDS.md`. Отдельный одноимённый redirect-файл `ux-checklist-medical.md` на дисках **без** учёта регистра имён с `UX-CHECKLIST-MEDICAL.md` не развести — используйте только каноническое имя в ссылках (*исторические записи changelog с `ux-checklist-medical.md` — прежнее имя в git*).
+- Согласованы перекрёстные ссылки (`START.md`, `template-sync-index.md`, LAYER-2 UX, `DOMAIN-ADAPTER.md` и др.).
+
 ## [migration-phases-2-4-state-governance] — 2026-04-19
 > [replaced by: bootstrap order только в `llms.txt`; `# SESSION LOAD` в `agent-rules.md` — см. стабилизация 2026-04]
 

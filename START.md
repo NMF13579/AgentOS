@@ -10,12 +10,12 @@
 | IDE user / разработчик | [QUICK-START.md](./QUICK-START.md) | [QUICK-START-NOVICE.md](./QUICK-START-NOVICE.md) |
 | AI-agent | `llms.txt` | всё остальное |
 
-*Дальше по продукту: UX — [`LAYER-1/ux-checklist-medical.md`](./LAYER-1/ux-checklist-medical.md), роли — [`LAYER-1/MEDICAL-ROLES-AND-PERMISSIONS.md`](./LAYER-1/MEDICAL-ROLES-AND-PERMISSIONS.md), дашборды — [`LAYER-1/MEDICAL-DASHBOARDS.md`](./LAYER-1/MEDICAL-DASHBOARDS.md) (ссылки также в MEDICAL-SAFETY).*
+*Дальше по продукту: UX — [`LAYER-1/UX-CHECKLIST-MEDICAL.md`](./LAYER-1/UX-CHECKLIST-MEDICAL.md), роли — [`LAYER-1/MEDICAL-ROLES-AND-PERMISSIONS.md`](./LAYER-1/MEDICAL-ROLES-AND-PERMISSIONS.md), дашборды — [`LAYER-1/MEDICAL-DASHBOARDS.md`](./LAYER-1/MEDICAL-DASHBOARDS.md) (ссылки также в MEDICAL-SAFETY).*
 
 ## 🤖 Ты AI-агент (Claude Code, Cursor и др.):
 
-AI-agent: прочитай llms.txt и следуй только ему.
-Правила поведения — в LAYER-1/agent-rules.md.
+AI-agent: прочитай `llms.txt` и следуй только ему.
+Правила поведения — в `LAYER-1/agent-rules.md`.
 
 ## Обязательное правило
 

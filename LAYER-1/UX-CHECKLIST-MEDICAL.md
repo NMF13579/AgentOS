@@ -13,7 +13,7 @@
 # UX-CHECKLIST-MEDICAL.md
 
 Медицинский UX-чек-лист для агента.  
-Базовые UX-пункты (форма, навигация, empty states, общие ошибки) берутся из [`ux-checklist-core.md`](./ux-checklist-core.md); здесь — клиническая специфика экранов и сценариев. Границы продукта и ИИ — [`MEDICAL-SAFETY.md`](./MEDICAL-SAFETY.md). Роли, права и доступы — [`MEDICAL-ROLES-AND-PERMISSIONS.md`](./MEDICAL-ROLES-AND-PERMISSIONS.md). Дашборды — [`MEDICAL-DASHBOARDS.md`](./MEDICAL-DASHBOARDS.md).
+Базовые UX-пункты (форма, навигация, empty states, общие ошибки) берутся из [`ux-checklist-core.md`](./ux-checklist-core.md); здесь — клиническая специфика экранов и сценариев. Границы продукта и ИИ — [`MEDICAL-SAFETY.md`](./MEDICAL-SAFETY.md). Роли, права, доступы и ролевые экраны — [`MEDICAL-ROLES-AND-PERMISSIONS.md`](./MEDICAL-ROLES-AND-PERMISSIONS.md). Дашборды — [`MEDICAL-DASHBOARDS.md`](./MEDICAL-DASHBOARDS.md).
 
 `[x]` — по умолчанию, `[!]` — обязательно, `[ ]` — опционально.
 
@@ -54,13 +54,9 @@
 - [!] Приоритизация симптомов: красные флаги отображаются первыми и требуют отдельного подтверждения действия.
 - [!] Доступность для пациентов с ОВЗ: крупный шрифт, контраст, понятные формулировки, поддержка экранных ассистентов.
 
-## 5. Ролевой медицинский UX (экраны)
+## 5. Роли и экраны (где искать детали)
 
-- [!] Интерфейсы врача, пациента и администратора разделены по целям и доступам.
-- [!] Пользователь не видит клинические данные, которые не нужны его роли.
-- [ ] Для каждой роли есть отдельный сценарий первого входа.
-
-Детальные чеклисты по ролям, правам и дашбордам — в [`MEDICAL-ROLES-AND-PERMISSIONS.md`](./MEDICAL-ROLES-AND-PERMISSIONS.md) и [`MEDICAL-DASHBOARDS.md`](./MEDICAL-DASHBOARDS.md).
+Чеклисты разделения интерфейсов врача / пациента / администратора, видимости по роли и сценариев первого входа — в [`MEDICAL-ROLES-AND-PERMISSIONS.md`](./MEDICAL-ROLES-AND-PERMISSIONS.md). Дашборды и обзорные экраны — в [`MEDICAL-DASHBOARDS.md`](./MEDICAL-DASHBOARDS.md).
 
 ## 6. Правило применения
 

@@ -5,9 +5,9 @@
 <!-- SOURCE_OF_TRUTH: no -->
 <!-- MUST_NOT_CONTAIN: policy вместо маршрутов, дублирование LAYER-1 logic -->
 
-This is the canonical agent bootstrap order.
-No other file defines read order.
-Agent rules (behaviour) are in LAYER-1/agent-rules.md — separate role.
+> This is the canonical agent bootstrap order.
+> No other file defines read order.
+> Agent rules (behaviour) are in LAYER-1/agent-rules.md — separate role.
 
 # Vibe-coding-docs
 > Navigation index. Not a policy source.
