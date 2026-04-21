@@ -1,5 +1,5 @@
 <!-- ROLE: CANONICAL_POLICY -->
-<!-- AUTHORITY: PRIMARY для медицинских сценариев -->
+<!-- AUTHORITY: PRIMARY -->
 <!-- SOURCE_OF_TRUTH: yes -->
 <!-- UPDATED_BY: owner -->
 
