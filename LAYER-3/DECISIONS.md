@@ -41,4 +41,28 @@ Status: active | deprecated
 
 ## Recorded decisions
 
-(пусто — первые записи добавляются по мере работы)
+## ADR-001 — Canonical bootstrap: llms.txt как единственный entrypoint
+**Дата:** see HANDOFF.md
+**Решение:** единственная точка входа — llms.txt; все адаптеры только redirect
+**Причина:** исключить competing entry surfaces и platform drift
+**Статус:** ACTIVE
+## ADR-002 — State authority: STATE.md = formal state canon
+**Дата:** see HANDOFF.md
+**Решение:** STATE.md — единственный canonical source of truth для состояния; HANDOFF.md — вторичный session context
+**Причина:** предотвратить state scatter по файлам
+**Статус:** ACTIVE
+## ADR-003 — Adapter model: dumb adapters, no logic
+**Дата:** see HANDOFF.md
+**Решение:** адаптеры содержат только redirect к llms.txt, без правил и логики
+**Причина:** логика в адаптерах = неуправляемое и непроверяемое поведение
+**Статус:** ACTIVE
+## ADR-004 — Bootstrap limit ≤ 7 файлов
+**Дата:** see HANDOFF.md
+**Решение:** required at every start = STATE.md, HANDOFF.md, agent-rules.md + task file (conditional); итого ≤ 7
+**Причина:** предотвратить context overload при старте агента
+**Статус:** ACTIVE
+## ADR-005 — Doc-integrity CI layer
+**Дата:** 2026-04-20
+**Решение:** автоматическая проверка структуры через .github/workflows/doc-integrity.yml
+**Причина:** drift нельзя надёжно поймать вручную
+**Статус:** ACTIVE

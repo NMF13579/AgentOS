@@ -57,6 +57,54 @@ The registry:
   template: `LAYER-1/templates/adapter-template.md`
   notes: Root adapter entrypoint. Redirects to llms.txt.
 
+- id: `cursor-00-core`
+  platform: Cursor
+  path: `.cursor/rules/00-core.mdc`
+  status: `active`
+  version: `v1`
+  template: `LAYER-1/templates/adapter-template.md`
+  notes: |
+    type: redirect
+    contains_logic: no
+
+- id: `cursor-vibe-coding-rules`
+  platform: Cursor
+  path: `.cursor/rules/vibe-coding-rules.mdc`
+  status: `active`
+  version: `v1`
+  template: `LAYER-1/templates/adapter-template.md`
+  notes: |
+    type: redirect
+    contains_logic: no
+
+- id: `cursor-claude-workflow`
+  platform: Cursor
+  path: `.cursor/CLAUDE-WORKFLOW.md`
+  status: `active`
+  version: `v1`
+  template: `LAYER-1/templates/adapter-template.md`
+  notes: |
+    type: redirect
+    contains_logic: no
+
+- id: `windsurf`
+  platform: Windsurf
+  path: `.windsurfrules`
+  status: `active`
+  version: `v1`
+  template: `LAYER-1/templates/adapter-template.md`
+  notes: NOT FOUND
+
+- id: `aider`
+  platform: Aider
+  path: `.aider.conf.yml`
+  status: `active`
+  version: `v1`
+  template: `LAYER-1/templates/adapter-template.md`
+  notes: |
+    type: config
+    contains_logic: no
+
 ---
 
 ## Discovery rules
