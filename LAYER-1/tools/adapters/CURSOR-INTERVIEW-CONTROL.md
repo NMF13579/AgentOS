@@ -14,7 +14,7 @@
 
 ## Дополнительно к ядру
 
-- Правила чата и входа: [`.cursor/rules/10-communication.mdc`](../../../.cursor/rules/10-communication.mdc) (один вопрос, порядок чтения).
+- Правила чата и входа: `.cursor/rules/10-communication.mdc` (один вопрос, порядок чтения).
 
 ## Журнал
 

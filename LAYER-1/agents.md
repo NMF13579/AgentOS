@@ -4,7 +4,7 @@
 > Needs-approval: no
 > Next: LAYER-1/tools/template-sync-index.md
 
-<!-- ROLE: POLICY / ROLES DOCUMENT -->
+<!-- ROLE: CANONICAL_POLICY -->
 <!-- Root AGENTS.md (корень) — только adapter entrypoint. -->
 <!-- Этот файл определяет роли агентов в проекте. -->
 

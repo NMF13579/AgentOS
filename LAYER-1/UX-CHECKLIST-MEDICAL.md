@@ -5,7 +5,7 @@
 > Next: LAYER-2/ux/, [MEDICAL-SAFETY.md](./MEDICAL-SAFETY.md)
 
 <!-- ROLE: CANONICAL_POLICY -->
-<!-- AUTHORITY: SECONDARY (усиление поверх ux-checklist-core.md) -->
+<!-- AUTHORITY: SECONDARY -->
 <!-- STATUS: ACTIVE -->
 <!-- UPDATED_BY: owner / agent -->
 <!-- SOURCE_OF_TRUTH: no -->
