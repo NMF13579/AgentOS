@@ -14,6 +14,9 @@ jobs:
       - name: Identity drift (legacy name in key files)
         run: bash scripts/check-identity-drift.sh
 
+      - name: Bootstrap graph files (llms.txt)
+        run: bash scripts/check-llms-graph-files.sh
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
