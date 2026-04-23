@@ -1,5 +1,5 @@
-name: "Legacy Health Check (compatibility only, not canonical)"
-# STATUS: legacy-compatibility
+name: "Health Check"
+# STATUS: canonical — runs primary health-check.sh
 
 on:
   push:
