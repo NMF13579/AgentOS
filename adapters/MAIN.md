@@ -1,7 +1,7 @@
 ---
 type: canonical
 module: adapters
-status: draft
+status: transitional
 authority: canonical
 when_to_read: conditional
 owner: unassigned
@@ -19,8 +19,18 @@ Adapters translate canonical routing into platform format and do not define poli
 
 ## Canonical constraints
 - Adapters are not source of truth.
-- Adapters may point to canonical routing only.
-- Adapters must not create alternate read order or new bootstrap.
+- Bootstrap remains `llms.txt`; adapters must not create alternate startup paths or read order.
+- Adapters may translate canonical instructions into platform-specific entry formatting, but not policy.
+- Adapters must stay compatible with canonical routing and core modules.
+- Adapter text must not weaken validator policy or invent new governance rules.
+
+## Adapter roles and authority
+- `LAYER-1/adapter-registry.md` is a read-only inventory for discovery, not routing or authority.
+- `AGENTS.md`, `CLAUDE.md`, and `GEMINI.md` are platform entry wrappers; they defer to canonical bootstrap and core routing.
+- `DOMAIN-ADAPTER.md` shows how a domain-specific adapter pattern is shaped, but it is not a replacement for core routing or governance.
+- Adapter files may describe platform-specific loading or presentation details, but not canonical policy.
+- If adapter text conflicts with canonical docs, canonical docs win.
+- Adapter entry files are compatibility/interface layers, not primary entry points.
 
 ## Active adapter sources (legacy)
 - `AGENTS.md`
@@ -30,15 +40,25 @@ Adapters translate canonical routing into platform format and do not define poli
 - `LAYER-1/adapter-registry.md`
 
 ## Current boundaries
-- Adapter files are pointer/compatibility docs.
+- Adapter files are pointer/compatibility docs, not bootstrap or policy sources.
 - Governance and behavior remain in `llms.txt` + `LAYER-1/agent-rules.md`.
-- If adapter text conflicts with canonical docs, canonical docs win.
+- Adapter guidance must stay compatible with the validator classes and roles already defined elsewhere.
+- Platform-specific tuning tips and examples remain direct-read detail in the legacy adapter files.
+
+## Compatibility behavior
+- Adapters may redirect the user or agent into the canonical route for their platform.
+- Adapters may set local formatting, wording, or entry hints that help a specific runtime.
+- Adapters must not change canonical ordering, ownership, or authority.
+- Adapters must not become a place to define new workflow, state, or governance logic.
+- Validation guidance stays bounded by the existing adapter-spec and validator policy; adapters do not rewrite that policy.
 
 ## Migration boundary
-- This module is the optional entry for adapter routing.
-- Adapter-specific deep guidance remains distributed in existing adapter docs.
+- This module partially surfaces approved legacy adapter-layer content from `LAYER-1/adapter-registry.md`, `AGENTS.md`, `CLAUDE.md`, `GEMINI.md`, and `DOMAIN-ADAPTER.md`.
+- Those legacy sources still require direct read for platform-specific examples, entry wording, and domain adaptation detail.
+- `adapters/MAIN.md` is canonical for adapter entry/routing guidance, but not yet the sole deep source.
+- Do not treat adapter files as alternate bootstrap or authority.
 
 ## Routing
 - Read this module when platform/adapter trigger matches.
-- Then open target adapter file and validate against core modules.
-- Return to `core-rules/MAIN.md` if authority/routing is unclear.
+- Then open the target adapter file and validate against core modules.
+- Return to `core-rules/MAIN.md` if authority or routing is unclear.
