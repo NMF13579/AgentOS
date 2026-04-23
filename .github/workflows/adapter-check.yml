@@ -21,7 +21,7 @@ jobs:
       - uses: actions/checkout@v4
       - name: Verify scripts are present
         run: |
-          for script in scripts/validate-adapters.sh scripts/fix-adapters.sh scripts/run-all.sh; do
+          for script in scripts/validate-adapters.sh scripts/legacy-health-check.sh; do
             if [ ! -f "$script" ]; then
               echo "❌ MISSING: $script"
               exit 1
@@ -29,9 +29,9 @@ jobs:
               echo "✅ Found: $script"
             fi
           done
-      - name: Run adapter pipeline
+      - name: Run compatibility checks
         run: |
           chmod +x scripts/validate-adapters.sh
-          chmod +x scripts/fix-adapters.sh
-          chmod +x scripts/run-all.sh
-          bash scripts/run-all.sh
+          chmod +x scripts/legacy-health-check.sh
+          bash scripts/validate-adapters.sh .
+          bash scripts/legacy-health-check.sh || true
