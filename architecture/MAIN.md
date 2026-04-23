@@ -34,7 +34,6 @@ Defines how bootstrap, routing hub, modules, and legacy layers coexist during mi
 - Primary detailed architecture source: `ARCHITECTURE.md`.
 - Related architecture decisions and constraints: `LAYER-3/DECISIONS.md`.
 - Governance metadata/lifecycle: `LAYER-1/document-governance.md`.
-- Operating rules after migration: `architecture/OPERATING-RULES.md`.
 
 ## Active legacy sources (transition phase)
 - `ARCHITECTURE.md`

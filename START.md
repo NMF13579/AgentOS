@@ -18,7 +18,7 @@
 ## 🤖 Ты AI-агент (Claude Code, Cursor и др.):
 
 AI-agent: прочитай `llms.txt` и следуй только ему.
-Routing spine: `ROUTES-REGISTRY.md`.
+Routing spine (stub): `ROUTES-REGISTRY.md`.
 Правила поведения — в `LAYER-1/agent-rules.md`.
 
 ## Обязательное правило
