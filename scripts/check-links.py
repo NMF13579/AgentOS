@@ -5,17 +5,22 @@ import sys
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 
-# Scope kept intentionally small for reliable signal on architecture route.
-TARGETS = [
-    "llms.txt",
-    "START.md",
-    "ROUTES-REGISTRY.md",
+RUNTIME_MODULES = [
     "core-rules/MAIN.md",
     "state/MAIN.md",
-    "architecture/MAIN.md",
     "workflow/MAIN.md",
     "quality/MAIN.md",
     "security/MAIN.md",
+]
+
+SUPPORT_DOCS = [
+    "llms.txt",
+    "README.md",
+    "START.md",
+    "ROUTES-REGISTRY.md",
+    "ARCHITECTURE.md",
+    "architecture/CANON.md",
+    "architecture/MAIN.md",
     "AGENTS.md",
     "CLAUDE.md",
     "GEMINI.md",
@@ -38,7 +43,7 @@ def normalize(target: str) -> str:
 
 def main():
     errors = 0
-    for rel in TARGETS:
+    for rel in RUNTIME_MODULES + SUPPORT_DOCS:
         path = ROOT / rel
         if not path.exists():
             fail(f"Target file for link-check is missing: {rel}")

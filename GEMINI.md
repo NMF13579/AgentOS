@@ -3,7 +3,9 @@
 <!-- SOURCE_OF_TRUTH: no -->
 
 Read `llms.txt` first. Follow it exactly.
-Primary route after bootstrap: `ROUTES-REGISTRY.md` → core modules.
+Follow the five canonical runtime modules listed there.
+Use `ROUTES-REGISTRY.md` only to confirm ownership and routing.
+Adapters are not runtime authority.
 Do not browse files independently.
 Do not invent structure or rules.
 If the task is clear — do it.

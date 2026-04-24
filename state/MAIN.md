@@ -16,11 +16,29 @@ This module owns state lifecycle, events, recovery, and transition boundaries.
 
 ## State Authority
 
-- Current state must be read from this module's rules before execution begins.
+- State rules must be read from this module before execution begins.
+- `state/MAIN.md` owns state rules, lifecycle, events, guards, and recovery.
+- It does not store project-specific current state unless explicitly stated.
 - Session transfer notes are supporting context only; they do not override state rules.
 - Narrative project notes are supporting context only; they do not define current state.
 - If state facts conflict, use the formal state fields and stop if the conflict changes the next action.
+- If current state is missing, incomplete, or contradictory, the agent must report that and ask the owner.
 - Do not infer a richer state schema than the current canonical rules define.
+
+## State Shape
+
+Use this minimum state shape when reporting or recovering state:
+
+```yaml
+project_state:
+session_state:
+task_state:
+active_task:
+blockers:
+next_allowed_actions:
+last_verified_step:
+owner_confirmation_required:
+```
 
 ## Lifecycle
 

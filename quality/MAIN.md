@@ -31,6 +31,30 @@ Quality decides what proof is required; workflow executes the checks.
 - A task is verified only when acceptance criteria are supported by proof.
 - Do not claim completion when checks were skipped or could not run.
 
+## Verification Gates
+
+Gate 1 — Structure
+
+- Files, routes, and links are present and consistent.
+
+Gate 2 — Scope
+
+- Only the confirmed task scope was changed.
+
+Gate 3 — Acceptance Criteria
+
+- Every acceptance criterion has proof.
+
+Gate 4 — Regression / Smoke
+
+- Relevant validation or smoke checks were run, or skipped with an explicit reason.
+
+Gate 5 — Security / Release Blockers
+
+- If data, access, API, auth, database, release, or CI is affected, security proof is required.
+
+- The agent must not claim done or complete if the gates were not passed or explicitly explained.
+
 ## Smoke Checks
 
 - Smoke checks confirm that the main route still opens, the core action still works, and no obvious failure blocks the user.

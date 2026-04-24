@@ -18,9 +18,27 @@ This module owns plan gate, scope control, execution boundaries, and the one-tas
 
 - Receive the task and restate the expected result before changing files.
 - Build a plan when the work affects files, behavior, structure, or release readiness.
+- If a task affects files, behavior, structure, release readiness, sensitive data, or architecture, the agent must form a task contract before execution.
 - Show the plan to the owner when approval is required by task risk or scope.
 - Do not execute file or code changes until the required approval is present.
 - If the task is unclear, ask for clarification instead of guessing.
+
+## Task Contract
+
+Use this minimum contract before execution when the task crosses the plan gate:
+
+```yaml
+task:
+  goal:
+  expected_result:
+  in_scope:
+  out_of_scope:
+  files_or_areas:
+  risk_level:
+  requires_owner_approval:
+  acceptance_criteria:
+  verification_plan:
+```
 
 ## Execution Boundaries
 

@@ -7,6 +7,13 @@
 set -euo pipefail
 REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 ERRORS=0
+CANONICAL_MODULES=(
+  "core-rules/MAIN.md"
+  "state/MAIN.md"
+  "workflow/MAIN.md"
+  "quality/MAIN.md"
+  "security/MAIN.md"
+)
 
 echo "=== AgentOS Health Check (Canonical) ==="
 echo ""
@@ -29,17 +36,29 @@ check_file "ROUTES-REGISTRY.md"  "ROUTES-REGISTRY.md"
 check_file "architecture/CANON.md" "architecture/CANON.md"
 
 echo ""
-echo "--- Canonical modules (*/MAIN.md) ---"
-MAIN_COUNT=0
-for f in "$REPO_ROOT"/*/MAIN.md; do
-  [[ -f "$f" ]] && MAIN_COUNT=$((MAIN_COUNT + 1))
+echo "--- Canonical runtime modules ---"
+for module in "${CANONICAL_MODULES[@]}"; do
+  if [[ -f "$REPO_ROOT/$module" ]]; then
+    echo "  OK  $module exists"
+  else
+    echo "  FAIL  Missing runtime module: $module"
+    ERRORS=$((ERRORS + 1))
+  fi
+
+  if grep -Fq "$module" "$REPO_ROOT/llms.txt"; then
+    echo "  OK  $module listed in llms.txt"
+  else
+    echo "  FAIL  $module missing from llms.txt"
+    ERRORS=$((ERRORS + 1))
+  fi
+
+  if grep -Fq "$module" "$REPO_ROOT/ROUTES-REGISTRY.md"; then
+    echo "  OK  $module listed in ROUTES-REGISTRY.md"
+  else
+    echo "  FAIL  $module missing from ROUTES-REGISTRY.md"
+    ERRORS=$((ERRORS + 1))
+  fi
 done
-if [[ $MAIN_COUNT -gt 0 ]]; then
-  echo "  OK  Found $MAIN_COUNT */MAIN.md modules"
-else
-  echo "  FAIL  No */MAIN.md modules found"
-  ERRORS=$((ERRORS + 1))
-fi
 
 echo ""
 echo "--- Canonical validators ---"
