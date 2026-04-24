@@ -35,10 +35,12 @@ This module surfaces the operational quality backbone while deeper detail still 
 
 ## Verification and readiness
 - `CHECKLIST.md` holds release-oriented readiness items and should be treated as a checkpoint, not as new governance.
-- `LAYER-2/qa/verification-criteria.md` defines the evidence expected when a task claims it is verified.
-- `LAYER-2/qa/test-scenarios.md` gives smoke scenarios that prove the route and context flow still work.
+- Verification criteria define the evidence expected when a task claims it is verified.
+- Test scenarios provide smoke-level proof that route and context flow still work.
 - Use concrete evidence: observed result, command output, browser behavior, or clearly described manual check.
 - If automatic proof is not possible, mark it as manual verification instead of pretending it is complete.
+- Verification must be evidence-based, not claim-based.
+- A task is verified only when acceptance criteria are supported by concrete proof.
 - Do not promote one checklist item into a universal project rule unless the source clearly does that.
 
 ## Audit depth and escalation
