@@ -9,7 +9,7 @@ CORE = ["core-rules", "state", "architecture", "workflow"]
 OPTIONAL = ["adapters", "quality", "security", "medical", "incidents", "doctor"]
 ALL = CORE + OPTIONAL
 REQUIRED_FIELDS = ["type", "module", "status", "authority", "when_to_read", "owner"]
-ALLOWED_STATUS = {"draft", "active", "stub"}
+ALLOWED_STATUS = {"draft", "transitional", "canonical", "active", "stub"}
 
 
 def parse_frontmatter(path: pathlib.Path):
