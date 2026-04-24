@@ -43,6 +43,14 @@ This module surfaces the operational quality backbone while deeper detail still 
 - A task is verified only when acceptance criteria are supported by concrete proof.
 - Do not promote one checklist item into a universal project rule unless the source clearly does that.
 
+## Release blockers and post-launch signals
+- Release must be blocked when data safety, security, or the core user path is not working.
+- Release must be blocked when unresolved blockers affect core functionality, safety, or user-critical flows.
+- Post-launch review is required once there is real user usage to inspect.
+- Post-launch review should capture whether key functionality is actually used.
+- Post-launch review should capture where users drop out of the flow.
+- Post-launch review should capture unexpected usage patterns.
+
 ## Audit depth and escalation
 - The quick audit is a short daily-style check: state, handoff, links, adapters, blockers, session log, next step.
 - Treat the quick route as a 5–7 point check for basic health, not as a replacement for the full audit path.
