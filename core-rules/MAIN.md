@@ -31,6 +31,7 @@ This module surfaces the operational rule backbone while deeper detail remains i
 - Full modular stages activate only after owner confirmation.
 - Document roles and authority are classified with `ROLE` and `AUTHORITY`; keep the lifecycle metadata valid before use.
 - `ACTIVE` docs may run in runtime; `LIMITED` docs are support only; `DEPRECATED` and `ARCHIVED` do not participate in runtime.
+- Each authority zone has only one PRIMARY.
 - When a document is downgraded or deprecated, update the navigation links in the same operation.
 - If authority conflicts, downgrade, deprecate, or merge rather than letting duplicate authority stand.
 - Governance is enforced by integrity checks; do not bypass them.
