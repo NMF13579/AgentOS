@@ -1,0 +1,21 @@
+name: "Health Check"
+# STATUS: canonical — runs primary health-check.sh
+# Canonical health for the current architecture.
+
+on:
+  push:
+    branches: [dev, main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  health:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run health check
+        run: bash scripts/health-check.sh

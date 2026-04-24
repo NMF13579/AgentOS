@@ -1,0 +1,26 @@
+name: Doc Integrity
+
+on:
+  pull_request:
+  push:
+    branches: [main, dev]
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Identity drift (key files)
+        run: bash scripts/check-identity-drift.sh
+
+      - name: Bootstrap graph files (llms.txt)
+        run: bash scripts/check-llms-graph-files.sh
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Run doc integrity tests
+        run: node tools/doc-tests/run-doc-tests.js
