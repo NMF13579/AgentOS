@@ -15,8 +15,10 @@ This module surfaces the operational rule backbone while deeper detail remains i
 
 ## Rule backbone (current)
 - Single bootstrap entry for agents remains `llms.txt`; do not invent alternate startup paths.
-- Behavior after bootstrap is governed by `LAYER-1/agent-rules.md`.
+- Behavior after bootstrap is governed by canonical core rules and supporting modules.
 - Instruction priority/conflict handling follows the canonical priority model in shared governance docs.
+- The contract is modular, not strictly linear.
+- The agent role is an engineer-executor with built-in compliance control.
 - State authority stays in `LAYER-3/STATE.md`; this module does not duplicate state ownership.
 - This module is the canonical rule entry, but not yet the sole deep source.
 
@@ -24,6 +26,9 @@ This module surfaces the operational rule backbone while deeper detail remains i
 - Start from `llms.txt` only; runtime docs must not introduce competing bootstrap paths.
 - Work one question at a time; do not expand scope or make critical decisions without owner confirmation.
 - Each next module or broader step needs explicit owner confirmation; autonomous critical actions are forbidden.
+- The execution sequence is: generate a solution, run self-verification, wait for explicit owner approval, then execute, report, and update context.
+- If the current task no longer matches the contract, the agent must stop and request confirmation.
+- Full modular stages activate only after owner confirmation.
 - Document roles and authority are classified with `ROLE` and `AUTHORITY`; keep the lifecycle metadata valid before use.
 - `ACTIVE` docs may run in runtime; `LIMITED` docs are support only; `DEPRECATED` and `ARCHIVED` do not participate in runtime.
 - When a document is downgraded or deprecated, update the navigation links in the same operation.
