@@ -7,12 +7,12 @@
 
 > This is the canonical agent bootstrap order.
 > No other file defines read order.
-> Agent rules (behaviour) are in LAYER-1/agent-rules.md — separate role.
+> Agent rules (behaviour) are in core-rules/MAIN.md and workflow/MAIN.md — separate role.
 
 # AgentOS
 > Agent Operating System — governed workspace for AI-agent-driven development.
 > Navigation index. Not a policy source.
-> Логика: LAYER-1/ | Состояние: LAYER-3/ | Архитектура: architecture/CANON.md (entry: architecture/MAIN.md) | Governance: LAYER-1/document-governance.md
+> Logic: core-rules/MAIN.md, workflow/MAIN.md | State / status / session continuity: state/MAIN.md | Architecture: architecture/CANON.md (entry: architecture/MAIN.md) | Governance / instruction conflicts: core-rules/MAIN.md
 > Routing spine hub (stub phase): ROUTES-REGISTRY.md (legacy sources remain active until migration is complete).
 
 ---
@@ -28,15 +28,15 @@
 - файл описания задачи (например `tasks/TASK-XXX.md`) — **только если** в `STATE.md` непустой `active_task`
 
 ### Read only if needed
-- LAYER-3/STATE.md — formal state authority (через `state/MAIN.md`)
+- state/MAIN.md — formal state / status / session continuity
 - HANDOFF.md — session snapshot (через `state/MAIN.md`)
-- LAYER-3/project-status.md — при неясном контексте проекта
-- LAYER-3/session-log.md — при recovery, ambiguity или реконструкции истории
-- LAYER-3/roadmap.md — при работе с задачами из roadmap
-- LAYER-3/DECISIONS.md — при архитектурных или governance изменениях
-- LAYER-3/INTENT.md — при стратегической неопределённости или риске drift
-- LAYER-1/system-constraints.md — при audit, hardening, structural changes
-- профильные reference/policy docs — по ситуации (см. Situation routes и LAYER-1/)
+- state/MAIN.md — when project status or session continuity is unclear
+- state/MAIN.md — when recovering session continuity, ambiguity, or history
+- workflow/MAIN.md — when working with roadmap tasks
+- architecture/MAIN.md — when architecture decisions are needed
+- core-rules/MAIN.md — when governance or instruction conflict needs resolution
+- core-rules/MAIN.md and security/MAIN.md — when audit, hardening, or structural changes need control
+- профильные reference/policy docs — по ситуации (см. Situation routes and canonical modules)
 
 ---
 
@@ -49,7 +49,7 @@ You do not invent a new working order. You follow the existing structure.
 
 - The only **canonical entry point** is this file (`llms.txt`).
 - All other files are data and rule sources, but not alternative bootstraps.
-- Platform adapters (см. инвентарь `LAYER-1/adapter-registry.md`; примеры: `LAYER-1/adapters/ANTIGRAVITY.md`, `.cursor/rules/governed-repo.mdc`) — **dumb interface layers**.
+- Platform adapters (см. инвентарь `adapters/MAIN.md`; примеры: `adapters/ANTIGRAVITY.md`, `.cursor/rules/governed-repo.mdc`) — **dumb interface layers**.
   They must not define logic, rules, or authority.
 - The adapter registry is a **read-only inventory**.
   It helps discover adapters but does not affect routing, authority, or reading order.
@@ -67,7 +67,7 @@ You are:
 When in doubt:
 - prefer stability over novelty
 - prefer existing patterns over new ones
-- check LAYER-3/DECISIONS.md before proposing architectural changes
+- check `architecture/MAIN.md` before proposing architectural changes
 
 ## Do not optimize without explicit request
 - do not reduce number of files at cost of clarity
@@ -100,42 +100,42 @@ Support files (DECISIONS.md, INTENT.md, system-constraints.md и аналоги)
 
 | Ситуация | Файл |
 |---|---|
-| Antigravity / IDE Antigravity | LAYER-1/adapters/ANTIGRAVITY.md |
-| Первый запуск | workflow/MAIN.md → LAYER-1/interview-system.md |
-| Продолжение работы | state/MAIN.md → LAYER-3/STATE.md → HANDOFF.md |
-| Ошибка / откат | incidents/MAIN.md → LAYER-1/error-handling.md |
-| Задача расползается | workflow/MAIN.md → LAYER-1/scope-guard.md |
-| Потеря контекста | doctor/MAIN.md → LAYER-1/context-recovery.md |
-| Конфликт инструкций | core-rules/MAIN.md → LAYER-1/agent-contract.md |
-| Деплой | workflow/MAIN.md → LAYER-1/deploy-guide.md |
-| Откат после деплоя | incidents/MAIN.md → LAYER-1/tools/deploy/ROLLBACK-PROTOCOL-POST-DEPLOY.md |
-| Аудит (полный) | quality/MAIN.md → LAYER-1/audit.md |
-| Аудит (короткий, ежедневный) | quality/MAIN.md → LAYER-1/audit-quick.md |
-| Управление документами (роли, lifecycle) | core-rules/MAIN.md → LAYER-1/document-governance.md |
-| UX и экраны | workflow/MAIN.md → LAYER-1/ux-checklist-core.md |
-| Медицина / границы ИИ | medical/MAIN.md → LAYER-1/MEDICAL-SAFETY.md |
+| Antigravity / IDE Antigravity | adapters/MAIN.md |
+| Первый запуск | workflow/MAIN.md |
+| Продолжение работы | state/MAIN.md → HANDOFF.md |
+| Ошибка / откат | incidents/MAIN.md |
+| Задача расползается | workflow/MAIN.md |
+| Потеря контекста | state/MAIN.md or doctor/MAIN.md |
+| Конфликт инструкций | core-rules/MAIN.md |
+| Деплой | workflow/MAIN.md |
+| Откат после деплоя | incidents/MAIN.md |
+| Аудит (полный) | quality/MAIN.md |
+| Аудит (короткий, ежедневный) | quality/MAIN.md |
+| Управление документами (роли, lifecycle) | core-rules/MAIN.md |
+| UX и экраны | workflow/MAIN.md |
+| Медицина / границы ИИ | medical/MAIN.md |
 | Безопасность | security/MAIN.md |
 | Тестирование | quality/MAIN.md |
 | Workflow и этапы MVP | workflow/MAIN.md |
-| Антипаттерны | core-rules/MAIN.md → LAYER-1/anti-patterns.md |
-| Принятие решений | architecture/MAIN.md → LAYER-1/decision-guide.md |
-| Роли агентов | core-rules/MAIN.md → LAYER-1/agents.md |
+| Антипаттерны | core-rules/MAIN.md |
+| Принятие решений | architecture/MAIN.md |
+| Роли агентов | core-rules/MAIN.md |
 
 ---
 
 ## Если маршрут не найден
 
-Поищи по ключевому слову в LAYER-1/ или спроси владельца проекта.
+Поищи по ключевому слову в canonical modules или спроси владельца проекта.
 Не угадывай и не действуй без ориентира.
 
 ---
 
 ## Canonical sources
-- Logic:        LAYER-1/
-- Adapters (inventory only): LAYER-1/adapter-registry.md
-- Governance:   LAYER-1/document-governance.md
-- Audit:        LAYER-1/audit.md (в т.ч. State Consistency Audit)
-- State:        LAYER-3/STATE.md
-- Status:       LAYER-3/project-status.md
+- Logic:        core-rules/MAIN.md, workflow/MAIN.md
+- Adapters (inventory only): adapters/MAIN.md
+- Governance:   core-rules/MAIN.md
+- Audit:        quality/MAIN.md
+- State:        state/MAIN.md
+- Status:       state/MAIN.md
 - Architecture: architecture/CANON.md
 - Handoff:      HANDOFF.md
