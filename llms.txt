@@ -12,7 +12,7 @@
 # AgentOS
 > Agent Operating System — governed workspace for AI-agent-driven development.
 > Navigation index. Not a policy source.
-> Логика: LAYER-1/ | Состояние: LAYER-3/ | Архитектура: ARCHITECTURE.md | Governance: LAYER-1/document-governance.md
+> Логика: LAYER-1/ | Состояние: LAYER-3/ | Архитектура: architecture/CANON.md (entry: architecture/MAIN.md) | Governance: LAYER-1/document-governance.md
 > Routing spine hub (stub phase): ROUTES-REGISTRY.md (legacy sources remain active until migration is complete).
 
 ---
@@ -137,5 +137,5 @@ Support files (DECISIONS.md, INTENT.md, system-constraints.md и аналоги)
 - Audit:        LAYER-1/audit.md (в т.ч. State Consistency Audit)
 - State:        LAYER-3/STATE.md
 - Status:       LAYER-3/project-status.md
-- Architecture: ARCHITECTURE.md
+- Architecture: architecture/CANON.md
 - Handoff:      HANDOFF.md
