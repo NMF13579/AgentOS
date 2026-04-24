@@ -46,6 +46,10 @@ This module surfaces the operational rule backbone while deeper detail remains i
 - Respect scope guard and do not expand task without owner confirmation.
 - Use self-verification before execution or commit when risk, novelty, or uncertainty appears.
 - If work starts to fail, route through error-handling instead of improvising a wider rewrite.
+- Prefer the simplest reversible option that still satisfies the current task.
+- If a choice is not required to continue safely, defer it instead of expanding the live task.
+- When several options are viable, choose the one with the least change to current stack and context.
+- If a decision is not clear enough to recommend one option, stop and ask for owner input rather than forcing a tie.
 - Do not silently weaken prohibitive rules into soft advice.
 
 ## Scope and self-verification
