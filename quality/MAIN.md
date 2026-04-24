@@ -51,6 +51,13 @@ This module surfaces the operational quality backbone while deeper detail still 
 - Use the full route when the question is "are we safe to release or hand off?"
 - If a red flag appears, stop and follow the audit route rather than turning it into ordinary workflow.
 
+## Full audit stop conditions and output
+- Missing critical file → stop and ask the owner whether to create it or continue.
+- Broken state layer in early checks → stop, do not continue deeper.
+- Red flags after scoring → ask whether to fix now or show the full report first.
+- Final output must be plain-language: working, missing, risks, removable items, top 3 next steps.
+- Saving audit results requires explicit owner approval.
+
 ## Canonical role
 `quality/MAIN.md` is the canonical routing entry for verification and quality decisions, but deep quality content is still partially legacy-backed.
 It is canonical for deciding what to verify and when, not for replacing the detailed legacy proof material yet.
