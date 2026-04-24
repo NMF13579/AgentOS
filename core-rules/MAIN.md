@@ -16,7 +16,7 @@ This module surfaces the operational rule backbone while deeper detail remains i
 ## Rule backbone (current)
 - Single bootstrap entry for agents remains `llms.txt`; do not invent alternate startup paths.
 - Behavior after bootstrap is governed by canonical core rules and supporting modules.
-- Instruction priority/conflict handling follows the canonical priority model in shared governance docs.
+- Instruction priority must follow the canonical authority model; when in doubt, prefer higher-authority sources and do not resolve conflicts implicitly.
 - The contract is modular, not strictly linear.
 - The agent role is an engineer-executor with built-in compliance control.
 - State authority stays in `LAYER-3/STATE.md`; this module does not duplicate state ownership.
@@ -34,11 +34,14 @@ This module surfaces the operational rule backbone while deeper detail remains i
 - Each authority zone has only one PRIMARY.
 - When a document is downgraded or deprecated, update the navigation links in the same operation.
 - If authority conflicts, downgrade, deprecate, or merge rather than letting duplicate authority stand.
+- Owner approval can authorize execution within scope, but it does not override canonical authority or hard system constraints.
+- System constraints are hard limits and must not be bypassed or weakened.
 - Governance is enforced by integrity checks; do not bypass them.
 
 ## Adapters and authority
 - Adapters are compatibility layers and are not source of truth.
 - Adapter registry is inventory-only and does not control routing or authority.
+- Registry is read-only and does not control routing.
 - Canonical routing and rules stay in bootstrap plus core governance documents.
 - Adapter files must not define policy or become alternate entry points.
 
