@@ -18,8 +18,9 @@ This module surfaces the operational workflow backbone while deeper detail still
 - Build a plan and show it to the owner for confirmation.
 - Do not execute until explicit approval is given.
 - Run the smallest relevant self-checks/tests for the task.
-- Report the result and update the required context artifacts.
+- A confirmed plan is required before starting execution on file or code changes.
 - If the task becomes uncertain or expands, stop and route through scope or error handling instead of improvising a wider change.
+- Report the result and update the required context artifacts.
 - Keep the workflow execution-oriented; do not turn it into policy, state, or verification authority.
 
 ## Interview to task flow
@@ -36,6 +37,7 @@ This module surfaces the operational workflow backbone while deeper detail still
 - Stop immediately on scope expansion or out-of-scope requests and ask the owner whether to continue, defer, or update the backlog.
 - Do not silently add new work to the live task.
 - If the owner approves an expansion, record it through the task flow and backlog path used by the project.
+- One task at a time; do not split attention across multiple tasks.
 
 ## Failure and escalation route
 - If a required step was skipped, return to that step and do it now.
