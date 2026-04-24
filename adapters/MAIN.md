@@ -55,6 +55,15 @@ Adapters translate canonical routing into platform format and do not define poli
 ## Compatibility behavior
 - Adapters may redirect the user or agent into the canonical route for their platform.
 - Adapters may set local formatting, wording, or entry hints that help a specific runtime.
+- Adapters may automate follow-up reminders when platform triggers are detected, but only as compatibility behavior.
+
+### Adapter automation boundaries
+- Adapters may surface canonical follow-up reminders when platform triggers are detected.
+- Adapter automation must only point back to canonical modules; it must not define the action logic itself.
+- Triggered reminders must preserve owner confirmation, scope boundaries, and canonical routing.
+- Adapter automation must not bypass state, workflow, medical, quality, or incident rules.
+- Adapter automation must use current canonical routes, not deprecated stage paths.
+
 - Adapters must not change canonical ordering, ownership, or authority.
 - Adapters must not become a place to define new workflow, state, or governance logic.
 - Validation guidance stays bounded by the existing adapter-spec and validator policy; adapters do not rewrite that policy.
