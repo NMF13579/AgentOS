@@ -95,6 +95,31 @@ Current warning-level checks:
 - missing `tests/fixtures/task-health/`
 - missing `reports/task-health.md`
 
+## Self-test
+
+Run all Template Integrity Checker fixtures:
+
+```bash
+python3 scripts/test-template-integrity.py
+```
+
+The self-test verifies:
+
+- normal PASS behavior
+- normal FAIL behavior
+- normal PASS_WITH_WARNINGS behavior
+- strict mode warning behavior
+- expected exit codes
+- expected `Result:` lines
+
+The self-test only invokes:
+
+```text
+scripts/check-template-integrity.py
+```
+
+It does not execute tasks, move queue items, generate contracts, or run runner scripts.
+
 ## Forbidden auto-runner files
 
 Forbidden auto-runner files are blocked because AgentOS must stay a Markdown-first guardrail framework. It must not become an autonomous runner that chooses, approves, or executes work by itself.
