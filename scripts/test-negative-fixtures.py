@@ -17,7 +17,6 @@ class CaseResult(NamedTuple):
 
 
 SKIPPED_GROUPS = [
-    ("queue", "future validator"),
     ("runner", "future guard test"),
 ]
 
@@ -38,6 +37,19 @@ REQUIRED_TRACE_FIXTURES = [
     "replaces-task.md",
     "replaces-review.md",
     "active-task-updated.md",
+    "malformed-frontmatter.md",
+]
+
+REQUIRED_QUEUE_FIXTURES = [
+    "missing-task-id.md",
+    "missing-status.md",
+    "missing-priority.md",
+    "missing-blocked-by.md",
+    "empty-task-id.md",
+    "unknown-status.md",
+    "unknown-priority.md",
+    "blocked-with-empty-blocked-by.md",
+    "blocked-by-not-list.md",
     "malformed-frontmatter.md",
 ]
 
@@ -62,7 +74,9 @@ def required_paths(root: Path) -> List[Path]:
         root / "scripts/check-template-integrity.py",
         root / "scripts/validate-review.py",
         root / "scripts/validate-trace.py",
+        root / "scripts/validate-queue-entry.py",
         root / "tests/fixtures/negative/trace",
+        root / "tests/fixtures/negative/queue",
         root / "tests/fixtures/negative/task-brief/missing-metadata/TASK.md",
         root / "tests/fixtures/negative/task-brief/executable-true/TASK.md",
         root / "tests/fixtures/negative/task-brief/missing-acceptance-criteria/TASK.md",
@@ -198,6 +212,26 @@ def trace_cases(root: Path) -> List[Case]:
     ]
 
 
+def queue_cases(root: Path) -> List[Case]:
+    tool = root / "scripts/validate-queue-entry.py"
+    base = root / "tests/fixtures/negative/queue"
+    return [
+        Case("missing-task-id", [str(tool), str(base / "missing-task-id.md")]),
+        Case("missing-status", [str(tool), str(base / "missing-status.md")]),
+        Case("missing-priority", [str(tool), str(base / "missing-priority.md")]),
+        Case("missing-blocked-by", [str(tool), str(base / "missing-blocked-by.md")]),
+        Case("empty-task-id", [str(tool), str(base / "empty-task-id.md")]),
+        Case("unknown-status", [str(tool), str(base / "unknown-status.md")]),
+        Case("unknown-priority", [str(tool), str(base / "unknown-priority.md")]),
+        Case(
+            "blocked-with-empty-blocked-by",
+            [str(tool), str(base / "blocked-with-empty-blocked-by.md")],
+        ),
+        Case("blocked-by-not-list", [str(tool), str(base / "blocked-by-not-list.md")]),
+        Case("malformed-frontmatter", [str(tool), str(base / "malformed-frontmatter.md")]),
+    ]
+
+
 def excerpt(text: str) -> Optional[str]:
     stripped = text.strip()
     if not stripped:
@@ -283,6 +317,14 @@ def main() -> int:
     ]
     extra_trace_fixtures = sorted(set(trace_md_files) - set(REQUIRED_TRACE_FIXTURES))
     trace_results = [run_case(root, case) for case in trace_cases(root)] if trace_has_any else []
+    queue_base = root / "tests/fixtures/negative/queue"
+    queue_md_files = sorted(path.name for path in queue_base.glob("*.md")) if queue_base.exists() else []
+    queue_has_any = len(queue_md_files) > 0
+    missing_queue_fixtures = [
+        name for name in REQUIRED_QUEUE_FIXTURES if not (queue_base / name).is_file()
+    ]
+    extra_queue_fixtures = sorted(set(queue_md_files) - set(REQUIRED_QUEUE_FIXTURES))
+    queue_results = [run_case(root, case) for case in queue_cases(root)] if queue_has_any else []
 
     after_drafts = draft_file_set(root)
 
@@ -333,6 +375,30 @@ def main() -> int:
                     "  {0}: FAIL - unexpected fixture: {1}".format(
                         Path(fixture_name).stem,
                         rel(trace_base / fixture_name, root),
+                    )
+                )
+    if not queue_has_any:
+        ok = False
+        print("queue: FAIL — queue fixtures not found")
+    else:
+        if not print_group("queue", queue_results):
+            ok = False
+        if missing_queue_fixtures:
+            ok = False
+            for fixture_name in missing_queue_fixtures:
+                print(
+                    "  {0}: FAIL - fixture not found: {1}".format(
+                        Path(fixture_name).stem,
+                        rel(queue_base / fixture_name, root),
+                    )
+                )
+        if extra_queue_fixtures:
+            ok = False
+            for fixture_name in extra_queue_fixtures:
+                print(
+                    "  {0}: FAIL - unexpected fixture: {1}".format(
+                        Path(fixture_name).stem,
+                        rel(queue_base / fixture_name, root),
                     )
                 )
 
