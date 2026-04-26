@@ -33,6 +33,7 @@ The MVP runner automatically checks only categories that already have tools:
 | review | 5 | scripts/validate-review.py |
 | trace | 9 | scripts/validate-trace.py |
 | queue | 10 | scripts/validate-queue-entry.py |
+| contract-draft | 14 | scripts/validate-contract-draft.py |
 
 Template-integrity negative fixtures are located in:
 
@@ -89,6 +90,11 @@ For queue fixtures, `scripts/validate-queue-entry.py` is used:
 
 - invalid queue entry rejected -> PASS
 - invalid queue entry accepted -> FAIL
+
+For contract draft fixtures, `scripts/validate-contract-draft.py` is used:
+
+- invalid contract draft rejected -> PASS
+- invalid contract draft accepted -> FAIL
 
 ## Exit codes
 

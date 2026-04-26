@@ -53,6 +53,23 @@ REQUIRED_QUEUE_FIXTURES = [
     "malformed-frontmatter.md",
 ]
 
+REQUIRED_CONTRACT_DRAFT_FIXTURES = [
+    "missing-task-id.md",
+    "missing-generated-from-task.md",
+    "missing-review-file.md",
+    "missing-review-status.md",
+    "missing-execution-allowed.md",
+    "blocked-review-status.md",
+    "execution-allowed-false.md",
+    "invalid-execution-allowed.md",
+    "missing-verification-section.md",
+    "missing-risk-section.md",
+    "replaces-active-task.md",
+    "execution-approved.md",
+    "malformed-frontmatter-no-open.md",
+    "malformed-frontmatter-no-close.md",
+]
+
 
 def repo_root() -> Path:
     return Path(__file__).resolve().parent.parent
@@ -75,8 +92,10 @@ def required_paths(root: Path) -> List[Path]:
         root / "scripts/validate-review.py",
         root / "scripts/validate-trace.py",
         root / "scripts/validate-queue-entry.py",
+        root / "scripts/validate-contract-draft.py",
         root / "tests/fixtures/negative/trace",
         root / "tests/fixtures/negative/queue",
+        root / "tests/fixtures/negative/contract-draft",
         root / "tests/fixtures/negative/task-brief/missing-metadata/TASK.md",
         root / "tests/fixtures/negative/task-brief/executable-true/TASK.md",
         root / "tests/fixtures/negative/task-brief/missing-acceptance-criteria/TASK.md",
@@ -232,6 +251,51 @@ def queue_cases(root: Path) -> List[Case]:
     ]
 
 
+def contract_draft_cases(root: Path) -> List[Case]:
+    tool = root / "scripts/validate-contract-draft.py"
+    base = root / "tests/fixtures/negative/contract-draft"
+    return [
+        Case("missing-task-id", [str(tool), str(base / "missing-task-id.md")]),
+        Case(
+            "missing-generated-from-task",
+            [str(tool), str(base / "missing-generated-from-task.md")],
+        ),
+        Case("missing-review-file", [str(tool), str(base / "missing-review-file.md")]),
+        Case("missing-review-status", [str(tool), str(base / "missing-review-status.md")]),
+        Case(
+            "missing-execution-allowed",
+            [str(tool), str(base / "missing-execution-allowed.md")],
+        ),
+        Case("blocked-review-status", [str(tool), str(base / "blocked-review-status.md")]),
+        Case(
+            "execution-allowed-false",
+            [str(tool), str(base / "execution-allowed-false.md")],
+        ),
+        Case(
+            "invalid-execution-allowed",
+            [str(tool), str(base / "invalid-execution-allowed.md")],
+        ),
+        Case(
+            "missing-verification-section",
+            [str(tool), str(base / "missing-verification-section.md")],
+        ),
+        Case(
+            "missing-risk-section",
+            [str(tool), str(base / "missing-risk-section.md")],
+        ),
+        Case("replaces-active-task", [str(tool), str(base / "replaces-active-task.md")]),
+        Case("execution-approved", [str(tool), str(base / "execution-approved.md")]),
+        Case(
+            "malformed-frontmatter-no-open",
+            [str(tool), str(base / "malformed-frontmatter-no-open.md")],
+        ),
+        Case(
+            "malformed-frontmatter-no-close",
+            [str(tool), str(base / "malformed-frontmatter-no-close.md")],
+        ),
+    ]
+
+
 def excerpt(text: str) -> Optional[str]:
     stripped = text.strip()
     if not stripped:
@@ -325,6 +389,26 @@ def main() -> int:
     ]
     extra_queue_fixtures = sorted(set(queue_md_files) - set(REQUIRED_QUEUE_FIXTURES))
     queue_results = [run_case(root, case) for case in queue_cases(root)] if queue_has_any else []
+    contract_draft_base = root / "tests/fixtures/negative/contract-draft"
+    contract_draft_md_files = (
+        sorted(path.name for path in contract_draft_base.glob("*.md"))
+        if contract_draft_base.exists()
+        else []
+    )
+    contract_draft_has_any = len(contract_draft_md_files) > 0
+    missing_contract_draft_fixtures = [
+        name
+        for name in REQUIRED_CONTRACT_DRAFT_FIXTURES
+        if not (contract_draft_base / name).is_file()
+    ]
+    extra_contract_draft_fixtures = sorted(
+        set(contract_draft_md_files) - set(REQUIRED_CONTRACT_DRAFT_FIXTURES)
+    )
+    contract_draft_results = (
+        [run_case(root, case) for case in contract_draft_cases(root)]
+        if contract_draft_has_any
+        else []
+    )
 
     after_drafts = draft_file_set(root)
 
@@ -399,6 +483,30 @@ def main() -> int:
                     "  {0}: FAIL - unexpected fixture: {1}".format(
                         Path(fixture_name).stem,
                         rel(queue_base / fixture_name, root),
+                    )
+                )
+    if not contract_draft_has_any:
+        ok = False
+        print("contract-draft: FAIL — contract draft fixtures not found")
+    else:
+        if not print_group("contract-draft", contract_draft_results):
+            ok = False
+        if missing_contract_draft_fixtures:
+            ok = False
+            for fixture_name in missing_contract_draft_fixtures:
+                print(
+                    "  {0}: FAIL - fixture not found: {1}".format(
+                        Path(fixture_name).stem,
+                        rel(contract_draft_base / fixture_name, root),
+                    )
+                )
+        if extra_contract_draft_fixtures:
+            ok = False
+            for fixture_name in extra_contract_draft_fixtures:
+                print(
+                    "  {0}: FAIL - unexpected fixture: {1}".format(
+                        Path(fixture_name).stem,
+                        rel(contract_draft_base / fixture_name, root),
                     )
                 )
 
