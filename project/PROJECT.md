@@ -100,6 +100,9 @@ _не заполнено_
 - Документация по использованию: `docs/quickstart.md`, `docs/usage.md`.
 - Дополнительные generated/служебные артефакты: `repo-map.md`, `reports/verification.md`, `reports/templates/verification-report.md`, `tasks/active-task.md`, `tasks/templates/task-contract.md`, `project/PROJECT.md`.
 
+### Open Task Briefs
+- `tasks/task-20260426-brief-to-contract-manual-guide/TASK.md` — status: open
+
 <!-- END:specs -->
 
 <!-- SECTION:deploy OWNER:deploy LOCKED:false -->
