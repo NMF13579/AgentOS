@@ -8,6 +8,24 @@ Milestone 10 adds state awareness only.
 It documents allowed states, evidence used to infer state, allowed transitions, forbidden transitions, and human approval requirements.
 Milestone 10 does not execute transitions.
 
+## Separation: state vs analysis_status
+
+In the task state report, two concepts may coexist:
+
+| Field | Type | Meaning |
+|---|---|---|
+| `state` | allowed task state | Task state inferred from evidence. It may be `state_conflict`. |
+| `analysis_status` | ok / invalid / conflict | Optional diagnostic status of the analysis operation. |
+
+Important:
+
+- `state` is a required field.
+- `analysis_status` is useful diagnostic information, but in the Milestone 10 MVP it should not break compatibility.
+- If `analysis_status` is added to the schema, the detector must emit it.
+- If the detector does not yet emit `analysis_status`, the schema must not require it.
+- `state_conflict` remains a valid value of `state`.
+- `analysis_status = conflict` may be used as an additional explanation, but it does not replace `state_conflict`.
+
 ## Evidence Model
 
 State inference uses evidence from:
@@ -26,10 +44,10 @@ State inference uses evidence from:
 - `tasks/dropped/`
 
 `tasks/failed/` may not yet exist in the repository.
-If it is missing, document it as a planned evidence path.
-The directory is the intended future location for failed tasks.
-Do not create the directory.
-Do not treat its absence as an error.
+If it is missing, `failed` remains a reserved/planned state.
+The absence of `tasks/failed/` must not block Milestone 10.
+Do not create `tasks/failed/` in Milestone 10 unless it already exists in the repository design.
+Future milestones may define the concrete failed evidence path.
 The `failed` state is still part of the model even if `tasks/failed/` does not yet exist.
 
 ## State Model
