@@ -15,6 +15,8 @@ def parse_scalar(text):
         return False
     if value == "[]":
         return []
+    if len(value) >= 2 and value[0] == value[-1] and value[0] in {"'", '"'}:
+        return value[1:-1].strip()
     return value
 
 

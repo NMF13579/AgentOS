@@ -26,6 +26,8 @@ def find_md_files(directory: Path):
             continue
         if child.suffix != ".md":
             continue
+        if child.name == "QUEUE.md":
+            continue
         files.append(child)
     return files
 

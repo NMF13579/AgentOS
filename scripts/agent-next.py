@@ -16,6 +16,8 @@ def parse_scalar(text):
         return False
     if value == "[]":
         return []
+    if len(value) >= 2 and value[0] == value[-1] and value[0] in {"'", '"'}:
+        return value[1:-1].strip()
     return value
 
 
@@ -101,9 +103,13 @@ def find_candidate(queue_dir):
         if path.name == "QUEUE.md":
             continue
         data = load_yaml_like(path)
-        if data.get("queue_status") != "queued":
+        status = data.get("status")
+        if status is None:
+            status = data.get("queue_status")
+        if status != "queued":
             continue
-        if data.get("execution_allowed") is not True:
+        execution_allowed = data.get("execution_allowed")
+        if execution_allowed is False:
             continue
         blocked_by = data.get("blocked_by", [])
         if blocked_by != []:
