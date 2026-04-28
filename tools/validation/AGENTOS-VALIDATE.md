@@ -18,6 +18,7 @@ python3 scripts/agentos-validate.py queue
 python3 scripts/agentos-validate.py runner
 python3 scripts/agentos-validate.py state-fixtures
 python3 scripts/agentos-validate.py approval-fixtures
+python3 scripts/agentos-validate.py activation-fixtures
 python3 scripts/agentos-validate.py all
 ```
 
@@ -33,6 +34,7 @@ python3 scripts/agentos-validate.py all
 | `runner` | `scripts/validate-runner-protocol.py` |
 | `state-fixtures` | `scripts/test-state-fixtures.py` |
 | `approval-fixtures` | `scripts/test-approval-marker-fixtures.py` |
+| `activation-fixtures` | `scripts/test-activation-fixtures.py` |
 | `all` | `template`, `negative`, `guard`, `audit`, `queue`, `runner` |
 
 The wrapper uses `sys.executable` to launch each script.
@@ -136,6 +138,38 @@ Suite-wrapper boundary:
 - it is not a task manager CLI
 - task-level approval validation remains in `scripts/validate-approval-marker.py`
 - no task-level approval commands were added in Milestone 10.17.1
+
+## activation-fixtures
+
+`activation-fixtures` runs the activation negative fixture suite.
+
+```bash
+python3 scripts/agentos-validate.py activation-fixtures
+```
+
+Equivalent:
+
+```bash
+python3 scripts/test-activation-fixtures.py
+```
+
+Exit code passthrough:
+
+- child exit `0` -> wrapper exit `0`
+- child exit non-zero -> wrapper exit non-zero
+- missing `scripts/test-activation-fixtures.py` -> wrapper exits non-zero and reports `MISSING`
+
+Included in `all`:
+
+- no
+
+Safety boundaries:
+
+- `activation-fixtures` validates rejection behavior only
+- `activation-fixtures` does not activate a production task
+- `activation-fixtures` does not write production `tasks/active-task.md`
+- `activation-fixtures` does not execute tasks
+- `activation-fixtures` does not process the queue
 
 ## Result Semantics
 

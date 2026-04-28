@@ -22,9 +22,15 @@ SUITES = {
     "runner": ["scripts/validate-runner-protocol.py"],
     "state-fixtures": ["scripts/test-state-fixtures.py"],
     "approval-fixtures": ["scripts/test-approval-marker-fixtures.py"],
+    "activation-fixtures": ["scripts/test-activation-fixtures.py"],
 }
 
 ORDER = ["template", "negative", "guard", "audit", "queue", "runner"]
+
+
+def available_commands() -> str:
+    commands = [*SUITES.keys(), "all"]
+    return "|".join(commands)
 
 
 def resolve_command(repo_root: Path, suite: str) -> tuple[list[str], Path]:
@@ -81,7 +87,8 @@ def run_suite(repo_root: Path, suite: str) -> dict:
 
 def print_text_suite_result(suite_result: dict) -> None:
     if suite_result["result"] == MISSING:
-        print(f"[MISSING] {suite_result['name']}")
+        message = suite_result["error"] or "missing script"
+        print(f"[MISSING] {suite_result['name']} - {message}")
         return
 
     message = suite_result["error"]
@@ -94,8 +101,14 @@ def print_text_suite_result(suite_result: dict) -> None:
 
 def main() -> int:
     repo_root = Path(__file__).resolve().parent.parent
-    if len(sys.argv) != 2:
-        print("Usage: python3 scripts/agentos-validate.py <template|negative|guard|audit|queue|runner|state-fixtures|approval-fixtures|all>", file=sys.stderr)
+    if len(sys.argv) != 2 or sys.argv[1] in {"-h", "--help"}:
+        print(
+            f"Usage: python3 scripts/agentos-validate.py <{available_commands()}>",
+            file=sys.stderr,
+        )
+        print("Available commands:", file=sys.stderr)
+        for name in [*SUITES.keys(), "all"]:
+            print(f"  {name}", file=sys.stderr)
         return 2
 
     target = sys.argv[1]

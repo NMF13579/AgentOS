@@ -1,38 +1,49 @@
 # Session Handoff
 
+## Timestamp
+
+- 2026-04-28 16:22:34 +05
+
 ## Status
 
-Active work is completed for Task 7.5.1 example scenarios.
-The local shell in the previous session started failing on basic commands like `pwd` and `echo hi`.
-The repository changes were still saved through GitHub API updates.
+Milestone 10.19 (Pre-M11 Script Fixes) is completed and pushed to `origin/dev`.
+Full audit was re-run after push.
 
 ## Completed Work
 
-- Task 7.5.1 example scenarios were added as documentation only.
-- `examples/README.md` was created.
-- `examples/scenario-01-new-feature.md` was created.
-- `examples/scenario-02-bugfix.md` was created.
-- `examples/scenario-03-refactor.md` was created.
-- `examples/scenario-04-validation-only.md` was created.
-- `README.md` was updated with an Example scenarios section.
-- `repo-map.md` was updated with the new example files.
+- Fixed `scripts/agent-next.py`:
+  - Uses `status` as primary queue field.
+  - Keeps fallback to `queue_status` for compatibility.
+- Fixed `scripts/agent-complete.py`:
+  - Normalizes quoted scalar values (including `task_id`) when reading frontmatter.
+- Fixed `scripts/agent-fail.py`:
+  - Normalizes quoted scalar values (including `task_id`) when reading frontmatter.
+- Fixed `scripts/validate-queue.py`:
+  - Excludes `QUEUE.md` from queue entry validation.
 
-## Current Branch State
+## Commit
 
 - Branch: `dev`
-- Recent work was committed through GitHub API because the terminal stopped responding.
-- The workspace terminal failure looked environmental, not repository-related.
+- Commit: `84558a7`
+- Subject: `fix(m10.19): pre-m11 script fixes for queue/status parsing`
+- Push: `origin/dev` updated successfully
 
-## If Resuming
+## Verification Snapshot
 
-1. Read `llms.txt`.
-2. Confirm the active task or next milestone.
-3. Check whether the local shell works again.
-4. Continue with the next task only after the workspace is responsive.
+- `python3 scripts/agent-next.py --dry-run`: PASS
+- `python3 scripts/agent-complete.py --dry-run --task-id 20260428-queue-schema-check`: PASS
+- `python3 scripts/agent-fail.py --dry-run --task-id 20260428-queue-schema-check`: PASS
+- `python3 scripts/agentos-validate.py all`: FAIL (known unrelated `runner` suite only)
+- `queue` suite no longer fails on `tasks/queue/QUEUE.md`: PASS
 
-## Notes
+## Current Workspace State
 
-- No scripts were executed for the example-scenarios task.
-- No validators were created.
-- No task folders, fixtures, or queue items were added.
-- `tasks/active-task.md` was not modified.
+- Working tree has one local uncommitted file:
+  - `reports/milestone-10-final-hardening-review.md`
+
+## Next
+
+Proceed to Milestone 11 work.
+The remaining blocker for fully green `agentos-validate.py all` is `runner` markers in:
+- `scripts/agent-complete.py`
+- `scripts/agent-fail.py`

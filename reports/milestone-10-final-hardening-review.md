@@ -178,6 +178,7 @@ No task-level state commands were added to agentos-validate.py.
 - `agentos-validate.py all --json` is not supported by the current wrapper and returns usage exit 2.
 - `approval-fixtures` is intentionally not included in `all`.
 - approval marker duplicate detection is best-effort and read-only.
+- `check-transition.py` still does not consume approval marker files directly; it relies on detector evidence and dry-run rules only.
 
 ## Readiness for Milestone 11
 Milestone 11 may begin only if:
