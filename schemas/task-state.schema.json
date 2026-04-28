@@ -3,32 +3,36 @@
   "$id": "task-state.schema.json",
   "$comment": "This schema validates task state reports only. It does not execute transitions. It does not grant approval. It does not modify task files. It does not replace human review.",
   "title": "Task State Report",
-  "description": "Read-only analysis result for AgentOS task state reporting.",
+  "description": "Task State Report v1.1 for read-only task state analysis.",
   "type": "object",
   "additionalProperties": false,
   "required": [
+    "schema_version",
+    "generated_at",
     "task_id",
     "state",
+    "analysis_status",
     "evidence",
     "missing_evidence",
     "allowed_next_states",
-    "blocked_reason"
+    "blocked_reason",
+    "warnings"
   ],
   "properties": {
     "schema_version": {
       "type": "string",
-      "default": "1.0",
-      "description": "Optional schema version for the task state report."
+      "const": "1.1",
+      "description": "Task State Report schema version."
     },
     "generated_at": {
       "type": "string",
       "format": "date-time",
-      "description": "Optional UTC timestamp when the report was generated."
+      "description": "UTC ISO 8601 timestamp when the report was generated."
     },
     "task_id": {
       "type": "string",
       "minLength": 1,
-      "description": "Task identifier, e.g. task-001."
+      "description": "Task identifier or task path."
     },
     "state": {
       "type": "string",
@@ -47,7 +51,12 @@
         "dropped",
         "state_conflict"
       ],
-      "description": "Detected task state. state_conflict is a technical analysis result."
+      "description": "Detected task state. state_conflict is detector-only."
+    },
+    "analysis_status": {
+      "type": "string",
+      "enum": ["ok", "invalid", "conflict"],
+      "description": "Diagnostic status of the analysis operation."
     },
     "evidence": {
       "type": "array",
@@ -59,10 +68,12 @@
         "properties": {
           "type": {
             "type": "string",
+            "minLength": 1,
             "description": "Evidence type or artifact category."
           },
           "path": {
             "type": "string",
+            "minLength": 1,
             "description": "Relative path to the evidence file or directory."
           },
           "status": {
@@ -86,7 +97,7 @@
     },
     "allowed_next_states": {
       "type": "array",
-      "description": "Allowed next states from the detected state.",
+      "description": "Allowed next states from the detected state. state_conflict is excluded because it is detector-only.",
       "items": {
         "type": "string",
         "enum": [
@@ -101,8 +112,7 @@
           "active",
           "completed",
           "failed",
-          "dropped",
-          "state_conflict"
+          "dropped"
         ]
       }
     },
@@ -112,7 +122,7 @@
     },
     "warnings": {
       "type": "array",
-      "description": "Optional non-fatal warnings from analysis.",
+      "description": "Warnings from analysis. Always present, even when empty.",
       "items": {
         "type": "string"
       }

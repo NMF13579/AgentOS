@@ -2,8 +2,8 @@
 
 ## Purpose
 
-`scripts/detect-task-state.py` is a read-only detector for task state evidence.
-It inspects a task directory and related repository evidence paths and produces a JSON state report.
+`scripts/detect-task-state.py` is a read-only detector for Task State Report v1.1.
+It inspects task evidence and returns a JSON report for the current task state.
 It does not validate transitions and does not execute transitions.
 
 ## Command
@@ -20,23 +20,57 @@ The detector accepts one positional argument:
 
 If the argument is missing or `--help` is requested, the detector prints usage and exits with code `2`.
 
-## Outputs
+## Output Format
 
-The detector prints a JSON report to stdout.
-The report includes the required fields used by the Task State Report schema:
+The detector prints Task State Report v1.1 as JSON.
 
+Required fields:
+
+- `schema_version`
+- `generated_at`
 - `task_id`
 - `state`
+- `analysis_status`
 - `evidence`
 - `missing_evidence`
 - `allowed_next_states`
 - `blocked_reason`
-
-Optional fields may include:
-
-- `schema_version`
-- `generated_at`
 - `warnings`
+
+`schema_version` is always `"1.1"`.
+`generated_at` is a UTC ISO 8601 timestamp.
+
+## analysis_status
+
+| analysis_status | Meaning |
+|---|---|
+| `ok` | Evidence is consistent and the state was detected cleanly. |
+| `invalid` | Evidence is present, but the current state is not fully consistent. |
+| `conflict` | Mutually exclusive evidence was found. |
+
+If mutually exclusive evidence is found, the detector returns `state_conflict` and `analysis_status: conflict`.
+If evidence is incomplete or inconsistent, the detector keeps the detected state and returns `analysis_status: invalid`.
+
+## Evidence
+
+`evidence` is an array of structured objects.
+Each item has:
+
+- `type`
+- `path`
+- `status`
+- `note`
+
+Allowed `evidence.status` values:
+
+- `present`
+- `missing`
+- `valid`
+- `invalid`
+- `conflicting`
+- `planned`
+
+`warnings` is always present and is emitted as `[]` when there are no warnings.
 
 ## Read-Only Guarantee
 
@@ -45,34 +79,13 @@ It only reads evidence and returns a JSON report.
 It does not modify task files.
 It does not create approval markers.
 It does not create `tasks/failed/`.
-It does not depend on `task-health.py`.
-
-## state_conflict Behavior
-
-`state_conflict` is used when evidence conflicts.
-It is not a manual transition target.
-The detector reports `state_conflict` as JSON and still exits `0` when the report is produced successfully.
-
-## Evidence Paths
-
-The detector checks evidence at:
-
-- `{task_dir}/TASK.md`
-- `{task_dir}/REVIEW.md`
-- `{task_dir}/TRACE.md`
-- `tasks/drafts/{task-id}-contract-draft.md`
-- `approvals/`
-- `tasks/active-task.md`
-- `tasks/done/`
-- `tasks/failed/`
-- `tasks/dropped/`
-
-`tasks/failed/` is treated as a planned evidence path when the directory does not yet exist.
-The detector does not create that directory.
+It does not replace `tasks/active-task.md`.
+It does not move queue entries.
 
 ## Exit Codes
 
-- `0` - JSON report successfully produced
+- `0` - JSON report successfully produced, including `state_conflict`
+- `1` - runtime or fatal error, such as an unreadable filesystem or unexpected exception
 - `2` - CLI usage error or `--help`
 
 ## Safety Boundaries
@@ -84,8 +97,9 @@ The detector does not:
 - modify task files
 - create approval markers
 - create `tasks/failed/`
+- replace `tasks/active-task.md`
+- move queue entries
 - grant execution authority
-- depend on `task-health.py`
 
 ## Example Usage
 

@@ -3,7 +3,7 @@
 ## Purpose
 
 `scripts/validate-task-state.py` is a read-only validator for task state consistency.
-It checks whether the current state reported by `scripts/detect-task-state.py` matches the available evidence.
+It checks whether the report produced by `scripts/detect-task-state.py` is a valid Task State Report v1.1 and whether the detected state is consistent with the evidence.
 It does not check requested transitions.
 It does not execute transitions.
 
@@ -31,46 +31,62 @@ The validator prints a human-readable report to stdout:
 - `Result: PASS` or `Result: FAIL`
 - `Reasons:` when validation fails
 
-## Exit Codes
+## Task State Report v1.1
 
-- `0` - validation passed
-- `1` - validation failed
-- `2` - CLI usage error
+The validator expects Task State Report v1.1.
+The report must include:
 
-## Relationship with detect-task-state.py
+- `schema_version`
+- `generated_at`
+- `task_id`
+- `state`
+- `analysis_status`
+- `evidence`
+- `missing_evidence`
+- `allowed_next_states`
+- `blocked_reason`
+- `warnings`
 
-The validator calls `scripts/detect-task-state.py` via subprocess and reads its JSON report.
-It does not duplicate detection logic.
-It only checks consistency between the detected state and the evidence in the report.
+If `schema_version != "1.1"`, the validator fails with `expected v1.1 report`.
 
-## Validation Rules
+## analysis_status Handling
 
-The validator checks state consistency only.
-It does not validate requested transitions.
-It does not execute transitions.
-It does not modify task files.
-It does not create approval markers.
-It does not create `tasks/failed/`.
+- `analysis_status = ok` means the detector found consistent evidence.
+- `analysis_status = invalid` means the detector found evidence, but the state is partially inconsistent.
+- `analysis_status = conflict` means mutually exclusive evidence was found and the validator fails.
+
+The invariant is:
+
+- `state == "state_conflict"` implies `analysis_status == "conflict"`
+- `analysis_status == "conflict"` implies `state == "state_conflict"`
+
+## Evidence Handling
+
+The validator reads structured evidence objects and checks that each item has:
+
+- `type`
+- `path`
+- `status`
+- `note`
+
+It rejects any evidence item with `status = conflicting`.
+It also applies state-specific consistency checks.
 
 State-specific checks include:
 
-- `state_conflict` fails
 - `review_ready` requires `REVIEW.md`, `execution_allowed: true`, and `READY` or `READY_WITH_EDITS`
 - `review_blocked` requires `REVIEW.md` and a blocked review status
 - `trace_written` requires `TRACE.md` and `REVIEW.md`
 - `contract_drafted` requires a valid contract draft and `TRACE.md`
 - `approved_for_execution` requires a valid approval marker and contract draft
-- `active` requires `tasks/active-task.md` reference and no terminal evidence
+- `active` requires `tasks/active-task.md` reference and a valid approval marker
 - `completed` requires `tasks/done/` evidence and no active/failed/dropped evidence
 - `failed` requires `tasks/failed/` evidence and no active/completed/dropped evidence
 - `dropped` requires `tasks/dropped/` evidence and no active/completed/failed evidence
 
+If `analysis_status = invalid`, the validator records a warning and only fails if the invalid evidence breaks the consistency rules for the current state.
+
 `planned` evidence for `tasks/failed/` is not treated as a failure by itself when the task is not failed.
-
-## state_conflict Behavior
-
-If the detector reports `state_conflict`, the validator fails.
-Conflicting evidence is treated as a consistency error until a human resolves it.
 
 ## Read-Only Guarantee
 
@@ -79,6 +95,13 @@ It only reads the detector output and evaluates consistency.
 It does not modify task files.
 It does not modify detector output.
 It does not grant execution authority.
+It does not create approval markers.
+
+## Exit Codes
+
+- `0` - validation passed
+- `1` - validation failed
+- `2` - CLI usage error
 
 ## Safety Boundaries
 

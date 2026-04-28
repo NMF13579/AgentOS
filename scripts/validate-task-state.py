@@ -26,6 +26,15 @@ VALID_STATES = {
     "state_conflict",
 }
 
+VALID_ANALYSIS_STATUSES = {"ok", "invalid", "conflict"}
+VALID_EVIDENCE_STATUSES = {
+    "present",
+    "missing",
+    "valid",
+    "invalid",
+    "conflicting",
+    "planned",
+}
 BLOCKED_REVIEW_STATUSES = {
     "NEEDS_CLARIFICATION",
     "TOO_BROAD",
@@ -33,7 +42,6 @@ BLOCKED_REVIEW_STATUSES = {
     "DUPLICATE",
     "BLOCKED",
 }
-
 READY_REVIEW_STATUSES = {"READY", "READY_WITH_EDITS"}
 
 
@@ -69,10 +77,42 @@ def load_detector_report(task_dir: Path) -> tuple[dict | None, str | None]:
             return None, f"detector fallback failed: {exc}"
 
 
+def report_is_v11(report: object) -> bool:
+    if not isinstance(report, dict):
+        return False
+    required_fields = {
+        "schema_version",
+        "generated_at",
+        "task_id",
+        "state",
+        "analysis_status",
+        "evidence",
+        "missing_evidence",
+        "allowed_next_states",
+        "blocked_reason",
+        "warnings",
+    }
+    if not required_fields.issubset(report):
+        return False
+    if report.get("schema_version") != "1.1":
+        return False
+    if report.get("analysis_status") not in VALID_ANALYSIS_STATUSES:
+        return False
+    if not isinstance(report.get("evidence"), list):
+        return False
+    if not isinstance(report.get("missing_evidence"), list):
+        return False
+    if not isinstance(report.get("allowed_next_states"), list):
+        return False
+    if not isinstance(report.get("warnings"), list):
+        return False
+    return True
+
+
 def lookup_evidence(report: dict) -> dict[str, dict]:
     lookup: dict[str, dict] = {}
     for item in report.get("evidence", []):
-        if isinstance(item, dict) and "type" in item:
+        if isinstance(item, dict) and item.get("type") is not None:
             lookup[str(item["type"])] = item
     return lookup
 
@@ -83,25 +123,21 @@ def evidence_status(item: dict | None) -> str | None:
     return str(item.get("status"))
 
 
-def has_status(item: dict | None, statuses: set[str]) -> bool:
-    return evidence_status(item) in statuses
+def is_presentish(status: str | None) -> bool:
+    return status in {"present", "valid", "invalid", "conflicting"}
 
 
-def report_is_v1_compat(report: object) -> bool:
-    return isinstance(report, dict) and "state" in report and "evidence" in report and "missing_evidence" in report
-
-
-def validate_consistency(report: dict) -> list[str]:
+def validate_consistency(report: dict) -> tuple[list[str], list[str]]:
     reasons: list[str] = []
+    warnings: list[str] = []
 
-    if not report_is_v1_compat(report):
-        return ["detector output is invalid"]
+    if not report_is_v11(report):
+        return ["expected v1.1 report"], warnings
 
     state = str(report.get("state", ""))
+    analysis_status = str(report.get("analysis_status", ""))
     if state not in VALID_STATES:
-        return [f"invalid state: {state}"]
-    if state == "state_conflict":
-        return ["detector returned state_conflict"]
+        return [f"invalid state: {state}"], warnings
 
     lookup = lookup_evidence(report)
     task = lookup.get("TASK")
@@ -111,7 +147,7 @@ def validate_consistency(report: dict) -> list[str]:
     approval = lookup.get("APPROVAL")
     active = lookup.get("ACTIVE")
     done = lookup.get("DONE")
-    failed = lookup.get("FAILED")
+    failed = lookup.get("FAILED_DIR") or lookup.get("FAILED")
     dropped = lookup.get("DROPPED")
 
     task_status = evidence_status(task)
@@ -124,24 +160,46 @@ def validate_consistency(report: dict) -> list[str]:
     failed_status = evidence_status(failed)
     dropped_status = evidence_status(dropped)
 
-    def present_or_valid(item: dict | None) -> bool:
-        return evidence_status(item) in {"present", "valid"}
+    for item in report.get("evidence", []):
+        if not isinstance(item, dict):
+            reasons.append("evidence item is not an object")
+            continue
+        if not isinstance(item.get("type"), str) or not item.get("type"):
+            reasons.append("evidence item has invalid type")
+        if not isinstance(item.get("path"), str) or not item.get("path"):
+            reasons.append("evidence item has invalid path")
+        if item.get("status") not in VALID_EVIDENCE_STATUSES:
+            reasons.append(f"evidence item has invalid status: {item.get('status')}")
+        if not isinstance(item.get("note"), str):
+            reasons.append("evidence item has invalid note")
+        if item.get("status") == "conflicting":
+            reasons.append(f"{item.get('type')} evidence is conflicting")
 
-    def valid_only(item: dict | None) -> bool:
-        return evidence_status(item) == "valid"
+    if analysis_status == "conflict" and state != "state_conflict":
+        reasons.append("conflict analysis_status requires state_conflict")
+    if state == "state_conflict" and analysis_status != "conflict":
+        reasons.append("state_conflict requires analysis_status=conflict")
+    if analysis_status == "invalid":
+        warnings.append("detector reported invalid analysis status")
 
-    def present_or_valid_or_planned(item: dict | None) -> bool:
-        return evidence_status(item) in {"present", "valid", "planned"}
+    conflict_reasons: list[str] = []
+    if active_status in {"present", "valid"} and any(status in {"valid", "present"} for status in [done_status, failed_status, dropped_status]):
+        conflict_reasons.append("active evidence conflicts with terminal evidence")
+    if done_status in {"present", "valid"} and any(status in {"valid", "present"} for status in [active_status, failed_status, dropped_status]):
+        conflict_reasons.append("completed evidence conflicts with active/failed/dropped evidence")
+    if failed_status in {"present", "valid"} and dropped_status in {"present", "valid"}:
+        conflict_reasons.append("failed evidence conflicts with dropped evidence")
+    if approval_status in {"present", "valid"} and done_status in {"present", "valid"}:
+        conflict_reasons.append("approval marker exists but task is already completed")
 
-    all_other_stronger = any(
-        present_or_valid(item)
-        for item in [review, trace, contract, approval, active, done, failed, dropped]
-    )
+    if conflict_reasons:
+        reasons.extend(conflict_reasons)
+        return reasons, warnings
 
     if state == "idea":
         if task_status != "missing":
             reasons.append("TASK.md evidence exists")
-        if all_other_stronger:
+        if any(is_presentish(evidence_status(item)) for item in [review, trace, contract, approval, active, done, failed, dropped]):
             reasons.append("stronger evidence exists")
 
     elif state == "brief_draft":
@@ -149,88 +207,97 @@ def validate_consistency(report: dict) -> list[str]:
             reasons.append("TASK.md is missing")
         if task_status == "valid":
             reasons.append("TASK.md is already approved")
-        if any(
-            present_or_valid(item)
-            for item in [review, trace, contract, approval, active, done, failed, dropped]
-        ):
+        if any(is_presentish(evidence_status(item)) for item in [review, trace, contract, approval, active, done, failed, dropped]):
             reasons.append("stronger evidence exists")
 
     elif state == "brief_approved":
         if task_status != "valid":
             reasons.append("TASK.md is not approved")
+        if any(is_presentish(evidence_status(item)) for item in [review, trace, contract, approval, active, done, failed, dropped]):
+            reasons.append("stronger evidence exists")
 
     elif state == "review_ready":
         if task_status == "missing":
             reasons.append("TASK.md is missing")
-        if review_status not in {"valid"}:
+        if review_status != "valid":
             reasons.append("REVIEW.md is missing or invalid")
         review_note = str(review.get("note", "")) if review else ""
-        if "review_status=READY" not in review_note and "review_status=READY_WITH_EDITS" not in review_note:
+        if not any(status in review_note for status in READY_REVIEW_STATUSES):
             reasons.append("REVIEW.md is not READY or READY_WITH_EDITS")
         if "execution_allowed=true" not in review_note:
             reasons.append("execution_allowed is not true")
+        if any(is_presentish(evidence_status(item)) for item in [trace, contract, approval, active, done, failed, dropped]):
+            reasons.append("stronger evidence exists")
 
     elif state == "review_blocked":
         if task_status == "missing":
             reasons.append("TASK.md is missing")
-        if review_status not in {"valid"}:
+        if review_status != "valid":
             reasons.append("REVIEW.md is missing or invalid")
         review_note = str(review.get("note", "")) if review else ""
         if not any(status in review_note for status in BLOCKED_REVIEW_STATUSES):
             reasons.append("review_status is not blocked")
+        if "execution_allowed=true" in review_note:
+            reasons.append("review_blocked evidence has execution_allowed=true")
+        if any(is_presentish(evidence_status(item)) for item in [trace, contract, approval, active, done, failed, dropped]):
+            reasons.append("stronger evidence exists")
 
     elif state == "trace_written":
         if trace_status != "valid":
             reasons.append("TRACE.md is missing or invalid")
         if review_status == "missing":
             reasons.append("REVIEW.md is missing")
+        if any(is_presentish(evidence_status(item)) for item in [contract, approval, active, done, failed, dropped]):
+            reasons.append("stronger evidence exists")
 
     elif state == "contract_drafted":
         if contract_status != "valid":
             reasons.append("contract draft is missing or invalid")
-        if trace_status == "missing":
-            reasons.append("TRACE.md is missing")
+        if trace_status != "valid":
+            reasons.append("TRACE.md is missing or invalid")
+        if any(is_presentish(evidence_status(item)) for item in [approval, active, done, failed, dropped]):
+            reasons.append("stronger evidence exists")
 
     elif state == "approved_for_execution":
         if approval_status != "valid":
             reasons.append("approval marker is missing or invalid")
         if contract_status != "valid":
             reasons.append("contract draft is missing or invalid")
+        if any(is_presentish(evidence_status(item)) for item in [active, done, failed, dropped]):
+            reasons.append("stronger evidence exists")
 
     elif state == "active":
         if active_status != "valid":
             reasons.append("tasks/active-task.md does not reference the task")
-        if any(status == "valid" for status in [done_status, failed_status, dropped_status]):
+        if approval_status != "valid":
+            reasons.append("approval marker is missing or invalid")
+        if any(status in {"present", "valid", "invalid", "conflicting"} for status in [done_status, failed_status, dropped_status]):
             reasons.append("terminal evidence also exists")
 
     elif state == "completed":
         if done_status != "valid":
             reasons.append("task is not present in tasks/done/")
-        if any(status == "valid" for status in [active_status, failed_status, dropped_status]):
+        if any(status in {"present", "valid", "invalid", "conflicting"} for status in [active_status, failed_status, dropped_status]):
             reasons.append("active/failed/dropped evidence also exists")
 
     elif state == "failed":
         if failed_status == "planned":
-            # Planned path is acceptable when the repository does not yet have tasks/failed/.
-            if task_status == "missing" and not any(
-                status == "valid" for status in [active_status, done_status, dropped_status]
-            ):
-                pass
+            reasons.append("failed state is reserved until tasks/failed/ exists")
         elif failed_status != "valid":
             reasons.append("task is not present in tasks/failed/")
-        if any(status == "valid" for status in [active_status, done_status, dropped_status]):
+        if any(status in {"present", "valid", "invalid", "conflicting"} for status in [active_status, done_status, dropped_status]):
             reasons.append("active/completed/dropped evidence also exists")
 
     elif state == "dropped":
         if dropped_status != "valid":
             reasons.append("task is not present in tasks/dropped/")
-        if any(status == "valid" for status in [active_status, done_status, failed_status]):
+        if any(status in {"present", "valid", "invalid", "conflicting"} for status in [active_status, done_status, failed_status]):
             reasons.append("active/completed/failed evidence also exists")
 
     else:
         reasons.append(f"unsupported state: {state}")
 
-    return reasons
+    return reasons, warnings
 
 
 def main() -> int:
@@ -254,13 +321,19 @@ def main() -> int:
 
     task_id = str(report.get("task_id", task_dir.name))
     state = str(report.get("state", "unknown"))
-    reasons = validate_consistency(report)
+    reasons, warnings = validate_consistency(report)
 
     print("TASK STATE VALIDATION")
     print()
     print(f"Task: {task_id}")
     print(f"Detected state: {state}")
     print()
+
+    if warnings:
+        print("Warnings:")
+        for warning in warnings:
+            print(f"- {warning}")
+        print()
 
     if reasons:
         print("Result: FAIL")
