@@ -11,6 +11,9 @@ import sys
 from datetime import datetime, timezone
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).parent))
+from lib.path_utils import resolve_task_dir
+
 
 ACTIVE_COMPATIBLE_STATES = {"active", "approved_for_execution"}
 
@@ -206,7 +209,7 @@ def main(argv: list[str]) -> int:
     approval_id = active_fm.get("approval_id", "").strip()
 
     source_task_path = repo_root / source_task_rel
-    source_task_detect_path = source_task_path.parent if source_task_path.is_file() else source_task_path
+    source_task_detect_path = resolve_task_dir(source_task_path)
     source_contract_path = repo_root / source_contract_rel
     source_task_ok = source_task_path.is_file()
     source_contract_ok = source_contract_path.is_file()

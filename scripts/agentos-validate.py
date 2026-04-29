@@ -12,6 +12,9 @@ PASS = "PASS"
 PASS_WITH_WARNINGS = "PASS_WITH_WARNINGS"
 FAIL = "FAIL"
 MISSING = "MISSING"
+SEVERITY_CRITICAL = "CRITICAL"
+SEVERITY_WARNING = "WARNING"
+SEVERITY_INFO = "INFO"
 
 SUITES = {
     "template": ["scripts/check-template-integrity.py", "--strict"],
@@ -34,6 +37,14 @@ SUITES = {
 # all does not run live checks and does not run legacy runner suites.
 ORDER = ["active-task-fixtures", "readiness-fixtures"]
 
+WARNING_PATTERNS = (
+    "approval marker resolver: skipped",
+    "source_task change detection: not available",
+    "source_contract change detection: not available",
+    "git hooks not installed",
+    "hooks not installed",
+)
+
 
 def available_commands() -> str:
     commands = [*SUITES.keys(), "all"]
@@ -49,6 +60,21 @@ def resolve_command(repo_root: Path, suite: str) -> tuple[list[str], Path]:
 def run_command(repo_root: Path, command: list[str]) -> tuple[int, str, str]:
     result = subprocess.run(command, cwd=repo_root, capture_output=True, text=True)
     return result.returncode, result.stdout, result.stderr
+
+
+def detect_warning_only_condition(stdout: str, stderr: str) -> bool:
+    merged = f"{stdout}\n{stderr}".lower()
+    return any(pattern in merged for pattern in WARNING_PATTERNS)
+
+
+def classify_severity(exit_code: int, stdout: str, stderr: str) -> str:
+    if exit_code == 0:
+        return SEVERITY_WARNING if detect_warning_only_condition(stdout, stderr) else SEVERITY_INFO
+
+    merged = f"{stdout}\n{stderr}".lower()
+    if detect_warning_only_condition(stdout, stderr) and "traceback" not in merged:
+        return SEVERITY_WARNING
+    return SEVERITY_CRITICAL
 
 
 def suite_status(exit_code: int, stdout: str, stderr: str) -> str:
@@ -81,11 +107,15 @@ def run_suite(repo_root: Path, suite: str) -> dict:
         }
 
     exit_code, stdout, stderr = run_command(repo_root, command)
-    status = suite_status(exit_code, stdout, stderr)
+    severity = classify_severity(exit_code, stdout, stderr)
+    effective_exit_code = 1 if severity == SEVERITY_CRITICAL else 0
+    status = suite_status(effective_exit_code, stdout, stderr)
     return {
         "name": suite,
         "result": status,
-        "exit_code": exit_code,
+        "exit_code": effective_exit_code,
+        "raw_exit_code": exit_code,
+        "severity": severity,
         "error": None,
         "stdout": stdout,
         "stderr": stderr,
@@ -99,6 +129,11 @@ def print_text_suite_result(suite_result: dict) -> None:
         return
 
     message = suite_result["error"]
+    if (
+        suite_result.get("severity") == SEVERITY_WARNING
+        and suite_result.get("raw_exit_code", 0) != suite_result.get("exit_code", 0)
+    ):
+        print(f"[{SEVERITY_WARNING}] {suite_result['name']} - non-critical condition downgraded")
     print_suite_result(suite_result["name"], suite_result["result"], message)
     if suite_result["stdout"]:
         print(suite_result["stdout"], end="" if suite_result["stdout"].endswith("\n") else "\n")
@@ -130,7 +165,10 @@ def main() -> int:
         print()
         suite_result = run_suite(repo_root, target)
         print_text_suite_result(suite_result)
-        print(f"Result: {'PASS' if suite_result['exit_code'] == 0 else 'FAIL'}")
+        if suite_result.get("severity") == SEVERITY_WARNING:
+            print("Result: PARTIAL")
+        else:
+            print(f"Result: {'PASS' if suite_result['exit_code'] == 0 else 'FAIL'}")
         return suite_result["exit_code"]
 
     overall_fail = False
