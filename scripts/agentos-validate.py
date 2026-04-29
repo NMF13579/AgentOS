@@ -23,9 +23,16 @@ SUITES = {
     "state-fixtures": ["scripts/test-state-fixtures.py"],
     "approval-fixtures": ["scripts/test-approval-marker-fixtures.py"],
     "activation-fixtures": ["scripts/test-activation-fixtures.py"],
+    "active-task": ["scripts/validate-active-task.py"],
+    "active-task-fixtures": ["scripts/test-active-task-fixtures.py"],
+    "execution-readiness": ["scripts/check-execution-readiness.py"],
+    "readiness-fixtures": ["scripts/test-readiness-fixtures.py"],
 }
 
-ORDER = ["template", "negative", "guard", "audit", "queue", "runner"]
+# Milestone 12 policy:
+# all runs only readiness-related fixture suites.
+# all does not run live checks and does not run legacy runner suites.
+ORDER = ["active-task-fixtures", "readiness-fixtures"]
 
 
 def available_commands() -> str:
@@ -117,8 +124,13 @@ def main() -> int:
         return 2
 
     if target != "all":
+        command, _ = resolve_command(repo_root, target)
+        print(f"AgentOS Validate: {target}")
+        print(f"Running: {' '.join(command)}")
+        print()
         suite_result = run_suite(repo_root, target)
         print_text_suite_result(suite_result)
+        print(f"Result: {'PASS' if suite_result['exit_code'] == 0 else 'FAIL'}")
         return suite_result["exit_code"]
 
     overall_fail = False

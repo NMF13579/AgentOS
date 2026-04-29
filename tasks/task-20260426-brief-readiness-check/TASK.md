@@ -4,6 +4,7 @@
 
 task_id: task-20260426-brief-readiness-check
 status: APPROVED
+state: approved_for_execution
 created_at: 2026-04-26
 source: full-manual-flow-smoke-test
 executable: false

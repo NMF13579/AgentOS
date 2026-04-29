@@ -19,6 +19,10 @@ python3 scripts/agentos-validate.py runner
 python3 scripts/agentos-validate.py state-fixtures
 python3 scripts/agentos-validate.py approval-fixtures
 python3 scripts/agentos-validate.py activation-fixtures
+python3 scripts/agentos-validate.py active-task
+python3 scripts/agentos-validate.py active-task-fixtures
+python3 scripts/agentos-validate.py execution-readiness
+python3 scripts/agentos-validate.py readiness-fixtures
 python3 scripts/agentos-validate.py all
 ```
 
@@ -35,11 +39,17 @@ python3 scripts/agentos-validate.py all
 | `state-fixtures` | `scripts/test-state-fixtures.py` |
 | `approval-fixtures` | `scripts/test-approval-marker-fixtures.py` |
 | `activation-fixtures` | `scripts/test-activation-fixtures.py` |
-| `all` | `template`, `negative`, `guard`, `audit`, `queue`, `runner` |
+| `active-task` | `scripts/validate-active-task.py` |
+| `active-task-fixtures` | `scripts/test-active-task-fixtures.py` |
+| `execution-readiness` | `scripts/check-execution-readiness.py` |
+| `readiness-fixtures` | `scripts/test-readiness-fixtures.py` |
+| `all` | `template`, `negative`, `guard`, `audit`, `queue`, `runner`, `active-task-fixtures`, `readiness-fixtures` |
 
 The wrapper uses `sys.executable` to launch each script.
 Primary usage is `python3 scripts/agentos-validate.py all`.
 Focused commands remain available for debugging specific validators.
+Command success is based primarily on child process exit code.
+Child stdout/stderr is printed for human inspection.
 
 ## state-fixtures
 
@@ -171,6 +181,109 @@ Safety boundaries:
 - `activation-fixtures` does not execute tasks
 - `activation-fixtures` does not process the queue
 
+## active-task
+
+`active-task` runs live Active Task Integrity validation.
+
+```bash
+python3 scripts/agentos-validate.py active-task
+```
+
+What it runs:
+
+- `scripts/validate-active-task.py`
+
+Exit behavior:
+
+- child exit `0` -> wrapper exit `0`
+- child exit non-zero (`FAIL` or `PARTIAL`) -> wrapper exit non-zero
+
+State model note:
+
+- live repository may not have a valid active task at every moment
+- non-zero result can be expected validation failure, not implementation failure
+
+Safety boundaries:
+
+- validation only
+- no task activation
+- no task execution
+
+## active-task-fixtures
+
+`active-task-fixtures` runs Active Task negative fixture suite.
+
+```bash
+python3 scripts/agentos-validate.py active-task-fixtures
+```
+
+What it runs:
+
+- `scripts/test-active-task-fixtures.py`
+
+Exit behavior:
+
+- child exit `0` -> wrapper exit `0`
+- child exit non-zero -> wrapper exit non-zero
+
+Safety boundaries:
+
+- fixture-only validation
+- no production task activation
+- no production task execution
+
+## execution-readiness
+
+`execution-readiness` runs live readiness check.
+
+```bash
+python3 scripts/agentos-validate.py execution-readiness
+```
+
+What it runs:
+
+- `scripts/check-execution-readiness.py`
+
+Exit behavior:
+
+- child exit `0` (`PASS`) -> wrapper exit `0`
+- child exit non-zero (`FAIL` or `PARTIAL`) -> wrapper exit non-zero
+
+State model note:
+
+- live repository may be not execution-ready by design
+- non-zero can be expected validation failure
+
+Safety boundaries:
+
+- validation only
+- no task activation
+- no task execution
+
+## readiness-fixtures
+
+`readiness-fixtures` runs readiness fixture suite.
+
+```bash
+python3 scripts/agentos-validate.py readiness-fixtures
+```
+
+What it runs:
+
+- `scripts/test-readiness-fixtures.py`
+
+Exit behavior:
+
+- child exit `0` -> wrapper exit `0`
+- child exit non-zero -> wrapper exit non-zero
+- SKIPPED cases do not fail command when child runner exits `0`
+
+Safety boundaries:
+
+- fixture-only validation
+- no production task activation
+- no production task execution
+
 ## Result Semantics
 
 For each suite, the wrapper prints one status line:
@@ -201,6 +314,21 @@ The wrapper does not infer warnings from counts, thresholds, or custom policy.
 4. `audit`
 5. `queue`
 6. `runner`
+7. `active-task-fixtures`
+8. `readiness-fixtures`
+
+Included in `all`:
+
+- `active-task-fixtures`: yes
+- `readiness-fixtures`: yes
+- `active-task`: no
+- `execution-readiness`: no
+
+Rationale:
+
+- fixture suites are deterministic and safe as default aggregate checks
+- live checks depend on current repository task state and may fail as expected validation outcomes
+- keep live checks explicit commands unless repository policy requires active task at all times
 
 Aggregate rules:
 
@@ -243,5 +371,7 @@ Example:
 - re-implement `WARN_THRESHOLD`
 - define audit policy
 - execute task flows
+- activate tasks
+- run agents
 
 The wrapper only launches existing read-only validation commands.
