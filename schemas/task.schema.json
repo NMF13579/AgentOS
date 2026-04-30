@@ -2,8 +2,53 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "additionalProperties": false,
-  "required": ["task"],
+  "anyOf": [
+    {
+      "required": ["task"]
+    },
+    {
+      "required": [
+        "task_id",
+        "state",
+        "activated_at",
+        "activated_by",
+        "approval_id",
+        "source_task",
+        "source_contract",
+        "transition"
+      ]
+    }
+  ],
   "properties": {
+    "task_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "state": {
+      "type": "string",
+      "minLength": 1
+    },
+    "activated_at": {},
+    "activated_by": {
+      "type": "string",
+      "minLength": 1
+    },
+    "approval_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_task": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_contract": {
+      "type": "string",
+      "minLength": 1
+    },
+    "transition": {
+      "type": "string",
+      "minLength": 1
+    },
     "task": {
       "type": "object",
       "additionalProperties": false,
