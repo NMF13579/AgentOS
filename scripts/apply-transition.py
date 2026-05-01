@@ -66,6 +66,11 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
     parser.add_argument("--applied-record-out", default="", help="Output path for applied transition evidence record (required with --apply).")
     parser.add_argument("--applied-record", default="", help="Existing applied transition evidence file (required with --complete-active-plan and --complete-active).")
     parser.add_argument("--mutation-plan", default="", help="Existing complete-active mutation plan file (required with --complete-active).")
+    parser.add_argument(
+        "--approval",
+        default="",
+        help="Human approval record file path (required when approval_required: true).",
+    )
     parser.add_argument("--active-task", default="tasks/active-task.md", help="Active task markdown file path.")
     parser.add_argument("--json", action="store_true", help="Output result as JSON.")
     return parser.parse_args(argv)
@@ -689,7 +694,11 @@ def main(argv: list[str]) -> int:
     mutation_plan_text = read_text(mutation_plan_path)
     active_text = read_text(active_task_path)
 
-    blocked_reasons = list(base["blocked_reasons"])
+    blocked_reasons = [
+        r
+        for r in base["blocked_reasons"]
+        if r not in {"missing_required_approval", "preconditions_not_passed"}
+    ]
     modified_task_paths: list[str] = []
 
     if active_text is None:
@@ -772,6 +781,65 @@ def main(argv: list[str]) -> int:
             blocked_reasons.append("mutation_path_not_allowed")
             break
 
+    transition_text = base.get("transition_text")
+    approval_required_raw = extract_field(mutation_plan_text, "approval_required")
+    approval_is_required = str(approval_required_raw).strip().lower() == "true"
+    approval_validation_passed = False
+
+    if approval_is_required and not args.approval:
+        # approval is required but no approval record
+        blocked_reasons.append("approval is required but no approval record was provided")
+    elif args.approval:
+        approval_path = resolve_path(repo_root, args.approval)
+        approval_text = read_text(approval_path)
+        if approval_text is None:
+            # approval is required but no approval record
+            blocked_reasons.append("approval is required but no approval record was provided")
+        else:
+            # validate-human-approval
+            validator_path = repo_root / "scripts" / "validate-human-approval.py"
+            validator = subprocess.run(
+                [sys.executable, str(validator_path), str(approval_path)],
+                capture_output=True,
+                text=True,
+            )
+            if validator.returncode != 0:
+                # approval validation failed
+                blocked_reasons.append("approval validation failed")
+                for line in (validator.stdout or "").splitlines():
+                    line = line.strip()
+                    if line:
+                        blocked_reasons.append(line)
+            else:
+                approval_validation_passed = True
+
+            if approval_validation_passed:
+                def norm(value: str | None) -> str:
+                    if value is None:
+                        return ""
+                    v = str(value).strip()
+                    if len(v) >= 2 and ((v[0] == '"' and v[-1] == '"') or (v[0] == "'" and v[-1] == "'")):
+                        v = v[1:-1].strip()
+                    return v
+
+                approval_task_id = norm(extract_field(approval_text, "related_task_id"))
+                approval_transition_id = norm(extract_field(approval_text, "related_transition_id"))
+                approval_operation = norm(extract_field(approval_text, "allowed_operation"))
+                approval_target_state = norm(extract_field(approval_text, "allowed_target_state"))
+
+                transition_id = norm(extract_field(transition_text, "transition_id"))
+                task_id = norm(str(base["task_id"]))
+                target_state = norm(str(base["target_state"]))
+
+                if approval_task_id != task_id:
+                    blocked_reasons.append("approval related_task_id does not match lifecycle task_id")
+                if approval_transition_id != transition_id:
+                    blocked_reasons.append("approval related_transition_id does not match lifecycle transition_id")
+                if approval_operation != "complete-active":
+                    blocked_reasons.append("approval allowed_operation does not match lifecycle operation")
+                if approval_target_state != target_state:
+                    blocked_reasons.append("approval allowed_target_state does not match lifecycle target_state")
+
     can_apply = len(blocked_reasons) == 0 and destination_file is not None and active_text is not None
 
     if can_apply:
@@ -802,6 +870,7 @@ def main(argv: list[str]) -> int:
         "result": result,
         "task_id": base["task_id"],
         "target_state": base["target_state"],
+        "approval_ref": args.approval or "",
         "completion_destination": completion_destination,
         "modified_task_paths": modified_task_paths,
         "blocked_reasons": blocked_reasons,
