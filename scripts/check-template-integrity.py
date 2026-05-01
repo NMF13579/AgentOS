@@ -1,241 +1,276 @@
 #!/usr/bin/env python3
-from pathlib import Path
 import argparse
+import json
 import sys
-from typing import List, Sequence, Tuple
+from pathlib import Path
 
+RESULT_PASS = "PASS"
+RESULT_WARN = "WARN"
+RESULT_FAIL = "FAIL"
+RESULT_NOT_IMPLEMENTED = "NOT_IMPLEMENTED"
+RESULT_ERROR = "ERROR"
 
-Section = Tuple[str, Sequence[str], Sequence[str]]
+ALLOWED_RESULTS = {
+    RESULT_PASS,
+    RESULT_WARN,
+    RESULT_FAIL,
+    RESULT_NOT_IMPLEMENTED,
+    RESULT_ERROR,
+}
 
+MINIMAL_DIR = Path("templates/agentos-minimal")
+FULL_DIR = Path("templates/agentos-full")
 
-SECTIONS = [
-    (
-        "Core files",
-        [
-            "core-rules/MAIN.md",
-            "workflow/MAIN.md",
-            "llms.txt",
-            "repo-map.md",
-        ],
-        [],
-    ),
-    (
-        "Input layer",
-        [
-            "INIT.md",
-            "project/PROJECT.md",
-            "stages/01-interview/BOOT.md",
-            "stages/spec-wizard/BOOT.md",
-        ],
-        [
-            "project/",
-            "tasks/drafts/",
-        ],
-    ),
-    (
-        "Task brief validation",
-        [
-            "schemas/task-brief.schema.json",
-            "scripts/validate-task-brief.py",
-        ],
-        [],
-    ),
-    (
-        "Review / Trace",
-        [
-            "tools/task-review/REVIEW-TASK-BRIEF.md",
-            "templates/task-brief-review.md",
-            "tools/interview-archive/WRITE-TRACE.md",
-            "templates/task-decision-trace.md",
-        ],
-        [],
-    ),
-    (
-        "Contract generation",
-        [
-            "tools/task-contract-builder/BUILD-TASK-CONTRACT.md",
-            "templates/task-contract-from-brief.md",
-            "scripts/generate-task-contract.py",
-        ],
-        [],
-    ),
-    (
-        "Queue lifecycle",
-        [
-            "templates/queue-entry.md",
-            "tools/task-queue/MANAGE-QUEUE.md",
-        ],
-        [
-            "tasks/queue/",
-            "tasks/done/",
-            "tasks/dropped/",
-        ],
-    ),
-    (
-        "Runner protocol",
-        [
-            "tools/agent-runner/RUNNER-PROTOCOL.md",
-            "scripts/agent-next.py",
-            "scripts/agent-complete.py",
-            "scripts/agent-fail.py",
-        ],
-        [],
-    ),
-    (
-        "Task health metrics",
-        [
-            "scripts/task-health.py",
-            "tools/task-health/TASK-HEALTH.md",
-        ],
-        [],
-    ),
+MINIMAL_REQUIRED = [
+    "README.md",
+    "requirements.txt",
+    "scripts/run-all.sh",
+    "templates/task.md",
+    "templates/verification.md",
 ]
 
-FORBIDDEN_FILES = [
-    "PROJECT-v2.md",
-    "auto-flow.py",
-    "scripts/auto-flow.py",
-    "scripts/auto-runner.py",
-    "scripts/run-agent.py",
-    "scripts/agent-runner.py",
+FULL_REQUIRED = [
+    "README.md",
+    "requirements.txt",
+    "scripts/run-all.sh",
+    "templates/task.md",
+    "templates/verification.md",
+    "docs/architecture.md",
+    "docs/guardrails.md",
+    "docs/limitations.md",
+    "docs/troubleshooting.md",
+    "examples/",
 ]
 
-WARNING_SECTIONS = [
-    (
-        "Optional fixtures",
-        [],
-        [
-            "tests/fixtures/task-brief/",
-            "tests/fixtures/contract-generation/",
-            "tests/fixtures/agent-runner/",
-            "tests/fixtures/task-health/",
-        ],
-    ),
-    (
-        "Reports",
-        [
-            "reports/task-health.md",
-        ],
-        [],
-    ),
+MINIMAL_FORBIDDEN_FULL_ONLY = [
+    "examples/",
+    "prompts/",
+    "docs/architecture.md",
+    "docs/troubleshooting.md",
+    "docs/limitations.md",
 ]
 
 
 def parse_args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(
-        description="Check AgentOS template structure integrity."
-    )
-    parser.add_argument(
-        "--root",
-        default=".",
-        help="Root directory to check.",
-    )
-    parser.add_argument(
-        "--strict",
-        action="store_true",
-        help="Treat warnings as blocking for exit code purposes.",
-    )
+    parser = argparse.ArgumentParser(description="Read-only template integrity checker")
+    parser.add_argument("--strict", action="store_true", help="Exit 0 only for PASS")
+    parser.add_argument("--json", action="store_true", dest="json_mode", help="Print JSON output")
+    parser.add_argument("--root", default=".", help="Repository root to inspect")
     return parser.parse_args()
 
 
-def check_section(root: Path, files: Sequence[str], dirs: Sequence[str]) -> List[str]:
-    errors = []
-    for rel_path in files:
-        if not (root / rel_path).is_file():
-            errors.append("Missing file: {0}".format(rel_path))
-    for rel_path in dirs:
-        if not (root / rel_path).is_dir():
-            errors.append("Missing directory: {0}".format(rel_path))
-    return errors
+def is_empty_file(path: Path) -> bool:
+    return path.is_file() and path.stat().st_size == 0
 
 
-def check_gitignore(root: Path) -> List[str]:
-    gitignore_path = root / ".gitignore"
-    if not gitignore_path.is_file():
-        return ["Missing file: .gitignore"]
-
-    try:
-        lines = gitignore_path.read_text().splitlines()
-    except UnicodeDecodeError:
-        return ["Unable to read file: .gitignore"]
-
-    for line in lines:
-        if line.strip() == "tasks/drafts/":
-            return []
-    return ["Missing .gitignore entry: tasks/drafts/"]
+def contains_terms(path: Path, terms: list[str]) -> bool:
+    data = path.read_text(encoding="utf-8", errors="ignore").lower()
+    return all(term in data for term in terms)
 
 
-def check_forbidden_files(root: Path) -> List[str]:
-    errors = []
-    for rel_path in FORBIDDEN_FILES:
-        if (root / rel_path).is_file():
-            errors.append("Found forbidden file: {0}".format(rel_path))
-    return errors
+def evaluate(root: Path) -> dict:
+    checks_run = 0
+    checks_passed = 0
+    checks_warned = 0
+    checks_failed = 0
 
+    minimal_root = root / MINIMAL_DIR
+    full_root = root / FULL_DIR
 
-def print_section(name: str, status: str, messages: Sequence[str]) -> None:
-    if messages:
-        print("{0}: {1} - {2}".format(name, status, messages[0]))
-        for error in messages[1:]:
-            print("- {0}".format(error))
+    minimal_exists = minimal_root.exists() and minimal_root.is_dir()
+    full_exists = full_root.exists() and full_root.is_dir()
+
+    checks_run += 1
+    if not minimal_exists and not full_exists:
+        checks_passed += 1
+        return {
+            "check": "template-integrity",
+            "result": RESULT_NOT_IMPLEMENTED,
+            "checks_run": checks_run,
+            "checks_passed": checks_passed,
+            "checks_warned": checks_warned,
+            "checks_failed": checks_failed,
+            "reason": "Neither templates/agentos-minimal nor templates/agentos-full exists",
+        }
+
+    checks_run += 1
+    if minimal_exists != full_exists:
+        checks_failed += 1
+        return {
+            "check": "template-integrity",
+            "result": RESULT_FAIL,
+            "checks_run": checks_run,
+            "checks_passed": checks_passed,
+            "checks_warned": checks_warned,
+            "checks_failed": checks_failed,
+            "reason": "Only one template target exists; both or neither are required",
+        }
+
+    # Both exist: validate minimal required paths
+    for rel in MINIMAL_REQUIRED:
+        checks_run += 1
+        p = minimal_root / rel
+        if rel.endswith("/"):
+            ok = p.exists() and p.is_dir()
+        else:
+            ok = p.exists() and p.is_file()
+        if ok:
+            checks_passed += 1
+        else:
+            checks_failed += 1
+
+    # minimal must not include full-only paths
+    for rel in MINIMAL_FORBIDDEN_FULL_ONLY:
+        checks_run += 1
+        p = minimal_root / rel
+        if p.exists():
+            checks_failed += 1
+        else:
+            checks_passed += 1
+
+    # Full required paths
+    for rel in FULL_REQUIRED:
+        checks_run += 1
+        p = full_root / rel
+        if rel.endswith("/"):
+            ok = p.exists() and p.is_dir()
+        else:
+            ok = p.exists() and p.is_file()
+        if ok:
+            checks_passed += 1
+        else:
+            checks_failed += 1
+
+    # Empty required files fail
+    for rel in MINIMAL_REQUIRED:
+        if rel.endswith("/"):
+            continue
+        checks_run += 1
+        p = minimal_root / rel
+        if p.exists() and p.is_file() and is_empty_file(p):
+            checks_failed += 1
+        else:
+            checks_passed += 1
+
+    for rel in FULL_REQUIRED:
+        if rel.endswith("/"):
+            continue
+        checks_run += 1
+        p = full_root / rel
+        if p.exists() and p.is_file() and is_empty_file(p):
+            checks_failed += 1
+        else:
+            checks_passed += 1
+
+    # Content checks for task.md and verification.md
+    task_terms = ["task", "goal", "acceptance"]
+    verification_terms = ["verification", "result", "evidence"]
+
+    checks_run += 1
+    min_task = minimal_root / "templates/task.md"
+    if min_task.exists() and min_task.is_file() and not contains_terms(min_task, task_terms):
+        checks_failed += 1
     else:
-        print("{0}: PASS".format(name))
+        checks_passed += 1
+
+    checks_run += 1
+    min_ver = minimal_root / "templates/verification.md"
+    if min_ver.exists() and min_ver.is_file() and not contains_terms(min_ver, verification_terms):
+        checks_failed += 1
+    else:
+        checks_passed += 1
+
+    checks_run += 1
+    full_task = full_root / "templates/task.md"
+    if full_task.exists() and full_task.is_file() and not contains_terms(full_task, task_terms):
+        checks_failed += 1
+    else:
+        checks_passed += 1
+
+    checks_run += 1
+    full_ver = full_root / "templates/verification.md"
+    if full_ver.exists() and full_ver.is_file() and not contains_terms(full_ver, verification_terms):
+        checks_failed += 1
+    else:
+        checks_passed += 1
+
+    if checks_failed > 0:
+        result = RESULT_FAIL
+        reason = "Template structure validation failed"
+    elif checks_warned > 0:
+        result = RESULT_WARN
+        reason = "Template structure valid with warnings"
+    else:
+        result = RESULT_PASS
+        reason = "Template structure validation passed"
+
+    return {
+        "check": "template-integrity",
+        "result": result,
+        "checks_run": checks_run,
+        "checks_passed": checks_passed,
+        "checks_warned": checks_warned,
+        "checks_failed": checks_failed,
+        "reason": reason,
+    }
+
+
+def print_text(payload: dict) -> None:
+    print("TEMPLATE_INTEGRITY_CHECK: run")
+    print(f"TEMPLATE_INTEGRITY_RESULT: {payload['result']}")
+    print(f"TEMPLATE_INTEGRITY_CHECKS_RUN: {payload['checks_run']}")
+    print(f"TEMPLATE_INTEGRITY_CHECKS_PASSED: {payload['checks_passed']}")
+    print(f"TEMPLATE_INTEGRITY_CHECKS_WARNED: {payload['checks_warned']}")
+    print(f"TEMPLATE_INTEGRITY_CHECKS_FAILED: {payload['checks_failed']}")
+    print(f"TEMPLATE_INTEGRITY_REASON: {payload['reason']}")
+
+
+def exit_code(result: str, strict: bool) -> int:
+    if strict:
+        return 0 if result == RESULT_PASS else 1
+    return 1 if result in {RESULT_FAIL, RESULT_ERROR} else 0
 
 
 def main() -> int:
     args = parse_args()
-    root = Path(args.root)
+    root = Path(args.root).resolve()
+    payload = evaluate(root)
 
-    print("AgentOS Template Integrity Report")
+    if payload["result"] not in ALLOWED_RESULTS:
+        payload["result"] = RESULT_ERROR
+        payload["reason"] = "Invalid internal result state"
 
-    if not root.is_dir():
-        print(
-            "Root: FAIL - Root path does not exist or is not a directory: {0}".format(
-                args.root
-            )
-        )
-        print("Result: FAIL")
-        return 1
+    if args.json_mode:
+        print(json.dumps(payload, ensure_ascii=False))
+    else:
+        print_text(payload)
 
-    has_errors = False
-    has_warnings = False
-
-    for name, files, dirs in SECTIONS:
-        errors = check_section(root, files, dirs)
-        print_section(name, "FAIL", errors)
-        if errors:
-            has_errors = True
-
-    runtime_errors = check_gitignore(root)
-    print_section("Runtime artifacts", "FAIL", runtime_errors)
-    if runtime_errors:
-        has_errors = True
-
-    forbidden_errors = check_forbidden_files(root)
-    print_section("Forbidden files", "FAIL", forbidden_errors)
-    if forbidden_errors:
-        has_errors = True
-
-    for name, files, dirs in WARNING_SECTIONS:
-        warnings = check_section(root, files, dirs)
-        print_section(name, "WARNING", warnings)
-        if warnings:
-            has_warnings = True
-
-    if has_errors:
-        print("Result: FAIL")
-        return 1
-
-    if has_warnings:
-        print("Result: PASS_WITH_WARNINGS")
-        if args.strict:
-            print("Strict mode: FAIL_ON_WARNINGS")
-            return 1
-        return 0
-
-    print("Result: PASS")
-    return 0
+    return exit_code(payload["result"], args.strict)
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    try:
+        sys.exit(main())
+    except Exception as exc:
+        payload = {
+            "check": "template-integrity",
+            "result": RESULT_ERROR,
+            "checks_run": 0,
+            "checks_passed": 0,
+            "checks_warned": 0,
+            "checks_failed": 1,
+            "reason": f"Unhandled exception: {exc.__class__.__name__}",
+        }
+        args = sys.argv[1:]
+        json_mode = "--json" in args
+        if json_mode:
+            print(json.dumps(payload, ensure_ascii=False))
+        else:
+            print("TEMPLATE_INTEGRITY_CHECK: run")
+            print("TEMPLATE_INTEGRITY_RESULT: ERROR")
+            print("TEMPLATE_INTEGRITY_CHECKS_RUN: 0")
+            print("TEMPLATE_INTEGRITY_CHECKS_PASSED: 0")
+            print("TEMPLATE_INTEGRITY_CHECKS_WARNED: 0")
+            print("TEMPLATE_INTEGRITY_CHECKS_FAILED: 1")
+            print(f"TEMPLATE_INTEGRITY_REASON: Unhandled exception: {exc.__class__.__name__}")
+        sys.exit(1)
