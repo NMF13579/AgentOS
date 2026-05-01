@@ -1,5 +1,7 @@
 # Milestone 16 Completion Review
 
+Date: 2026-05-01
+
 ## 1. Purpose
 Это финальный review (проверка завершённости) Milestone 16.
 Решение: завершён ли M16 как слой lifecycle integration и audit hardening (усиления аудита).
@@ -27,7 +29,7 @@
 
 ## 4. Evidence Report Review
 - `reports/milestone-16-evidence-report.md` — present.
-- evidence assessment: `EVIDENCE_INCOMPLETE`.
+- evidence assessment: `EVIDENCE_COMPLETE`.
 - Командные результаты включены: YES.
 - Известные ограничения включены: YES.
 - Не заявляет milestone completion: YES.
@@ -73,20 +75,18 @@
 - wrong transition reference — YES
 - wrong applied record reference — YES
 - wrong mutation plan task — YES
-- `would_mutate: false` — YES (проверка есть, но падает)
+- `would_mutate: false` — YES
 - unsafe destination paths — YES
-- active task mismatch — YES (проверка есть, но падает)
+- active task mismatch — YES
 - missing approval evidence behavior — YES
 - protected output path attempts — YES
 - complete-active happy path in temp workspace — YES
 
 Run status:
 - command run: YES
-- observed result: FAIL
-- exit code: 1
-- FAIL groups:
-  - mutation plan would_mutate false blocks
-  - active task mismatch blocks
+- observed result: PASS
+- exit code: 0
+- FAIL groups: none
 - real repository lifecycle mutation avoided: YES (в выводе фиксируются только temp-path изменения).
 
 ## 9. Smoke Review
@@ -150,10 +150,10 @@ Run status:
   - observed output summary: 1 WARN группа, `Result: WARN`
   - review impact: LIMITATION
 - `python3 scripts/test-apply-transition-fixtures.py`
-  - status: FAIL
-  - exit code: 1
-  - observed output summary: 2 FAIL негативных кейса
-  - review impact: BLOCKER
+  - status: PASS
+  - exit code: 0
+  - observed output summary: все кейсы PASS
+  - review impact: OK
 - `python3 scripts/test-completion-flow-smoke.py`
   - status: PASS
   - exit code: 0
@@ -174,7 +174,7 @@ Run status:
 - evidence report exists — YES
 - validation has no FAIL — YES
 - audit has no FAIL — YES (но WARN есть)
-- fixture runner has no FAIL — NO (есть FAIL)
+- fixture runner has no FAIL — YES
 - smoke runner has no FAIL — YES
 - no real repo lifecycle mutation during fixture/smoke — YES
 - approval boundary documented — YES
@@ -184,20 +184,28 @@ Run status:
 - no automatic approval introduced — YES
 - known limitations documented — YES
 
-Итог по критериям: условия для `MILESTONE_COMPLETE` не выполнены из-за FAIL в fixture runner.
+Итог по критериям: условия для `MILESTONE_COMPLETE` выполнены.
+
+## 13.1 Hotfix Reopen/Close (2026-05-01)
+- Gap 1 fixed: `would_mutate` boundary проверяется корректно, кейс `mutation plan would_mutate false blocks` теперь PASS.
+- Gap 2 fixed: сценарий `active-task-mismatch` в fixture runner исправлен, кейс теперь PASS.
+- Повторные итоговые проверки:
+  - `python3 scripts/test-apply-transition-fixtures.py` → PASS (exit 0)
+  - `python3 scripts/validate-lifecycle-apply.py` → PASS (exit 0)
+  - `python3 scripts/audit-lifecycle-mutation.py` → WARN (exit 0)
+  - `python3 scripts/test-completion-flow-smoke.py` → PASS (exit 0)
+  - `bash scripts/run-all.sh` → PASS (exit 0)
 
 ## 14. Known Limitations
 - Не реализованы пути мутации: `needs_review`, `failed`, `blocked`, `manual_abort`.
 - Не реализованы: general apply engine, automatic approval creation, approval validator, approval record writer, autonomous retry, autonomous abort, autonomous runner mode.
 - Фактические ограничения по командам:
-  - fixture FAIL: `would_mutate: false` case не блокируется как ожидалось;
-  - fixture FAIL: `active task mismatch` case не блокируется как ожидалось;
   - audit WARN: проверка coverage ожидает подстроки `Result: PASS/FAIL`.
 
 ## 15. Final Decision
-`MILESTONE_INCOMPLETE`
+`MILESTONE_COMPLETE`
 
-Короткое обоснование: обязательный fixture command завершился с FAIL, поэтому Milestone 16 нельзя пометить как complete на текущем состоянии.
+Короткое обоснование: обязательные артефакты присутствуют, fixture/smoke/validation проходят, audit в допустимом WARN, границы безопасности и одобрения задокументированы.
 
 ## 16. Machine-Readable Summary
 ```yaml
@@ -213,12 +221,12 @@ milestone_16_completion_review:
   evidence_report_present: "true"
   validation_result: "PASS"
   audit_result: "WARN"
-  fixture_result: "FAIL"
+  fixture_result: "PASS"
   smoke_result: "PASS"
   autonomous_lifecycle_authority: false
   automatic_approval_creation_allowed: false
   real_repository_lifecycle_mutation_detected: "false"
-  final_decision: "MILESTONE_INCOMPLETE"
+  final_decision: "MILESTONE_COMPLETE"
 ```
 
 ## 17. Final Statement

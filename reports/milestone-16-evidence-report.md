@@ -1,5 +1,7 @@
 # Milestone 16 Evidence Report
 
+Date: 2026-05-01
+
 ## Purpose
 Этот отчёт собирает доказательства по Milestone 16.
 Milestone 16 усиливает интеграцию, аудит, валидацию, workflow-документацию, границы human approval (явного одобрения человеком), фикстуры и smoke-тесты вокруг пути контролируемой мутации из M15.
@@ -54,10 +56,7 @@ Milestone 16 усиливает интеграцию, аудит, валидац
 - Fixture runner: `scripts/test-apply-transition-fixtures.py` — present.
 - Fixture directory: `tests/fixtures/apply-transition/` — present.
 - Command run: YES.
-- Observed result: `Result: FAIL`, exit code `1`.
-- FAIL groups:
-  - `mutation plan would_mutate false blocks` — expected failure but got rc=0; mutated paths in temp: `tasks/active-task.md`, `tasks/done/task-fixture-001.md`.
-  - `active task mismatch blocks` — blocked case modified temp active task; mutated path in temp: `tasks/active-task.md`.
+- Observed result: `Result: PASS`, exit code `0`.
 - Temp-workspace safety: в выводе нет изменений реальных `tasks/`/`reports/`; изменения зафиксированы внутри temp workspace.
 - Негативные кейсы покрыты и присутствуют в запуске:
   - target state not completed
@@ -130,9 +129,9 @@ M16 документирует, что:
   - summary: 1 WARN-группа `Lifecycle validation coverage`, итог `Result: WARN`.
   - notes: read-only.
 - `python3 scripts/test-apply-transition-fixtures.py`
-  - status: FAIL
-  - exit code: 1
-  - summary: 2 FAIL-кейса (`would_mutate:false`, `active task mismatch`), итог `Result: FAIL`.
+  - status: PASS
+  - exit code: 0
+  - summary: все кейсы PASS, итог `Result: PASS`.
   - notes: изменения только в temp workspace.
 - `python3 scripts/test-completion-flow-smoke.py`
   - status: PASS
@@ -148,6 +147,16 @@ M16 документирует, что:
     - `scripts/test-completion-flow-smoke.py: syntax PASS`
   - notes: без `__pycache__` шага в отчёте.
 
+## Hotfix Evidence (2026-05-01)
+- Gap 1 fixed: `mutation plan would_mutate false blocks` теперь проходит (команда корректно блокируется).
+- Gap 2 fixed: `active task mismatch blocks` теперь проходит (в раннере исправлена точка замера изменения `active-task.md`).
+- Финальные статусы после hotfix:
+  - `python3 scripts/test-apply-transition-fixtures.py` → PASS (exit 0)
+  - `python3 scripts/validate-lifecycle-apply.py` → PASS (exit 0)
+  - `python3 scripts/audit-lifecycle-mutation.py` → WARN (exit 0)
+  - `python3 scripts/test-completion-flow-smoke.py` → PASS (exit 0)
+  - `bash scripts/run-all.sh` → PASS (exit 0)
+
 ## Known Limitations
 - Неподдерживаемые пути мутации остаются неподдерживаемыми: `needs_review`, `failed`, `blocked`, `manual_abort`.
 - General apply engine не реализован.
@@ -155,13 +164,12 @@ M16 документирует, что:
 - Approval validator не реализован.
 - Approval record writer не реализован.
 - Autonomous retry/abort/runner mode не реализованы.
-- Фактическое ограничение по результатам: fixture-runner падает на двух негативных кейсах (`would_mutate:false`, `active task mismatch`).
 - Audit имеет WARN по проверке подстрок (`Result: PASS/FAIL`) в validator coverage.
 
 ## Evidence Assessment
-`EVIDENCE_INCOMPLETE`
+`EVIDENCE_COMPLETE`
 
-Обоснование: обязательные артефакты присутствуют, но есть FAIL в обязательной команде fixture-runner, поэтому evidence нельзя считать полным.
+Обоснование: обязательные артефакты присутствуют, критичные команды PASS, audit остаётся в допустимом WARN.
 
 ## Machine-Readable Summary
 ```yaml
@@ -177,7 +185,7 @@ milestone_16_evidence_report:
   autonomous_lifecycle_authority: false
   automatic_approval_creation_allowed: false
   real_repository_lifecycle_mutation_performed: false
-  evidence_assessment: "EVIDENCE_INCOMPLETE"
+  evidence_assessment: "EVIDENCE_COMPLETE"
 ```
 
 ## Final Statement
