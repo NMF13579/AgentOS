@@ -53,13 +53,14 @@ It explains how existing modes of `scripts/apply-transition.py` MUST be used tog
 
 ### Complete-active lifecycle mutation mode
 - Command form:
-  `python3 scripts/apply-transition.py --transition <prepared-transition-file> --plan <apply-plan-file> --applied-record <applied-transition-record-file> --mutation-plan <complete-active-mutation-plan-file> --complete-active`
+  `python3 scripts/apply-transition.py --transition <prepared-transition-file> --plan <apply-plan-file> --applied-record <applied-transition-record-file> --mutation-plan <complete-active-mutation-plan-file> --policy <policy-case-file> --complete-active`
 - Purpose: execute controlled complete-active lifecycle mutation.
 - Required inputs: prepared transition file, apply plan file, applied transition record file, mutation plan file.
 - Produced output: controlled mutation result and modified task paths.
 - May mutate lifecycle state: MAY, only through supported complete-active path.
 - May write files: MAY, only inside allowed complete-active lifecycle path.
 - Requires prior evidence: MUST have full required chain.
+- Policy gate: MUST run `scripts/check-apply-preconditions.py` before mutation and pass `--policy` (and `--approval` when provided).
 
 ## 4. Canonical Command Sequence
 Required command sequence:
@@ -208,6 +209,19 @@ Approval gate interface note:
 - `validate-human-approval` is the validation command for that record.
 - if approval is required but missing, expected error text includes: `approval is required but no approval record`
 - if approval validation fails, expected error text includes: `approval validation failed`
+
+## 10.1 Policy Gate Boundary
+- `--policy` may be used with controlled apply.
+- `--complete-active` requires `--policy`.
+- missing `--policy` must block `--complete-active`.
+- policy-aware preconditions run before controlled lifecycle mutation.
+- policy gate must not affect non-complete-active modes.
+- existing behavior without `--policy` is preserved only for non-complete-active modes.
+- `POLICY_DECISION: BLOCKED` cannot be overridden by valid approval.
+- valid approval cannot override `BLOCKED_UNSUPPORTED`.
+- valid approval cannot override `BLOCKED_FORBIDDEN`.
+- valid approval cannot authorize unsupported target states.
+- valid approval cannot bypass apply preconditions, validation, or audit.
 
 ## 11. Audit Requirements
 Future audit tooling must be able to inspect:

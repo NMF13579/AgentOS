@@ -66,6 +66,7 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
     parser.add_argument("--applied-record-out", default="", help="Output path for applied transition evidence record (required with --apply).")
     parser.add_argument("--applied-record", default="", help="Existing applied transition evidence file (required with --complete-active-plan and --complete-active).")
     parser.add_argument("--mutation-plan", default="", help="Existing complete-active mutation plan file (required with --complete-active).")
+    parser.add_argument("--policy", default="", help="Policy case file path for controlled complete-active gate.")
     parser.add_argument(
         "--approval",
         default="",
@@ -181,6 +182,30 @@ def check_apply_preconditions(repo_root: Path, transition_path: Path, active_tas
         parse_errors.append("preconditions_result_invalid")
 
     return result, payload, parse_errors
+
+
+def run_policy_aware_preconditions_gate(
+    repo_root: Path,
+    transition_path: Path,
+    active_task_path: Path,
+    policy: str,
+    approval: str,
+) -> tuple[int, str]:
+    script_path = repo_root / "scripts" / "check-apply-preconditions.py"
+    cmd = [
+        "python3",
+        str(script_path),
+        "--transition",
+        str(transition_path),
+        "--active-task",
+        str(active_task_path),
+    ]
+    if policy:
+        cmd.extend(["--policy", policy])
+    if approval:
+        cmd.extend(["--approval", approval])
+    proc = subprocess.run(cmd, capture_output=True, text=True)
+    return proc.returncode, proc.stdout
 
 
 def validate_output_path(repo_root: Path, out_raw: str, missing_reason: str, protected_reason: str, outside_reason: str) -> tuple[bool, str, Path | None]:
@@ -456,17 +481,12 @@ def main(argv: list[str]) -> int:
         print("ERROR: --applied-record is required when --complete-active-plan is used")
         return 2
 
-    if args.complete_active and not args.plan:
-        print("ERROR: --plan is required when --complete-active is used")
-        return 2
-
-    if args.complete_active and not args.applied_record:
-        print("ERROR: --applied-record is required when --complete-active is used")
-        return 2
-
-    if args.complete_active and not args.mutation_plan:
-        print("ERROR: --mutation-plan is required when --complete-active is used")
-        return 2
+    if args.complete_active and not args.policy:
+        print("CONTROLLED_APPLY_POLICY_GATE: BLOCKED")
+        print("PRECONDITIONS_RESULT: BLOCKED")
+        print("APPLY_RESULT: BLOCKED")
+        print("blocked_reason: missing_policy_for_complete_active")
+        return 1
 
     transition_path = resolve_path(repo_root, args.transition)
     active_task_path = resolve_path(repo_root, args.active_task)
@@ -685,6 +705,33 @@ def main(argv: list[str]) -> int:
         return 0 if report["result"] == COMPLETE_ACTIVE_PLAN_READY else 1
 
     # complete-active mutation mode
+    pre_rc, pre_stdout = run_policy_aware_preconditions_gate(
+        repo_root=repo_root,
+        transition_path=transition_path,
+        active_task_path=active_task_path,
+        policy=args.policy,
+        approval=args.approval,
+    )
+    if pre_stdout.strip():
+        print(pre_stdout.rstrip())
+    pre_blocked = pre_rc != 0 or ("PRECONDITIONS_RESULT: BLOCKED" in pre_stdout)
+    if pre_blocked:
+        print("CONTROLLED_APPLY_POLICY_GATE: BLOCKED")
+        print("APPLY_RESULT: BLOCKED")
+        return 1
+
+    if not args.plan:
+        print("ERROR: --plan is required when --complete-active is used")
+        return 2
+
+    if not args.applied_record:
+        print("ERROR: --applied-record is required when --complete-active is used")
+        return 2
+
+    if not args.mutation_plan:
+        print("ERROR: --mutation-plan is required when --complete-active is used")
+        return 2
+
     plan_path = resolve_path(repo_root, args.plan)
     applied_record_path = resolve_path(repo_root, args.applied_record)
     mutation_plan_path = resolve_path(repo_root, args.mutation_plan)
