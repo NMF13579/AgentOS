@@ -127,6 +127,20 @@ def extract_list_block(text: str | None, key: str) -> list[str]:
     return out
 
 
+def has_task_id(value: object) -> bool:
+    if value is None:
+        return False
+    if not isinstance(value, str):
+        value = str(value)
+    return value.strip() != ""
+
+
+def is_yes_value(value: str | None) -> bool:
+    if value is None:
+        return False
+    return value.strip().upper() in {"YES", "TRUE", "1"}
+
+
 def check_apply_preconditions(repo_root: Path, transition_path: Path, active_task_path: Path) -> tuple[str, dict[str, object], list[str]]:
     script_path = repo_root / "scripts" / "check-apply-preconditions.py"
     if not script_path.is_file():
@@ -529,7 +543,7 @@ def main(argv: list[str]) -> int:
             if plan_result != APPLY_PLAN_PREPARED:
                 blocked_reasons.append("apply_plan_not_prepared")
 
-        if base["task_id"] is None or active_task_id is None or str(base["task_id"]) != str(active_task_id):
+        if not has_task_id(base["task_id"]) or not has_task_id(active_task_id) or str(base["task_id"]) != str(active_task_id):
             blocked_reasons.append("task_identity_mismatch")
 
         if base["target_state"] != "completed":
@@ -692,13 +706,23 @@ def main(argv: list[str]) -> int:
     mutation_plan_result = extract_field(mutation_plan_text, "result") or "BLOCKED"
     if mutation_plan_result != COMPLETE_ACTIVE_PLAN_READY:
         blocked_reasons.append("mutation_plan_not_ready")
+    mutation_plan_would_mutate = extract_field(mutation_plan_text, "would_mutate")
+    if not is_yes_value(mutation_plan_would_mutate):
+        if "mutation_plan_would_mutate_false" not in blocked_reasons:
+            blocked_reasons.append("mutation_plan_would_mutate_false")
 
     active_task_id = extract_field(active_text, "task_id")
     plan_task_id = extract_field(plan_text, "task_id")
     applied_task_id = extract_field(applied_text, "task_id")
     mutation_plan_task_id = extract_field(mutation_plan_text, "task_id")
 
-    if not active_task_id or not base["task_id"] or not plan_task_id or not applied_task_id or not mutation_plan_task_id:
+    if (
+        not has_task_id(active_task_id)
+        or not has_task_id(base["task_id"])
+        or not has_task_id(plan_task_id)
+        or not has_task_id(applied_task_id)
+        or not has_task_id(mutation_plan_task_id)
+    ):
         blocked_reasons.append("task_identity_missing")
     elif not (
         str(active_task_id)
