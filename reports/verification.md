@@ -1,29 +1,23 @@
 ---
 verification:
-  task_id: "task-014"
+  task_id: task-m22-gate-contract-artifacts
   gate_1:
-    name: "Structure / Schema"
-    status: "TODO"
-    proof: "TODO"
-    skipped_reason: ""
+    status: PASS
+    proof: python3 scripts/validate-gate-contract.py -> GATE_CONTRACT_VALIDATE_RESULT: PASS
   gate_2:
-    name: "Scope"
-    status: "TODO"
-    proof: "TODO"
-    skipped_reason: ""
+    status: PASS
+    proof: python3 scripts/audit-gate-contract.py -> GATE_CONTRACT_AUDIT_RESULT: PASS
   gate_3:
-    name: "Acceptance Criteria"
-    status: "TODO"
-    proof: "TODO"
-    skipped_reason: ""
+    status: PASS
+    proof: python3 scripts/test-gate-regression-fixtures.py -> GATE_REGRESSION_FIXTURES_RESULT: PASS
   gate_4:
-    name: "Regression / Smoke"
-    status: "TODO"
-    proof: "TODO"
-    skipped_reason: ""
+    status: PASS
+    proof: python3 scripts/test-unified-gate-smoke.py -> UNIFIED_GATE_SMOKE_RESULT: PASS
   gate_5:
-    name: "Security / Human Approval"
-    status: "TODO"
-    proof: "TODO"
-    skipped_reason: ""
+    status: PASS
+    proof: python3 scripts/audit-release-readiness.py -> RELEASE_READINESS_AUDIT_RESULT: PASS
 ---
+
+# Verification Report: task-m22-gate-contract-artifacts
+
+All 5 gates passed. Gate contract artifacts created and validated.

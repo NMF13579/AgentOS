@@ -2,7 +2,7 @@
 
 ## Metadata
 generated_at: 2026-04-26T05:39:39+00:00
-tasks_dir: /Users/muhammednazyrov/Documents/GitHub/AgentOS/tasks
+tasks_dir: tasks
 source: task-health
 
 ## Summary

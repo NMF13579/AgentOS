@@ -173,14 +173,14 @@ def template_integrity_cases(root: Path) -> List[Case]:
     tool = root / "scripts/check-template-integrity.py"
     base = root / "tests/fixtures/template-integrity"
     return [
-        Case("missing-core-file", [str(tool), "--root", str(base / "missing-core-file")]),
+        Case("missing-core-file", [str(tool), "--strict", "--root", str(base / "missing-core-file")]),
         Case(
             "forbidden-auto-runner",
-            [str(tool), "--root", str(base / "forbidden-auto-runner")],
+            [str(tool), "--strict", "--root", str(base / "forbidden-auto-runner")],
         ),
         Case(
             "missing-gitignore-drafts",
-            [str(tool), "--root", str(base / "missing-gitignore-drafts")],
+            [str(tool), "--strict", "--root", str(base / "missing-gitignore-drafts")],
         ),
     ]
 
