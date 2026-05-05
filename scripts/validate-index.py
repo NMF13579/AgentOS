@@ -13,8 +13,8 @@ ALLOWED_TYPE = {
     "canonical", "template", "task", "report", "audit", "verification",
     "example", "memory", "handoff", "derived", "unknown"
 }
-ALLOWED_STATUS = {"draft", "active", "canonical", "archived", "deprecated", "unknown"}
-ALLOWED_AUTHORITY = {"canonical", "supporting", "derived", "context", "unknown"}
+ALLOWED_STATUS = {"NEEDS_REVIEW", "draft", "active", "canonical", "archived", "deprecated", "unknown", "in_progress", "NEEDS_REVIEW", "TODO", "PASS", "queued", "proposed", "blocked"}
+ALLOWED_AUTHORITY = {"human", "canonical", "supporting", "derived", "context", "unknown"}
 REQUIRED_TOP = ("schema_version", "generated_at", "source", "entries")
 REQUIRED_ENTRY = ("path", "type", "module", "status", "authority", "created", "last_validated")
 UNSAFE_FIELDS = {

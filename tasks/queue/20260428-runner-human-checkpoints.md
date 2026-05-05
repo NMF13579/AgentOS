@@ -1,6 +1,6 @@
 ---
 task_id: "20260428-runner-human-checkpoints"
-status: "queued"
+status: queued
 priority: "high"
 blocked_by: []
 ---
