@@ -5,7 +5,7 @@ status: in_progress
 authority: supporting
 version: 1.1.0
 created: 2026-05-03
-last_updated: 2026-05-03
+last_updated: 2026-05-04
 milestone: M26
 ---
 
@@ -263,6 +263,163 @@ recommended_next_task_reason: >
 
 ---
 
+### Entry: 26.3.1 — Scope Boundary Definition
+
+```yaml
+task_id: 26.3.1
+title: Scope Boundary Definition
+status: DONE
+artifact_created:
+  - docs/COMMAND-ALLOWLIST-POLICY.md
+  - templates/command-approval-record.md
+artifact_modified:
+  - reports/milestone-26-evidence-report.md
+```
+
+---
+
+### Entry: 26.4.1 — Write Allowlist / Forbidden Zones
+
+```yaml
+task_id: 26.4.1
+task_title: Write Allowlist / Forbidden Zones
+completed_date: 2026-05-04
+executor: (fill — agent identifier or session ID)
+
+artifact_created:
+  - docs/WRITE-ALLOWLIST-POLICY.md
+  - templates/write-scope-record.md
+
+artifact_modified:
+  - reports/milestone-26-evidence-report.md
+
+validation_status: MANUAL_VERIFICATION_REQUIRED
+
+manual_checks_performed:
+  docs_write_allowlist_policy_exists: PASS
+  docs_write_allowlist_required_sections_present: PASS
+  template_write_scope_record_exists: PASS
+  template_required_fields_present: PASS
+  evidence_report_contains_26_4_1_entry: PASS
+  all_7_write_categories_defined_exactly: PASS
+  all_write_decision_values_defined_exactly: PASS
+  allowed_write_path_does_not_expand_task_scope: PASS
+  allowed_write_path_does_not_authorize_command_execution: PASS
+  allowed_write_path_does_not_authorize_commit_or_push: PASS
+  allowed_write_path_does_not_authorize_modifying_evidence: PASS
+  forbidden_vs_protected_zone_precedence_documented: PASS
+  owner_approval_does_not_convert_protected_zone_to_normal_agent_write: PASS
+  protected_zones_require_explicit_owner_approval: PASS
+  forbidden_write_paths_block_normal_agent_write: PASS
+  evidence_artifacts_are_protected: PASS
+  in_progress_evidence_append_only_rule_documented: PASS
+  completed_evidence_read_only_rule_documented: PASS
+  deletion_requires_explicit_task_authorization: PASS
+  temp_artifacts_remain_uncommitted_and_documented: PASS
+  generated_artifact_commit_rule_scoped_and_documented: PASS
+  generated_vs_temp_artifact_distinction_documented: PASS
+  dependency_directories_not_normalized_as_standard_temp_artifacts: PASS
+  write_scope_record_id_format_defined: PASS
+  write_scope_record_expiration_default_defined: PASS
+  write_scope_record_alone_is_not_approval: PASS
+  write_approval_not_described_as_merge_approval: PASS
+  write_approval_does_not_override_m25: PASS
+  write_approval_does_not_satisfy_m25_override: PASS
+  workflow_files_modified: NO
+  scripts_modified: NO
+  tests_modified: NO
+  m25_artifacts_modified_by_this_task: NO
+  docs_pre_merge_corridor_modified: NO
+  docs_agent_permission_model_modified: NO
+  docs_command_allowlist_modified: NO
+  write_policy_claims_enforcement_active: NO
+  write_policy_claims_enforcement_implemented: NO
+
+positive_authorization_language_check:
+  auto_merge_authorized_language: PASS
+  automatic_approval_authorized_language: PASS
+  write_scope_approved_treated_as_merge_approval_language: PASS
+  write_scope_approved_treated_as_push_authorization_language: PASS
+  write_approval_treated_as_m25_override_language: PASS
+  allowed_write_path_treated_as_commit_authorization_language: PASS
+  allowed_write_path_treated_as_push_authorization_language: PASS
+  evidence_artifact_tampering_authorized_language: PASS
+  forbidden_write_path_normal_agent_write_authorized_language: PASS
+  owner_approval_treated_as_silent_agent_write_authorization_language: PASS
+
+m25_compatibility_check:
+  m25_principles_preserved: YES
+  m25_artifacts_modified: NO
+  m25_artifact_presence: NOT_ASSESSED
+  m25_enforcement_status: NOT_ASSESSED
+  write_category_overrides_m25: NO
+  write_approval_satisfies_m25_override: NO
+  note: >
+    M25 enforcement remains active and unchanged.
+    Write path categories are constraints within M25, not alternatives to it.
+
+scope_compliance:
+  files_in_scope: YES
+  files_out_of_scope: NO
+  protected_zones_modified: NO
+
+m26_machine_verification:
+  scope_check: NOT_IMPLEMENTED
+  write_enforcement: NOT_IMPLEMENTED
+  command_enforcement: NOT_IMPLEMENTED
+  commit_push_check: NOT_IMPLEMENTED
+  corridor_audit: NOT_IMPLEMENTED
+  smoke_fixtures: NOT_IMPLEMENTED
+
+known_limitations:
+  - Write allowlist is policy only; no enforcement script exists.
+  - Write path categories are not machine-enforced until enforcement scripts are created.
+  - Scope checker from Task 26.5.1 is not implemented.
+  - Commit/push checker from Task 26.7.1 is not implemented.
+  - Conditional write path approval is policy-only until enforcement exists.
+  - Protected zone owner approval is policy-only until enforcement exists.
+  - Forbidden write path vs protected zone precedence is policy-only until enforcement exists.
+  - Generated artifact vs temp artifact persistence distinction is policy-only.
+  - Evidence artifact append-only/read-only rules are policy-only until audit script from 26.10.1 exists.
+  - Deletion authorization is policy-only until scope checker from 26.5.1 exists.
+  - Dependency directory handling is policy-only until command/write enforcement exists.
+  - Audit script from Task 26.10.1 is not created.
+  - Smoke fixtures from Task 26.11.1 are not created.
+  - M25 platform enforcement status was not assessed in this task.
+
+dependencies_satisfied:
+  active_task_exists: YES
+  pre_merge_corridor_contract_exists: YES
+  agent_permission_model_exists: YES
+  command_allowlist_policy_exists: YES
+  m25_principles_referenced: YES
+  no_blocking_issues_known: YES
+
+dependencies_not_required:
+  m25_platform_enforcement: NOT_REQUIRED
+  existing_scripts: NOT_REQUIRED
+  scope_checker: NOT_REQUIRED
+
+next_tasks:
+  - 26.5.1
+  - 26.6.1
+  - 26.7.1
+  - 26.8.1
+  - 26.9.1
+  - 26.10.1
+  - 26.11.1
+  - 26.12.1
+  - 26.13.1
+
+recommended_next_task: 26.5.1
+recommended_next_task_title: Scope-Bound Diff Checker
+recommended_next_task_reason: >
+  26.5.1 implements the scope diff checker that machine-verifies write paths
+  defined in this policy. First enforcement artifact in M26.
+```
+
+---
+
 Additional entries will be added as M26 tasks are completed.
 
 ---
@@ -278,7 +435,7 @@ M26 will be considered complete only when:
 - M26 completion review assigns final status
 - No corridor violations remain unresolved
 
-**Current M26 status: IN PROGRESS — 2 of 13 tasks complete.**
+**Current M26 status: IN PROGRESS — 4 of 13 tasks complete.**
 
 ---
 
