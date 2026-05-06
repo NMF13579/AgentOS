@@ -1,0 +1,290 @@
+---
+type: evidence
+module: milestone-26
+status: in_progress
+authority: supporting
+version: 1.1.0
+created: 2026-05-03
+last_updated: 2026-05-03
+milestone: M26
+---
+
+# Milestone 26 — Evidence Report
+
+## Important Disclaimers
+
+Evidence report is not approval.
+Evidence report is not a completion decision.
+Evidence report does not authorize merge.
+Evidence report does not authorize release.
+
+Completion decision is recorded in `reports/milestone-26-completion-review.md` in Task 26.13.1.
+
+---
+
+## M26 Task Evidence Entries
+
+---
+
+### Entry: 26.1.1 — Pre-Merge Execution Corridor Contract
+
+```yaml
+task_id: 26.1.1
+task_title: Pre-Merge Execution Corridor Contract
+completed_date: 2026-05-03
+executor: (fill — agent identifier or session ID)
+
+artifact_created:
+  - docs/PRE-MERGE-EXECUTION-CORRIDOR.md
+  - templates/pre-merge-execution-review.md
+  - reports/milestone-26-evidence-report.md
+
+artifact_modified:
+  - (none)
+
+validation_status: MANUAL_VERIFICATION_REQUIRED
+
+manual_checks_performed:
+  docs_corridor_contract_exists: PASS
+  docs_corridor_contract_required_sections_present: PASS
+  template_pre_merge_execution_review_exists: PASS
+  template_required_fields_present: PASS
+  evidence_report_contains_26_1_1_entry: PASS
+  workflow_files_modified: NO
+  scripts_modified: NO
+  tests_modified: NO
+  m25_artifacts_modified_by_this_task: NO
+  corridor_contract_claims_enforcement_active: NO
+  corridor_contract_claims_m26_ready: NO
+  local_git_operations_permitted_by_default: NO
+
+positive_authorization_language_check:
+  auto_merge_allowed_language: PASS
+  automatic_approval_allowed_language: PASS
+  ci_pass_as_approval_language: PASS
+  evidence_report_as_approval_language: PASS
+  corridor_review_as_approval_language: PASS
+  validation_pass_as_approval_language: PASS
+  local_commit_permitted_by_default_language: PASS
+
+m25_compatibility_check:
+  m25_principles_preserved: YES
+  m25_artifacts_modified: NO
+  m25_artifact_presence: NOT_ASSESSED
+  m25_enforcement_status: NOT_ASSESSED
+  note: >
+    M25 platform enforcement status is outside the scope of Task 26.1.1.
+    This task creates M26 policy only and does not assess or depend on M25
+    platform enforcement being active.
+
+scope_compliance:
+  files_in_scope: YES
+  files_out_of_scope: NO
+  protected_zones_modified: NO
+
+m26_machine_verification:
+  scope_check: NOT_IMPLEMENTED
+  command_check: NOT_IMPLEMENTED
+  write_check: NOT_IMPLEMENTED
+  commit_push_check: NOT_IMPLEMENTED
+  corridor_audit: NOT_IMPLEMENTED
+  smoke_fixtures: NOT_IMPLEMENTED
+
+known_limitations:
+  - Corridor contract is policy only; no enforcement scripts exist yet.
+  - Scope checker from Task 26.5.1 is not implemented.
+  - Command allowlist from Task 26.3.1 is not implemented.
+  - Write allowlist from Task 26.4.1 is not implemented.
+  - Agent permission model from Task 26.2.1 is not defined yet.
+  - Commit/push checker from Task 26.7.1 is not implemented.
+  - Audit script from Task 26.10.1 is not created.
+  - Smoke fixtures from Task 26.11.1 are not created.
+  - M26 corridor cannot be machine-verified until 26.5.1, 26.10.1, and 26.11.1 are complete.
+  - M25 platform enforcement status was not assessed in this task.
+  - Local git commit permission is not globally defined until Task 26.2.1 and 26.7.1.
+
+dependencies_satisfied:
+  active_task_exists: YES
+  m25_principles_referenced: YES
+  no_blocking_issues_known: YES
+
+dependencies_not_required:
+  m25_platform_enforcement: NOT_REQUIRED
+  github_branch_protection: NOT_REQUIRED
+  existing_scripts: NOT_REQUIRED
+  existing_automation: NOT_REQUIRED
+
+next_tasks:
+  - 26.2.1
+  - 26.3.1
+  - 26.4.1
+  - 26.5.1
+  - 26.6.1
+  - 26.7.1
+  - 26.8.1
+  - 26.9.1
+  - 26.10.1
+  - 26.11.1
+  - 26.12.1
+  - 26.13.1
+
+recommended_next_task: 26.2.1
+recommended_next_task_title: Agent Permission Model
+recommended_next_task_reason: >
+  26.2.1 defines permission levels required by scope check,
+  command allowlist, and commit/push control scripts.
+```
+
+---
+
+### Entry: 26.2.1 — Agent Permission Model
+
+```yaml
+task_id: 26.2.1
+task_title: Agent Permission Model
+status: DONE
+completed_date: 2026-05-03
+executor: (fill — agent identifier or session ID)
+
+artifact_created:
+  - docs/AGENT-PERMISSION-MODEL.md
+  - templates/agent-permission-record.md
+
+artifact_modified:
+  - reports/milestone-26-evidence-report.md
+
+validation_status: MANUAL_VERIFICATION_REQUIRED
+
+manual_checks_performed:
+  docs_permission_model_exists: PASS
+  docs_permission_model_required_sections_present: PASS
+  template_agent_permission_record_exists: PASS
+  template_required_fields_present: PASS
+  evidence_report_contains_26_2_1_entry: PASS
+  permission_values_defined_exactly: PASS
+  permission_decisions_defined_exactly: PASS
+  permission_not_described_as_approval: PASS
+  permission_does_not_authorize_commit_by_default: PASS
+  permission_does_not_authorize_push_by_default: PASS
+  permission_does_not_override_m25: PASS
+  m26_permission_record_does_not_satisfy_m25_override: PASS
+  local_test_capability_independence_documented: PASS
+  commit_request_git_commit_boundary_explicit: PASS
+  permission_record_id_format_defined: PASS
+  expiration_field_format_and_default_defined: PASS
+  workflow_files_modified: NO
+  scripts_modified: NO
+  tests_modified: NO
+  m25_artifacts_modified_by_this_task: NO
+  docs_pre_merge_corridor_modified: NO
+  permission_model_claims_enforcement_active: NO
+  permission_model_claims_enforcement_implemented: NO
+
+positive_authorization_language_check:
+  auto_merge_authorized_language: PASS
+  automatic_approval_authorized_language: PASS
+  ci_pass_treated_as_approval_language: PASS
+  permission_granted_treated_as_approval_language: PASS
+  permission_granted_treated_as_push_authorization_language: PASS
+  permission_granted_treated_as_merge_authorization_language: PASS
+  commit_request_treated_as_git_commit_authorization_language: PASS
+  push_request_treated_as_push_authorization_language: PASS
+  m26_permission_record_treated_as_m25_override_language: PASS
+
+m25_compatibility_check:
+  m25_principles_preserved: YES
+  m25_artifacts_modified: NO
+  m25_artifact_presence: NOT_ASSESSED
+  m25_enforcement_status: NOT_ASSESSED
+  permission_overrides_m25: NO
+  m26_permission_record_satisfies_m25_override: NO
+  note: >
+    M25 enforcement remains active and unchanged.
+    Permission values are additive constraints within M25, not alternatives to it.
+
+scope_compliance:
+  files_in_scope: YES
+  files_out_of_scope: NO
+  protected_zones_modified: NO
+
+m26_machine_verification:
+  scope_check: NOT_IMPLEMENTED
+  command_check: NOT_IMPLEMENTED
+  write_check: NOT_IMPLEMENTED
+  commit_push_check: NOT_IMPLEMENTED
+  permission_enforcement: NOT_IMPLEMENTED
+  corridor_audit: NOT_IMPLEMENTED
+  smoke_fixtures: NOT_IMPLEMENTED
+
+known_limitations:
+  - Permission model is policy only; no enforcement scripts exist.
+  - Command allowlist from Task 26.3.1 is not implemented.
+  - Write allowlist from Task 26.4.1 is not implemented.
+  - Scope checker from Task 26.5.1 is not implemented.
+  - Commit/push checker from Task 26.7.1 is not implemented.
+  - Permission values are not machine-enforced until enforcement scripts are created.
+  - COMMIT_REQUEST preconditions not machine-checkable until Task 26.7.1.
+  - Audit script from Task 26.10.1 is not created.
+  - Smoke fixtures from Task 26.11.1 are not created.
+
+dependencies_satisfied:
+  active_task_exists: YES
+  pre_merge_corridor_contract_exists: YES
+  m25_principles_referenced: YES
+  no_blocking_issues_known: YES
+
+dependencies_not_required:
+  m25_platform_enforcement: NOT_REQUIRED
+  github_branch_protection: NOT_REQUIRED
+  existing_scripts: NOT_REQUIRED
+  existing_automation: NOT_REQUIRED
+  command_allowlist: NOT_REQUIRED
+  write_allowlist: NOT_REQUIRED
+
+next_tasks:
+  - 26.3.1
+  - 26.4.1
+  - 26.5.1
+  - 26.6.1
+  - 26.7.1
+  - 26.8.1
+  - 26.9.1
+  - 26.10.1
+  - 26.11.1
+  - 26.12.1
+  - 26.13.1
+
+recommended_next_task: 26.3.1
+recommended_next_task_title: Command Allowlist Policy
+recommended_next_task_reason: >
+  26.3.1 formalizes command categories introduced in 26.1.1 and referenced
+  in the permission values defined in 26.2.1. Required before 26.5.1 and 26.7.1.
+```
+
+---
+
+Additional entries will be added as M26 tasks are completed.
+
+---
+
+## M26 Completion Criteria
+
+M26 will be considered complete only when:
+
+- All tasks 26.1.1 through 26.13.1 have evidence entries
+- All M26 policy documents exist and are consistent
+- All M26 enforcement scripts exist and pass smoke tests
+- M26 audit script confirms corridor readiness
+- M26 completion review assigns final status
+- No corridor violations remain unresolved
+
+**Current M26 status: IN PROGRESS — 2 of 13 tasks complete.**
+
+---
+
+## Notes
+
+- This evidence report will be updated incrementally as each M26 task completes
+- Final comprehensive update is planned in Task 26.12.1
+- Completion review with final decision is planned in Task 26.13.1
+- Evidence collection does not authorize approval, merge, or release
