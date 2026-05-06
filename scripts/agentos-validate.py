@@ -1,191 +1,303 @@
 #!/usr/bin/env python3
-"""Unified validation wrapper for existing AgentOS validators."""
 
-from __future__ import annotations
-
+import argparse
+import json
+import os
 import subprocess
 import sys
 from pathlib import Path
 
-
 PASS = "PASS"
-PASS_WITH_WARNINGS = "PASS_WITH_WARNINGS"
 FAIL = "FAIL"
-MISSING = "MISSING"
-SEVERITY_CRITICAL = "CRITICAL"
-SEVERITY_WARNING = "WARNING"
-SEVERITY_INFO = "INFO"
+WARN = "WARN"
+ERROR = "ERROR"
+NOT_RUN = "NOT_RUN"
 
-SUITES = {
-    "template": ["scripts/check-template-integrity.py", "--strict"],
-    "negative": ["scripts/test-negative-fixtures.py"],
-    "guard": ["scripts/test-guard-failures.py"],
-    "audit": ["scripts/audit-agentos.py"],
-    "queue": ["scripts/validate-queue.py"],
-    "runner": ["scripts/validate-runner-protocol.py"],
-    "state-fixtures": ["scripts/test-state-fixtures.py"],
-    "approval-fixtures": ["scripts/test-approval-marker-fixtures.py"],
-    "activation-fixtures": ["scripts/test-activation-fixtures.py"],
-    "active-task": ["scripts/validate-active-task.py"],
-    "active-task-fixtures": ["scripts/test-active-task-fixtures.py"],
-    "execution-readiness": ["scripts/check-execution-readiness.py"],
-    "readiness-fixtures": ["scripts/test-readiness-fixtures.py"],
+CONTROL_READY = "CONTROL_READY"
+READY_WITH_WARNINGS = "READY_WITH_WARNINGS"
+NEEDS_REVIEW = "NEEDS_REVIEW"
+NOT_READY = "NOT_READY"
+
+RESULT_TO_EXIT = {
+    PASS: 0,
+    FAIL: 1,
+    WARN: 2,
+    ERROR: 3,
+    NOT_RUN: 3,
 }
 
-# Milestone 12 policy:
-# all runs only readiness-related fixture suites.
-# all does not run live checks and does not run legacy runner suites.
-ORDER = ["active-task-fixtures", "readiness-fixtures"]
-
-WARNING_PATTERNS = (
-    "approval marker resolver: skipped",
-    "source_task change detection: not available",
-    "source_contract change detection: not available",
-    "git hooks not installed",
-    "hooks not installed",
-)
+PRIORITY = {
+    PASS: 0,
+    WARN: 1,
+    NOT_RUN: 2,
+    FAIL: 3,
+    ERROR: 4,
+}
 
 
-def available_commands() -> str:
-    commands = [*SUITES.keys(), "all"]
-    return "|".join(commands)
+def summary_tail(stdout_text, stderr_text):
+    combined = f"{stdout_text}{stderr_text}"
+    return combined[-500:]
 
 
-def resolve_command(repo_root: Path, suite: str) -> tuple[list[str], Path]:
-    command = SUITES[suite]
-    script_path = repo_root / command[0]
-    return [sys.executable, *command], script_path
+def parse_cli(argv):
+    parser = argparse.ArgumentParser(prog="agentos-validate.py")
+    parser.add_argument("--json", action="store_true")
+    parser.add_argument(
+        "command",
+        nargs="?",
+        choices=["scope", "scope-fixtures", "execution-audit", "all"],
+    )
+    parser.add_argument("--task")
+    args = parser.parse_args(argv)
+
+    if args.command is None:
+        raise ValueError("missing command")
+    if args.command == "scope" and not args.task:
+        raise ValueError("scope requires --task")
+    if args.command in ["scope-fixtures", "execution-audit"] and args.task:
+        raise ValueError("--task is only allowed with scope")
+    if args.command == "all" and args.task:
+        raise ValueError("--task is not supported with all")
+    return args
 
 
-def run_command(repo_root: Path, command: list[str]) -> tuple[int, str, str]:
-    result = subprocess.run(command, cwd=repo_root, capture_output=True, text=True)
-    return result.returncode, result.stdout, result.stderr
+def run_child(repo_root, command_name, command_list):
+    child_script = command_list[1] if len(command_list) > 1 else ""
+    if child_script and child_script.endswith(".py"):
+        if not (repo_root / child_script).is_file():
+            return {
+                "name": command_name,
+                "command": " ".join(command_list),
+                "exit_code": 3,
+                "result": ERROR,
+                "output_summary": f"missing child script: {child_script}",
+                "human_action_required": True,
+                "ran": True,
+            }
 
-
-def detect_warning_only_condition(stdout: str, stderr: str) -> bool:
-    merged = f"{stdout}\n{stderr}".lower()
-    return any(pattern in merged for pattern in WARNING_PATTERNS)
-
-
-def classify_severity(exit_code: int, stdout: str, stderr: str) -> str:
-    if exit_code == 0:
-        return SEVERITY_WARNING if detect_warning_only_condition(stdout, stderr) else SEVERITY_INFO
-
-    merged = f"{stdout}\n{stderr}".lower()
-    if detect_warning_only_condition(stdout, stderr) and "traceback" not in merged:
-        return SEVERITY_WARNING
-    return SEVERITY_CRITICAL
-
-
-def suite_status(exit_code: int, stdout: str, stderr: str) -> str:
-    if exit_code != 0:
-        return FAIL
-    merged = f"{stdout}\n{stderr}"
-    if PASS_WITH_WARNINGS in merged:
-        return PASS_WITH_WARNINGS
-    return PASS
-
-
-def print_suite_result(name: str, status: str, message: str | None = None) -> None:
-    if message:
-        print(f"[{status}] {name} - {message}")
-    else:
-        print(f"[{status}] {name}")
-
-
-def run_suite(repo_root: Path, suite: str) -> dict:
-    command, script_path = resolve_command(repo_root, suite)
-    if not script_path.is_file():
-        message = f"missing script: {script_path.as_posix()}"
+    try:
+        proc = subprocess.run(
+            command_list,
+            cwd=str(repo_root),
+            capture_output=True,
+            text=True,
+        )
+    except Exception as exc:
         return {
-            "name": suite,
-            "result": MISSING,
-            "exit_code": 1,
-            "error": message,
-            "stdout": "",
-            "stderr": "",
+            "name": command_name,
+            "command": " ".join(command_list),
+            "exit_code": 3,
+            "result": ERROR,
+            "output_summary": f"subprocess failure: {exc}",
+            "human_action_required": True,
+            "ran": True,
         }
 
-    exit_code, stdout, stderr = run_command(repo_root, command)
-    severity = classify_severity(exit_code, stdout, stderr)
-    effective_exit_code = 1 if severity == SEVERITY_CRITICAL else 0
-    status = suite_status(effective_exit_code, stdout, stderr)
+    mapped_result = {
+        0: PASS,
+        1: FAIL,
+        2: WARN,
+        3: ERROR,
+    }.get(proc.returncode, ERROR)
+
+    out_sum = summary_tail(proc.stdout, proc.stderr)
+
+    if command_name == "execution-audit":
+        combined = f"{proc.stdout}\n{proc.stderr}"
+        mapped_from_output = None
+        if CONTROL_READY in combined:
+            mapped_from_output = PASS
+        elif READY_WITH_WARNINGS in combined:
+            mapped_from_output = WARN
+        elif NEEDS_REVIEW in combined:
+            mapped_from_output = FAIL
+        elif NOT_READY in combined:
+            mapped_from_output = FAIL
+
+        if mapped_from_output is not None:
+            if mapped_from_output != mapped_result:
+                out_sum = (out_sum + "\n" + "conflict: output mapping overrides child exit mapping")[-500:]
+            mapped_result = mapped_from_output
+        elif proc.returncode not in [0, 1, 2, 3]:
+            mapped_result = ERROR
+
     return {
-        "name": suite,
-        "result": status,
-        "exit_code": effective_exit_code,
-        "raw_exit_code": exit_code,
-        "severity": severity,
-        "error": None,
-        "stdout": stdout,
-        "stderr": stderr,
+        "name": command_name,
+        "command": " ".join(command_list),
+        "exit_code": RESULT_TO_EXIT[mapped_result],
+        "result": mapped_result,
+        "output_summary": out_sum,
+        "human_action_required": mapped_result in [FAIL, ERROR, NOT_RUN],
+        "ran": True,
     }
 
 
-def print_text_suite_result(suite_result: dict) -> None:
-    if suite_result["result"] == MISSING:
-        message = suite_result["error"] or "missing script"
-        print(f"[MISSING] {suite_result['name']} - {message}")
-        return
-
-    message = suite_result["error"]
-    if (
-        suite_result.get("severity") == SEVERITY_WARNING
-        and suite_result.get("raw_exit_code", 0) != suite_result.get("exit_code", 0)
-    ):
-        print(f"[{SEVERITY_WARNING}] {suite_result['name']} - non-critical condition downgraded")
-    print_suite_result(suite_result["name"], suite_result["result"], message)
-    if suite_result["stdout"]:
-        print(suite_result["stdout"], end="" if suite_result["stdout"].endswith("\n") else "\n")
-    if suite_result["stderr"]:
-        print(suite_result["stderr"], end="" if suite_result["stderr"].endswith("\n") else "\n", file=sys.stderr)
+def not_run_check(name, command_text, reason):
+    return {
+        "name": name,
+        "command": command_text,
+        "exit_code": 3,
+        "result": NOT_RUN,
+        "output_summary": reason,
+        "human_action_required": True,
+        "ran": False,
+    }
 
 
-def main() -> int:
-    repo_root = Path(__file__).resolve().parent.parent
-    if len(sys.argv) != 2 or sys.argv[1] in {"-h", "--help"}:
-        print(
-            f"Usage: python3 scripts/agentos-validate.py <{available_commands()}>",
-            file=sys.stderr,
+def aggregate(checks):
+    overall = PASS
+    for item in checks:
+        if PRIORITY[item["result"]] > PRIORITY[overall]:
+            overall = item["result"]
+
+    if checks and all(item["result"] == NOT_RUN for item in checks):
+        overall = NOT_RUN
+
+    commands_run = sum(1 for item in checks if item.get("ran", False))
+    commands_not_run = sum(1 for item in checks if item["result"] == NOT_RUN)
+    commands_passed = sum(1 for item in checks if item["result"] == PASS)
+    commands_warned = sum(1 for item in checks if item["result"] == WARN)
+    commands_failed = sum(1 for item in checks if item["result"] in [FAIL, ERROR])
+
+    any_blocking = any(item["result"] in [FAIL, ERROR, NOT_RUN] for item in checks)
+    if overall == WARN and not any_blocking:
+        human_action_required = False
+    elif overall == PASS:
+        human_action_required = False
+    else:
+        human_action_required = any_blocking
+
+    return {
+        "result": overall,
+        "commands_run": commands_run,
+        "commands_passed": commands_passed,
+        "commands_failed": commands_failed,
+        "commands_warned": commands_warned,
+        "commands_not_run": commands_not_run,
+        "human_action_required": human_action_required,
+        "checks": [
+            {
+                "name": item["name"],
+                "command": item["command"],
+                "exit_code": item["exit_code"],
+                "result": item["result"],
+                "output_summary": item["output_summary"],
+                "human_action_required": item["human_action_required"],
+            }
+            for item in checks
+        ],
+    }
+
+
+def run_scope(repo_root, task_path):
+    cmd = [sys.executable, "scripts/check-scope-compliance.py", "--task", task_path]
+    return [run_child(repo_root, "scope", cmd)]
+
+
+def run_scope_fixtures(repo_root):
+    cmd = [sys.executable, "scripts/test-scope-compliance-fixtures.py"]
+    return [run_child(repo_root, "scope-fixtures", cmd)]
+
+
+def run_execution_audit(repo_root):
+    cmd = [sys.executable, "scripts/audit-execution-control.py"]
+    return [run_child(repo_root, "execution-audit", cmd)]
+
+
+def run_all(repo_root):
+    checks = []
+    default_task = repo_root / "tasks/active-task.md"
+
+    if default_task.is_file():
+        checks.extend(run_scope(repo_root, "tasks/active-task.md"))
+    else:
+        checks.append(
+            not_run_check(
+                "scope",
+                f"{sys.executable} scripts/check-scope-compliance.py --task tasks/active-task.md",
+                "default task file is missing",
+            )
         )
-        print("Available commands:", file=sys.stderr)
-        for name in [*SUITES.keys(), "all"]:
-            print(f"  {name}", file=sys.stderr)
-        return 2
 
-    target = sys.argv[1]
-    if target not in SUITES and target != "all":
-        print(f"FAIL: unknown command: {target}", file=sys.stderr)
-        return 2
+    checks.extend(run_scope_fixtures(repo_root))
+    checks.extend(run_execution_audit(repo_root))
+    return checks
 
-    if target != "all":
-        command, _ = resolve_command(repo_root, target)
-        print(f"AgentOS Validate: {target}")
-        print(f"Running: {' '.join(command)}")
-        print()
-        suite_result = run_suite(repo_root, target)
-        print_text_suite_result(suite_result)
-        if suite_result.get("severity") == SEVERITY_WARNING:
-            print("Result: PARTIAL")
+
+def print_human(summary):
+    failed_names = [c["name"] for c in summary["checks"] if c["result"] in [FAIL, ERROR]]
+    warn_names = [c["name"] for c in summary["checks"] if c["result"] == WARN]
+    not_run_names = [c["name"] for c in summary["checks"] if c["result"] == NOT_RUN]
+
+    print(f"Overall result: {summary['result']}")
+    print(f"Checks run: {summary['commands_run']}")
+    print(f"Failed checks: {len(failed_names)}")
+    print(f"Warnings: {len(warn_names)}")
+    print(f"Not run checks: {len(not_run_names)}")
+    print(f"Human action required: {'YES' if summary['human_action_required'] else 'NO'}")
+
+    if summary["result"] == PASS:
+        print("Next step: continue normal review")
+    elif summary["result"] == WARN:
+        print("Next step: review warning details")
+    elif summary["result"] == NOT_RUN:
+        print("Next step: run missing checks")
+    elif summary["result"] == FAIL:
+        print("Next step: fix failing checks and rerun")
+    else:
+        print("Next step: investigate execution errors")
+
+
+def main(argv):
+    try:
+        args = parse_cli(argv)
+    except Exception as exc:
+        payload = {
+            "result": ERROR,
+            "commands_run": 0,
+            "commands_passed": 0,
+            "commands_failed": 1,
+            "commands_warned": 0,
+            "commands_not_run": 0,
+            "human_action_required": True,
+            "checks": [
+                {
+                    "name": "argument-error",
+                    "command": "agentos-validate",
+                    "exit_code": 3,
+                    "result": ERROR,
+                    "output_summary": str(exc),
+                    "human_action_required": True,
+                }
+            ],
+        }
+        if "--json" in argv:
+            print(json.dumps(payload, indent=2))
         else:
-            print(f"Result: {'PASS' if suite_result['exit_code'] == 0 else 'FAIL'}")
-        return suite_result["exit_code"]
+            print_human(payload)
+        return 3
 
-    overall_fail = False
-    overall_warn = False
+    repo_root = Path(os.getcwd()).resolve()
 
-    for suite in ORDER:
-        suite_result = run_suite(repo_root, suite)
-        print_text_suite_result(suite_result)
-        if suite_result["exit_code"] != 0:
-            overall_fail = True
-        elif suite_result["result"] == PASS_WITH_WARNINGS:
-            overall_warn = True
+    if args.command == "scope":
+        checks = run_scope(repo_root, args.task)
+    elif args.command == "scope-fixtures":
+        checks = run_scope_fixtures(repo_root)
+    elif args.command == "execution-audit":
+        checks = run_execution_audit(repo_root)
+    else:
+        checks = run_all(repo_root)
 
-    if overall_fail:
-        return 1
-    return 0
+    summary = aggregate(checks)
+
+    if args.json:
+        print(json.dumps(summary, indent=2))
+    else:
+        print_human(summary)
+
+    return RESULT_TO_EXIT[summary["result"]]
 
 
 if __name__ == "__main__":
-    raise SystemExit(main())
+    sys.exit(main(sys.argv[1:]))
