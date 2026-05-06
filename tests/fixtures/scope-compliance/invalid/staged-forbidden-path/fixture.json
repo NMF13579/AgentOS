@@ -1,0 +1,19 @@
+{
+  "name": "staged-forbidden-path",
+  "expected_result": "FAIL",
+  "expected_exit_code": 1,
+  "initial_files": {
+    "docs/secret.md": "v1\n"
+  },
+  "operations": [
+    {
+      "action": "write",
+      "path": "docs/secret.md",
+      "content": "v2\n"
+    },
+    {
+      "action": "stage",
+      "path": "docs/secret.md"
+    }
+  ]
+}
