@@ -6,7 +6,7 @@ Milestone 22 moved AgentOS toward script-supported guardrails while keeping sema
 ## Artifact Inventory
 | Artifact | Expected Purpose | Status | Notes |
 |---|---|---|---|
-| `reports/milestone-22-markdown-to-script-inventory.md` | Inventory of Markdown-to-script candidates | NOT_FOUND | Missing in this checkout |
+| `reports/milestone-22-markdown-to-script-inventory.md` | Inventory of Markdown-to-script candidates | FOUND | Present |
 | `docs/MARKDOWN-ROLE-CLASSIFICATION.md` | Classify Markdown roles | FOUND | Present |
 | `docs/SOURCE-OF-TRUTH-MAP.md` | Map concept ownership | FOUND | Present |
 | `docs/FRONTMATTER-STANDARD.md` | Define frontmatter contract | FOUND | Present |
@@ -92,7 +92,7 @@ Milestone 22 moved AgentOS toward script-supported guardrails while keeping sema
 | `python3 scripts/test-m22-guardrails.py` | exit 0 or 1 | PASS | All suites PASS | Unified M22 guardrail runner passed |
 | `python3 -m json.tool data/index.json` | exit 0 | PASS | JSON parses correctly | Already covered above; included for completeness |
 | `python3 scripts/build-index.py` | not required for this report | NOT_RUN | Not run to avoid rewriting `data/index.json` | Skipped because this task is evidence-only |
-| `git status --short` | read-only observation | WARN | Unrelated `project/` changes remain; report file is untracked | Workspace contains pre-existing residue outside this report |
+| `git status --short` | read-only observation | WARN | `M data/index.json` remains in working tree | Existing tracked change outside this report remains |
 
 ## Markdown-to-Script Progress
 | Rule / Pattern | Script Support | Evidence | Remaining Gap |
@@ -120,10 +120,10 @@ Milestone 22 moved AgentOS toward script-supported guardrails while keeping sema
 ## Known Gaps and Warnings
 | Gap / Warning | Impact | Recommended Follow-Up | Severity |
 |---|---|---|---|
-| `reports/milestone-22-markdown-to-script-inventory.md` is missing | One expected upstream artifact is absent | Recreate or locate the inventory report if needed for audit continuity | MEDIUM |
+| `reports/milestone-22-markdown-to-script-inventory.md` was found and is now reflected in inventory | Evidence inventory alignment updated | No follow-up needed for this artifact | LOW |
 | `python3 scripts/validate-index.py` fails on the current repository index | Existing Markdown still has many invalid status values | Review legacy status values before treating the index as clean | HIGH |
 | `python3 scripts/audit-metadata-consistency.py` reports many `unknown` fields and warnings fields | Derived index still carries a lot of uncertainty | Reduce legacy metadata gaps in source Markdown | MEDIUM |
-| Workspace contains unrelated `project/` changes and untracked files | This report is not the only worktree residue | Leave unrelated files untouched | LOW |
+| Workspace has existing tracked change `M data/index.json` | Worktree is not fully clean during evidence capture | Leave unrelated file untouched in this task | LOW |
 | `python3 scripts/build-index.py` was not run during this report | Avoided rewriting `data/index.json` in an evidence-only task | Use it only when a rebuild is intentionally required | LOW |
 
 ## Do Not Treat as Completion Decision
@@ -138,4 +138,3 @@ Completion review should come after evidence collection because it needs the fac
 `READY_WITH_WARNINGS`
 
 Major M22 artifacts are present and the guardrail runner passes, so the evidence is usable. The report still records one missing upstream inventory report and the real index validator still fails against legacy repository content, so completion review should proceed with caution. The next step is `22.15.1 — Milestone 22 Completion Review`.
-
