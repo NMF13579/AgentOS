@@ -418,6 +418,137 @@ recommended_next_task_reason: >
   defined in this policy. First enforcement artifact in M26.
 ```
 
+### Entry: 26.5.1 — Pre-merge Checklist Script
+
+```yaml
+task_id: 26.5.1
+title: Pre-merge Checklist Script
+status: DONE
+artifact_created:
+  - scripts/check-pre-merge-scope.py
+  - scripts/test-pre-merge-scope-fixtures.py
+  - tests/fixtures/pre-merge-scope/
+artifact_modified:
+  - reports/milestone-26-evidence-report.md
+recommended_next_task: 26.6.1
+```
+
+### Entry: 26.6.1 — No Direct Push Policy
+
+```yaml
+task_id: 26.6.1
+task_title: No Direct Push Policy
+completed_date: 2026-05-04
+executor: (fill — agent identifier or session ID)
+
+artifact_created:
+  - docs/NO-DIRECT-PUSH-POLICY.md
+  - templates/push-request-record.md
+
+artifact_modified:
+  - reports/milestone-26-evidence-report.md
+
+validation_status: MANUAL_VERIFICATION_REQUIRED
+
+manual_checks_performed:
+  no_direct_push_policy_doc_exists: PASS
+  push_request_record_template_exists: PASS
+  policy_frontmatter_present: PASS
+  template_frontmatter_present: PASS
+  dev_direct_push_blocked: PASS
+  main_direct_push_blocked: PASS
+  protected_branch_push_type_defined: PASS
+  protected_branch_push_blocked: PASS
+  protected_branch_target_validation_rule_defined: PASS
+  force_push_blocked: PASS
+  remote_branch_deletion_blocked: PASS
+  tag_push_requires_authorization: PASS
+  silent_remote_branch_creation_blocked: PASS
+  feature_branch_push_requires_approval: PASS
+  remote_branch_creation_requires_authorization: PASS
+  push_after_scope_violation_blocked: PASS
+  push_with_m25_fail_warn_error_not_run_incomplete_blocked: PASS
+  scope_ok_is_not_push_approval: PASS
+  command_approved_is_not_push_approval_unless_specific_remote_write: PASS
+  write_scope_approved_is_not_push_approval: PASS
+  push_approved_is_not_merge_approval: PASS
+  push_approved_does_not_bypass_m25: PASS
+  m25_fail_cannot_be_converted_to_pass: PASS
+  git_remote_remote_read_write_distinction_preserved: PASS
+  agent_cannot_fill_reviewer: PASS
+  human_approval_cannot_be_simulated: PASS
+  push_decision_states_defined: PASS
+  push_risk_levels_defined: PASS
+  push_type_values_defined: PASS
+  expiration_semantics_defined: PASS
+  force_push_type_auto_blocked: PASS
+  remote_branch_delete_type_auto_blocked: PASS
+  unknown_push_type_requires_human_review: PASS
+  runner_controlled_push_marked_as_policy_intent_only: PASS
+  relationship_to_26_7_1_defined: PASS
+  relationship_to_m25_defined: PASS
+  relationship_to_scope_checker_defined: PASS
+  relationship_to_permission_model_defined: PASS
+  relationship_to_command_allowlist_defined: PASS
+  relationship_to_corridor_defined: PASS
+  follow_up_tasks_listed: PASS
+  workflow_files_modified: NO
+  scripts_modified: NO
+  tests_modified: NO
+  policy_docs_26_1_1_through_26_5_1_modified: NO
+  templates_from_prior_tasks_modified: NO
+  m25_artifacts_modified: NO
+
+scope_compliance:
+  files_in_scope: YES
+  files_out_of_scope: NO
+  protected_zones_modified: NO
+  prior_policy_docs_modified: NO
+
+m25_compatibility_check:
+  m25_principles_preserved: YES
+  m25_artifacts_modified: NO
+  push_policy_overrides_m25: NO
+  push_approval_satisfies_m25_override: NO
+  note: >
+    No Direct Push Policy is additive. It does not change M25 outcomes
+    or override M25 required checks. Push approval explicitly cannot
+    convert M25 FAIL/WARN/ERROR/NOT_RUN/INCOMPLETE to PASS.
+
+m26_machine_verification:
+  scope_check: IMPLEMENTED (26.5.1)
+  push_policy: IMPLEMENTED (26.6.1)
+  push_precondition_script: NOT_IMPLEMENTED (26.7.1)
+  write_enforcement: NOT_IMPLEMENTED
+  command_enforcement: NOT_IMPLEMENTED
+  corridor_audit: NOT_IMPLEMENTED
+
+known_limitations:
+  - No Direct Push Policy is a policy document only; no machine enforcement in this task.
+  - Push precondition machine check belongs to Task 26.7.1.
+  - Branch protection enforcement depends on GitHub branch protection settings not managed here.
+  - Tag signing and release management are not in scope.
+  - Runner-controlled push mechanism is policy intent only until 26.7.1.
+  - M25 override policy details are referenced but not defined in this task.
+  - CI/CD integration of push checks is not implemented.
+
+next_tasks:
+  - 26.7.1
+  - 26.8.1
+  - 26.9.1
+  - 26.10.1
+  - 26.11.1
+  - 26.12.1
+  - 26.13.1
+
+recommended_next_task: 26.7.1
+recommended_next_task_title: Commit / Push Control Script
+recommended_next_task_reason: >
+  26.6.1 defines push policy. 26.7.1 machine-checks commit and push
+  preconditions before execution. Together they form the policy +
+  enforcement layer for remote push operations.
+```
+
 ---
 
 Additional entries will be added as M26 tasks are completed.
@@ -435,7 +566,7 @@ M26 will be considered complete only when:
 - M26 completion review assigns final status
 - No corridor violations remain unresolved
 
-**Current M26 status: IN PROGRESS — 4 of 13 tasks complete.**
+**Current M26 status: IN PROGRESS — 6 of 13 tasks complete.**
 
 ---
 

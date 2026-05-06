@@ -1,0 +1,10 @@
+task_id: "26.x.x-test"
+declared_scope:
+  - docs/
+allowed_write_paths:
+  - docs/
+conditional_write_paths: []
+forbidden_write_paths: []
+protected_zones: []
+deletions_allowed: []
+evidence_artifacts: []

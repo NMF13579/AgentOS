@@ -1,0 +1,14 @@
+task_id: "26.x.x-test"
+declared_scope:
+  - docs/
+  - .github/workflows/
+allowed_write_paths:
+  - docs/
+  - .github/workflows/
+conditional_write_paths: []
+forbidden_write_paths:
+  - .github/workflows/
+protected_zones:
+  - .github/workflows/
+deletions_allowed: []
+evidence_artifacts: []
