@@ -889,6 +889,124 @@ recommended_next_task_reason: >
   layer for the M26 corridor.
 ```
 
+### Entry: 26.11.1 — Pre-Merge Corridor Smoke Fixtures
+
+```yaml
+task_id: 26.11.1
+task_title: Pre-Merge Corridor Smoke Fixtures
+completed_date: 2026-05-04
+executor: (fill — agent identifier or session ID)
+
+artifact_created:
+  - scripts/test-pre-merge-corridor-fixtures.py
+  - tests/fixtures/pre-merge-corridor/valid/minimal-ready/
+  - tests/fixtures/pre-merge-corridor/warning/policy-only-gaps/
+  - tests/fixtures/pre-merge-corridor/review/missing-evidence-entry/
+  - tests/fixtures/pre-merge-corridor/invalid/missing-boundary-safety-phrase/
+  - tests/fixtures/pre-merge-corridor/invalid/missing-required-artifact/
+  - tests/fixtures/pre-merge-corridor/invalid/missing-core-enum/
+  - tests/fixtures/pre-merge-corridor/invalid/forbidden-authorization-language/
+  - tests/fixtures/pre-merge-corridor/invalid/missing-no-direct-push-boundary/
+
+artifact_modified:
+  - reports/milestone-26-evidence-report.md
+
+validation_status: MANUAL_VERIFICATION_REQUIRED
+
+manual_checks_performed:
+  fixture_runner_exists: PASS
+  fixture_runner_is_read_only: PASS
+  fixture_runner_uses_audit_script_with_repo_root: PASS
+  fixture_runner_reads_json_result: PASS
+  fixture_runner_compares_expected_result: PASS
+  fixture_runner_handles_runner_error: PASS
+  fixture_runner_prints_stderr_on_error: PASS
+  fixture_valid_minimal_ready_created: PASS
+  fixture_warning_policy_only_gaps_created: PASS
+  fixture_review_missing_evidence_entry_created: PASS
+  fixture_review_missing_safety_phrase_converted_documented: PASS
+  fixture_invalid_missing_boundary_safety_phrase_created: PASS
+  fixture_invalid_missing_required_artifact_created: PASS
+  fixture_invalid_missing_core_enum_created: PASS
+  fixture_invalid_forbidden_authorization_language_created: PASS
+  fixture_invalid_missing_no_direct_push_boundary_created: PASS
+  audit_placeholder_added_to_all_fixture_repos: PASS
+  all_fixtures_have_expected_result_txt: PASS
+  runner_error_produces_fixture_fail: PASS
+  no_git_commit_in_runner: PASS
+  no_git_push_in_runner: PASS
+  no_file_modification_in_runner: PASS
+  audit_script_not_modified: PASS
+  workflow_files_modified: NO
+  production_docs_modified: NO
+  templates_modified: NO
+  prior_scripts_modified: NO
+  m25_artifacts_modified: NO
+
+fixture_results:
+  valid/minimal-ready: CORRIDOR_READY
+  warning/policy-only-gaps: READY_WITH_WARNINGS
+  review/missing-evidence-entry: NEEDS_REVIEW
+  invalid/missing-boundary-safety-phrase: NOT_READY
+  invalid/missing-required-artifact: NOT_READY
+  invalid/missing-core-enum: NOT_READY
+  invalid/forbidden-authorization-language: NOT_READY
+  invalid/missing-no-direct-push-boundary: NOT_READY
+
+fixture_notes:
+  missing_safety_phrase_conversion: >
+    review/missing-safety-phrase converted to
+    invalid/missing-boundary-safety-phrase because all 12 safety phrases
+    in 26.10.1 are boundary phrases. Missing any boundary phrase produces
+    NOT_READY. NEEDS_REVIEW coverage for safety phrases is not possible with
+    current 26.10.1 configuration. Documented in README-fixture-note.md.
+    To enable NEEDS_REVIEW safety phrase fixture: add non-boundary phrase
+    to 26.10.1 REQUIRED_SAFETY_PHRASES with is_boundary=False.
+  audit_placeholder_reason: >
+    Each synthetic fixture repo includes scripts/audit-pre-merge-corridor.py
+    placeholder because the production audit script self-check reads this path
+    from --repo-root. The placeholder contains no mutating snippets.
+
+m25_compatibility_check:
+  m25_principles_preserved: YES
+  m25_artifacts_modified: NO
+  smoke_fixtures_override_m25: NO
+  note: >
+    Smoke fixtures validate M26 audit behavior only. They do not change M25
+    validation results and do not authorize merge, push, approval, or release.
+
+m26_machine_verification:
+  scope_check: IMPLEMENTED (26.5.1)
+  push_policy: IMPLEMENTED (26.6.1)
+  push_precondition_script: IMPLEMENTED (26.7.1)
+  violation_policy: IMPLEMENTED (26.8.1)
+  bounded_retry_policy: IMPLEMENTED (26.9.1)
+  corridor_audit_script: IMPLEMENTED (26.10.1)
+  corridor_smoke_fixtures: IMPLEMENTED (26.11.1)
+  violation_enforcement_script: NOT_IMPLEMENTED
+  retry_enforcement_script: NOT_IMPLEMENTED
+  write_enforcement: NOT_IMPLEMENTED
+  command_enforcement: NOT_IMPLEMENTED
+
+known_limitations:
+  - Smoke fixtures validate audit behavior only; they do not enforce policies.
+  - Fixture repo trees are synthetic and minimal.
+  - NEEDS_REVIEW via safety phrase path not covered; all phrases are boundary.
+  - Audit behavior depends on substring checks defined in 26.10.1.
+  - CI/CD integration is not implemented in this task.
+  - Final M26 readiness is not decided until 26.13.1.
+
+next_tasks:
+  - 26.12.1
+  - 26.13.1
+
+recommended_next_task: 26.12.1
+recommended_next_task_title: M26 Evidence Report
+recommended_next_task_reason: >
+  26.11.1 completes smoke verification for the M26 audit layer.
+  26.12.1 aggregates final milestone evidence before the completion review.
+```
+
 ### Entry: 26.10.2 — Commit/Push Preconditions Script (pre-created)
 
 ```yaml
@@ -936,7 +1054,7 @@ M26 will be considered complete only when:
 - M26 completion review assigns final status
 - No corridor violations remain unresolved
 
-**Current M26 status: IN PROGRESS — 11 of 15 tasks complete.**
+**Current M26 status: IN PROGRESS — 12 of 15 tasks complete.**
 
 ---
 
