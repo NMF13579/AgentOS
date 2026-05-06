@@ -1037,6 +1037,19 @@ artifact_modified:
   - reports/milestone-26-evidence-report.md
 ```
 
+### Entry: 26.12.1 — M26 Evidence Report Finalization
+
+```yaml
+task_id: 26.12.1
+title: Evidence Report Finalization
+status: DONE
+artifact_modified:
+  - reports/milestone-26-evidence-report.md
+note: >
+  Отчёт финализирован. Все записи 26.1.1–26.11.1
+  сохранены без изменений.
+```
+
 ---
 
 Additional entries will be added as M26 tasks are completed.
@@ -1054,7 +1067,7 @@ M26 will be considered complete only when:
 - M26 completion review assigns final status
 - No corridor violations remain unresolved
 
-**Current M26 status: IN PROGRESS — 12 of 15 tasks complete.**
+**Current M26 status: IN PROGRESS — 14 of 15 tasks complete.**
 
 ---
 
