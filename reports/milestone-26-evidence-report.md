@@ -785,6 +785,128 @@ recommended_next_task_reason: >
   policy layer.
 ```
 
+### Entry: 26.10.1 — Pre-Merge Corridor Audit Script
+
+```yaml
+task_id: 26.10.1
+task_title: Pre-Merge Corridor Audit Script
+completed_date: 2026-05-04
+executor: (fill — agent identifier or session ID)
+
+artifact_created:
+  - scripts/audit-pre-merge-corridor.py
+
+artifact_modified:
+  - reports/milestone-26-evidence-report.md
+
+validation_status: MANUAL_VERIFICATION_REQUIRED
+
+manual_checks_performed:
+  audit_script_exists: PASS
+  script_is_read_only: PASS
+  script_does_not_call_git_commit: PASS
+  script_does_not_call_git_push: PASS
+  script_does_not_modify_files: PASS
+  script_self_check_does_not_false_fail_on_own_scan_rules: PASS
+  script_supports_json: PASS
+  script_supports_repo_root: PASS
+  script_supports_strict: PASS
+  repo_root_default_cwd_defined: PASS
+  repo_root_git_detection_defined: PASS
+  repo_root_not_found_error_defined: PASS
+  all_required_artifact_checks_implemented: PASS
+  all_required_enum_checks_implemented: PASS
+  cross_consistency_checks_implemented: PASS
+  forbidden_language_checks_implemented: PASS
+  forbidden_language_negation_detection_implemented: PASS
+  forbidden_language_false_positive_risk_mitigated: PASS
+  required_evidence_entries_fixed_list_defined: PASS
+  result_priority_implemented: PASS
+  exit_codes_implemented: PASS
+  strict_mode_implemented: PASS
+  disclaimer_includes_not_approval: PASS
+  disclaimer_includes_not_commit: PASS
+  disclaimer_includes_not_push: PASS
+  disclaimer_includes_not_merge: PASS
+  disclaimer_includes_not_m25_override: PASS
+  policy_only_gaps_produce_warnings: PASS
+  script_self_check_implemented: PASS
+  evidence_entry_markdown_fence_correct: PASS
+  workflow_files_modified: NO
+  docs_modified: NO
+  templates_modified: NO
+  tests_modified: NO
+  prior_scripts_modified: NO
+  m25_artifacts_modified: NO
+
+m25_compatibility_check:
+  m25_principles_preserved: YES
+  m25_artifacts_modified: NO
+  audit_overrides_m25: NO
+  corridor_ready_is_not_approval: YES
+  note: >
+    Audit script is read-only and additive. CORRIDOR_READY does not change
+    M25 validation results. Disclaimer explicitly states this audit does
+    not override M25.
+
+m26_machine_verification:
+  scope_check: IMPLEMENTED (26.5.1)
+  push_policy: IMPLEMENTED (26.6.1)
+  push_precondition_script: IMPLEMENTED (26.7.1)
+  violation_policy: IMPLEMENTED (26.8.1)
+  bounded_retry_policy: IMPLEMENTED (26.9.1)
+  corridor_audit_script: IMPLEMENTED (26.10.1)
+  violation_enforcement_script: NOT_IMPLEMENTED
+  retry_enforcement_script: NOT_IMPLEMENTED
+  write_enforcement: NOT_IMPLEMENTED
+  command_enforcement: NOT_IMPLEMENTED
+  smoke_fixtures: NOT_IMPLEMENTED
+
+known_limitations:
+  - Audit script is read-only; it does not enforce any policy automatically.
+  - Forbidden language check uses line-level negation detection; complex
+    multi-line negation may not be detected — human review recommended for
+    edge cases.
+  - Required safety phrase checks use case-insensitive substring match;
+    paraphrased phrases will not be detected.
+  - Required evidence entry check uses fixed list 26.1.1–26.10.1;
+    entries added after this task are not automatically included.
+  - Policy-only gaps produce READY_WITH_WARNINGS; enforcement remains manual.
+  - Script self-check uses simple string scan; does not execute static analysis.
+  - CORRIDOR_READY does not mean corridor is complete; final decision is 26.13.1.
+
+next_tasks:
+  - 26.11.1
+  - 26.12.1
+  - 26.13.1
+
+recommended_next_task: 26.11.1
+recommended_next_task_title: Pre-Merge Corridor Smoke Fixtures
+recommended_next_task_reason: >
+  26.10.1 creates the audit script. 26.11.1 proves the audit script
+  correctly identifies valid and invalid corridor configurations through
+  positive and negative fixtures. Together they form the audit + verification
+  layer for the M26 corridor.
+```
+
+### Entry: 26.10.2 — Commit/Push Preconditions Script (pre-created)
+
+```yaml
+task_id: 26.10.2
+title: Commit/Push Preconditions Script
+status: DONE
+note: >
+  Артефакты созданы досрочно агентом при выполнении 26.7.1.
+  Зарегистрированы ретроспективно.
+artifact_created:
+  - scripts/check-commit-push-preconditions.py
+  - scripts/test-commit-push-preconditions-fixtures.py
+  - tests/fixtures/commit-push-preconditions/
+tests_passed: 25 of 25
+artifact_modified:
+  - reports/milestone-26-evidence-report.md
+```
+
 ### Entry: 26.9.2 — Human Approval Gate Protocol
 
 ```yaml
@@ -814,7 +936,7 @@ M26 will be considered complete only when:
 - M26 completion review assigns final status
 - No corridor violations remain unresolved
 
-**Current M26 status: IN PROGRESS — 9 of 14 tasks complete.**
+**Current M26 status: IN PROGRESS — 11 of 15 tasks complete.**
 
 ---
 
