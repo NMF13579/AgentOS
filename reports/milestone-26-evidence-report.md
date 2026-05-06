@@ -571,6 +571,115 @@ note: >
   be accounted for in 26.10.1
 ```
 
+### Entry: 26.8.1 — Agent Violation / Sanctions Policy
+
+```yaml
+task_id: 26.8.1
+task_title: Agent Violation / Sanctions Policy
+completed_date: 2026-05-04
+executor: (fill — agent identifier or session ID)
+
+artifact_created:
+  - docs/AGENT-VIOLATION-POLICY.md
+  - templates/agent-violation-record.md
+
+artifact_modified:
+  - reports/milestone-26-evidence-report.md
+
+validation_status: MANUAL_VERIFICATION_REQUIRED
+
+manual_checks_performed:
+  agent_violation_policy_exists: PASS
+  agent_violation_record_template_exists: PASS
+  policy_frontmatter_present: PASS
+  template_frontmatter_present: PASS
+  all_violation_categories_defined: PASS
+  all_severity_levels_defined: PASS
+  all_sanction_types_defined: PASS
+  required_sanctions_mapping_complete: PASS
+  scope_violation_vs_forbidden_write_wording_clarified: PASS
+  multi_category_incident_rule_defined: PASS
+  forbidden_write_precedence_over_scope_violation_defined: PASS
+  critical_multi_violation_record_rule_defined: PASS
+  unapproved_push_severity_wording_corrected: PASS
+  reset_to_last_safe_state_mapped_to_violations: PASS
+  reset_to_last_safe_state_notes_defined: PASS
+  repeated_failure_threshold_defined: PASS
+  reviewer_pending_human_assignment_rule_defined: PASS
+  retry_allowed_human_only_rule_defined: PASS
+  agent_cannot_clear_own_violation: PASS
+  agent_cannot_reduce_own_severity: PASS
+  agent_cannot_mark_own_false_positive: PASS
+  agent_cannot_resume_blocked_without_human: PASS
+  agent_cannot_set_retry_allowed_yes: PASS
+  violation_record_is_not_approval: PASS
+  sanction_does_not_authorize_merge: PASS
+  sanction_does_not_authorize_push: PASS
+  sanction_does_not_bypass_m25: PASS
+  evidence_tampering_is_critical: PASS
+  approval_simulation_is_critical: PASS
+  auto_merge_attempt_is_critical: PASS
+  direct_protected_branch_push_is_critical: PASS
+  force_push_attempt_is_critical: PASS
+  remote_branch_delete_attempt_is_critical: PASS
+  unapproved_push_is_high_minimum: PASS
+  validation_bypass_is_critical: PASS
+  26_7_1_blocked_mapping_documented: PASS
+  needs_approval_no_violation_by_itself: PASS
+  needs_review_no_violation_by_itself: PASS
+  evidence_tampering_reset_required: PASS
+  human_review_boundary_defined: PASS
+  repeat_violation_rule_defined: PASS
+  workflow_files_modified: NO
+  scripts_modified: NO
+  tests_modified: NO
+  policy_docs_26_1_1_through_26_7_1_modified: NO
+  templates_from_prior_tasks_modified: NO
+  m25_artifacts_modified: NO
+
+m25_compatibility_check:
+  m25_principles_preserved: YES
+  m25_artifacts_modified: NO
+  sanctions_override_m25: NO
+  validation_bypass_is_critical_violation: YES
+  note: >
+    Agent Violation Policy is additive. Sanctions do not change M25 outcomes.
+    Attempting to bypass M25 is explicitly VALIDATION_BYPASS, CRITICAL severity.
+
+m26_machine_verification:
+  scope_check: IMPLEMENTED (26.5.1)
+  push_policy: IMPLEMENTED (26.6.1)
+  push_precondition_script: IMPLEMENTED (26.7.1)
+  violation_policy: IMPLEMENTED (26.8.1)
+  violation_enforcement_script: NOT_IMPLEMENTED
+  write_enforcement: NOT_IMPLEMENTED
+  command_enforcement: NOT_IMPLEMENTED
+  corridor_audit: NOT_IMPLEMENTED
+
+known_limitations:
+  - Violation policy is a policy document only; no automatic sanction enforcement.
+  - Sanctions are applied manually by human reviewer; no script enforcement until future task.
+  - REPEATED_FAILURE count is determined by human reviewer; not machine-tracked.
+  - Retry conditions are referenced as belonging to 26.9.1; not yet defined.
+  - RESET_TO_LAST_SAFE_STATE requires human authorization; no automated reset mechanism.
+  - Violation records stored path (reports/violations/) is by convention only; not enforced.
+
+next_tasks:
+  - 26.9.1
+  - 26.10.1
+  - 26.11.1
+  - 26.12.1
+  - 26.13.1
+
+recommended_next_task: 26.9.1
+recommended_next_task_title: Bounded Retry Loop Policy
+recommended_next_task_reason: >
+  26.8.1 defines violation response and sanctions including
+  RETRY_WITH_REDUCED_PERMISSIONS. 26.9.1 defines when retry is allowed,
+  how many retries are permitted, and what conditions must be met.
+  Together they form the violation detection + response + retry boundary layer.
+```
+
 ---
 
 Additional entries will be added as M26 tasks are completed.
