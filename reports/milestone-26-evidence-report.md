@@ -680,6 +680,123 @@ recommended_next_task_reason: >
   Together they form the violation detection + response + retry boundary layer.
 ```
 
+### Entry: 26.9.1 — Bounded Retry Loop Policy
+
+```yaml
+task_id: 26.9.1
+task_title: Bounded Retry Loop Policy
+completed_date: 2026-05-04
+executor: (fill — agent identifier or session ID)
+
+artifact_created:
+  - docs/BOUNDED-RETRY-POLICY.md
+  - templates/retry-attempt-record.md
+
+artifact_modified:
+  - reports/milestone-26-evidence-report.md
+
+validation_status: MANUAL_VERIFICATION_REQUIRED
+
+manual_checks_performed:
+  bounded_retry_policy_exists: PASS
+  retry_attempt_record_template_exists: PASS
+  policy_frontmatter_present: PASS
+  template_frontmatter_present: PASS
+  all_retry_decision_states_defined: PASS
+  all_retry_attempt_outcomes_defined: PASS
+  retry_limits_defined: PASS
+  retry_count_verification_method_defined: PASS
+  material_change_defined: PASS
+  material_change_definition_no_read_only_command_conflict: PASS
+  retry_allowed_conditions_defined: PASS
+  retry_blocked_conditions_defined: PASS
+  unresolved_open_violation_stop_condition_defined: PASS
+  open_noncritical_violation_requires_human_retry_authorization: PASS
+  retry_with_reduced_permissions_defined: PASS
+  permission_for_retry_blocked_contradiction_resolved: PASS
+  forbidden_permission_levels_after_violation_defined: PASS
+  human_only_retry_decisions_defined: PASS
+  violation_interaction_rules_defined: PASS
+  needs_approval_not_retry_failure: PASS
+  needs_review_not_retry_failure: PASS
+  repeated_failure_rule_aligns_with_26_8_1: PASS
+  stop_conditions_defined: PASS
+  stop_required_field_defined: PASS
+  next_required_action_field_defined: PASS
+  retry_record_is_not_approval: PASS
+  retry_does_not_authorize_commit: PASS
+  retry_does_not_authorize_push: PASS
+  retry_does_not_authorize_merge: PASS
+  retry_does_not_bypass_m25: PASS
+  agent_cannot_reset_retry_count: PASS
+  agent_cannot_self_authorize_retry_after_violation: PASS
+  retry_count_after_attempt_validation_rule_defined: PASS
+  previous_attempt_count_cannot_be_self_reported_zero: PASS
+  evidence_entry_markdown_fence_correct: PASS
+  workflow_files_modified: NO
+  scripts_modified: NO
+  tests_modified: NO
+  policy_docs_26_1_1_through_26_8_1_modified: NO
+  templates_from_prior_tasks_modified: NO
+  m25_artifacts_modified: NO
+
+m25_compatibility_check:
+  m25_principles_preserved: YES
+  m25_artifacts_modified: NO
+  retry_overrides_m25: NO
+  retry_after_m25_fail_requires_rerun: YES
+  note: >
+    Bounded Retry Policy is additive. Retry does not change M25 results.
+    Retry after M25 FAIL requires that the retry plan addresses the cause
+    and M25 must be re-run before merge is considered.
+
+m26_machine_verification:
+  scope_check: IMPLEMENTED (26.5.1)
+  push_policy: IMPLEMENTED (26.6.1)
+  push_precondition_script: IMPLEMENTED (26.7.1)
+  violation_policy: IMPLEMENTED (26.8.1)
+  bounded_retry_policy: IMPLEMENTED (26.9.1)
+  violation_enforcement_script: NOT_IMPLEMENTED
+  retry_enforcement_script: NOT_IMPLEMENTED
+  write_enforcement: NOT_IMPLEMENTED
+  command_enforcement: NOT_IMPLEMENTED
+  corridor_audit: NOT_IMPLEMENTED
+
+known_limitations:
+  - Bounded retry policy is a policy document only; no automatic retry enforcement.
+  - Retry count verification requires human to count retry-attempt-record files; not automated.
+  - Material change definition is policy-level only; no automated detection.
+  - Retry conditions for RETRY_WITH_REDUCED_PERMISSIONS are defined in policy only.
+  - Permission restoration after reduced retry requires human decision; not automated.
+  - Retry record storage path (reports/retry-attempts/) is by convention only; not enforced.
+
+next_tasks:
+  - 26.10.1
+  - 26.11.1
+  - 26.12.1
+  - 26.13.1
+
+recommended_next_task: 26.10.1
+recommended_next_task_title: Pre-Merge Corridor Audit Script
+recommended_next_task_reason: >
+  26.9.1 completes the core policy layer for pre-merge behavior control.
+  26.10.1 audits whether the corridor artifacts exist and are internally
+  consistent. It is the first machine-verifiable check across the full M26
+  policy layer.
+```
+
+### Entry: 26.9.2 — Human Approval Gate Protocol
+
+```yaml
+task_id: 26.9.2
+title: Human Approval Gate Protocol
+status: DONE
+artifact_created:
+  - docs/HUMAN-APPROVAL-GATE.md
+artifact_modified:
+  - reports/milestone-26-evidence-report.md
+```
+
 ---
 
 Additional entries will be added as M26 tasks are completed.
@@ -697,7 +814,7 @@ M26 will be considered complete only when:
 - M26 completion review assigns final status
 - No corridor violations remain unresolved
 
-**Current M26 status: IN PROGRESS — 7 of 13 tasks complete.**
+**Current M26 status: IN PROGRESS — 9 of 14 tasks complete.**
 
 ---
 
