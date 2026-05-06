@@ -549,6 +549,28 @@ recommended_next_task_reason: >
   enforcement layer for remote push operations.
 ```
 
+### Entry: 26.7.1 — Known Limitations Register
+
+```yaml
+task_id: 26.7.1
+title: Known Limitations Register
+status: DONE
+completed_date: 2026-05-04
+executor: (fill — agent identifier or session ID)
+
+artifact_created:
+  - docs/KNOWN-LIMITATIONS-M26.md
+
+artifact_modified:
+  - reports/milestone-26-evidence-report.md
+
+validation_status: MANUAL_VERIFICATION_REQUIRED
+
+note: >
+  scripts/check-commit-push-preconditions.py created early by the agent and will
+  be accounted for in 26.10.1
+```
+
 ---
 
 Additional entries will be added as M26 tasks are completed.
@@ -566,7 +588,7 @@ M26 will be considered complete only when:
 - M26 completion review assigns final status
 - No corridor violations remain unresolved
 
-**Current M26 status: IN PROGRESS — 6 of 13 tasks complete.**
+**Current M26 status: IN PROGRESS — 7 of 13 tasks complete.**
 
 ---
 
