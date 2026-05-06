@@ -13,3 +13,20 @@ transition:
 # Active Task: task-m22-gate-contract-artifacts
 
 Create the 7 missing gate contract artifacts required for release-readiness audit to pass.
+
+scope_control:
+  allowed_paths:
+    - reports/
+    - scripts/
+    - tasks/active-task.md
+  forbidden_paths:
+  allow_new_files: true
+  allowed_new_files:
+    - reports/platform-required-checks-evidence.md
+    - reports/milestone-25-completion-review.md
+  forbidden_new_files:
+  allow_modify_existing: true
+  allow_deletes: false
+  allow_renames: false
+  sensitive_paths:
+    - scripts/audit-enforcement.py

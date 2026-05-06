@@ -76,6 +76,7 @@ def audit(repo_root):
     checks = []
     warnings = []
     failed_checks = []
+    py = sys.executable
 
     missing_artifacts = check_artifacts(repo_root)
 
@@ -83,32 +84,32 @@ def audit(repo_root):
     fixture_runner = repo_root / "scripts/test-scope-compliance-fixtures.py"
 
     if scope_validator.exists():
-        cmd = "python -m py_compile scripts/check-scope-compliance.py"
-        code, out = run_command(["python", "-m", "py_compile", "scripts/check-scope-compliance.py"], repo_root)
+        cmd = f"{py} -m py_compile scripts/check-scope-compliance.py"
+        code, out = run_command([py, "-m", "py_compile", "scripts/check-scope-compliance.py"], repo_root)
         result = "PASS" if code == 0 else "FAIL"
         append_check(checks, "scope-validator-syntax", cmd, code, out, result)
         if code != 0:
             failed_checks.append("scope-validator-syntax")
     else:
-        append_check(checks, "scope-validator-syntax", "python -m py_compile scripts/check-scope-compliance.py", -1, "missing file", "NOT_RUN")
+        append_check(checks, "scope-validator-syntax", f"{py} -m py_compile scripts/check-scope-compliance.py", -1, "missing file", "NOT_RUN")
 
     if fixture_runner.exists():
-        cmd = "python -m py_compile scripts/test-scope-compliance-fixtures.py"
-        code, out = run_command(["python", "-m", "py_compile", "scripts/test-scope-compliance-fixtures.py"], repo_root)
+        cmd = f"{py} -m py_compile scripts/test-scope-compliance-fixtures.py"
+        code, out = run_command([py, "-m", "py_compile", "scripts/test-scope-compliance-fixtures.py"], repo_root)
         result = "PASS" if code == 0 else "FAIL"
         append_check(checks, "scope-fixture-runner-syntax", cmd, code, out, result)
         if code != 0:
             failed_checks.append("scope-fixture-runner-syntax")
 
-        cmd = "python scripts/test-scope-compliance-fixtures.py"
-        code, out = run_command(["python", "scripts/test-scope-compliance-fixtures.py"], repo_root)
+        cmd = f"{py} scripts/test-scope-compliance-fixtures.py"
+        code, out = run_command([py, "scripts/test-scope-compliance-fixtures.py"], repo_root)
         result = "PASS" if code == 0 else "FAIL"
         append_check(checks, "scope-fixture-runner", cmd, code, out, result)
         if code != 0:
             failed_checks.append("scope-fixture-runner")
     else:
-        append_check(checks, "scope-fixture-runner-syntax", "python -m py_compile scripts/test-scope-compliance-fixtures.py", -1, "missing file", "NOT_RUN")
-        append_check(checks, "scope-fixture-runner", "python scripts/test-scope-compliance-fixtures.py", -1, "missing file", "NOT_RUN")
+        append_check(checks, "scope-fixture-runner-syntax", f"{py} -m py_compile scripts/test-scope-compliance-fixtures.py", -1, "missing file", "NOT_RUN")
+        append_check(checks, "scope-fixture-runner", f"{py} scripts/test-scope-compliance-fixtures.py", -1, "missing file", "NOT_RUN")
 
     checks_run = 0
     checks_passed = 0
