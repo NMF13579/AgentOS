@@ -137,6 +137,40 @@ recommended_next_task_reason: >
 
 ---
 
+### Entry: 26.1.2 — Pre-Merge Execution Corridor Index
+
+```yaml
+task_id: 26.1.2
+title: Pre-Merge Execution Corridor Index
+status: DONE
+artifact_created:
+  - docs/PRE-MERGE-EXECUTION-CORRIDOR.md
+artifact_modified:
+  - docs/COMMAND-ALLOWLIST-POLICY.md
+  - reports/milestone-26-evidence-report.md
+note: >
+  Ретроспективное исправление gap 26.1.1.
+  Index-документ corridor + enum в allowlist.
+```
+
+---
+
+### Entry: 26.1.3 — Corridor Gap Fix — template + M25 ref + audit self-exclusion
+
+```yaml
+task_id: 26.1.3
+title: Corridor Gap Fix — template + M25 ref + audit self-exclusion
+status: DONE
+artifact_created:
+  - templates/pre-merge-execution-review.md
+artifact_modified:
+  - docs/PRE-MERGE-EXECUTION-CORRIDOR.md
+  - scripts/audit-pre-merge-corridor.py
+  - reports/milestone-26-evidence-report.md
+```
+
+---
+
 ### Entry: 26.2.1 — Agent Permission Model
 
 ```yaml
@@ -1067,7 +1101,7 @@ M26 will be considered complete only when:
 - M26 completion review assigns final status
 - No corridor violations remain unresolved
 
-**Current M26 status: IN PROGRESS — 14 of 15 tasks complete.**
+**Current M26 status: IN PROGRESS — 16 of 17 tasks complete.**
 
 ---
 

@@ -48,3 +48,14 @@ Commands that require explicit human approval:
 
 If a command is unclear, treat it as `BLOCKED`.
 Do not guess.
+
+## Command Types
+
+- `SAFE_READ`
+- `SAFE_VALIDATE`
+- `SAFE_TEST`
+- `WRITE_LOCAL`
+- `GIT_LOCAL`
+- `GIT_REMOTE`
+- `DANGEROUS`
+- `FORBIDDEN`

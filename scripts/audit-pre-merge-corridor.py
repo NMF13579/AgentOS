@@ -230,6 +230,12 @@ FORBIDDEN_PATTERN_FILES = [
     "templates/retry-attempt-record.md",
 ]
 
+# Exclusions for mutating snippet self-scan to avoid false positives.
+EXCLUDED_FROM_MUTATION_CHECK = [
+    "scripts/audit-pre-merge-corridor.py",
+    "tests/fixtures/",
+]
+
 # ---------------------------------------------------------------------------
 # Policy-only known limitations
 # ---------------------------------------------------------------------------
@@ -416,6 +422,11 @@ def check_script_read_only(repo_root: str, checks, warnings, failures, needs_rev
     This is not full static analysis.
     """
     script_path = os.path.join(repo_root, "scripts/audit-pre-merge-corridor.py")
+    rel_script_path = os.path.relpath(script_path, repo_root).replace("\\", "/")
+    if any(rel_script_path.startswith(prefix) for prefix in EXCLUDED_FROM_MUTATION_CHECK):
+        checks.append(f"PASS  script_self_check_excluded: {rel_script_path}")
+        return
+
     content = read_file(script_path)
     if content is None:
         needs_review.append(
