@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "retry_id": "ret-011",
+  "task_id": "27.10.1",
+  "agent_id": "agent-test",
+  "retry_reason": "SAME_FAILURE",
+  "failure_type": "ASSERTION_ERROR",
+  "failure_signature": "sig-11",
+  "attempt_number": 3,
+  "retry_count": 2,
+  "same_failure_count": 2,
+  "prior_warning": false,
+  "prior_violation": false,
+  "prior_critical_violation": false,
+  "blocked_state": false,
+  "requested_permission": "LOCAL_EDIT",
+  "current_permission": "LOCAL_EDIT",
+  "previous_task_id": "27.10.1",
+  "created_at": "2026-05-07T10:00:00Z",
+  "last_attempt_at": "2026-05-07T10:20:00Z",
+  "non_authorization_warning": "retry is not approval"
+}
