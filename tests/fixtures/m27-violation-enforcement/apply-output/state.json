@@ -1,0 +1,15 @@
+{
+  "schema_version": "1.0",
+  "active_task_id": "27.2.1",
+  "agent_id": "agent-local-001",
+  "current_permission": "READ_ONLY",
+  "permission_record": "records/permission-local-edit.md",
+  "open_violations": [
+    "vio-002"
+  ],
+  "retry_count": 0,
+  "blocked_state": false,
+  "expiration": "never",
+  "last_decision": "PERMISSION_OK",
+  "updated_at": "2026-05-07T10:00:00Z"
+}
