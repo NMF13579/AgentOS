@@ -1,0 +1,36 @@
+name: Context Pipeline
+
+on:
+  pull_request:
+  push:
+    branches:
+      - dev
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  context-pipeline:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+      - name: Run strict context pipeline checker
+        shell: bash
+        run: |
+          set -euo pipefail
+          tmp="$(mktemp)"
+          python3 scripts/check-context-pipeline.py --json --strict > "$tmp"
+          python3 - "$tmp" <<'PY'
+          import json,sys
+          from pathlib import Path
+          data=json.loads(Path(sys.argv[1]).read_text())
+          result=data.get("result")
+          if result != "CONTEXT_PIPELINE_READY":
+              raise SystemExit(f"context pipeline is not ready: {result}")
+          print("CONTEXT_PIPELINE_READY")
+          PY
