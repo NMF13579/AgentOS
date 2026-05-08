@@ -206,3 +206,11 @@ Release readiness checklist:
 - `reports/release-checklist.md`
 
 Release approval is manual. AgentOS does not approve release automatically.
+
+## Setup
+
+After cloning, run:
+
+```bash
+bash scripts/install-hooks.sh
+```

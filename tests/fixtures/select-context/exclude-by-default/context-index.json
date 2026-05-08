@@ -1,0 +1,46 @@
+{
+  "entries": [
+    {
+      "applies_to": [
+        "scripts/runtime/**"
+      ],
+      "authority": "canonical",
+      "context_role": "exclude_by_default",
+      "created": "2026-05-08",
+      "indexed_at": "2026-05-08T13:49:49Z",
+      "last_validated": "2026-05-08",
+      "module": "runtime-boundary",
+      "path": "tests/fixtures/select-context/exclude-by-default/context/ex_default.md",
+      "source_hash": "sha256:1561b1adae3b4c4abe99d7c808d72712463e15b1ce7a9bb6bbf35e4b060610de",
+      "status": "active",
+      "summary": "Exclude by default candidate",
+      "tags": [
+        "runtime"
+      ],
+      "type": "policy"
+    },
+    {
+      "authority": "supporting",
+      "context_role": "supporting",
+      "created": "2026-05-08",
+      "indexed_at": "2026-05-08T13:49:49Z",
+      "last_validated": "2026-05-08",
+      "module": "runtime-boundary",
+      "path": "tests/fixtures/select-context/exclude-by-default/context/normal.md",
+      "source_hash": "sha256:3a572be1767bb01d372c6b593e0d79cf8e5cf7c4734500710c98b6d95ce1f777",
+      "status": "active",
+      "summary": "Normal candidate",
+      "tags": [
+        "runtime"
+      ],
+      "type": "policy"
+    }
+  ],
+  "generated_at": "2026-05-08T13:49:49Z",
+  "generator": "fixture-generator",
+  "generator_version": "0.1.0",
+  "repo_commit_hash": "40f70c83a4fad1f2b24e4ec32b98b7dd787860ae",
+  "schema_version": "1.0.0",
+  "source_index_hash": null,
+  "source_index_path": null
+}

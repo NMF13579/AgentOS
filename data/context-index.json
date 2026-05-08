@@ -1,0 +1,37 @@
+{
+  "entries": [
+    {
+      "applies_to": [
+        "scripts/runtime/**",
+        "docs/M27-*"
+      ],
+      "authority": "canonical",
+      "context_role": "required_when_relevant",
+      "created": "2026-05-07",
+      "excludes": [
+        ".github/workflows/**"
+      ],
+      "indexed_at": "2026-05-08T16:52:19Z",
+      "last_validated": "2026-05-07",
+      "module": "runtime-boundary",
+      "path": "templates/context-frontmatter-example.md",
+      "source_hash": "sha256:7e8b57a1367aa918ef168c6877efaa94abbf213c2879367f410e9274002a1988",
+      "status": "canonical",
+      "summary": "Defines no-direct-execution runtime boundary.",
+      "tags": [
+        "m27",
+        "runtime",
+        "guard",
+        "no-direct-execution"
+      ],
+      "type": "policy"
+    }
+  ],
+  "generated_at": "2026-05-08T16:52:19Z",
+  "generator": "scripts/build-context-index.py",
+  "generator_version": "0.1.0",
+  "repo_commit_hash": "cb176ae1b346999d28fad36ae61c9aa85d6375dc",
+  "schema_version": "1.0.0",
+  "source_index_hash": "sha256:9524f2badcedfc6fd186d1fd09242af7634c894bbbaef71221d39e9dd0c98916",
+  "source_index_path": "data/index.json"
+}

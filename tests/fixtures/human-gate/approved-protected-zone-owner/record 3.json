@@ -1,0 +1,18 @@
+{
+  "schema_version": "1.0",
+  "gate_id": "gate-000002",
+  "task_id": "27.8.1",
+  "agent_id": "agent-test",
+  "required_for": "PROTECTED_ZONE_WRITE",
+  "requested_action": "PROTECTED_ZONE_WRITE",
+  "reason": "protected write",
+  "decision": "APPROVED",
+  "requested_at": "2026-05-05T05:00:00Z",
+  "decided_at": "2026-05-05T05:30:00Z",
+  "expires_at": "never",
+  "human_decider_id": "owner-admin-001",
+  "human_decider_type": "OWNER_ADMIN_IDENTITY",
+  "decision_source": "human_manual",
+  "scope": "PROTECTED_ZONE_WRITE",
+  "non_authorization_warning": "approval is not execution authorization"
+}

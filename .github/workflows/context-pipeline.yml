@@ -1,0 +1,34 @@
+name: Context Pipeline
+
+on:
+  pull_request:
+  push:
+    branches:
+      - dev
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  context-pipeline:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Run blocking context checks
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 scripts/check-context-pipeline.py --strict --json > /tmp/pipeline-result.json
+          cat /tmp/pipeline-result.json
+
+      - name: Run advisory context checks
+        shell: bash
+        run: |
+          python3 scripts/check-context-pipeline.py --advisory --json
+        continue-on-error: true

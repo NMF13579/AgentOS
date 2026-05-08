@@ -1,0 +1,7 @@
+{
+  "fixture_only": true,
+  "context_index_hash": "sha256:fake-stale-index",
+  "source_hash": "sha256:fake-stale-source",
+  "commit_ref": "fake-commit-stale",
+  "note": "fixture-only synthetic metadata"
+}

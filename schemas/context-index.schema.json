@@ -1,0 +1,180 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "schemas/context-index.schema.json",
+  "title": "M28 Context Index Schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "generated_at",
+    "generator",
+    "generator_version",
+    "repo_commit_hash",
+    "source_index_path",
+    "source_index_hash",
+    "entries"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "generator": {
+      "type": "string",
+      "minLength": 1
+    },
+    "generator_version": {
+      "type": ["string", "null"]
+    },
+    "repo_commit_hash": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_index_path": {
+      "type": ["string", "null"]
+    },
+    "source_index_hash": {
+      "type": ["string", "null"],
+      "pattern": "^sha256:[A-Za-z0-9]+$"
+    },
+    "entries": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "path",
+          "type",
+          "module",
+          "status",
+          "authority",
+          "created",
+          "last_validated",
+          "tags",
+          "context_role",
+          "summary",
+          "source_hash",
+          "indexed_at"
+        ],
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "policy",
+              "spec",
+              "lesson",
+              "decision",
+              "task",
+              "report",
+              "template",
+              "doc",
+              "guide",
+              "architecture"
+            ]
+          },
+          "module": {
+            "type": "string",
+            "minLength": 1
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "draft",
+              "active",
+              "canonical",
+              "archived",
+              "deprecated"
+            ]
+          },
+          "authority": {
+            "type": "string",
+            "enum": [
+              "canonical",
+              "supporting",
+              "context"
+            ]
+          },
+          "created": {
+            "type": "string",
+            "format": "date"
+          },
+          "last_validated": {
+            "type": "string",
+            "format": "date"
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "context_role": {
+            "type": "string",
+            "enum": [
+              "required_when_relevant",
+              "supporting",
+              "optional",
+              "exclude_by_default"
+            ]
+          },
+          "summary": {
+            "type": "string",
+            "minLength": 1
+          },
+          "source_hash": {
+            "type": "string",
+            "pattern": "^sha256:[A-Za-z0-9]+$"
+          },
+          "indexed_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "applies_to": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "excludes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "owner": {
+            "type": "string"
+          },
+          "version": {
+            "type": "string"
+          },
+          "related_tasks": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "related_lessons": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "warnings": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  }
+}

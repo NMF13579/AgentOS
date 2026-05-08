@@ -2,32 +2,38 @@
 verification:
   task_id: task-m22-gate-contract-artifacts
   gate_1:
-    name: gate_1
-    status: PASS
-    proof: "python3 scripts/validate-gate-contract.py -> GATE_CONTRACT_VALIDATE_RESULT: PASS"
-    skipped_reason: ""
+    name: structure
+    status: TODO
+    proof: TODO
+    skipped_reason: TODO
   gate_2:
-    name: gate_2
-    status: PASS
-    proof: "python3 scripts/audit-gate-contract.py -> GATE_CONTRACT_AUDIT_RESULT: PASS"
-    skipped_reason: ""
+    name: scope
+    status: TODO
+    proof: TODO
+    skipped_reason: TODO
   gate_3:
-    name: gate_3
-    status: PASS
-    proof: "python3 scripts/test-gate-regression-fixtures.py -> GATE_REGRESSION_FIXTURES_RESULT: PASS"
-    skipped_reason: ""
+    name: acceptance_criteria
+    status: TODO
+    proof: TODO
+    skipped_reason: TODO
   gate_4:
-    name: gate_4
-    status: PASS
-    proof: "python3 scripts/test-unified-gate-smoke.py -> UNIFIED_GATE_SMOKE_RESULT: PASS"
-    skipped_reason: ""
+    name: regression_smoke
+    status: TODO
+    proof: TODO
+    skipped_reason: TODO
   gate_5:
-    name: gate_5
-    status: PASS
-    proof: "python3 scripts/audit-release-readiness.py -> RELEASE_READINESS_AUDIT_RESULT: PASS"
-    skipped_reason: ""
+    name: security_release_blockers
+    status: TODO
+    proof: TODO
+    skipped_reason: TODO
 ---
 
-# Verification Report: task-m22-gate-contract-artifacts
+# VALIDATION/DEMO ARTIFACT — NOT A REAL TASK ARTIFACT
 
-All 5 gates passed. Gate contract artifacts created and validated.
+Verification confirms selected rules were followed.
+Verification confirms selected policies were not contradicted.
+Verification confirms selected lessons were not repeated.
+Verification confirms out-of-scope context was not touched.
+Verification confirms Context Pack did not grant approval.
+Verification confirms runtime enforcement remained under M27.
+Verification marks stale or missing context as NEEDS_REVIEW when applicable.

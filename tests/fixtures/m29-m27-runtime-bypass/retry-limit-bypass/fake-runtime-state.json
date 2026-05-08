@@ -1,0 +1,8 @@
+{
+  "fixture_only": true,
+  "retry_count": 99,
+  "retry_limit": 3,
+  "task_ref": "fixture-task-example",
+  "token_ref": "fake-token-reference",
+  "note": "fixture-only synthetic state"
+}
