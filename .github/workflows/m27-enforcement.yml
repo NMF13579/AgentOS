@@ -1,0 +1,53 @@
+name: M27 Enforcement
+
+# Repo-side CI artifact only.
+# Not a required check unless owner/admin enables it in GitHub settings.
+# Does not approve merge, does not bypass M25, does not enable Level 2 by itself.
+
+on:
+  pull_request:
+    branches:
+      - dev
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pull-requests: read
+  checks: read
+
+jobs:
+  m27-enforcement:
+    name: m27-enforcement
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Verify required M27 scripts exist
+        run: |
+          test -f scripts/agentos-enforce.py
+          test -f scripts/agentos-permission-state.py
+          test -f scripts/agentos-command-guard.py
+          test -f scripts/agentos-write-guard.py
+          test -f scripts/agentos-git-guard.py
+          test -f scripts/agentos-human-gate.py
+          test -f scripts/agentos-audit-log.py
+          test -f scripts/agentos-violation-enforce.py
+          test -f scripts/agentos-retry-enforce.py
+
+      - name: Run safe M27 smoke checks (read-only/check mode)
+        run: |
+          python3 scripts/agentos-enforce.py check-command --category SAFE_READ --command "git status"
+          python3 scripts/agentos-enforce.py permission validate tests/fixtures/permission-state/valid-read-only/state.json
+          python3 scripts/agentos-enforce.py audit validate tests/fixtures/immutable-audit-log/valid-genesis-log/audit.jsonl
+
+      - name: Summary
+        run: |
+          echo "M27 repo-side CI checks completed."
+          echo "This workflow is not platform enforcement until owner/admin marks it required in GitHub settings."
