@@ -52,7 +52,7 @@ def parse_cli(argv):
     args = parser.parse_args(argv)
 
     if args.command is None:
-        raise ValueError("missing command")
+        args.command = "all"
     if args.command == "scope" and not args.task:
         raise ValueError("scope requires --task")
     if args.command in ["scope-fixtures", "execution-audit"] and args.task:
@@ -249,6 +249,11 @@ def print_human(summary):
         print("Next step: investigate execution errors")
 
 
+def emit_json(payload):
+    text = json.dumps(payload, indent=2)
+    print(text)
+
+
 def main(argv):
     try:
         args = parse_cli(argv)
@@ -273,7 +278,7 @@ def main(argv):
             ],
         }
         if "--json" in argv:
-            print(json.dumps(payload, indent=2))
+            emit_json(payload)
         else:
             print_human(payload)
         return 3
@@ -292,7 +297,7 @@ def main(argv):
     summary = aggregate(checks)
 
     if args.json:
-        print(json.dumps(summary, indent=2))
+        emit_json(summary)
     else:
         print_human(summary)
 
