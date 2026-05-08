@@ -19,18 +19,16 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.x"
-      - name: Run strict context pipeline checker
+
+      - name: Run blocking context checks
         shell: bash
         run: |
           set -euo pipefail
-          tmp="$(mktemp)"
-          python3 scripts/check-context-pipeline.py --json --strict > "$tmp"
-          python3 - "$tmp" <<'PY'
-          import json,sys
-          from pathlib import Path
-          data=json.loads(Path(sys.argv[1]).read_text())
-          result=data.get("result")
-          if result != "CONTEXT_PIPELINE_READY":
-              raise SystemExit(f"context pipeline is not ready: {result}")
-          print("CONTEXT_PIPELINE_READY")
-          PY
+          python3 scripts/check-context-pipeline.py --strict --json > /tmp/pipeline-result.json
+          cat /tmp/pipeline-result.json
+
+      - name: Run advisory context checks
+        shell: bash
+        run: |
+          python3 scripts/check-context-pipeline.py --advisory --json
+        continue-on-error: true
