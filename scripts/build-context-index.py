@@ -78,6 +78,13 @@ GENERATED_METADATA_KEYS = {
     "source_index_hash",
 }
 
+NONCRITICAL_PREFIXES = (
+    "missing_frontmatter:",
+    "missing_or_invalid_field:",
+    "invalid_frontmatter_yaml:",
+    "proof:",
+)
+
 ALLOWED_TYPES = {
     "policy",
     "spec",
@@ -604,6 +611,19 @@ def print_report(report: BuildReport, as_json: bool) -> None:
             print(f"- {item}")
 
 
+def is_missing_frontmatter_only(report: BuildReport) -> bool:
+    if report.result != RESULT_NEEDS_REVIEW:
+        return False
+    if report.errors:
+        return False
+    if not report.skipped_files:
+        return False
+    for item in report.skipped_files:
+        if not any(item.startswith(p) for p in NONCRITICAL_PREFIXES):
+            return False
+    return True
+
+
 def main(argv: list[str]) -> int:
     args = parse_args(argv)
     root = Path(args.root).resolve()
@@ -620,6 +640,12 @@ def main(argv: list[str]) -> int:
         return EXIT_BY_RESULT[report.result]
 
     report = check_mode(root) if args.check else build_mode(root)
+
+    if is_missing_frontmatter_only(report):
+        report.warnings.append("missing_frontmatter_only_non_critical")
+        print_report(report, as_json=args.json)
+        return 0
+
     print_report(report, as_json=args.json)
     return EXIT_BY_RESULT[report.result]
 

@@ -3,30 +3,35 @@
 - task_id: task-m22-gate-contract-artifacts
 - task_path: tasks/active-task.md
 - context_index_path: data/context-index.json
-- context_index_hash: sha256:0a636b4ee50b64fbc41cc41427300ba54795928384491d129bcfba312169a288
-- repo_commit_hash: 40f70c83a4fad1f2b24e4ec32b98b7dd787860ae
+- context_index_hash: sha256:1544a23c63d62b91665f24e5a68b0360a64d446489260ab1bf03c2156e16c716
+- repo_commit_hash: cb176ae1b346999d28fad36ae61c9aa85d6375dc
 - candidate_count: 1
-- selected_count: 1
-- excluded_count: 0
-- result: CONTEXT_SELECTED
+- selected_count: 0
+- excluded_count: 1
+- result: CONTEXT_NEEDS_REVIEW
+
+Allowed result values:
+- CONTEXT_SELECTED
+- CONTEXT_SELECTED_WITH_WARNINGS
+- CONTEXT_NEEDS_REVIEW
+- CONTEXT_INVALID
 
 ## selected_items
 
-- path: templates/context-frontmatter-example.md
-  score: 10
-  matched_signals:
-    - tags
-    - authority
-  reason: Matched required runtime/context signals.
-  authority: canonical
-  context_role: required_when_relevant
-  source_hash: sha256:7e8b57a1367aa918ef168c6877efaa94abbf213c2879367f410e9274002a1988
+- none
 
 ## excluded_items
 
-- none
+- path: templates/context-frontmatter-example.md
+  reason: canonical authority; required_when_relevant context role; no direct task relevance signal. Final score=6.
+  status: canonical
+  authority: canonical
+  context_role: required_when_relevant
 
 ## warnings
+
+- matched_signals are explainability metadata, not authority
+- score is optional and score is not authority
 
 - matched_signals are explainability metadata, not authority.
 - score is optional and score is not authority.

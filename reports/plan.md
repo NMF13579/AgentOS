@@ -1,9 +1,7 @@
-# VALIDATION/DEMO ARTIFACT — NOT A REAL TASK ARTIFACT
+# M30 Plan
 
-Plan acknowledges selected rules from docs/policy.md.
-Plan acknowledges selected policies.
-Plan acknowledges selected lessons.
-Plan keeps out-of-scope boundaries untouched.
+This plan acknowledges required context: templates/context-frontmatter-example.md.
+
 Context Pack is not approval.
-M27 remains runtime enforcement authority.
-Any stale context is handled as NEEDS_REVIEW.
+Silence is not compliance.
+Commands are not used as context compliance evidence.

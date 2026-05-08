@@ -1,2 +1,6 @@
-# VALIDATION/DEMO ARTIFACT — NOT A REAL TASK ARTIFACT
 reports/context-pack.md
+reports/plan.md
+reports/context-verification.md
+reports/changed-files.txt
+data/context-index.json
+templates/context-frontmatter-example.md

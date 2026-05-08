@@ -3,10 +3,10 @@ type: context-pack
 task_id: task-m22-gate-contract-artifacts
 status: generated
 generated_by: select-context.py
-generated_at: 2026-05-08T13:55:53Z
+generated_at: 2026-05-08T16:47:52Z
 context_index_path: data/context-index.json
-context_index_hash: sha256:0a636b4ee50b64fbc41cc41427300ba54795928384491d129bcfba312169a288
-repo_commit_hash: 40f70c83a4fad1f2b24e4ec32b98b7dd787860ae
+context_index_hash: sha256:4866484bcb91be64bb492d57d87d6f50d170d67534b3709b34d759149a035ae3
+repo_commit_hash: cb176ae1b346999d28fad36ae61c9aa85d6375dc
 ---
 
 # Context Pack
@@ -18,14 +18,15 @@ repo_commit_hash: 40f70c83a4fad1f2b24e4ec32b98b7dd787860ae
 - risk_level: LOW
 - affected_paths:
   - reports/platform-required-checks-evidence.md
+  - reports/milestone-25-completion-review.md
+  - reports/ci/agentos-validate.json
 - source_task_path: tasks/active-task.md
-- task_lint_status: PASS
+- task_lint_status: UNKNOWN
 
 ## Selected Context
 
 | Path | Type | Authority | Context Role | Reason | Must Follow |
 |---|---|---|---|---|---|
-| templates/context-frontmatter-example.md | policy | canonical | required_when_relevant | Matches runtime boundary metadata used by context pipeline. | Follow selected source as context input only. |
 
 ## Required Context
 
@@ -37,9 +38,6 @@ repo_commit_hash: 40f70c83a4fad1f2b24e4ec32b98b7dd787860ae
 
 ## Relevant Rules
 
-- rule: Keep generated context subordinate to source files.
-  source: templates/context-frontmatter-example.md
-  why: Prevents authority drift.
 
 ## Relevant Lessons
 
@@ -51,21 +49,20 @@ repo_commit_hash: 40f70c83a4fad1f2b24e4ec32b98b7dd787860ae
 
 ## Out-of-Scope Context
 
-- path_or_category: unrelated modules
-  reason_excluded: not needed for this task
+- path_or_category: templates/context-frontmatter-example.md
+  reason_excluded: canonical authority; required_when_relevant context role; no direct task relevance signal. Final score=6.
   manual_review_needed: false
 
 ## Context Risks
 
-- none
+- no positive-scoring relevant context found
 
 ## Source Integrity
 
 - context_index_path: data/context-index.json
-- context_index_hash: sha256:0a636b4ee50b64fbc41cc41427300ba54795928384491d129bcfba312169a288
-- repo_commit_hash: 40f70c83a4fad1f2b24e4ec32b98b7dd787860ae
+- context_index_hash: sha256:4866484bcb91be64bb492d57d87d6f50d170d67534b3709b34d759149a035ae3
+- repo_commit_hash: cb176ae1b346999d28fad36ae61c9aa85d6375dc
 - selected_source_hashes:
-  - templates/context-frontmatter-example.md: sha256:7e8b57a1367aa918ef168c6877efaa94abbf213c2879367f410e9274002a1988
 - integrity_warnings: []
 
 Freshness proves alignment with source.
@@ -90,3 +87,13 @@ Integrity check is not approval.
 - [ ] Context Pack did not grant approval.
 - [ ] Runtime enforcement remained under M27.
 - [ ] Any stale or missing context was handled as NEEDS_REVIEW.
+
+
+## Declared Scope Files
+
+- reports/context-pack.md
+- reports/plan.md
+- reports/context-verification.md
+- reports/changed-files.txt
+- data/context-index.json
+- templates/context-frontmatter-example.md
