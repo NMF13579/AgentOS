@@ -11,7 +11,7 @@
       "excludes": [
         ".github/workflows/**"
       ],
-      "indexed_at": "2026-05-08T16:17:50Z",
+      "indexed_at": "2026-05-08T16:52:19Z",
       "last_validated": "2026-05-07",
       "module": "runtime-boundary",
       "path": "templates/context-frontmatter-example.md",
@@ -27,10 +27,10 @@
       "type": "policy"
     }
   ],
-  "generated_at": "2026-05-08T16:17:50Z",
+  "generated_at": "2026-05-08T16:52:19Z",
   "generator": "scripts/build-context-index.py",
   "generator_version": "0.1.0",
-  "repo_commit_hash": "cf291fdd4e830a9efeda9ee9218e197d1cde2018",
+  "repo_commit_hash": "cb176ae1b346999d28fad36ae61c9aa85d6375dc",
   "schema_version": "1.0.0",
   "source_index_hash": "sha256:9524f2badcedfc6fd186d1fd09242af7634c894bbbaef71221d39e9dd0c98916",
   "source_index_path": "data/index.json"
