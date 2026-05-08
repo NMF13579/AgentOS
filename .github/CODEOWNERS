@@ -1,0 +1,19 @@
+# M27 Level 2 repo-side artifact only.
+# Not enforced unless owner/admin enables required CODEOWNERS review in GitHub settings.
+# Placeholder owners below must be replaced by repository owner/admin during guided setup.
+# CODEOWNERS presence does not authorize merge and does not bypass M25.
+
+# Placeholder owner for guided setup replacement
+# REPLACE_WITH_REAL_OWNER_OR_TEAM: @OWNER_OR_ADMIN_REPLACE_ME
+
+.github/workflows/ @OWNER_OR_ADMIN_REPLACE_ME
+.github/CODEOWNERS @OWNER_OR_ADMIN_REPLACE_ME
+scripts/agentos-*.py @OWNER_OR_ADMIN_REPLACE_ME
+scripts/*enforce*.py @OWNER_OR_ADMIN_REPLACE_ME
+scripts/*guard*.py @OWNER_OR_ADMIN_REPLACE_ME
+docs/*POLICY*.md @OWNER_OR_ADMIN_REPLACE_ME
+docs/M27-*.md @OWNER_OR_ADMIN_REPLACE_ME
+templates/*record*.md @OWNER_OR_ADMIN_REPLACE_ME
+templates/*review*.md @OWNER_OR_ADMIN_REPLACE_ME
+reports/milestone-* @OWNER_OR_ADMIN_REPLACE_ME
+tests/fixtures/m27-*/ @OWNER_OR_ADMIN_REPLACE_ME
