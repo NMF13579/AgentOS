@@ -18,11 +18,16 @@ scope_control:
     - reports/
     - scripts/
     - tasks/active-task.md
+  forbidden_paths:
+    - .github/
+    - schemas/
   allow_new_files: true
   allowed_new_files:
     - reports/platform-required-checks-evidence.md
     - reports/milestone-25-completion-review.md
     - reports/ci/agentos-validate.json
+  forbidden_new_files:
+    - tasks/active-task.md
   allow_modify_existing: true
   allow_deletes: false
   allow_renames: false
