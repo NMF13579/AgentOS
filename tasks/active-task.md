@@ -1,6 +1,6 @@
 ---
 task_id: task-m22-gate-contract-artifacts
-state: active
+state: completed
 activated_at: 2026-05-02T02:00:00Z
 activated_by: human-approved-command
 approval_id: human-approved-command
