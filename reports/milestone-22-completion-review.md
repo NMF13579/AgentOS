@@ -13,7 +13,7 @@ last_validated: 2026-05-04
 Milestone 22 covered documentation standards, read-only validators, the index schema, the index builder, the index validator, the metadata audit, the negative fixture runner, and the evidence reports that tie those pieces together. The scope here is to review what exists and what still needs human judgment, not to rewrite any of that material.
 
 ## Evidence
-The main evidence sources are [reports/milestone-22-markdown-to-script-inventory.md](/Users/muhammednazyrov/Documents/GitHub/Hospify-AgentOS/reports/milestone-22-markdown-to-script-inventory.md) and [reports/milestone-22-evidence-report.md](/Users/muhammednazyrov/Documents/GitHub/Hospify-AgentOS/reports/milestone-22-evidence-report.md). The main commits to inspect are `6f6f7f5`, `2616465`, and `f6f2f97`, because they show the M22 artifacts, the evidence report, and the inventory report in the repository history.
+The main evidence sources are [reports/milestone-22-markdown-to-script-inventory.md](../reports/milestone-22-markdown-to-script-inventory.md) and [reports/milestone-22-evidence-report.md](../reports/milestone-22-evidence-report.md). The main commits to inspect are `6f6f7f5`, `2616465`, and `f6f2f97`, because they show the M22 artifacts, the evidence report, and the inventory report in the repository history.
 
 ## Validator Results
 | Validator | Result |

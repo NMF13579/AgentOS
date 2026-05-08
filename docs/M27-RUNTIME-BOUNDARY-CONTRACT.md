@@ -34,10 +34,10 @@ The M27 runtime boundary is enforced by these scripts:
 This state is optional-level behavior and must not fail Level 1 completion.
 
 ## Related Policies
-- [AGENT-IDENTITY-BOUNDARY-POLICY.md](/Users/muhammednazyrov/Documents/GitHub/AgentOS/docs/AGENT-IDENTITY-BOUNDARY-POLICY.md)
-- [AGENT-TOKEN-SCOPE-POLICY.md](/Users/muhammednazyrov/Documents/GitHub/AgentOS/docs/AGENT-TOKEN-SCOPE-POLICY.md)
-- [IMMUTABLE-AUDIT-LOG-POLICY.md](/Users/muhammednazyrov/Documents/GitHub/AgentOS/docs/IMMUTABLE-AUDIT-LOG-POLICY.md)
-- [HUMAN-GATE-CHECKPOINT-POLICY.md](/Users/muhammednazyrov/Documents/GitHub/AgentOS/docs/HUMAN-GATE-CHECKPOINT-POLICY.md)
+- [AGENT-IDENTITY-BOUNDARY-POLICY.md](./AGENT-IDENTITY-BOUNDARY-POLICY.md)
+- [AGENT-TOKEN-SCOPE-POLICY.md](./AGENT-TOKEN-SCOPE-POLICY.md)
+- [IMMUTABLE-AUDIT-LOG-POLICY.md](./IMMUTABLE-AUDIT-LOG-POLICY.md)
+- [HUMAN-GATE-CHECKPOINT-POLICY.md](./HUMAN-GATE-CHECKPOINT-POLICY.md)
 
 ## Non-Authorization
 This document is not approval.
