@@ -1,6 +1,6 @@
 ---
 verification:
-  task_id: task-m28-context-compliance-validation
+  task_id: task-m22-gate-contract-artifacts
   gate_1:
     name: structure
     status: TODO
