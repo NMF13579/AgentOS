@@ -24,6 +24,7 @@ scope_control:
   allowed_new_files:
     - reports/platform-required-checks-evidence.md
     - reports/milestone-25-completion-review.md
+    - reports/ci/agentos-validate.json
   forbidden_new_files:
   allow_modify_existing: true
   allow_deletes: false

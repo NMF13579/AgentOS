@@ -1,0 +1,35 @@
+{
+  "result": "PASS",
+  "commands_run": 3,
+  "commands_passed": 3,
+  "commands_failed": 0,
+  "commands_warned": 0,
+  "commands_not_run": 0,
+  "human_action_required": false,
+  "checks": [
+    {
+      "name": "scope",
+      "command": "/usr/local/opt/python@3.14/bin/python3.14 scripts/check-scope-compliance.py --task tasks/active-task.md",
+      "exit_code": 0,
+      "result": "PASS",
+      "output_summary": "Scope Compliance: PASS\nChanged files: 1\nViolations: 0\nWarnings: 0\nHuman action required: NO\nReason: no scope issues detected\n",
+      "human_action_required": false
+    },
+    {
+      "name": "scope-fixtures",
+      "command": "/usr/local/opt/python@3.14/bin/python3.14 scripts/test-scope-compliance-fixtures.py",
+      "exit_code": 0,
+      "result": "PASS",
+      "output_summary": "_result: PASS\njson_exit_code: 0\n[PASS] /Users/muhammednazyrov/Documents/GitHub/AgentOS/tests/fixtures/scope-compliance/valid/single-allowed-file\nexpected_result: PASS\nactual_result: PASS\nexpected_exit_code: 0\nactual_exit_code: 0\njson_result: PASS\njson_exit_code: 0\n[PASS] /Users/muhammednazyrov/Documents/GitHub/AgentOS/tests/fixtures/scope-compliance/warn/sensitive-path-changed\nexpected_result: WARN\nactual_result: WARN\nexpected_exit_code: 2\nactual_exit_code: 2\njson_result: WARN\njson_exit_code: 2\n",
+      "human_action_required": false
+    },
+    {
+      "name": "execution-audit",
+      "command": "/usr/local/opt/python@3.14/bin/python3.14 scripts/audit-execution-control.py",
+      "exit_code": 0,
+      "result": "PASS",
+      "output_summary": "M23 Execution Control Audit: CONTROL_READY\nArtifacts checked: 9\nArtifacts missing: 0\nChecks run: 3\nChecks passed: 3\nChecks failed: 0\nWarnings: 0\nHuman action required: NO\nMissing artifacts:\nNONE\nFailed checks:\nNONE\nWarnings list:\nNONE\n",
+      "human_action_required": false
+    }
+  ]
+}
