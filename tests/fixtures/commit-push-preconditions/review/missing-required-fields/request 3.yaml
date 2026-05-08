@@ -1,0 +1,11 @@
+task_id: "26.7.1"
+operation: COMMIT
+active_task: yes
+permission:
+  current: COMMIT_REQUEST
+scope_check:
+  result: SCOPE_OK
+m25_validation:
+  result: PASS
+commit:
+  forbidden_files_changed: no
