@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0",
+  "retry_id": "retry-within-window-001",
+  "task_id": "27.10.1",
+  "agent_id": "agent-test",
+  "retry_reason": "TASK_FAILURE",
+  "failure_type": "TASK_FAILURE",
+  "failure_signature": "sig-window-1",
+  "attempt_number": 1,
+  "retry_count": 0,
+  "same_failure_count": 0,
+  "prior_warning": false,
+  "prior_violation": false,
+  "prior_critical_violation": false,
+  "blocked_state": false,
+  "requested_permission": "LOCAL_EDIT",
+  "current_permission": "LOCAL_EDIT",
+  "previous_task_id": "27.10.1",
+  "created_at": "2026-05-08T06:00:00Z",
+  "last_attempt_at": "2026-05-08T05:59:30Z",
+  "retry_window_seconds": 120,
+  "non_authorization_warning": "not approval"
+}

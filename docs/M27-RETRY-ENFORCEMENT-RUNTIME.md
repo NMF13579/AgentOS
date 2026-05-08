@@ -59,6 +59,7 @@ Retry decisions depend on prior violation flags and blocked states produced by v
 - `RETRY_NEEDS_OWNER_REVIEW` => exit 1
 - `RETRY_POLICY_VIOLATION` => exit 1
 - `RETRY_INVALID` => exit 1
+- `RETRY_WINDOW_EXPIRED` => exit 1
 - `PERMISSION_BLOCKED` => exit 1
 - `PERMISSION_INVALID` => exit 1
 - `PERMISSION_DENIED` => exit 1
@@ -165,9 +166,20 @@ Fail closed for missing/invalid retry records, unknown reason, invalid counters,
 - invalid `--now` => `RETRY_INVALID`.
 - `--now` does not modify records.
 
+## Time-based Retry Windows
+
+- Optional field: `retry_window_seconds`
+- If field is not set, behavior is unchanged (backward compatible).
+- If field is set:
+  - runtime validates `last_attempt_at`
+  - computes `last_attempt_at + retry_window_seconds`
+  - compares with current time (or `--now`)
+  - if expired => `RETRY_WINDOW_EXPIRED`
+  - if within window => normal retry evaluation continues
+
 ## Known Gap
 
-Known gap: time-based retry window validation is not implemented; `--now` is reserved for future time-based checks.
+No additional time-window gap for the optional `retry_window_seconds` path.
 
 ## Non-Authorization Clauses
 

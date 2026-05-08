@@ -169,7 +169,7 @@ def append_audit(audit_log: str, rec: dict, result: str):
     return res == "AUDIT_APPENDED", (run.stdout.strip() or run.stderr.strip() or "audit append failed")
 
 
-def evaluate_retry(rec: dict, human_gate_ok: bool):
+def evaluate_retry(rec: dict, human_gate_ok: bool, now_dt: datetime):
     for f in REQUIRED_FIELDS:
         if f not in rec:
             return "RETRY_INVALID", f"missing required field: {f}"
@@ -192,6 +192,18 @@ def evaluate_retry(rec: dict, human_gate_ok: bool):
 
     if rec["attempt_number"] != rec["retry_count"] + 1:
         return "RETRY_INVALID", "attempt_number inconsistent with retry_count"
+
+    # Optional time-based retry window.
+    retry_window_seconds = rec.get("retry_window_seconds")
+    if retry_window_seconds is not None:
+        if not isinstance(retry_window_seconds, int) or retry_window_seconds <= 0:
+            return "RETRY_INVALID", "retry_window_seconds must be integer > 0"
+        last_attempt = parse_iso(rec.get("last_attempt_at"))
+        if last_attempt is None:
+            return "RETRY_INVALID", "invalid last_attempt_at"
+        window_end = last_attempt.timestamp() + retry_window_seconds
+        if now_dt.timestamp() >= window_end:
+            return "RETRY_WINDOW_EXPIRED", "retry window expired"
 
     # reset detection using previous_task_id convention in fixtures
     if rec["retry_count"] < int(rec.get("prior_retry_count", rec["retry_count"])):
@@ -306,7 +318,7 @@ def main():
             emit("PERMISSION_INVALID", preason, args.json)
             return 1
 
-    result, reason = evaluate_retry(rec, human_gate_ok)
+    result, reason = evaluate_retry(rec, human_gate_ok, now_dt)
 
     if args.cmd == "check":
         if args.audit_log:

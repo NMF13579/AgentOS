@@ -75,6 +75,22 @@ INVALID_RESULTS = {
 }
 
 
+def usage_text():
+    return """Usage: python3 scripts/agentos-enforce.py <subcommand> [args] [--json] [--explain]
+
+Subcommands:
+  audit
+  check-command
+  check-write
+  check-commit
+  check-push
+  human-gate
+  violation
+  retry
+  permission
+"""
+
+
 def emit(result: str, reason: str, as_json: bool):
     if as_json:
         print(json.dumps({"result": result, "reason": reason}, ensure_ascii=True))
@@ -123,18 +139,26 @@ def main():
 
     as_json = False
     explain = False
+    want_help = False
     filtered = []
     for a in argv:
         if a == "--json":
             as_json = True
         elif a == "--explain":
             explain = True
+        elif a in {"--help", "-h"}:
+            want_help = True
         else:
             filtered.append(a)
 
+    # Graceful help behavior for audit script surface checks.
+    if want_help and (not filtered or filtered[0] not in SUBSYSTEMS):
+        print(usage_text(), end="")
+        return 0
+
     if not filtered:
-        emit("ENFORCE_INVALID", "missing subcommand", as_json)
-        return 1
+        print(usage_text(), end="")
+        return 0
 
     subcmd, rest = filtered[0], filtered[1:]
     if subcmd not in SUBSYSTEMS:
