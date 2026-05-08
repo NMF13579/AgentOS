@@ -1,0 +1,2740 @@
+{
+  "schema_version": "1.0.0",
+  "generated_at": "2026-05-06T11:31:13Z",
+  "source": "markdown_frontmatter",
+  "entries": [
+    {
+      "path": "AGENTS.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "ARCHITECTURE.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "CHANGELOG.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "CHECKLIST.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "CLAUDE.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "FAQ.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "GEMINI.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "HANDOFF.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "INIT.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "MIGRATION-PROMPT.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "README.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "RELEASE-CHECKLIST.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "ROUTES-REGISTRY.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "START.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "SYSTEM_PROMPT.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "core-rules/MAIN.md",
+      "type": "canonical",
+      "module": "core-rules",
+      "status": "canonical",
+      "authority": "canonical",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_field:created",
+        "missing_field:last_validated"
+      ]
+    },
+    {
+      "path": "docs/ACTIVATION-RECOVERY.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "docs/ACTIVE-TASK-FORMAT.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "docs/ACTIVE-TASK-VALIDATION.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "docs/APPLIED-TRANSITION-RECORD.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "docs/APPLY-COMMAND-INTEGRATION.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "docs/APPLY-PLAN.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "docs/APPLY-PRECONDITIONS.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "docs/APPROVAL-EVIDENCE-STORAGE.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "docs/APPROVAL-MARKER-SPEC.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "docs/APPROVAL-REQUIREMENT-POLICY.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "docs/APPROVED-MODE-CONTRACT.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "docs/BOUNDARY-CLAIMS.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "docs/COMPLETION-READINESS.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "docs/COMPLETION-TRANSITION.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "docs/CONTROLLED-COMPLETION-WORKFLOW.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "docs/CONTROLLED-COMPLETION.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "docs/CONTROLLED-EXECUTION-RUNNER.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "docs/CONTROLLED-FAILURE-AND-REVIEW.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "docs/CONTROLLED-LIFECYCLE-MUTATION.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "docs/EXECUTION-READINESS.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "docs/EXECUTION-SESSION.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "docs/FRONTMATTER-STANDARD.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "docs/GATE-OUTPUT-CONTRACT.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "docs/GATE-RESULT-SEMANTICS.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "docs/GETTING-STARTED.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "docs/HUMAN-APPROVAL-BOUNDARY.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "docs/HUMAN-APPROVAL-EVIDENCE.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "docs/HUMAN-READABLE-SUMMARY-STANDARD.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "docs/INDEX-SCHEMA.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "docs/LIFECYCLE-INTEGRATION.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "docs/MARKDOWN-ROLE-CLASSIFICATION.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "docs/OPERATION-RISK-MODEL.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "docs/RELEASE-READINESS-AUDIT.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "docs/RU-QUICKSTART.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "docs/SAFE-TRANSITION-EXECUTION.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "docs/SAFETY-BOUNDARIES.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "docs/SOURCE-OF-TRUTH-MAP.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "docs/STABLE-MVP-RELEASE-READINESS.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "docs/STATUS-SEMANTICS.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "docs/TASK-STATE-MACHINE.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "docs/TASK-TRANSITION-RULES.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "docs/TEMPLATE-INTEGRITY.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "docs/TEMPLATE-PACKAGING-AUDIT.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "docs/UNIFIED-GATE-CONTRACT.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "docs/VALIDATION.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "docs/architecture.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "docs/guardrails.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "docs/limitations.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "docs/mvp-checklist.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "docs/quickstart.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "docs/release-checklist.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "docs/troubleshooting.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "docs/usage.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "examples/README.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "examples/queue-entry-example.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "examples/scenario-01-new-feature.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "examples/scenario-02-bugfix.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "examples/scenario-03-refactor.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "examples/scenario-04-validation-only.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "examples/scenarios/dangerous-command-detected.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "examples/scenarios/failed-verification.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "examples/scenarios/handoff-between-sessions.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "examples/scenarios/repeated-feedback-detected.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "examples/scenarios/risky-deploy-change.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "examples/scenarios/simple-docs-change.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "examples/simple-project/README.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "quality/MAIN.md",
+      "type": "canonical",
+      "module": "quality",
+      "status": "canonical",
+      "authority": "canonical",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_field:created",
+        "missing_field:last_validated"
+      ]
+    },
+    {
+      "path": "repo-map.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "reports/activation-audit-report.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "reports/activation-positive-smoke.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "reports/active-task-governance-audit-report.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "reports/agentos-validate-cli-hardening.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "reports/agentos-validate-json-smoke.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "reports/agentos-validate-smoke.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "reports/agentos-validate-usage-integration.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "reports/audit-smoke.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "reports/audit.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "reports/completion/completion-task-20260426-brief-readiness-check-20260430T004659Z.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "reports/duplicate-file-audit.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "reports/execution/exec-task-20260426-brief-readiness-check-20260429-075023.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "in_progress",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_field:type",
+        "missing_field:module",
+        "missing_field:authority",
+        "missing_field:created",
+        "missing_field:last_validated"
+      ]
+    },
+    {
+      "path": "reports/execution-evidence-report.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "reports/finder-duplicates-removed.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "reports/guard-failures-smoke.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "reports/milestone-10-completion-review.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "reports/milestone-10-final-hardening-review.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "reports/milestone-10.11-state-report-hardening.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "reports/milestone-10.11.1-approval-marker-spec.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "reports/milestone-10.11.2-v1.1-hardening.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "reports/milestone-10.12-downstream-v1.1-compatibility.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "reports/milestone-10.13-state-analysis-separation.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "reports/milestone-11-completion-review.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "reports/milestone-12-completion-review.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "reports/milestone-13-completion-review.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "reports/milestone-14-completion-review.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "reports/milestone-14-evidence-report.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "reports/milestone-15-completion-review.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "reports/milestone-15-evidence-report.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "reports/milestone-16-completion-review.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "reports/milestone-16-evidence-report.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "reports/milestone-17-completion-review.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "reports/milestone-17-evidence-report.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "reports/milestone-18-completion-review.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "reports/milestone-18-evidence-report.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "reports/milestone-20-completion-review.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "reports/milestone-20-evidence-report.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "reports/milestone-21-completion-review.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "reports/milestone-21-evidence-report.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "reports/milestone-22-completion-review.md",
+      "type": "report",
+      "module": "unknown",
+      "status": "NEEDS_REVIEW",
+      "authority": "human",
+      "created": "2026-05-04",
+      "last_validated": "2026-05-04",
+      "warnings": [
+        "missing_field:module"
+      ]
+    },
+    {
+      "path": "reports/milestone-22-evidence-report.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "reports/milestone-22-markdown-to-script-inventory.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "reports/milestone-7.1-handoff.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "reports/negative-fixtures-smoke.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "reports/pre-execution-evidence-report.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "reports/release-checklist.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "reports/session-handoff.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "reports/task-health.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "reports/task-state-machine-smoke.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "reports/templates/verification-report.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "TODO",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_field:type",
+        "missing_field:module",
+        "missing_field:authority",
+        "missing_field:created",
+        "missing_field:last_validated"
+      ]
+    },
+    {
+      "path": "reports/verification.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "PASS",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_field:type",
+        "missing_field:module",
+        "missing_field:authority",
+        "missing_field:created",
+        "missing_field:last_validated"
+      ]
+    },
+    {
+      "path": "tasks/active-task.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_field:type",
+        "missing_field:module",
+        "missing_field:status",
+        "missing_field:authority",
+        "missing_field:created",
+        "missing_field:last_validated"
+      ]
+    },
+    {
+      "path": "tasks/drafts/execution-contract-ready.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_field:type",
+        "missing_field:module",
+        "missing_field:status",
+        "missing_field:authority",
+        "missing_field:created",
+        "missing_field:last_validated"
+      ]
+    },
+    {
+      "path": "tasks/drafts/ready-task-contract-draft.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "tasks/drafts/task-20260426-brief-readiness-check-contract-draft.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_field:type",
+        "missing_field:module",
+        "missing_field:status",
+        "missing_field:authority",
+        "missing_field:created",
+        "missing_field:last_validated"
+      ]
+    },
+    {
+      "path": "tasks/queue/20260428-queue-schema-check.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "queued",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_field:type",
+        "missing_field:module",
+        "missing_field:authority",
+        "missing_field:created",
+        "missing_field:last_validated"
+      ]
+    },
+    {
+      "path": "tasks/queue/20260428-runner-human-checkpoints.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "queued",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_field:type",
+        "missing_field:module",
+        "missing_field:authority",
+        "missing_field:created",
+        "missing_field:last_validated"
+      ]
+    },
+    {
+      "path": "tasks/queue/QUEUE.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "tasks/task-20260426-brief-readiness-check/REVIEW.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "tasks/task-20260426-brief-readiness-check/TASK.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "tasks/task-20260426-brief-readiness-check/TRACE.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "tasks/task-20260426-brief-to-contract-manual-guide/TASK.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "tasks/templates/task-contract.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "missing_field:type",
+        "missing_field:module",
+        "missing_field:status",
+        "missing_field:authority",
+        "missing_field:created",
+        "missing_field:last_validated"
+      ]
+    },
+    {
+      "path": "templates/agentos-full/.github/copilot-instructions.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "templates/agentos-full/.github/instructions/backend.instructions.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_field:type",
+        "missing_field:module",
+        "missing_field:status",
+        "missing_field:authority",
+        "missing_field:created",
+        "missing_field:last_validated"
+      ]
+    },
+    {
+      "path": "templates/agentos-full/.github/instructions/frontend.instructions.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_field:type",
+        "missing_field:module",
+        "missing_field:status",
+        "missing_field:authority",
+        "missing_field:created",
+        "missing_field:last_validated"
+      ]
+    },
+    {
+      "path": "templates/agentos-full/.github/pull_request_template.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "templates/agentos-full/README.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "templates/agentos-full/docs/architecture.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "templates/agentos-full/docs/guardrails.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "templates/agentos-full/docs/limitations.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "templates/agentos-full/docs/troubleshooting.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "templates/agentos-full/examples/README.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "templates/agentos-full/handoff/HANDOFF.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "missing_field:type",
+        "missing_field:module",
+        "missing_field:status",
+        "missing_field:authority",
+        "missing_field:created",
+        "missing_field:last_validated"
+      ]
+    },
+    {
+      "path": "templates/agentos-full/handoff/templates/session-summary.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "missing_field:type",
+        "missing_field:module",
+        "missing_field:status",
+        "missing_field:authority",
+        "missing_field:created",
+        "missing_field:last_validated"
+      ]
+    },
+    {
+      "path": "templates/agentos-full/incidents/templates/incident.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "invalid_frontmatter_line",
+        "missing_field:type",
+        "missing_field:module",
+        "missing_field:status",
+        "missing_field:authority",
+        "missing_field:created",
+        "missing_field:last_validated"
+      ]
+    },
+    {
+      "path": "templates/agentos-full/lessons/lessons.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "proposed",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "invalid_frontmatter_line",
+        "missing_field:type",
+        "missing_field:module",
+        "missing_field:authority",
+        "missing_field:created",
+        "missing_field:last_validated"
+      ]
+    },
+    {
+      "path": "templates/agentos-full/lessons/templates/lesson-entry.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "proposed",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "invalid_frontmatter_line",
+        "missing_field:type",
+        "missing_field:module",
+        "missing_field:authority",
+        "missing_field:created",
+        "missing_field:last_validated"
+      ]
+    },
+    {
+      "path": "templates/agentos-full/repo-map.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "templates/agentos-full/reports/templates/verification-report.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "TODO",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_field:type",
+        "missing_field:module",
+        "missing_field:authority",
+        "missing_field:created",
+        "missing_field:last_validated"
+      ]
+    },
+    {
+      "path": "templates/agentos-full/reports/verification.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "TODO",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_field:type",
+        "missing_field:module",
+        "missing_field:authority",
+        "missing_field:created",
+        "missing_field:last_validated"
+      ]
+    },
+    {
+      "path": "templates/agentos-full/scripts/VALIDATORS.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "templates/agentos-full/tasks/active-task.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "missing_field:type",
+        "missing_field:module",
+        "missing_field:status",
+        "missing_field:authority",
+        "missing_field:created",
+        "missing_field:last_validated"
+      ]
+    },
+    {
+      "path": "templates/agentos-full/tasks/templates/task-contract.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "missing_field:type",
+        "missing_field:module",
+        "missing_field:status",
+        "missing_field:authority",
+        "missing_field:created",
+        "missing_field:last_validated"
+      ]
+    },
+    {
+      "path": "templates/agentos-full/templates/task.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "templates/agentos-full/templates/verification.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "templates/agentos-full/workflow/MAIN.md",
+      "type": "canonical",
+      "module": "workflow",
+      "status": "canonical",
+      "authority": "canonical",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_field:created",
+        "missing_field:last_validated"
+      ]
+    },
+    {
+      "path": "templates/agentos-minimal/README.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "templates/agentos-minimal/reports/templates/verification-report.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "TODO",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_field:type",
+        "missing_field:module",
+        "missing_field:authority",
+        "missing_field:created",
+        "missing_field:last_validated"
+      ]
+    },
+    {
+      "path": "templates/agentos-minimal/reports/verification.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "TODO",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_field:type",
+        "missing_field:module",
+        "missing_field:authority",
+        "missing_field:created",
+        "missing_field:last_validated"
+      ]
+    },
+    {
+      "path": "templates/agentos-minimal/tasks/active-task.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "missing_field:type",
+        "missing_field:module",
+        "missing_field:status",
+        "missing_field:authority",
+        "missing_field:created",
+        "missing_field:last_validated"
+      ]
+    },
+    {
+      "path": "templates/agentos-minimal/tasks/templates/task-contract.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "missing_field:type",
+        "missing_field:module",
+        "missing_field:status",
+        "missing_field:authority",
+        "missing_field:created",
+        "missing_field:last_validated"
+      ]
+    },
+    {
+      "path": "templates/agentos-minimal/templates/task.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "templates/agentos-minimal/templates/verification.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "templates/applied-transition-record.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "invalid_frontmatter_line",
+        "missing_field:type",
+        "missing_field:module",
+        "missing_field:status",
+        "missing_field:authority",
+        "missing_field:created",
+        "missing_field:last_validated"
+      ]
+    },
+    {
+      "path": "templates/apply-plan.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_field:type",
+        "missing_field:module",
+        "missing_field:status",
+        "missing_field:authority",
+        "missing_field:created",
+        "missing_field:last_validated"
+      ]
+    },
+    {
+      "path": "templates/candidate-tasks.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "templates/commit-message.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "templates/completion-readiness.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "templates/completion-transition.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "blocked",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_field:type",
+        "missing_field:module",
+        "missing_field:authority",
+        "missing_field:created",
+        "missing_field:last_validated"
+      ]
+    },
+    {
+      "path": "templates/dist/full/README.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "templates/dist/full/docs/architecture.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "templates/dist/full/docs/guardrails.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "templates/dist/full/docs/limitations.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "templates/dist/full/docs/troubleshooting.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "templates/dist/full/examples/README.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "templates/dist/full/templates/task.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "templates/dist/full/templates/verification.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "templates/dist/minimal/README.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "templates/dist/minimal/templates/task.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "templates/dist/minimal/templates/verification.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "templates/execution-session.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "draft",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_field:type",
+        "missing_field:module",
+        "missing_field:authority",
+        "missing_field:created",
+        "missing_field:last_validated"
+      ]
+    },
+    {
+      "path": "templates/human-approval-record.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_field:type",
+        "missing_field:module",
+        "missing_field:status",
+        "missing_field:authority",
+        "missing_field:created",
+        "missing_field:last_validated"
+      ]
+    },
+    {
+      "path": "templates/queue-entry.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "templates/release-notes.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "templates/task-brief-review.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "templates/task-contract-from-brief.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "templates/task-decision-trace.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    },
+    {
+      "path": "templates/validation-summary.md",
+      "type": "unknown",
+      "module": "unknown",
+      "status": "unknown",
+      "authority": "unknown",
+      "created": "unknown",
+      "last_validated": "unknown",
+      "warnings": [
+        "missing_frontmatter"
+      ]
+    }
+  ]
+}

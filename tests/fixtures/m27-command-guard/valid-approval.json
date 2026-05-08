@@ -1,0 +1,8 @@
+{
+  "approved": true,
+  "task_id": "27.3.1",
+  "approved_by": "human-reviewer-001",
+  "approved_at": "2026-05-05T06:00:00Z",
+  "command": "rm -rf tmp",
+  "scope": "local test cleanup only"
+}

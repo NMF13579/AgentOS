@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "retry_id": "ret-smoke-002",
+  "task_id": "27.15.1",
+  "agent_id": "agent-test",
+  "retry_reason": "CRITICAL_VIOLATION",
+  "failure_type": "VIOLATION",
+  "failure_signature": "sig-smoke-2",
+  "attempt_number": 1,
+  "retry_count": 0,
+  "same_failure_count": 0,
+  "prior_warning": false,
+  "prior_violation": false,
+  "prior_critical_violation": true,
+  "blocked_state": false,
+  "requested_permission": "LOCAL_EDIT",
+  "current_permission": "LOCAL_EDIT",
+  "previous_task_id": "27.15.1",
+  "created_at": "2026-05-08T10:00:00Z",
+  "last_attempt_at": "2026-05-08T10:00:00Z",
+  "non_authorization_warning": "retry is not approval"
+}

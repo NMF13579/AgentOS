@@ -1,0 +1,18 @@
+{
+  "schema_version": "1.0",
+  "gate_id": "gate-000003",
+  "task_id": "27.8.1",
+  "agent_id": "agent-test",
+  "required_for": "PUSH_APPROVAL",
+  "requested_action": "PUSH_APPROVAL",
+  "reason": "push review",
+  "decision": "APPROVED",
+  "requested_at": "2026-05-05T05:00:00Z",
+  "decided_at": "2026-05-05T05:30:00Z",
+  "expires_at": "2027-05-05T06:00:00Z",
+  "human_decider_id": "human-reviewer-002",
+  "human_decider_type": "HUMAN_REVIEWER_IDENTITY",
+  "decision_source": "human_manual",
+  "scope": "PUSH_APPROVAL",
+  "non_authorization_warning": "approval is not execution authorization"
+}

@@ -1,0 +1,16 @@
+task_id: "26.x.x-test"
+declared_scope:
+  - docs/
+  - reports/
+allowed_write_paths:
+  - docs/
+conditional_write_paths:
+  - reports/
+forbidden_write_paths:
+  - .github/workflows/
+  - reports/milestone-25-*
+protected_zones:
+  - .github/workflows/
+deletions_allowed: []
+evidence_artifacts:
+  - reports/milestone-25-evidence-report.md

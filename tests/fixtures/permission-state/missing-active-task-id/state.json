@@ -1,0 +1,12 @@
+{
+  "schema_version": "1.0",
+  "agent_id": "agent-local-001",
+  "current_permission": "LOCAL_EDIT",
+  "permission_record": "records/permission-local-edit.md",
+  "open_violations": [],
+  "retry_count": 0,
+  "blocked_state": false,
+  "expiration": "never",
+  "last_decision": "PERMISSION_OK",
+  "updated_at": "2026-05-07T10:00:00Z"
+}

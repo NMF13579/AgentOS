@@ -15,7 +15,7 @@ source_task: "{{source_task}}"
 source_contract: "{{source_contract}}"
 readiness_result: "{{readiness_result}}"
 readiness_checked_at: "{{readiness_checked_at}}"
-status: "{{status}}"
+status: draft
 stop_reason: "{{stop_reason}}"
 started_at: "{{started_at}}"
 started_by: "{{started_by}}"

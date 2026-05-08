@@ -1,0 +1,13 @@
+{
+  "schema_version": "1.0",
+  "active_task_id": "27.15.1",
+  "agent_id": "agent-local-001",
+  "current_permission": "READ_ONLY",
+  "permission_record": "records/permission-read-only.md",
+  "open_violations": [],
+  "retry_count": 0,
+  "blocked_state": false,
+  "expiration": "never",
+  "last_decision": "PERMISSION_OK",
+  "updated_at": "2026-05-08T10:00:00Z"
+}

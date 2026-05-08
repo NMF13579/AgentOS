@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0",
+  "repository": "NMF13579/AgentOS",
+  "checked_at": "2026-05-08T10:00:00Z",
+  "checked_by": "owner-admin-001",
+  "level_2_enabled": true,
+  "workflow_exists": true,
+  "codeowners_exists": false,
+  "branch_protection": true,
+  "required_pr": true,
+  "required_status_checks": true,
+  "m27_enforcement_required": true,
+  "m25_validation_required_if_present": true,
+  "codeowners_review_required": true,
+  "force_push_disabled": true,
+  "branch_deletion_disabled": true,
+  "bypass_permissions_restricted": true,
+  "direct_push_restricted": true,
+  "target_branches": ["dev", "main"],
+  "owner_admin_setup_actor": "owner-admin-001",
+  "evidence_source": "manual-settings-review",
+  "non_authorization_warning": "not approval"
+}

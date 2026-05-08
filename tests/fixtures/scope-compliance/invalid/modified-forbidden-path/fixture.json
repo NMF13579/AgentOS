@@ -1,0 +1,15 @@
+{
+  "name": "modified-forbidden-path",
+  "expected_result": "FAIL",
+  "expected_exit_code": 1,
+  "initial_files": {
+    "docs/private.md": "v1\n"
+  },
+  "operations": [
+    {
+      "action": "write",
+      "path": "docs/private.md",
+      "content": "v2\n"
+    }
+  ]
+}

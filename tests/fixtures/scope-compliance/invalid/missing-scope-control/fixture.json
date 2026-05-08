@@ -1,0 +1,15 @@
+{
+  "name": "missing-scope-control",
+  "expected_result": "FAIL",
+  "expected_exit_code": 1,
+  "initial_files": {
+    "docs/a.md": "a\n"
+  },
+  "operations": [
+    {
+      "action": "write",
+      "path": "docs/a.md",
+      "content": "b\n"
+    }
+  ]
+}

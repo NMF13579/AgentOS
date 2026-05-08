@@ -1,0 +1,6 @@
+# Bounded Retry Loop Policy
+
+Retry is not approval.
+
+Retry decision states:
+RETRY_ALLOWED RETRY_ALLOWED_WITH_CONDITIONS NEEDS_HUMAN_REVIEW RETRY_BLOCKED RETRY_EXHAUSTED

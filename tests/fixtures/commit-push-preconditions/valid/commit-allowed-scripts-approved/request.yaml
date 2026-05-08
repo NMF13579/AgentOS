@@ -1,0 +1,41 @@
+task_id: "26.7.1"
+operation: COMMIT
+active_task: yes
+permission:
+  current: COMMIT_REQUEST
+  permission_record: NONE
+protected_change_approval:
+  scripts_approved: yes
+  tests_approved: no
+  approval_record: reports/write-scope/WS-26.7.1-20260504-001.md
+scope_check:
+  result: SCOPE_WARNING
+  artifact: NONE
+  warning_conditions_resolved: yes
+m25_validation:
+  result: PASS
+  artifact: NONE
+  override_record: NONE
+  override_valid: no
+commit:
+  commit_reference: 2222222222222222222222222222222222222222
+  commit_message: "feat(M26): 26.7.1 scripts approved"
+  changed_files:
+    - scripts/check-commit-push-preconditions.py
+  forbidden_files_changed: no
+  evidence_tampering_detected: no
+  workflow_files_changed: no
+  scripts_changed: yes
+  tests_changed: no
+push:
+  push_request_record: NONE
+  push_decision: NOT_REQUESTED
+  protected_branch_target: no
+  target_branch: feature/example
+  target_remote: origin
+  push_type: FEATURE_BRANCH_PUSH
+  tag_push_authorized: no
+  approval_expired: no
+violations:
+  open: no
+  items: []

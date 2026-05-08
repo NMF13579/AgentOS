@@ -15,7 +15,7 @@ source_task: "tasks/task-20260426-brief-readiness-check/TASK.md"
 source_contract: "tasks/drafts/task-20260426-brief-readiness-check-contract-draft.md"
 readiness_result: "PASS"
 readiness_checked_at: "2026-04-29T07:50:23Z"
-status: "in_progress"
+status: in_progress
 stop_reason: ""
 started_at: "2026-04-29T07:50:23Z"
 started_by: "controlled-execution-runner"

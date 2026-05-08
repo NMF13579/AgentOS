@@ -1,0 +1,15 @@
+{
+  "name": "sensitive-path-changed",
+  "expected_result": "WARN",
+  "expected_exit_code": 2,
+  "initial_files": {
+    "scripts/local.md": "old\n"
+  },
+  "operations": [
+    {
+      "action": "write",
+      "path": "scripts/local.md",
+      "content": "new\n"
+    }
+  ]
+}

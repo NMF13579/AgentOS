@@ -1,0 +1,15 @@
+{
+  "name": "renamed-file-not-allowed",
+  "expected_result": "FAIL",
+  "expected_exit_code": 1,
+  "initial_files": {
+    "docs/old.md": "old\n"
+  },
+  "operations": [
+    {
+      "action": "rename",
+      "from": "docs/old.md",
+      "to": "docs/new.md"
+    }
+  ]
+}

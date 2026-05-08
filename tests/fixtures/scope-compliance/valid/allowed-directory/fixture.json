@@ -1,0 +1,15 @@
+{
+  "name": "allowed-directory",
+  "expected_result": "PASS",
+  "expected_exit_code": 0,
+  "initial_files": {
+    "docs/sub/file.md": "alpha\n"
+  },
+  "operations": [
+    {
+      "action": "write",
+      "path": "docs/sub/file.md",
+      "content": "beta\n"
+    }
+  ]
+}
