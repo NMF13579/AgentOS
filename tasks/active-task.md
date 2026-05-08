@@ -6,8 +6,32 @@ activated_by: human-approved-command
 approval_id: human-approved-command
 source_task: tasks/task-m22-gate-contract-artifacts.md
 source_contract: tasks/task-m22-gate-contract-artifacts.md
-transition:
-  approved_for_execution:active
+transition: approved_for_execution_active
+task:
+  id: task-m22-gate-contract-artifacts
+  goal: Create missing gate contract artifacts for release-readiness audit.
+  expected_result: Required gate artifacts are present and pass validation checks.
+  in_scope:
+    - reports/
+    - scripts/
+    - tasks/active-task.md
+  out_of_scope:
+    - .github/workflows/
+    - deployments/
+  files_or_areas:
+    - reports/
+    - scripts/
+    - tasks/active-task.md
+  risk_level: LOW
+  risk_reason: Documentation and validation boundary updates without protected actions.
+  requires_owner_approval: false
+  rollback_plan: Restore previous tasks/active-task.md from git history.
+  acceptance_criteria:
+    - Required gate contract artifacts are created and tracked.
+    - Scope compliance checks pass.
+  verification_plan:
+    - python3 scripts/validate-task.py tasks/active-task.md
+    - python3 scripts/check-pr-quality.py
 ---
 
 # Active Task: task-m22-gate-contract-artifacts
