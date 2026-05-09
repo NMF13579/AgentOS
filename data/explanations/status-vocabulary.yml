@@ -1,0 +1,544 @@
+schema_version: "1.0"
+statuses:
+  - status_code: AGENTOS_STATUS_OK
+    severity: OK
+    authority: NONE
+    icon: "✅"
+    color: "green"
+    ascii_label: "[OK]"
+    simple_ru:
+      title: "Всё в порядке"
+      what_happened: "Ключевые проверки сейчас без блокировки."
+      why_it_matters: "Можно продолжать обычную проверку состояния."
+      what_to_check: "reports/context-pipeline.json"
+      next_safe_step: "Периодически повтори проверку статуса."
+    details:
+      technical_status: "AGENTOS_STATUS_OK"
+      technical_reason: "all critical status sources are ready"
+    source:
+      report: "reports/context-pipeline.json"
+      checker: "scripts/check-context-pipeline.py"
+    freshness:
+      stale_after_seconds: 300
+    next_safe_steps:
+      - label: "Проверить статус"
+        command: "python3 scripts/agentos-status.py --json"
+        type: "read_only_check"
+    blocked_actions: []
+    renderer_hints:
+      preferred_panel: "ok"
+      show_in_dashboard: true
+      show_blocked_actions: false
+      show_source: true
+      show_freshness: true
+
+  - status_code: AGENTOS_STATUS_WARN
+    severity: WARNING
+    authority: HUMAN_REVIEW_OPTIONAL
+    icon: "⚠️"
+    color: "yellow"
+    ascii_label: "[WARNING]"
+    simple_ru:
+      title: "Есть предупреждение"
+      what_happened: "Есть сигнал, который лучше перепроверить."
+      why_it_matters: "Иначе можно опереться на устаревшие данные."
+      what_to_check: "reports/context-pipeline.json"
+      next_safe_step: "Открой источник и обнови проверку статуса."
+    details:
+      technical_status: "AGENTOS_STATUS_WARN"
+      technical_reason: "non-blocking warning present"
+    source:
+      report: "reports/context-pipeline.json"
+      checker: "scripts/agentos-status.py"
+    freshness:
+      stale_after_seconds: 300
+    next_safe_steps:
+      - label: "Показать объяснение"
+        command: "python3 scripts/agentos-explain.py"
+        type: "show_explanation"
+    blocked_actions: []
+    renderer_hints:
+      preferred_panel: "warning"
+      show_in_dashboard: true
+      show_blocked_actions: false
+      show_source: true
+      show_freshness: true
+
+  - status_code: AGENTOS_STATUS_NEEDS_REVIEW
+    severity: NEEDS_REVIEW
+    authority: HUMAN_REVIEW_OPTIONAL
+    icon: "🔎"
+    color: "orange"
+    ascii_label: "[REVIEW]"
+    simple_ru:
+      title: "Нужно проверить"
+      what_happened: "Не хватает подтверждения по важной проверке."
+      why_it_matters: "Без этого нельзя уверенно продолжать."
+      what_to_check: "reports/context-verification.md"
+      next_safe_step: "Запусти проверку статуса ещё раз."
+    details:
+      technical_status: "AGENTOS_STATUS_NEEDS_REVIEW"
+      technical_reason: "review evidence is incomplete"
+    source:
+      report: "reports/context-verification.md"
+      checker: "scripts/check-required-context-compliance.py"
+    freshness:
+      stale_after_seconds: 300
+    next_safe_steps:
+      - label: "Проверить контекст"
+        command: "python3 scripts/check-context-pipeline.py --strict"
+        type: "read_only_check"
+    blocked_actions:
+      - "Продолжать без проверки нельзя."
+    renderer_hints:
+      preferred_panel: "warning"
+      show_in_dashboard: true
+      show_blocked_actions: true
+      show_source: true
+      show_freshness: true
+
+  - status_code: AGENTOS_STATUS_BLOCKED
+    severity: BLOCKED
+    authority: SYSTEM_BLOCKED
+    icon: "⛔"
+    color: "red"
+    ascii_label: "[BLOCKED]"
+    simple_ru:
+      title: "Проверка остановлена"
+      what_happened: "Система зафиксировала блокирующее условие."
+      why_it_matters: "Продолжение сейчас нарушит правила безопасности."
+      what_to_check: "reports/context-pipeline.json"
+      next_safe_step: "Нужно решение человека и повторная проверка."
+    details:
+      technical_status: "AGENTOS_STATUS_BLOCKED"
+      technical_reason: "blocking status detected"
+    source:
+      report: "reports/context-pipeline.json"
+      checker: "scripts/check-context-pipeline.py"
+    freshness:
+      stale_after_seconds: 300
+    next_safe_steps:
+      - label: "Запросить проверку человека"
+        command: "python3 scripts/agentos-next-step.py --status HUMAN_GATE_REQUIRED"
+        type: "request_human_review"
+    blocked_actions:
+      - "Не продолжай без решения человека."
+      - "Не обходи проверки вручную."
+    renderer_hints:
+      preferred_panel: "danger"
+      show_in_dashboard: true
+      show_blocked_actions: true
+      show_source: true
+      show_freshness: true
+
+  - status_code: AGENTOS_STATUS_UNKNOWN
+    severity: UNKNOWN
+    authority: SYSTEM_BLOCKED
+    icon: "❓"
+    color: "gray"
+    ascii_label: "[UNKNOWN]"
+    simple_ru:
+      title: "Статус неизвестен"
+      what_happened: "AgentOS не смог уверенно прочитать статус."
+      why_it_matters: "Продолжать без проверки нельзя."
+      what_to_check: "data/explanations/status-vocabulary.yml"
+      next_safe_step: "Восстанови источник статуса и запусти проверку снова."
+    details:
+      technical_status: "AGENTOS_STATUS_UNKNOWN"
+      technical_reason: "status source missing or damaged"
+    source:
+      report: "reports/context-pipeline.json"
+      checker: "scripts/agentos-status.py"
+    freshness:
+      stale_after_seconds: 300
+    next_safe_steps:
+      - label: "Показать объяснение"
+        command: "python3 scripts/agentos-explain.py --status STATUS_SOURCE_MISSING"
+        type: "show_explanation"
+    blocked_actions:
+      - "Продолжать нельзя, пока статус не восстановлен."
+    renderer_hints:
+      preferred_panel: "danger"
+      show_in_dashboard: true
+      show_blocked_actions: true
+      show_source: true
+      show_freshness: true
+
+  - status_code: CONTEXT_PIPELINE_READY
+    severity: OK
+    authority: NONE
+    icon: "✅"
+    color: "green"
+    ascii_label: "[OK]"
+    simple_ru:
+      title: "Цепочка проверок готова"
+      what_happened: "Проверки контекста сейчас согласованы."
+      why_it_matters: "Риск неверного контекста сейчас низкий."
+      what_to_check: "reports/context-pipeline.json"
+      next_safe_step: "Можно продолжать обычную работу с контролем человека."
+    details:
+      technical_status: "CONTEXT_PIPELINE_READY"
+      technical_reason: "all required context checks passed"
+    source:
+      report: "reports/context-pipeline.json"
+      checker: "scripts/check-context-pipeline.py"
+    freshness:
+      stale_after_seconds: 300
+    next_safe_steps:
+      - label: "Проверить статус"
+        command: "python3 scripts/check-context-pipeline.py --strict --json"
+        type: "read_only_check"
+    blocked_actions: []
+    renderer_hints: { preferred_panel: "ok", show_in_dashboard: true, show_blocked_actions: false, show_source: true, show_freshness: true }
+
+  - status_code: CONTEXT_PIPELINE_NEEDS_REVIEW
+    severity: NEEDS_REVIEW
+    authority: HUMAN_REVIEW_OPTIONAL
+    icon: "🔎"
+    color: "orange"
+    ascii_label: "[REVIEW]"
+    simple_ru:
+      title: "Нужно проверить контекст"
+      what_happened: "Не все проверки контекста подтверждены."
+      why_it_matters: "Без этого можно опереться не на те правила."
+      what_to_check: "reports/context-verification.md"
+      next_safe_step: "Запусти строгую проверку контекста."
+    details:
+      technical_status: "CONTEXT_PIPELINE_NEEDS_REVIEW"
+      technical_reason: "context verification is incomplete"
+    source:
+      report: "reports/context-pipeline.json"
+      checker: "scripts/check-context-pipeline.py"
+    freshness:
+      stale_after_seconds: 300
+    next_safe_steps:
+      - label: "Проверить контекст"
+        command: "python3 scripts/check-context-pipeline.py --strict"
+        type: "read_only_check"
+    blocked_actions:
+      - "Продолжать без проверки нельзя."
+    renderer_hints: { preferred_panel: "warning", show_in_dashboard: true, show_blocked_actions: true, show_source: true, show_freshness: true }
+
+  - status_code: CONTEXT_PIPELINE_BLOCKED
+    severity: BLOCKED
+    authority: SYSTEM_BLOCKED
+    icon: "⛔"
+    color: "red"
+    ascii_label: "[BLOCKED]"
+    simple_ru:
+      title: "Контекст заблокирован"
+      what_happened: "Обнаружено блокирующее нарушение в проверках контекста."
+      why_it_matters: "Продолжение сейчас нарушит защитные правила."
+      what_to_check: "reports/context-pipeline.json"
+      next_safe_step: "Нужно решение человека и устранение причины блокировки."
+    details:
+      technical_status: "CONTEXT_PIPELINE_BLOCKED"
+      technical_reason: "blocking context rule triggered"
+    source: { report: "reports/context-pipeline.json", checker: "scripts/check-context-pipeline.py" }
+    freshness: { stale_after_seconds: 300 }
+    next_safe_steps:
+      - label: "Запросить проверку человека"
+        command: "python3 scripts/agentos-next-step.py --status HUMAN_GATE_REQUIRED"
+        type: "request_human_review"
+    blocked_actions:
+      - "Не продолжай без решения человека."
+      - "Не обходи Context Pack."
+    renderer_hints: { preferred_panel: "danger", show_in_dashboard: true, show_blocked_actions: true, show_source: true, show_freshness: true }
+
+  - status_code: CONTEXT_PIPELINE_UNKNOWN
+    severity: UNKNOWN
+    authority: SYSTEM_BLOCKED
+    icon: "❓"
+    color: "gray"
+    ascii_label: "[UNKNOWN]"
+    simple_ru:
+      title: "Статус контекста неизвестен"
+      what_happened: "Источник статуса контекста недоступен или повреждён."
+      why_it_matters: "Продолжать без проверки нельзя."
+      what_to_check: "reports/context-pipeline.json"
+      next_safe_step: "Восстанови источник статуса и запусти проверку заново."
+    details:
+      technical_status: "CONTEXT_PIPELINE_UNKNOWN"
+      technical_reason: "context pipeline source missing or damaged"
+    source: { report: "reports/context-pipeline.json", checker: "scripts/check-context-pipeline.py" }
+    freshness: { stale_after_seconds: 300 }
+    next_safe_steps:
+      - label: "Показать объяснение"
+        command: "python3 scripts/agentos-explain.py --status STATUS_SOURCE_MISSING"
+        type: "show_explanation"
+    blocked_actions:
+      - "Продолжать нельзя, пока статус не восстановлен."
+    renderer_hints: { preferred_panel: "danger", show_in_dashboard: true, show_blocked_actions: true, show_source: true, show_freshness: true }
+
+  - status_code: CONTEXT_INDEX_STALE
+    severity: WARNING
+    authority: HUMAN_REVIEW_OPTIONAL
+    icon: "⚠️"
+    color: "yellow"
+    ascii_label: "[WARNING]"
+    simple_ru:
+      title: "Индекс контекста устарел"
+      what_happened: "Данные индекса контекста не совпадают с текущими файлами."
+      why_it_matters: "Можно получить неверную картину для проверки."
+      what_to_check: "data/context-index.json"
+      next_safe_step: "Пересобери индекс и повтори проверку."
+    details:
+      technical_status: "CONTEXT_INDEX_STALE"
+      technical_reason: "index hash mismatch"
+    source: { report: "data/context-index.json", checker: "scripts/check-context-index-freshness.py" }
+    freshness: { stale_after_seconds: 300 }
+    next_safe_steps:
+      - label: "Проверить свежесть индекса"
+        command: "python3 scripts/check-context-index-freshness.py --json"
+        type: "read_only_check"
+    blocked_actions: []
+    renderer_hints: { preferred_panel: "warning", show_in_dashboard: true, show_blocked_actions: false, show_source: true, show_freshness: true }
+
+  - status_code: CONTEXT_PACK_MISSING
+    severity: BLOCKED
+    authority: SYSTEM_BLOCKED
+    icon: "⛔"
+    color: "red"
+    ascii_label: "[BLOCKED]"
+    simple_ru:
+      title: "Файл контекста отсутствует"
+      what_happened: "Не найден обязательный файл отчёта контекста."
+      why_it_matters: "Без него продолжать проверку нельзя."
+      what_to_check: "reports/context-pack.md"
+      next_safe_step: "Собери контекст заново и повтори проверку."
+    details:
+      technical_status: "CONTEXT_PACK_MISSING"
+      technical_reason: "required context pack file is missing"
+    source: { report: "reports/context-pack.md", checker: "scripts/check-required-context-pack.py" }
+    freshness: { stale_after_seconds: 300 }
+    next_safe_steps:
+      - label: "Проверить context pack"
+        command: "python3 scripts/check-required-context-pack.py --json"
+        type: "read_only_check"
+    blocked_actions:
+      - "Продолжать без файла контекста нельзя."
+    renderer_hints: { preferred_panel: "danger", show_in_dashboard: true, show_blocked_actions: true, show_source: true, show_freshness: true }
+
+  - status_code: CONTEXT_PACK_INVALID
+    severity: BLOCKED
+    authority: SYSTEM_BLOCKED
+    icon: "⛔"
+    color: "red"
+    ascii_label: "[BLOCKED]"
+    simple_ru:
+      title: "Файл контекста повреждён"
+      what_happened: "Файл контекста прочитан, но структура неверная."
+      why_it_matters: "Продолжать с таким файлом нельзя."
+      what_to_check: "reports/context-pack.md"
+      next_safe_step: "Исправь файл контекста и повтори проверку."
+    details:
+      technical_status: "CONTEXT_PACK_INVALID"
+      technical_reason: "context pack schema/structure invalid"
+    source: { report: "reports/context-pack.md", checker: "scripts/check-required-context-pack.py" }
+    freshness: { stale_after_seconds: 300 }
+    next_safe_steps:
+      - label: "Открыть файл контекста"
+        command: "python3 scripts/agentos-next-step.py --status CONTEXT_PACK_INVALID"
+        type: "open_report"
+    blocked_actions:
+      - "Не обходи проверку файла контекста."
+    renderer_hints: { preferred_panel: "danger", show_in_dashboard: true, show_blocked_actions: true, show_source: true, show_freshness: true }
+
+  - status_code: CONTEXT_COMPLIANCE_MISSING
+    severity: NEEDS_REVIEW
+    authority: HUMAN_REVIEW_OPTIONAL
+    icon: "🔎"
+    color: "orange"
+    ascii_label: "[REVIEW]"
+    simple_ru:
+      title: "Нет подтверждения по контексту"
+      what_happened: "Не найден обязательный отчёт подтверждения правил."
+      why_it_matters: "Без этого нельзя уверенно продолжать."
+      what_to_check: "reports/context-verification.md"
+      next_safe_step: "Создай или обнови отчёт подтверждения и проверь заново."
+    details:
+      technical_status: "CONTEXT_COMPLIANCE_MISSING"
+      technical_reason: "context verification report missing"
+    source: { report: "reports/context-verification.md", checker: "scripts/check-required-context-compliance.py" }
+    freshness: { stale_after_seconds: 300 }
+    next_safe_steps:
+      - label: "Проверить подтверждение правил"
+        command: "python3 scripts/check-required-context-compliance.py --json"
+        type: "read_only_check"
+    blocked_actions:
+      - "Продолжать без подтверждения правил нельзя."
+    renderer_hints: { preferred_panel: "warning", show_in_dashboard: true, show_blocked_actions: true, show_source: true, show_freshness: true }
+
+  - status_code: HUMAN_GATE_REQUIRED
+    severity: HUMAN_GATE
+    authority: HUMAN_GATE_REQUIRED
+    icon: "👤"
+    color: "magenta"
+    ascii_label: "[HUMAN]"
+    simple_ru:
+      title: "Нужно решение человека"
+      what_happened: "Текущее действие требует отдельного подтверждения человека."
+      why_it_matters: "Без этого продолжать нельзя."
+      what_to_check: "tasks/active-task.md"
+      next_safe_step: "Передай задачу на ручную проверку."
+    details:
+      technical_status: "HUMAN_GATE_REQUIRED"
+      technical_reason: "human gate is required by policy"
+    source: { report: "tasks/active-task.md", checker: "scripts/agentos-human-gate.py" }
+    freshness: { stale_after_seconds: 300 }
+    next_safe_steps:
+      - label: "Запросить проверку человека"
+        command: "python3 scripts/agentos-next-step.py --status HUMAN_GATE_REQUIRED"
+        type: "request_human_review"
+    blocked_actions:
+      - "Не продолжай без решения человека."
+    renderer_hints: { preferred_panel: "human", show_in_dashboard: true, show_blocked_actions: true, show_source: true, show_freshness: true }
+
+  - status_code: OWNER_REVIEW_REQUIRED
+    severity: HUMAN_GATE
+    authority: OWNER_REVIEW_REQUIRED
+    icon: "👤"
+    color: "magenta"
+    ascii_label: "[HUMAN]"
+    simple_ru:
+      title: "Нужен владелец"
+      what_happened: "Это действие может разрешить только владелец."
+      why_it_matters: "Продолжать без решения владельца нельзя."
+      what_to_check: "docs/HUMAN-APPROVAL-BOUNDARY.md"
+      next_safe_step: "Передай задачу владельцу на отдельное подтверждение."
+    details:
+      technical_status: "OWNER_REVIEW_REQUIRED"
+      technical_reason: "owner review required by policy"
+    source: { report: "docs/HUMAN-APPROVAL-BOUNDARY.md", checker: "scripts/agentos-human-gate.py" }
+    freshness: { stale_after_seconds: 300 }
+    next_safe_steps:
+      - label: "Запросить решение владельца"
+        command: "python3 scripts/agentos-next-step.py --status OWNER_REVIEW_REQUIRED"
+        type: "request_human_review"
+    blocked_actions:
+      - "Не продолжай без решения владельца."
+    renderer_hints: { preferred_panel: "human", show_in_dashboard: true, show_blocked_actions: true, show_source: true, show_freshness: true }
+
+  - status_code: PROTECTED_ACTION_BLOCKED
+    severity: BLOCKED
+    authority: SYSTEM_BLOCKED
+    icon: "🔒"
+    color: "red"
+    ascii_label: "[BLOCKED]"
+    simple_ru:
+      title: "Защищённое действие заблокировано"
+      what_happened: "Обнаружена попытка действия, которое сейчас запрещено."
+      why_it_matters: "Это нарушает защитные правила проекта."
+      what_to_check: "docs/SAFETY-BOUNDARIES.md"
+      next_safe_step: "Попроси ручную проверку и выбери безопасный путь."
+    details:
+      technical_status: "PROTECTED_ACTION_BLOCKED"
+      technical_reason: "protected action is not allowed in current flow"
+    source: { report: "docs/SAFETY-BOUNDARIES.md", checker: "scripts/agentos-command-guard.py" }
+    freshness: { stale_after_seconds: 300 }
+    next_safe_steps:
+      - label: "Показать следующий безопасный шаг"
+        command: "python3 scripts/agentos-next-step.py --status PROTECTED_ACTION_BLOCKED"
+        type: "show_explanation"
+    blocked_actions:
+      - "Не выполняй защищённые действия вручную."
+    renderer_hints: { preferred_panel: "danger", show_in_dashboard: true, show_blocked_actions: true, show_source: true, show_freshness: true }
+
+  - status_code: APPROVAL_MISSING
+    severity: NEEDS_REVIEW
+    authority: HUMAN_GATE_REQUIRED
+    icon: "👤"
+    color: "orange"
+    ascii_label: "[REVIEW]"
+    simple_ru:
+      title: "Нет подтверждения"
+      what_happened: "Отдельное подтверждение для действия не найдено."
+      why_it_matters: "Без подтверждения человека продолжать нельзя."
+      what_to_check: "tasks/active-task.md"
+      next_safe_step: "Запроси подтверждение человека по правилам проекта."
+    details:
+      technical_status: "APPROVAL_MISSING"
+      technical_reason: "approval evidence missing"
+    source: { report: "tasks/active-task.md", checker: "scripts/agentos-human-gate.py" }
+    freshness: { stale_after_seconds: 300 }
+    next_safe_steps:
+      - label: "Запросить проверку человека"
+        command: "python3 scripts/agentos-next-step.py --status HUMAN_GATE_REQUIRED"
+        type: "request_human_review"
+    blocked_actions:
+      - "Не ставь READY вручную."
+    renderer_hints: { preferred_panel: "warning", show_in_dashboard: true, show_blocked_actions: true, show_source: true, show_freshness: true }
+
+  - status_code: STATUS_SOURCE_MISSING
+    severity: UNKNOWN
+    authority: SYSTEM_BLOCKED
+    icon: "❓"
+    color: "gray"
+    ascii_label: "[UNKNOWN]"
+    simple_ru:
+      title: "Источник статуса отсутствует"
+      what_happened: "Не найден обязательный источник статуса."
+      why_it_matters: "Без него продолжать нельзя."
+      what_to_check: "reports/context-pipeline.json"
+      next_safe_step: "Восстанови источник и повтори проверку."
+    details:
+      technical_status: "STATUS_SOURCE_MISSING"
+      technical_reason: "critical status source missing"
+    source: { report: "reports/context-pipeline.json", checker: "scripts/agentos-status.py" }
+    freshness: { stale_after_seconds: 300 }
+    next_safe_steps:
+      - label: "Проверить статус"
+        command: "python3 scripts/agentos-status.py --json"
+        type: "read_only_check"
+    blocked_actions:
+      - "Продолжать без источника статуса нельзя."
+    renderer_hints: { preferred_panel: "danger", show_in_dashboard: true, show_blocked_actions: true, show_source: true, show_freshness: true }
+
+  - status_code: STATUS_SOURCE_DAMAGED
+    severity: BLOCKED
+    authority: SYSTEM_BLOCKED
+    icon: "❓"
+    color: "red"
+    ascii_label: "[BLOCKED]"
+    simple_ru:
+      title: "Источник статуса повреждён"
+      what_happened: "Источник статуса найден, но прочитать его нельзя."
+      why_it_matters: "Продолжать без корректного источника нельзя."
+      what_to_check: "reports/context-pipeline.json"
+      next_safe_step: "Исправь источник статуса и запусти проверку снова."
+    details:
+      technical_status: "STATUS_SOURCE_DAMAGED"
+      technical_reason: "critical status source parse failed"
+    source: { report: "reports/context-pipeline.json", checker: "scripts/agentos-status.py" }
+    freshness: { stale_after_seconds: 300 }
+    next_safe_steps:
+      - label: "Показать объяснение"
+        command: "python3 scripts/agentos-explain.py --status STATUS_SOURCE_DAMAGED"
+        type: "show_explanation"
+    blocked_actions:
+      - "Продолжать без восстановления источника нельзя."
+    renderer_hints: { preferred_panel: "danger", show_in_dashboard: true, show_blocked_actions: true, show_source: true, show_freshness: true }
+
+  - status_code: STATUS_STALE
+    severity: WARNING
+    authority: HUMAN_REVIEW_OPTIONAL
+    icon: "⚠️"
+    color: "yellow"
+    ascii_label: "[WARNING]"
+    simple_ru:
+      title: "Статус устарел"
+      what_happened: "Источник статуса давно не обновлялся."
+      why_it_matters: "Можно принять решение по старым данным."
+      what_to_check: "reports/context-pipeline.json"
+      next_safe_step: "Обнови проверку статуса перед продолжением."
+    details:
+      technical_status: "STATUS_STALE"
+      technical_reason: "status source older than stale threshold"
+    source: { report: "reports/context-pipeline.json", checker: "scripts/agentos-status.py" }
+    freshness: { stale_after_seconds: 300 }
+    next_safe_steps:
+      - label: "Обновить статус"
+        command: "python3 scripts/agentos-status.py --json"
+        type: "read_only_check"
+    blocked_actions: []
+    renderer_hints: { preferred_panel: "warning", show_in_dashboard: true, show_blocked_actions: false, show_source: true, show_freshness: true }
