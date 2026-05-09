@@ -14,6 +14,8 @@ task:
   in_scope:
     - reports/
     - scripts/
+    - data/
+    - templates/
     - tasks/active-task.md
   out_of_scope:
     - .github/workflows/
@@ -21,6 +23,8 @@ task:
   files_or_areas:
     - reports/
     - scripts/
+    - data/
+    - templates/
     - tasks/active-task.md
   risk_level: LOW
   risk_reason: Documentation and validation boundary updates without protected actions.
@@ -42,6 +46,8 @@ scope_control:
   allowed_paths:
     - reports/
     - scripts/
+    - data/
+    - templates/
     - tasks/active-task.md
   forbidden_paths:
   allow_new_files: true
