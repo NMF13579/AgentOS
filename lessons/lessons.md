@@ -25,4 +25,40 @@ lessons:
       Запускать тесты fixtures до закрытия задачи.
     target_file: "scripts/apply-transition.py"
     status: "active"
+  - id: "lesson-003"
+    source_incident: "context-pipeline-strict-blocked-by-scope"
+    tags:
+      - "ci"
+      - "scope"
+      - "active-task"
+      - "context-pipeline"
+    trigger: >
+      CI падает на шаге strict context pipeline, хотя локально другие проверки
+      зелёные. В результате strict-check показывает scope_violation.
+    rule: >
+      Если strict context pipeline blocked, сначала проверить reports/changed-files.txt
+      и сравнить его с allowed_paths в tasks/active-task.md. Если там есть новые
+      каталоги (например data/ или templates/), добавить их в scope задачи,
+      иначе пайплайн останется заблокированным.
+    target_file: "tasks/active-task.md"
+    status: "active"
+  - id: "lesson-004"
+    source_incident: "m31-explainable-status-chain-foundation"
+    tags:
+      - "m31"
+      - "status-chain"
+      - "fail-closed"
+      - "workflow"
+    trigger: >
+      После большого этапа M31 команды статуса/объяснения/следующего шага
+      были готовы, но live-источники отчётов местами отсутствовали. Это дало
+      UNKNOWN вместо ложного OK и показало реальные риски в проверках.
+    rule: >
+      Для крупных milestone сначала делать foundation-коммит с основной цепочкой
+      (vocabulary -> status -> view model -> why -> next -> tui -> cli), затем
+      отдельным проходом запускать расширенные чек-листы и только после этого
+      чистить временные snapshot-файлы. При отсутствии live-источников держать
+      fail-closed поведение: UNKNOWN/NEEDS_REVIEW, но не OK.
+    target_file: "scripts/agentos-status.py"
+    status: "active"
 ---

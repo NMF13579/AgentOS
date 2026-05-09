@@ -1,0 +1,26 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "required": ["schema_version","generated_at","task_id","overall_status","top_status_code","severity","authority","source","freshness","review_reason","what_to_inspect","safe_next_step","blocked_actions","human_gate","owner_review","confirmations","disclaimers","warnings","errors"],
+  "properties": {
+    "schema_version": {"type":"string"},
+    "generated_at": {"type":"string"},
+    "task_id": {"type":"string"},
+    "overall_status": {"type":"string"},
+    "top_status_code": {"type":"string"},
+    "severity": {"type":"string","enum":["OK","INFO","WARNING","NEEDS_REVIEW","BLOCKED","HUMAN_GATE","UNKNOWN"]},
+    "authority": {"type":"string","enum":["NONE","HUMAN_REVIEW_OPTIONAL","HUMAN_GATE_REQUIRED","OWNER_REVIEW_REQUIRED","SYSTEM_BLOCKED"]},
+    "source": {"type":"string"},
+    "freshness": {"type":"string"},
+    "review_reason": {"type":"string"},
+    "what_to_inspect": {"type":"array"},
+    "safe_next_step": {"type":"object"},
+    "blocked_actions": {"type":"array"},
+    "human_gate": {"type":"object","required":["required","reason"]},
+    "owner_review": {"type":"object","required":["required","reason"]},
+    "confirmations": {"type":"array"},
+    "disclaimers": {"type":"object","required":["checklist_is_not_approval","checklist_does_not_authorize_execution","checklist_does_not_authorize_protected_actions"]},
+    "warnings": {"type":"array"},
+    "errors": {"type":"array"}
+  }
+}

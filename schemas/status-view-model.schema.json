@@ -1,0 +1,36 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Status View Model",
+  "type": "object",
+  "required": [
+    "schema_version","generated_at","live_status","overall_status","top_status_code",
+    "severity","authority","icon","ascii_label","title","summary","why","source",
+    "freshness","next_safe_step","next_safe_steps","blocked_actions","flags","rendering",
+    "warnings","errors"
+  ],
+  "properties": {
+    "schema_version": {"type":"string"},
+    "generated_at": {"type":"string"},
+    "live_status": {"type":"boolean"},
+    "repo_root": {"type":"string"},
+    "overall_status": {"type":"string"},
+    "top_status_code": {"type":"string"},
+    "severity": {"type":"string","enum":["OK","INFO","WARNING","NEEDS_REVIEW","BLOCKED","HUMAN_GATE","UNKNOWN"]},
+    "authority": {"type":"string","enum":["NONE","HUMAN_REVIEW_OPTIONAL","HUMAN_GATE_REQUIRED","OWNER_REVIEW_REQUIRED","SYSTEM_BLOCKED"]},
+    "icon": {"type":"string"},
+    "color": {"type":"string"},
+    "ascii_label": {"type":"string"},
+    "title": {"type":"string"},
+    "summary": {"type":"string"},
+    "why": {"type":"string"},
+    "source": {"type":"object"},
+    "freshness": {"type":"object"},
+    "next_safe_step": {"type":["object","null"]},
+    "next_safe_steps": {"type":"array"},
+    "blocked_actions": {"type":"array"},
+    "flags": {"type":"object"},
+    "rendering": {"type":"object"},
+    "warnings": {"type":"array"},
+    "errors": {"type":"array"}
+  }
+}

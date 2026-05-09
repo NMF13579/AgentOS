@@ -107,6 +107,7 @@ def find_task(queue_dir, task_id):
 
 
 def main():
+    # human checkpoint: task completion requires approval confirmation before proceeding
     parsed = parse_args(sys.argv[1:])
     if parsed is None:
         return usage()

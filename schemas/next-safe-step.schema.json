@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "required": ["schema_version","generated_at","live_status","overall_status","top_status_code","severity","authority","selected_step","all_steps","why_safe","does_not_authorize","blocked_actions","human_review","source","display","warnings","errors"],
+  "properties": {
+    "schema_version": {"type":"string"},
+    "generated_at": {"type":"string"},
+    "live_status": {"type":"boolean"},
+    "overall_status": {"type":"string"},
+    "top_status_code": {"type":"string"},
+    "severity": {"type":"string","enum":["OK","INFO","WARNING","NEEDS_REVIEW","BLOCKED","HUMAN_GATE","UNKNOWN"]},
+    "authority": {"type":"string","enum":["NONE","HUMAN_REVIEW_OPTIONAL","HUMAN_GATE_REQUIRED","OWNER_REVIEW_REQUIRED","SYSTEM_BLOCKED"]},
+    "selected_step": {"type":["object","null"]},
+    "all_steps": {"type":"array"},
+    "why_safe": {"type":"string"},
+    "does_not_authorize": {"type":"array","minItems":1},
+    "blocked_actions": {"type":"array"},
+    "human_review": {"type":"object"},
+    "source": {"type":"object"},
+    "display": {"type":"object"},
+    "warnings": {"type":"array"},
+    "errors": {"type":"array"}
+  }
+}
