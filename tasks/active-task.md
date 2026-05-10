@@ -3,7 +3,7 @@ task_id: task-m35-fixup-intake
 task_number: "35.1.1"
 task_name: M35 MVP Fixup Intake and Scope Lock
 milestone: M35
-state: active
+state: completed
 mode: EXECUTION
 repository: AgentOS
 branch: dev
@@ -34,6 +34,8 @@ scope_control:
     - schemas/
     - templates/
     - examples/
+    - HANDOFF.md
+    - memory-bank/
   forbidden_paths:
     - docs/
     - prompts/
