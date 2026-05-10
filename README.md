@@ -58,6 +58,7 @@ When you run validation commands, you will see one of the following results:
 ## Where to read more
 
 - **Installation Guide:** [docs/installation.md](docs/installation.md)
+- **First Project Onboarding:** [docs/first-project-onboarding.md](docs/first-project-onboarding.md)
 - **Getting Started:** [docs/GETTING-STARTED.md](docs/GETTING-STARTED.md)
 - **Quickstart:** [docs/quickstart.md](docs/quickstart.md)
 - **Validation Guide:** [docs/VALIDATION.md](docs/VALIDATION.md)

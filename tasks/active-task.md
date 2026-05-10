@@ -1,71 +1,64 @@
 ---
-task_id: task-m36-external-mvp-usability-intake
-task_number: "36.1.1"
-task_name: M36 External MVP Usability Intake and Scope Lock
+task_id: task-m36-6-0-scope-control-maintenance
+task_number: "36.6.0"
+task_name: Scope Control Maintenance Hotfix
 milestone: M36
-state: active
+state: completed
 mode: EXECUTION
 repository: AgentOS
 branch: dev
-scope_control:
-  allowed_paths:
-    - reports/m36-external-mvp-usability-intake.md
-  forbidden_paths:
-    - tasks/active-task.md
-    - scripts/
-    - docs/
-    - templates/
-    - examples/
-    - prompts/
-    - data/
-    - tests/
-    - schemas/
-    - VERSION
-    - CHANGELOG.md
-    - README.md
-  allowed_actions:
-    - read_m35_completion_review
-    - read_m35_evidence
-    - inspect_existing_usability_surface
-    - create_m36_usability_intake_report
-  forbidden_actions:
-    - execute_m36_implementation
-    - modify_active_task
-    - modify_docs
-    - modify_scripts
-    - modify_templates
-    - modify_examples
-    - modify_prompts
-    - run_install_smoke
-    - run_example_smoke
-    - run_full_validation
-    - stage
-    - commit
-    - push
 ---
 
-# Task 36.1.1 — M36 External MVP Usability Intake and Scope Lock
+# Task 36.6.0 — Scope Control Maintenance Hotfix
 
-M36 starts after M35 completion review concluded:
+## Goal
+Исправить накопленный системный долг в блоке scope_control файла tasks/active-task.md:
+добавить все обязательные поля, которых не хватает для прохождения check-scope-compliance.py,
+а также включить в scope все отчёты, созданные в рамках M36,
+чтобы agentos-validate.py all возвращал PASS.
 
-- M35_MVP_READY or M35_MVP_READY_WITH_GAPS
-- M35_COMPLETION_REVIEW_COMPLETE
-- READY_FOR_M36 or READY_FOR_M36_WITH_GAPS
+## Scope
+Allowed to modify:
+- tasks/active-task.md
 
-M36 purpose:
+Allowed to create:
+- reports/m36-scope-control-maintenance-report.md
 
-Make AgentOS understandable, installable, and usable by a first external user without the author nearby.
+## Success Criteria
+- tasks/active-task.md содержит все обязательные поля scope_control.
+- Все отчёты M36 включены в allowed_new_files.
+- agentos-validate.py all → PASS.
 
-This task is intake and scope-lock only.
-
-It must create:
-
-- reports/m36-external-mvp-usability-intake.md
-
-It must identify the external MVP usability surface and lock the scope for the next M36 tasks.
-
-M36 must focus on external MVP usability.
-
-Do not add new guardrail layers.
-
-Do not build web UI, cloud/server platform, vector DB, multi-agent orchestration, or M37 features.
+scope_control:
+  allowed_paths:
+    - tasks/active-task.md
+    - reports/
+    - schemas/task.schema.json
+    - README.md
+    - docs/quickstart.md
+    - docs/installation.md
+    - docs/first-project-onboarding.md
+  forbidden_paths:
+    - scripts/
+    - .github/
+    - src/
+  allow_new_files: true
+  allowed_new_files:
+    - reports/m36-external-mvp-usability-intake.md
+    - reports/m36-external-user-journey-inspection.md
+    - reports/m36-readme-first-user-entry-hardening.md
+    - reports/m36-installation-quickstart-inspection.md
+    - reports/m36-installation-quickstart-hardening.md
+    - reports/m36-first-project-onboarding-inspection.md
+    - reports/m36-first-project-onboarding-scenario.md
+    - reports/m36-troubleshooting-error-message-inspection.md
+    - reports/m36-scope-control-maintenance-report.md
+    - scripts/audit-mvp-readiness.py
+    - docs/installation.md
+    - docs/first-project-onboarding.md
+  forbidden_new_files:
+  allow_modify_existing: true
+  allow_deletes: false
+  allow_renames: false
+  sensitive_paths:
+    - schemas/task.schema.json

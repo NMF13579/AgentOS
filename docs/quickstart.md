@@ -45,7 +45,7 @@ If you see a `FAIL` or `BLOCKED` result:
 
 If validation passes:
 - Open `tasks/active-task.md`. This is the single source of truth for what your AI assistant is currently allowed to do.
-- Define a small, scoped goal in the `tasks/active-task.md` file.
+- Proceed to the [First Project Onboarding Guide](first-project-onboarding.md) for a step-by-step tutorial on starting your first actual task.
 - Look at the example project (if available) by running `bash scripts/test-example-project.sh` to see how a healthy project looks.
 - Remember: Keep human approval for any risky actions (like deployments or large refactors).
 
