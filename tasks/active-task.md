@@ -1,55 +1,62 @@
 ---
-task_id: task-m39-3-1-limitations-review
-task_number: "39.3.1"
-task_name: Final Public Non-Claims / Limitations Review
+task_id: task-m39-4-1-metadata
+task_number: "39.4.1"
+task_name: Version / Changelog / Release Notes
 milestone: M39
 state: completed
 mode: EXECUTION
 repository: AgentOS
 branch: dev
 task:
-  id: task-m39-3-1-limitations-review
+  id: task-m39-4-1-metadata
   goal: >
-    Create a public-facing limitations document and review internal known limitations for consistency with M39.
-    Ensure AgentOS does not claim production readiness and honestly disclaims unsupported capabilities.
+    Create or update release candidate metadata for M39: VERSION, CHANGELOG.md, and docs/release-notes.md.
+    Clearly distinguish the release candidate from final public release completion.
   expected_result: >
-    docs/public-mvp-limitations.md created and reports/m39-public-non-claims-limitations-report.md created.
+    Release metadata files created or updated; reports/m39-version-changelog-release-notes-report.md created.
   in_scope:
-    - docs/public-mvp-limitations.md
-    - docs/known-limitations.md
-    - reports/m39-public-non-claims-limitations-report.md
+    - VERSION
+    - CHANGELOG.md
+    - docs/release-notes.md
+    - reports/m39-version-changelog-release-notes-report.md
     - tasks/active-task.md
   out_of_scope:
-    - first-user docs (polished in 39.2.1)
-    - versioning files
+    - modifying first-user docs
     - modifying scripts
+    - running smoke tests
   files_or_areas:
     - docs/
     - reports/
+    - .
   risk_level: LOW
-  risk_reason: "Safe documentation of disclaimers and limitations."
+  risk_reason: "Safe release metadata preparation."
   requires_owner_approval: false
-  rollback_plan: "Git restore docs/known-limitations.md and delete docs/public-mvp-limitations.md."
+  rollback_plan: "Git restore modified metadata files."
   acceptance_criteria:
-    - "docs/public-mvp-limitations.md exists"
-    - "reports/m39-public-non-claims-limitations-report.md exists"
-    - "non-claims are clear and honest"
+    - "VERSION uses rc format"
+    - "CHANGELOG.md includes M39 entry"
+    - "docs/release-notes.md exists"
+    - "no unsupported claims found in metadata"
   verification_plan:
-    - "grep -REi \"...\" docs/public-mvp-limitations.md docs/known-limitations.md"
+    - "grep -Eq \"^[0-9]+\\.[0-9]+\\.[0-9]+-rc\\.[0-9]+$\" VERSION"
     - "python3 scripts/agentos-validate.py all"
 scope_control:
   allowed_paths:
     - tasks/active-task.md
     - reports/
     - docs/
+    - VERSION
+    - CHANGELOG.md
   forbidden_paths:
     - src/
     - scripts/
     - schemas/
   allow_new_files: true
   allowed_new_files:
-    - docs/public-mvp-limitations.md
-    - reports/m39-public-non-claims-limitations-report.md
+    - VERSION
+    - CHANGELOG.md
+    - docs/release-notes.md
+    - reports/m39-version-changelog-release-notes-report.md
   forbidden_new_files:
   allow_modify_existing: true
   allow_deletes: false
@@ -60,9 +67,10 @@ execution_role:
   role: maintainer
   mode: maintenance_scoped
   allowed_write_paths:
-    - docs/public-mvp-limitations.md
-    - docs/known-limitations.md
-    - reports/m39-public-non-claims-limitations-report.md
+    - VERSION
+    - CHANGELOG.md
+    - docs/release-notes.md
+    - reports/m39-version-changelog-release-notes-report.md
     - tasks/active-task.md
   forbidden_write_paths:
     - src/
@@ -73,4 +81,4 @@ execution_role:
   may_create_handoff: true
 ---
 
-# Task 39.3.1 — Final Public Non-Claims / Limitations Review
+# Task 39.4.1 — Version / Changelog / Release Notes
