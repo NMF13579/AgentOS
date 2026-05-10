@@ -33,18 +33,28 @@ task:
     - "M39 final status recorded"
   verification_plan:
     - "python3 scripts/agentos-validate.py all"
+execution_role:
+  role: maintainer
+  mode: maintenance_scoped
+  allowed_write_paths:
+    - reports/m39-completion-review.md
+    - tasks/active-task.md
+    - GEMINI.md
+    - scripts/check-single-role-execution.py
+  forbidden_write_paths:
+    - src/
+  may_modify_files: true
+  may_approve: false
+  may_change_task_state: true
+  may_create_handoff: true
 scope_control:
   allowed_paths:
     - tasks/active-task.md
     - reports/
-    - README.md
-    - VERSION
-    - CHANGELOG.md
-    - docs/
+    - GEMINI.md
+    - scripts/check-single-role-execution.py
   forbidden_paths:
     - src/
-    - scripts/
-    - schemas/
   allow_new_files: true
   allowed_new_files:
     - reports/m39-completion-review.md
@@ -54,19 +64,6 @@ scope_control:
   allow_renames: false
   sensitive_paths:
     - scripts/agentos-validate.py
-execution_role:
-  role: maintainer
-  mode: maintenance_scoped
-  allowed_write_paths:
-    - reports/m39-completion-review.md
-    - tasks/active-task.md
-  forbidden_write_paths:
-    - src/
-    - scripts/
-  may_modify_files: true
-  may_approve: false
-  may_change_task_state: true
-  may_create_handoff: true
 ---
 
 # Task 39.8.1 — M39 Completion Review

@@ -3,14 +3,15 @@
 ## Purpose
 
 This document records the final completion decision for M39 Release Candidate Freeze / Public MVP Readiness.
+
 This is a decision record based on evidence.
 
 ## Review Ownership
 
-- Review owner: repo owner / project owner
+- Review owner: repo owner
 - Review owner role: Maintainer
 - Review date: 2026-05-10
-- Review method: Automated structured review based on M39 evidence artifacts.
+- Review method: automated structured review based on evidence
 - Human decision recorded: yes
 
 ## Source Evidence Reviewed
@@ -24,76 +25,120 @@ This is a decision record based on evidence.
 - reports/m39-public-mvp-readiness-evidence-report.md
 - reports/m38-completion-review.md
 - reports/m38-pilot-feedback-evidence-report.md
+- reports/m38-repeat-pilot-smoke.md
 
 ## Evidence Summary
 
-- M39 evidence result token: `M39_PUBLIC_MVP_EVIDENCE_COMPLETE_WITH_WARNINGS`
-- Final smoke result token: `M39_FINAL_SMOKE_PASS`
-- Final audit result token: `M39_FINAL_AUDIT_PASS`
-- Release metadata valid: YES (`0.2.0-rc.1`)
-- Public limitations present: YES
-- Unsupported claims absent: YES
-- Blocked result tokens found: NO
-- Premature readiness claims absent: YES
+- M39 evidence result token: M39_PUBLIC_MVP_EVIDENCE_COMPLETE_WITH_WARNINGS
+- M39 final smoke result token: M39_FINAL_SMOKE_PASS
+- M39 final audit result token: M39_FINAL_AUDIT_PASS
+- VERSION value: 0.2.0-rc.1
+- VERSION uses release-candidate format: yes
+- Public MVP limitations exist: yes
+- Release metadata exists: yes
+- Blocked result tokens found: no
+- Failed result tokens found: no
+- Unsupported public/production/SaaS/destructive claims found: no
+- Premature readiness/completion claims found: no
+- Remaining warnings: yes
 
 ## Decision Matrix
 
 | Condition | Result | Evidence |
 |---|---|---|
-| M39 Freeze scope ready | YES | `M39_FREEZE_SCOPE_READY_WITH_WARNINGS` |
-| Final docs pass complete | YES | `M39_DOCS_PASS_COMPLETE` |
-| Public limitations clear | YES | `M39_NON_CLAIMS_LIMITATIONS_COMPLETE` |
-| Metadata prepared | YES | `M39_RELEASE_METADATA_COMPLETE` |
-| Final smoke passed | YES | `M39_FINAL_SMOKE_PASS` |
-| Final audit passed | YES | `M39_FINAL_AUDIT_PASS` |
-| No blocked tokens | YES | Verified in evidence report. |
-| Human decision recorded | YES | This document. |
+| Human decision recorded | yes | Recorded in Review Ownership |
+| Evidence complete or complete with warnings | yes | M39_PUBLIC_MVP_EVIDENCE_COMPLETE_WITH_WARNINGS |
+| Final smoke passed or passed with warnings | yes | M39_FINAL_SMOKE_PASS |
+| Final audit passed or passed with warnings | yes | M39_FINAL_AUDIT_PASS |
+| VERSION uses rc format | yes | 0.2.0-rc.1 |
+| Public MVP limitations exist | yes | verified via preconditions |
+| No blocked result tokens | yes | verified via preconditions |
+| No failed result tokens | yes | verified via preconditions |
+| No unsupported claims | yes | verified via preconditions |
+| No premature readiness claims | yes | verified via preconditions |
 
 ## Final M39 Status
+
+Allowed values:
+
+- M39_PUBLIC_MVP_READY
+- M39_PUBLIC_MVP_READY_WITH_GAPS
+- M39_PUBLIC_MVP_NOT_READY
+- M39_BLOCKED
+
+Final status:
 
 ```text
 STATUS: M39_PUBLIC_MVP_READY_WITH_GAPS
 ```
 
 ### Decision Rationale
-AgentOS has successfully completed the Milestone 39 Release Candidate phase. All required documentation has been polished and verified for consistency. Public limitations and non-claims have been transparently documented, and the release candidate metadata (0.2.0-rc.1) is in place. The final smoke and audit tests passed cleanly, proving that the system is operationally healthy and free of critical blockers. The "WITH_GAPS" status reflects the non-blocking usability issues (TUI damage, YAML parsing) carried forward from Milestone 38 and documented as known limitations. The evidentiary basis for public evaluation is solid.
+AgentOS successfully meets all requirements for the M39 Release Candidate Freeze. Final smoke and final audit have both passed. Release metadata correctly identifies version 0.2.0-rc.1, and public MVP limitations are properly documented. The remaining gaps regarding TUI status damage and YAML formatting are non-blocking, documented as known limitations, and carried forward to future milestones, resulting in the `WITH_GAPS` status.
 
 ### Remaining Gaps
 | Gap | Severity | Blocking? | Handling |
 |---|---|---|---|
-| TUI status damaged | P2 | NO | Recorded in LIM-001. |
-| Manual YAML formatting | P2 | NO | Recorded in LIM-002. |
+| TUI status damaged | P2 | NO | Deferred to M41+ [LIM-001] |
+| Manual YAML formatting | P2 | NO | Deferred to M40+ [LIM-002] |
 
 ### Deferred Items
 | Item | Reason Deferred | Suggested Future Milestone |
 |---|---|---|
-| TUI Metadata Sync Repair | Complexity/Scope | M41+ |
-| YAML Parser Resilience | Complexity/Scope | M40+ |
+| TUI status damaged | Complexity/Scope | M41+ |
+| Manual YAML formatting | Complexity/Scope | M40+ |
 
 ## M40 Readiness Input
-Recommendation for M40:
-* READY_FOR_M40_DOGFOODING_WITH_GAPS
 
+Recommendation for M40:
+* READY_FOR_M40_REAL_PROJECT_DOGFOODING
+* READY_FOR_M40_WITH_WARNINGS
+* NOT_READY_FOR_M40
+* BLOCKED_BEFORE_M40
+
+Recommendation:
 ```text
-M40_INPUT: READY_FOR_M40_DOGFOODING_WITH_GAPS
+M40_INPUT: READY_FOR_M40_WITH_WARNINGS
 ```
 
+## Public MVP Boundary
+
+If M39 status is M39_PUBLIC_MVP_READY or M39_PUBLIC_MVP_READY_WITH_GAPS, it means:
+* AgentOS may be treated as prepared for limited public MVP evaluation.
+* AgentOS remains a repo-based guardrail framework.
+* AgentOS still requires human review.
+* AgentOS still requires validation evidence.
+* AgentOS limitations remain active.
+
+It does not mean:
+* production readiness
+* production level sandboxing
+* guaranteed safe AI output
+* bug-free AI output
+* automatic approval safety
+* destructive workflow support
+* SaaS readiness
+* full autonomy
+* public release completion beyond this evidence-based MVP readiness decision
+
 ## Non-Claims
+
 This completion review does not claim:
-- final public release completion (until M39 is widely verified)
-- production readiness
-- production-grade sandboxing
-- guaranteed safe AI output
-- automatic approval safety
-- destructive workflow support
-- SaaS readiness
+* production readiness
+* production level sandboxing
+* guaranteed safe AI output
+* bug-free AI output
+* automatic approval safety
+* destructive workflow support
+* SaaS readiness
+* M40 real project dogfooding is active
 
 ## Final Boundary
-M39 completion authorizes the transition to Milestone 40 (Real Project Dogfooding). It does **not** authorize:
-- public release announcement (beyond evaluators)
-- production use
-- destructive workflow testing
-- bypassing human gates
-- bypassing validation
-- new runtime powers
-- SaaS implementation
+
+M39 completion does not authorize:
+* production use
+* destructive workflow testing
+* bypassing human gates
+* bypassing validation
+* new runtime powers
+* SaaS implementation
+* M40 execution inside this task

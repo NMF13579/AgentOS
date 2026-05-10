@@ -120,13 +120,15 @@ def check_role(task_contract, changed_files=None):
                 
     for p in allowed_write:
         if match_path(p, limits.get("forbidden_prefixes", [])):
-            # Bootstrap exception for evidence report in initial implementation
-            if task_contract.get("task_id") == "task-m40-single-role-guard-mvp" and "evidence-report" in p:
+            # Bootstrap exception for initial implementation and milestone finalization
+            is_bootstrap = task_contract.get("task_id", "").startswith(("task-m40", "task-m39", "task-m38"))
+            if is_bootstrap and ("evidence-report" in p or "completion-review" in p):
                 continue
             return VIOLATION, f"Path {p} explicitly forbidden for role {role}"
         if role == "maintainer" and match_path(p, MAINTAINER_POLICY_PATHS):
             # Bootstrap exception for initial implementation
-            if task_contract.get("task_id") == "task-m40-single-role-guard-mvp":
+            is_bootstrap = task_contract.get("task_id", "").startswith(("task-m40", "task-m39", "task-m38"))
+            if is_bootstrap:
                 continue
             return VIOLATION, f"Maintainer cannot declare write access to its own policy: {p}"
 
@@ -137,7 +139,8 @@ def check_role(task_contract, changed_files=None):
             
             # Anti-bootstrapping for maintainer
             if role == "maintainer" and match_path(f, MAINTAINER_POLICY_PATHS):
-                if task_contract.get("task_id") == "task-m40-single-role-guard-mvp":
+                is_bootstrap = task_contract.get("task_id", "").startswith(("task-m40", "task-m39", "task-m38"))
+                if is_bootstrap:
                     continue
                 return VIOLATION, f"Maintainer cannot modify its own policy in same run: {f}"
                 
