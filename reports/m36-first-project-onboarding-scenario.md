@@ -44,4 +44,4 @@ The onboarding path has been extended to provide a clear transition from install
 ## Final Result
 `FAIL` (The unified validation failed because `tasks/active-task.md` is missing mandatory `scope_control` fields required by the validator, and the new report file is outside the current scope).
 
-**Final Status:** `M36_FIRST_PROJECT_ONBOARDING_COMPLETE_WITH_GAPS`
+**Final Status:** `M36_FIRST_PROJECT_ONBOARDING_SCENARIO_COMPLETE_WITH_GAPS`
