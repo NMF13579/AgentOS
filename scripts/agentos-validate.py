@@ -46,7 +46,7 @@ def parse_cli(argv):
     parser.add_argument(
         "command",
         nargs="?",
-        choices=["scope", "scope-fixtures", "execution-audit", "all"],
+        choices=["scope", "scope-fixtures", "execution-audit", "readiness-assertions", "all"],
     )
     parser.add_argument("--task")
     args = parser.parse_args(argv)
@@ -205,6 +205,11 @@ def run_execution_audit(repo_root):
     return [run_child(repo_root, "execution-audit", cmd)]
 
 
+def run_readiness_assertions(repo_root):
+    cmd = [sys.executable, "scripts/check-readiness-assertions.py"]
+    return [run_child(repo_root, "readiness-assertions", cmd)]
+
+
 def run_all(repo_root):
     checks = []
     default_task = repo_root / "tasks/active-task.md"
@@ -222,6 +227,7 @@ def run_all(repo_root):
 
     checks.extend(run_scope_fixtures(repo_root))
     checks.extend(run_execution_audit(repo_root))
+    checks.extend(run_readiness_assertions(repo_root))
     return checks
 
 
@@ -291,6 +297,8 @@ def main(argv):
         checks = run_scope_fixtures(repo_root)
     elif args.command == "execution-audit":
         checks = run_execution_audit(repo_root)
+    elif args.command == "readiness-assertions":
+        checks = run_readiness_assertions(repo_root)
     else:
         checks = run_all(repo_root)
 

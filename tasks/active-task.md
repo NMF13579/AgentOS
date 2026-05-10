@@ -1,81 +1,60 @@
 ---
-task_id: task-m37-pilot-readiness-package
-task_number: "37.1.1"
-task_name: M37 Pilot Readiness Package
+task_id: task-governance-claim-guard
+task_number: "37.11.0"
+task_name: Add Rule — Governance Claim Guard (Readiness Assertions)
 milestone: M37
 state: completed
 mode: EXECUTION
 repository: AgentOS
 branch: dev
 task:
-  id: task-m37-pilot-readiness-package
+  id: task-governance-claim-guard
   goal: >
-    Complete the full M37 Pilot Readiness documentation and fixture package sequentially.
+    Prevent premature readiness claims that bypass completion review decisions.
+    Implement validation rule that requires explicit completion review result tokens.
   expected_result: >
-    All pilot docs (scope, safety, eligibility, onboarding, non-claims), templates, and smoke fixtures created and passing audit.
+    New rule implemented, integrated into validation flow, and passing for existing docs/reports (or identifying violations).
   in_scope:
-    - docs/pilot-*.md
-    - templates/pilot-*.md
-    - tests/fixtures/pilot-smoke/
-    - reports/m37-*.md
-    - .github/workflows/agentos-validation.yml
+    - scripts/agentos-validate.py
+    - scripts/check-readiness-assertions.py
+    - reports/governance-claim-guard-report.md
   out_of_scope:
-    - scripts/
-    - schemas/
-  files_or_areas:
     - docs/
     - templates/
-    - tests/fixtures/
+  files_or_areas:
+    - scripts/
     - reports/
   risk_level: LOW
-  risk_reason: "Documentation-heavy task with safe fixtures."
+  risk_reason: "Safe addition of validation rule."
   requires_owner_approval: false
-  rollback_plan: "Git restore modified files."
+  rollback_plan: "Git restore scripts."
   acceptance_criteria:
-    - "docs/pilot-scope.md created"
-    - "docs/pilot-safety-boundaries.md created"
-    - "docs/pilot-eligibility-policy.md created"
-    - "docs/pilot-onboarding.md created"
-    - "templates/pilot-feedback.md created"
-    - "docs/pilot-support-escalation.md created"
-    - "reports/m37-pilot-smoke-report.md created"
-    - "docs/pilot-non-claims.md created"
-    - "reports/m37-pilot-readiness-evidence-report.md created"
+    - "scripts/check-readiness-assertions.py created"
+    - "integrated into agentos-validate.py"
+    - "honestly identifies current repository readiness claims"
   verification_plan:
+    - "python3 scripts/check-readiness-assertions.py"
     - "python3 scripts/agentos-validate.py all"
-    - "bash scripts/run-all.sh"
 scope_control:
   allowed_paths:
     - tasks/active-task.md
-    - docs/
-    - templates/
-    - tests/fixtures/pilot-smoke/
+    - scripts/agentos-validate.py
+    - scripts/check-readiness-assertions.py
     - reports/
-    - .github/workflows/agentos-validation.yml
+    - README.md
+    - docs/
   forbidden_paths:
-    - scripts/
-    - schemas/
+    - src/
   allow_new_files: true
   allowed_new_files:
-    - docs/pilot-scope.md
-    - docs/pilot-safety-boundaries.md
-    - docs/pilot-eligibility-policy.md
-    - docs/pilot-onboarding.md
-    - docs/pilot-support-escalation.md
-    - docs/pilot-non-claims.md
-    - templates/pilot-feedback.md
-    - templates/pilot-issue-report.md
-    - templates/pilot-validation-failure-report.md
-    - tests/fixtures/pilot-smoke/README.md
-    - reports/m37-pilot-smoke-report.md
-    - reports/m37-pilot-readiness-evidence-report.md
-    - reports/m37-completion-review.md
+    - scripts/check-readiness-assertions.py
+    - reports/governance-claim-guard-report.md
   forbidden_new_files:
   allow_modify_existing: true
   allow_deletes: false
   allow_renames: false
   sensitive_paths:
-    - .github/workflows/agentos-validation.yml
+    - scripts/agentos-validate.py
 ---
 
-# Task 37.1.1 — M37 Pilot Readiness Package
+# Task 37.11.0 — Governance Claim Guard (Readiness Assertions)
