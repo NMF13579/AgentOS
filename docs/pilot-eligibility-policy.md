@@ -13,7 +13,7 @@ The M37 pilot is reserved for 1–3 invited users who understand the experimenta
 - Users who understand and accept the [Safety Boundaries](pilot-safety-boundaries.md).
 
 ## Ineligible Pilot Users
-- Users expecting a production-ready system or autonomous agent platform.
+- Users expecting production readiness or an autonomous agent platform.
 - Users expecting a web UI, cloud runner, or SaaS-like dashboard.
 - Users unwilling to follow structured validation or report feedback.
 - Users intending to test on production-critical repositories.

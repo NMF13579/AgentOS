@@ -142,7 +142,7 @@
 ## Not Claimed by M33
 Не заявляется:
 - что M33 полностью завершён;
-- что AgentOS release-ready (готов к релизу);
+- что AgentOS release-ready (готов к рассмотрению для релиза);
 - что context pipeline восстановлен;
 - что все frontmatter проблемы исправлены;
 - что есть человеческое одобрение (human approval);

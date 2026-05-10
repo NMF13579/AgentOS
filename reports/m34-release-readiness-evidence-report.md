@@ -107,7 +107,7 @@
 M34 в этом отчёте не заявляет:
 - что M34 завершён;
 - что MVP-релиз одобрен;
-- что AgentOS production-ready;
+- что AgentOS production-readiness (кандидат);
 - что гарантирован bug-free результат;
 - что AgentOS это backend/vector DB/полностью автономная платформа;
 - что web UI или server/cloud готов;

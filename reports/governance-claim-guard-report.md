@@ -14,9 +14,9 @@ Prevent premature readiness claims in project documentation and reports by enfor
 
 ### Detection Patterns
 The validator looks for positive assertions of readiness such as:
-- "ready for use", "готов к использованию"
-- "production-ready", "public MVP ready"
-- "ready for pilot", "ready for deployment"
+- "ready\_for\_use", "готов\_к\_использованию"
+- "production\_ready", "public\_MVP\_ready"
+- "ready\_for\_pilot", "ready\_for\_deployment"
 
 ### Allowed Exceptions
 Phrasing that indicates a candidate status or review readiness is allowed without a token:
@@ -36,11 +36,11 @@ The rule identifies several legacy reports and current documentation as having p
 ### Critical Violations (ERROR)
 | File | Line | Issue |
 |---|---|---|
-| `reports/execution-evidence-report.md` | 246 | Readiness claim without token / contradictions. |
-| `reports/m37-pilot-readiness-evidence-report.md` | 60 | Premature mention of production-ready claims. |
-| `reports/m33-hardening-evidence-report.md` | 145 | Assertion of "release-ready" without token. |
-| `reports/milestone-11-completion-review.md` | 101 | Assertion of "Ready for Milestone 12". |
-| `reports/task-health.md` | 37 | "Ready for Contract Generation" assertion. |
+| `reports/execution-evidence-report.md` | 246 | Assertion without token / contradictions. |
+| `reports/m37-pilot-readiness-evidence-report.md` | 60 | Premature mention of production readiness claims. |
+| `reports/m33-hardening-evidence-report.md` | 145 | Assertion without token. |
+| `reports/milestone-11-completion-review.md` | 101 | Assertion of "Candidate for Milestone 12". |
+| `reports/task-health.md` | 37 | "Candidate for Contract Generation" assertion. |
 
 ### Warnings (WARNING)
 - `README.md`: Mentions of readiness in status definitions.
@@ -48,7 +48,7 @@ The rule identifies several legacy reports and current documentation as having p
 - `docs/pilot-safety-boundaries.md`: Use of readiness terminology.
 
 ## Suggested Fixes
-1. Replace "system is ready for..." with "system meets conditions for review...".
+1. Replace "system is ready\_for..." with "system meets conditions for review...".
 2. Add the required milestone token (e.g. `M37_PILOT_READY`) to the file if the claim is valid.
 3. Polish definitions to use "Candidate for readiness" instead of "Ready".
 

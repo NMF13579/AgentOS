@@ -34,7 +34,7 @@ source: task-health
 | done | 0 |
 | dropped | 0 |
 
-## Ready for Contract Generation
+## Candidate for Contract Generation
 - task-20260426-brief-readiness-check
 
 ## Requiring Attention

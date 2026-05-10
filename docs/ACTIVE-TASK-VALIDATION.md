@@ -145,7 +145,7 @@ If task_id cannot be reliably extracted from source files:
 ## What Active Task Validator Must NOT Check
 
 `validate-active-task.py` must not decide:
-- whether task is ready for execution
+- whether task is eligible for execution
 - whether all verification plans are runnable
 - whether approval marker is still non-expired
 - whether `analysis_status` is invalid/conflict

@@ -57,7 +57,7 @@ This report covers documentation and process artifacts only. It does not authori
 - Pilot smoke report exists and shows `PILOT_SMOKE_PASS`: **YES**
 
 ## Public Non-Claims Evidence
-- Positioning note forbids production-ready claims: **YES**
+- Positioning note forbids production readiness claims: **YES**
 - Document says M37 pilot readiness is not public release readiness: **YES**
 
 ## Validation Commands

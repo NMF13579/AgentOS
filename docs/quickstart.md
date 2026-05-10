@@ -28,7 +28,7 @@ AgentOS validation tools will return one of these standard results:
 - **PASS_WITH_WARNINGS:** The checked area is usable, but known (non-blocking) gaps remain.
 - **WARNING:** Something should be reviewed, but it may not block first use.
 - **BLOCKED:** Execution or readiness is stopped. Continuing would be unsafe.
-- **NOT_READY:** The system is not ready for the claimed use yet.
+- **NOT_READY:** The system is not at the eligible level for the claimed use yet.
 - **INCONCLUSIVE:** The check did not produce trustworthy evidence.
 
 ## 3. What to do if validation fails
@@ -61,6 +61,6 @@ While using AgentOS, remember that it does **not** provide:
 
 ## Safety Boundaries Reminder
 
-- Validation result `PASS` does not automatically mean your application is ready for production.
+- Validation result `PASS` does not automatically mean your application is a candidate for production.
 - `NOT_RUN` is not `PASS`. A check that was not run provides no evidence.
 - AgentOS is not autonomous. Human review is required for all execution decisions.

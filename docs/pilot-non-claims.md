@@ -4,7 +4,7 @@
 This document defines how AgentOS should be described during the M37 External Pilot to prevent false expectations and unsafe interpretation of pilot results.
 
 ## Positioning Summary
-During M37, AgentOS is an **experimental repository-based guardrail framework** in a controlled pilot stage. It is not a commercial product or a production-ready security tool.
+During M37, AgentOS is an **experimental repository-based guardrail framework** in a controlled pilot stage. It is not a commercial product or a production-scale security tool.
 
 ## What AgentOS Is
 AgentOS may be described as:
@@ -17,7 +17,7 @@ AgentOS may be described as:
 ## What AgentOS Is Not
 AgentOS is **NOT**:
 - A SaaS platform or public release.
-- Production-ready or a production deployment system.
+- Production readiness or a production deployment system.
 - A production-grade secure sandbox.
 - An autonomous safe execution platform.
 - A replacement for human engineering judgment or review.
@@ -32,7 +32,7 @@ AgentOS is **NOT**:
 - AgentOS aims to increase the transparency of AI-driven workflows.
 
 ## Forbidden Claims
-- AgentOS is ready for production use.
+- AgentOS is a candidate for production use.
 - AgentOS makes AI coding safe by default without human review.
 - AgentOS prevents all mistakes made by AI agents.
 - AgentOS guarantees correct or optimal implementation.

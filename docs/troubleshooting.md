@@ -10,7 +10,7 @@ This guide helps you interpret AgentOS validation results and recover from commo
 | **PASS_WITH_WARNINGS** | Required checks passed, but known gaps remain. | Read warnings before continuing. |
 | **WARNING** | Review is needed, but it may not block first use. | Read warning and decide whether it is relevant. |
 | **BLOCKED** | The system stopped because continuing would be unsafe or unsupported. | **Stop** and resolve or review the blocker. |
-| **NOT_READY** | The system is not ready for the claimed use. | Do not claim readiness; inspect the relevant report. |
+| **NOT_READY** | The system is not at the eligible state for the claimed use. | Do not claim readiness; inspect the relevant report. |
 | **FAIL** | A required check failed. | **Stop**, inspect output, fix only the scoped issue, rerun. |
 | **INCONCLUSIVE** | Evidence is not trustworthy enough. | Do not rely on result; rerun or inspect manually. |
 | **COMMAND_NOT_AVAILABLE** | The command/script is missing. | Check docs or repository state; do not treat as pass. |

@@ -9,7 +9,7 @@ The M37 pilot is an evaluation of workflow and usability, not a production-grade
 ## Non-Claims
 - AgentOS does **not** guarantee bug-free AI output.
 - AgentOS does **not** replace human review or engineer responsibility.
-- AgentOS is **not** production-ready.
+- AgentOS is **not** in a state of production readiness.
 - AgentOS is **not** a production deployment or orchestration system.
 - AgentOS is **not** a production-grade sandbox.
 

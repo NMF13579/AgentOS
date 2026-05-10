@@ -249,7 +249,7 @@ Human approval required:
 
 Meaning:
 - A draft contract exists at `tasks/drafts/{task-id}-contract-draft.md`.
-- The draft is valid and ready for controlled approval review.
+- The draft is valid and eligible for controlled approval review.
 
 Required evidence:
 - `tasks/drafts/{task-id}-contract-draft.md` exists.

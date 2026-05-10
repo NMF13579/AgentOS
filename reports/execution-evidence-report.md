@@ -243,10 +243,10 @@ Execution evidence status:
 
 - `PARTIAL`
 
-Ready for completion protocol:
+Eligible for completion protocol:
 
 - `NO`
 
-Ready for Milestone 13 continuation:
+Eligible for Milestone 13 continuation:
 
 - `YES`

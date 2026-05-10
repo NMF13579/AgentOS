@@ -19,7 +19,7 @@
 
 | Marker | Meaning | Human Decision Boundary |
 |---|---|---|
-| `READY` | Item appears ready for next step | Does not imply approval |
+| `READY` | Item is a candidate for the next step | Does not imply approval |
 | `NEEDS_REVIEW` | Human or follow-up review needed | Must not be treated as failure by itself |
 | `APPROVED` | Explicit approval recorded | Must require human-controlled evidence |
 | `BLOCKED` | Cannot proceed until blocker is resolved | Must identify blocker where possible |

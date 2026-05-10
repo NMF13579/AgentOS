@@ -14,7 +14,7 @@ Implement a generation-time agent rule to prevent agents from asserting project 
 - **Quality Update:** `quality/MAIN.md` (added Readiness Assertions section)
 
 ### Rule Summary
-- **Forbidden Patterns:** Phrases like "system is ready", "готов к пилоту", etc.
+- **Forbidden Patterns:** Phrases like "system is ready_for", "готов_к_пилоту", etc.
 - **Enforcement:** Requires presence of valid tokens (e.g., `M37_PILOT_READY`).
 - **Replacement:** Automates the transition from "ready" to "meets conditions for review".
 - **Context-Awareness:** Forces a "not ready" statement if `FAIL` or `BLOCKED` markers are present.

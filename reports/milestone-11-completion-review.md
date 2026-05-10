@@ -98,7 +98,7 @@ Status: PASS
 - Negative fixtures validate rejection behavior, not business correctness.
 
 ## Readiness for Milestone 12
-Ready for Milestone 12.
+Candidate for Milestone 12.
 
 Recommended Milestone 12 direction:
 - post-activation governance
