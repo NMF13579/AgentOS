@@ -38,6 +38,8 @@ scope_control:
     - docs/quickstart.md
     - docs/installation.md
     - docs/first-project-onboarding.md
+    - HANDOFF.md
+    - memory-bank/
   forbidden_paths:
     - scripts/
     - .github/
@@ -53,6 +55,9 @@ scope_control:
     - reports/m36-first-project-onboarding-scenario.md
     - reports/m36-troubleshooting-error-message-inspection.md
     - reports/m36-scope-control-maintenance-report.md
+    - reports/m36-external-usability-smoke-test.md
+    - reports/m36-external-mvp-usability-evidence-report.md
+    - reports/m36-completion-review.md
     - scripts/audit-mvp-readiness.py
     - docs/installation.md
     - docs/first-project-onboarding.md

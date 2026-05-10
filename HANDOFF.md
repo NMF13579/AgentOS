@@ -10,11 +10,11 @@ It does not override canonical modules.
 
 ## Terminal Snapshot
 
-- Milestone 35 (MVP Fixup) is COMPLETE.
-- Current status: `M35_MVP_READY_WITH_GAPS`.
+- Milestone 36 (External MVP Usability) is COMPLETE.
+- Current status: `M36_EXTERNAL_MVP_USABLE_WITH_GAPS`.
 - Pipeline status: `PASS` (all validators and smoke tests green).
 - Startup route: `llms.txt` -> `state/MAIN.md` -> `workflow/MAIN.md`.
-- Current blockers: none. P0 M34 blockers repaired.
+- Current blockers: none. P0 M35 blockers repaired.
 - Use `core-rules/MAIN.md` for authority conflicts.
 - Use `quality/MAIN.md` before claiming completion.
 - Use `security/MAIN.md` when sensitive data or access boundaries are involved.
@@ -23,8 +23,8 @@ It does not override canonical modules.
 
 1. Read `llms.txt`.
 2. Confirm state through `state/MAIN.md`.
-3. Verify project is ready for M36 planning.
-4. Update `tasks/active-task.md` with new M36 task before execution.
+3. Verify project is ready for M37 planning.
+4. Update `tasks/active-task.md` with new M37 task before execution.
 
 ## Persistent Context
 
