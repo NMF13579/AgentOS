@@ -1,0 +1,47 @@
+{
+  "result": "CONTEXT_PIPELINE_OK",
+  "mode": "strict",
+  "task_path": "tasks/active-task.md",
+  "index_path": "data/context-index.json",
+  "context_path": "reports/context-pack.md",
+  "plan_path": "reports/plan.md",
+  "verification_path": "reports/context-verification.md",
+  "changed_files_path": "reports/changed-files.txt",
+  "active_task_state": "active",
+  "allowed_paths": [
+    "reports/",
+    "scripts/",
+    "data/",
+    "templates/",
+    "tasks/active-task.md"
+  ],
+  "scope_violation": false,
+  "blocking_reasons": [],
+  "advisory_reasons": [
+    "context index needs review (non-critical metadata/frontmatter issues)"
+  ],
+  "gate_results": {
+    "index": {
+      "result": "CONTEXT_INDEX_NEEDS_REVIEW",
+      "exit_code": 1,
+      "error": null
+    },
+    "pack": {
+      "result": "CONTEXT_PACK_VALID",
+      "exit_code": 0,
+      "error": null
+    },
+    "compliance": {
+      "result": "CONTEXT_COMPLIANCE_INVALID",
+      "exit_code": 1,
+      "error": null
+    }
+  },
+  "findings": [
+    {
+      "severity": "warning",
+      "category": "advisory",
+      "message": "context index needs review (non-critical metadata/frontmatter issues)"
+    }
+  ]
+}

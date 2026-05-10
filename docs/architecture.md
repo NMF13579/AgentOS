@@ -8,6 +8,7 @@
 - AgentOS is a deterministic validation layer.
 - AgentOS is a controlled lifecycle workflow.
 - AgentOS is a structured guardrail system for AI-assisted coding.
+- AgentOS is a single-role-enforced execution environment.
 
 ## Architecture Overview
 AgentOS связывает документы, проверки и контрольные ворота в один управляемый процесс.

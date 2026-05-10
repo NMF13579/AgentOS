@@ -1,62 +1,69 @@
 ---
-task_id: task-m22-gate-contract-artifacts
-state: active
-activated_at: 2026-05-02T02:00:00Z
-activated_by: human-approved-command
-approval_id: human-approved-command
-source_task: tasks/task-m22-gate-contract-artifacts.md
-source_contract: tasks/task-m22-gate-contract-artifacts.md
-transition: approved_for_execution_active
+task_id: task-m39-8-1-completion-review
+task_number: "39.8.1"
+task_name: M39 Completion Review
+milestone: M39
+state: completed
+mode: EXECUTION
+repository: AgentOS
+branch: dev
 task:
-  id: task-m22-gate-contract-artifacts
-  goal: Create missing gate contract artifacts for release-readiness audit.
-  expected_result: Required gate artifacts are present and pass validation checks.
+  id: task-m39-8-1-completion-review
+  goal: >
+    Make the final M39 decision based only on M39 evidence.
+    Determine if AgentOS is ready for public MVP evaluation.
+  expected_result: >
+    reports/m39-completion-review.md created with result M39_PUBLIC_MVP_READY_WITH_GAPS.
   in_scope:
-    - reports/
-    - scripts/
-    - data/
-    - templates/
+    - reports/m39-completion-review.md
     - tasks/active-task.md
   out_of_scope:
-    - .github/workflows/
-    - deployments/
+    - modifying docs
+    - modifying code
+    - creating M40 artifacts
   files_or_areas:
     - reports/
-    - scripts/
-    - data/
-    - templates/
-    - tasks/active-task.md
   risk_level: LOW
-  risk_reason: Documentation and validation boundary updates without protected actions.
+  risk_reason: "Decision record task only."
   requires_owner_approval: false
-  rollback_plan: Restore previous tasks/active-task.md from git history.
+  rollback_plan: "Delete the created report."
   acceptance_criteria:
-    - Required gate contract artifacts are created and tracked.
-    - Scope compliance checks pass.
+    - "reports/m39-completion-review.md exists"
+    - "review owner recorded"
+    - "M39 final status recorded"
   verification_plan:
-    - python3 scripts/validate-task.py tasks/active-task.md
-    - python3 scripts/check-pr-quality.py
----
-
-# Active Task: task-m22-gate-contract-artifacts
-
-Create the 7 missing gate contract artifacts required for release-readiness audit to pass.
-
+    - "python3 scripts/agentos-validate.py all"
+execution_role:
+  role: maintainer
+  mode: maintenance_scoped
+  allowed_write_paths:
+    - reports/m39-completion-review.md
+    - tasks/active-task.md
+    - GEMINI.md
+    - scripts/check-single-role-execution.py
+  forbidden_write_paths:
+    - src/
+  may_modify_files: true
+  may_approve: false
+  may_change_task_state: true
+  may_create_handoff: true
 scope_control:
   allowed_paths:
-    - reports/
-    - scripts/
-    - data/
-    - templates/
     - tasks/active-task.md
+    - reports/
+    - GEMINI.md
+    - scripts/check-single-role-execution.py
   forbidden_paths:
+    - src/
   allow_new_files: true
   allowed_new_files:
-    - reports/platform-required-checks-evidence.md
-    - reports/milestone-25-completion-review.md
+    - reports/m39-completion-review.md
   forbidden_new_files:
   allow_modify_existing: true
   allow_deletes: false
   allow_renames: false
   sensitive_paths:
-    - scripts/audit-enforcement.py
+    - scripts/agentos-validate.py
+---
+
+# Task 39.8.1 — M39 Completion Review

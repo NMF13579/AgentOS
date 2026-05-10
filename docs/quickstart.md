@@ -1,75 +1,68 @@
 # AgentOS Quickstart
 
-## Requirements
+Welcome to AgentOS! This guide will help you verify your setup and start your first task.
 
-- Git repository
-- Bash
-- Python 3
-- pip
+**Current Stage:** Milestone 39 — Public MVP Release Candidate.
 
-## Install minimal template
+If you have not yet installed AgentOS into your project, please complete the steps in the [Installation Guide](installation.md) first.
 
+## 1. Verify Your Setup (First Validation)
+
+Depending on which template you installed (`--minimal` or `--full`), run the appropriate first validation command to ensure all schemas and templates are correctly in place.
+
+**For Minimal Template:**
 ```bash
-cd /path/to/your/git-project
-bash /path/to/AgentOS/install.sh --minimal --dry-run
-bash /path/to/AgentOS/install.sh --minimal
+python3 scripts/validate-task.py tasks/active-task.md
+bash scripts/run-all.sh
 ```
 
-## Install full template
-
-```bash
-cd /path/to/your/git-project
-bash /path/to/AgentOS/install.sh --full --dry-run
-bash /path/to/AgentOS/install.sh --full
-```
-
-## Validate installation
-
+**For Full Template:**
 ```bash
 python3 scripts/agentos-validate.py all
-python3 scripts/agentos-validate.py all --json
+python3 scripts/audit-mvp-readiness.py
 ```
 
-Focused validation commands stay available for debugging:
+## 2. Understanding the Output
 
-```bash
-python3 scripts/agentos-validate.py template
-python3 scripts/agentos-validate.py negative
-python3 scripts/agentos-validate.py guard
-python3 scripts/agentos-validate.py audit
-python3 scripts/agentos-validate.py queue
-python3 scripts/agentos-validate.py runner
-```
+AgentOS validation tools will return one of these standard results:
 
-## Verify installer
+- **PASS:** The checked area passed completely. You are safe to proceed.
+- **PASS_WITH_WARNINGS:** The checked area is usable, but known (non-blocking) gaps remain.
+- **WARNING:** Something should be reviewed, but it may not block first use.
+- **BLOCKED:** Execution or readiness is stopped. Continuing would be unsafe.
+- **NOT_READY:** The system is not at the eligible level for the claimed use yet.
+- **INCONCLUSIVE:** The check did not produce trustworthy evidence.
 
-Run the install smoke test:
+## 3. What to do if validation fails
 
-```bash
-bash scripts/test-install.sh
-```
+If you see a `FAIL` or `BLOCKED` result:
+- Do **not** treat failure as success.
+- Read the terminal output. AgentOS is designed to tell you exactly which file or schema caused the issue.
+- Check the generated reports in the `reports/` directory for detailed breakdown.
+- Fix **only** the scoped blocker mentioned in the error.
+- Rerun the exact same validation command to verify the fix.
+- Do **not** proceed to release, publish, merge, or deployment based on failed validation.
 
-## Validate example project
+## 4. What to do after success
 
-Run the example project validation:
+If validation passes:
+- Open `tasks/active-task.md`. This is the single source of truth for what your AI assistant is currently allowed to do.
+- Proceed to the [First Project Onboarding Guide](first-project-onboarding.md) for a step-by-step tutorial on starting your first actual task.
+- Look at the example project (if available) by running `bash scripts/test-example-project.sh` to see how a healthy project looks.
+- Remember: Keep human approval for any risky actions (like deployments or large refactors).
 
-```bash
-bash scripts/test-example-project.sh
-```
+## 5. Explicit Non-Goals
 
-## What gets installed
+While using AgentOS, remember that it does **not** provide:
+- A web UI, dashboard, or cloud/server platform.
+- A marketplace or hosted service.
+- Pip/npm packaging.
+- A vector DB or full RAG backend.
+- LangGraph, CrewAI, multi-agent orchestration, or a self-heal platform.
+- Production deployment approval (AgentOS validates the process, but you must approve the release).
 
-- `--minimal`: базовые схемы, task/report шаблоны и две проверки
-- `--full`: весь текущий набор guardrails и вспомогательных файлов
+## Safety Boundaries Reminder
 
-## What is not included
-
-- backend, RAG, vector DB, agent orchestration
-- Docker image, pip package, npm package
-## Safety Boundaries
-
-- Validation result PASS does not mean AgentOS is MVP-ready.
-- NOT_RUN is not PASS. A check that was not run provides no evidence.
-- AgentOS is not a backend, not a RAG system, not a vector database.
+- Validation result `PASS` does not automatically mean your application is a candidate for production.
+- `NOT_RUN` is not `PASS`. A check that was not run provides no evidence.
 - AgentOS is not autonomous. Human review is required for all execution decisions.
-- M21 quickstart completion does not override M19/M20 safety gates.

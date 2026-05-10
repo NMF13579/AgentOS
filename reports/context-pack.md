@@ -3,10 +3,10 @@ type: context-pack
 task_id: task-m22-gate-contract-artifacts
 status: generated
 generated_by: select-context.py
-generated_at: 2026-05-08T16:47:52Z
+generated_at: 2026-05-09T17:32:22Z
 context_index_path: data/context-index.json
-context_index_hash: sha256:4866484bcb91be64bb492d57d87d6f50d170d67534b3709b34d759149a035ae3
-repo_commit_hash: cb176ae1b346999d28fad36ae61c9aa85d6375dc
+context_index_hash: sha256:0b9135ce4b7dc002c561a06880b7a0e5daac83aa9f85544fb19f57a2c099bea8
+repo_commit_hash: 837e97e8978be93420e436e946b5f311cb388abf
 ---
 
 # Context Pack
@@ -14,12 +14,14 @@ repo_commit_hash: cb176ae1b346999d28fad36ae61c9aa85d6375dc
 ## Task Summary
 
 - task_id: task-m22-gate-contract-artifacts
-- goal: Create the 7 missing gate contract artifacts required for release-readiness audit to pass.
+- goal: Create missing gate contract artifacts for release-readiness audit.
 - risk_level: LOW
 - affected_paths:
-  - reports/platform-required-checks-evidence.md
-  - reports/milestone-25-completion-review.md
-  - reports/ci/agentos-validate.json
+  - reports/
+  - scripts/
+  - data/
+  - templates/
+  - tasks/active-task.md
 - source_task_path: tasks/active-task.md
 - task_lint_status: UNKNOWN
 
@@ -30,7 +32,7 @@ repo_commit_hash: cb176ae1b346999d28fad36ae61c9aa85d6375dc
 
 ## Required Context
 
-- templates/context-frontmatter-example.md
+- none
 
 ## Supporting Context
 
@@ -50,7 +52,7 @@ repo_commit_hash: cb176ae1b346999d28fad36ae61c9aa85d6375dc
 ## Out-of-Scope Context
 
 - path_or_category: templates/context-frontmatter-example.md
-  reason_excluded: canonical authority; required_when_relevant context role; no direct task relevance signal. Final score=6.
+  reason_excluded: canonical authority; required_when_relevant context role; conflict with out_of_scope/excludes; no direct task relevance signal. Final score=1.
   manual_review_needed: false
 
 ## Context Risks
@@ -60,8 +62,8 @@ repo_commit_hash: cb176ae1b346999d28fad36ae61c9aa85d6375dc
 ## Source Integrity
 
 - context_index_path: data/context-index.json
-- context_index_hash: sha256:4866484bcb91be64bb492d57d87d6f50d170d67534b3709b34d759149a035ae3
-- repo_commit_hash: cb176ae1b346999d28fad36ae61c9aa85d6375dc
+- context_index_hash: sha256:0b9135ce4b7dc002c561a06880b7a0e5daac83aa9f85544fb19f57a2c099bea8
+- repo_commit_hash: 837e97e8978be93420e436e946b5f311cb388abf
 - selected_source_hashes:
 - integrity_warnings: []
 
@@ -87,13 +89,3 @@ Integrity check is not approval.
 - [ ] Context Pack did not grant approval.
 - [ ] Runtime enforcement remained under M27.
 - [ ] Any stale or missing context was handled as NEEDS_REVIEW.
-
-
-## Declared Scope Files
-
-- reports/context-pack.md
-- reports/plan.md
-- reports/context-verification.md
-- reports/changed-files.txt
-- data/context-index.json
-- templates/context-frontmatter-example.md

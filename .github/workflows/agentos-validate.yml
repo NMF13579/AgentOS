@@ -20,6 +20,10 @@ jobs:
         with:
           python-version: '3.x'
 
+      - name: Install dependencies
+        run: |
+          pip install pyyaml
+
       - name: Compile unified validator
         id: compile
         continue-on-error: true
@@ -29,6 +33,10 @@ jobs:
       - name: Prepare evidence directory
         run: |
           mkdir -p reports/ci
+
+      - name: Sync Task IDs
+        run: |
+          python scripts/sync-task-ids.py
 
       - name: Run AgentOS validate (human-readable)
         id: validate_human

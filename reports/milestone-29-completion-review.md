@@ -123,5 +123,5 @@ Human Gate remains approval authority.
 
 ## Human Review Required
 
-- Human Gate readiness statement: milestone package is ready for Human Gate review.
+- Human Gate readiness statement: milestone package is eligible for Human Gate review.
 - Human review is required before any protected milestone transition.

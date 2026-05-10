@@ -113,7 +113,7 @@ Total scriptable duplications found: 2
 | `WARN` | The check found a non-blocking concern | `docs/STATUS-SEMANTICS.md`, `docs/RELEASE-READINESS-AUDIT.md`, `reports/` | MEDIUM | Use WARN only for known, non-blocking issues |
 | `NOT_RUN` | The check was not executed | `docs/STATUS-SEMANTICS.md`, `docs/VALIDATION.md`, `reports/` | HIGH | Require a reason whenever a check was not run |
 | `ERROR` | The tool failed before it could finish | `docs/STATUS-SEMANTICS.md`, `docs/RELEASE-READINESS-AUDIT.md`, `reports/` | HIGH | Separate tool failure from a normal FAIL result |
-| `READY` | The item looks ready for the next step | `docs/STATUS-SEMANTICS.md`, `docs/COMPLETION-READINESS.md`, `tasks/*` | HIGH | Always pair READY with the next allowed action |
+| `READY` | The item looks eligible for the next step | `docs/STATUS-SEMANTICS.md`, `docs/COMPLETION-READINESS.md`, `tasks/*` | HIGH | Always pair READY with the next allowed action |
 | `NEEDS_REVIEW` | A human review is needed | `docs/STATUS-SEMANTICS.md`, `reports/` | LOW | Keep it as a human-controlled status |
 | `APPROVED` | A human approved the action | `docs/HUMAN-APPROVAL-EVIDENCE.md`, `approvals/`, `tasks/*` | HIGH | Keep approval evidence explicit and file-based |
 | `BLOCKED` | The item cannot proceed yet | `docs/STATUS-SEMANTICS.md`, `tasks/*`, `state/` docs | HIGH | Require the blocker to be named |

@@ -34,26 +34,27 @@ Quality decides what proof is required; workflow executes the checks.
 ## Verification Gates
 
 Gate 1 — Structure
-
 - Files, routes, and links are present and consistent.
 
 Gate 2 — Scope
-
 - Only the confirmed task scope was changed.
 
 Gate 3 — Acceptance Criteria
-
 - Every acceptance criterion has proof.
 
 Gate 4 — Regression / Smoke
-
 - Relevant validation or smoke checks were run, or skipped with an explicit reason.
 
 Gate 5 — Security / Release Blockers
-
 - If data, access, API, auth, database, release, or CI is affected, security proof is required.
-
 - The agent must not claim done or complete if the gates were not passed or explicitly explained.
+
+## Readiness Assertions
+
+- Agents and scripts must not declare readiness without an explicit completion review result token.
+- **Enforced tokens:** `M37_PILOT_READY`, `M38_PILOT_FEEDBACK_HARDENED`, `M39_PUBLIC_MVP_READY` (and GAP variants).
+- Claims without tokens are governed as `GOVERNANCE_VIOLATION_PREMATURE_READINESS_CLAIM`.
+- Refer to `scripts/check-readiness-assertions.py` for enforcement logic.
 
 ## Smoke Checks
 
@@ -65,7 +66,6 @@ Gate 5 — Security / Release Blockers
 ## Release Blockers
 
 Block release when any of these are true:
-
 - Data safety is unclear or broken.
 - Security checks fail or were not performed for sensitive work.
 - A core user path is broken.
@@ -75,7 +75,6 @@ Block release when any of these are true:
 ## Audit Output
 
 Audit reports must be plain-language and evidence-backed:
-
 - what works;
 - what is missing;
 - runtime risks;

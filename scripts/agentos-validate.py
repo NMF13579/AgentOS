@@ -46,7 +46,7 @@ def parse_cli(argv):
     parser.add_argument(
         "command",
         nargs="?",
-        choices=["scope", "scope-fixtures", "execution-audit", "all"],
+        choices=["scope", "scope-fixtures", "execution-audit", "readiness-assertions", "single-role", "all"],
     )
     parser.add_argument("--task")
     args = parser.parse_args(argv)
@@ -205,6 +205,16 @@ def run_execution_audit(repo_root):
     return [run_child(repo_root, "execution-audit", cmd)]
 
 
+def run_readiness_assertions(repo_root):
+    cmd = [sys.executable, "scripts/check-readiness-assertions.py"]
+    return [run_child(repo_root, "readiness-assertions", cmd)]
+
+
+def run_single_role(repo_root, task_path):
+    cmd = [sys.executable, "scripts/check-single-role-execution.py", task_path, "--strict"]
+    return [run_child(repo_root, "single-role", cmd)]
+
+
 def run_all(repo_root):
     checks = []
     default_task = repo_root / "tasks/active-task.md"
@@ -222,6 +232,8 @@ def run_all(repo_root):
 
     checks.extend(run_scope_fixtures(repo_root))
     checks.extend(run_execution_audit(repo_root))
+    checks.extend(run_readiness_assertions(repo_root))
+    checks.extend(run_single_role(repo_root, "tasks/active-task.md"))
     return checks
 
 
@@ -291,6 +303,10 @@ def main(argv):
         checks = run_scope_fixtures(repo_root)
     elif args.command == "execution-audit":
         checks = run_execution_audit(repo_root)
+    elif args.command == "readiness-assertions":
+        checks = run_readiness_assertions(repo_root)
+    elif args.command == "single-role":
+        checks = run_single_role(repo_root, args.task or "tasks/active-task.md")
     else:
         checks = run_all(repo_root)
 

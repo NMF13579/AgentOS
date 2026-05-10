@@ -1,7 +1,7 @@
 {
   "result": "PASS",
-  "commands_run": 3,
-  "commands_passed": 3,
+  "commands_run": 5,
+  "commands_passed": 5,
   "commands_failed": 0,
   "commands_warned": 0,
   "commands_not_run": 0,
@@ -29,6 +29,22 @@
       "exit_code": 0,
       "result": "PASS",
       "output_summary": "M23 Execution Control Audit: CONTROL_READY\nArtifacts checked: 9\nArtifacts missing: 0\nChecks run: 3\nChecks passed: 3\nChecks failed: 0\nWarnings: 0\nHuman action required: NO\nMissing artifacts:\nNONE\nFailed checks:\nNONE\nWarnings list:\nNONE\n",
+      "human_action_required": false
+    },
+    {
+      "name": "readiness-assertions",
+      "command": "/usr/local/opt/python@3.14/bin/python3.14 scripts/check-readiness-assertions.py",
+      "exit_code": 0,
+      "result": "PASS",
+      "output_summary": "PASS: No premature readiness claims detected.\n",
+      "human_action_required": false
+    },
+    {
+      "name": "single-role",
+      "command": "/usr/local/opt/python@3.14/bin/python3.14 scripts/check-single-role-execution.py tasks/active-task.md --strict",
+      "exit_code": 0,
+      "result": "PASS",
+      "output_summary": "SINGLE_ROLE_OK: Single-role constraints satisfied\n",
       "human_action_required": false
     }
   ]

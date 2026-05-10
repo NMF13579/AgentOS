@@ -1,5 +1,23 @@
 # Changelog
 
+## 0.2.0-rc.1 — Release Candidate (Milestone 39)
+**Status:** Release candidate for Public MVP evaluation. Not a public release completion.
+
+### Added
+- **Single-Role Execution Guard:** Enforces role-based boundaries for agent runs.
+- **Public MVP Limitations:** Concise public disclosure of system boundaries and non-claims.
+- **Release Candidate Metadata:** VERSION, CHANGELOG, and Release Notes for M39.
+- **Troubleshooting Scenarios:** Practical guides for common pilot issues.
+- **Known Limitations:** Formally documented TUI damage and YAML parsing constraints.
+
+### Changed
+- **Documentation Polish:** README, Quickstart, and First-User Guide updated for M39 consistency.
+- **M38 Hardening:** Retrospectively hardened with real execution feedback (YAML parsing fix).
+- **Historical Cleanup:** 20+ files patched to remove premature readiness assertions.
+
+### Non-Claims
+This release candidate does **not** claim production readiness, production-grade sandboxing, bug-free AI output, automatic approval safety, SaaS readiness, or destructive workflow support.
+
 ## Unreleased
 - No entries yet.
 

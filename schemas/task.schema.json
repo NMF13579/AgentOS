@@ -9,13 +9,13 @@
     {
       "required": [
         "task_id",
+        "task_number",
+        "task_name",
+        "milestone",
         "state",
-        "activated_at",
-        "activated_by",
-        "approval_id",
-        "source_task",
-        "source_contract",
-        "transition"
+        "mode",
+        "repository",
+        "branch"
       ]
     }
   ],
@@ -24,9 +24,36 @@
       "type": "string",
       "minLength": 1
     },
+    "task_number": {
+      "type": "string",
+      "minLength": 1
+    },
+    "task_name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "milestone": {
+      "type": "string",
+      "minLength": 1
+    },
     "state": {
       "type": "string",
       "minLength": 1
+    },
+    "mode": {
+      "type": "string",
+      "minLength": 1
+    },
+    "repository": {
+      "type": "string",
+      "minLength": 1
+    },
+    "branch": {
+      "type": "string",
+      "minLength": 1
+    },
+    "scope_control": {
+      "type": "object"
     },
     "activated_at": {},
     "activated_by": {
@@ -48,6 +75,41 @@
     "transition": {
       "type": "string",
       "minLength": 1
+    },
+    "execution_role": {
+      "type": "object",
+      "required": [
+        "role",
+        "mode",
+        "allowed_write_paths",
+        "forbidden_write_paths",
+        "may_modify_files",
+        "may_approve",
+        "may_change_task_state",
+        "may_create_handoff"
+      ],
+      "properties": {
+        "role": {
+          "type": "string",
+          "enum": ["planner", "implementor", "auditor", "verifier", "tutor", "researcher", "maintainer"]
+        },
+        "mode": {
+          "type": "string",
+          "enum": ["read_only", "scoped_write", "explain_only", "research_only", "maintenance_scoped"]
+        },
+        "allowed_write_paths": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "forbidden_write_paths": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "may_modify_files": { "type": "boolean" },
+        "may_approve": { "type": "boolean" },
+        "may_change_task_state": { "type": "boolean" },
+        "may_create_handoff": { "type": "boolean" }
+      }
     },
     "task": {
       "type": "object",

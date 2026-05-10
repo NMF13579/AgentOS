@@ -49,6 +49,7 @@ Canonical module for priority, authority, governance, and agent behavior boundar
 - The agent must work inside the confirmed scope.
 - The agent must report uncertainty instead of guessing.
 - The agent must prefer reversible, minimal changes that satisfy the task.
+- **Generation Guard:** The agent must not assert project readiness without a valid completion review token. See `core-rules/agent-rules.yml` for enforced patterns.
 
 ## Stop Signals
 

@@ -1,0 +1,40 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "title": "Execution Role Schema",
+  "required": [
+    "role",
+    "mode",
+    "allowed_write_paths",
+    "forbidden_write_paths",
+    "may_modify_files",
+    "may_approve",
+    "may_change_task_state",
+    "may_create_handoff"
+  ],
+  "properties": {
+    "role": {
+      "type": "string",
+      "enum": ["planner", "implementor", "auditor", "verifier", "tutor", "researcher", "maintainer"]
+    },
+    "mode": {
+      "type": "string",
+      "enum": ["read_only", "scoped_write", "explain_only", "research_only", "maintenance_scoped"]
+    },
+    "allowed_write_paths": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 0
+    },
+    "forbidden_write_paths": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 0
+    },
+    "may_modify_files": { "type": "boolean" },
+    "may_approve": { "type": "boolean" },
+    "may_change_task_state": { "type": "boolean" },
+    "may_create_handoff": { "type": "boolean" }
+  },
+  "additionalProperties": false
+}

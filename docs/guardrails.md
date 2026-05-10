@@ -18,6 +18,9 @@ No lower gate can override a higher safety gate.
 - NOT_APPLICABLE
 - NOT_RUN
 
+## Single-Role Execution Guard
+Enforces that each agent execution operates under exactly one declared role (planner, implementor, auditor, etc.) with deterministic boundaries. It prevents role-mixing (e.g., an auditor fixing its own findings) and ensures that each run stays within its authorized write-scope.
+
 ## Output Marker Requirements
 Ключевые маркеры:
 - GATE_NAME

@@ -1,31 +1,31 @@
 ---
 verification:
-  task_id: task-m22-gate-contract-artifacts
+  task_id: task-m39-8-1-completion-review
   gate_1:
     name: structure
     status: TODO
-    proof: TODO
-    skipped_reason: TODO
+    proof: "TODO"
+    skipped_reason: "TODO"
   gate_2:
     name: scope
     status: TODO
-    proof: TODO
-    skipped_reason: TODO
+    proof: "TODO"
+    skipped_reason: "TODO"
   gate_3:
     name: acceptance_criteria
     status: TODO
-    proof: TODO
-    skipped_reason: TODO
+    proof: "TODO"
+    skipped_reason: "TODO"
   gate_4:
     name: regression_smoke
     status: TODO
-    proof: TODO
-    skipped_reason: TODO
+    proof: "TODO"
+    skipped_reason: "TODO"
   gate_5:
     name: security_release_blockers
     status: TODO
-    proof: TODO
-    skipped_reason: TODO
+    proof: "TODO"
+    skipped_reason: "TODO"
 ---
 
 # VALIDATION/DEMO ARTIFACT — NOT A REAL TASK ARTIFACT

@@ -1,70 +1,45 @@
-# MVP Checklist
+# MVP Readiness Checklist
 
-## Purpose
-Этот документ задаёт перечень проверок для итоговой оценки readiness в M20.
+This document defines the core requirements for the External MVP milestone (M36).
 
-## Relationship to Release Checklist
-`docs/release-checklist.md` описывает release-процедуру и статусы, а этот документ фиксирует M20 MVP-проверки в одном месте.
+## Required Artifacts
 
-## Relationship to Stable MVP Contract
-Основание: `docs/STABLE-MVP-RELEASE-READINESS.md`.
+- `docs/installation.md`
+- `docs/quickstart.md`
+- `docs/troubleshooting.md`
+- `docs/limitations.md`
+- `docs/first-project-onboarding.md`
+- `README.md`
+- `VERSION`
+- `CHANGELOG.md`
+- `scripts/check-template-integrity.py`
+- `scripts/agentos-validate.py`
+- `scripts/audit-mvp-readiness.py`
 
-## Required M20 Artifacts
-- docs/STABLE-MVP-RELEASE-READINESS.md
-- VERSION
-- CHANGELOG.md
-- docs/release-checklist.md
-- templates/release-notes.md
-- scripts/check-template-integrity.py
-- docs/TEMPLATE-INTEGRITY.md
-- scripts/test-template-integrity-fixtures.py
-- tests/fixtures/template-integrity/
-- docs/architecture.md
-- docs/guardrails.md
-- docs/limitations.md
-- docs/troubleshooting.md
-- docs/mvp-checklist.md
+## Validation Result Guidance
 
-## Required Documentation
-- Архитектура и границы AgentOS
-- Guardrail boundaries
-- Ограничения и non-goals
-- Troubleshooting для типовых сбоев
+| Status | Interpretation | External User Action |
+|---|---|---|
+| **MVP_READY** | All P0 blockers resolved. | Project is safe for external trial. |
+| **MVP_READY_WITH_GAPS** | P0 blockers resolved, but non-critical P1 issues remain. | Use with caution, read warning reports. |
+| **MVP_NOT_READY** | Critical P0 blockers remain. | Do not use for real tasks. |
+| **NEEDS_REVIEW** | Evidence is incomplete or contradictory. | Stop and perform manual review. |
 
-## Required Packaging Checks
-- VERSION и CHANGELOG присутствуют
-- release checklist и release notes template присутствуют
-- template integrity checker присутствует
+## Blocking Conditions for External MVP
 
-## Required Validation Evidence
-- Результаты ключевых валидаторов и regression checks
-- Подтверждение, что safety boundary не нарушен
-
-## Required Smoke Evidence
-- Результаты unified gate smoke
-
-## Required Audit Evidence
-- Результаты gate contract audit
-
-## Allowed Readiness Labels
-- MVP_READY
-- MVP_READY_WITH_WARNINGS
-- MVP_NOT_READY
-- NEEDS_REVIEW
-
-## Blocking Conditions
-- Провал обязательного safety gate
-- Отсутствие обязательного артефакта
-- Попытка трактовать NOT_RUN/ERROR как PASS
+- **Failed Safety Gate:** Any P0 validator returning FAIL or BLOCKED.
+- **Missing Required Artifact:** Any file listed in "Required Artifacts" is missing.
+- **Language Barrier:** Primary troubleshooting documentation is not in English.
+- **Technical Debt:** Any "vibe-coding" result (ERROR treated as PASS).
 
 ## Decision Boundary
-This checklist does not mark AgentOS as MVP-ready.
-Final MVP readiness decision must come from the Milestone 20 completion review.
-Evidence collection is not the same as completion review.
-Template integrity PASS does not mark AgentOS as MVP-ready.
-Release notes do not determine final readiness.
-No lower gate can override a higher safety gate.
+
+- This checklist does **not** mark AgentOS as MVP-ready automatically.
+- Final readiness must be confirmed by the Milestone completion review.
+- Template integrity PASS does not equal overall project readiness.
+- No lower-level check can override a higher-level safety gate.
 
 ## Non-Goals
-- Не объявлять M20 завершённым.
-- Не подменять completion review автоматически собранным evidence.
+
+- Do not claim M36 is finished without a verified evidence report.
+- Do not bypass human review through automated metrics.

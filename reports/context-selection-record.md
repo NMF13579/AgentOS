@@ -3,8 +3,8 @@
 - task_id: task-m22-gate-contract-artifacts
 - task_path: tasks/active-task.md
 - context_index_path: data/context-index.json
-- context_index_hash: sha256:1544a23c63d62b91665f24e5a68b0360a64d446489260ab1bf03c2156e16c716
-- repo_commit_hash: cb176ae1b346999d28fad36ae61c9aa85d6375dc
+- context_index_hash: sha256:0b9135ce4b7dc002c561a06880b7a0e5daac83aa9f85544fb19f57a2c099bea8
+- repo_commit_hash: 837e97e8978be93420e436e946b5f311cb388abf
 - candidate_count: 1
 - selected_count: 0
 - excluded_count: 1
@@ -23,7 +23,7 @@ Allowed result values:
 ## excluded_items
 
 - path: templates/context-frontmatter-example.md
-  reason: canonical authority; required_when_relevant context role; no direct task relevance signal. Final score=6.
+  reason: canonical authority; required_when_relevant context role; conflict with out_of_scope/excludes; no direct task relevance signal. Final score=1.
   status: canonical
   authority: canonical
   context_role: required_when_relevant
