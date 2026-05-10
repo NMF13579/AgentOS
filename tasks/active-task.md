@@ -1,63 +1,71 @@
 ---
-task_id: task-m35-fixup-intake
-task_number: "35.1.1"
-task_name: M35 MVP Fixup Intake and Scope Lock
-milestone: M35
-state: completed
+task_id: task-m36-external-mvp-usability-intake
+task_number: "36.1.1"
+task_name: M36 External MVP Usability Intake and Scope Lock
+milestone: M36
+state: active
 mode: EXECUTION
 repository: AgentOS
 branch: dev
----
-
-# Task 35.1.1 — M35 MVP Fixup Intake and Scope Lock
-
-M35 starts after M34 completion review concluded:
-
-- M34_MVP_NOT_READY
-- M34_COMPLETION_REVIEW_COMPLETE
-
-M35 purpose:
-
-Fix M34-proven MVP release-readiness blockers only.
-
-Do not add new product features.
-
-Do not start M36 work.
-
-Do not execute 35.1.1 as part of Task 35.1.0.
-
 scope_control:
   allowed_paths:
-    - reports/
+    - reports/m36-external-mvp-usability-intake.md
+  forbidden_paths:
     - tasks/active-task.md
     - scripts/
-    - schemas/
+    - docs/
     - templates/
     - examples/
-    - HANDOFF.md
-    - memory-bank/
-  forbidden_paths:
-    - docs/
     - prompts/
     - data/
     - tests/
-  allow_new_files: true
-  allowed_new_files:
-    - reports/m35-fixup-intake.md
-    - reports/m35-validation-failure-inspection.md
-    - reports/m35-active-task-run-all-repair.md
-    - reports/m35-example-smoke-failure-inspection.md
-    - reports/m35-example-smoke-repair.md
-    - reports/m35-unified-validation-inspection.md
-    - reports/m35-unified-validation-repair.md
-    - reports/m35-mvp-audit-entrypoint-report.md
-    - reports/m35-revalidation-matrix.md
-    - reports/m35-mvp-fixup-evidence-report.md
-    - scripts/audit-mvp-readiness.py
-  forbidden_new_files:
-  allow_modify_existing: true
-  allow_deletes: false
-  allow_renames: false
-  sensitive_paths:
-    - scripts/agentos-validate.py
-    - schemas/task.schema.json
+    - schemas/
+    - VERSION
+    - CHANGELOG.md
+    - README.md
+  allowed_actions:
+    - read_m35_completion_review
+    - read_m35_evidence
+    - inspect_existing_usability_surface
+    - create_m36_usability_intake_report
+  forbidden_actions:
+    - execute_m36_implementation
+    - modify_active_task
+    - modify_docs
+    - modify_scripts
+    - modify_templates
+    - modify_examples
+    - modify_prompts
+    - run_install_smoke
+    - run_example_smoke
+    - run_full_validation
+    - stage
+    - commit
+    - push
+---
+
+# Task 36.1.1 — M36 External MVP Usability Intake and Scope Lock
+
+M36 starts after M35 completion review concluded:
+
+- M35_MVP_READY or M35_MVP_READY_WITH_GAPS
+- M35_COMPLETION_REVIEW_COMPLETE
+- READY_FOR_M36 or READY_FOR_M36_WITH_GAPS
+
+M36 purpose:
+
+Make AgentOS understandable, installable, and usable by a first external user without the author nearby.
+
+This task is intake and scope-lock only.
+
+It must create:
+
+- reports/m36-external-mvp-usability-intake.md
+
+It must identify the external MVP usability surface and lock the scope for the next M36 tasks.
+
+M36 must focus on external MVP usability.
+
+Do not add new guardrail layers.
+
+Do not build web UI, cloud/server platform, vector DB, multi-agent orchestration, or M37 features.

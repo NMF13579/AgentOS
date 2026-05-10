@@ -52,6 +52,9 @@
       "type": "string",
       "minLength": 1
     },
+    "scope_control": {
+      "type": "object"
+    },
     "activated_at": {},
     "activated_by": {
       "type": "string",

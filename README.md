@@ -1,20 +1,75 @@
 # AgentOS
 
-AgentOS is a Markdown-first guardrail framework for AI-assisted coding workflows.
-It helps structure project context, task briefs, review gates, traces, contract drafts, queues, runner protocols, validation, negative tests, guard failure tests, and audit reports.
+AgentOS is a programmable guardrail layer for AI-assisted coding workflows.
+It helps structure tasks, scope, validation, evidence, and human checkpoints.
 
-AgentOS is governed documentation framework for AI-assisted development.
-The current architecture is canonical-module driven: agents and owners navigate through a small set of runtime modules instead of scattered rule files.
+## Who is AgentOS for?
 
-## What is AgentOS?
+AgentOS is for developers and teams using AI coding assistants (like Cursor, GitHub Copilot, or Claude Code) who want to enforce structured task boundaries, mandatory validation, and explicit human approval before accepting AI-generated changes.
 
-AgentOS is a **Markdown-first guardrail framework** designed for AI-assisted coding workflows. It provides a structured approach to managing project context, task briefs, validation, and execution boundaries.
+## What AgentOS is not
 
-**Important clarifications:**
-- AgentOS is **not** an autonomous agent
-- AgentOS is **not** a backend service  
-- AgentOS is **not** a RAG platform
-- AgentOS is **not** a general orchestration platform
+**Important boundaries:**
+- AgentOS is **not a full autonomous** agent platform.
+- AgentOS is **not a backend** service.
+- AgentOS is **not a vector** database or full RAG backend.
+- AgentOS is **not** a web UI, cloud platform, dashboard, or marketplace.
+- AgentOS **does not guarantee** bug-free AI output.
+- AgentOS does **not** replace human approval or act as production deployment approval.
+- AgentOS does **not** currently feature LangGraph, CrewAI, multi-agent orchestration, or a self-heal platform.
+
+## First Safe Commands
+
+To start using AgentOS or verify your repository state, run these commands in order:
+
+```bash
+# 1. Validate the active task contract
+python3 scripts/validate-task.py tasks/active-task.md
+
+# 2. Run the core validation suite (tasks and verification)
+bash scripts/run-all.sh
+
+# 3. Run the official full unified validation
+python3 scripts/agentos-validate.py all
+
+# 4. Check MVP release readiness
+python3 scripts/audit-mvp-readiness.py
+```
+*(If a command is not available, ensure you have run the installation script or cloned the full repository).*
+
+## Understanding Validation Results
+
+When you run validation commands, you will see one of the following results:
+
+- **PASS:** The checked area passed completely.
+- **PASS_WITH_WARNINGS:** The checked area is usable, but known (non-blocking) gaps remain.
+- **BLOCKED:** Execution or readiness is stopped until a specific blocker is resolved.
+- **NOT_READY:** The system is not ready for the claimed use yet.
+- **INCONCLUSIVE:** The check could not produce trustworthy evidence.
+
+**If validation fails:**
+- Do **not** treat failure as success.
+- Read the command output carefully.
+- Check the relevant generated report in the `reports/` directory.
+- Fix only the scoped blocker.
+- Rerun the exact same command to verify the fix.
+- Do **not** proceed to release or deployment based on failed validation.
+
+## Where to read more
+
+- **Installation Guide:** [docs/installation.md](docs/installation.md)
+- **Getting Started:** [docs/GETTING-STARTED.md](docs/GETTING-STARTED.md)
+- **Quickstart:** [docs/quickstart.md](docs/quickstart.md)
+- **Validation Guide:** [docs/VALIDATION.md](docs/VALIDATION.md)
+- **Safety Boundaries:** [docs/SAFETY-BOUNDARIES.md](docs/SAFETY-BOUNDARIES.md)
+
+## Example Projects
+
+To see how AgentOS works in practice, inspect the example project:
+- `examples/simple-project/` (Run `bash scripts/test-example-project.sh` to test it).
+
+---
+*The current architecture is canonical-module driven: agents and owners navigate through a small set of runtime modules instead of scattered rule files.*
 
 ## Core Principles
 
