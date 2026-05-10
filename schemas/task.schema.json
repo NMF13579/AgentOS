@@ -9,13 +9,13 @@
     {
       "required": [
         "task_id",
+        "task_number",
+        "task_name",
+        "milestone",
         "state",
-        "activated_at",
-        "activated_by",
-        "approval_id",
-        "source_task",
-        "source_contract",
-        "transition"
+        "mode",
+        "repository",
+        "branch"
       ]
     }
   ],
@@ -24,7 +24,31 @@
       "type": "string",
       "minLength": 1
     },
+    "task_number": {
+      "type": "string",
+      "minLength": 1
+    },
+    "task_name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "milestone": {
+      "type": "string",
+      "minLength": 1
+    },
     "state": {
+      "type": "string",
+      "minLength": 1
+    },
+    "mode": {
+      "type": "string",
+      "minLength": 1
+    },
+    "repository": {
+      "type": "string",
+      "minLength": 1
+    },
+    "branch": {
       "type": "string",
       "minLength": 1
     },

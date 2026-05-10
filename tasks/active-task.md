@@ -1,62 +1,61 @@
 ---
-task_id: task-m22-gate-contract-artifacts
+task_id: task-m35-fixup-intake
+task_number: "35.1.1"
+task_name: M35 MVP Fixup Intake and Scope Lock
+milestone: M35
 state: active
-activated_at: 2026-05-02T02:00:00Z
-activated_by: human-approved-command
-approval_id: human-approved-command
-source_task: tasks/task-m22-gate-contract-artifacts.md
-source_contract: tasks/task-m22-gate-contract-artifacts.md
-transition: approved_for_execution_active
-task:
-  id: task-m22-gate-contract-artifacts
-  goal: Create missing gate contract artifacts for release-readiness audit.
-  expected_result: Required gate artifacts are present and pass validation checks.
-  in_scope:
-    - reports/
-    - scripts/
-    - data/
-    - templates/
-    - tasks/active-task.md
-  out_of_scope:
-    - .github/workflows/
-    - deployments/
-  files_or_areas:
-    - reports/
-    - scripts/
-    - data/
-    - templates/
-    - tasks/active-task.md
-  risk_level: LOW
-  risk_reason: Documentation and validation boundary updates without protected actions.
-  requires_owner_approval: false
-  rollback_plan: Restore previous tasks/active-task.md from git history.
-  acceptance_criteria:
-    - Required gate contract artifacts are created and tracked.
-    - Scope compliance checks pass.
-  verification_plan:
-    - python3 scripts/validate-task.py tasks/active-task.md
-    - python3 scripts/check-pr-quality.py
+mode: EXECUTION
+repository: AgentOS
+branch: dev
 ---
 
-# Active Task: task-m22-gate-contract-artifacts
+# Task 35.1.1 — M35 MVP Fixup Intake and Scope Lock
 
-Create the 7 missing gate contract artifacts required for release-readiness audit to pass.
+M35 starts after M34 completion review concluded:
+
+- M34_MVP_NOT_READY
+- M34_COMPLETION_REVIEW_COMPLETE
+
+M35 purpose:
+
+Fix M34-proven MVP release-readiness blockers only.
+
+Do not add new product features.
+
+Do not start M36 work.
+
+Do not execute 35.1.1 as part of Task 35.1.0.
 
 scope_control:
   allowed_paths:
     - reports/
-    - scripts/
-    - data/
-    - templates/
     - tasks/active-task.md
+    - scripts/
+    - schemas/
+    - templates/
+    - examples/
   forbidden_paths:
+    - docs/
+    - prompts/
+    - data/
+    - tests/
   allow_new_files: true
   allowed_new_files:
-    - reports/platform-required-checks-evidence.md
-    - reports/milestone-25-completion-review.md
+    - reports/m35-fixup-intake.md
+    - reports/m35-validation-failure-inspection.md
+    - reports/m35-active-task-run-all-repair.md
+    - reports/m35-example-smoke-failure-inspection.md
+    - reports/m35-example-smoke-repair.md
+    - reports/m35-unified-validation-inspection.md
+    - reports/m35-unified-validation-repair.md
+    - reports/m35-mvp-audit-entrypoint-report.md
+    - reports/m35-revalidation-matrix.md
+    - reports/m35-mvp-fixup-evidence-report.md
+    - scripts/audit-mvp-readiness.py
   forbidden_new_files:
   allow_modify_existing: true
   allow_deletes: false
   allow_renames: false
   sensitive_paths:
-    - scripts/audit-enforcement.py
+    - scripts/agentos-validate.py
+    - schemas/task.schema.json
