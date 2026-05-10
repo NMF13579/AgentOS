@@ -58,29 +58,30 @@ Allowed issue types:
 
 | Feedback ID | Severity | Issue Type | Pilot Impact | Recommended Handling | Evidence Source |
 |---|---|---|---|---|---|
-| M38-FB-001 | UNKNOWN | unknown | Not classified yet | Needs review in 38.3.1 if real feedback exists | reports/m38-pilot-feedback-intake.md |
+| M38-FB-001 | P1 | validation gap | Blocker for new tasks | FIXED in 40.1.0; Add to troubleshooting | reports/m38-pilot-feedback-intake.md |
+| M38-FB-002 | P2 | known limitation | Friction/Confusion | Record as Known Limitation | reports/m38-pilot-feedback-intake.md |
 
-**Status:** `NO_REAL_FEEDBACK_RECORDED`
+**Status:** `FEEDBACK_CLASSIFIED`
 
 ## Severity Summary
 
 - P0 items: 0
-- P1 items: 0
-- P2 items: 0
+- P1 items: 1
+- P2 items: 1
 - P3 items: 0
 - UNKNOWN items: 0
-- Empty placeholders ignored: 1
+- Empty placeholders ignored: 0
 
 ## Pilot Blocker Summary
 
 ### Must Fix Before M38 Completion
 
 - P0: 0
-- P1: 0
+- P1: 1 (Fixed)
 
 ### May Fix If Cheap
 
-- P2: 0
+- P2: 1 (Documented)
 
 ### Defer / Backlog
 

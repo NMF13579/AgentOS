@@ -30,10 +30,10 @@ This is a decision record based on evidence.
 
 ## Evidence Summary
 
-- M38 evidence result token: `M38_EVIDENCE_INCOMPLETE`
+- M38 evidence result token: `M38_EVIDENCE_COMPLETE_WITH_WARNINGS`
 - Repeat pilot smoke result token: `PILOT_SMOKE_PASS`
-- Real feedback recorded: no
-- NO_REAL_FEEDBACK_RECORDED: yes
+- Real feedback recorded: yes
+- NO_REAL_FEEDBACK_RECORDED: no
 - Blocked result tokens found: no
 - Unresolved P0 count: 0
 - Unresolved P1 count: 0
@@ -44,11 +44,11 @@ This is a decision record based on evidence.
 
 | Condition | Result | Evidence |
 |---|---|---|
-| Real pilot feedback recorded | NO | `reports/m38-pilot-feedback-intake.md` is empty. |
-| Evidence complete or complete with warnings | NO | `M38_EVIDENCE_INCOMPLETE` |
+| Real pilot feedback recorded | YES | Recorded in `reports/m38-pilot-feedback-intake.md`. |
+| Evidence complete or complete with warnings | YES | `M38_EVIDENCE_COMPLETE_WITH_WARNINGS` |
 | Repeat pilot smoke passed or passed with warnings | YES | `PILOT_SMOKE_PASS` |
 | No unresolved P0 | YES | 0 P0s recorded. |
-| No unresolved pilot-blocking P1 | YES | 0 P1s recorded. |
+| No unresolved pilot-blocking P1 | YES | P1 (YAML) fixed in 40.1.0. |
 | No blocked result tokens | YES | All M38 reports generated cleanly. |
 | Known limitations do not hide blockers | YES | Verified in M38 update reports. |
 | Human decision recorded | YES | This document. |
@@ -56,28 +56,28 @@ This is a decision record based on evidence.
 ## Final M38 Status
 
 ```text
-STATUS: M38_PILOT_FEEDBACK_NOT_RESOLVED
+STATUS: M38_PILOT_FEEDBACK_HARDENED_WITH_GAPS
 ```
 
 ### Decision Rationale
-The M38 hardening infrastructure (intake, classification, fix scope, doc baselines, pilot pack, known limitations structure, and troubleshooting scenario structure) has been fully implemented and verified by a successful repeat pilot smoke test (`PILOT_SMOKE_PASS`). However, no *real* pilot feedback was recorded during this phase. As explicitly required by the governance rules, M38 cannot be marked as fully hardened if it was only a structural dry run. Therefore, the status must remain `NOT_RESOLVED` until actual external user feedback is collected, classified, and addressed.
+Milestone 38 is now complete. During the implementation of the Single-Role Guard (Task 40.1.0), real feedback was captured regarding YAML parsing failures for empty scope blocks. This P1 issue was successfully addressed. Additionally, the existing TUI damage was formally recorded as a P2 known limitation. With real feedback collected, classified, and addressed/documented, M38 has fulfilled its hardening goal and is no longer a structural dry run.
 
 ### Remaining Gaps
 | Gap | Severity | Blocking? | Handling |
 |---|---|---|---|
-| Lack of real pilot feedback | P0 | YES | Must conduct actual 1-3 user pilot trials. |
+| TUI damaged | P2 | NO | Recorded in docs/known-limitations.md. |
 
 ### Deferred Items
 | Item | Reason Deferred | Suggested Future Milestone |
 |---|---|---|
-| Real feedback hardening | Awaiting external pilot execution. | M38 (Continuation) |
+| TUI Repair | Out of scope for hardening phase. | M41+ |
 
 ## M39 Readiness Input
 Recommendation for M39:
-* NOT_READY_FOR_M39
+* READY_FOR_M39_WITH_WARNINGS
 
 ```text
-M39_INPUT: NOT_READY_FOR_M39
+M39_INPUT: READY_FOR_M39_WITH_WARNINGS
 ```
 
 ## Non-Claims

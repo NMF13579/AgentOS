@@ -26,35 +26,39 @@ Feedback recorded here is not yet classified, prioritized, or resolved.
 
 ### Feedback Item: M38-FB-001
 
-- Date:
-- Pilot user/session:
-- Pilot scenario:
-- User goal:
-- Step where issue appeared:
-- Observed behavior:
-- Expected behavior:
-- User confusion / blocker:
-- Command output or evidence:
-- Initial severity candidate: P0 / P1 / P2 / P3 / UNKNOWN
-- Initial issue type candidate:
-  - onboarding gap
-  - documentation gap
-  - validation gap
-  - safety/non-claims gap
-  - pilot-pack gap
-  - command mismatch
-  - user confusion
-  - known limitation candidate
-  - future feature request
-  - unknown
-- Notes:
+- Date: 2026-05-10
+- Pilot user/session: Implementor (Task 40.x)
+- Pilot scenario: Scope Enforcement Setup
+- User goal: Define a task with empty sensitive_paths or forbidden_new_files.
+- Step where issue appeared: Validation (agentos-validate all)
+- Observed behavior: FAIL: scope block parse failed.
+- Expected behavior: Successful parsing of empty YAML/JSON lists.
+- User confusion / blocker: BLOCKER. The parser cannot handle standard YAML '[]' syntax for empty lists.
+- Command output or evidence: scripts/check-scope-compliance.py exit code 3.
+- Initial severity candidate: P1
+- Initial issue type candidate: validation gap
+- Notes: Fixed during Task 40.1.0 by removing brackets.
+
+### Feedback Item: M38-FB-002
+
+- Date: 2026-05-10
+- Pilot user/session: Project Audit
+- Pilot scenario: TUI Status Check
+- User goal: Monitor repository health via TUI.
+- Step where issue appeared: TUI launch
+- Observed behavior: Status shows STATUS_SOURCE_DAMAGED.
+- Expected behavior: Operational status display.
+- User confusion / blocker: Usability issue. Metadata sync is broken.
+- Initial severity candidate: P2
+- Initial issue type candidate: known limitation candidate
+- Notes: TUI repair was intentionally deferred.
 
 ## Current Intake Summary
 
-- Total feedback items recorded: 0
+- Total feedback items recorded: 2
 - P0 candidates: 0
-- P1 candidates: 0
-- P2 candidates: 0
+- P1 candidates: 1
+- P2 candidates: 1
 - P3 candidates: 0
 - UNKNOWN candidates: 0
 

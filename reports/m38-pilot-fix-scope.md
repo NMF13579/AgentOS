@@ -27,13 +27,13 @@ This report does not apply fixes. It only defines what later M38 tasks are allow
 ## Classification Summary
 
 - P0 items: 0
-- P1 items: 0
-- P2 items: 0
+- P1 items: 1
+- P2 items: 1
 - P3 items: 0
 - UNKNOWN items: 0
-- No real feedback recorded: YES
+- No real feedback recorded: NO
 
-**Status:** `NO_REAL_FEEDBACK_RECORDED`
+**Status:** `FIX_SCOPE_DEFINED`
 
 ## Must Fix Before M38 Completion
 
@@ -41,13 +41,12 @@ This report does not apply fixes. It only defines what later M38 tasks are allow
 
 | Feedback ID | Issue | Required Fix Area | Allowed Later Task | Notes |
 |---|---|---|---|---|
-| NONE | | | | |
 
 ### P1 Fix Scope
 
 | Feedback ID | Issue | Required Fix Area | Allowed Later Task | Notes |
 |---|---|---|---|---|
-| NONE | | | | |
+| M38-FB-001 | YAML Parse Error | scripts/ | 40.1.0 | Fixed by removing [] from YAML. |
 
 ## May Fix If Cheap
 
@@ -55,7 +54,7 @@ This report does not apply fixes. It only defines what later M38 tasks are allow
 
 | Feedback ID | Issue | Proposed Low-Cost Fix | Allowed Later Task | Defer If |
 |---|---|---|---|---|
-| NONE | | | | |
+| M38-FB-002 | TUI Damaged | Record in Limitations | 38.6.1 | Complex repair needed. |
 
 ## Deferred Items
 

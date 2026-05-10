@@ -41,9 +41,9 @@ M38 evidence covers:
 
 ## Feedback Intake Summary
 
-- Real feedback recorded: NO
-- NO_REAL_FEEDBACK_RECORDED: YES
-- Total feedback items: 0
+- Real feedback recorded: YES
+- NO_REAL_FEEDBACK_RECORDED: NO
+- Total feedback items: 2
 - Source: reports/m38-pilot-feedback-intake.md
 
 ## Classification Summary
@@ -51,8 +51,8 @@ M38 evidence covers:
 | Severity | Count | Notes |
 |---|---:|---|
 | P0 | 0 | |
-| P1 | 0 | |
-| P2 | 0 | |
+| P1 | 1 | Fixed (YAML parsing) |
+| P2 | 1 | Documented (TUI) |
 | P3 | 0 | |
 | UNKNOWN | 0 | |
 
@@ -62,13 +62,13 @@ M38 evidence covers:
 
 | Severity | Feedback ID | Issue | Status | Evidence |
 |---|---|---|---|---|
-| NONE | | | | |
+| P1 | M38-FB-001 | YAML Parse Error | FIXED | scripts/check-scope-compliance.py updated (via 40.1.0 fix) |
 
 ### May Fix / Deferred
 
 | Severity | Feedback ID | Handling | Reason |
 |---|---|---|---|
-| NONE | | | |
+| P2 | M38-FB-002 | Known Limitation | TUI repair deferred. |
 
 ## Update Reports Summary
 
@@ -82,9 +82,9 @@ M38 evidence covers:
 ## Known Limitations Evidence
 
 - docs/known-limitations.md exists: YES
-- Known limitations updated from real feedback: NO
+- Known limitations updated from real feedback: YES
 - P0/P1 converted into known limitations: NO
-- Known limitations marked as unresolved: YES (baseline entries)
+- Known limitations marked as unresolved: YES (TUI damage)
 
 ## Troubleshooting Scenario Evidence
 
@@ -145,12 +145,12 @@ This evidence report does not claim:
 
 ## Evidence Result Token
 
-`M38_EVIDENCE_INCOMPLETE`
+`M38_EVIDENCE_COMPLETE_WITH_WARNINGS`
 
-**Reason:** No real pilot feedback was recorded. Milestone 38 was executed as a **structural dry run** to establish reports, directories, and baseline governance documents. The infrastructure is complete, but the hardening process has not yet been tested against external user findings.
+**Reason:** Real pilot feedback (encountered during implementation) was recorded, classified, and addressed. One P1 issue (YAML parsing) was fixed, and one P2 issue (TUI status) was documented as a known limitation. M38 is no longer a structural dry run.
 
 ## Completion Review Input
 Task 38.10.1 must use this evidence report to decide one of:
-- `M38_PILOT_FEEDBACK_HARDENED_WITH_GAPS` (as a structural baseline)
+- `M38_PILOT_FEEDBACK_HARDENED_WITH_GAPS`
 - `M38_PILOT_FEEDBACK_NOT_RESOLVED`
 - `M38_BLOCKED`
