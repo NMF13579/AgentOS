@@ -1,0 +1,49 @@
+rules:
+  - id: no_premature_readiness
+    type: generation_guard
+    priority: critical
+    description: >
+      Prevent agents from generating readiness claims that bypass completion review.
+      Operates at generation-time before output is returned.
+    
+    forbidden_patterns:
+      - "система готова к ..."
+      - "готов к использованию"
+      - "готов к пилоту"
+      - "готов к продакшену"
+      - "ready for use"
+      - "ready for deployment"
+      - "production-ready"
+      - "public MVP ready"
+      - "the system is ready"
+    
+    required_token_presence:
+      condition: "Allowed ONLY if explicitly stated with a valid completion review result token."
+      allowed_tokens:
+        M37: ["M37_PILOT_READY"]
+        M38: ["M38_PILOT_FEEDBACK_HARDENED", "M38_PILOT_FEEDBACK_HARDENED_WITH_GAPS"]
+        M39: ["M39_PUBLIC_MVP_READY", "M39_PUBLIC_MVP_READY_WITH_GAPS"]
+    
+    replacement_behavior:
+      pattern: "система готова к X"
+      rewrite: "система соответствует условиям для рассмотрения на этапе completion review (X)"
+    
+    context_aware_overrides:
+      triggers: ["BLOCKED", "FAIL", "INCOMPLETE"]
+      rewrite: "готовность не может быть заявлена из-за наличия блокеров или неуспешной валидации"
+    
+    allowed_safe_language:
+      - "candidate"
+      - "ready for review"
+      - "can be evaluated"
+      - "подлежит рассмотрению"
+      - "requires completion review"
+    
+    self_check_step:
+      check: "Does output contain 'ready' or 'готов'?"
+      if_yes: "Verify token presence. If no token -> rewrite according to replacement_behavior."
+    
+    severity:
+      missing_token: "HARD BLOCK"
+      safe_rewrite_possible: "AUTO-REWRITE"
+      contradiction_exists: "FAIL (e.g. FAIL + 'ready')"

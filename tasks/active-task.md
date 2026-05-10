@@ -49,12 +49,15 @@ scope_control:
   allowed_new_files:
     - scripts/check-readiness-assertions.py
     - reports/governance-claim-guard-report.md
+    - reports/m37-agent-rule-guard-report.md
   forbidden_new_files:
   allow_modify_existing: true
   allow_deletes: false
   allow_renames: false
   sensitive_paths:
     - scripts/agentos-validate.py
+    - core-rules/MAIN.md
+    - quality/MAIN.md
 ---
 
 # Task 37.11.0 — Governance Claim Guard (Readiness Assertions)
