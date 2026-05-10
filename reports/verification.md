@@ -1,6 +1,6 @@
 ---
 verification:
-  task_id: task-m22-gate-contract-artifacts
+  task_id: task-m36-6-0-scope-control-maintenance
   gate_1:
     name: structure
     status: TODO
