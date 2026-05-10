@@ -69,6 +69,7 @@ scope_control:
     - tests/fixtures/pilot-smoke/README.md
     - reports/m37-pilot-smoke-report.md
     - reports/m37-pilot-readiness-evidence-report.md
+    - reports/m37-completion-review.md
   forbidden_new_files:
   allow_modify_existing: true
   allow_deletes: false
