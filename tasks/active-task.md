@@ -1,45 +1,47 @@
 ---
-task_id: task-m38-9-1-evidence-report
-task_number: "38.9.1"
-task_name: M38 Pilot Feedback Evidence Report
+task_id: task-m38-10-1-completion-review
+task_number: "38.10.1"
+task_name: M38 Completion Review
 milestone: M38
 state: completed
 mode: EXECUTION
 repository: AgentOS
 branch: dev
 task:
-  id: task-m38-9-1-evidence-report
+  id: task-m38-10-1-completion-review
   goal: >
-    Create the M38 pilot feedback evidence report summarizing all M38 hardening evidence.
-    Show what feedback was collected, classified, scoped, updated, and deferred.
+    Make the final M38 decision based only on M38 evidence.
+    Determine if pilot feedback was hardened, or if the milestone remains a structural dry run.
   expected_result: >
-    reports/m38-pilot-feedback-evidence-report.md created, providing the evidentiary basis for M38 completion.
+    reports/m38-completion-review.md created with a final M38 status and M39 readiness impact.
   in_scope:
-    - reports/m38-pilot-feedback-evidence-report.md
+    - reports/m38-completion-review.md
   out_of_scope:
     - modifying docs
     - modifying code
+    - modifying existing reports
   files_or_areas:
     - reports/
   risk_level: LOW
-  risk_reason: "Analytical evidence aggregation task."
+  risk_reason: "Decision record task only."
   requires_owner_approval: false
   rollback_plan: "Delete the created report."
   acceptance_criteria:
-    - "reports/m38-pilot-feedback-evidence-report.md exists"
-    - "includes classification and fix scope summaries"
-    - "includes repeat pilot smoke summary"
+    - "reports/m38-completion-review.md exists"
+    - "review owner recorded"
+    - "M38 final status recorded"
+    - "no-real-feedback prevents HARDENED status"
   verification_plan:
     - "python3 scripts/agentos-validate.py all"
 scope_control:
   allowed_paths:
     - tasks/active-task.md
     - reports/
-    - docs/
-    - examples/pilot-scenarios/
   forbidden_paths:
     - scripts/
     - schemas/
+    - docs/
+    - examples/
   allow_new_files: true
   allowed_new_files:
     - reports/m38-pilot-feedback-intake.md
@@ -51,6 +53,7 @@ scope_control:
     - reports/m38-pilot-troubleshooting-scenarios-report.md
     - reports/m38-repeat-pilot-smoke.md
     - reports/m38-pilot-feedback-evidence-report.md
+    - reports/m38-completion-review.md
   forbidden_new_files:
   allow_modify_existing: true
   allow_deletes: false
@@ -58,4 +61,4 @@ scope_control:
   sensitive_paths:
 ---
 
-# Task 38.9.1 — M38 Pilot Feedback Evidence Report
+# Task 38.10.1 — M38 Completion Review
