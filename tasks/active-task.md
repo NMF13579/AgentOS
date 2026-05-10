@@ -55,7 +55,7 @@ scope_control:
   allow_modify_existing: true
   allow_deletes: false
   allow_renames: false
-  sensitive_paths: []
+  sensitive_paths:
 ---
 
 # Task 38.9.1 — M38 Pilot Feedback Evidence Report
