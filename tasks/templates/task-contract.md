@@ -1,6 +1,6 @@
 ---
 task:
-  id: "task-template"
+  id: "{{TASK_ID}}"
   goal: "TODO"
   expected_result: "TODO"
   in_scope:

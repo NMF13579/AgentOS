@@ -30,6 +30,10 @@ jobs:
         run: |
           mkdir -p reports/ci
 
+      - name: Sync Task IDs
+        run: |
+          python scripts/sync-task-ids.py
+
       - name: Run AgentOS validate (human-readable)
         id: validate_human
         continue-on-error: true
