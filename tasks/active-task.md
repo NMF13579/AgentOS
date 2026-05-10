@@ -1,36 +1,36 @@
 ---
-task_id: task-m39-7-1-evidence-report
-task_number: "39.7.1"
-task_name: Public MVP Readiness Evidence Report
+task_id: task-m39-8-1-completion-review
+task_number: "39.8.1"
+task_name: M39 Completion Review
 milestone: M39
 state: completed
 mode: EXECUTION
 repository: AgentOS
 branch: dev
 task:
-  id: task-m39-7-1-evidence-report
+  id: task-m39-8-1-completion-review
   goal: >
-    Create the M39 public MVP readiness evidence report summarizing all M39 signals.
-    Show freeze scope, docs pass, non-claims, metadata, smoke, and audit results.
+    Make the final M39 decision based only on M39 evidence.
+    Determine if AgentOS is ready for public MVP evaluation.
   expected_result: >
-    reports/m39-public-mvp-readiness-evidence-report.md created with result M39_PUBLIC_MVP_EVIDENCE_COMPLETE_WITH_WARNINGS.
+    reports/m39-completion-review.md created with result M39_PUBLIC_MVP_READY_WITH_GAPS.
   in_scope:
-    - reports/m39-public-mvp-readiness-evidence-report.md
+    - reports/m39-completion-review.md
     - tasks/active-task.md
   out_of_scope:
     - modifying docs
     - modifying code
-    - creating completion review
+    - creating M40 artifacts
   files_or_areas:
     - reports/
   risk_level: LOW
-  risk_reason: "Analytical evidence consolidation task."
+  risk_reason: "Decision record task only."
   requires_owner_approval: false
   rollback_plan: "Delete the created report."
   acceptance_criteria:
-    - "reports/m39-public-mvp-readiness-evidence-report.md exists"
-    - "includes summaries of all M39 reports"
-    - "includes final smoke and audit results"
+    - "reports/m39-completion-review.md exists"
+    - "review owner recorded"
+    - "M39 final status recorded"
   verification_plan:
     - "python3 scripts/agentos-validate.py all"
 scope_control:
@@ -47,7 +47,7 @@ scope_control:
     - schemas/
   allow_new_files: true
   allowed_new_files:
-    - reports/m39-public-mvp-readiness-evidence-report.md
+    - reports/m39-completion-review.md
   forbidden_new_files:
   allow_modify_existing: true
   allow_deletes: false
@@ -58,7 +58,7 @@ execution_role:
   role: maintainer
   mode: maintenance_scoped
   allowed_write_paths:
-    - reports/m39-public-mvp-readiness-evidence-report.md
+    - reports/m39-completion-review.md
     - tasks/active-task.md
   forbidden_write_paths:
     - src/
@@ -69,4 +69,4 @@ execution_role:
   may_create_handoff: true
 ---
 
-# Task 39.7.1 — Public MVP Readiness Evidence Report
+# Task 39.8.1 — M39 Completion Review
