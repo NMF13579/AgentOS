@@ -75,4 +75,4 @@ Ask for review when you see a **BLOCKED** status or if you need to modify core A
 - Do not treat PASS as release approval.
 
 ## 15. Non-claims
-M36 usage does not include web UI, cloud/server platform, IDE plugins, or multi-agent orchestration.
+Public MVP candidate usage does not include web UI, cloud/server platform, IDE plugins, or multi-agent orchestration.

@@ -2,6 +2,8 @@
 
 Welcome to AgentOS! This guide will help you verify your setup and start your first task.
 
+**Current Stage:** Milestone 39 — Public MVP Release Candidate.
+
 If you have not yet installed AgentOS into your project, please complete the steps in the [Installation Guide](installation.md) first.
 
 ## 1. Verify Your Setup (First Validation)

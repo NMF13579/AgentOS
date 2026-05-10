@@ -1,118 +1,87 @@
 ---
-task_id: task-m40-single-role-guard-mvp
-task_number: "40.1.0"
-task_name: Single-Role Execution Guard MVP
-milestone: M40
+task_id: task-m39-2-1-docs-pass
+task_number: "39.2.1"
+task_name: Final Documentation Consistency Pass
+milestone: M39
 state: completed
 mode: EXECUTION
 repository: AgentOS
 branch: dev
 task:
-  id: task-m40-single-role-guard-mvp
+  id: task-m39-2-1-docs-pass
   goal: >
-    Implement Single-Role Execution Guard to prevent role mixing (e.g. Auditor + Implementor).
-    Ensure each agent execution operates under exactly one declared role with clear boundaries.
+    Review and minimally update first-user documentation (README, quickstart, first-user-guide, troubleshooting) 
+    so it is consistent with M39 freeze scope and does not make unsupported claims.
   expected_result: >
-    Policy created, schema defined, checker script implemented, fixtures added, and integrated into validation flow.
+    reports/m39-final-docs-pass-report.md created, documenting the consistency review and any minimal corrections.
   in_scope:
-    - docs/SINGLE-ROLE-EXECUTION-POLICY.md
-    - schemas/execution-role.schema.json
-    - scripts/check-single-role-execution.py
-    - tests/fixtures/single-role-execution/
-    - templates/role-handoff-request.md
-    - reports/m40-single-role-execution-evidence-report.md
-    - scripts/agentos-validate.py
+    - README.md
+    - docs/quickstart.md
+    - docs/first-user-guide.md
+    - docs/troubleshooting.md
+    - reports/m39-final-docs-pass-report.md
     - tasks/active-task.md
   out_of_scope:
-    - multi-agent orchestration
-    - automatic role switching
+    - pilot pack files
+    - known limitations files
+    - versioning files
+    - modifying scripts
   files_or_areas:
     - docs/
-    - schemas/
-    - scripts/
-    - tests/fixtures/
-    - templates/
     - reports/
-  risk_level: MEDIUM
-  risk_reason: "Changes core validation flow and adds new enforcement rules."
+  risk_level: LOW
+  risk_reason: "Safe documentation polish and consistency check."
   requires_owner_approval: false
-  rollback_plan: "Git restore modified files."
+  rollback_plan: "Git restore modified documentation files."
   acceptance_criteria:
-    - "Checker script correctly identifies role/scope violations"
-    - "Maintainer cannot self-modify role authority"
-    - "Implementor cannot weaken own verification authority"
-    - "Integrated into agentos-validate.py"
+    - "reports/m39-final-docs-pass-report.md exists"
+    - "No unsupported claims found in reviewed docs"
+    - "M39 described as freeze/readiness, not public release"
   verification_plan:
-    - "python3 scripts/check-single-role-execution.py tasks/active-task.md"
-    - "python3 scripts/test-single-role-execution-fixtures.py"
+    - "grep -REi \"...\" README.md docs/quickstart.md docs/first-user-guide.md docs/troubleshooting.md"
     - "python3 scripts/agentos-validate.py all"
-execution_role:
-  role: maintainer
-  mode: maintenance_scoped
-  allowed_write_paths:
-    - docs/SINGLE-ROLE-EXECUTION-POLICY.md
-    - schemas/execution-role.schema.json
-    - scripts/check-single-role-execution.py
-    - tests/fixtures/single-role-execution/
-    - templates/role-handoff-request.md
-    - reports/m40-single-role-execution-evidence-report.md
-    - scripts/agentos-validate.py
-    - tasks/active-task.md
-    - scripts/test-single-role-execution-fixtures.py
-  forbidden_write_paths:
-    - src/
-  may_modify_files: true
-  may_approve: false
-  may_change_task_state: true
-  may_create_handoff: true
 scope_control:
   allowed_paths:
     - tasks/active-task.md
     - reports/
-    - docs/
-    - templates/
-    - tests/fixtures/single-role-execution/
-    - schemas/execution-role.schema.json
-    - scripts/check-single-role-execution.py
-    - scripts/agentos-validate.py
-    - scripts/test-single-role-execution-fixtures.py
     - README.md
-    - docs/guardrails.md
-    - docs/architecture.md
+    - docs/quickstart.md
+    - docs/first-user-guide.md
+    - docs/troubleshooting.md
   forbidden_paths:
     - src/
+    - scripts/
+    - schemas/
+    - docs/pilot-scope.md
+    - docs/pilot-safety-boundaries.md
+    - docs/pilot-onboarding.md
+    - docs/known-limitations.md
   allow_new_files: true
   allowed_new_files:
-    - docs/SINGLE-ROLE-EXECUTION-POLICY.md
-    - schemas/execution-role.schema.json
-    - scripts/check-single-role-execution.py
-    - templates/role-handoff-request.md
-    - reports/m40-single-role-execution-evidence-report.md
-    - scripts/test-single-role-execution-fixtures.py
-    - tests/fixtures/single-role-execution/valid/valid-auditor-readonly-report-only.md
-    - tests/fixtures/single-role-execution/valid/valid-implementor-scoped-write.md
-    - tests/fixtures/single-role-execution/valid/valid-planner-plan-only.md
-    - tests/fixtures/single-role-execution/valid/valid-tutor-explain-only.md
-    - tests/fixtures/single-role-execution/valid/valid-researcher-research-only.md
-    - tests/fixtures/single-role-execution/valid/valid-maintainer-maintenance-scoped.md
-    - tests/fixtures/single-role-execution/invalid/invalid-missing-execution-role.md
-    - tests/fixtures/single-role-execution/invalid/invalid-unknown-role.md
-    - tests/fixtures/single-role-execution/invalid/invalid-auditor-with-scoped-write.md
-    - tests/fixtures/single-role-execution/invalid/invalid-broad-write-path-root.md
-    - tests/fixtures/single-role-execution/invalid/invalid-role-scope-too-many-paths.md
-    - tests/fixtures/single-role-execution/invalid/invalid-maintainer-self-policy-edit.md
-    - tests/fixtures/single-role-execution/changed-files/auditor-report-only-pass.txt
-    - tests/fixtures/single-role-execution/changed-files/auditor-modifies-src-fail.txt
-    - tests/fixtures/single-role-execution/changed-files/implementor-in-scope-pass.txt
-    - tests/fixtures/single-role-execution/changed-files/implementor-modifies-validator-needs-review.txt
-    - tests/fixtures/single-role-execution/changed-files/maintainer-self-policy-edit-fail.txt
-    - tests/fixtures/single-role-execution/changed-files/maintainer-normal-doc-pass.txt
+    - reports/m39-final-docs-pass-report.md
   forbidden_new_files:
   allow_modify_existing: true
   allow_deletes: false
   allow_renames: false
   sensitive_paths:
     - scripts/agentos-validate.py
+execution_role:
+  role: maintainer
+  mode: maintenance_scoped
+  allowed_write_paths:
+    - README.md
+    - docs/quickstart.md
+    - docs/first-user-guide.md
+    - docs/troubleshooting.md
+    - reports/m39-final-docs-pass-report.md
+    - tasks/active-task.md
+  forbidden_write_paths:
+    - src/
+    - scripts/
+  may_modify_files: true
+  may_approve: false
+  may_change_task_state: true
+  may_create_handoff: true
 ---
 
-# Task 40.1.0 — Single-Role Execution Guard MVP
+# Task 39.2.1 — Final Documentation Consistency Pass

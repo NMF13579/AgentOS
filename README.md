@@ -172,13 +172,15 @@ AgentOS does not aim to be:
 - A RAG platform
 - A general-purpose orchestration platform
 - A replacement for human review
-- A release checklist (in this milestone)
 
 ## Current Status
 
-**Current milestone:** 7.4 Docs Hardening
+**Current milestone:** M39 Release Candidate Freeze
 
 **Previously completed:**
+- Milestone 37: External Pilot Readiness
+- Milestone 38: Pilot Feedback Hardening
+- Single-Role Execution Guard MVP
 - Template Integrity – validates required project structure
 - Negative Fixtures – ensures invalid inputs are rejected
 - Guard Failure Runner – aggregates guard and failure checks
