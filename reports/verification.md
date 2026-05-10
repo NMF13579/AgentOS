@@ -1,6 +1,6 @@
 ---
 verification:
-  task_id: task-m36-6-0-scope-control-maintenance
+  task_id: task-m39-8-1-completion-review
   gate_1:
     name: structure
     status: TODO
