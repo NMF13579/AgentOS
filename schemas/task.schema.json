@@ -76,6 +76,41 @@
       "type": "string",
       "minLength": 1
     },
+    "execution_role": {
+      "type": "object",
+      "required": [
+        "role",
+        "mode",
+        "allowed_write_paths",
+        "forbidden_write_paths",
+        "may_modify_files",
+        "may_approve",
+        "may_change_task_state",
+        "may_create_handoff"
+      ],
+      "properties": {
+        "role": {
+          "type": "string",
+          "enum": ["planner", "implementor", "auditor", "verifier", "tutor", "researcher", "maintainer"]
+        },
+        "mode": {
+          "type": "string",
+          "enum": ["read_only", "scoped_write", "explain_only", "research_only", "maintenance_scoped"]
+        },
+        "allowed_write_paths": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "forbidden_write_paths": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "may_modify_files": { "type": "boolean" },
+        "may_approve": { "type": "boolean" },
+        "may_change_task_state": { "type": "boolean" },
+        "may_create_handoff": { "type": "boolean" }
+      }
+    },
     "task": {
       "type": "object",
       "additionalProperties": false,
