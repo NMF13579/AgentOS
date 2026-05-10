@@ -1,62 +1,53 @@
 ---
-task_id: task-m39-4-1-metadata
-task_number: "39.4.1"
-task_name: Version / Changelog / Release Notes
+task_id: task-m39-5-1-final-smoke
+task_number: "39.5.1"
+task_name: M39 Final Smoke
 milestone: M39
 state: completed
 mode: EXECUTION
 repository: AgentOS
 branch: dev
 task:
-  id: task-m39-4-1-metadata
+  id: task-m39-5-1-final-smoke
   goal: >
-    Create or update release candidate metadata for M39: VERSION, CHANGELOG.md, and docs/release-notes.md.
-    Clearly distinguish the release candidate from final public release completion.
+    Run a final smoke check for M39 Release Candidate usability and safety signals.
+    Verify all reports, metadata, and docs exist and are free of unsupported claims.
   expected_result: >
-    Release metadata files created or updated; reports/m39-version-changelog-release-notes-report.md created.
+    reports/m39-final-smoke.md created with result M39_FINAL_SMOKE_PASS.
   in_scope:
-    - VERSION
-    - CHANGELOG.md
-    - docs/release-notes.md
-    - reports/m39-version-changelog-release-notes-report.md
+    - reports/m39-final-smoke.md
     - tasks/active-task.md
   out_of_scope:
-    - modifying first-user docs
-    - modifying scripts
-    - running smoke tests
+    - modifying docs
+    - modifying code
+    - running final audit
   files_or_areas:
-    - docs/
     - reports/
-    - .
   risk_level: LOW
-  risk_reason: "Safe release metadata preparation."
+  risk_reason: "Read-only verification smoke test."
   requires_owner_approval: false
-  rollback_plan: "Git restore modified metadata files."
+  rollback_plan: "Delete the created report."
   acceptance_criteria:
+    - "reports/m39-final-smoke.md exists"
     - "VERSION uses rc format"
-    - "CHANGELOG.md includes M39 entry"
-    - "docs/release-notes.md exists"
-    - "no unsupported claims found in metadata"
+    - "no unsupported claims found in public docs"
   verification_plan:
-    - "grep -Eq \"^[0-9]+\\.[0-9]+\\.[0-9]+-rc\\.[0-9]+$\" VERSION"
     - "python3 scripts/agentos-validate.py all"
 scope_control:
   allowed_paths:
     - tasks/active-task.md
     - reports/
-    - docs/
+    - README.md
     - VERSION
     - CHANGELOG.md
+    - docs/
   forbidden_paths:
     - src/
     - scripts/
     - schemas/
   allow_new_files: true
   allowed_new_files:
-    - VERSION
-    - CHANGELOG.md
-    - docs/release-notes.md
-    - reports/m39-version-changelog-release-notes-report.md
+    - reports/m39-final-smoke.md
   forbidden_new_files:
   allow_modify_existing: true
   allow_deletes: false
@@ -67,10 +58,7 @@ execution_role:
   role: maintainer
   mode: maintenance_scoped
   allowed_write_paths:
-    - VERSION
-    - CHANGELOG.md
-    - docs/release-notes.md
-    - reports/m39-version-changelog-release-notes-report.md
+    - reports/m39-final-smoke.md
     - tasks/active-task.md
   forbidden_write_paths:
     - src/
@@ -81,4 +69,4 @@ execution_role:
   may_create_handoff: true
 ---
 
-# Task 39.4.1 — Version / Changelog / Release Notes
+# Task 39.5.1 — M39 Final Smoke
