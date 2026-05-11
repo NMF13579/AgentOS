@@ -136,3 +136,40 @@ Milestone 12 hardening and audit close-out are completed and pushed to `origin/d
 
 Milestone 12 is closed with amended PASS status in reports.
 Next conceptual stage: Milestone 13 — Controlled Execution Runner.
+
+---
+
+## Amendment
+
+### Timestamp
+
+- 2026-05-11 06:01:33 +05
+
+### Updated Status
+
+- Cleanup of duplicate templates completed.
+- Studied and documented the process of AgentOS installation into a new project.
+
+### New Completed Work (since previous handoff)
+
+- Cleaned up duplicate template files ending with ` 3.md` that were accidentally copied.
+- Added cleanup script `cleanup-templates.sh`.
+- Investigated `docs/installation.md` and `install.sh` to summarize the new project installation process for the user.
+- Fixed commit hook validation issues by generating compliant commit message in `commit-msg.txt`.
+
+### Commits
+
+- `cf05af2` — `chore(templates): remove duplicate templates and add cleanup script`
+
+### Verification Snapshot
+
+- `git push`: origin/dev updated successfully after rebase.
+
+### Current Workspace State
+
+- Branch `dev` pushed to `origin/dev`.
+- Working tree clean.
+
+### Next
+
+- Awaiting next user instructions.

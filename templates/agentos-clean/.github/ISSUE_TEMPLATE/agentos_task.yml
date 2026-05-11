@@ -1,0 +1,43 @@
+name: AgentOS Task Request
+description: Create a simple AgentOS task request.
+title: "[AgentOS Task]: "
+labels: ["agentos-task"]
+body:
+  - type: textarea
+    id: goal
+    attributes:
+      label: What do you want AgentOS to help with?
+      description: Describe the task in normal language.
+      placeholder: "Example: Improve README with a short usage section."
+    validations:
+      required: true
+
+  - type: textarea
+    id: dont_touch
+    attributes:
+      label: What should AgentOS not touch?
+      description: Optional. List files or areas that must stay unchanged.
+      placeholder: "Example: Do not modify CI, secrets, deployment, database."
+    validations:
+      required: false
+
+  - type: dropdown
+    id: risk
+    attributes:
+      label: Risk level
+      options:
+        - LOW
+        - MEDIUM
+        - HIGH
+        - UNKNOWN
+    validations:
+      required: true
+
+  - type: textarea
+    id: validation
+    attributes:
+      label: How should success be checked?
+      description: Optional. Describe how to know the task is done.
+      placeholder: "Example: README has a Usage section and validation passes."
+    validations:
+      required: false
