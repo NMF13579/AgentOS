@@ -1,55 +1,83 @@
+#!/usr/bin/env python3
 import os
 import sys
+from pathlib import Path
 
 def check():
-    base_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
+    print('Checking AgentOS bootstrap readiness...')
+    repo_root = Path(__file__).resolve().parent.parent.parent
     
     checks = [
-        (os.path.exists(os.path.join(base_dir, "README.md")), "README.md exists"),
-        (os.path.exists(os.path.join(base_dir, ".agentos", "config.yml")), ".agentos/config.yml exists"),
-        (os.path.exists(os.path.join(base_dir, ".github", "ISSUE_TEMPLATE", "agentos_task.yml")), "Issue template exists"),
-        (os.path.exists(os.path.join(base_dir, ".github", "workflows", "agentos-bootstrap.yml")), "Bootstrap workflow exists"),
-        (os.path.exists(os.path.join(base_dir, "tasks")), "tasks/ exists"),
-        (os.path.exists(os.path.join(base_dir, "reports")), "reports/ exists"),
+        ('README.md', repo_root / 'README.md'),
+        ('.agentos/config.yml', repo_root / '.agentos/config.yml'),
+        ('Issue template', repo_root / '.github/ISSUE_TEMPLATE/agentos_task.yml'),
+        ('Bootstrap workflow', repo_root / '.github/workflows/agentos-bootstrap.yml'),
+        ('tasks/ directory', repo_root / 'tasks'),
+        ('reports/ directory', repo_root / 'reports'),
     ]
-    
-    config_path = os.path.join(base_dir, ".agentos", "config.yml")
-    if os.path.exists(config_path):
-        with open(config_path, 'r') as f:
-            content = f.read()
-            checks.append(("mode: simple" in content, "Mode is simple"))
-            checks.append(("full_mode_grants_extra_permissions: false" in content, "Full mode boundary enforced"))
 
-    workflow_path = os.path.join(base_dir, ".github", "workflows", "agentos-bootstrap.yml")
-    if os.path.exists(workflow_path):
-        with open(workflow_path, 'r') as f:
-            content = f.read()
-            checks.append(("contents: read" in content, "Workflow has read-only permission"))
-            checks.append(("contents: write" not in content, "Workflow does not have write permission"))
-            checks.append(("git commit" not in content, "Workflow does not commit"))
-            checks.append(("git push" not in content, "Workflow does not push"))
-
-    # Empty dirs check
-    for d in ["reports", "tasks/done", "tasks/failed"]:
-        full_path = os.path.join(base_dir, d)
-        if os.path.exists(full_path):
-            files = os.listdir(full_path)
-            checks.append((all(f == ".gitkeep" for f in files), f"Dir {d} is empty except .gitkeep"))
-
-    all_pass = True
-    for passed, msg in checks:
-        if not passed:
-            print(f"[FAIL] {msg}")
-            all_pass = False
+    passed = True
+    for label, path in checks:
+        if path.exists():
+            print(f'[PASS] {label} exists')
         else:
-            print(f"[PASS] {msg}")
-            
-    if all_pass:
-        print("BOOTSTRAP_READY")
-        sys.exit(0)
-    else:
-        print("BOOTSTRAP_NOT_READY")
+            print(f'[FAIL] {label} missing at {path}')
+            passed = False
+
+    if not passed:
+        print('BOOTSTRAP_NOT_READY')
         sys.exit(1)
 
-if __name__ == "__main__":
+    config_path = repo_root / '.agentos/config.yml'
+    config_text = config_path.read_text()
+    if 'mode: simple' in config_text:
+        print('[PASS] Mode is simple')
+    else:
+        print('[FAIL] Mode is not simple')
+        passed = False
+
+    if 'full_mode_grants_extra_permissions: false' in config_text:
+        print('[PASS] Full mode boundary enforced')
+    else:
+        print('[FAIL] Full mode boundary not enforced')
+        passed = False
+
+    workflow_path = repo_root / '.github/workflows/agentos-bootstrap.yml'
+    workflow_text = workflow_path.read_text()
+    if 'contents: read' in workflow_text:
+        print('[PASS] Workflow has read-only permission')
+    else:
+        print('[FAIL] Workflow missing read-only permission')
+        passed = False
+
+    if 'contents: write' in workflow_text:
+        print('[FAIL] Workflow has write permission')
+        passed = False
+    else:
+        print('[PASS] Workflow does not have write permission')
+
+    if 'git commit' in workflow_text or 'git push' in workflow_text:
+        print('[FAIL] Workflow contains mutating commands')
+        passed = False
+    else:
+        print('[PASS] Workflow does not commit or push')
+
+    for d in ['reports', 'tasks/done', 'tasks/failed']:
+        dir_path = repo_root / d
+        if dir_path.exists():
+            files = [f for f in os.listdir(dir_path) if f != '.gitkeep']
+            if files:
+                print(f'[FAIL] Dir {d} is not empty: {files}')
+                passed = False
+            else:
+                print(f'[PASS] Dir {d} is empty except .gitkeep')
+
+    if passed:
+        print('BOOTSTRAP_READY')
+        sys.exit(0)
+    else:
+        print('BOOTSTRAP_NOT_READY')
+        sys.exit(1)
+
+if __name__ == '__main__':
     check()

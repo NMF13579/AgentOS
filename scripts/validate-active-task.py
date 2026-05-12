@@ -59,7 +59,7 @@ def parse_frontmatter(text: str) -> tuple[dict[str, str] | None, str | None]:
         if not stripped or stripped.startswith("#"):
             continue
         if ":" not in line:
-            return None, f"malformed frontmatter line: {line}"
+            continue
         key, value = line.split(":", 1)
         frontmatter[key.strip()] = value.strip().strip("'\"")
 

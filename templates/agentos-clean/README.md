@@ -55,3 +55,10 @@ To learn more:
 
 - agentos/docs/use-template.md
 - agentos/docs/bootstrap.md
+
+Bootstrap validation runs automatically through GitHub Actions when available.
+
+To learn more:
+
+- agentos/docs/use-template.md
+- agentos/docs/bootstrap.md

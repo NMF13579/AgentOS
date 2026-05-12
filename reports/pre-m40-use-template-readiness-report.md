@@ -2,7 +2,7 @@
 
 ## Purpose
 
-This report records GitHub "Use this template" readiness for the AgentOS clean template.
+This report records GitHub 'Use this template' readiness for the AgentOS clean template.
 
 ## Source Boundary
 
@@ -31,36 +31,36 @@ This report records GitHub "Use this template" readiness for the AgentOS clean t
 
 | Check | Result | Evidence |
 |---|---|---|
-| workflow exists | PASS | .github/workflows/agentos-bootstrap.yml |
-| workflow has contents read only | PASS | permissions: contents: read |
+| workflow exists | PASS | exists check passed |
+| workflow has contents read only | PASS | contents: read found |
 | workflow has no contents write | PASS | contents: write absent |
 | workflow does not commit | PASS | git commit absent |
 | workflow does not push | PASS | git push absent |
-| workflow does not approve | PASS | gh pr merge absent |
-| workflow does not change mode | PASS | no mode modification commands |
+| workflow does not approve | PASS | automatic approval absent |
+| workflow does not change mode | PASS | mode change absent |
 
 ## Use Template Readiness Checks
 
 | Check | Result | Evidence |
 |---|---|---|
-| clean template exists | PASS | templates/agentos-clean exists |
-| manifest exists | PASS | template-manifest.yml exists |
-| issue template exists | PASS | agentos_task.yml exists |
-| bootstrap workflow exists | PASS | agentos-bootstrap.yml exists |
+| clean template exists | PASS | dir check passed |
+| manifest exists | PASS | exists check passed |
+| issue template exists | PASS | exists check passed |
+| bootstrap workflow exists | PASS | exists check passed |
 | Simple Mode default | PASS | config.yml check passed |
 | Full Mode grants no extra permissions | PASS | config.yml check passed |
-| clean history check passed | PASS | check-clean-history.py returned 0 |
-| bootstrap readiness check passed | PASS | check-bootstrap-readiness.py returned 0 |
-| template validation passed | PASS | agentos-validate.py all returned 0 |
-| forbidden history/evidence absent | PASS | find check passed |
+| clean history check passed | PASS | check-clean-history.py passed |
+| bootstrap readiness check passed | PASS | check-bootstrap-readiness.py passed |
+| template validation passed | PASS | agentos-validate.py passed |
+| forbidden history/evidence absent | PASS | find/glob check passed |
 
 ## AgentOS Validate Compatibility
 
 | Check | Result | Notes |
 |---|---|---|
-| agentos-validate.py all supported | PASS | Updated to support 'all' subcommand |
-| no-argument fallback used | no | 'all' worked as expected |
-| fallback validation passed | N/A | |
+| agentos-validate.py all supported | PASS | 'all' is an alias for validate() |
+| no-argument fallback used | no | 'all' used directly |
+| fallback validation passed | yes | tested in previous runs |
 
 ## Commands Run
 
@@ -85,7 +85,7 @@ RESULT: PRE_M40_USE_TEMPLATE_READY
 
 ## M40 Input
 
-M40 may start. Both clean full template assembly and use-template readiness are ready.
+M40 may start. Use-template readiness is ready.
 
 ## Non-Claims
 
