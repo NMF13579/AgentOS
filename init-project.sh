@@ -18,8 +18,10 @@ fi
 echo -e "\n${BOLD}AgentOS — New Project Init${RESET}"
 echo -e "Project: ${BLUE}${PROJECT_NAME}${RESET}\n"
 warn "This will reset all template data."
-read -rp "Continue? (yes/no): " CONFIRM
-[[ "$CONFIRM" != "yes" ]] && echo "Aborted." && exit 0
+if [[ "${2:-}" != "--yes" && "${CI:-}" != "true" ]]; then
+  read -rp "Continue? (yes/no): " CONFIRM
+  [[ "$CONFIRM" != "yes" ]] && echo "Aborted." && exit 0
+fi
 
 # 1. VERSION
 info "[1/8] VERSION → 0.1.0"
