@@ -2,6 +2,7 @@ name: Setup Repository
 on:
   push:
     branches: [main]
+  create:
 
 jobs:
   setup:
