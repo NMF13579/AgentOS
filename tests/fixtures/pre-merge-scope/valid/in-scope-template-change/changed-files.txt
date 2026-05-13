@@ -1,1 +1,0 @@
-A templates/new-template.md

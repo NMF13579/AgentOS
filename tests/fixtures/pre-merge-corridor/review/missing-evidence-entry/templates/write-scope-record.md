@@ -1,1 +1,0 @@
-# Write Scope Record Template

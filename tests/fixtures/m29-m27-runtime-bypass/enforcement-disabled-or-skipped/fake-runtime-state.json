@@ -1,7 +1,0 @@
-{
-  "fixture_only": true,
-  "enforcement_state_claim": "skipped",
-  "expected_policy": "must_block",
-  "signal_only": "no mechanism details",
-  "note": "fixture-only synthetic runtime state"
-}
