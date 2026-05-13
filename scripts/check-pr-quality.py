@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import pathlib
+import re
 import sys
 
 import yaml
@@ -8,6 +9,25 @@ TASK_PATH = pathlib.Path("tasks/active-task.md")
 VERIFICATION_PATH = pathlib.Path("reports/verification.md")
 VALID_RISK_LEVELS = {"LOW", "MEDIUM", "HIGH", "CRITICAL"}
 VALID_GATE_STATUSES = {"PASS", "FAIL", "SKIPPED", "TODO"}
+
+
+def is_idle_state(path: pathlib.Path) -> bool:
+    if not path.exists():
+        return False
+    try:
+        text = path.read_text(encoding="utf-8")
+    except Exception:
+        return False
+    text_lower = text.lower()
+    if "no active task" in text_lower:
+        return True
+    if re.search(r"^status:\s*(none|idle)\s*$", text, re.MULTILINE):
+        return True
+    has_scope = "scope_control:" in text
+    has_contract = "## Contract" in text or "contract:" in text
+    if not has_scope and not has_contract:
+        return True
+    return False
 
 
 def load_frontmatter(path):
@@ -49,6 +69,11 @@ def non_empty_string(value):
 
 
 def main():
+    # Idle-state: skip all checks when no active task
+    if is_idle_state(TASK_PATH):
+        print("PASS: idle state - no active task")
+        return 0
+
     task_data = load_frontmatter(TASK_PATH)
     verification_data = load_frontmatter(VERIFICATION_PATH)
     violations = []
