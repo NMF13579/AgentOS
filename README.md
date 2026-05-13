@@ -14,8 +14,9 @@ This creates a new clean repository with AgentOS already included.
 ### Setup for template owners
 
 To enable automatic project initialization when someone creates a new repository from this template:
-1. Create a Fine-Grained Personal Access Token (PAT) with `Contents: Write` permissions.
-2. Add it as an organization or repository secret named `AGENTOS_INIT_TOKEN`.
+1. In repository Settings -> Actions -> General, ensure "Workflow permissions" is set to "Read and write permissions".
+2. Create a Fine-Grained Personal Access Token (PAT) with `Contents: Write` permissions.
+3. Add it as an organization or repository secret named `AGENTOS_INIT_TOKEN`.
 
 ### Existing project
 
