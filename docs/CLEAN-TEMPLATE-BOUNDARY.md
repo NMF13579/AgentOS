@@ -122,7 +122,7 @@ The user-facing path should be:
 2. Create repository.
 3. Create an AgentOS task through the visible Simple Mode path.
 
-After that, the repository must already be clean and ready for first task creation.
+After that, the repository must already be clean and prepared for first task creation.
 
 ## Non-Claims
 
