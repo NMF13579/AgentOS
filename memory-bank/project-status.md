@@ -15,6 +15,7 @@ Current summary:
 - Pipeline status: GREEN (`PASS` for all core validators).
 - Major Implementation:
     - One-shot `setup-repository.yml` with self-destruct logic.
+    - Added `create` trigger for repository initialization.
     - CI workflow reorganization (dev-only workflows moved).
     - GitHub Action-based repo initialization.
 - AgentOS now routes runtime behavior through five canonical modules.
