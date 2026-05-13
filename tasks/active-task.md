@@ -1,3 +1,7 @@
+---
+status: none
+---
+
 # Active Task
 
 No active task yet.
@@ -5,4 +9,4 @@ No active task yet.
 Create a task using:
 
 - GitHub Issues → AgentOS Task Request
-- or \`python3 agentos/scripts/new-task.py "Your task"\`
+- or `python3 agentos/scripts/new-task.py "Your task"`

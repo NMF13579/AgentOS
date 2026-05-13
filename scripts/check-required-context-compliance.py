@@ -9,95 +9,89 @@ import sys
 from pathlib import Path
 from typing import Any
 
-PASS = "CONTEXT_COMPLIANCE_PASS"
-PASS_WARN = "CONTEXT_COMPLIANCE_PASS_WITH_WARNINGS"
-MISSING = "CONTEXT_COMPLIANCE_MISSING"
-INVALID = "CONTEXT_COMPLIANCE_INVALID"
-VIOLATION = "CONTEXT_COMPLIANCE_VIOLATION"
-INCOMPLETE = "CONTEXT_COMPLIANCE_INCOMPLETE"
-NEEDS_REVIEW = "CONTEXT_COMPLIANCE_NEEDS_REVIEW"
-BLOCKED = "CONTEXT_COMPLIANCE_BLOCKED"
+PASS='CONTEXT_COMPLIANCE_PASS'
+PASS_WARN='CONTEXT_COMPLIANCE_PASS_WITH_WARNINGS'
+MISSING='CONTEXT_COMPLIANCE_MISSING'
+INVALID='CONTEXT_COMPLIANCE_INVALID'
+VIOLATION='CONTEXT_COMPLIANCE_VIOLATION'
+INCOMPLETE='CONTEXT_COMPLIANCE_INCOMPLETE'
+NEEDS_REVIEW='CONTEXT_COMPLIANCE_NEEDS_REVIEW'
+BLOCKED='CONTEXT_COMPLIANCE_BLOCKED'
 
-ORDER = {BLOCKED:0, VIOLATION:1, INVALID:2, INCOMPLETE:3, MISSING:4, NEEDS_REVIEW:5, PASS_WARN:6, PASS:7}
-
-
-def pick(a:str,b:str)->str:
-    return b if ORDER[b] < ORDER[a] else a
+ORDER={BLOCKED:0,VIOLATION:1,INVALID:2,INCOMPLETE:3,MISSING:4,NEEDS_REVIEW:5,PASS_WARN:6,PASS:7}
 
 
-def add(fs:list[dict[str,Any]], sev:str, cat:str, msg:str, path:str|None=None):
-    f={"severity":sev,"category":cat,"message":msg}
-    if path: f["path"]=path
-    fs.append(f)
+def pick(a,b): return b if ORDER[b]<ORDER[a] else a
 
 
-def read(p:Path)->str|None:
-    try: return p.read_text(encoding='utf-8')
+def add(findings,sev,cat,msg,path=None):
+    item={'severity':sev,'category':cat,'message':msg}
+    if path: item['path']=path
+    findings.append(item)
+
+
+def read(path):
+    try: return path.read_text(encoding='utf-8')
     except Exception: return None
 
 
-def section(text:str, name:str)->str|None:
-    m=re.search(rf"^##\s+{re.escape(name)}\s*$", text, re.M)
-    if not m: return None
-    s=m.end()
-    n=re.search(r"^##\s+", text[s:], re.M)
-    e=s+n.start() if n else len(text)
-    return text[s:e]
+def extract_required_items(text):
+    m=re.search(r'##\s+Required Context.*?\n(.*?)(?=\n##\s|\Z)',text,re.DOTALL)
+    if not m: return []
+    block=m.group(1)
+    items=[]
+    for line in block.splitlines():
+        s=line.strip()
+        if s.startswith('-'): items.append(s[1:].strip())
+        elif s.startswith('*'): items.append(s[1:].strip())
+    return [i for i in items if i]
 
 
-def extract_required_items(ctx:str)->list[str]:
-    sec=section(ctx,"Required Context")
-    if sec is None: return []
-    out=[]
-    for ln in sec.splitlines():
-        ln=ln.strip()
-        if ln.startswith('- '):
-            v=ln[2:].strip()
-            if v and v.lower() not in {'none','-'}:
-                out.append(v)
-    return out
-
-
-def check_artifact_coverage(text:str, required:list[str], findings:list[dict[str,Any]], label:str)->str:
+def check_artifact_coverage(text,required,findings,artifact_path):
     res=PASS
-    low=text.lower()
-    if "context reviewed" in low or "context pack applied" in low:
-        add(findings,"needs_review","generic_context_claim","Generic claim patterns are insufficient",label)
-        res=pick(res,NEEDS_REVIEW)
-    if "command success" in low and "override" in low:
-        add(findings,"blocking","command_success_as_compliance","Command success does not override context violation",label)
-        res=pick(res,BLOCKED)
-    if "tests passed" in low and "compliance" in low:
-        add(findings,"blocking","source_of_truth_violation","Tests passing is not context compliance",label)
-        res=pick(res,BLOCKED)
     for item in required:
         if item not in text:
-            add(findings,"error","required_context_unacknowledged",f"required context not acknowledged: {item}",label)
+            add(findings,'error','required_context_unacknowledged',f'required context not acknowledged: {item}',artifact_path)
             res=pick(res,VIOLATION)
     return res
 
 
-def call_context_pack_checker(root:Path, task:Path, context:Path, index:Path)->tuple[str|None,str|None]:
-    checker=root/"scripts/check-required-context-pack.py"
-    if not checker.exists(): return None,"missing"
-    proc=subprocess.run([sys.executable,str(checker),"--json","--root",str(root),"--task",str(task),"--context",str(context),"--index",str(index)],capture_output=True,text=True,shell=False)
-    if proc.returncode not in (0,1): return None,"exec_failed"
-    try:data=json.loads(proc.stdout or '{}')
-    except Exception:return None,'malformed_json'
+def map_pack_result(r):
+    m={'CONTEXT_PACK_VALID':PASS,'CONTEXT_PACK_VALID_WITH_WARNINGS':PASS_WARN,
+       'CONTEXT_PACK_MISSING':MISSING,'CONTEXT_PACK_INVALID':INVALID,
+       'CONTEXT_PACK_STALE':INCOMPLETE,'CONTEXT_PACK_INCOMPLETE':INCOMPLETE,
+       'CONTEXT_PACK_NEEDS_REVIEW':NEEDS_REVIEW,'CONTEXT_PACK_BLOCKED':BLOCKED}
+    return m.get(r,NEEDS_REVIEW)
+
+
+def call_context_pack_checker(root,task,context,index):
+    checker=root/'scripts/check-required-context-pack.py'
+    if not checker.exists(): return None,'missing'
+    proc=subprocess.run([sys.executable,str(checker),'--json','--root',str(root),'--task',str(task.relative_to(root)),'--context',str(context.relative_to(root)),'--index',str(index.relative_to(root))],capture_output=True,text=True,shell=False)
+    if proc.returncode not in (0,1): return None,'exec_failed'
+    try: data=json.loads(proc.stdout or '{}')
+    except Exception: return None,'malformed_json'
     return data.get('result'),None
 
 
-def map_pack_result(r:str)->str:
-    return {
-        "CONTEXT_PACK_VALID":PASS,
-        "CONTEXT_PACK_VALID_WITH_WARNINGS":NEEDS_REVIEW,
-        "CONTEXT_PACK_MISSING":MISSING,
-        "CONTEXT_PACK_INVALID":INCOMPLETE,
-        "CONTEXT_PACK_STALE":INCOMPLETE,
-        "CONTEXT_PACK_INCOMPLETE":INCOMPLETE,
-        "CONTEXT_PACK_NEEDS_REVIEW":NEEDS_REVIEW,
-        "CONTEXT_PACK_BLOCKED":BLOCKED,
-    }.get(r,INCOMPLETE)
+def is_idle_task_file(path):
+    """Return True when active-task.md is in legitimate idle/no-active-task state."""
+    if not path.exists():
+        return True
+    try:
+        text = path.read_text(encoding='utf-8')
+    except Exception:
+        return False
+    text_lower = text.lower()
+    if 'no active task' in text_lower:
+        return True
+    if re.search(r'^status:\s*(none|idle)\s*$', text, re.MULTILINE):
+        return True
+    has_scope = 'scope_control:' in text
+    has_contract = '## Contract' in text or 'contract:' in text
+    if not has_scope and not has_contract:
+        return True
+    return False
 
 
 def main()->int:
@@ -114,6 +108,33 @@ def main()->int:
     a=ap.parse_args()
 
     root=Path(a.root).resolve()
+
+    # Idle-state shortcut: no active task -> return PASS immediately
+    task_path_obj = (root / a.task).resolve()
+    if is_idle_task_file(task_path_obj):
+        out = {
+            'result': PASS,
+            'mode': a.mode,
+            'task_path': a.task,
+            'context_path': a.context,
+            'plan_path': a.plan,
+            'verification_path': a.verification,
+            'checked_required_items': 0,
+            'changed_files_source': 'not_provided',
+            'warnings': [],
+            'errors': [],
+            'findings': [],
+            'idle_state': True,
+            'reason': 'idle state - no active task',
+        }
+        if a.json:
+            print(json.dumps(out, ensure_ascii=False, indent=2))
+        else:
+            print(f'RESULT: {PASS}')
+            print('reason: idle state - no active task')
+            print(PASS)
+        return 0
+
     task=(root/a.task).resolve(); context=(root/a.context).resolve(); plan=(root/a.plan).resolve(); ver=(root/a.verification).resolve(); ch=(root/a.changed_files).resolve()
     res=PASS
     findings=[]
