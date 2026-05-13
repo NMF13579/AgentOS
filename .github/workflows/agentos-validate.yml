@@ -22,7 +22,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install pyyaml
+          pip install -r requirements.txt
 
       - name: Compile unified validator
         id: compile
