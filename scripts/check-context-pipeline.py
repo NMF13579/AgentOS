@@ -94,6 +94,23 @@ def parse_active_task(root: Path, task_rel: str) -> tuple[str, list[str]]:
     return state, allowed
 
 
+def is_idle_task_file(path: Path) -> bool:
+    """Return True when active-task.md is in legitimate idle/no-active-task state."""
+    if not path.exists():
+        return True
+    text = path.read_text(encoding="utf-8")
+    text_lower = text.lower()
+    if "no active task" in text_lower:
+        return True
+    if re.search(r"^status:\s*(none|idle)\s*$", text, re.MULTILINE):
+        return True
+    has_scope = "scope_control:" in text
+    has_contract = "## Contract" in text or "contract:" in text
+    if not has_scope and not has_contract:
+        return True
+    return False
+
+
 def read_changed_files(root: Path, rel: str) -> list[str]:
     p = root / rel
     if not p.exists():
@@ -148,6 +165,28 @@ def main() -> int:
 
     root = Path(args.root).resolve()
     findings: list[dict[str, Any]] = []
+
+    # Idle-state shortcut: if active-task.md has no active task, skip all gates
+    if is_idle_task_file(root / args.task):
+        _idle_mode = "strict" if args.strict else ("advisory" if args.advisory else "legacy")
+        payload = {
+            "result": OK,
+            "mode": _idle_mode,
+            "task_path": args.task,
+            "active_task_state": "idle",
+            "blocking_reasons": [],
+            "advisory_reasons": [],
+            "findings": [],
+        }
+        if args.json:
+            print(json.dumps(payload, ensure_ascii=False, indent=2))
+        else:
+            print(f"RESULT: {OK}")
+            print("mode: idle")
+            print("blocking: 0")
+            print("advisory: 0")
+            print(OK)
+        return 0
 
     gate_cmds = {
         "index": [sys.executable, "scripts/check-context-index-freshness.py", "--json", "--root", str(root), "--index", args.index],

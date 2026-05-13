@@ -3,6 +3,41 @@
 AgentOS is a programmable guardrail layer for AI-assisted coding workflows.
 It helps structure tasks, scope, validation, evidence, and human checkpoints.
 
+## Start with AgentOS
+
+### New project
+
+Use the AgentOS clean template.
+
+This creates a new clean repository with AgentOS already included.
+
+### Existing project
+
+Add AgentOS safely to an existing repository:
+
+1. Create a dry-run install plan.
+2. Review conflicts and planned files.
+3. Apply only if safe.
+
+Read:
+
+- [Add AgentOS to an Existing Project](docs/ADD-AGENTOS.md)
+
+AgentOS installs into:
+
+```text
+agentos/
+.agentos/
+```
+
+`agentos/` contains AgentOS docs, templates, scripts, tasks, and reports.
+
+`.agentos/` contains local AgentOS config and runtime state.
+
+AgentOS starts in Simple Mode by default.
+
+AgentOS does not overwrite existing files, commit, push, or approve actions automatically.
+
 ## Who is AgentOS for?
 
 AgentOS is for developers and teams using AI coding assistants (like Cursor, GitHub Copilot, or Claude Code) who want to enforce structured task boundaries, mandatory validation, and explicit human approval before accepting AI-generated changes.

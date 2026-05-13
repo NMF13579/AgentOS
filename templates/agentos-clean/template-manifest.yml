@@ -1,0 +1,90 @@
+template: agentos-clean
+kind: clean-full-template
+version: 0.2.0-rc.1
+
+default_mode: simple
+
+available_modes:
+  - simple
+  - advanced
+  - full
+
+must_include:
+  - README.md
+  - .gitignore
+  - .agentos/config.yml
+  - .agentos/runtime/.gitkeep
+  - .github/ISSUE_TEMPLATE/agentos_task.yml
+  - .github/workflows/agentos-bootstrap.yml
+  - agentos/docs/simple-start.md
+  - agentos/docs/quickstart.md
+  - agentos/docs/limitations.md
+  - agentos/docs/troubleshooting.md
+  - agentos/docs/user-modes.md
+  - agentos/docs/use-template.md
+  - agentos/docs/bootstrap.md
+  - agentos/templates/task.md
+  - agentos/templates/verification.md
+  - agentos/templates/completion-review.md
+  - agentos/scripts/agentos-validate.py
+  - agentos/scripts/new-task.py
+  - agentos/scripts/check-bootstrap-readiness.py
+  - agentos/scripts/check-clean-history.py
+  - tasks/active-task.md
+  - tasks/queue/.gitkeep
+  - tasks/done/.gitkeep
+  - tasks/failed/.gitkeep
+  - reports/.gitkeep
+
+must_not_include:
+  - reports/m37*
+  - reports/m38*
+  - reports/m39*
+  - reports/m40*
+  - reports/context-pack.md
+  - reports/context-selection-record.md
+  - data/context-index.json
+  - .agentos/runtime/STATUS.md
+  - .agentos/cache/**
+  - .agentos/runtime/cache/**
+  - reports/*completion-review.md
+  - reports/*evidence-report.md
+
+empty_dirs_except_gitkeep:
+  - tasks/queue
+  - tasks/done
+  - tasks/failed
+  - reports
+  - .agentos/runtime
+
+runtime_gitignored:
+  - .agentos/runtime/
+  - .agentos/cache/
+
+mode_rules:
+  simple:
+    user_visible:
+      - README.md
+      - agentos/docs/simple-start.md
+      - tasks/active-task.md
+      - reports/
+      - .github/ISSUE_TEMPLATE/agentos_task.yml
+    hidden_by_default:
+      - advanced policies
+      - audit internals
+      - context internals
+      - adapter internals
+  advanced:
+    exposes:
+      - validation details
+      - report links
+      - dry-run summaries
+      - troubleshooting details
+  full:
+    exposes:
+      - policies
+      - advanced templates
+      - audit internals
+      - adapter docs
+      - context internals
+    permissions_note: "Full Mode does not grant extra agent permissions."

@@ -1,0 +1,18 @@
+agentos:
+  template: agentos-clean
+  instance_type: clean-project
+  version: 0.2.0-rc.1
+
+  mode: simple
+  available_modes:
+    - simple
+    - advanced
+    - full
+
+  runtime_dir: .agentos/runtime
+  cache_dir: .agentos/cache
+
+  mode_policy:
+    full_mode_grants_extra_permissions: false
+    simple_mode_default: true
+    user_must_request_advanced_or_full: true

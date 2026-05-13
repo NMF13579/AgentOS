@@ -136,3 +136,84 @@ Milestone 12 hardening and audit close-out are completed and pushed to `origin/d
 
 Milestone 12 is closed with amended PASS status in reports.
 Next conceptual stage: Milestone 13 — Controlled Execution Runner.
+
+---
+
+## Amendment
+
+### Timestamp
+
+- 2026-05-11 06:01:33 +05
+
+### Updated Status
+
+- Cleanup of duplicate templates completed.
+- Studied and documented the process of AgentOS installation into a new project.
+
+### New Completed Work (since previous handoff)
+
+- Cleaned up duplicate template files ending with ` 3.md` that were accidentally copied.
+- Added cleanup script `cleanup-templates.sh`.
+- Investigated `docs/installation.md` and `install.sh` to summarize the new project installation process for the user.
+- Fixed commit hook validation issues by generating compliant commit message in `commit-msg.txt`.
+
+### Commits
+
+- `cf05af2` — `chore(templates): remove duplicate templates and add cleanup script`
+
+### Verification Snapshot
+
+- `git push`: origin/dev updated successfully after rebase.
+
+### Current Workspace State
+
+- Branch `dev` pushed to `origin/dev`.
+- Working tree clean.
+
+### Next
+
+- Awaiting next user instructions.
+
+---
+
+## Amendment
+
+### Timestamp
+
+- 2026-05-12 10:36:04 +0500
+
+### Updated Status
+
+Milestone 40 preparation tasks completed. The clean AgentOS template is fully assembled and GitHub Template bootstrap readiness is configured. Safe installer for existing projects is implemented.
+
+### New Completed Work (since previous handoff)
+
+- Clean Full Template Assembly with Simple Mode Default (Task 39.9.1)
+- GitHub Template Bootstrap / Use Template Readiness (Task 39.9.2)
+- Existing Project Safe Installer Script (Task 39.9.3a / 39.10.1)
+- M40 dogfooding preconditions met.
+- Validated all scopes and execution readiness.
+
+### Commits
+
+- `1d5b6d8` — `chore(task): reset active task after completion`
+- `7c14b34` — `feat(m40): implement robust and safe installer for existing projects`
+- `0ff443c` — `feat(m40): implement installer and integration guide for existing projects`
+- `96cdf0e` — `feat(m40): prepare clean template for GitHub bootstrap and readiness`
+- `2ec4659` — `docs(task): complete and archive Task 39.9.1 Clean Template Assembly`
+- `18b64a1` — `feat(templates): assemble clean full template for M40 dogfooding`
+
+### Verification Snapshot
+
+- `python3 scripts/agentos-validate.py all`: PASS
+- `python3 scripts/audit-agentos.py`: PASS_WITH_WARNINGS
+- `git status`: Working tree clean.
+
+### Current Workspace State
+
+- Branch `dev` pushed to `origin/dev`.
+- Working tree clean.
+
+### Next
+
+- Awaiting next user instructions for M40 dogfooding.

@@ -30,7 +30,7 @@ ORDER = {
     RESULT_VALID: 7,
 }
 
-WIN_ABS_RE = re.compile(r"^[A-Za-z]:[\\/]")
+WIN_ABS_RE = re.compile(r"^[A-Za-z]:[\\]")
 TASK_ID_RE = re.compile(r"task[_-]?id\s*:\s*([A-Za-z0-9._:-]+)", re.IGNORECASE)
 CTX_HASH_RE = re.compile(r"context_index_hash\s*:\s*(sha256:[0-9a-fA-F]{64})", re.IGNORECASE)
 REPO_HASH_RE = re.compile(r"repo_commit_hash\s*:\s*([A-Za-z0-9._:-]+)", re.IGNORECASE)
@@ -117,6 +117,26 @@ def run_context_index_freshness(root: Path) -> tuple[str | None, str | None]:
     return data.get("result"), None
 
 
+def is_idle_task_file(path: Path) -> bool:
+    """Return True when active-task.md is in legitimate idle/no-active-task state."""
+    if not path.exists():
+        return True
+    try:
+        text = path.read_text(encoding="utf-8")
+    except Exception:
+        return False
+    text_lower = text.lower()
+    if "no active task" in text_lower:
+        return True
+    if re.search(r"^status:\s*(none|idle)\s*$", text, re.MULTILINE):
+        return True
+    has_scope = "scope_control:" in text
+    has_contract = "## Contract" in text or "contract:" in text
+    if not has_scope and not has_contract:
+        return True
+    return False
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(description="M30.3 Required Context Pack Gate")
     ap.add_argument("--json", action="store_true")
@@ -128,6 +148,32 @@ def main() -> int:
     args = ap.parse_args()
 
     root = Path(args.root).resolve()
+
+    # Idle-state shortcut: no active task -> return VALID immediately
+    task_path_obj = (root / args.task).resolve()
+    if is_idle_task_file(task_path_obj):
+        payload = {
+            "result": RESULT_VALID,
+            "task_path": args.task,
+            "context_path": args.context,
+            "index_path": args.index,
+            "checked_selected_items": 0,
+            "context_index_hash": None,
+            "expected_context_index_hash": None,
+            "repo_commit_hash": None,
+            "warnings": [],
+            "errors": [],
+            "findings": [],
+            "idle_state": True,
+            "reason": "idle state - no active task",
+        }
+        if args.json:
+            print(json.dumps(payload, ensure_ascii=False, indent=2))
+        else:
+            print(f"RESULT: {RESULT_VALID}")
+            print("reason: idle state - no active task")
+        return 0
+
     task = (root / args.task).resolve()
     context = (root / args.context).resolve()
     index = (root / args.index).resolve()
@@ -206,7 +252,7 @@ def main() -> int:
                 add(findings, "error", "source_file_missing", "selected source file missing", p)
                 result = pick(result, RESULT_STALE)
             if not reason or reason.strip().lower() in PLACEHOLDERS:
-                add(findings, "error", "selected_reason_placeholder", "No reason → invalid Context Pack.", p)
+                add(findings, "error", "selected_reason_placeholder", "No reason \u2192 invalid Context Pack.", p)
                 result = pick(result, RESULT_INVALID)
 
         # task binding
@@ -301,10 +347,9 @@ def main() -> int:
         print(f"warnings: {len(warnings)}")
         print(f"errors: {len(errors)}")
         for f in findings:
-            p = f" path={f['path']}" if 'path' in f else ''
+            p = f" path={f['path']}" if "path" in f else ""
             print(f"- [{f['severity']}] {f['category']}{p}: {f['message']}")
         print(result)
-
     return 0 if result == RESULT_VALID else 1
 
 

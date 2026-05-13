@@ -1,0 +1,28 @@
+name: AgentOS Bootstrap
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  bootstrap-check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check AgentOS clean project validation
+        run: |
+          python3 agentos/scripts/agentos-validate.py all || python3 agentos/scripts/agentos-validate.py
+
+      - name: Check AgentOS bootstrap readiness
+        run: |
+          python3 agentos/scripts/check-bootstrap-readiness.py
+
+      - name: Check no previous AgentOS project history
+        run: |
+          python3 agentos/scripts/check-clean-history.py
