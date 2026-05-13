@@ -5,6 +5,8 @@ on:
 jobs:
   init:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: Count commits
         id: check
