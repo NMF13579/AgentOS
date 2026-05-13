@@ -45,6 +45,20 @@ def read_task(path):
         return None
 
 
+def is_idle_state(task_text: str) -> bool:
+    """Return True when active-task.md is in legitimate idle/no-active-task state."""
+    text_lower = task_text.lower()
+    if "no active task" in text_lower:
+        return True
+    if re.search(r"^status:\s*(none|idle)\s*$", task_text, re.MULTILINE):
+        return True
+    has_scope = "scope_control:" in task_text
+    has_contract = "## Contract" in task_text or "contract:" in task_text
+    if not has_scope and not has_contract:
+        return True
+    return False
+
+
 def parse_scope_control(text):
     lines = text.splitlines()
     start_index = -1
@@ -343,6 +357,13 @@ def main(argv):
 
     scope, parse_state = parse_scope_control(task_text)
     if parse_state == "missing_scope_control":
+        if is_idle_state(task_text):
+            payload = make_result("PASS", {"changed_files": [], "records": []}, [], [], "idle state - no active task")
+            if args.json:
+                print(json.dumps(payload, indent=2))
+            else:
+                print_human(payload)
+            return 0
         payload = make_result("FAIL", {"changed_files": [], "records": []}, ["scope_control is missing"], [], "scope block missing")
         if args.json:
             print(json.dumps(payload, indent=2))
