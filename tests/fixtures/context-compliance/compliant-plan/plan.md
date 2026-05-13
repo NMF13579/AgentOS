@@ -1,2 +1,0 @@
-# VALIDATION/DEMO ARTIFACT — NOT A REAL TASK ARTIFACT
-Plan acknowledges docs/policy.md and out-of-scope secret/. Context Pack is not approval. M27 remains runtime enforcement authority. Lessons acknowledged.

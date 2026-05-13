@@ -1,2 +1,0 @@
-# VALIDATION/DEMO ARTIFACT — NOT A REAL TASK ARTIFACT
-selected rules verified; selected policies verified; selected lessons verified; out-of-scope untouched; Context Pack did not grant approval; M27 remained runtime enforcement.

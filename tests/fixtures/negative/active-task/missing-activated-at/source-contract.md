@@ -1,4 +1,0 @@
----
-task_id: task-001
----
-# contract

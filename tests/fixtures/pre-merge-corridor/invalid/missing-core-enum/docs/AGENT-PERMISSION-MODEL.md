@@ -1,4 +1,0 @@
-# Agent Permission Model
-
-Permission levels:
-READ_ONLY PATCH_PROPOSE LOCAL_EDIT LOCAL_TEST COMMIT_REQUEST BLOCKED

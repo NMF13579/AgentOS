@@ -1,8 +1,0 @@
-{
-  "fixture_only": true,
-  "cache_role": "optional_lookup_cache",
-  "semantic_authority_claim": false,
-  "cache_hash": "sha256:example-cache-hash",
-  "commit_ref": "example-commit-cache",
-  "note": "fixture-only synthetic metadata"
-}

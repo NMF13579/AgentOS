@@ -1,7 +1,0 @@
-{
-  "fixture_only": true,
-  "semantic_authority": "false",
-  "index_hash": "sha256:fake-index-authority-claim",
-  "commit_ref": "fake-commit-index",
-  "note": "fixture-only generated artifact example"
-}

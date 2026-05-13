@@ -1,1 +1,0 @@
-evidence_report_result: PASS
