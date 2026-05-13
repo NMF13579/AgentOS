@@ -61,4 +61,24 @@ lessons:
       fail-closed поведение: UNKNOWN/NEEDS_REVIEW, но не OK.
     target_file: "scripts/agentos-status.py"
     status: "active"
+  - id: "lesson-005"
+    source_incident: "active-task-idle-state-bypass-failure"
+    tags:
+      - "active-task"
+      - "idle-state"
+      - "frontmatter"
+    trigger: >
+      Скрипты, читающие active-task.md (например, валидаторы или чекеры рисков),
+      падают с ошибкой "invalid frontmatter" или "FAIL", когда система находится
+      в режиме ожидания (idle state), то есть файл active-task.md содержит текст
+      вроде "No active task yet." и не имеет YAML-структуры.
+    rule: >
+      Все скрипты, которые обращаются к tasks/active-task.md, должны реализовывать
+      паттерн is_idle_state() bypass. Перед попыткой парсить frontmatter,
+      необходимо прочитать файл как обычный текст, проверить отсутствие маркера '---'
+      или наличие фразы 'no active task' (в нижнем регистре), и в этом случае
+      завершать работу без ошибки (возвращать 0 / PASS), чтобы не ломать общие
+      пайплайны валидации (run-all.sh, pre-commit).
+    target_file: "scripts/run-all.sh"
+    status: "active"
 ---
