@@ -1,0 +1,61 @@
+name: Setup Repository
+on:
+  push:
+    branches: [main]
+
+jobs:
+  setup:
+    if: github.repository != 'NMF13579/AgentOS'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Clean state
+        run: |
+          for dir in reports approvals incidents lessons memory-bank handoff; do
+            if [ -d "$dir" ]; then
+              find "$dir" -type f ! -name '.gitkeep' -delete
+              find "$dir" -depth -mindepth 1 -type d -empty -delete
+            fi
+          done
+          
+          rm -rf tests/fixtures
+          
+          rm -rf tasks/*
+          mkdir -p tasks
+          cat << 'EOF' > tasks/active-task.md
+          ---
+          status: none
+          ---
+          
+          # Active Task
+          
+          No active task yet.
+          EOF
+
+      - name: Personalization
+        run: |
+          echo "# ${{ github.event.repository.name }}" > README.tmp
+          tail -n +2 README.md >> README.tmp || true
+          mv README.tmp README.md
+          
+          cat << 'EOF' > CHANGELOG.md
+          # Changelog
+          
+          ## [Unreleased]
+          - Initial project setup
+          EOF
+
+      - name: Self-destruct
+        run: |
+          rm -f .github/workflows/setup-repository.yml
+          rm -f init-project.sh
+          
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "chore: setup repository from template and self-destruct"
+          git push
