@@ -11,20 +11,24 @@ It does not override canonical modules.
 ## Terminal Snapshot
 
 - Milestone 36 (External MVP Usability) is COMPLETE.
-- Current status: `M36_EXTERNAL_MVP_USABLE_WITH_GAPS`.
+- Template Initialization Hardening is COMPLETE.
+- Current status: `M36_TEMPLATE_INITIALIZATION_SAFE`.
 - Pipeline status: `PASS` (all validators and smoke tests green).
+- Major changes:
+    - Implemented `setup-repository.yml`: safe one-shot setup with self-destruct.
+    - Cleaned up `.github/workflows/`: moved dev-only CI to `dev-only/`.
+    - Removed `init-project.sh`: logic integrated into GitHub Action.
+    - Updated `README.md`: simplified setup for template owners.
+    - Fixed `agentos-validate.yml`: now correctly uses `requirements.txt`.
 - Startup route: `llms.txt` -> `state/MAIN.md` -> `workflow/MAIN.md`.
-- Current blockers: none. P0 M35 blockers repaired.
-- Use `core-rules/MAIN.md` for authority conflicts.
-- Use `quality/MAIN.md` before claiming completion.
-- Use `security/MAIN.md` when sensitive data or access boundaries are involved.
+- Current blockers: none.
 
 ## Next Agent First Step
 
 1. Read `llms.txt`.
 2. Confirm state through `state/MAIN.md`.
-3. Verify project is ready for M37 planning.
-4. Update `tasks/active-task.md` with new M37 task before execution.
+3. Verify that `setup-repository.yml` correctly handles repository names for new clones.
+4. Prepare for M37 (External Pilot Readiness) planning.
 
 ## Persistent Context
 
