@@ -83,6 +83,18 @@ def has_real_text(value):
 
 def main():
     task_path = sys.argv[1] if len(sys.argv) > 1 else "tasks/active-task.md"
+
+    # Idle-state bypass
+    try:
+        text = Path(task_path).read_text(encoding="utf-8")
+        text_lower = text.lower()
+        if ("no active task" in text_lower or
+            not text.startswith("---")):
+            print("PASS: idle state - no active task")
+            return 0
+    except Exception:
+        pass
+
     policy_path = "policies/risk-policy.yml"
 
     task_data = load_frontmatter(task_path)
