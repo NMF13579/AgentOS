@@ -11,7 +11,8 @@ jobs:
       - uses: actions/checkout@v4
       - name: Clean template artifacts
         run: |
-          rm -rf reports tasks tests
+          rm -rf reports tasks tests approvals quality security stages state
+          rm -f RELEASE-CHECKLIST.md CHECKLIST.md CHANGELOG.md repo-map.md ROUTES-REGISTRY.md HANDOFF.md init-project.sh
           for dir in incidents lessons memory-bank handoff; do
             if [ -d "$dir" ]; then
               find "$dir" -type f ! -name '.gitkeep' -delete
