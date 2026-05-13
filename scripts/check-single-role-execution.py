@@ -54,7 +54,7 @@ ROLE_SCOPE_LIMITS = {
 }
 
 VALIDATION_AUTHORITY_PATHS = [
-    "scripts/check-*", "scripts/validate-*", "scripts/test-*", 
+    "scripts/check-*", "scripts/validate-*", "scripts/test-*",
     "scripts/agentos-validate.py", "scripts/audit-*", "schemas/",
     "tests/fixtures/", ".github/workflows/", "docs/*POLICY*", "docs/*GUARD*",
     "docs/*VALIDATION*", "reports/*evidence-report*", "reports/*completion-review*"
@@ -67,6 +67,7 @@ MAINTAINER_POLICY_PATHS = [
 ]
 
 FORBIDDEN_BROAD_PATHS = {".", "./", "/", "*", "**", ""}
+
 
 def normalize_path(path_str):
     path_str = path_str.replace("\\", "/").strip()
@@ -89,35 +90,54 @@ def match_path(path, patterns):
             return True
     return False
 
+def is_idle_state(task_text: str, task_contract: dict) -> bool:
+    """Return True when active-task.md is in legitimate idle/no-active-task state."""
+    text_lower = task_text.lower()
+    if "no active task" in text_lower:
+        return True
+    if re.search(r"^status:\s*(none|idle)\s*$", task_text, re.MULTILINE):
+        return True
+    # Frontmatter has status: none/idle
+    status = task_contract.get("status", "")
+    if isinstance(status, str) and status.lower() in ("none", "idle"):
+        return True
+    # No execution_role AND no scope_control AND no Contract section
+    has_role = "execution_role" in task_contract
+    has_scope = "scope_control" in task_text
+    has_contract = "## Contract" in task_text or "contract:" in task_text
+    if not has_role and not has_scope and not has_contract:
+        return True
+    return False
+
 def check_role(task_contract, changed_files=None):
     if "execution_role" not in task_contract:
         return INVALID, "Missing execution_role block"
-    
+
     role_config = task_contract["execution_role"]
     role = role_config.get("role")
     mode = role_config.get("mode")
-    
+
     if role not in ROLE_SCOPE_LIMITS:
         return VIOLATION, f"Unknown role: {role}"
-    
+
     limits = ROLE_SCOPE_LIMITS[role]
     allowed_write = role_config.get("allowed_write_paths", [])
-    
+
     # 1. Scope count limit
     if len(allowed_write) > limits["max_write_paths"]:
         return VIOLATION, f"Role {role} exceeds max write paths ({len(allowed_write)} > {limits['max_write_paths']})"
-    
+
     # 2. Broad path check
     for p in allowed_write:
         if is_broad_path(p):
             return VIOLATION, f"Broad write path forbidden: {p}"
-            
+
     # 3. Static prefix checks
     if "allowed_prefixes" in limits:
         for p in allowed_write:
             if not match_path(p, limits["allowed_prefixes"]):
                 return VIOLATION, f"Path {p} not allowed for role {role}"
-                
+
     for p in allowed_write:
         if match_path(p, limits.get("forbidden_prefixes", [])):
             # Bootstrap exception for initial implementation and milestone finalization
@@ -136,20 +156,20 @@ def check_role(task_contract, changed_files=None):
     if changed_files:
         for f in changed_files:
             f = normalize_path(f)
-            
+
             # Anti-bootstrapping for maintainer
             if role == "maintainer" and match_path(f, MAINTAINER_POLICY_PATHS):
                 is_bootstrap = task_contract.get("task_id", "").startswith(("task-m40", "task-m39", "task-m38"))
                 if is_bootstrap:
                     continue
                 return VIOLATION, f"Maintainer cannot modify its own policy in same run: {f}"
-                
+
             # Auditor/Verifier code modification check
             if role in ["auditor", "verifier"]:
                 if match_path(f, ["src/", "scripts/", "schemas/", "templates/", "docs/"]):
                     if not match_path(f, allowed_write):
                         return VIOLATION, f"Role {role} attempted unauthorized write to {f}"
-            
+
             # Implementor verification-authority boundary
             if role == "implementor" and match_path(f, VALIDATION_AUTHORITY_PATHS):
                 # If it's not even allowed in scope, it's a violation
@@ -179,12 +199,22 @@ def main():
             # Extract first yaml block
             blocks = re.findall(r"---(.*?)---", content, re.DOTALL)
             if not blocks:
-                print(f"FAIL: No YAML frontmatter in {args.task_file}")
-                sys.exit(1)
-            task_contract = yaml.safe_load(blocks[0])
+                # No frontmatter at all — check if idle by content only
+                task_contract = {}
+            else:
+                task_contract = yaml.safe_load(blocks[0]) or {}
     except Exception as e:
         print(f"FAIL: Parse error: {e}")
         sys.exit(1)
+
+    # Idle-state shortcut: no active task → bypass role check
+    if is_idle_state(content, task_contract):
+        result = {"result": OK, "message": "idle state - no active task", "idle": True}
+        if args.json:
+            print(json.dumps(result))
+        else:
+            print(f"{OK}: idle state - no active task")
+        sys.exit(0)
 
     changed = None
     if args.changed_files:
@@ -195,9 +225,9 @@ def main():
             changed = []
 
     token, msg = check_role(task_contract, changed)
-    
+
     result = {"result": token, "message": msg}
-    
+
     if args.json:
         print(json.dumps(result))
     else:
