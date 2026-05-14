@@ -1,0 +1,94 @@
+{
+  "registry_version": "m41.3",
+  "description": "Default fixture registry for unified integrity fixture-safe validation.",
+  "entries": [
+    {
+      "id": "honest-pass-fixtures",
+      "suite": "honest-pass",
+      "command": "honest-pass",
+      "args": ["--strict", "--fixtures", "--json"],
+      "input_path": null,
+      "required": true,
+      "strict_safe": true,
+      "expected_source_tokens": [
+        "HONEST_PASS_OK",
+        "HONEST_PASS_FIXTURES_OK",
+        "HONEST_PASS_NEEDS_REVIEW",
+        "HONEST_PASS_FIXTURES_NEEDS_REVIEW",
+        "HONEST_PASS_VIOLATION",
+        "HONEST_PASS_FIXTURES_FAILED"
+      ]
+    },
+    {
+      "id": "runtime-bypass-smoke",
+      "suite": "runtime-bypass-smoke",
+      "command": "runtime-bypass-smoke",
+      "args": ["--json"],
+      "input_path": null,
+      "required": true,
+      "strict_safe": true,
+      "expected_source_tokens": [
+        "BYPASS_TEST_PASS",
+        "BYPASS_TEST_PASS_WITH_WARNINGS",
+        "BYPASS_TEST_FAIL",
+        "BYPASS_TEST_NEEDS_REVIEW"
+      ]
+    },
+    {
+      "id": "validator-authority-positive",
+      "suite": "validator-authority",
+      "command": "validator-authority",
+      "args": ["--json"],
+      "input_path": "tests/fixtures/validator-authority/positive/trusted-runner-authority/",
+      "required": true,
+      "strict_safe": true,
+      "expected_source_tokens": [
+        "VALIDATOR_AUTHORITY_OK",
+        "VALIDATOR_AUTHORITY_VIOLATION",
+        "VALIDATOR_AUTHORITY_NEEDS_REVIEW"
+      ]
+    },
+    {
+      "id": "role-separation-positive",
+      "suite": "role-separation",
+      "command": "role-separation",
+      "args": ["--json"],
+      "input_path": "tests/fixtures/role-separation/positive/high-risk-independent-verifier/",
+      "required": true,
+      "strict_safe": true,
+      "expected_source_tokens": [
+        "ROLE_SEPARATION_OK",
+        "ROLE_SEPARATION_VIOLATION",
+        "ROLE_SEPARATION_NEEDS_REVIEW"
+      ]
+    },
+    {
+      "id": "evidence-immutability-positive",
+      "suite": "evidence-immutability",
+      "command": "evidence-immutability",
+      "args": ["--json"],
+      "input_path": "tests/fixtures/evidence-immutability/positive/completed-evidence-unchanged/",
+      "required": true,
+      "strict_safe": true,
+      "expected_source_tokens": [
+        "EVIDENCE_IMMUTABILITY_OK",
+        "EVIDENCE_IMMUTABILITY_VIOLATION",
+        "EVIDENCE_IMMUTABILITY_NEEDS_REVIEW"
+      ]
+    },
+    {
+      "id": "evidence-amendments-positive",
+      "suite": "evidence-amendments",
+      "command": "evidence-amendments",
+      "args": ["--json"],
+      "input_path": "tests/fixtures/evidence-amendments/positive/valid-amendment-record/",
+      "required": true,
+      "strict_safe": true,
+      "expected_source_tokens": [
+        "EVIDENCE_AMENDMENT_OK",
+        "EVIDENCE_AMENDMENT_VIOLATION",
+        "EVIDENCE_AMENDMENT_NEEDS_REVIEW"
+      ]
+    }
+  ]
+}

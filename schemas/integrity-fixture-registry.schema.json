@@ -1,0 +1,44 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "required": ["registry_version", "entries"],
+  "properties": {
+    "registry_version": {"type": "string"},
+    "description": {"type": "string"},
+    "entries": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "suite",
+          "command",
+          "args",
+          "input_path",
+          "required",
+          "strict_safe",
+          "expected_source_tokens"
+        ],
+        "properties": {
+          "id": {"type": "string"},
+          "suite": {"type": "string"},
+          "command": {"type": "string"},
+          "args": {
+            "type": "array",
+            "items": {"type": "string"}
+          },
+          "input_path": {
+            "type": ["string", "null"]
+          },
+          "required": {"type": "boolean"},
+          "strict_safe": {"type": "boolean"},
+          "expected_source_tokens": {
+            "type": "array",
+            "minItems": 1,
+            "items": {"type": "string"}
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Integrity Result Summary",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "result",
+    "clean_pass",
+    "strict_mode",
+    "meaning",
+    "next_safe_action",
+    "human_approval_required",
+    "source_tokens_preserved",
+    "limitations"
+  ],
+  "properties": {
+    "result": {
+      "type": "string",
+      "enum": [
+        "INTEGRITY_OK",
+        "INTEGRITY_WARNING",
+        "INTEGRITY_VIOLATION",
+        "INTEGRITY_NEEDS_REVIEW",
+        "INTEGRITY_BLOCKED"
+      ]
+    },
+    "clean_pass": {
+      "type": "boolean"
+    },
+    "strict_mode": {
+      "type": "boolean"
+    },
+    "meaning": {
+      "type": "string",
+      "minLength": 1
+    },
+    "next_safe_action": {
+      "type": "string",
+      "minLength": 1
+    },
+    "human_approval_required": {
+      "type": "boolean"
+    },
+    "source_tokens_preserved": {
+      "type": "boolean"
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}
