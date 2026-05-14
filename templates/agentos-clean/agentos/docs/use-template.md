@@ -24,6 +24,20 @@ Instead, use a dotfile-preserving command:
 cp -a templates/agentos-clean/. <target>/
 ```
 
+### Where am I running this from?
+
+Depending on how you copied AgentOS (`<target>/`), your command paths will differ. Do not mix these modes.
+
+**Mode A — Inside copied template root**
+If your target was the project root, commands look like:
+`python3 agentos/scripts/agentos-validate.py all`
+
+**Mode B — From external project root with namespace install**
+If you isolated AgentOS into an `agentos/` subdirectory (`<target>` was `agentos/`), run commands from your external project root (recommended for external testing):
+`python3 agentos/agentos/scripts/agentos-validate.py all`
+`python3 agentos/agentos/scripts/check-bootstrap-readiness.py`
+`python3 agentos/agentos/scripts/new-task.py "Task title"`
+
 
 ## What Happens Automatically
 
