@@ -33,6 +33,10 @@ QUEUE
     print(f"Created task: {task_path}")
 
 if __name__ == "__main__":
+    if len(sys.argv) > 1 and sys.argv[1] in ["--help", "-h"]:
+        print("Usage: python3 new-task.py \"Task Title\"")
+        print("Creates a new task file in tasks/queue/")
+        sys.exit(0)
     if len(sys.argv) < 2:
         print("Usage: python3 new-task.py \"Task Title\"")
         sys.exit(1)

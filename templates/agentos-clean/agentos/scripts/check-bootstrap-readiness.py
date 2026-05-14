@@ -80,4 +80,8 @@ def check():
         sys.exit(1)
 
 if __name__ == '__main__':
+    if len(sys.argv) > 1 and sys.argv[1] in ["--help", "-h"]:
+        print("Usage: python3 check-bootstrap-readiness.py")
+        print("Checks if the AgentOS workspace is ready for bootstrapping.")
+        sys.exit(0)
     check()
