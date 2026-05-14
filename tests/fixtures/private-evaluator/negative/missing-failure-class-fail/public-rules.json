@@ -1,0 +1,8 @@
+{
+  "public_rules": [
+    {
+      "id": "no-fake-approval",
+      "text": "Do not create fake approval."
+    }
+  ]
+}

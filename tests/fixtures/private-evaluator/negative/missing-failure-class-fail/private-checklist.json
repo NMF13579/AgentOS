@@ -1,0 +1,9 @@
+{
+  "private_checks": [
+    {
+      "id": "x",
+      "private": true,
+      "maps_to_public_rule": "no-fake-approval"
+    }
+  ]
+}
