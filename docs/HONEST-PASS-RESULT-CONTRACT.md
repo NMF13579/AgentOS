@@ -1,0 +1,36 @@
+# Honest PASS Result Contract
+
+## MVP Result Tokens
+- HONEST_PASS_OK
+- HONEST_PASS_VIOLATION
+- HONEST_PASS_NEEDS_REVIEW
+
+## Deferred Tokens
+- HONEST_PASS_WARNING
+- HONEST_PASS_INVALID
+
+## Failure Classes
+- CANARY_TOUCHED
+- TRACE_MISSING
+- TRACE_INVALID
+- ARTIFACT_MISSING
+- HASH_MISMATCH
+- BINDING_INVALID
+- PASS_WITHOUT_PROOF
+- PRIVATE_CHECK_UNMAPPED
+- HIDDEN_REQUIREMENT_DETECTED
+- RUNNER_PROOF_NOT_VERIFIED
+- NEEDS_HUMAN_REVIEW
+
+## Exit Semantics
+- HONEST_PASS_OK -> exit 0
+- HONEST_PASS_VIOLATION -> exit 1
+- HONEST_PASS_NEEDS_REVIEW -> exit 1
+
+## Strict Mode Rule
+Clean PASS requires clean proof.
+WARNING != clean PASS.
+PASS without proof = FAIL.
+PASS without trace = FAIL.
+PASS without binding = FAIL.
+NEEDS_REVIEW blocks completion.
