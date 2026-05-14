@@ -1,0 +1,24 @@
+{
+  "task_id": "task-1",
+  "evidence_set_id": "set-1",
+  "status": "COMPLETED",
+  "artifacts": [
+    {
+      "path": "artifacts/evidence-report.md",
+      "artifact_type": "evidence_report",
+      "protected": true,
+      "finalized": true,
+      "result_status": "PASS",
+      "sha256_before": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sha256_after": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "changed_after_finalization": false,
+      "amendment_required": false,
+      "amendment_record": null
+    }
+  ],
+  "rerun": {
+    "rerun_performed": false,
+    "rerun_cause_recorded": false,
+    "rerun_cause": null
+  }
+}

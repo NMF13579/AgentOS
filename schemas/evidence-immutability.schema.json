@@ -1,0 +1,27 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "required": ["task_id", "evidence_set_id", "status", "artifacts"],
+  "properties": {
+    "task_id": {"type": "string"},
+    "evidence_set_id": {"type": "string"},
+    "status": {"type": "string", "enum": ["DRAFT", "FAILED", "COMPLETED", "AMENDED", "LEGACY"]},
+    "artifacts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["path", "artifact_type", "protected", "finalized", "sha256_before", "sha256_after", "changed_after_finalization", "amendment_required"],
+        "properties": {
+          "path": {"type": "string"},
+          "artifact_type": {"type": "string", "enum": ["evidence_report", "completion_review", "process_trace", "evidence_binding", "validation_output", "audit_record", "other"]},
+          "protected": {"type": "boolean"},
+          "finalized": {"type": "boolean"},
+          "sha256_before": {"type": "string", "pattern": "^sha256:[a-fA-F0-9]{64}$"},
+          "sha256_after": {"type": "string", "pattern": "^sha256:[a-fA-F0-9]{64}$"},
+          "changed_after_finalization": {"type": "boolean"},
+          "amendment_required": {"type": "boolean"}
+        }
+      }
+    }
+  }
+}
