@@ -1,0 +1,22 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "required": ["private_checks"],
+  "properties": {
+    "private_checks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "private", "maps_to_public_rule", "failure_class"],
+        "properties": {
+          "id": {"type": "string"},
+          "private": {"type": "boolean"},
+          "maps_to_public_rule": {"type": "string"},
+          "failure_class": {"type": "string"},
+          "evaluator_note": {"type": "string"},
+          "hidden_requirement": {"const": false}
+        }
+      }
+    }
+  }
+}

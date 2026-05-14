@@ -1,0 +1,37 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "required": ["result_claim", "execution_trace"],
+  "properties": {
+    "result_claim": {
+      "type": "string",
+      "enum": ["PASS", "FAIL", "WARNING", "NEEDS_REVIEW", "BLOCKED"]
+    },
+    "execution_trace": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "command",
+          "exit_code",
+          "output_artifact",
+          "output_hash",
+          "generated_at",
+          "runner_generated",
+          "validation_source_id",
+          "trace_writable_by_execution_agent"
+        ],
+        "properties": {
+          "command": {"type": "string"},
+          "exit_code": {"type": "integer"},
+          "output_artifact": {"type": "string"},
+          "output_hash": {"type": "string", "pattern": "^sha256:[a-fA-F0-9]{64}$"},
+          "generated_at": {"type": "string"},
+          "runner_generated": {"type": "boolean"},
+          "validation_source_id": {"type": "string"},
+          "trace_writable_by_execution_agent": {"type": "boolean"}
+        }
+      }
+    }
+  }
+}

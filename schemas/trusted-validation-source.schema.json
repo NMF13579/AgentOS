@@ -1,0 +1,37 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "required": ["trusted_validation_sources"],
+  "properties": {
+    "trusted_validation_sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "source_id",
+          "source_type",
+          "allowed_commands",
+          "authority_scope",
+          "created_by",
+          "modifiable_by_execution_agent"
+        ],
+        "properties": {
+          "source_id": {"type": "string"},
+          "source_type": {
+            "type": "string",
+            "enum": [
+              "CI runner",
+              "AgentOS runner",
+              "approved validation entrypoint",
+              "trusted validation wrapper"
+            ]
+          },
+          "allowed_commands": {"type": "array", "items": {"type": "string"}},
+          "authority_scope": {"type": "array", "items": {"type": "string"}},
+          "created_by": {"type": "string"},
+          "modifiable_by_execution_agent": {"type": "boolean"}
+        }
+      }
+    }
+  }
+}
