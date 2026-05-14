@@ -1,0 +1,27 @@
+{
+  "task_id": "task-smoke-001",
+  "risk_level": "HIGH",
+  "produced_by": {
+    "actor_id": "developer-agent",
+    "actor_type": "agent"
+  },
+  "implemented_by": {
+    "actor_id": "developer-agent",
+    "actor_type": "agent"
+  },
+  "verified_by": {
+    "actor_id": "auditor-agent",
+    "actor_type": "agent"
+  },
+  "approved_by": {
+    "actor_id": "human-owner",
+    "actor_type": "human"
+  },
+  "verified_artifacts": [
+    {
+      "path": "reports/ci/agentos-validate.json",
+      "patched_by_verifier": false
+    }
+  ],
+  "final_verifier": "auditor-agent"
+}

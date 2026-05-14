@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "required": ["task_id", "risk_level", "produced_by", "implemented_by", "verified_by", "final_verifier"],
+  "properties": {
+    "task_id": {"type": "string"},
+    "risk_level": {"type": "string", "enum": ["LOW", "MEDIUM", "HIGH", "CRITICAL"]},
+    "produced_by": {"$ref": "#/definitions/actor"},
+    "implemented_by": {"$ref": "#/definitions/actor"},
+    "verified_by": {"$ref": "#/definitions/actor"},
+    "approved_by": {"$ref": "#/definitions/actor"},
+    "final_verifier": {"type": "string"}
+  },
+  "definitions": {
+    "actor": {
+      "type": "object",
+      "required": ["actor_id", "actor_type"],
+      "properties": {
+        "actor_id": {"type": "string"},
+        "actor_type": {"type": "string", "enum": ["agent", "human", "runner", "ci", "maintainer"]}
+      }
+    }
+  }
+}
