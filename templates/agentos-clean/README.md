@@ -35,6 +35,18 @@ Advanced users may run:
 python3 agentos/scripts/new-task.py "Improve README"
 python3 agentos/scripts/agentos-validate.py all
 
+## Local Copy
+
+When copying this template into a local project, ensure hidden dotfiles (`.agentos/` and `.github/`) are preserved.
+
+Use a dotfile-preserving command:
+
+```bash
+cp -a templates/agentos-clean/. <target>/
+```
+
+Do not use `cp -r * <target>/`.
+
 ## What this template is
 
 AgentOS is a repo-based guardrail framework for AI coding workflows.

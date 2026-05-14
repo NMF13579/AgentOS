@@ -6,11 +6,24 @@ This document explains how to start a clean AgentOS project from this template.
 
 ## Start
 
-1. Click "Use this template".
+1. Click "Use this template" in GitHub.
 2. Create your repository.
 3. Open a new issue using "AgentOS Task Request".
 
 AgentOS starts in Simple Mode by default.
+
+## Local Copy
+
+If you are copying this template into an existing project locally, you **must** include hidden dotfiles (`.agentos/` and `.github/`).
+
+Do not use unsafe copy commands like `cp -r * <target>/`.
+
+Instead, use a dotfile-preserving command:
+
+```bash
+cp -a templates/agentos-clean/. <target>/
+```
+
 
 ## What Happens Automatically
 
