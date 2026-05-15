@@ -1,0 +1,1 @@
+{"id":"unknown-integrity-token-fail","description":"Runner detects unknown top-level INTEGRITY token.","kind":"json-output","expected_check_status":"FAIL","expected_failure_class":"TOKEN_CONTRACT_REGRESSION","expected_runner_result_floor":"INTEGRITY_REGRESSION_FAILED","input_files":["payload.json"]}

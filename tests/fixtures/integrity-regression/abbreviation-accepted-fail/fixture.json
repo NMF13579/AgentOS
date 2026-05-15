@@ -1,0 +1,1 @@
+{"id":"abbreviation-accepted-fail","description":"Runner detects unsafe argparse abbreviation acceptance.","kind":"command-behavior","expected_check_status":"FAIL","expected_failure_class":"ARGPARSE_ABBREVIATION_REGRESSION","expected_runner_result_floor":"INTEGRITY_REGRESSION_FAILED","input_files":["simulated-command.json"]}

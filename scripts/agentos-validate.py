@@ -42,6 +42,10 @@ INTEGRITY_WARNING = "INTEGRITY_WARNING"
 INTEGRITY_VIOLATION = "INTEGRITY_VIOLATION"
 INTEGRITY_NEEDS_REVIEW = "INTEGRITY_NEEDS_REVIEW"
 INTEGRITY_BLOCKED = "INTEGRITY_BLOCKED"
+INTEGRITY_REGRESSION_OK = "INTEGRITY_REGRESSION_OK"
+INTEGRITY_REGRESSION_FAILED = "INTEGRITY_REGRESSION_FAILED"
+INTEGRITY_REGRESSION_NEEDS_REVIEW = "INTEGRITY_REGRESSION_NEEDS_REVIEW"
+INTEGRITY_REGRESSION_BLOCKED = "INTEGRITY_REGRESSION_BLOCKED"
 
 INTEGRITY_PRIORITY = {
     INTEGRITY_OK: 0,
@@ -118,6 +122,7 @@ INTEGRITY_EXPLANATION_MAP = {
 }
 
 INTEGRITY_STRICT_FIXTURES_JSON_CMD_TEXT = "integrity --strict --fixtures --json"
+INTEGRITY_REGRESSION_JSON_CMD_TEXT = "integrity-regression --json --skip-all-strict-check"
 
 PRIORITY = {
     PASS: 0,
@@ -152,6 +157,9 @@ def parse_cli(argv):
     parser.add_argument("--input")
     parser.add_argument("--registry")
     parser.add_argument("--list-fixtures", action="store_true")
+    parser.add_argument("--self-test-fixtures", action="store_true")
+    parser.add_argument("--skip-all-strict-check", action="store_true")
+    parser.add_argument("--fixture-root")
     parser.add_argument(
         "command",
         nargs="?",
@@ -168,6 +176,7 @@ def parse_cli(argv):
             "evidence-immutability",
             "evidence-amendments",
             "integrity",
+            "integrity-regression",
             "all",
         ],
     )
@@ -201,6 +210,16 @@ def parse_cli(argv):
         raise ValueError("--explain-results/--explain-result are only valid with integrity command")
     if args.explain_results and args.explain_result:
         raise ValueError("Use either --explain-results or --explain-result, not both.")
+    if args.self_test_fixtures and args.command != "integrity-regression":
+        raise ValueError("--self-test-fixtures is only valid with integrity-regression command")
+    if args.skip_all_strict_check and args.command != "integrity-regression":
+        raise ValueError("--skip-all-strict-check is only valid with integrity-regression command")
+    if args.list_fixtures and args.command != "integrity":
+        raise ValueError("--list-fixtures is only valid with integrity command")
+    if args.registry and args.command not in ["integrity", "integrity-regression"]:
+        raise ValueError("--registry is only valid with integrity/integrity-regression command")
+    if args.fixture_root and args.command != "integrity-regression":
+        raise ValueError("--fixture-root is only valid with integrity-regression command")
 
     return args
 
@@ -840,6 +859,50 @@ def run_integrity(repo_root, args):
     }
 
 
+def run_integrity_regression(repo_root, args):
+    cmd = [sys.executable, "scripts/test-integrity-regression.py"]
+    if args.self_test_fixtures:
+        cmd.append("--self-test-fixtures")
+    if args.fixture_root:
+        cmd.extend(["--fixture-root", args.fixture_root])
+    if args.json:
+        cmd.append("--json")
+    if args.skip_all_strict_check:
+        cmd.append("--skip-all-strict-check")
+
+    proc = subprocess.run(
+        cmd,
+        cwd=str(repo_root),
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+
+    if args.json:
+        payload = _load_json_text(proc.stdout.strip())
+        if payload is None:
+            safe = {
+                "suite": "integrity-regression-wrapper",
+                "result": INTEGRITY_REGRESSION_BLOCKED,
+                "failure_class": "INVALID_RUNNER_JSON",
+                "error": "invalid_runner_json",
+                "message": "Regression runner returned invalid JSON.",
+                "source_output_available": bool((proc.stdout or "").strip() or (proc.stderr or "").strip()),
+                "generated_at": generated_at_utc(),
+                "details": [
+                    "Regression CLI integration detects drift; it does not grant approval.",
+                    "Regression runner result is validation evidence, not approval.",
+                ],
+            }
+            return safe, 1
+        return payload, proc.returncode
+
+    text = proc.stdout if proc.stdout else proc.stderr
+    if text:
+        print(text, end="" if text.endswith("\n") else "\n")
+    return None, proc.returncode
+
+
 def print_human(summary):
     failed_names = [c["name"] for c in summary["checks"] if c["result"] in [FAIL, ERROR]]
     warn_names = [c["name"] for c in summary["checks"] if c["result"] == WARN]
@@ -993,6 +1056,12 @@ def main(argv):
             print(f"{out['result']}: integrity run completed")
         return out["exit_code"]
 
+    if args.command == "integrity-regression":
+        payload, code = run_integrity_regression(repo_root, args)
+        if args.json:
+            emit_json(payload)
+        return code
+
     if args.command == "scope":
         checks = run_scope(repo_root, args.task)
     elif args.command == "scope-fixtures":
@@ -1068,6 +1137,48 @@ def main(argv):
                     "result": mapped,
                     "output_summary": out_summary,
                     "human_action_required": mapped == FAIL,
+                    "ran": True,
+                }
+            )
+            regression_cmd = [
+                sys.executable,
+                "scripts/agentos-validate.py",
+                "integrity-regression",
+                "--json",
+                "--skip-all-strict-check",
+            ]
+            reg_payload, reg_parse_err = _run_json_subprocess(repo_root, regression_cmd)
+            if reg_parse_err:
+                reg_mapped = FAIL
+                reg_summary = "regression json parse failed"
+                reg_result = INTEGRITY_REGRESSION_BLOCKED
+            else:
+                reg_result = reg_payload.get("result", INTEGRITY_REGRESSION_BLOCKED)
+                reg_details = reg_payload.get("summary", {})
+                reg_summary = (
+                    f"{reg_result}; passed={reg_details.get('passed', 0)}; "
+                    f"failed={reg_details.get('failed', 0)}; "
+                    f"needs_review={reg_details.get('needs_review', 0)}; "
+                    f"blocked={reg_details.get('blocked', 0)}; "
+                    "Skipped to prevent all --strict recursion."
+                )
+                if reg_result == INTEGRITY_REGRESSION_OK:
+                    reg_mapped = PASS
+                elif reg_result == INTEGRITY_REGRESSION_NEEDS_REVIEW:
+                    reg_mapped = FAIL
+                elif reg_result == INTEGRITY_REGRESSION_BLOCKED:
+                    reg_mapped = FAIL
+                else:
+                    reg_mapped = FAIL
+
+            checks.append(
+                {
+                    "name": "integrity-regression-strict",
+                    "command": f"{sys.executable} scripts/agentos-validate.py {INTEGRITY_REGRESSION_JSON_CMD_TEXT}",
+                    "exit_code": 0 if reg_mapped == PASS else 1,
+                    "result": reg_mapped,
+                    "output_summary": reg_summary,
+                    "human_action_required": reg_mapped == FAIL,
                     "ran": True,
                 }
             )

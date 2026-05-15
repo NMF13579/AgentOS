@@ -1,0 +1,48 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Integrity Regression Fixture",
+  "type": "object",
+  "required": [
+    "id",
+    "description",
+    "kind",
+    "expected_check_status",
+    "expected_failure_class",
+    "expected_runner_result_floor",
+    "input_files"
+  ],
+  "properties": {
+    "id": {"type": "string", "minLength": 1},
+    "description": {"type": "string", "minLength": 1},
+    "kind": {
+      "type": "string",
+      "enum": [
+        "json-output",
+        "summary-output",
+        "command-behavior",
+        "authority-boundary",
+        "static-scan",
+        "known-gap"
+      ]
+    },
+    "expected_check_status": {
+      "type": "string",
+      "enum": ["PASS", "FAIL", "NEEDS_REVIEW", "BLOCKED", "SKIPPED_KNOWN_GAP"]
+    },
+    "expected_failure_class": {"type": ["string", "null"]},
+    "expected_runner_result_floor": {
+      "type": "string",
+      "enum": [
+        "INTEGRITY_REGRESSION_OK",
+        "INTEGRITY_REGRESSION_FAILED",
+        "INTEGRITY_REGRESSION_NEEDS_REVIEW",
+        "INTEGRITY_REGRESSION_BLOCKED"
+      ]
+    },
+    "input_files": {
+      "type": "array",
+      "items": {"type": "string"}
+    }
+  },
+  "additionalProperties": true
+}

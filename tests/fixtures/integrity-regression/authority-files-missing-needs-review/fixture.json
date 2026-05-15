@@ -1,0 +1,1 @@
+{"id":"authority-files-missing-needs-review","description":"Runner returns NEEDS_REVIEW when no authority files are available.","kind":"authority-boundary","expected_check_status":"NEEDS_REVIEW","expected_failure_class":"AUTHORITY_BOUNDARY_MISSING","expected_runner_result_floor":"INTEGRITY_REGRESSION_NEEDS_REVIEW","input_files":[]}
