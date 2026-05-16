@@ -9,3 +9,5 @@ scripts/lib/*.pyc
 *.sqlite
 *.sqlite3
 *.db
+
+memory-bank/

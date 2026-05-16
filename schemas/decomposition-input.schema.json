@@ -1,0 +1,105 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agentos.local/schemas/decomposition-input.schema.json",
+  "title": "Decomposition Input Contract",
+  "description": "Structure for M44 decomposition input readiness. This schema does not grant execution approval.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "contract_version",
+    "record_id",
+    "source_spec",
+    "source_ux",
+    "ui_contract",
+    "screen_map",
+    "user_flows",
+    "state_error_matrix",
+    "ux_acceptance_criteria",
+    "known_constraints",
+    "known_risks",
+    "readiness_result",
+    "human_review_required",
+    "created_at"
+  ],
+  "properties": {
+    "contract_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "record_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_spec": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "approved"],
+      "properties": {
+        "path": { "type": "string", "minLength": 1 },
+        "approved": { "type": "boolean" }
+      }
+    },
+    "source_ux": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "approved"],
+      "properties": {
+        "path": { "type": "string", "minLength": 1 },
+        "approved": { "type": "boolean" }
+      }
+    },
+    "ui_contract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "required", "present"],
+      "properties": {
+        "path": { "type": "string", "minLength": 1 },
+        "required": { "type": "boolean" },
+        "present": { "type": "boolean" }
+      }
+    },
+    "screen_map": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "user_flows": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "state_error_matrix": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "ux_acceptance_criteria": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "known_constraints": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "known_risks": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "readiness_result": {
+      "type": "string",
+      "enum": [
+        "DECOMPOSITION_INPUT_READY",
+        "DECOMPOSITION_INPUT_MISSING_SPEC_APPROVAL",
+        "DECOMPOSITION_INPUT_MISSING_UX_APPROVAL",
+        "DECOMPOSITION_INPUT_MISSING_UI_CONTRACT",
+        "DECOMPOSITION_INPUT_INCOMPLETE",
+        "DECOMPOSITION_INPUT_NEEDS_REVIEW"
+      ]
+    },
+    "human_review_required": {
+      "type": "boolean",
+      "description": "Readiness is not execution approval and does not replace HumanApprovalGate."
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}
