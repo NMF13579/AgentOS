@@ -1,0 +1,23 @@
+{
+  "queue_entry_version": 1,
+  "queue_entry_id": "queue_ready_with_blockers",
+  "task_id": "ready-with-blockers",
+  "source_task_contract": "TODO/path/task.md",
+  "source_dependency_map": "TODO",
+  "queue_status": "ready_for_review",
+  "queue_reason": "dependency_satisfied",
+  "dependency_status": "blocked",
+  "lint_status": "pass",
+  "context_status": "present",
+  "ui_contract_status": "present",
+  "approval_status": "required_missing",
+  "owner_review_status": "not_required",
+  "depends_on": [],
+  "blocked_by": ["approval"],
+  "priority": "high",
+  "risk_level": "HIGH",
+  "human_approval_required": true,
+  "owner_review_required": false,
+  "created_at": "2026-05-17T09:08:00Z",
+  "non_approval_warning": "not approval and does not authorize execution"
+}
