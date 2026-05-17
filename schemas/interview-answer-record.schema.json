@@ -1,0 +1,262 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Interview Answer Record",
+  "description": "Machine-checkable M45 interview answer record. Stores interview evidence and boundaries only.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "interview_id",
+    "created_at",
+    "interview_status",
+    "source_user_input",
+    "idea_summary",
+    "problem_summary",
+    "target_users",
+    "current_workaround",
+    "desired_outcome",
+    "success_criteria",
+    "constraints",
+    "risks",
+    "non_goals",
+    "unknowns",
+    "assumptions",
+    "answered_questions",
+    "unanswered_questions",
+    "follow_up_questions",
+    "non_approval_warning"
+  ],
+  "properties": {
+    "interview_id": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Unique interview record identifier; must be non-empty."
+    },
+    "created_at": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Record creation timestamp string; format checks may be handled by downstream validation."
+    },
+    "interview_status": {
+      "type": "string",
+      "enum": [
+        "INTERVIEW_DRAFT",
+        "INTERVIEW_NEEDS_CLARIFICATION",
+        "INTERVIEW_READY_FOR_SPEC",
+        "INTERVIEW_BLOCKED"
+      ],
+      "description": "Interview status within M45. INTERVIEW_READY_FOR_SPEC does not mean approved for implementation."
+    },
+    "source_user_input": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Raw user-provided input text; must be non-empty."
+    },
+    "idea_summary": {
+      "type": "string",
+      "description": "Neutral short summary of source_user_input. Must not add information not present in source_user_input."
+    },
+    "problem_summary": {
+      "type": "string",
+      "description": "Problem statement from user input or MISSING_FROM_INTERVIEW if not provided."
+    },
+    "target_users": {
+      "type": "string",
+      "description": "Target users from user input or MISSING_FROM_INTERVIEW if not provided."
+    },
+    "current_workaround": {
+      "type": "string",
+      "description": "How users currently cope with the problem or MISSING_FROM_INTERVIEW."
+    },
+    "desired_outcome": {
+      "type": "string",
+      "description": "Desired user-level outcome or MISSING_FROM_INTERVIEW if unknown."
+    },
+    "success_criteria": {
+      "type": "string",
+      "description": "User-level success criteria from interview evidence or MISSING_FROM_INTERVIEW."
+    },
+    "constraints": {
+      "type": "string",
+      "description": "Constraints from user input, NONE (only if explicitly stated), or MISSING_FROM_INTERVIEW."
+    },
+    "risks": {
+      "type": "string",
+      "description": "Risks from user input, NONE (only if explicitly stated), or MISSING_FROM_INTERVIEW."
+    },
+    "non_goals": {
+      "type": "string",
+      "description": "Out-of-scope intentions from user input, NONE (only if explicitly stated), or MISSING_FROM_INTERVIEW."
+    },
+    "unknowns": {
+      "type": "array",
+      "description": "Explicit list of unknown items discovered during interview.",
+      "items": {
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "item"
+            ],
+            "properties": {
+              "item": {
+                "type": "string",
+                "description": "Unknown item text."
+              },
+              "reason": {
+                "type": "string",
+                "description": "Optional reason why this unknown remains unresolved."
+              },
+              "deferred": {
+                "type": "boolean",
+                "description": "Whether unknown resolution is intentionally deferred."
+              }
+            }
+          }
+        ]
+      }
+    },
+    "assumptions": {
+      "type": "array",
+      "description": "Explicit assumptions. Assumptions must be marked as assumptions, not facts.",
+      "items": {
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "assumption"
+            ],
+            "properties": {
+              "assumption": {
+                "type": "string",
+                "description": "Assumption text."
+              },
+              "basis": {
+                "type": "string",
+                "description": "Optional basis/source of the assumption."
+              },
+              "risk_if_wrong": {
+                "type": "string",
+                "description": "Optional risk if the assumption is incorrect."
+              }
+            }
+          }
+        ]
+      }
+    },
+    "answered_questions": {
+      "type": "array",
+      "description": "Questions that have been answered during the interview.",
+      "items": {
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "question",
+              "answer"
+            ],
+            "properties": {
+              "question": {
+                "type": "string",
+                "description": "Question asked."
+              },
+              "answer": {
+                "type": "string",
+                "description": "User answer text."
+              },
+              "field": {
+                "type": "string",
+                "description": "Optional target field this Q/A relates to."
+              }
+            }
+          }
+        ]
+      }
+    },
+    "unanswered_questions": {
+      "type": "array",
+      "description": "Questions that remain unanswered.",
+      "items": {
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "question"
+            ],
+            "properties": {
+              "question": {
+                "type": "string",
+                "description": "Unanswered question text."
+              },
+              "field": {
+                "type": "string",
+                "description": "Optional field blocked by this unanswered question."
+              },
+              "reason": {
+                "type": "string",
+                "description": "Optional reason why unanswered."
+              }
+            }
+          }
+        ]
+      }
+    },
+    "follow_up_questions": {
+      "type": "array",
+      "description": "Follow-up questions for missing or ambiguous information.",
+      "items": {
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "question"
+            ],
+            "properties": {
+              "question": {
+                "type": "string",
+                "description": "Follow-up question text."
+              },
+              "field": {
+                "type": "string",
+                "description": "Optional field targeted by this follow-up."
+              },
+              "priority": {
+                "type": "string",
+                "enum": [
+                  "low",
+                  "medium",
+                  "high"
+                ],
+                "description": "Optional urgency level for the follow-up."
+              }
+            }
+          }
+        ]
+      }
+    },
+    "non_approval_warning": {
+      "type": "string",
+      "const": "Interview evidence is not approval. Interview readiness does not authorize implementation, task creation, queue entry creation, autopilot, commit, push, merge, release, or deployment.",
+      "description": "Mandatory constant warning. Confirms this record is not approval or execution authorization."
+    }
+  }
+}
