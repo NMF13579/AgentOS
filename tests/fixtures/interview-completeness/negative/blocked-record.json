@@ -1,0 +1,25 @@
+{
+  "interview_id": "int-005",
+  "created_at": "2026-05-17T10:20:00Z",
+  "interview_status": "INTERVIEW_BLOCKED",
+  "source_user_input": "Need data handling improvements.",
+  "idea_summary": "Need data handling improvements.",
+  "problem_summary": "Data handling steps are unclear.",
+  "target_users": "Operations managers",
+  "current_workaround": "Manual approvals and spreadsheet logs.",
+  "desired_outcome": "Clearer and safer handling flow.",
+  "success_criteria": "Fewer policy violations.",
+  "constraints": "Legal policy decision pending.",
+  "risks": "Compliance breach if misconfigured.",
+  "non_goals": "No policy rewrite in this scope.",
+  "unknowns": [],
+  "assumptions": [],
+  "answered_questions": [],
+  "unanswered_questions": [
+    "Which legal rule must be applied?"
+  ],
+  "follow_up_questions": [
+    "Which authority resolves the legal decision?"
+  ],
+  "non_approval_warning": "Interview evidence is not approval. Interview readiness does not authorize implementation, task creation, queue entry creation, autopilot, commit, push, merge, release, or deployment."
+}

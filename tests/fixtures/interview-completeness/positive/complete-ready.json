@@ -1,0 +1,21 @@
+{
+  "interview_id": "int-001",
+  "created_at": "2026-05-17T10:00:00Z",
+  "interview_status": "INTERVIEW_READY_FOR_SPEC",
+  "source_user_input": "Users lose too much time when submitting onboarding requests manually in chat.",
+  "idea_summary": "Users need faster onboarding request handling.",
+  "problem_summary": "Manual onboarding requests in chat are slow and error-prone.",
+  "target_users": "Operations staff and team leads",
+  "current_workaround": "Users send chat messages and maintain a manual checklist in a spreadsheet.",
+  "desired_outcome": "A clear request flow reduces delays and missing information.",
+  "success_criteria": "Users can submit complete requests faster with fewer corrections.",
+  "constraints": "Must work with existing internal SSO and current approval workflow.",
+  "risks": "Incorrect routing could delay account access.",
+  "non_goals": "No redesign of corporate identity in this scope.",
+  "unknowns": [],
+  "assumptions": [],
+  "answered_questions": [],
+  "unanswered_questions": [],
+  "follow_up_questions": [],
+  "non_approval_warning": "Interview evidence is not approval. Interview readiness does not authorize implementation, task creation, queue entry creation, autopilot, commit, push, merge, release, or deployment."
+}

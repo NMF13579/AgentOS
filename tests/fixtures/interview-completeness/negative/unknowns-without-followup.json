@@ -1,0 +1,23 @@
+{
+  "interview_id": "int-004",
+  "created_at": "2026-05-17T10:15:00Z",
+  "interview_status": "INTERVIEW_READY_FOR_SPEC",
+  "source_user_input": "We need a better onboarding request path.",
+  "idea_summary": "Need better onboarding request path.",
+  "problem_summary": "Current onboarding request path causes delays.",
+  "target_users": "Internal staff",
+  "current_workaround": "Manual messaging and checklist.",
+  "desired_outcome": "Faster request completion.",
+  "success_criteria": "Fewer delays and rework.",
+  "constraints": "Must retain existing approval chain.",
+  "risks": "Wrong routing may block access.",
+  "non_goals": "No migration of historical records.",
+  "unknowns": [
+    "Integration owner is unknown"
+  ],
+  "assumptions": [],
+  "answered_questions": [],
+  "unanswered_questions": [],
+  "follow_up_questions": [],
+  "non_approval_warning": "Interview evidence is not approval. Interview readiness does not authorize implementation, task creation, queue entry creation, autopilot, commit, push, merge, release, or deployment."
+}

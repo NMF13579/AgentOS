@@ -1,0 +1,23 @@
+{
+  "interview_id": "int-003",
+  "created_at": "2026-05-17T10:10:00Z",
+  "interview_status": "INTERVIEW_NEEDS_CLARIFICATION",
+  "source_user_input": "We want better request handling.",
+  "idea_summary": "Need better request handling.",
+  "problem_summary": "Request handling quality is inconsistent.",
+  "target_users": "Support operations team",
+  "current_workaround": "Manual triage in shared inbox.",
+  "desired_outcome": "More consistent handling.",
+  "success_criteria": "MISSING_FROM_INTERVIEW",
+  "constraints": "NONE",
+  "risks": "NONE",
+  "non_goals": "NONE",
+  "unknowns": [],
+  "assumptions": [],
+  "answered_questions": [],
+  "unanswered_questions": [],
+  "follow_up_questions": [
+    "How will you know this handling is successful?"
+  ],
+  "non_approval_warning": "Interview evidence is not approval. Interview readiness does not authorize implementation, task creation, queue entry creation, autopilot, commit, push, merge, release, or deployment."
+}
