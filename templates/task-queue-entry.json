@@ -1,0 +1,23 @@
+{
+  "queue_entry_version": 1,
+  "queue_entry_id": "queue_sample_task",
+  "task_id": "sample-task",
+  "source_task_contract": "TODO/path/to/task-contract.md",
+  "source_dependency_map": "TODO",
+  "queue_status": "candidate",
+  "queue_reason": "created_from_candidate_task",
+  "dependency_status": "not_checked",
+  "lint_status": "not_run",
+  "context_status": "not_checked",
+  "ui_contract_status": "not_checked",
+  "approval_status": "not_checked",
+  "owner_review_status": "not_checked",
+  "depends_on": [],
+  "blocked_by": [],
+  "priority": "normal",
+  "risk_level": "MEDIUM",
+  "human_approval_required": false,
+  "owner_review_required": false,
+  "created_at": "2026-05-15T09:30:00Z",
+  "non_approval_warning": "Queue entry is not approval. Queue entry does not authorize execution, commit, push, merge, or deploy. ready_for_review is not approval. queued is not execution authorization."
+}

@@ -1,0 +1,23 @@
+{
+  "queue_entry_version": 1,
+  "queue_entry_id": "queue_ready_for_review_task",
+  "task_id": "ready-for-review-task",
+  "source_task_contract": "TODO/path/to/ready-for-review-task-contract.md",
+  "source_dependency_map": "TODO",
+  "queue_status": "ready_for_review",
+  "queue_reason": "dependency_satisfied",
+  "dependency_status": "satisfied",
+  "lint_status": "pass",
+  "context_status": "present",
+  "ui_contract_status": "present",
+  "approval_status": "not_required",
+  "owner_review_status": "not_required",
+  "depends_on": [],
+  "blocked_by": [],
+  "priority": "normal",
+  "risk_level": "LOW",
+  "human_approval_required": false,
+  "owner_review_required": false,
+  "created_at": "2026-05-15T09:32:00Z",
+  "non_approval_warning": "ready_for_review is not approval and does not authorize execution."
+}
