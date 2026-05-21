@@ -100,7 +100,7 @@ VOCABULARY_VERSION = 1.0.0
 Vocabulary-file parsing is not implemented in M47.
 
 ## Fixture Strategy
-Проверка идёт по 1 позитивной и 10 негативным фикстурам.
+Проверка идёт по 1 позитивной и 16 негативным фикстурам.
 
 ## Positive Fixtures
 - `tests/fixtures/ux-contract/valid/valid-agent-action-review.md`

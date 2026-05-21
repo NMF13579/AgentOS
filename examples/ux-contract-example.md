@@ -44,7 +44,21 @@ The user easily understands the scope, risk, and impact of a proposed agent acti
 ## UX Elements
 ### UX Element: summary_card
 ### UX Element: risk_banner
+risk_level: HIGH
+affected_scope: /src/components/ — 3 files
+risk_summary: Irreversible file deletion
+non_authority_notice: >
+  This preview does not authorize execution.
 ### UX Element: approval_card
+action_summary: Agent will delete 3 files from /src/components/
+risk_level: HIGH
+human_owner: Tech Lead
+consequences: Files will be permanently deleted. Cannot be undone.
+approve_label: Approve deletion
+decline_label: Decline
+non_authority_notice: >
+  This preview does not authorize execution.
+  A separate task contract and human approval are required.
 ### UX Element: review_panel
 ### UX Element: non_authority_notice
 

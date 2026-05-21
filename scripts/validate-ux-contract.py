@@ -142,7 +142,7 @@ REQUIRED_APPROVAL_TERMS = [
     "non_authority_notice",
 ]
 
-REQUIRED_RISK_TERMS = ["risk_level", "risk_reason", "affected_scope"]
+REQUIRED_RISK_TERMS = ["risk_level", "affected_scope", "non_authority_notice"]
 
 REQUIRED_SOURCE_FILES = [
     "schemas/ux-contract.schema.json",
@@ -222,6 +222,142 @@ def extract_ux_elements(text: str) -> List[str]:
     return uniq
 
 
+def extract_ux_elements_section(text: str) -> str:
+    section_match = re.search(r"^## UX Elements\s*$", text, re.MULTILINE)
+    if not section_match:
+        return ""
+    start = section_match.end()
+    tail = text[start:]
+    next_section = re.search(r"^## ", tail, re.MULTILINE)
+    return tail[: next_section.start()] if next_section else tail
+
+
+def extract_ux_elements_for_required_field_checks(text: str) -> List[str]:
+    section_text = extract_ux_elements_section(text)
+    if not section_text:
+        return []
+
+    found: List[str] = []
+    # MVP: only deterministic declarations inside UX Elements section.
+    for m in re.finditer(r"^\s*element_type:\s*([a-zA-Z0-9_-]+)\s*$", section_text, re.MULTILINE):
+        found.append(m.group(1))
+    for m in re.finditer(r"^\s*-\s*([a-zA-Z0-9_-]+)\s*$", section_text, re.MULTILINE):
+        found.append(m.group(1))
+
+    uniq = []
+    seen = set()
+    for item in found:
+        if item not in seen:
+            seen.add(item)
+            uniq.append(item)
+    return uniq
+
+
+def extract_ux_elements_headings_in_section(text: str) -> List[str]:
+    section_text = extract_ux_elements_section(text)
+    if not section_text:
+        return []
+    found = []
+    for m in re.finditer(r"^### UX Element:\s*([a-zA-Z0-9_-]+)\s*$", section_text, re.MULTILINE):
+        found.append(m.group(1))
+    uniq = []
+    seen = set()
+    for item in found:
+        if item not in seen:
+            seen.add(item)
+            uniq.append(item)
+    return uniq
+
+
+def extract_section_block(text: str, section_heading: str) -> str:
+    pattern = rf"^{re.escape(section_heading)}\s*$([\s\S]*?)(?=^## |\Z)"
+    m = re.search(pattern, text, re.MULTILINE)
+    if not m:
+        return ""
+    return m.group(1)
+
+
+def extract_mapping_block(section_text: str, root_key: str) -> str:
+    lines = section_text.splitlines()
+    root_idx = -1
+    root_indent = 0
+    for i, line in enumerate(lines):
+        m = re.match(rf"^(\s*){re.escape(root_key)}:\s*$", line)
+        if m:
+            root_idx = i
+            root_indent = len(m.group(1))
+            break
+    if root_idx == -1:
+        return ""
+
+    block_lines: List[str] = []
+    for line in lines[root_idx + 1 :]:
+        if not line.strip():
+            block_lines.append(line)
+            continue
+        indent = len(line) - len(line.lstrip(" "))
+        if indent <= root_indent:
+            break
+        block_lines.append(line)
+    return "\n".join(block_lines)
+
+
+def element_heading_blocks_in_ux_elements_section(text: str) -> Dict[str, List[str]]:
+    section_text = extract_ux_elements_section(text)
+    if not section_text:
+        return {}
+    lines = section_text.splitlines()
+    blocks: Dict[str, List[str]] = {}
+
+    i = 0
+    while i < len(lines):
+        line = lines[i]
+        m = re.match(r"^### UX Element:\s*([a-zA-Z0-9_-]+)\s*$", line)
+        if not m:
+            i += 1
+            continue
+        element = m.group(1)
+        i += 1
+        buf: List[str] = []
+        while i < len(lines):
+            nxt = lines[i]
+            if re.match(r"^###\s+", nxt) or re.match(r"^##\s+", nxt):
+                break
+            buf.append(nxt)
+            i += 1
+        blocks.setdefault(element, []).append("\n".join(buf))
+    return blocks
+
+
+def traceability_source_sections_has_items(text: str) -> bool:
+    traceability_section = extract_section_block(text, "## Traceability")
+    if not traceability_section:
+        return False
+
+    section_text = traceability_section
+    lines = section_text.splitlines()
+    source_idx = -1
+    source_indent = 0
+    for i, line in enumerate(lines):
+        m = re.match(r"^(\s*)source_sections:\s*$", line)
+        if m:
+            source_idx = i
+            source_indent = len(m.group(1))
+            break
+    if source_idx == -1:
+        return False
+
+    for line in lines[source_idx + 1 :]:
+        if not line.strip():
+            continue
+        indent = len(line) - len(line.lstrip(" "))
+        if indent <= source_indent:
+            break
+        if re.match(r"^\s*-\s*\S+", line):
+            return True
+    return False
+
+
 def validate_contract(path: Path) -> ValidationResult:
     for required_path in REQUIRED_SOURCE_FILES:
         rp = Path(required_path)
@@ -234,7 +370,6 @@ def validate_contract(path: Path) -> ValidationResult:
     assert text is not None
 
     errors: List[str] = []
-
     frontmatter, fm_err, body = parse_frontmatter(text)
     if fm_err:
         return ValidationResult(RESULT_FAILED, [fm_err])
@@ -263,22 +398,28 @@ def validate_contract(path: Path) -> ValidationResult:
         if section not in text:
             errors.append(f"Missing required section: {section}")
 
-    if "source_product_spec:" not in text:
+    source_product_spec_section = extract_section_block(text, "## Source Product Spec")
+    if not source_product_spec_section:
+        errors.append("Missing required section: ## Source Product Spec")
+    source_product_spec_block = extract_mapping_block(source_product_spec_section, "source_product_spec") if source_product_spec_section else ""
+    if not source_product_spec_block:
         errors.append("Missing source_product_spec block")
     for key in ["spec_id:", "spec_version:", "product_spec_path:"]:
-        if key not in text:
+        if key not in source_product_spec_block:
             errors.append(f"Missing required source product spec key: {key}")
 
-    if "traceability:" not in text:
+    traceability_section = extract_section_block(text, "## Traceability")
+    traceability_block = extract_mapping_block(traceability_section, "traceability") if traceability_section else ""
+    if not traceability_block:
         errors.append("Missing traceability block")
     for key in ["spec_id:", "spec_version:", "product_spec_path:", "ux_contract_id:", "source_sections:"]:
-        if key not in text:
+        if key not in traceability_block:
             errors.append(f"Missing traceability key: {key}")
 
     if "source_section:" in text:
         errors.append("Forbidden singular traceability key used: source_section")
 
-    if "source_sections:" in text and not re.search(r"^\s*-\s*\S+", text, re.MULTILINE):
+    if "source_sections:" in text and not traceability_source_sections_has_items(text):
         errors.append("source_sections must contain at least one list entry")
 
     for state in REQUIRED_STATES:
@@ -297,17 +438,39 @@ def validate_contract(path: Path) -> ValidationResult:
             errors.append(f"Unknown UX element: {element}")
 
     lowered = text.lower()
-    approval_keys_detected = any(f"{term}:" in lowered for term in REQUIRED_APPROVAL_TERMS)
-    if "approval_card" in used_elements and approval_keys_detected:
+    elements_for_required_checks = extract_ux_elements_for_required_field_checks(text)
+    heading_elements_in_section = extract_ux_elements_headings_in_section(text)
+    heading_blocks = element_heading_blocks_in_ux_elements_section(text)
+    ux_elements_section_text = extract_ux_elements_section(text).lower()
+
+    approval_heading_present = "approval_card" in heading_elements_in_section
+    approval_profile_present = any(
+        f"{term}:" in lowered
+        for term in ("action_summary", "risk_level", "consequences", "approve_label", "decline_label")
+    )
+    if "approval_card" in elements_for_required_checks or (approval_heading_present and approval_profile_present):
         for term in REQUIRED_APPROVAL_TERMS:
             if f"{term}:" not in lowered:
                 errors.append(f"approval_card requires term: {term}")
+    if "approval_card" in heading_blocks:
+        for term in REQUIRED_APPROVAL_TERMS:
+            if f"{term}:" not in ux_elements_section_text:
+                errors.append(f"approval_card requires term: {term}")
 
-    risk_keys_detected = any(f"{term}:" in lowered for term in REQUIRED_RISK_TERMS)
-    if "risk_banner" in used_elements and risk_keys_detected:
+    risk_heading_present = "risk_banner" in heading_elements_in_section
+    risk_profile_present = any(f"{term}:" in lowered for term in ("risk_level", "affected_scope", "risk_reason", "risk_summary"))
+    if "risk_banner" in elements_for_required_checks or (risk_heading_present and risk_profile_present):
         for term in REQUIRED_RISK_TERMS:
             if f"{term}:" not in lowered:
                 errors.append(f"risk_banner requires term: {term}")
+        if "risk_summary:" not in lowered and "risk_reason:" not in lowered:
+            errors.append("risk_banner requires term: risk_summary")
+    if "risk_banner" in heading_blocks:
+        for term in REQUIRED_RISK_TERMS:
+            if f"{term}:" not in ux_elements_section_text:
+                errors.append(f"risk_banner requires term: {term}")
+        if "risk_summary:" not in ux_elements_section_text and "risk_reason:" not in ux_elements_section_text:
+            errors.append("risk_banner requires term: risk_summary")
 
     for stmt in REQUIRED_BOUNDARY_STATEMENTS:
         if stmt not in text:
@@ -365,11 +528,17 @@ def run_fixtures() -> Tuple[ValidationResult, Dict[str, object]]:
         negative_dir / "source-section-singular.md",
         negative_dir / "unknown-ux-element.md",
         negative_dir / "approval-card-missing-owner.md",
+        negative_dir / "approval-card-missing-required-fields.md",
+        negative_dir / "approval-card-heading-only.md",
         negative_dir / "forbidden-authority-claim.md",
         negative_dir / "missing-required-state.md",
         negative_dir / "execution-locked-false.md",
         negative_dir / "implementation-field.md",
         negative_dir / "happy-path-only.md",
+        negative_dir / "source-sections-empty.md",
+        negative_dir / "risk-banner-heading-only.md",
+        negative_dir / "source-product-spec-empty-block.md",
+        negative_dir / "traceability-keys-in-frontmatter-only.md",
     ]
 
     if not root.exists() or not valid_file.exists() or not negative_dir.exists():
