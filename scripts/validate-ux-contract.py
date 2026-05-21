@@ -198,18 +198,12 @@ def parse_frontmatter(text: str) -> Tuple[Optional[Dict[str, str]], Optional[str
 def extract_ux_elements(text: str) -> List[str]:
     found: List[str] = []
 
-    for m in re.finditer(r"^### UX Element:\s*([a-zA-Z0-9_-]+)\s*$", text, re.MULTILINE):
-        found.append(m.group(1))
-
-    for m in re.finditer(r"^\s*element_type:\s*([a-zA-Z0-9_-]+)\s*$", text, re.MULTILINE):
-        found.append(m.group(1))
-
-    section_match = re.search(r"^## UX Elements\s*$", text, re.MULTILINE)
-    if section_match:
-        start = section_match.end()
-        tail = text[start:]
-        next_section = re.search(r"^## ", tail, re.MULTILINE)
-        section_text = tail[: next_section.start()] if next_section else tail
+    section_text = extract_ux_elements_section(text)
+    if section_text:
+        for m in re.finditer(r"^### UX Element:\s*([a-zA-Z0-9_-]+)\s*$", section_text, re.MULTILINE):
+            found.append(m.group(1))
+        for m in re.finditer(r"^\s*element_type:\s*([a-zA-Z0-9_-]+)\s*$", section_text, re.MULTILINE):
+            found.append(m.group(1))
         for m in re.finditer(r"^\s*-\s*([a-zA-Z0-9_-]+)\s*$", section_text, re.MULTILINE):
             found.append(m.group(1))
 
@@ -439,38 +433,36 @@ def validate_contract(path: Path) -> ValidationResult:
 
     lowered = text.lower()
     elements_for_required_checks = extract_ux_elements_for_required_field_checks(text)
-    heading_elements_in_section = extract_ux_elements_headings_in_section(text)
     heading_blocks = element_heading_blocks_in_ux_elements_section(text)
-    ux_elements_section_text = extract_ux_elements_section(text).lower()
-
-    approval_heading_present = "approval_card" in heading_elements_in_section
-    approval_profile_present = any(
-        f"{term}:" in lowered
-        for term in ("action_summary", "risk_level", "consequences", "approve_label", "decline_label")
-    )
-    if "approval_card" in elements_for_required_checks or (approval_heading_present and approval_profile_present):
+    if "approval_card" in elements_for_required_checks:
         for term in REQUIRED_APPROVAL_TERMS:
             if f"{term}:" not in lowered:
                 errors.append(f"approval_card requires term: {term}")
-    if "approval_card" in heading_blocks:
+    approval_blocks = heading_blocks.get("approval_card", [])
+    for idx, block_text in enumerate(approval_blocks, start=1):
+        block_lower = block_text.lower()
+        if len(approval_blocks) == 1:
+            block_lower = block_lower + "\n" + extract_ux_elements_section(text).lower()
         for term in REQUIRED_APPROVAL_TERMS:
-            if f"{term}:" not in ux_elements_section_text:
-                errors.append(f"approval_card requires term: {term}")
+            if f"{term}:" not in block_lower:
+                errors.append(f"approval_card requires term in block {idx}: {term}")
 
-    risk_heading_present = "risk_banner" in heading_elements_in_section
-    risk_profile_present = any(f"{term}:" in lowered for term in ("risk_level", "affected_scope", "risk_reason", "risk_summary"))
-    if "risk_banner" in elements_for_required_checks or (risk_heading_present and risk_profile_present):
+    if "risk_banner" in elements_for_required_checks:
         for term in REQUIRED_RISK_TERMS:
             if f"{term}:" not in lowered:
                 errors.append(f"risk_banner requires term: {term}")
         if "risk_summary:" not in lowered and "risk_reason:" not in lowered:
             errors.append("risk_banner requires term: risk_summary")
-    if "risk_banner" in heading_blocks:
+    risk_blocks = heading_blocks.get("risk_banner", [])
+    for idx, block_text in enumerate(risk_blocks, start=1):
+        block_lower = block_text.lower()
+        if len(risk_blocks) == 1:
+            block_lower = block_lower + "\n" + extract_ux_elements_section(text).lower()
         for term in REQUIRED_RISK_TERMS:
-            if f"{term}:" not in ux_elements_section_text:
-                errors.append(f"risk_banner requires term: {term}")
-        if "risk_summary:" not in ux_elements_section_text and "risk_reason:" not in ux_elements_section_text:
-            errors.append("risk_banner requires term: risk_summary")
+            if f"{term}:" not in block_lower:
+                errors.append(f"risk_banner requires term in block {idx}: {term}")
+        if "risk_summary:" not in block_lower and "risk_reason:" not in block_lower:
+            errors.append(f"risk_banner requires term in block {idx}: risk_summary")
 
     for stmt in REQUIRED_BOUNDARY_STATEMENTS:
         if stmt not in text:
@@ -559,6 +551,7 @@ def run_fixtures() -> Tuple[ValidationResult, Dict[str, object]]:
     negative_total = 0
     negative_failed_as_expected = 0
     negative_unexpectedly_passed = 0
+    negative_blocked_count = 0
 
     for f in sorted(negative_dir.glob("*.md")):
         negative_total += 1
@@ -569,6 +562,7 @@ def run_fixtures() -> Tuple[ValidationResult, Dict[str, object]]:
             negative_unexpectedly_passed += 1
             errors.append(f"Negative fixture unexpectedly passed: {f}")
         else:
+            negative_blocked_count += 1
             errors.append(f"Negative fixture blocked unexpectedly: {f}")
             errors.extend(res.errors)
 
@@ -578,9 +572,10 @@ def run_fixtures() -> Tuple[ValidationResult, Dict[str, object]]:
         "negative_total": negative_total,
         "negative_failed_as_expected": negative_failed_as_expected,
         "negative_unexpectedly_passed": negative_unexpectedly_passed,
+        "negative_blocked_count": negative_blocked_count,
     }
 
-    if positive_failed or negative_unexpectedly_passed:
+    if positive_failed or negative_unexpectedly_passed or negative_blocked_count:
         return ValidationResult(RESULT_FAILED, errors), summary
     return ValidationResult(RESULT_OK, errors), summary
 
