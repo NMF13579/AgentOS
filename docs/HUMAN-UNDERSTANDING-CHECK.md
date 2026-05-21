@@ -138,3 +138,5 @@ It does not authorize execution.
 It does not generate UX or tasks.
 It does not create approval records.
 It does not replace validation, readiness, or human gate requirements.
+Human Understanding Check does not create approval.
+Understanding confirmed does not automatically move a Product Spec to APPROVED or EXECUTION_READY.
