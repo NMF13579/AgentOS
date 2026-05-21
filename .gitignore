@@ -10,4 +10,6 @@ scripts/lib/*.pyc
 *.sqlite3
 *.db
 
-memory-bank/
+memory-bank/*
+!memory-bank/lessons/
+!memory-bank/lessons/**
