@@ -179,7 +179,7 @@ M49 evidence report does not complete M49.
 M49 completion review remains required after this evidence report.
 
 ## Completion Readiness
-M49 is ready for completion review if this evidence report validates and no blockers are found.
+M49 is available for completion review if this evidence report validates and no blockers are found.
 
 Evidence readiness is not completion.
 Evidence readiness is not approval.
