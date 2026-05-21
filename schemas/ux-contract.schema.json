@@ -1,0 +1,183 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "UX Contract",
+  "type": "object",
+  "required": [
+    "execution_locked",
+    "ux_contract_id",
+    "ux_contract_version",
+    "status",
+    "source_product_spec",
+    "ux_goal",
+    "screens",
+    "flows",
+    "states",
+    "ux_elements",
+    "user_actions",
+    "risk_approval_points",
+    "edge_cases",
+    "accessibility_notes",
+    "non_goals",
+    "open_ux_questions",
+    "traceability",
+    "non_authority_boundary"
+  ],
+  "properties": {
+    "execution_locked": {
+      "type": "boolean",
+      "const": true,
+      "description": "UX Contract never authorizes execution."
+    },
+    "ux_contract_id": {
+      "type": "string"
+    },
+    "ux_contract_version": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "description": "structure_review_complete means the UX structure review has been completed.\nstructure_review_complete does not authorize task generation.\nstructure_review_complete does not authorize execution planning.\nstructure_review_complete does not authorize implementation.\nstructure_review_complete does not authorize commit, push, merge, deploy, or release.",
+      "enum": [
+        "draft",
+        "review",
+        "structure_review_complete",
+        "needs_changes",
+        "blocked",
+        "deprecated"
+      ]
+    },
+    "source_product_spec": {
+      "type": "object",
+      "required": [
+        "spec_id",
+        "spec_version",
+        "product_spec_path"
+      ],
+      "properties": {
+        "spec_id": {
+          "type": "string"
+        },
+        "spec_version": {
+          "type": "string"
+        },
+        "product_spec_path": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "ux_goal": {
+      "type": "string"
+    },
+    "screens": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "flows": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "states": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "ux_elements": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "user_actions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "risk_approval_points": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "edge_cases": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "accessibility_notes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "non_goals": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "open_ux_questions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "traceability": {
+      "type": "object",
+      "required": [
+        "spec_id",
+        "spec_version",
+        "product_spec_path",
+        "ux_contract_id",
+        "source_sections"
+      ],
+      "properties": {
+        "spec_id": {
+          "type": "string"
+        },
+        "spec_version": {
+          "type": "string"
+        },
+        "product_spec_path": {
+          "type": "string"
+        },
+        "ux_contract_id": {
+          "type": "string"
+        },
+        "source_sections": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "non_authority_boundary": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "UX Contract is not Product Spec.",
+          "UX Contract is not approval.",
+          "UX Contract does not authorize task generation.",
+          "UX Contract does not authorize execution planning.",
+          "UX Contract does not authorize implementation.",
+          "UX Contract does not authorize commit, push, merge, deploy, or release.",
+          "HTML Preview is optional visual explanation only.",
+          "UX Visual Approval Snapshot approves visual direction only."
+        ]
+      },
+      "minItems": 8,
+      "uniqueItems": true
+    }
+  },
+  "additionalProperties": false
+}
