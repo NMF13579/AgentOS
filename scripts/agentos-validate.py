@@ -265,35 +265,9 @@ def run_child(repo_root, command_name, command_list):
 
     out_sum = summary_tail(proc.stdout, proc.stderr)
 
-    if command_name == "scope-fixtures":
-        combined = f"{proc.stdout}\n{proc.stderr}"
-        # Scope fixtures runner exposes explicit summary markers.
-        # Use them as the source of truth for PASS/WARN/FAIL to avoid
-        # false FAIL when child exit code reflects warning-path internals.
-        if "_result: PASS" in combined:
-            mapped_result = PASS
-        elif "_result: WARN" in combined:
-            mapped_result = WARN
-        elif "_result: FAIL" in combined:
+    if command_name in ["scope-fixtures", "execution-audit", "readiness-assertions"]:
+        if proc.returncode not in [0, 1, 2, 3]:
             mapped_result = FAIL
-        elif "_result: ERROR" in combined:
-            mapped_result = ERROR
-
-    if command_name == "execution-audit":
-        combined = f"{proc.stdout}\n{proc.stderr}"
-        # Treat the known scope-fixtures mapping mismatch as non-blocking once
-        # scope-fixtures itself is PASS in this validator.
-        if proc.returncode == 2 and "scope-fixture-runner" in combined and "Artifacts missing: 0" in combined:
-            mapped_result = PASS
-        elif proc.returncode not in [0, 1, 2, 3]:
-            mapped_result = ERROR
-
-    if command_name == "readiness-assertions":
-        combined = f"{proc.stdout}\n{proc.stderr}"
-        # Targeted CI fix: do not fail this check when the current task-specific
-        # report no longer contains forbidden readiness phrasing.
-        if proc.returncode == 1 and "reports/m46-5-completion-review.md" not in combined:
-            mapped_result = PASS
 
     return {
         "name": command_name,

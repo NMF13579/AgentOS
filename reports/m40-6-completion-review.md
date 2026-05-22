@@ -14,5 +14,5 @@ M40_6_ARCHITECTURE_FROZEN_WITH_GAPS
 ## Commands
 Validation commands were run as listed in the evidence report.
 
-## Ready For Next Step
+## Available For Next Step
 M40.7 can start.
