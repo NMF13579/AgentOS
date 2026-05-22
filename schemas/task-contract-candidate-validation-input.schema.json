@@ -1,0 +1,224 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Task Contract Candidate Validation Input",
+  "type": "object",
+  "properties": {
+    "candidate_validation_input": {
+      "type": "object",
+      "properties": {
+        "input_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_generated_artifact": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_candidate_path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_conversion_package": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_candidate_origin": {
+          "const": "M51_GENERATED_STAGING_ARTIFACT"
+        },
+        "source_validator": {
+          "type": "string",
+          "minLength": 1
+        },
+        "validation_mode": {
+          "const": "M52_CANDIDATE_READINESS_VALIDATION"
+        },
+        "expected_candidate_shape": {
+          "const": "generated_conversion_package_with_embedded_candidate"
+        },
+        "required_traceability": {
+          "type": "object",
+          "properties": {
+            "source_proposal": {
+              "type": "string",
+              "minLength": 1
+            },
+            "source_authorization": {
+              "type": "string",
+              "minLength": 1
+            },
+            "source_conversion_package": {
+              "type": "string",
+              "minLength": 1
+            },
+            "source_generated_artifact": {
+              "type": "string",
+              "minLength": 1
+            },
+            "source_candidate_origin": {
+              "type": "string",
+              "minLength": 1
+            },
+            "m50_traceability": {
+              "type": "string",
+              "minLength": 1
+            },
+            "m51_generator_evidence": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "source_proposal",
+            "source_authorization",
+            "source_conversion_package",
+            "source_generated_artifact",
+            "source_candidate_origin",
+            "m50_traceability",
+            "m51_generator_evidence"
+          ],
+          "additionalProperties": false
+        },
+        "required_carry_forward": {
+          "type": "object",
+          "properties": {
+            "accepted_limitations": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "open_questions": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "downstream_limits": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "non_authority_boundary": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          },
+          "required": [
+            "accepted_limitations",
+            "open_questions",
+            "downstream_limits",
+            "non_authority_boundary"
+          ],
+          "additionalProperties": false
+        },
+        "downstream_target": {
+          "const": "M53_PLACEMENT_REVIEW"
+        },
+        "m51_origin": {
+          "type": "object",
+          "properties": {
+            "required": {
+              "const": true
+            },
+            "source_generator_evidence": {
+              "type": "string",
+              "minLength": 1
+            },
+            "source_generator_completion_review": {
+              "type": "string",
+              "minLength": 1
+            },
+            "source_generator_integration_report": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "required",
+            "source_generator_evidence",
+            "source_generator_completion_review",
+            "source_generator_integration_report"
+          ],
+          "additionalProperties": false
+        },
+        "boundaries": {
+          "type": "object",
+          "properties": {
+            "validation_only": {
+              "const": true
+            },
+            "queue_write_allowed": {
+              "const": false
+            },
+            "active_task_write_allowed": {
+              "const": false
+            },
+            "execution_authorized": {
+              "const": false
+            },
+            "approval_record_creation_allowed": {
+              "const": false
+            },
+            "placement_authorized": {
+              "const": false
+            }
+          },
+          "required": [
+            "validation_only",
+            "queue_write_allowed",
+            "active_task_write_allowed",
+            "execution_authorized",
+            "approval_record_creation_allowed",
+            "placement_authorized"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "input_id",
+        "source_generated_artifact",
+        "source_candidate_path",
+        "source_conversion_package",
+        "source_candidate_origin",
+        "source_validator",
+        "validation_mode",
+        "expected_candidate_shape",
+        "required_traceability",
+        "required_carry_forward",
+        "downstream_target",
+        "boundaries"
+      ],
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "source_candidate_origin": {
+                "const": "M51_GENERATED_STAGING_ARTIFACT"
+              }
+            },
+            "required": [
+              "source_candidate_origin"
+            ]
+          },
+          "then": {
+            "required": [
+              "m51_origin"
+            ]
+          }
+        }
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "candidate_validation_input"
+  ],
+  "additionalProperties": false
+}
