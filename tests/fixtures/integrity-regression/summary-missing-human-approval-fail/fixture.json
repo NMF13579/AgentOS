@@ -1,0 +1,1 @@
+{"id":"summary-missing-human-approval-fail","description":"Runner detects missing Human Approval summary field.","kind":"summary-output","expected_check_status":"FAIL","expected_failure_class":"SUMMARY_CONTRACT_REGRESSION","expected_runner_result_floor":"INTEGRITY_REGRESSION_FAILED","input_files":["summary.txt"]}

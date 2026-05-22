@@ -1,0 +1,99 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agentos.local/schemas/spec-lineage.schema.json",
+  "title": "AgentOS Spec-to-Task Lineage Record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "lineage_id",
+    "lineage_status",
+    "spec_id",
+    "spec_version",
+    "source_interview_id",
+    "product_spec_path",
+    "lifecycle_status_at_generation",
+    "generated_at",
+    "generated_by",
+    "generator",
+    "generated_task_graphs",
+    "generated_task_contracts"
+  ],
+  "properties": {
+    "lineage_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "lineage_status": {
+      "type": "string",
+      "enum": [
+        "DRAFT_TRACE",
+        "GENERATED",
+        "STALE",
+        "SUSPENDED",
+        "REVALIDATED",
+        "ARCHIVED"
+      ]
+    },
+    "spec_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "spec_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_interview_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "product_spec_path": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Repo-relative path to Product Spec."
+    },
+    "lifecycle_status_at_generation": {
+      "type": "string",
+      "enum": [
+        "DRAFT",
+        "INTERVIEWING",
+        "NEEDS_CLARIFICATION",
+        "REVIEW",
+        "APPROVED",
+        "EXECUTION_READY",
+        "ARCHIVED"
+      ]
+    },
+    "generated_at": {
+      "type": "string",
+      "minLength": 1
+    },
+    "generated_by": {
+      "type": "string",
+      "description": "Agent, user, or tool identity that created the downstream artifact. Use 'unknown' if not available.",
+      "default": "unknown",
+      "minLength": 1
+    },
+    "generator": {
+      "type": "string",
+      "description": "Generator name/version or 'manual'. Use 'unknown' if unavailable.",
+      "default": "unknown",
+      "minLength": 1
+    },
+    "generated_task_graphs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "default": []
+    },
+    "generated_task_contracts": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "default": []
+    }
+  }
+}

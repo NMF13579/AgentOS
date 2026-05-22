@@ -1,0 +1,14 @@
+{
+  "result_claim": "PASS",
+  "evidence_binding": {
+    "bound_artifacts": [
+      {
+        "path": "output/agentos-validate.json",
+        "sha256": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+      }
+    ],
+    "binding_hash": "sha256:18697556d08aa5e361a681837677b69a6aec230a37b48b305a323e24b654fe7e",
+    "generated_by": "trusted-evaluator",
+    "validation_source_id": "agentos-runner"
+  }
+}

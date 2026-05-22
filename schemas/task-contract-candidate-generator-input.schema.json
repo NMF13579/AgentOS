@@ -1,0 +1,153 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Task Contract Candidate Generator Input",
+  "type": "object",
+  "required": ["generator_input"],
+  "additionalProperties": false,
+  "properties": {
+    "generator_input": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "input_id",
+        "generator_input_status",
+        "source_conversion_package",
+        "source_task_contract_proposal",
+        "source_authorization",
+        "source_candidate_template",
+        "source_conversion_policy",
+        "source_validator",
+        "generation_mode",
+        "output_target",
+        "primary_output_format",
+        "primary_validator_target",
+        "carry_forward",
+        "boundaries"
+      ],
+      "properties": {
+        "input_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "generator_input_status": {
+          "type": "string",
+          "enum": [
+            "GENERATOR_INPUT_READY",
+            "GENERATOR_INPUT_READY_WITH_LIMITATIONS",
+            "GENERATOR_INPUT_BLOCKED",
+            "GENERATOR_INPUT_INVALID"
+          ]
+        },
+        "source_conversion_package": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_task_contract_proposal": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_authorization": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_candidate_template": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_conversion_policy": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_validator": {
+          "type": "string",
+          "const": "scripts/validate-proposal-to-task-conversion.py"
+        },
+        "generation_mode": {
+          "type": "string",
+          "enum": ["dry_run", "write"]
+        },
+        "output_target": {
+          "type": "string",
+          "minLength": 1
+        },
+        "primary_output_format": {
+          "type": "string",
+          "const": "generated_conversion_package_with_embedded_candidate"
+        },
+        "primary_validator_target": {
+          "oneOf": [
+            { "type": "string" },
+            { "type": "null" }
+          ]
+        },
+        "carry_forward": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "accepted_limitations",
+            "open_questions",
+            "downstream_limits",
+            "non_authority_boundary"
+          ],
+          "properties": {
+            "accepted_limitations": {
+              "type": "string",
+              "minLength": 1
+            },
+            "open_questions": {
+              "type": "string",
+              "minLength": 1
+            },
+            "downstream_limits": {
+              "type": "string",
+              "minLength": 1
+            },
+            "non_authority_boundary": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        "boundaries": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "dry_run_required",
+            "write_to_staging_only",
+            "active_task_write_allowed",
+            "queue_write_allowed",
+            "execution_authorized",
+            "approval_record_creation_allowed"
+          ],
+          "properties": {
+            "dry_run_required": {
+              "type": "boolean",
+              "const": true
+            },
+            "write_to_staging_only": {
+              "type": "boolean",
+              "const": true
+            },
+            "active_task_write_allowed": {
+              "type": "boolean",
+              "const": false
+            },
+            "queue_write_allowed": {
+              "type": "boolean",
+              "const": false
+            },
+            "execution_authorized": {
+              "type": "boolean",
+              "const": false
+            },
+            "approval_record_creation_allowed": {
+              "type": "boolean",
+              "const": false
+            }
+          }
+        }
+      }
+    }
+  },
+  "$comment": "JSON Schema in Task 51.2 is structural, not a full semantic validator. Cross-field dry_run/write behavior for primary_validator_target must be enforced later by generator implementation and fixtures."
+}

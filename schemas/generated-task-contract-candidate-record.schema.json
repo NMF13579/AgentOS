@@ -1,0 +1,138 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Generated Task Contract Candidate Record",
+  "type": "object",
+  "required": ["generated_task_contract_candidate_record"],
+  "additionalProperties": false,
+  "properties": {
+    "generated_task_contract_candidate_record": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "generation_id",
+        "source_conversion_package",
+        "source_generator_input",
+        "generated_conversion_package_path",
+        "generated_candidate_path",
+        "output_path",
+        "primary_validator_target",
+        "would_write_to",
+        "generation_mode",
+        "dry_run",
+        "written",
+        "validation_result",
+        "generated_at",
+        "generator_version",
+        "carry_forward_preserved",
+        "boundaries"
+      ],
+      "properties": {
+        "generation_id": { "type": "string", "minLength": 1 },
+        "source_conversion_package": { "type": "string", "minLength": 1 },
+        "source_generator_input": { "type": "string", "minLength": 1 },
+        "generated_conversion_package_path": {
+          "oneOf": [
+            { "type": "string" },
+            { "type": "null" }
+          ]
+        },
+        "generated_candidate_path": {
+          "oneOf": [
+            { "type": "string" },
+            { "type": "null" }
+          ]
+        },
+        "output_path": {
+          "oneOf": [
+            { "type": "string" },
+            { "type": "null" }
+          ]
+        },
+        "primary_validator_target": {
+          "oneOf": [
+            { "type": "string" },
+            { "type": "null" }
+          ]
+        },
+        "would_write_to": {
+          "oneOf": [
+            { "type": "string" },
+            { "type": "null" }
+          ]
+        },
+        "generation_mode": {
+          "type": "string",
+          "enum": ["dry_run", "write"]
+        },
+        "dry_run": { "type": "boolean" },
+        "written": { "type": "boolean" },
+        "validation_result": {
+          "type": "string",
+          "enum": [
+            "TASK_CONTRACT_CANDIDATE_GENERATION_DRY_RUN_OK",
+            "TASK_CONTRACT_CANDIDATE_GENERATION_WRITE_OK",
+            "TASK_CONTRACT_CANDIDATE_GENERATION_FAILED",
+            "TASK_CONTRACT_CANDIDATE_GENERATION_BLOCKED"
+          ]
+        },
+        "generated_at": { "type": "string" },
+        "generator_version": { "type": "string" },
+        "carry_forward_preserved": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "accepted_limitations",
+            "open_questions",
+            "downstream_limits",
+            "non_authority_boundary"
+          ],
+          "properties": {
+            "accepted_limitations": { "type": "string", "minLength": 1 },
+            "open_questions": { "type": "string", "minLength": 1 },
+            "downstream_limits": { "type": "string", "minLength": 1 },
+            "non_authority_boundary": { "type": "string", "minLength": 1 }
+          }
+        },
+        "boundaries": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "generated_candidate_is_active_task",
+            "generated_candidate_is_queue_entry",
+            "execution_authorized",
+            "active_task_write_allowed",
+            "queue_write_allowed",
+            "approval_record_created"
+          ],
+          "properties": {
+            "generated_candidate_is_active_task": {
+              "type": "boolean",
+              "const": false
+            },
+            "generated_candidate_is_queue_entry": {
+              "type": "boolean",
+              "const": false
+            },
+            "execution_authorized": {
+              "type": "boolean",
+              "const": false
+            },
+            "active_task_write_allowed": {
+              "type": "boolean",
+              "const": false
+            },
+            "queue_write_allowed": {
+              "type": "boolean",
+              "const": false
+            },
+            "approval_record_created": {
+              "type": "boolean",
+              "const": false
+            }
+          }
+        }
+      }
+    }
+  },
+  "$comment": "JSON Schema in Task 51.3 is structural, not a full semantic validator. Cross-field dry-run/write behavior must be enforced later by generator implementation and fixtures."
+}

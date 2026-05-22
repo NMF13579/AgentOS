@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy"
+      content="default-src 'none'; style-src 'unsafe-inline'; img-src 'self'">
+  <title>Static UX Preview</title>
+  <style>
+    body { font-family: sans-serif; margin: 2rem; line-height: 1.4; }
+    .meta { color: #333; margin-bottom: 1rem; }
+    section { border: 1px solid #ccc; padding: 1rem; margin: 1rem 0; }
+    .notice { background: #f7f7f7; }
+  </style>
+</head>
+<body>
+  <h1>Static UX Preview</h1>
+  <p class="meta">Source spec_id: SPEC-...</p>
+  <p class="meta">Source ux_contract_id: UX-...</p>
+  <p class="meta">Status: Preview only</p>
+  <p class="meta">This preview is not implementation.</p>
+
+  <section
+    data-ux-element="summary_card"
+    data-source-spec="SPEC-..."
+    data-source-ux-contract="UX-..."
+    data-preview-only="true"
+  >
+    <h2>Summary Card</h2>
+    <p>Preview only summary block.</p>
+  </section>
+
+  <section class="notice"
+    data-ux-element="non_authority_notice"
+    data-source-spec="SPEC-..."
+    data-source-ux-contract="UX-..."
+    data-preview-only="true"
+  >
+    <p>Execution is not authorized by this preview.</p>
+  </section>
+
+  <button disabled>Approve - preview only</button>
+  <button disabled>Decline - preview only</button>
+  <br>
+  <textarea disabled placeholder="Preview only"></textarea>
+</body>
+</html>

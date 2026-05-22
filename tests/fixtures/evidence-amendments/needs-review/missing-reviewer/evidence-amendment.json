@@ -1,0 +1,15 @@
+{
+  "amendment_id": "a1",
+  "task_id": "t1",
+  "original_artifact": "artifacts/evidence-report.md",
+  "artifact_type": "evidence_report",
+  "previous_sha256": "sha256:ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb",
+  "new_sha256": "sha256:3e23e8160039594a33894f6564e1b1348bbd7a0088d42c4acb73eeaed59c009d",
+  "reason": "fix",
+  "correction_scope": "metadata-only",
+  "failed_evidence_preserved": true,
+  "rerun_cause": "fixed",
+  "created_by": "maintainer",
+  "reviewed_by": null,
+  "created_at": "2026-05-14T00:00:00Z"
+}

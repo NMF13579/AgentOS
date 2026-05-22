@@ -1,0 +1,1 @@
+{"id":"skipped-known-gap-needs-review","description":"Runner ensures skipped known gap is not clean pass.","kind":"known-gap","expected_check_status":"SKIPPED_KNOWN_GAP","expected_failure_class":null,"expected_runner_result_floor":"INTEGRITY_REGRESSION_NEEDS_REVIEW","input_files":[]}

@@ -1,0 +1,298 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agentos.local/schemas/product-spec.schema.json",
+  "title": "AgentOS Product Spec",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "metadata",
+    "product_spec"
+  ],
+  "properties": {
+    "metadata": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "spec_id",
+        "spec_version",
+        "lifecycle_status",
+        "created",
+        "last_updated",
+        "source_interview_id"
+      ],
+      "properties": {
+        "spec_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "spec_version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "lifecycle_status": {
+          "type": "string",
+          "enum": [
+            "DRAFT",
+            "INTERVIEWING",
+            "NEEDS_CLARIFICATION",
+            "REVIEW",
+            "APPROVED",
+            "EXECUTION_READY",
+            "ARCHIVED"
+          ]
+        },
+        "created": {
+          "type": "string",
+          "minLength": 1
+        },
+        "last_updated": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_interview_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "product_spec": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "lifecycle_status",
+        "problem",
+        "users",
+        "jobs_to_be_done",
+        "goals",
+        "non_goals",
+        "constraints",
+        "risks",
+        "success_metrics",
+        "acceptance_criteria",
+        "dependencies",
+        "open_questions"
+      ],
+      "properties": {
+        "lifecycle_status": {
+          "type": "string",
+          "enum": [
+            "DRAFT",
+            "INTERVIEWING",
+            "NEEDS_CLARIFICATION",
+            "REVIEW",
+            "APPROVED",
+            "EXECUTION_READY",
+            "ARCHIVED"
+          ]
+        },
+        "problem": {
+          "type": "string",
+          "minLength": 1
+        },
+        "users": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1
+        },
+        "jobs_to_be_done": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1
+        },
+        "goals": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1
+        },
+        "non_goals": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "item"
+            ],
+            "properties": {
+              "item": {
+                "type": "string",
+                "minLength": 1
+              },
+              "reason": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            }
+          },
+          "minItems": 1
+        },
+        "constraints": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1
+        },
+        "risks": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1
+        },
+        "success_metrics": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "metric"
+            ],
+            "properties": {
+              "metric": {
+                "type": "string",
+                "minLength": 1
+              },
+              "target": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            }
+          },
+          "minItems": 1
+        },
+        "acceptance_criteria": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "criterion"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string",
+                "minLength": 1
+              },
+              "priority": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            }
+          },
+          "minItems": 1
+        },
+        "dependencies": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "open_questions": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "status",
+            "items"
+          ],
+          "properties": {
+            "status": {
+              "type": "string",
+              "enum": [
+                "unresolved",
+                "none",
+                "resolved"
+              ]
+            },
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "default": []
+            }
+          }
+        },
+        "optional_sections": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "ux_notes": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "rollout_notes": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "compliance_notes": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "future_expansion": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          }
+        },
+        "lineage": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "source_interview_id": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "generated_task_graphs": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "default": []
+            },
+            "generated_task_contracts": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "default": []
+            }
+          },
+          "required": [
+            "source_interview_id"
+          ]
+        }
+      }
+    }
+  }
+}

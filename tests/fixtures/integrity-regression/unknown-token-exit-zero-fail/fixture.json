@@ -1,0 +1,1 @@
+{"id":"unknown-token-exit-zero-fail","description":"Runner detects unsafe unknown token behavior.","kind":"command-behavior","expected_check_status":"FAIL","expected_failure_class":"UNKNOWN_TOKEN_REGRESSION","expected_runner_result_floor":"INTEGRITY_REGRESSION_FAILED","input_files":["simulated-command.json"]}

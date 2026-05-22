@@ -60,3 +60,6 @@ Future validators and reports may adopt this summary format. This task does not 
 ## Recommended Next Task
 `22.14.1 — Milestone 22 Evidence Report`
 
+
+## Product Spec Specialization Link
+- Product summary policy: docs/PRODUCT-SUMMARY-POLICY.md

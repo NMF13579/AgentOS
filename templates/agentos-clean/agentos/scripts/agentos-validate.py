@@ -44,6 +44,10 @@ def validate():
         sys.exit(1)
 
 if __name__ == "__main__":
+    if len(sys.argv) > 1 and sys.argv[1] in ["--help", "-h"]:
+        print("Usage: python3 agentos-validate.py [all]")
+        print("Runs AgentOS structure and configuration validation.")
+        sys.exit(0)
     # Support 'all' subcommand as an alias for full validation
     if len(sys.argv) > 1 and sys.argv[1] == "all":
         validate()

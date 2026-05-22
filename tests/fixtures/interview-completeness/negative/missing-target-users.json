@@ -1,0 +1,23 @@
+{
+  "interview_id": "int-002",
+  "created_at": "2026-05-17T10:05:00Z",
+  "interview_status": "INTERVIEW_NEEDS_CLARIFICATION",
+  "source_user_input": "We need to reduce onboarding delays.",
+  "idea_summary": "Need to reduce onboarding delays.",
+  "problem_summary": "Onboarding delays happen because requests are incomplete.",
+  "target_users": "MISSING_FROM_INTERVIEW",
+  "current_workaround": "Manual chat requests and spreadsheet tracking.",
+  "desired_outcome": "Complete onboarding requests move faster.",
+  "success_criteria": "Fewer request rejections.",
+  "constraints": "NONE",
+  "risks": "NONE",
+  "non_goals": "NONE",
+  "unknowns": [],
+  "assumptions": [],
+  "answered_questions": [],
+  "unanswered_questions": [],
+  "follow_up_questions": [
+    "Who are the target users for this onboarding flow?"
+  ],
+  "non_approval_warning": "Interview evidence is not approval. Interview readiness does not authorize implementation, task creation, queue entry creation, autopilot, commit, push, merge, release, or deployment."
+}

@@ -1,0 +1,20 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "required": ["amendment_id", "task_id", "original_artifact", "artifact_type", "previous_sha256", "new_sha256", "reason", "correction_scope", "failed_evidence_preserved", "rerun_cause", "created_by", "created_at"],
+  "properties": {
+    "amendment_id": {"type": "string"},
+    "task_id": {"type": "string"},
+    "original_artifact": {"type": "string"},
+    "artifact_type": {"type": "string"},
+    "previous_sha256": {"type": "string", "pattern": "^sha256:[a-fA-F0-9]{64}$"},
+    "new_sha256": {"type": "string", "pattern": "^sha256:[a-fA-F0-9]{64}$"},
+    "reason": {"type": "string"},
+    "correction_scope": {"type": "string", "enum": ["metadata-only", "command-output-correction", "hash-correction", "rerun-record", "report-correction", "other"]},
+    "failed_evidence_preserved": {"type": "boolean"},
+    "rerun_cause": {"type": "string"},
+    "created_by": {"type": "string"},
+    "reviewed_by": {"type": "string"},
+    "created_at": {"type": "string"}
+  }
+}

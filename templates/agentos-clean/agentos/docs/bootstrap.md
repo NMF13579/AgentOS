@@ -15,13 +15,20 @@ Bootstrap validation checks that this repository is a clean AgentOS project inst
 
 ## Validation Compatibility
 
+### Where am I running this from?
+
+Command paths depend on your installation. Do not mix these modes.
+
+**Mode A — Inside copied template root**
 The preferred command is:
+`python3 agentos/scripts/agentos-validate.py all`
+Fallback: `python3 agentos/scripts/agentos-validate.py`
 
-python3 agentos/scripts/agentos-validate.py all
-
-If the \`all\` subcommand is unsupported, bootstrap may fall back to:
-
-python3 agentos/scripts/agentos-validate.py
+**Mode B — From external project root with namespace install**
+If AgentOS is installed under `agentos/` (recommended for external testing), run from the project root:
+`python3 agentos/agentos/scripts/agentos-validate.py all`
+Fallback: `python3 agentos/agentos/scripts/agentos-validate.py`
+Check readiness: `python3 agentos/agentos/scripts/check-bootstrap-readiness.py`
 
 Fallback is allowed only when no-argument validation passes.
 

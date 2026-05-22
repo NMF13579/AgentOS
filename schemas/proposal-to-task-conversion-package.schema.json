@@ -1,0 +1,148 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "proposal-to-task-conversion-package.schema.json",
+  "title": "ProposalToTaskConversionPackage",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "conversion_package"
+  ],
+  "properties": {
+    "conversion_package": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "conversion_id",
+        "conversion_input_status",
+        "source_task_contract_proposal",
+        "proposal_validation_result",
+        "source_ux_contract",
+        "source_readiness_report",
+        "source_boundary_policy",
+        "source_sections",
+        "accepted_limitations",
+        "open_questions",
+        "downstream_limits",
+        "non_authority_boundary",
+        "human_authorization_record",
+        "conversion_scope",
+        "candidate_output",
+        "boundaries"
+      ],
+      "properties": {
+        "conversion_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "conversion_input_status": {
+          "type": "string",
+          "enum": [
+            "CONVERSION_INPUT_READY",
+            "CONVERSION_INPUT_READY_WITH_LIMITATIONS",
+            "CONVERSION_INPUT_NEEDS_HUMAN_AUTHORIZATION",
+            "CONVERSION_INPUT_BLOCKED",
+            "CONVERSION_INPUT_INVALID"
+          ]
+        },
+        "source_task_contract_proposal": {
+          "type": "string",
+          "minLength": 1
+        },
+        "proposal_validation_result": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_ux_contract": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_readiness_report": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_boundary_policy": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_sections": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "accepted_limitations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "open_questions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "downstream_limits": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "non_authority_boundary": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "human_authorization_record": {
+          "type": "string",
+          "minLength": 1
+        },
+        "conversion_scope": {
+          "type": "string",
+          "minLength": 1
+        },
+        "candidate_output": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Bounded output reference or placeholder only. If candidate semantics are mentioned, use EXECUTION_SHAPE."
+        },
+        "boundaries": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "conversion_input_ready_is_execution_permission",
+            "conversion_input_ready_is_queue_permission",
+            "conversion_input_ready_is_active_task_permission",
+            "approval_record_creation_allowed",
+            "execution_authorization_granted"
+          ],
+          "properties": {
+            "conversion_input_ready_is_execution_permission": {
+              "type": "boolean",
+              "const": false
+            },
+            "conversion_input_ready_is_queue_permission": {
+              "type": "boolean",
+              "const": false
+            },
+            "conversion_input_ready_is_active_task_permission": {
+              "type": "boolean",
+              "const": false
+            },
+            "approval_record_creation_allowed": {
+              "type": "boolean",
+              "const": false
+            },
+            "execution_authorization_granted": {
+              "type": "boolean",
+              "const": false
+            }
+          }
+        }
+      }
+    }
+  }
+}

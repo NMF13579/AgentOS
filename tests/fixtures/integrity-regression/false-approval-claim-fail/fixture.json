@@ -1,0 +1,1 @@
+{"id":"false-approval-claim-fail","description":"Runner detects false approval claim.","kind":"authority-boundary","expected_check_status":"FAIL","expected_failure_class":"FALSE_AUTHORITY_CLAIM_REGRESSION","expected_runner_result_floor":"INTEGRITY_REGRESSION_FAILED","input_files":["authority.txt"]}

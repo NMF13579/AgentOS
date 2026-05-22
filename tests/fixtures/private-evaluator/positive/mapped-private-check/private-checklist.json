@@ -1,0 +1,10 @@
+{
+  "private_checks": [
+    {
+      "id": "fake-approval-agent-id",
+      "private": true,
+      "maps_to_public_rule": "no-fake-approval",
+      "failure_class": "PRIVATE_CHECK_UNMAPPED"
+    }
+  ]
+}

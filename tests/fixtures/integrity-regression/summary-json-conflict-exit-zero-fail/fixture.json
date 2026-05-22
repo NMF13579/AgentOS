@@ -1,0 +1,1 @@
+{"id":"summary-json-conflict-exit-zero-fail","description":"Runner detects summary/json conflict returning success.","kind":"command-behavior","expected_check_status":"FAIL","expected_failure_class":"SUMMARY_JSON_CONFLICT_REGRESSION","expected_runner_result_floor":"INTEGRITY_REGRESSION_FAILED","input_files":["simulated-command.json"]}

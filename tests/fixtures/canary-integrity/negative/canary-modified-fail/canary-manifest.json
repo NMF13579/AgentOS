@@ -1,0 +1,8 @@
+{
+  "canaries": [
+    {
+      "path": "canary/sentinel-read-only.txt",
+      "sha256": "sha256:14e0ffdc8215c81da0cde40f581237ee35177ddac4f1fc7613cad3004798d25f"
+    }
+  ]
+}

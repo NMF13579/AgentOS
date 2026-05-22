@@ -1,0 +1,18 @@
+{
+  "task_id": "task-smoke-002",
+  "risk_level": "LOW",
+  "produced_by": {
+    "actor_id": "dev",
+    "actor_type": "agent"
+  },
+  "implemented_by": {
+    "actor_id": "dev",
+    "actor_type": "agent"
+  },
+  "verified_by": {
+    "actor_id": "dev",
+    "actor_type": "agent"
+  },
+  "final_verifier": "dev",
+  "same_actor_validation_allowed_by_policy": true
+}

@@ -1,0 +1,23 @@
+{
+  "interview_id": "smoke-int-004",
+  "created_at": "2026-05-17T12:15:00Z",
+  "interview_status": "INTERVIEW_READY_FOR_SPEC",
+  "source_user_input": "We need to reduce delays in onboarding requests.",
+  "idea_summary": "Need to reduce onboarding request delays.",
+  "problem_summary": "Onboarding requests are delayed due to incomplete submissions.",
+  "target_users": "Operations team and internal requesters",
+  "current_workaround": "Manual chat messages plus spreadsheet tracking.",
+  "desired_outcome": "A clearer request flow with fewer delays.",
+  "success_criteria": "Requests are completed faster with fewer corrections.",
+  "constraints": "Must keep existing approval chain.",
+  "risks": "Incorrect routing may delay account access.",
+  "non_goals": "No redesign of company visual style.",
+  "unknowns": [
+    "Integration owner is unknown"
+  ],
+  "assumptions": [],
+  "answered_questions": [],
+  "unanswered_questions": [],
+  "follow_up_questions": [],
+  "non_approval_warning": "Interview evidence is not approval. Interview readiness does not authorize implementation, task creation, queue entry creation, autopilot, commit, push, merge, release, or deployment."
+}

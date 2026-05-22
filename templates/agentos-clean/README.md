@@ -30,10 +30,37 @@ Advanced and Full modes reveal more details, but they do not grant the agent ext
 
 ## Optional local command
 
-Advanced users may run:
+### Where am I running this from?
 
+Depending on how you installed AgentOS, your command paths will differ. Do not mix these modes.
+
+**Mode A — Inside copied template root**
+If you are running commands from inside the copied AgentOS root directory:
+```bash
 python3 agentos/scripts/new-task.py "Improve README"
 python3 agentos/scripts/agentos-validate.py all
+```
+
+**Mode B — From external project root with namespace install**
+If you copied AgentOS into an isolated namespace (e.g., `agentos/`) inside your existing project, run these commands from your external project root:
+```bash
+python3 agentos/agentos/scripts/new-task.py "Improve README"
+python3 agentos/agentos/scripts/agentos-validate.py all
+python3 agentos/agentos/scripts/check-bootstrap-readiness.py
+```
+*Note: Keeping AgentOS isolated under `agentos/` and running from the project root is the recommended path for M40-style external testing.*
+
+## Local Copy
+
+When copying this template into a local project, ensure hidden dotfiles (`.agentos/` and `.github/`) are preserved.
+
+Use a dotfile-preserving command:
+
+```bash
+cp -a templates/agentos-clean/. <target>/
+```
+
+Do not use `cp -r * <target>/`.
 
 ## What this template is
 

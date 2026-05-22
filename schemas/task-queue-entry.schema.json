@@ -1,0 +1,174 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Task Queue Entry",
+  "type": "object",
+  "required": [
+    "queue_entry_version",
+    "queue_entry_id",
+    "task_id",
+    "source_task_contract",
+    "source_dependency_map",
+    "queue_status",
+    "queue_reason",
+    "dependency_status",
+    "lint_status",
+    "context_status",
+    "ui_contract_status",
+    "approval_status",
+    "owner_review_status",
+    "depends_on",
+    "blocked_by",
+    "priority",
+    "risk_level",
+    "human_approval_required",
+    "owner_review_required",
+    "created_at",
+    "non_approval_warning"
+  ],
+  "properties": {
+    "queue_entry_version": {
+      "type": "integer",
+      "const": 1,
+      "description": "Queue entry metadata version. Queue entry is not approval and does not authorize execution."
+    },
+    "queue_entry_id": {
+      "type": "string",
+      "description": "Deterministic ID format queue_<normalized_task_id>."
+    },
+    "task_id": {
+      "type": "string"
+    },
+    "source_task_contract": {
+      "type": "string",
+      "description": "Placeholder path does not prove source task contract exists; 44.9 lint must validate."
+    },
+    "source_dependency_map": {
+      "type": "string"
+    },
+    "queue_status": {
+      "type": "string",
+      "enum": [
+        "candidate",
+        "blocked",
+        "ready_for_review",
+        "queued",
+        "rejected"
+      ]
+    },
+    "queue_reason": {
+      "type": "string",
+      "enum": [
+        "created_from_candidate_task",
+        "dependency_satisfied",
+        "blocked_by_dependency",
+        "blocked_by_approval",
+        "blocked_by_owner_review",
+        "blocked_by_context",
+        "blocked_by_ui_contract",
+        "blocked_by_lint",
+        "invalid_contract",
+        "rejected_by_owner",
+        "manual_queue_hold"
+      ]
+    },
+    "dependency_status": {
+      "type": "string",
+      "enum": [
+        "satisfied",
+        "blocked",
+        "invalid",
+        "not_checked"
+      ]
+    },
+    "lint_status": {
+      "type": "string",
+      "enum": [
+        "pass",
+        "warning",
+        "fail",
+        "not_run"
+      ]
+    },
+    "context_status": {
+      "type": "string",
+      "enum": [
+        "present",
+        "missing",
+        "stale",
+        "not_required",
+        "not_checked"
+      ]
+    },
+    "ui_contract_status": {
+      "type": "string",
+      "enum": [
+        "present",
+        "missing",
+        "not_required",
+        "not_checked"
+      ]
+    },
+    "approval_status": {
+      "type": "string",
+      "enum": [
+        "approved",
+        "required_missing",
+        "not_required",
+        "not_checked"
+      ]
+    },
+    "owner_review_status": {
+      "type": "string",
+      "enum": [
+        "approved",
+        "required_missing",
+        "not_required",
+        "not_checked"
+      ]
+    },
+    "depends_on": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "blocked_by": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "priority": {
+      "type": "string",
+      "enum": [
+        "high",
+        "normal",
+        "low"
+      ]
+    },
+    "risk_level": {
+      "type": "string",
+      "enum": [
+        "LOW",
+        "MEDIUM",
+        "HIGH",
+        "CRITICAL"
+      ]
+    },
+    "human_approval_required": {
+      "type": "boolean"
+    },
+    "owner_review_required": {
+      "type": "boolean"
+    },
+    "created_at": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$"
+    },
+    "non_approval_warning": {
+      "type": "string",
+      "description": "Queue entry is metadata only and does not authorize execution or override HumanApprovalGate."
+    }
+  },
+  "additionalProperties": false
+}

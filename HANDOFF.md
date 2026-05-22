@@ -10,16 +10,16 @@ It does not override canonical modules.
 
 ## Terminal Snapshot
 
-- Milestone 36 (External MVP Usability) is COMPLETE.
+- Milestone 40 (External Portability & Installer MVP) is COMPLETE.
 - Template Initialization Hardening is COMPLETE.
-- Current status: `M36_TEMPLATE_INITIALIZATION_SAFE`.
+- Current status: `M40_EXTERNAL_PORTABILITY_SAFE`.
 - Pipeline status: `PASS` (all validators and smoke tests green).
 - Major changes:
-    - Implemented `setup-repository.yml`: safe one-shot setup with self-destruct.
-    - Cleaned up `.github/workflows/`: moved dev-only CI to `dev-only/`.
-    - Removed `init-project.sh`: logic integrated into GitHub Action.
-    - Updated `README.md`: simplified setup for template owners.
-    - Fixed `agentos-validate.yml`: now correctly uses `requirements.txt`.
+    - Fixed clean template `--help` semantics (P1 safety gap).
+    - Fixed dotfiles portability documentation (explicit `cp -a` instructions).
+    - Fixed command path consistency in docs (Mode A vs Mode B namespace install).
+    - Implemented `install.sh` (Interactive Installer MVP for non-programmers).
+    - Generated all M40 fixup and final evidence reports.
 - Startup route: `llms.txt` -> `state/MAIN.md` -> `workflow/MAIN.md`.
 - Current blockers: none.
 
@@ -27,8 +27,8 @@ It does not override canonical modules.
 
 1. Read `llms.txt`.
 2. Confirm state through `state/MAIN.md`.
-3. Verify that `setup-repository.yml` correctly handles repository names for new clones.
-4. Prepare for M37 (External Pilot Readiness) planning.
+3. Check `reports/m40-final-report.md` for portability validation results.
+4. Prepare for the next milestone (M41).
 
 ## Persistent Context
 

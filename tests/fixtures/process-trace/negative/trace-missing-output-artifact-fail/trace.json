@@ -1,0 +1,15 @@
+{
+  "result_claim": "PASS",
+  "execution_trace": [
+    {
+      "command": "python3 scripts/agentos-validate.py all --json",
+      "exit_code": 0,
+      "output_artifact": "output/agentos-validate.json",
+      "output_hash": "sha256:0000000000000000000000000000000000000000000000000000000000000000",
+      "generated_at": "2026-05-14T08:05:00Z",
+      "runner_generated": true,
+      "validation_source_id": "agentos-runner",
+      "trace_writable_by_execution_agent": false
+    }
+  ]
+}

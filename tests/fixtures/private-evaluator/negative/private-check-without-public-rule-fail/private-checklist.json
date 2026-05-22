@@ -1,0 +1,10 @@
+{
+  "private_checks": [
+    {
+      "id": "x",
+      "private": true,
+      "maps_to_public_rule": "missing-rule",
+      "failure_class": "PRIVATE_CHECK_UNMAPPED"
+    }
+  ]
+}

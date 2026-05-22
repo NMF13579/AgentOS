@@ -1,0 +1,38 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "required": ["task_id", "execution_agent_id", "trusted_validation_sources", "validator_artifacts"],
+  "properties": {
+    "task_id": {"type": "string"},
+    "execution_agent_id": {"type": "string"},
+    "trusted_validation_sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["source_id", "source_type", "created_by", "created_during_execution", "modified_by_execution_agent"],
+        "properties": {
+          "source_id": {"type": "string"},
+          "source_type": {"type": "string"},
+          "created_by": {"type": "string"},
+          "created_during_execution": {"type": "boolean"},
+          "modified_by_execution_agent": {"type": "boolean"}
+        }
+      }
+    },
+    "validator_artifacts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["path", "sha256_before", "sha256_after", "modified_during_execution", "strictness_reduced"],
+        "properties": {
+          "path": {"type": "string"},
+          "sha256_before": {"type": "string", "pattern": "^sha256:[a-fA-F0-9]{64}$"},
+          "sha256_after": {"type": "string", "pattern": "^sha256:[a-fA-F0-9]{64}$"},
+          "modified_during_execution": {"type": "boolean"},
+          "modified_by": {"type": ["string", "null"]},
+          "strictness_reduced": {"type": "boolean"}
+        }
+      }
+    }
+  }
+}

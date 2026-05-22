@@ -1,0 +1,11 @@
+Integrity Result: INTEGRITY_WARNING
+Clean PASS: no
+Strict Mode: true
+Source Tokens Preserved: yes
+Warnings: 1
+Violations: 0
+Needs Review: 0
+Blocked: 0
+Next Safe Action: review
+Limitations: text
+Summary output is user guidance, not evidence authority.
