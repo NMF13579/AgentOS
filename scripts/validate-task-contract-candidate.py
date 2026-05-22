@@ -187,35 +187,17 @@ def _validate_candidate(path: Path) -> Dict[str, Any]:
 
     text = path.read_text(encoding="utf-8", errors="replace")
 
-    if "conversion_package:" not in text:
-        return _result(
-            TOK_BLOCK,
-            checked_path,
-            "",
-            checked_path,
-            trace,
-            sections,
-            carry,
-            findings=[],
-            warnings=[],
-            blockers=["expected conversion package wrapper missing"],
+    has_wrapper_marker = bool(
+        re.search(
+            r"(?m)^(conversion_package|generated_conversion_package|generated_conversion_package_with_embedded_candidate):\s*$",
+            text,
         )
+    )
+    has_task_contract_candidate = bool(
+        re.search(r"(?m)^task_contract_candidate:\s*$", text)
+    )
 
-    if "task_contract_candidate:" not in text:
-        return _result(
-            TOK_FAIL,
-            checked_path,
-            "",
-            checked_path,
-            trace,
-            sections,
-            carry,
-            findings=["task_contract_candidate missing"],
-            warnings=[],
-            blockers=[],
-        )
-
-    if "candidate_output:" in text and "examples/task-contract-candidate" in text:
+    if not has_wrapper_marker and has_task_contract_candidate:
         return _result(
             TOK_BLOCK,
             checked_path,
@@ -229,6 +211,34 @@ def _validate_candidate(path: Path) -> Dict[str, Any]:
             blockers=[
                 "standalone candidate-only file submitted as primary artifact"
             ],
+        )
+
+    if not has_wrapper_marker:
+        return _result(
+            TOK_BLOCK,
+            checked_path,
+            "",
+            checked_path,
+            trace,
+            sections,
+            carry,
+            findings=[],
+            warnings=[],
+            blockers=["expected conversion package wrapper missing"],
+        )
+
+    if not has_task_contract_candidate:
+        return _result(
+            TOK_FAIL,
+            checked_path,
+            "",
+            checked_path,
+            trace,
+            sections,
+            carry,
+            findings=["task_contract_candidate missing"],
+            warnings=[],
+            blockers=[],
         )
 
     candidate = _extract_yaml_block(text, "task_contract_candidate")
@@ -258,7 +268,7 @@ def _validate_candidate(path: Path) -> Dict[str, Any]:
     ]
     carry_missing = [m[:-1] for m in carry_required if m not in data and m not in source]
 
-    if "mode: EXECUTION" in data:
+    if re.search(r"(?m)^\s*mode:\s*EXECUTION\s*$", data):
         return _result(
             TOK_FAIL,
             checked_path,
