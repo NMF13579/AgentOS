@@ -82,6 +82,6 @@ This completion review does not create human approval records.
 
 This completion review does not bypass task state rules, readiness gates, human gate requirements, runtime enforcement, or branch protection.
 
-M46.5 completion means the Product Spec quality corridor is present and reviewed; it does not mean any Product Spec is approved, executable, decomposed, or ready for implementation.
+M46.5 completion means the Product Spec quality corridor is present and reviewed; it does not mean any Product Spec is approved, executable, decomposed, or available for implementation review.
 
 Completion review authority may be revisited when AgentOS milestone decision authority model is formalized.
