@@ -3,13 +3,13 @@ type: lesson-candidate
 milestone: M55
 task: 55.11
 title: M55 Active-Task Readiness Boundary
-status: draft
+status: confirmed
 authority: lesson-candidate
 created_for: M55
 source_evidence_report: reports/m55-active-task-readiness-evidence-report.md
 source_integration_report: reports/m55-active-task-readiness-integration.md
 source_readiness_result: reports/m55-active-task-readiness-result-agent-action-review.json
-lesson_confirmed: false
+lesson_confirmed: true
 confirmation_task: 55.12
 active_task_file_created: false
 active_task_replacement_authorized: false
