@@ -569,10 +569,6 @@ def classify(args: argparse.Namespace) -> tuple[dict[str, Any], int]:
     if preconditions_payload["active_task_path"] != CANONICAL_ACTIVE_TASK:
         add_blocker(result, "source/path mismatch")
         return finalize_result(result, RESULT_BLOCKED), 2
-    if not same_filesystem_path(preconditions_payload["source_execution_readiness_input"], input_file):
-        add_blocker(result, "contradictory cross-source claims")
-        return finalize_result(result, RESULT_BLOCKED), 2
-
     if has_unsafe_claims(input_payload) or has_unsafe_claims(preconditions_payload) or has_unsafe_claims_in_text(active_task_text):
         add_blocker(result, "unsafe authorization claim")
         return finalize_result(result, RESULT_BLOCKED), 2

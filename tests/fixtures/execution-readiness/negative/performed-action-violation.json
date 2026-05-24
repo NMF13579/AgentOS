@@ -1,0 +1,102 @@
+{
+  "execution_preconditions": {
+    "preconditions_id": "M56_NEGATIVE_PERFORMED_ACTION",
+    "source_execution_readiness_input": "tests/fixtures/execution-readiness/positive/valid-execution-readiness-input.json",
+    "source_active_task": "tasks/active-task.md",
+    "active_task_path": "tasks/active-task.md",
+    "required_active_task_structure": {
+      "active_task_exists": true,
+      "frontmatter_valid": true,
+      "task_id_present": true,
+      "title_present": true,
+      "mode_present": true,
+      "repository_present": true,
+      "branch_present": true,
+      "goal_present": true
+    },
+    "required_traceability": {
+      "source_m55_completion_review": "reports/m55-completion-review.md",
+      "source_m55_readiness_result": "reports/m55-active-task-readiness-result-agent-action-review.json",
+      "source_m54_materialization_result": "reports/m54-placement-materialization-result-agent-action-review.json",
+      "source_m53_placement_result": "reports/m53-placement-review-result-agent-action-review.json",
+      "source_m52_validation_result": "reports/m52-candidate-validation-result-agent-action-review.json",
+      "source_queue_entry": "tasks/queue/agent-action-review-task-candidate.md",
+      "source_active_task": "tasks/active-task.md"
+    },
+    "required_scope": {
+      "scope_present": true,
+      "allowed_changes_present": true,
+      "forbidden_changes_present": true,
+      "non_goals_present": true,
+      "risk_boundary_present": true
+    },
+    "required_validation": {
+      "validation_present": true,
+      "validation_commands_present": true,
+      "expected_final_report_present": true,
+      "evidence_requirements_present": true
+    },
+    "required_boundaries": {
+      "execution_readiness_is_not_execution": true,
+      "execution_readiness_is_not_approval": true,
+      "execution_readiness_is_not_lifecycle_mutation": true,
+      "execution_readiness_is_not_m57_authorization": true,
+      "execution_does_not_start": true,
+      "m57_does_not_start": true
+    },
+    "checked_preconditions": {
+      "active_task_structure": true,
+      "traceability": true,
+      "scope": true,
+      "validation": true,
+      "boundaries": true
+    },
+    "missing_preconditions": [],
+    "warnings": [],
+    "blockers": [],
+    "carry_forward": {
+      "accepted_limitations": [],
+      "warnings": [],
+      "open_questions": [],
+      "downstream_limits": [],
+      "known_gaps": [],
+      "non_authority_boundary": [
+        "Execution preconditions are not approval.",
+        "Execution preconditions do not authorize execution.",
+        "Execution preconditions do not start execution.",
+        "Execution preconditions do not create approval records.",
+        "Execution preconditions do not authorize lifecycle mutation.",
+        "Execution preconditions do not authorize M57.",
+        "Execution preconditions do not start M57."
+      ]
+    },
+    "boundary_flags": {
+      "preconditions_only": true,
+      "execution_readiness_authorized": false,
+      "execution_authorized": false,
+      "execution_started": false,
+      "approval_created": false,
+      "lifecycle_mutation_authorized": false,
+      "m57_authorized": false,
+      "m57_started": false
+    },
+    "performed_actions": {
+      "active_task_read": false,
+      "active_task_modified": false,
+      "validation_commands_run": false,
+      "execution_started": true,
+      "approval_created": false,
+      "lifecycle_mutation_performed": false,
+      "m57_started": false
+    },
+    "non_authority_markers": [
+      "Execution preconditions are not approval.",
+      "Execution preconditions do not authorize execution.",
+      "Execution preconditions do not start execution.",
+      "Execution preconditions do not create approval records.",
+      "Execution preconditions do not authorize lifecycle mutation.",
+      "Execution preconditions do not authorize M57.",
+      "Execution preconditions do not start M57."
+    ]
+  }
+}
