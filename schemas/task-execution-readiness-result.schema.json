@@ -1,0 +1,303 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Task Execution Readiness Result",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "execution_readiness_result"
+  ],
+  "properties": {
+    "execution_readiness_result": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "result",
+        "exit_code",
+        "execution_ready",
+        "active_task_valid",
+        "preconditions_passed",
+        "scope_ready",
+        "validation_ready",
+        "traceability_ready",
+        "boundary_ready",
+        "source_execution_readiness_input",
+        "source_execution_preconditions",
+        "source_active_task",
+        "active_task_path",
+        "required_traceability",
+        "readiness_findings",
+        "warnings",
+        "blockers",
+        "carry_forward",
+        "boundary_flags",
+        "performed_actions",
+        "non_authority_markers"
+      ],
+      "properties": {
+        "result": {
+          "type": "string",
+          "enum": [
+            "EXECUTION_READINESS_CONFIRMED",
+            "EXECUTION_READINESS_CONFIRMED_WITH_LIMITATIONS",
+            "EXECUTION_READINESS_NOT_CONFIRMED",
+            "EXECUTION_READINESS_BLOCKED"
+          ]
+        },
+        "exit_code": {
+          "type": "integer",
+          "enum": [
+            0,
+            1,
+            2
+          ]
+        },
+        "execution_ready": {
+          "type": "boolean"
+        },
+        "active_task_valid": {
+          "type": "boolean"
+        },
+        "preconditions_passed": {
+          "type": "boolean"
+        },
+        "scope_ready": {
+          "type": "boolean"
+        },
+        "validation_ready": {
+          "type": "boolean"
+        },
+        "traceability_ready": {
+          "type": "boolean"
+        },
+        "boundary_ready": {
+          "type": "boolean"
+        },
+        "source_execution_readiness_input": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_execution_preconditions": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_active_task": {
+          "type": "string",
+          "const": "tasks/active-task.md"
+        },
+        "active_task_path": {
+          "type": "string",
+          "const": "tasks/active-task.md"
+        },
+        "required_traceability": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "source_m55_completion_review",
+            "source_m55_readiness_result",
+            "source_m54_materialization_result",
+            "source_m53_placement_result",
+            "source_m52_validation_result",
+            "source_queue_entry",
+            "source_active_task"
+          ],
+          "properties": {
+            "source_m55_completion_review": {
+              "type": "string",
+              "minLength": 1
+            },
+            "source_m55_readiness_result": {
+              "type": "string",
+              "minLength": 1
+            },
+            "source_m54_materialization_result": {
+              "type": "string",
+              "minLength": 1
+            },
+            "source_m53_placement_result": {
+              "type": "string",
+              "minLength": 1
+            },
+            "source_m52_validation_result": {
+              "type": "string",
+              "minLength": 1
+            },
+            "source_queue_entry": {
+              "type": "string",
+              "minLength": 1
+            },
+            "source_active_task": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        "readiness_findings": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "warnings": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "blockers": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "carry_forward": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "accepted_limitations",
+            "warnings",
+            "open_questions",
+            "downstream_limits",
+            "known_gaps",
+            "non_authority_boundary"
+          ],
+          "properties": {
+            "accepted_limitations": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "warnings": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "open_questions": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "downstream_limits": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "known_gaps": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "non_authority_boundary": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "minItems": 1
+            }
+          }
+        },
+        "boundary_flags": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "execution_readiness_only",
+            "execution_readiness_authorized",
+            "execution_authorized",
+            "execution_started",
+            "approval_created",
+            "lifecycle_mutation_authorized",
+            "m57_authorized",
+            "m57_started"
+          ],
+          "properties": {
+            "execution_readiness_only": {
+              "type": "boolean",
+              "const": true
+            },
+            "execution_readiness_authorized": {
+              "type": "boolean",
+              "const": false
+            },
+            "execution_authorized": {
+              "type": "boolean",
+              "const": false
+            },
+            "execution_started": {
+              "type": "boolean",
+              "const": false
+            },
+            "approval_created": {
+              "type": "boolean",
+              "const": false
+            },
+            "lifecycle_mutation_authorized": {
+              "type": "boolean",
+              "const": false
+            },
+            "m57_authorized": {
+              "type": "boolean",
+              "const": false
+            },
+            "m57_started": {
+              "type": "boolean",
+              "const": false
+            }
+          }
+        },
+        "performed_actions": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "active_task_read",
+            "active_task_modified",
+            "validation_commands_run",
+            "execution_started",
+            "approval_created",
+            "lifecycle_mutation_performed",
+            "m57_started"
+          ],
+          "properties": {
+            "active_task_read": {
+              "type": "boolean"
+            },
+            "active_task_modified": {
+              "type": "boolean",
+              "const": false
+            },
+            "validation_commands_run": {
+              "type": "boolean",
+              "const": false
+            },
+            "execution_started": {
+              "type": "boolean",
+              "const": false
+            },
+            "approval_created": {
+              "type": "boolean",
+              "const": false
+            },
+            "lifecycle_mutation_performed": {
+              "type": "boolean",
+              "const": false
+            },
+            "m57_started": {
+              "type": "boolean",
+              "const": false
+            }
+          }
+        },
+        "non_authority_markers": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1
+        }
+      }
+    }
+  }
+}
