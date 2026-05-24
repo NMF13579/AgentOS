@@ -65,6 +65,31 @@ In 53.5, --fixtures runs built-in self-checks only and does not use repository f
 - --fixtures does not inspect approvals/
 - --fixtures --json returns PLACEMENT_REVIEW_BLOCKED with exit code 2
 
+## Repository Fixture Integration
+
+After Task 53.6.3, `--fixtures` validates repository fixture suites under `tests/fixtures/task-candidate-placement-review/`.
+
+`--fixtures` is read-only.
+`--fixtures` writes human-readable aggregate output to stderr.
+`--fixtures` writes nothing to stdout.
+`--fixtures` does not create reports.
+`--fixtures` does not create queue entries.
+`--fixtures` does not modify tasks/active-task.md.
+`--fixtures` does not create approval records.
+`--fixtures` does not authorize M54 materialization.
+
+Fixture count mismatch returns M53_FIXTURE_INTEGRATION_BLOCKED with exit code 2 and an explanation in stderr.
+Source fixture validation requires the exact five canonical source fixture filenames and blocks unexpected .md or .json source files.
+
+```yaml
+M53_FIXTURE_INTEGRATION_OK: 0
+M53_FIXTURE_INTEGRATION_OK_WITH_LIMITATIONS: 0
+M53_FIXTURE_INTEGRATION_FAILED: 1
+M53_FIXTURE_INTEGRATION_BLOCKED: 2
+```
+
+`--fixtures --json` returns PLACEMENT_REVIEW_BLOCKED with exit code 2.
+
 ## 6. Result Tokens and Exit Codes
 
 - PLACEMENT_REVIEW_ELIGIBLE: 0

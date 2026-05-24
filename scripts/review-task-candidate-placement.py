@@ -44,6 +44,11 @@ ALLOWED_SHAPE = {
     "ACTIVE_TASK_PROPOSAL_INPUT_CANDIDATE",
 }
 
+FIXTURE_TOKEN_OK = "M53_FIXTURE_INTEGRATION_OK"
+FIXTURE_TOKEN_OK_WITH_LIMITATIONS = "M53_FIXTURE_INTEGRATION_OK_WITH_LIMITATIONS"
+FIXTURE_TOKEN_FAILED = "M53_FIXTURE_INTEGRATION_FAILED"
+FIXTURE_TOKEN_BLOCKED = "M53_FIXTURE_INTEGRATION_BLOCKED"
+
 
 def stderr(message: str) -> None:
     print(message, file=sys.stderr)
@@ -444,20 +449,343 @@ def explain_text() -> str:
     )
 
 
-def run_fixtures() -> tuple[int, list[str]]:
-    messages = [
-        "built-in self-check: boundary markers available",
-        "built-in self-check: blocked default result available",
-        "built-in self-check: result tokens configured",
-    ]
-    return 0, messages
+def _load_md_fenced_json(path: Path) -> dict[str, Any]:
+    text = read_text(path)
+    parsed = extract_fenced_json(text)
+    if not isinstance(parsed, dict):
+        raise ValueError(f"missing fenced JSON block: {path}")
+    return parsed
+
+
+def _validate_source_fixtures(sources_dir: Path) -> tuple[list[str], list[str]]:
+    blockers: list[str] = []
+    warnings: list[str] = []
+    required = {
+        "baseline-m52-completion-review.md",
+        "baseline-m52-evidence-report.md",
+        "baseline-m52-integration-report.md",
+        "baseline-m52-validation-result.json",
+        "baseline-generated-conversion-package.md",
+    }
+
+    observed = {p.name for p in sources_dir.glob("*.md")} | {p.name for p in sources_dir.glob("*.json")}
+    if len(observed) != 5:
+        blockers.append(f"{FIXTURE_TOKEN_BLOCKED}: expected exactly 5 source fixtures, found {len(observed)}")
+    for name in sorted(required - observed):
+        blockers.append(f"missing required source fixture: {name}")
+    extra = sorted(observed - required)
+    if extra:
+        blockers.append(f"{FIXTURE_TOKEN_BLOCKED}: unexpected source fixture files found: {', '.join(extra)}")
+
+    baseline_json = sources_dir / "baseline-m52-validation-result.json"
+    if baseline_json.exists():
+        try:
+            data = json.loads(read_text(baseline_json))
+            result = data.get("candidate_validation_result", {})
+            if not isinstance(result, dict):
+                blockers.append("baseline source JSON missing candidate_validation_result")
+            else:
+                if not result.get("candidate_id"):
+                    blockers.append("baseline source JSON missing candidate_id")
+                if result.get("source_m52_validation_result") != "M52_VALIDATION_RESULT_SELF_REFERENCE_FIXTURE":
+                    blockers.append("baseline source JSON source_m52_validation_result mismatch")
+                if "fixture_note" not in result:
+                    blockers.append("baseline source JSON missing fixture_note")
+                if "execution_authorized" in result:
+                    blockers.append("baseline source JSON has forbidden top-level execution_authorized")
+                flags = result.get("boundary_flags", {})
+                expected = {
+                    "review_only": True,
+                    "queue_write_allowed": False,
+                    "active_task_write_allowed": False,
+                    "execution_authorized": False,
+                    "approval_record_creation_allowed": False,
+                    "lifecycle_mutation_allowed": False,
+                    "m54_materialization_authorized": False,
+                }
+                if not isinstance(flags, dict):
+                    blockers.append("baseline source JSON missing boundary_flags object")
+                else:
+                    for k, v in expected.items():
+                        if flags.get(k) is not v:
+                            blockers.append(f"baseline source JSON unsafe boundary flag: {k}")
+                for k in ("queue_placement_performed", "active_task_replacement_performed", "approval_created"):
+                    if result.get(k) is not False:
+                        blockers.append(f"baseline source JSON unsafe performed flag: {k}")
+        except Exception as exc:
+            blockers.append(f"baseline source JSON parse failed: {exc}")
+
+    return blockers, warnings
+
+
+def _validate_positive_fixtures(positive_dir: Path) -> tuple[list[str], list[str]]:
+    blockers: list[str] = []
+    warnings: list[str] = []
+    files = sorted(positive_dir.glob("*.md"))
+    if len(files) != 8:
+        blockers.append(f"{FIXTURE_TOKEN_BLOCKED}: expected 8 positive fixtures, found {len(files)}")
+        return blockers, warnings
+
+    req_trace = {
+        "source_proposal",
+        "source_authorization",
+        "source_conversion_package",
+        "source_generated_artifact",
+        "m50_traceability",
+        "m51_generator_evidence",
+        "m52_validation_evidence",
+    }
+    for path in files:
+        text = read_text(path)
+        for marker in [
+            "This positive fixture proves eligibility without granting placement authority.",
+            "This fixture is not approval.",
+            "This fixture does not authorize execution.",
+            "This fixture does not authorize queue placement.",
+            "This fixture does not authorize active-task replacement.",
+            "This fixture does not authorize lifecycle mutation.",
+            "This fixture does not authorize M54 materialization.",
+        ]:
+            if marker not in text:
+                blockers.append(f"positive fixture marker missing in {path.name}: {marker}")
+        try:
+            payload = _load_md_fenced_json(path)
+        except Exception as exc:
+            blockers.append(str(exc))
+            continue
+        if "placement_review_input" in payload:
+            inp = payload["placement_review_input"]
+            if not isinstance(inp, dict):
+                blockers.append(f"placement_review_input is not object: {path.name}")
+                continue
+            if inp.get("source_m52_completion_review") != "reports/m52-completion-review.md":
+                blockers.append(f"invalid source_m52_completion_review in {path.name}")
+            boundaries = inp.get("boundaries", {})
+            expected = {
+                "queue_write_allowed": False,
+                "active_task_write_allowed": False,
+                "execution_authorized": False,
+                "approval_record_creation_allowed": False,
+                "lifecycle_mutation_allowed": False,
+                "m54_materialization_authorized": False,
+            }
+            for k, v in expected.items():
+                if boundaries.get(k) is not v:
+                    blockers.append(f"unsafe positive input boundary {k} in {path.name}")
+        elif "placement_review_result" in payload:
+            res = payload["placement_review_result"]
+            if not isinstance(res, dict):
+                blockers.append(f"placement_review_result is not object: {path.name}")
+                continue
+            if "execution_authorized" in res:
+                blockers.append(f"forbidden top-level execution_authorized in {path.name}")
+            if not res.get("checked_candidate_id"):
+                blockers.append(f"missing checked_candidate_id in {path.name}")
+            if res.get("source_m52_completion_review") != "reports/m52-completion-review.md":
+                blockers.append(f"invalid source_m52_completion_review in {path.name}")
+            trace = res.get("source_traceability", {})
+            if not isinstance(trace, dict) or not trace:
+                blockers.append(f"missing source_traceability in {path.name}")
+            else:
+                for key in req_trace:
+                    if not trace.get(key):
+                        blockers.append(f"missing traceability key {key} in {path.name}")
+            b = res.get("boundary_flags", {})
+            expected_b = {
+                "review_only": True,
+                "queue_write_allowed": False,
+                "active_task_write_allowed": False,
+                "execution_authorized": False,
+                "approval_record_creation_allowed": False,
+                "lifecycle_mutation_allowed": False,
+                "m54_materialization_authorized": False,
+            }
+            for k, v in expected_b.items():
+                if b.get(k) is not v:
+                    blockers.append(f"unsafe positive result boundary {k} in {path.name}")
+            for k, v in {
+                "m54_independent_validation_required": True,
+                "m54_may_not_start_without_own_gate": True,
+                "m54_materialization_authorized": False,
+                "queue_placement_performed": False,
+                "active_task_replacement_performed": False,
+                "approval_created": False,
+            }.items():
+                if res.get(k) is not v:
+                    blockers.append(f"unsafe positive result field {k} in {path.name}")
+            if not res.get("non_authority_markers"):
+                blockers.append(f"missing non_authority_markers in {path.name}")
+        else:
+            blockers.append(f"positive fixture missing expected top-level key: {path.name}")
+    return blockers, warnings
+
+
+def _validate_negative_fixtures(negative_dir: Path) -> tuple[list[str], list[str]]:
+    blockers: list[str] = []
+    warnings: list[str] = []
+    files = sorted(negative_dir.glob("*.md"))
+    if len(files) != 32:
+        blockers.append(f"{FIXTURE_TOKEN_BLOCKED}: expected 32 negative fixtures, found {len(files)}")
+        return blockers, warnings
+
+    allowed_type = {
+        "DEPENDENCY_BLOCKER",
+        "SOURCE_ARTIFACT_BLOCKER",
+        "TRACEABILITY_BLOCKER",
+        "AUTHORITY_ESCALATION_BLOCKER",
+        "CARRY_FORWARD_BLOCKER",
+        "M54_BOUNDARY_BLOCKER",
+        "NOT_ELIGIBLE_CONDITION",
+    }
+    allowed_kind = {
+        "placement_review_input",
+        "placement_review_result",
+        "candidate_validation_result",
+        "m52_completion_review",
+    }
+    carry_ids = {
+        "accepted-limitations-dropped": "accepted_limitations",
+        "warnings-dropped": "warnings",
+        "open-questions-dropped": "open_questions",
+        "downstream-limits-dropped": "downstream_limits",
+        "known-gaps-dropped": "known_gaps",
+    }
+
+    for path in files:
+        text = read_text(path)
+        for marker in [
+            "This negative fixture proves M53 blocks placement authority escalation.",
+            "This fixture is not approval.",
+            "This fixture does not authorize execution.",
+            "This fixture does not authorize queue placement.",
+            "This fixture does not authorize active-task replacement.",
+            "This fixture does not authorize lifecycle mutation.",
+            "This fixture does not authorize M54 materialization.",
+        ]:
+            if marker not in text:
+                blockers.append(f"negative fixture marker missing in {path.name}: {marker}")
+        try:
+            payload = _load_md_fenced_json(path)
+        except Exception as exc:
+            blockers.append(str(exc))
+            continue
+        nf = payload.get("negative_fixture")
+        if not isinstance(nf, dict):
+            blockers.append(f"missing negative_fixture wrapper: {path.name}")
+            continue
+        fid = nf.get("fixture_id")
+        if not fid:
+            blockers.append(f"missing fixture_id: {path.name}")
+            continue
+        if nf.get("fixture_type") not in allowed_type:
+            blockers.append(f"invalid fixture_type in {path.name}")
+        if nf.get("expected_result") != RESULT_BLOCKED:
+            blockers.append(f"expected_result must be {RESULT_BLOCKED} in {path.name}")
+        if nf.get("expected_exit_code") != 2:
+            blockers.append(f"expected_exit_code must be 2 in {path.name}")
+        if not nf.get("expected_blocker"):
+            blockers.append(f"missing expected_blocker in {path.name}")
+        if nf.get("payload_kind") not in allowed_kind:
+            blockers.append(f"invalid payload_kind in {path.name}")
+        body = nf.get("payload")
+        if not isinstance(body, dict):
+            blockers.append(f"payload must be object in {path.name}")
+            continue
+
+        if fid == "top-level-execution-authorized-field":
+            if nf.get("expected_blocker") != "execution_authorized field must exist only under boundary_flags":
+                blockers.append(f"wrong expected_blocker in {path.name}")
+            if body.get("execution_authorized") is not False:
+                blockers.append(f"top-level execution_authorized must be false in {path.name}")
+
+        if fid in carry_ids:
+            key = carry_ids[fid]
+            if "m52_source_contains" not in nf or "payload_drops" not in nf:
+                blockers.append(f"carry-forward metadata missing in {path.name}")
+            else:
+                if key not in nf["m52_source_contains"]:
+                    blockers.append(f"m52_source_contains missing {key} in {path.name}")
+                if nf["payload_drops"].get(key) is not True:
+                    blockers.append(f"payload_drops missing {key} in {path.name}")
+            if "m52_source_contains" in body or "payload_drops" in body:
+                blockers.append(f"carry-forward metadata nested inside payload in {path.name}")
+
+        if fid == "forbidden-changes-weakened":
+            if body.get("forbidden_changes_weakened") is not True:
+                blockers.append(f"forbidden_changes_weakened missing in {path.name}")
+            if "forbidden_changes_weakened" in body.get("boundaries", {}):
+                blockers.append(f"forbidden_changes_weakened nested in boundaries in {path.name}")
+            if "forbidden_changes_weakened" in body.get("required_traceability", {}):
+                blockers.append(f"forbidden_changes_weakened nested in required_traceability in {path.name}")
+            if "forbidden_changes_weakened" in body.get("required_carry_forward", {}):
+                blockers.append(f"forbidden_changes_weakened nested in required_carry_forward in {path.name}")
+
+        if fid == "allowed-changes-expanded":
+            if body.get("allowed_changes_expanded") is not True:
+                blockers.append(f"allowed_changes_expanded missing in {path.name}")
+            if "allowed_changes_expanded" in body.get("boundaries", {}):
+                blockers.append(f"allowed_changes_expanded nested in boundaries in {path.name}")
+            if "allowed_changes_expanded" in body.get("required_traceability", {}):
+                blockers.append(f"allowed_changes_expanded nested in required_traceability in {path.name}")
+            if "allowed_changes_expanded" in body.get("required_carry_forward", {}):
+                blockers.append(f"allowed_changes_expanded nested in required_carry_forward in {path.name}")
+
+    return blockers, warnings
+
+
+def run_fixtures(repo_root: Path) -> tuple[int, list[str], str]:
+    messages: list[str] = []
+    warnings: list[str] = []
+    blockers: list[str] = []
+
+    fixture_root = (repo_root / "tests" / "fixtures" / "task-candidate-placement-review").resolve()
+    try:
+        ensure_within(fixture_root, repo_root)
+    except Exception as exc:
+        return 2, [f"{FIXTURE_TOKEN_BLOCKED}: {exc}"], FIXTURE_TOKEN_BLOCKED
+
+    positive = fixture_root / "positive"
+    negative = fixture_root / "negative"
+    sources = fixture_root / "sources"
+    for d in (positive, negative, sources):
+        if not d.exists() or not d.is_dir():
+            blockers.append(f"{FIXTURE_TOKEN_BLOCKED}: required fixture directory missing: {d}")
+
+    if blockers:
+        return 2, blockers, FIXTURE_TOKEN_BLOCKED
+
+    b, w = _validate_source_fixtures(sources)
+    blockers.extend(b)
+    warnings.extend(w)
+    b, w = _validate_positive_fixtures(positive)
+    blockers.extend(b)
+    warnings.extend(w)
+    b, w = _validate_negative_fixtures(negative)
+    blockers.extend(b)
+    warnings.extend(w)
+
+    messages.append(f"positive_fixture_count: {len(list(positive.glob('*.md')))}")
+    messages.append(f"negative_fixture_count: {len(list(negative.glob('*.md')))}")
+    messages.append(f"source_fixture_count: {len(list(sources.glob('*.md')))+len(list(sources.glob('*.json')))}")
+
+    if blockers:
+        messages.extend(blockers)
+        messages.append(FIXTURE_TOKEN_BLOCKED)
+        return 2, messages, FIXTURE_TOKEN_BLOCKED
+    if warnings:
+        messages.extend(warnings)
+        messages.append(FIXTURE_TOKEN_OK_WITH_LIMITATIONS)
+        return 0, messages, FIXTURE_TOKEN_OK_WITH_LIMITATIONS
+
+    messages.append(FIXTURE_TOKEN_OK)
+    return 0, messages, FIXTURE_TOKEN_OK
 
 
 def main() -> int:
     parser = argparse.ArgumentParser(description="Read-only M53 placement eligibility review CLI")
     parser.add_argument("--input", help="Path to placement_review_input JSON or Markdown fenced JSON")
     parser.add_argument("--candidate-result", help="Path to M52 candidate result JSON or Markdown fenced JSON")
-    parser.add_argument("--fixtures", action="store_true", help="Run built-in self-checks only")
+    parser.add_argument("--fixtures", action="store_true", help="Validate repository fixture suites in read-only mode")
     parser.add_argument("--explain", action="store_true", help="Explain M53 placement review behavior")
     parser.add_argument("--m52-reports-dir", default="reports", help="M52 supporting reports directory")
     parser.add_argument("--repo-root", help="Repository root for safe path resolution")
@@ -481,7 +809,8 @@ def main() -> int:
         return 0
 
     if args.fixtures:
-        code, messages = run_fixtures()
+        repo_root = Path.cwd()
+        code, messages, _token = run_fixtures(repo_root)
         for msg in messages:
             stderr(msg)
         return code
