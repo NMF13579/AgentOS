@@ -1,0 +1,142 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Task Candidate Queue Placement Input",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["queue_placement_input"],
+  "properties": {
+    "queue_placement_input": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "input_id",
+        "source_candidate_id",
+        "source_m53_completion_review",
+        "source_m53_evidence_report",
+        "source_m53_integration_report",
+        "source_m53_placement_result",
+        "source_m52_completion_review",
+        "source_m52_validation_result",
+        "source_generated_candidate",
+        "source_candidate_origin",
+        "materialization_mode",
+        "target_queue_dir",
+        "target_queue_file",
+        "required_traceability",
+        "required_carry_forward",
+        "pre_materialization_checks",
+        "boundaries"
+      ],
+      "properties": {
+        "input_id": {"type": "string", "minLength": 1},
+        "source_candidate_id": {"type": "string", "minLength": 1},
+        "source_m53_completion_review": {"type": "string", "const": "reports/m53-completion-review.md"},
+        "source_m53_evidence_report": {"type": "string", "const": "reports/m53-task-candidate-placement-review-evidence-report.md"},
+        "source_m53_integration_report": {"type": "string", "const": "reports/m53-task-candidate-placement-review-integration.md"},
+        "source_m53_placement_result": {"type": "string", "const": "reports/m53-placement-review-result-agent-action-review.json"},
+        "source_m52_completion_review": {"type": "string", "const": "reports/m52-completion-review.md"},
+        "source_m52_validation_result": {"type": "string", "minLength": 1},
+        "source_generated_candidate": {"type": "string", "minLength": 1},
+        "source_candidate_origin": {"type": "string", "const": "M53_PLACEMENT_ELIGIBLE_CANDIDATE"},
+        "materialization_mode": {"type": "string", "const": "QUEUE_PLACEMENT_ONLY"},
+        "target_queue_dir": {"type": "string", "const": "tasks/queue/"},
+        "target_queue_file": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[^/\\\\]+$",
+          "allOf": [
+            {"not": {"pattern": "\\.\\."}}
+          ]
+        },
+        "required_traceability": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "source_proposal",
+            "source_authorization",
+            "source_conversion_package",
+            "source_generated_artifact",
+            "m50_traceability",
+            "m51_generator_evidence",
+            "m52_validation_evidence",
+            "m53_placement_review_evidence"
+          ],
+          "properties": {
+            "source_proposal": {"type": "string", "minLength": 1},
+            "source_authorization": {"type": "string", "minLength": 1},
+            "source_conversion_package": {"type": "string", "minLength": 1},
+            "source_generated_artifact": {"type": "string", "minLength": 1},
+            "m50_traceability": {"type": "string", "minLength": 1},
+            "m51_generator_evidence": {"type": "string", "minLength": 1},
+            "m52_validation_evidence": {"type": "string", "minLength": 1},
+            "m53_placement_review_evidence": {"type": "string", "minLength": 1}
+          }
+        },
+        "required_carry_forward": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "accepted_limitations",
+            "warnings",
+            "open_questions",
+            "downstream_limits",
+            "known_gaps",
+            "non_authority_boundary"
+          ],
+          "properties": {
+            "accepted_limitations": {"type": "array", "items": {"type": "string", "minLength": 1}},
+            "warnings": {"type": "array", "items": {"type": "string", "minLength": 1}},
+            "open_questions": {"type": "array", "items": {"type": "string", "minLength": 1}},
+            "downstream_limits": {"type": "array", "items": {"type": "string", "minLength": 1}},
+            "known_gaps": {"type": "array", "items": {"type": "string", "minLength": 1}},
+            "non_authority_boundary": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}}
+          }
+        },
+        "pre_materialization_checks": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "m53_completion_valid",
+            "m53_input_review_ready",
+            "m53_materialization_authorized_false",
+            "candidate_not_already_queued",
+            "candidate_not_active",
+            "target_path_safe",
+            "target_file_absent"
+          ],
+          "properties": {
+            "m53_completion_valid": {"type": "boolean"},
+            "m53_input_review_ready": {"type": "boolean"},
+            "m53_materialization_authorized_false": {"type": "boolean"},
+            "candidate_not_already_queued": {"type": "boolean"},
+            "candidate_not_active": {"type": "boolean"},
+            "target_path_safe": {"type": "boolean"},
+            "target_file_absent": {"type": "boolean"}
+          }
+        },
+        "boundaries": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "queue_materialization_requested",
+            "queue_write_allowed_only_by_m54_cli",
+            "active_task_write_allowed",
+            "execution_authorized",
+            "approval_record_creation_allowed",
+            "lifecycle_active_transition_allowed",
+            "m55_start_authorized"
+          ],
+          "properties": {
+            "queue_materialization_requested": {"type": "boolean", "const": true},
+            "queue_write_allowed_only_by_m54_cli": {"type": "boolean", "const": true},
+            "active_task_write_allowed": {"type": "boolean", "const": false},
+            "execution_authorized": {"type": "boolean", "const": false},
+            "approval_record_creation_allowed": {"type": "boolean", "const": false},
+            "lifecycle_active_transition_allowed": {"type": "boolean", "const": false},
+            "m55_start_authorized": {"type": "boolean", "const": false}
+          }
+        }
+      }
+    }
+  }
+}
