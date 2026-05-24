@@ -9,8 +9,8 @@ created_for: M54
 source_evidence_report: reports/m54-task-candidate-queue-placement-evidence-report.md
 source_integration_report: reports/m54-queue-placement-materialization-integration.md
 source_materialization_result: reports/m54-placement-materialization-result-agent-action-review.json
-lesson_status: DRAFT
-lesson_confirmed_by: null
+lesson_status: CONFIRMED
+lesson_confirmed_by: reports/m54-completion-review.md
 confirmation_expected_from: reports/m54-completion-review.md
 queue_placement_authorized: false
 execution_authorized: false
