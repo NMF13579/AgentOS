@@ -420,7 +420,6 @@ def main() -> int:
 
         expected_truths = {
             "eligible_for_downstream_placement": True,
-            "eligible_as_m54_queue_materialization_input": True,
             "eligible_as_m54_active_task_proposal_input": False,
             "m54_materialization_authorized": False,
             "queue_placement_performed": False,
