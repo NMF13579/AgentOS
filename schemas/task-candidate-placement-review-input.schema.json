@@ -1,0 +1,228 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Task Candidate Placement Review Input",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "placement_review_input"
+  ],
+  "properties": {
+    "placement_review_input": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "input_id",
+        "source_candidate_id",
+        "source_m52_completion_review",
+        "source_m52_evidence_report",
+        "source_m52_integration_report",
+        "source_m52_validation_result",
+        "source_generated_artifact",
+        "source_candidate_origin",
+        "placement_review_mode",
+        "expected_candidate_shape",
+        "m52_reports_dir",
+        "required_traceability",
+        "required_carry_forward",
+        "placement_target",
+        "boundaries"
+      ],
+      "properties": {
+        "input_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_candidate_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_m52_completion_review": {
+          "const": "reports/m52-completion-review.md"
+        },
+        "source_m52_evidence_report": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_m52_integration_report": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_m52_validation_result": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_generated_artifact": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_candidate_origin": {
+          "type": "string",
+          "enum": [
+            "M51_GENERATED_STAGING_ARTIFACT",
+            "M52_VALIDATED_CANDIDATE_RESULT",
+            "MANUAL_CANONICAL_CANDIDATE_REFERENCE"
+          ]
+        },
+        "placement_review_mode": {
+          "type": "string",
+          "enum": [
+            "REVIEW_ONLY",
+            "QUEUE_CANDIDATE_ELIGIBILITY_REVIEW",
+            "ACTIVE_TASK_PROPOSAL_ELIGIBILITY_REVIEW"
+          ]
+        },
+        "expected_candidate_shape": {
+          "type": "string",
+          "enum": [
+            "TASK_CONTRACT_CANDIDATE",
+            "QUEUE_MATERIALIZATION_INPUT_CANDIDATE",
+            "ACTIVE_TASK_PROPOSAL_INPUT_CANDIDATE"
+          ]
+        },
+        "m52_reports_dir": {
+          "type": "string",
+          "minLength": 1
+        },
+        "required_traceability": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "source_proposal",
+            "source_authorization",
+            "source_conversion_package",
+            "source_generated_artifact",
+            "m50_traceability",
+            "m51_generator_evidence",
+            "m52_validation_evidence"
+          ],
+          "properties": {
+            "source_proposal": {
+              "type": "string"
+            },
+            "source_authorization": {
+              "type": "string"
+            },
+            "source_conversion_package": {
+              "type": "string"
+            },
+            "source_generated_artifact": {
+              "type": "string"
+            },
+            "m50_traceability": {
+              "type": "string"
+            },
+            "m51_generator_evidence": {
+              "type": "string"
+            },
+            "m52_validation_evidence": {
+              "type": "string"
+            }
+          }
+        },
+        "required_carry_forward": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "accepted_limitations",
+            "warnings",
+            "open_questions",
+            "downstream_limits",
+            "known_gaps",
+            "non_authority_boundary"
+          ],
+          "properties": {
+            "accepted_limitations": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "warnings": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "open_questions": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "downstream_limits": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "known_gaps": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "non_authority_boundary": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "minItems": 1
+            }
+          }
+        },
+        "placement_target": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "queue_candidate_allowed_for_review",
+            "active_task_candidate_allowed_for_review"
+          ],
+          "properties": {
+            "queue_candidate_allowed_for_review": {
+              "type": "boolean"
+            },
+            "active_task_candidate_allowed_for_review": {
+              "type": "boolean"
+            }
+          }
+        },
+        "boundaries": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "review_only",
+            "queue_write_allowed",
+            "active_task_write_allowed",
+            "execution_authorized",
+            "approval_record_creation_allowed",
+            "lifecycle_mutation_allowed",
+            "m54_materialization_authorized"
+          ],
+          "properties": {
+            "review_only": {
+              "const": true
+            },
+            "queue_write_allowed": {
+              "const": false
+            },
+            "active_task_write_allowed": {
+              "const": false
+            },
+            "execution_authorized": {
+              "const": false
+            },
+            "approval_record_creation_allowed": {
+              "const": false
+            },
+            "lifecycle_mutation_allowed": {
+              "const": false
+            },
+            "m54_materialization_authorized": {
+              "const": false
+            }
+          }
+        }
+      }
+    }
+  }
+}
