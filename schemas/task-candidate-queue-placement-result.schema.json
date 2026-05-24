@@ -1,0 +1,141 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Task Candidate Queue Placement Result",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["queue_placement_result"],
+  "properties": {
+    "queue_placement_result": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "result",
+        "exit_code",
+        "materialized",
+        "queue_entry_created",
+        "queue_entry_path",
+        "checked_candidate_id",
+        "source_m53_completion_review",
+        "source_m53_placement_result",
+        "source_m52_validation_result",
+        "source_generated_candidate",
+        "source_traceability",
+        "carry_forward",
+        "materialization_findings",
+        "warnings",
+        "blockers",
+        "boundary_flags",
+        "performed_actions",
+        "non_authority_markers"
+      ],
+      "properties": {
+        "result": {
+          "type": "string",
+          "enum": [
+            "QUEUE_PLACEMENT_MATERIALIZED",
+            "QUEUE_PLACEMENT_MATERIALIZED_WITH_LIMITATIONS",
+            "QUEUE_PLACEMENT_NOT_MATERIALIZED",
+            "QUEUE_PLACEMENT_BLOCKED"
+          ]
+        },
+        "exit_code": {"type": "integer", "enum": [0, 1, 2]},
+        "materialized": {"type": "boolean"},
+        "queue_entry_created": {"type": "boolean"},
+        "queue_entry_path": {"type": ["string", "null"]},
+        "checked_candidate_id": {"type": "string", "minLength": 1},
+        "source_m53_completion_review": {"type": "string", "const": "reports/m53-completion-review.md"},
+        "source_m53_placement_result": {"type": "string", "const": "reports/m53-placement-review-result-agent-action-review.json"},
+        "source_m52_validation_result": {"type": "string", "minLength": 1},
+        "source_generated_candidate": {"type": "string", "minLength": 1},
+        "source_traceability": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "source_proposal",
+            "source_authorization",
+            "source_conversion_package",
+            "source_generated_artifact",
+            "m50_traceability",
+            "m51_generator_evidence",
+            "m52_validation_evidence",
+            "m53_placement_review_evidence",
+            "m54_materialization_evidence"
+          ],
+          "properties": {
+            "source_proposal": {"type": "string", "minLength": 1},
+            "source_authorization": {"type": "string", "minLength": 1},
+            "source_conversion_package": {"type": "string", "minLength": 1},
+            "source_generated_artifact": {"type": "string", "minLength": 1},
+            "m50_traceability": {"type": "string", "minLength": 1},
+            "m51_generator_evidence": {"type": "string", "minLength": 1},
+            "m52_validation_evidence": {"type": "string", "minLength": 1},
+            "m53_placement_review_evidence": {"type": "string", "minLength": 1},
+            "m54_materialization_evidence": {"type": "string", "minLength": 1}
+          }
+        },
+        "carry_forward": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "accepted_limitations",
+            "warnings",
+            "open_questions",
+            "downstream_limits",
+            "known_gaps",
+            "non_authority_boundary"
+          ],
+          "properties": {
+            "accepted_limitations": {"type": "array", "minItems": 0, "items": {"type": "string", "minLength": 1}},
+            "warnings": {"type": "array", "minItems": 0, "items": {"type": "string", "minLength": 1}},
+            "open_questions": {"type": "array", "minItems": 0, "items": {"type": "string", "minLength": 1}},
+            "downstream_limits": {"type": "array", "minItems": 0, "items": {"type": "string", "minLength": 1}},
+            "known_gaps": {"type": "array", "minItems": 0, "items": {"type": "string", "minLength": 1}},
+            "non_authority_boundary": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}}
+          }
+        },
+        "materialization_findings": {"type": "array", "items": {"type": "string"}},
+        "warnings": {"type": "array", "items": {"type": "string"}},
+        "blockers": {"type": "array", "items": {"type": "string"}},
+        "boundary_flags": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "queue_materialization_only",
+            "active_task_write_allowed",
+            "execution_authorized",
+            "approval_record_creation_allowed",
+            "lifecycle_active_transition_allowed",
+            "m55_start_authorized"
+          ],
+          "properties": {
+            "queue_materialization_only": {"type": "boolean", "const": true},
+            "active_task_write_allowed": {"type": "boolean", "const": false},
+            "execution_authorized": {"type": "boolean", "const": false},
+            "approval_record_creation_allowed": {"type": "boolean", "const": false},
+            "lifecycle_active_transition_allowed": {"type": "boolean", "const": false},
+            "m55_start_authorized": {"type": "boolean", "const": false}
+          }
+        },
+        "performed_actions": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "queue_entry_created",
+            "active_task_replacement_performed",
+            "approval_created",
+            "execution_started",
+            "m55_started"
+          ],
+          "properties": {
+            "queue_entry_created": {"type": "boolean"},
+            "active_task_replacement_performed": {"type": "boolean", "const": false},
+            "approval_created": {"type": "boolean", "const": false},
+            "execution_started": {"type": "boolean", "const": false},
+            "m55_started": {"type": "boolean", "const": false}
+          }
+        },
+        "non_authority_markers": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}}
+      }
+    }
+  }
+}
