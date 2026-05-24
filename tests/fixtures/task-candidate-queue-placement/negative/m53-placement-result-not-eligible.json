@@ -1,0 +1,10 @@
+{
+  "placement_review_result": {
+    "result": "PLACEMENT_REVIEW_NOT_ELIGIBLE",
+    "exit_code": 1,
+    "eligible_for_downstream_placement": false,
+    "eligible_as_m54_queue_materialization_input": false,
+    "expected_result": "M54_QUEUE_PLACEMENT_DRY_RUN_NOT_ALLOWED",
+    "expected_blocker": "M53_PLACEMENT_NOT_ELIGIBLE"
+  }
+}

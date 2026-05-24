@@ -1,0 +1,97 @@
+{
+  "active_task_readiness_result": {
+    "result": "M55_ACTIVE_TASK_READINESS_INTEGRATION_COMPLETE_WITH_LIMITATIONS",
+    "exit_code": 0,
+    "readiness_confirmed": true,
+    "proposal_ready_for_review": true,
+    "active_task_replacement_authorized": false,
+    "active_task_file_created": false,
+    "source_active_task_readiness_input": "active-task-readiness-input.json",
+    "source_active_task_proposal": "active-task-proposal.json",
+    "source_m54_completion_review": "reports/m54-completion-review.md",
+    "source_m54_materialization_result": "reports/m54-placement-materialization-result-agent-action-review.json",
+    "source_queue_entry": "tasks/queue/agent-action-review-task-candidate.md",
+    "source_m53_placement_result": "reports/m53-placement-review-result-agent-action-review.json",
+    "source_m52_validation_result": "reports/m52-candidate-validation-result-agent-action-review.json",
+    "checked_queue_entry_id": "AGENT_ACTION_REVIEW_TASK_CANDIDATE",
+    "target_active_task_path": "tasks/active-task.md",
+    "required_traceability": {
+      "source_proposal": "reports/52.11-task-close-record.md",
+      "source_authorization": "reports/52.9-task-completion-evidence.md",
+      "source_conversion_package": "reports/52.9-task-completion-evidence.md",
+      "source_generated_artifact": "generated/task-contract-candidates/agent-action-review.generated-conversion-package.md",
+      "m50_traceability": "M50_TRACEABILITY_FROM_M52_REVIEWED_ARTIFACTS",
+      "m51_generator_evidence": "M51_GENERATOR_EVIDENCE_FROM_M52_REVIEWED_ARTIFACTS",
+      "m52_validation_evidence": "TASK_CONTRACT_CANDIDATE_VALIDATION_OK_WITH_LIMITATIONS",
+      "m53_placement_review_evidence": "reports/m53-placement-review-result-agent-action-review.json",
+      "m54_materialization_evidence": "reports/m54-placement-materialization-result-agent-action-review.json",
+      "queue_entry_evidence": "tasks/queue/agent-action-review-task-candidate.md",
+      "m55_readiness_input_evidence": "active-task-readiness-input.json",
+      "m55_active_task_proposal_evidence": "active-task-proposal.json"
+    },
+    "carry_forward": {
+      "accepted_limitations": [
+        "review scope excludes runtime implementation and code execution",
+        "output remains review-artifact-only during M50"
+      ],
+      "warnings": [],
+      "open_questions": [
+        "should reviewer severity buckets be fixed or configurable in M51",
+        "should review artifact include mandatory trace IDs for every decision item"
+      ],
+      "downstream_limits": [
+        "candidate is not execution authorization; a separate decision stage is required outside M52",
+        "review artifact by itself does not move task into execution"
+      ],
+      "known_gaps": [
+        "exact single M52 task definition file in `tasks/` was not found as separate file; canonical M52 docs set was used as requirement source",
+        "exact single M52 task definition file in tasks/ was not found as separate file"
+      ],
+      "non_authority_boundary": [
+        "Active-task proposal is not approval.",
+        "Active-task proposal does not authorize execution.",
+        "Active-task proposal does not authorize active-task replacement.",
+        "Active-task proposal does not write tasks/active-task.md.",
+        "Active-task proposal does not create approval records.",
+        "Active-task proposal does not authorize M56.",
+        "Active-task proposal does not start M56."
+      ]
+    },
+    "readiness_findings": [],
+    "warnings": [],
+    "blockers": [],
+    "boundary_flags": {
+      "readiness_result_only": true,
+      "active_task_file_created": false,
+      "active_task_replacement_authorized": false,
+      "active_task_write_allowed": false,
+      "execution_authorized": false,
+      "approval_created": false,
+      "lifecycle_mutation_authorized": false,
+      "m56_authorized": false,
+      "m56_started": false,
+      "repository_files_modified": false
+    },
+    "performed_actions": {
+      "temporary_input_created": true,
+      "temporary_proposal_created": true,
+      "cli_invocation_attempted": true,
+      "repository_reports_created": true,
+      "active_task_file_created": false,
+      "active_task_replacement_performed": false,
+      "approval_created": false,
+      "execution_started": false,
+      "lifecycle_mutation_performed": false,
+      "m56_started": false
+    },
+    "non_authority_markers": [
+      "M55 readiness output is not approval.",
+      "M55 readiness output does not authorize execution.",
+      "M55 readiness output does not authorize active-task replacement.",
+      "M55 readiness output does not write tasks/active-task.md.",
+      "M55 readiness output does not create approval records.",
+      "M55 readiness output does not authorize M56.",
+      "M55 readiness output does not start M56."
+    ]
+  }
+}
