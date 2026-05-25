@@ -1,0 +1,125 @@
+{
+  "cases": [
+    {
+      "case_id": "negative-missing-m56-completion-review",
+      "input": "support-valid-input.json",
+      "preconditions": "support-valid-preconditions.json",
+      "m56_completion_review": "missing-m56-completion-review.md",
+      "expected_result": "EXECUTION_AUTHORIZATION_BLOCKED",
+      "expected_exit_code": 2,
+      "negative_case": true,
+      "non_authority": true,
+      "reason": "Missing M56 completion review file."
+    },
+    {
+      "case_id": "negative-missing-required-input-key",
+      "input": "missing-required-input-key.json",
+      "preconditions": "support-valid-preconditions.json",
+      "m56_completion_review": "support-m56-complete.md",
+      "expected_result": "EXECUTION_AUTHORIZATION_BLOCKED",
+      "expected_exit_code": 2,
+      "negative_case": true,
+      "non_authority": true,
+      "reason": "Input missing required key."
+    },
+    {
+      "case_id": "negative-unknown-input-status",
+      "input": "unknown-input-status.json",
+      "preconditions": "support-valid-preconditions.json",
+      "m56_completion_review": "support-m56-complete.md",
+      "expected_result": "EXECUTION_AUTHORIZATION_BLOCKED",
+      "expected_exit_code": 2,
+      "negative_case": true,
+      "non_authority": true,
+      "reason": "Unknown input status."
+    },
+    {
+      "case_id": "negative-empty-traceability",
+      "input": "empty-traceability-input.json",
+      "preconditions": "support-valid-preconditions.json",
+      "m56_completion_review": "support-m56-complete.md",
+      "expected_result": "EXECUTION_AUTHORIZATION_BLOCKED",
+      "expected_exit_code": 2,
+      "negative_case": true,
+      "non_authority": true,
+      "reason": "Empty traceability in input."
+    },
+    {
+      "case_id": "negative-source-path-mismatch",
+      "input": "source-path-mismatch-input.json",
+      "preconditions": "support-valid-preconditions.json",
+      "m56_completion_review": "support-m56-complete.md",
+      "expected_result": "EXECUTION_AUTHORIZATION_BLOCKED",
+      "expected_exit_code": 2,
+      "negative_case": true,
+      "non_authority": true,
+      "reason": "Source path mismatch."
+    },
+    {
+      "case_id": "negative-unsafe-execution-claim",
+      "input": "unsafe-execution-claim-input.json",
+      "preconditions": "support-valid-preconditions.json",
+      "m56_completion_review": "support-m56-complete.md",
+      "expected_result": "EXECUTION_AUTHORIZATION_BLOCKED",
+      "expected_exit_code": 2,
+      "negative_case": true,
+      "non_authority": true,
+      "reason": "Unsafe execution claim in input."
+    },
+    {
+      "case_id": "negative-performed-action-violation",
+      "input": "support-valid-input.json",
+      "preconditions": "performed-action-violation-preconditions.json",
+      "m56_completion_review": "support-m56-complete.md",
+      "expected_result": "EXECUTION_AUTHORIZATION_BLOCKED",
+      "expected_exit_code": 2,
+      "negative_case": true,
+      "non_authority": true,
+      "reason": "Performed action violation in preconditions."
+    },
+    {
+      "case_id": "negative-preconditions-blocked",
+      "input": "support-valid-input.json",
+      "preconditions": "preconditions-blocked.json",
+      "m56_completion_review": "support-m56-complete.md",
+      "expected_result": "EXECUTION_AUTHORIZATION_BLOCKED",
+      "expected_exit_code": 2,
+      "negative_case": true,
+      "non_authority": true,
+      "reason": "Preconditions blocked."
+    },
+    {
+      "case_id": "negative-m56-incomplete",
+      "input": "support-valid-input.json",
+      "preconditions": "support-valid-preconditions.json",
+      "m56_completion_review": "m56-incomplete.md",
+      "expected_result": "EXECUTION_AUTHORIZATION_NOT_CONFIRMED",
+      "expected_exit_code": 1,
+      "negative_case": true,
+      "non_authority": true,
+      "reason": "M56 incomplete."
+    },
+    {
+      "case_id": "negative-m56-blocked",
+      "input": "support-valid-input.json",
+      "preconditions": "support-valid-preconditions.json",
+      "m56_completion_review": "m56-blocked.md",
+      "expected_result": "EXECUTION_AUTHORIZATION_BLOCKED",
+      "expected_exit_code": 2,
+      "negative_case": true,
+      "non_authority": true,
+      "reason": "M56 blocked."
+    },
+    {
+      "case_id": "negative-malformed-markdown-multiple-json-blocks",
+      "input": "malformed-markdown-multiple-json-blocks.md",
+      "preconditions": "support-valid-preconditions.json",
+      "m56_completion_review": "support-m56-complete.md",
+      "expected_result": "EXECUTION_AUTHORIZATION_BLOCKED",
+      "expected_exit_code": 2,
+      "negative_case": true,
+      "non_authority": true,
+      "reason": "Malformed markdown input."
+    }
+  ]
+}

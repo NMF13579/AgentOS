@@ -1,0 +1,62 @@
+---
+type: execution-authorization-preconditions
+milestone: M57
+template: task-execution-authorization-preconditions
+status: draft
+---
+
+# Markdown Preconditions Fixture
+
+```json
+{
+  "execution_authorization_preconditions": {
+    "schema_version": "1.0.0",
+    "preconditions_id": "markdown-preconditions-id",
+    "source_m56_completion_review": "reports/m56-completion-review.md",
+    "source_m56_evidence_report": "reports/m56-execution-readiness-evidence-report.md",
+    "source_authorization_input": "tests/fixtures/execution-authorization/positive/markdown-input.md",
+    "source_active_task": "tasks/active-task.md",
+    "preconditions_status": "EXECUTION_AUTHORIZATION_PRECONDITIONS_PASS",
+    "required_sources": {
+      "input_contract": "docs/TASK-EXECUTION-AUTHORIZATION-INPUT-CONTRACT.md"
+    },
+    "required_traceability": {
+      "m57_intake_report": "reports/m57-m56-completion-intake.md"
+    },
+    "required_boundaries": {
+      "non_authority_preservation": true
+    },
+    "boundary_flags": {
+      "authorization_preconditions_only": true,
+      "execution_authorized": false,
+      "execution_started": false,
+      "approval_created": false,
+      "lifecycle_mutation_authorized": false,
+      "m58_authorized": false,
+      "m58_started": false
+    },
+    "performed_actions": {
+      "active_task_modified": false,
+      "approval_record_created": false,
+      "lifecycle_mutation_performed": false,
+      "execution_started": false,
+      "m58_artifact_created": false,
+      "m58_started": false
+    },
+    "carry_forward_limitations": [],
+    "warnings": [],
+    "blockers": [],
+    "non_authority_markers": [
+      "M57 authorization preconditions are not authorization.",
+      "M57 authorization preconditions do not authorize execution.",
+      "M57 authorization preconditions do not start execution.",
+      "M57 authorization preconditions do not create approval records.",
+      "M57 authorization preconditions do not authorize lifecycle mutation.",
+      "M57 authorization preconditions do not authorize M58.",
+      "M57 authorization preconditions do not start M58.",
+      "M57 authorization preconditions do not modify tasks/active-task.md.",
+      "M58 must independently validate M57 completion before any M58 planning work."
+    ]
+  }
+}
+```

@@ -1,0 +1,163 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "M57 Execution Authorization Preconditions Schema",
+  "type": "object",
+  "required": [
+    "execution_authorization_preconditions"
+  ],
+  "properties": {
+    "execution_authorization_preconditions": {
+      "type": "object",
+      "required": [
+        "schema_version",
+        "preconditions_id",
+        "source_m56_completion_review",
+        "source_m56_evidence_report",
+        "source_authorization_input",
+        "source_active_task",
+        "preconditions_status",
+        "required_sources",
+        "required_traceability",
+        "required_boundaries",
+        "boundary_flags",
+        "performed_actions",
+        "carry_forward_limitations",
+        "warnings",
+        "blockers",
+        "non_authority_markers"
+      ],
+      "properties": {
+        "schema_version": {
+          "type": "string"
+        },
+        "preconditions_id": {
+          "type": "string"
+        },
+        "source_m56_completion_review": {
+          "type": "string"
+        },
+        "source_m56_evidence_report": {
+          "type": "string"
+        },
+        "source_authorization_input": {
+          "type": "string"
+        },
+        "source_active_task": {
+          "type": "string"
+        },
+        "preconditions_status": {
+          "type": "string",
+          "enum": [
+            "EXECUTION_AUTHORIZATION_PRECONDITIONS_PASS",
+            "EXECUTION_AUTHORIZATION_PRECONDITIONS_PASS_WITH_WARNINGS",
+            "EXECUTION_AUTHORIZATION_PRECONDITIONS_NOT_READY",
+            "EXECUTION_AUTHORIZATION_PRECONDITIONS_BLOCKED"
+          ]
+        },
+        "required_sources": {
+          "type": "object"
+        },
+        "required_traceability": {
+          "type": "object"
+        },
+        "required_boundaries": {
+          "type": "object"
+        },
+        "boundary_flags": {
+          "type": "object",
+          "required": [
+            "authorization_preconditions_only",
+            "execution_authorized",
+            "execution_started",
+            "approval_created",
+            "lifecycle_mutation_authorized",
+            "m58_authorized",
+            "m58_started"
+          ],
+          "properties": {
+            "authorization_preconditions_only": {
+              "type": "boolean"
+            },
+            "execution_authorized": {
+              "type": "boolean"
+            },
+            "execution_started": {
+              "type": "boolean"
+            },
+            "approval_created": {
+              "type": "boolean"
+            },
+            "lifecycle_mutation_authorized": {
+              "type": "boolean"
+            },
+            "m58_authorized": {
+              "type": "boolean"
+            },
+            "m58_started": {
+              "type": "boolean"
+            }
+          },
+          "additionalProperties": false
+        },
+        "performed_actions": {
+          "type": "object",
+          "required": [
+            "active_task_modified",
+            "approval_record_created",
+            "lifecycle_mutation_performed",
+            "execution_started",
+            "m58_artifact_created",
+            "m58_started"
+          ],
+          "properties": {
+            "active_task_modified": {
+              "type": "boolean"
+            },
+            "approval_record_created": {
+              "type": "boolean"
+            },
+            "lifecycle_mutation_performed": {
+              "type": "boolean"
+            },
+            "execution_started": {
+              "type": "boolean"
+            },
+            "m58_artifact_created": {
+              "type": "boolean"
+            },
+            "m58_started": {
+              "type": "boolean"
+            }
+          },
+          "additionalProperties": false
+        },
+        "carry_forward_limitations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "warnings": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "blockers": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "non_authority_markers": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

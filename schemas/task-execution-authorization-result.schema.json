@@ -1,0 +1,199 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "M57 Execution Authorization Result Schema",
+  "type": "object",
+  "required": [
+    "execution_authorization_result"
+  ],
+  "properties": {
+    "execution_authorization_result": {
+      "type": "object",
+      "required": [
+        "schema_version",
+        "result_id",
+        "result",
+        "exit_code",
+        "source_m56_completion_review",
+        "source_m56_evidence_report",
+        "source_authorization_input",
+        "source_authorization_preconditions",
+        "source_active_task",
+        "authorization_request_status",
+        "preconditions_status",
+        "m56_final_status",
+        "m56_evidence_status",
+        "traceability_result",
+        "boundary_result",
+        "performed_actions",
+        "carry_forward_limitations",
+        "warnings",
+        "blockers",
+        "non_authority_markers"
+      ],
+      "properties": {
+        "schema_version": {
+          "type": "string"
+        },
+        "result_id": {
+          "type": "string"
+        },
+        "result": {
+          "type": "string",
+          "enum": [
+            "EXECUTION_AUTHORIZATION_CONFIRMED",
+            "EXECUTION_AUTHORIZATION_CONFIRMED_WITH_LIMITATIONS",
+            "EXECUTION_AUTHORIZATION_NOT_CONFIRMED",
+            "EXECUTION_AUTHORIZATION_BLOCKED"
+          ]
+        },
+        "exit_code": {
+          "type": "integer",
+          "enum": [0, 1, 2]
+        },
+        "source_m56_completion_review": {
+          "type": "string"
+        },
+        "source_m56_evidence_report": {
+          "type": "string"
+        },
+        "source_authorization_input": {
+          "type": "string"
+        },
+        "source_authorization_preconditions": {
+          "type": "string"
+        },
+        "source_active_task": {
+          "type": "string"
+        },
+        "authorization_request_status": {
+          "type": "string",
+          "enum": [
+            "EXECUTION_AUTHORIZATION_INPUT_READY",
+            "EXECUTION_AUTHORIZATION_INPUT_READY_WITH_LIMITATIONS",
+            "EXECUTION_AUTHORIZATION_INPUT_NOT_READY",
+            "EXECUTION_AUTHORIZATION_INPUT_BLOCKED"
+          ]
+        },
+        "preconditions_status": {
+          "type": "string",
+          "enum": [
+            "EXECUTION_AUTHORIZATION_PRECONDITIONS_PASS",
+            "EXECUTION_AUTHORIZATION_PRECONDITIONS_PASS_WITH_WARNINGS",
+            "EXECUTION_AUTHORIZATION_PRECONDITIONS_NOT_READY",
+            "EXECUTION_AUTHORIZATION_PRECONDITIONS_BLOCKED"
+          ]
+        },
+        "m56_final_status": {
+          "type": "string",
+          "enum": [
+            "M56_EXECUTION_READINESS_COMPLETE",
+            "M56_EXECUTION_READINESS_COMPLETE_WITH_LIMITATIONS",
+            "M56_EXECUTION_READINESS_INCOMPLETE",
+            "M56_EXECUTION_READINESS_BLOCKED"
+          ]
+        },
+        "m56_evidence_status": {
+          "type": "string",
+          "enum": [
+            "M56_EXECUTION_READINESS_EVIDENCE_READY",
+            "M56_EXECUTION_READINESS_EVIDENCE_NOT_PASSING",
+            "M56_EXECUTION_READINESS_EVIDENCE_BLOCKED"
+          ]
+        },
+        "traceability_result": {
+          "type": "object"
+        },
+        "boundary_result": {
+          "type": "object",
+          "required": [
+            "execution_authorized",
+            "execution_started",
+            "approval_created",
+            "lifecycle_mutation_authorized",
+            "m58_authorized",
+            "m58_started"
+          ],
+          "properties": {
+            "execution_authorized": {
+              "type": "boolean"
+            },
+            "execution_started": {
+              "type": "boolean"
+            },
+            "approval_created": {
+              "type": "boolean"
+            },
+            "lifecycle_mutation_authorized": {
+              "type": "boolean"
+            },
+            "m58_authorized": {
+              "type": "boolean"
+            },
+            "m58_started": {
+              "type": "boolean"
+            }
+          },
+          "additionalProperties": false
+        },
+        "performed_actions": {
+          "type": "object",
+          "required": [
+            "active_task_modified",
+            "approval_record_created",
+            "lifecycle_mutation_performed",
+            "execution_started",
+            "m58_artifact_created",
+            "m58_started"
+          ],
+          "properties": {
+            "active_task_modified": {
+              "type": "boolean"
+            },
+            "approval_record_created": {
+              "type": "boolean"
+            },
+            "lifecycle_mutation_performed": {
+              "type": "boolean"
+            },
+            "execution_started": {
+              "type": "boolean"
+            },
+            "m58_artifact_created": {
+              "type": "boolean"
+            },
+            "m58_started": {
+              "type": "boolean"
+            }
+          },
+          "additionalProperties": false
+        },
+        "carry_forward_limitations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "warnings": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "blockers": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "non_authority_markers": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

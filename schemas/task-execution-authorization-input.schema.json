@@ -1,0 +1,139 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "M57 Execution Authorization Input Schema",
+  "type": "object",
+  "required": [
+    "execution_authorization_input"
+  ],
+  "properties": {
+    "execution_authorization_input": {
+      "type": "object",
+      "required": [
+        "schema_version",
+        "input_id",
+        "source_m56_completion_review",
+        "source_m56_evidence_report",
+        "source_active_task",
+        "authorization_request_status",
+        "requested_execution_mode",
+        "expected_execution_session_type",
+        "required_traceability",
+        "required_boundaries",
+        "boundary_flags",
+        "carry_forward_limitations",
+        "warnings",
+        "blockers",
+        "non_authority_markers"
+      ],
+      "properties": {
+        "schema_version": {
+          "type": "string"
+        },
+        "input_id": {
+          "type": "string"
+        },
+        "source_m56_completion_review": {
+          "type": "string"
+        },
+        "source_m56_evidence_report": {
+          "type": "string"
+        },
+        "source_active_task": {
+          "type": "string"
+        },
+        "authorization_request_status": {
+          "type": "string",
+          "enum": [
+            "EXECUTION_AUTHORIZATION_INPUT_READY",
+            "EXECUTION_AUTHORIZATION_INPUT_READY_WITH_LIMITATIONS",
+            "EXECUTION_AUTHORIZATION_INPUT_NOT_READY",
+            "EXECUTION_AUTHORIZATION_INPUT_BLOCKED"
+          ]
+        },
+        "requested_execution_mode": {
+          "type": "string",
+          "enum": [
+            "M58_PLANNING_ONLY",
+            "CONTROLLED_EXECUTION_SESSION_PLANNING",
+            "DRY_RUN_SESSION_PLANNING"
+          ]
+        },
+        "expected_execution_session_type": {
+          "type": "string",
+          "enum": [
+            "CONTROLLED_EXECUTION_SESSION",
+            "DRY_RUN_CONTROLLED_EXECUTION_SESSION"
+          ]
+        },
+        "required_traceability": {
+          "type": "object"
+        },
+        "required_boundaries": {
+          "type": "object"
+        },
+        "boundary_flags": {
+          "type": "object",
+          "required": [
+            "authorization_input_only",
+            "execution_authorized",
+            "execution_started",
+            "approval_created",
+            "lifecycle_mutation_authorized",
+            "m58_authorized",
+            "m58_started"
+          ],
+          "properties": {
+            "authorization_input_only": {
+              "type": "boolean"
+            },
+            "execution_authorized": {
+              "type": "boolean"
+            },
+            "execution_started": {
+              "type": "boolean"
+            },
+            "approval_created": {
+              "type": "boolean"
+            },
+            "lifecycle_mutation_authorized": {
+              "type": "boolean"
+            },
+            "m58_authorized": {
+              "type": "boolean"
+            },
+            "m58_started": {
+              "type": "boolean"
+            }
+          },
+          "additionalProperties": false
+        },
+        "carry_forward_limitations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "warnings": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "blockers": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "non_authority_markers": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}
