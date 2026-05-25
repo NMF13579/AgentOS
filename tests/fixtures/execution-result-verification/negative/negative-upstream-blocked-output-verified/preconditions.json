@@ -1,0 +1,7 @@
+{
+  "preconditions_status": "EXECUTION_RESULT_PRECONDITIONS_BLOCKED",
+  "warnings": [],
+  "blockers": [
+    "blocked upstream precondition"
+  ]
+}

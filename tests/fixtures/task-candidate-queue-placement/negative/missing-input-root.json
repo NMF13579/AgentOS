@@ -1,0 +1,5 @@
+{
+  "fixture_case": "MISSING_INPUT_ROOT",
+  "expected_result": "M54_QUEUE_PLACEMENT_DRY_RUN_BLOCKED",
+  "expected_blocker": "MISSING_INPUT_ROOT"
+}

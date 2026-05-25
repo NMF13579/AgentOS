@@ -1,0 +1,14 @@
+{
+  "queue_placement_input": {
+    "input_id": "M54_NEGATIVE_BOTH_ROOTS_PRESENT",
+    "source_candidate_id": "CANDIDATE_FOR_VALIDATION",
+    "placement_kind": "queue_materialization"
+  },
+  "task_candidate_queue_placement_input": {
+    "input_id": "M54_NEGATIVE_BOTH_ROOTS_PRESENT_ALT",
+    "source_candidate_id": "CANDIDATE_FOR_VALIDATION",
+    "placement_kind": "queue_materialization"
+  },
+  "expected_result": "M54_QUEUE_PLACEMENT_DRY_RUN_BLOCKED",
+  "expected_blocker": "MULTIPLE_INPUT_ROOTS"
+}

@@ -1,0 +1,6 @@
+BROKEN_M55_READINESS_INPUT_JSON
+MALFORMED_JSON
+{
+  "active_task_readiness_input": {
+    "input_id": "BROKEN"
+  }

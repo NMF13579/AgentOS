@@ -1,0 +1,19 @@
+{
+  "task_id": "task-ready-warnings",
+  "session_id": "session-ready-warnings",
+  "request_id": "request-ready-warnings",
+  "preconditions_id": "preconditions-ready-warnings",
+  "boundary_id": "boundary-ready-warnings",
+  "record_status": "EXECUTION_SESSION_RECORD_READY_FOR_POLICY",
+  "m59_handoff": {
+    "handoff_required": true,
+    "handoff_ready": true
+  },
+  "session_close": {
+    "task_completion_claimed": false,
+    "result_verification_claimed": false,
+    "lifecycle_mutation_claimed": false
+  },
+  "warnings": [],
+  "blockers": []
+}

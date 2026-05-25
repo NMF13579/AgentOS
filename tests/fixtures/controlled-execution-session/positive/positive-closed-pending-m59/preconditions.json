@@ -1,0 +1,21 @@
+{
+  "task_id": "task-closed-pending",
+  "request_id": "request-closed-pending",
+  "preconditions_id": "preconditions-closed-pending",
+  "preconditions_status": "EXECUTION_SESSION_PRECONDITIONS_READY",
+  "performed_actions": {
+    "execution_session_started": false,
+    "execution_session_opened": false,
+    "execution_performed": false,
+    "task_marked_done": false,
+    "result_verified": false,
+    "approval_record_created": false,
+    "lifecycle_mutation_performed": false,
+    "commit_created": false,
+    "push_performed": false,
+    "merge_performed": false,
+    "m59_artifact_created": false
+  },
+  "warnings": [],
+  "blockers": []
+}

@@ -1,0 +1,9 @@
+{
+  "task_id": "task-closed-pending",
+  "request_id": "request-closed-pending",
+  "preconditions_id": "preconditions-closed-pending",
+  "boundary_id": "boundary-closed-pending",
+  "boundary_status": "EXECUTION_SESSION_BOUNDARY_SATISFIED",
+  "warnings": [],
+  "blockers": []
+}

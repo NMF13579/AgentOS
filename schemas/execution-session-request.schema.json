@@ -1,0 +1,194 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ExecutionSessionRequest",
+  "description": "Schema for an M58 Execution Session Request artifact. Does not open a session. Does not authorize execution. Does not approve task completion. Does not verify execution result. Does not mutate lifecycle state.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "request_id",
+    "task_id",
+    "request_status",
+    "created_at",
+    "created_by",
+    "source_task_path",
+    "m57_completion_review_path",
+    "m58_intake_report_path",
+    "m58_architecture_path",
+    "authorization_status",
+    "requested_execution_mode",
+    "requested_scope",
+    "requested_write_paths",
+    "requested_commands",
+    "forbidden_commands_acknowledged",
+    "protected_paths_acknowledged",
+    "expected_outputs",
+    "expected_validation_evidence",
+    "handoff_to_m59_required",
+    "non_authority_acknowledgement"
+  ],
+  "properties": {
+    "request_id": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Unique identifier for this execution session request."
+    },
+    "task_id": {
+      "type": "string",
+      "minLength": 1,
+      "description": "The task this execution session request refers to."
+    },
+    "request_status": {
+      "type": "string",
+      "enum": [
+        "EXECUTION_SESSION_REQUEST_DRAFT",
+        "EXECUTION_SESSION_REQUEST_READY_FOR_PRECONDITIONS",
+        "EXECUTION_SESSION_REQUEST_BLOCKED"
+      ],
+      "description": "Current status of the request."
+    },
+    "created_at": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Timestamp or date when the request was created."
+    },
+    "created_by": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Creator identifier. Metadata only. Must not be treated as approval."
+    },
+    "source_task_path": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Path to the task artifact being requested for controlled execution."
+    },
+    "m57_completion_review_path": {
+      "type": "string",
+      "const": "reports/m57-completion-review.md",
+      "description": "Must reference the M57 completion review."
+    },
+    "m58_intake_report_path": {
+      "type": "string",
+      "const": "reports/m58-m57-completion-intake.md",
+      "description": "Must reference the M58 intake report."
+    },
+    "m58_architecture_path": {
+      "type": "string",
+      "const": "docs/CONTROLLED-EXECUTION-SESSION-ARCHITECTURE.md",
+      "description": "Must reference the M58 architecture document."
+    },
+    "authorization_status": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Reflects the M57 authorization result. Must not invent authorization."
+    },
+    "requested_execution_mode": {
+      "type": "string",
+      "enum": [
+        "READ_ONLY_VALIDATION",
+        "CONTROLLED_WRITE",
+        "CONTROLLED_REPAIR",
+        "CONTROLLED_DOCUMENTATION_UPDATE",
+        "CONTROLLED_CODE_CHANGE"
+      ],
+      "description": "Requested execution mode. Does not grant permission."
+    },
+    "requested_scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "summary",
+        "allowed_files",
+        "allowed_dirs",
+        "out_of_scope",
+        "max_file_count",
+        "scope_expansion_allowed"
+      ],
+      "properties": {
+        "summary": {
+          "type": "string",
+          "minLength": 1
+        },
+        "allowed_files": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "allowed_dirs": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "out_of_scope": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "max_file_count": {
+          "type": ["integer", "null"],
+          "minimum": 0
+        },
+        "scope_expansion_allowed": {
+          "type": "boolean",
+          "const": false,
+          "description": "Must be false unless a future human checkpoint explicitly allows expansion."
+        }
+      }
+    },
+    "requested_write_paths": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Requested write paths. May be empty only for READ_ONLY_VALIDATION."
+    },
+    "requested_commands": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["allowed", "forbidden", "requires_human_checkpoint"],
+      "properties": {
+        "allowed": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Explicit list of allowed command categories or commands."
+        },
+        "forbidden": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "List of forbidden commands."
+        },
+        "requires_human_checkpoint": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Commands requiring explicit human checkpoint."
+        }
+      }
+    },
+    "forbidden_commands_acknowledged": {
+      "type": "boolean",
+      "const": true,
+      "description": "Must be true."
+    },
+    "protected_paths_acknowledged": {
+      "type": "boolean",
+      "const": true,
+      "description": "Must be true."
+    },
+    "expected_outputs": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1,
+      "description": "Expected M58 session outputs or records. Must not claim task completion."
+    },
+    "expected_validation_evidence": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1,
+      "description": "Evidence expected to be passed to M59. Must not claim validation has already passed."
+    },
+    "handoff_to_m59_required": {
+      "type": "boolean",
+      "const": true,
+      "description": "Must be true. No request may set this to false."
+    },
+    "non_authority_acknowledgement": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Must include required non-authority acknowledgement text."
+    }
+  }
+}

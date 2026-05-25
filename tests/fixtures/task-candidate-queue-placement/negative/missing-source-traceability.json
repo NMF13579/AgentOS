@@ -1,0 +1,34 @@
+{
+  "queue_placement_input": {
+    "input_id": "M54_NEGATIVE_MISSING_SOURCE_TRACEABILITY",
+    "source_candidate_id": "CANDIDATE_FOR_VALIDATION",
+    "placement_kind": "queue_materialization",
+    "queue_materialization_requested": true,
+    "active_task_replacement_requested": false,
+    "approval_requested": false,
+    "execution_requested": false,
+    "m55_requested": false,
+    "boundary_flags": {
+      "queue_materialization_authorized_by_input": false,
+      "active_task_replacement_authorized": false,
+      "execution_authorized": false,
+      "approval_created": false,
+      "m55_authorized": false
+    },
+    "carry_forward": {
+      "accepted_limitations": [],
+      "warnings": [],
+      "open_questions": [],
+      "downstream_limits": [],
+      "known_gaps": [],
+      "non_authority_boundary": [
+        "Queue placement input is not approval.",
+        "Queue placement input is not execution.",
+        "Queue placement input is not active-task replacement.",
+        "Queue placement input is not M55 authorization."
+      ]
+    },
+    "expected_result": "M54_QUEUE_PLACEMENT_DRY_RUN_BLOCKED",
+    "expected_blocker": "SOURCE_TRACEABILITY_MISSING"
+  }
+}

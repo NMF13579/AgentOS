@@ -1,0 +1,79 @@
+{
+  "placement_review_result": {
+    "result": "PLACEMENT_REVIEW_ELIGIBLE_WITH_LIMITATIONS",
+    "exit_code": 0,
+    "reviewed": true,
+    "eligible_for_downstream_placement": true,
+    "eligible_as_m54_queue_materialization_input": false,
+    "eligible_as_m54_active_task_proposal_input": false,
+    "checked_candidate_id": "task-m37-1-0-task-id-sync-hardening",
+    "source_m52_completion_review": "reports/m52-completion-review.md",
+    "source_m52_validation_result": "reports/m52-candidate-validation-result-agent-action-review.json",
+    "source_generated_artifact": "generated/task-contract-candidates/agent-action-review.generated-conversion-package.md",
+    "source_traceability": {
+      "source_proposal": "reports/52.11-task-close-record.md",
+      "source_authorization": "reports/52.9-task-completion-evidence.md",
+      "source_conversion_package": "reports/52.9-task-completion-evidence.md",
+      "source_generated_artifact": "generated/task-contract-candidates/agent-action-review.generated-conversion-package.md",
+      "m50_traceability": "M50_TRACEABILITY_FROM_M52_REVIEWED_ARTIFACTS",
+      "m51_generator_evidence": "M51_GENERATOR_EVIDENCE_FROM_M52_REVIEWED_ARTIFACTS",
+      "m52_validation_evidence": "TASK_CONTRACT_CANDIDATE_VALIDATION_OK_WITH_LIMITATIONS"
+    },
+    "carry_forward": {
+      "accepted_limitations": [
+        "review scope excludes runtime implementation and code execution",
+        "output remains review-artifact-only during M50"
+      ],
+      "warnings": [],
+      "open_questions": [
+        "should reviewer severity buckets be fixed or configurable in M51",
+        "should review artifact include mandatory trace IDs for every decision item"
+      ],
+      "downstream_limits": [
+        "candidate is not execution authorization; a separate decision stage is required outside M52",
+        "review artifact by itself does not move task into execution"
+      ],
+      "known_gaps": [
+        "exact single M52 task definition file in `tasks/` was not found as separate file; canonical M52 docs set was used as requirement source",
+        "exact single M52 task definition file in tasks/ was not found as separate file"
+      ],
+      "non_authority_boundary": [
+        "authority fields remain false in reviewed evidence: `placement_authorized`, `execution_authorized`, `queue_write_allowed`, `active_task_write_allowed`, `approval_record_creation_allowed`",
+        "M53 placement review result is not approval.",
+        "M53 placement review result does not authorize execution.",
+        "M53 placement review result does not authorize queue placement.",
+        "M53 placement review result does not authorize active-task replacement.",
+        "M53 placement review result does not authorize lifecycle mutation.",
+        "M53 placement review result does not authorize M54 materialization."
+      ]
+    },
+    "placement_findings": [],
+    "warnings": [
+      "candidate appears in tasks/queue (read-only conflict check)"
+    ],
+    "blockers": [],
+    "boundary_flags": {
+      "review_only": true,
+      "queue_write_allowed": false,
+      "active_task_write_allowed": false,
+      "execution_authorized": false,
+      "approval_record_creation_allowed": false,
+      "lifecycle_mutation_allowed": false,
+      "m54_materialization_authorized": false
+    },
+    "non_authority_markers": [
+      "M53 placement review result is not approval.",
+      "M53 placement review result does not authorize execution.",
+      "M53 placement review result does not authorize queue placement.",
+      "M53 placement review result does not authorize active-task replacement.",
+      "M53 placement review result does not authorize lifecycle mutation.",
+      "M53 placement review result does not authorize M54 materialization."
+    ],
+    "m54_independent_validation_required": true,
+    "m54_may_not_start_without_own_gate": true,
+    "m54_materialization_authorized": false,
+    "queue_placement_performed": false,
+    "active_task_replacement_performed": false,
+    "approval_created": false
+  }
+}

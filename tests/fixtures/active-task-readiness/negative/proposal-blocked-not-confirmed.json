@@ -1,0 +1,82 @@
+{
+  "active_task_proposal": {
+    "expected_result": "ACTIVE_TASK_READINESS_NOT_CONFIRMED",
+    "expected_exit_code": 1,
+    "expected_blocker": "PROPOSAL_STATUS_UNKNOWN",
+    "proposal_id": "M55_PROPOSAL_BLOCKED",
+    "proposal_status": "ACTIVE_TASK_PROPOSAL_BLOCKED",
+    "source_active_task_readiness_input": "tests/fixtures/active-task-readiness/positive/valid-readiness-input.json",
+    "source_m54_completion_review": "reports/m54-completion-review.md",
+    "source_m54_materialization_result": "reports/m54-placement-materialization-result-agent-action-review.json",
+    "source_queue_entry": "tasks/queue/valid-ready.md",
+    "source_m53_placement_result": "reports/m53-placement-review-result-agent-action-review.json",
+    "source_m52_validation_result": "reports/m52-candidate-validation-result-agent-action-review.json",
+    "checked_queue_entry_id": "QUEUE_ENTRY_ID",
+    "target_active_task_path": "tasks/active-task.md",
+    "proposed_active_task": {
+      "task_id": "TASK_ID",
+      "title": "PROPOSED_ACTIVE_TASK_TITLE",
+      "mode": "EXECUTION",
+      "repository": "NMF13579/AgentOS",
+      "branch": "dev",
+      "source_queue_entry": "tasks/queue/valid-ready.md",
+      "proposed_scope_summary": "PROPOSED_SCOPE_SUMMARY",
+      "proposed_validation_summary": "PROPOSED_VALIDATION_SUMMARY",
+      "readiness_basis": "READINESS_BASIS",
+      "required_human_review": true
+    },
+    "required_traceability": {
+      "source_proposal": "SOURCE_PROPOSAL_REFERENCE",
+      "source_authorization": "SOURCE_AUTHORIZATION_REFERENCE",
+      "source_conversion_package": "SOURCE_CONVERSION_PACKAGE_REFERENCE",
+      "source_generated_artifact": "SOURCE_GENERATED_ARTIFACT_REFERENCE",
+      "m50_traceability": "M50_TRACEABILITY_REFERENCE",
+      "m51_generator_evidence": "M51_GENERATOR_EVIDENCE_REFERENCE",
+      "m52_validation_evidence": "M52_VALIDATION_EVIDENCE_REFERENCE",
+      "m53_placement_review_evidence": "M53_PLACEMENT_REVIEW_EVIDENCE_REFERENCE",
+      "m54_materialization_evidence": "M54_MATERIALIZATION_EVIDENCE_REFERENCE",
+      "queue_entry_evidence": "QUEUE_ENTRY_EVIDENCE_REFERENCE",
+      "m55_readiness_input_evidence": "M55_READINESS_INPUT_EVIDENCE_REFERENCE",
+      "m55_active_task_proposal_evidence": "M55_ACTIVE_TASK_PROPOSAL_EVIDENCE_REFERENCE"
+    },
+    "carry_forward": {
+      "accepted_limitations": [],
+      "warnings": [],
+      "open_questions": [],
+      "downstream_limits": [],
+      "known_gaps": [],
+      "non_authority_boundary": [
+        "Active-task proposal is not approval.",
+        "Active-task proposal does not authorize execution.",
+        "Active-task proposal does not authorize active-task replacement.",
+        "Active-task proposal does not write tasks/active-task.md.",
+        "Active-task proposal does not create approval records.",
+        "Active-task proposal does not authorize M56.",
+        "Active-task proposal does not start M56."
+      ]
+    },
+    "proposal_findings": [],
+    "warnings": [],
+    "blockers": [],
+    "boundary_flags": {
+      "proposal_only": true,
+      "active_task_file_created": false,
+      "active_task_replacement_authorized": false,
+      "active_task_write_allowed": false,
+      "execution_authorized": false,
+      "approval_created": false,
+      "lifecycle_mutation_authorized": false,
+      "m56_authorized": false,
+      "m56_started": false
+    },
+    "non_authority_markers": [
+      "Active-task proposal is not approval.",
+      "Active-task proposal does not authorize execution.",
+      "Active-task proposal does not authorize active-task replacement.",
+      "Active-task proposal does not write tasks/active-task.md.",
+      "Active-task proposal does not create approval records.",
+      "Active-task proposal does not authorize M56.",
+      "Active-task proposal does not start M56."
+    ]
+  }
+}

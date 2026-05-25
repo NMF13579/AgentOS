@@ -1,0 +1,8 @@
+{
+  "preconditions_status": "EXECUTION_RESULT_PRECONDITIONS_READY_WITH_WARNINGS",
+  "warnings": [
+    "evidence freshness uncertainty: validation evidence may be stale",
+    "source integrity uncertainty"
+  ],
+  "blockers": []
+}

@@ -1,0 +1,9 @@
+{
+  "task_id": "task-ready-warnings",
+  "request_id": "request-ready-warnings",
+  "preconditions_id": "preconditions-ready-warnings",
+  "boundary_id": "boundary-ready-warnings",
+  "boundary_status": "EXECUTION_SESSION_BOUNDARY_SATISFIED_WITH_WARNINGS",
+  "warnings": ["Non-blocking boundary check warning"],
+  "blockers": []
+}

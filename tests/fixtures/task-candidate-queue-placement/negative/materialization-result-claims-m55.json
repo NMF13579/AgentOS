@@ -1,0 +1,29 @@
+{
+  "queue_placement_result": {
+    "result": "QUEUE_PLACEMENT_BLOCKED",
+    "exit_code": 2,
+    "materialized": false,
+    "queue_entry_created": false,
+    "queue_entry_path": null,
+    "checked_candidate_id": "SOURCE_CANDIDATE_ID",
+    "source_m53_completion_review": "reports/m53-completion-review.md",
+    "source_m53_placement_result": "reports/m53-placement-review-result-agent-action-review.json",
+    "boundary_flags": {
+      "queue_materialization_only": true,
+      "active_task_write_allowed": false,
+      "execution_authorized": false,
+      "approval_record_creation_allowed": false,
+      "lifecycle_active_transition_allowed": false,
+      "m55_start_authorized": true
+    },
+    "performed_actions": {
+      "queue_entry_created": false,
+      "active_task_replacement_performed": false,
+      "approval_created": false,
+      "execution_started": false,
+      "m55_started": true
+    },
+    "expected_result": "QUEUE_PLACEMENT_BLOCKED",
+    "expected_blocker": "M55_AUTHORIZATION_FORBIDDEN"
+  }
+}

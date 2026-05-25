@@ -1,0 +1,6 @@
+{
+  "fixture_case": "MISSING_PROPOSAL_ROOT",
+  "expected_result": "ACTIVE_TASK_READINESS_BLOCKED",
+  "expected_exit_code": 2,
+  "expected_blocker": "MISSING_ACTIVE_TASK_PROPOSAL_ROOT"
+}

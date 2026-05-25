@@ -1,0 +1,19 @@
+{
+  "task_id": "task-clean-ready",
+  "session_id": "session-clean-ready",
+  "request_id": "request-clean-ready",
+  "preconditions_id": "preconditions-clean-ready",
+  "boundary_id": "boundary-clean-ready",
+  "record_status": "EXECUTION_SESSION_RECORD_READY_FOR_POLICY",
+  "m59_handoff": {
+    "handoff_required": true,
+    "handoff_ready": true
+  },
+  "session_close": {
+    "task_completion_claimed": false,
+    "result_verification_claimed": false,
+    "lifecycle_mutation_claimed": false
+  },
+  "warnings": [],
+  "blockers": []
+}

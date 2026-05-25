@@ -1,0 +1,262 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Task Contract Candidate Validation Result",
+  "type": "object",
+  "properties": {
+    "candidate_validation_result": {
+      "type": "object",
+      "properties": {
+        "result": {
+          "type": "string",
+          "enum": [
+            "TASK_CONTRACT_CANDIDATE_VALIDATION_OK",
+            "TASK_CONTRACT_CANDIDATE_VALIDATION_OK_WITH_LIMITATIONS",
+            "TASK_CONTRACT_CANDIDATE_VALIDATION_FAILED",
+            "TASK_CONTRACT_CANDIDATE_VALIDATION_BLOCKED"
+          ]
+        },
+        "exit_code": {
+          "type": "integer"
+        },
+        "validated": {
+          "type": "boolean"
+        },
+        "checked_path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "candidate_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_generated_artifact": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_candidate_origin": {
+          "const": "M51_GENERATED_STAGING_ARTIFACT"
+        },
+        "source_traceability": {
+          "type": "object",
+          "properties": {
+            "source_proposal": { "type": "string", "minLength": 1 },
+            "source_authorization": { "type": "string", "minLength": 1 },
+            "source_conversion_package": { "type": "string", "minLength": 1 },
+            "source_generated_artifact": { "type": "string", "minLength": 1 },
+            "source_candidate_origin": { "type": "string", "minLength": 1 },
+            "m50_traceability": { "type": "string", "minLength": 1 },
+            "m51_generator_evidence": { "type": "string", "minLength": 1 }
+          },
+          "required": [
+            "source_proposal",
+            "source_authorization",
+            "source_conversion_package",
+            "source_generated_artifact",
+            "source_candidate_origin",
+            "m50_traceability",
+            "m51_generator_evidence"
+          ],
+          "additionalProperties": false
+        },
+        "required_sections": {
+          "type": "object",
+          "properties": {
+            "goal": { "type": "boolean" },
+            "scope": { "type": "boolean" },
+            "allowed_changes": { "type": "boolean" },
+            "forbidden_changes": { "type": "boolean" },
+            "validation": { "type": "boolean" },
+            "expected_final_report": { "type": "boolean" }
+          },
+          "required": [
+            "goal",
+            "scope",
+            "allowed_changes",
+            "forbidden_changes",
+            "validation",
+            "expected_final_report"
+          ],
+          "additionalProperties": false
+        },
+        "carry_forward": {
+          "type": "object",
+          "properties": {
+            "accepted_limitations": {
+              "type": "array",
+              "items": { "type": "string", "minLength": 1 }
+            },
+            "open_questions": {
+              "type": "array",
+              "items": { "type": "string", "minLength": 1 }
+            },
+            "downstream_limits": {
+              "type": "array",
+              "items": { "type": "string", "minLength": 1 }
+            },
+            "non_authority_boundary": {
+              "type": "array",
+              "items": { "type": "string", "minLength": 1 }
+            }
+          },
+          "required": [
+            "accepted_limitations",
+            "open_questions",
+            "downstream_limits",
+            "non_authority_boundary"
+          ],
+          "additionalProperties": false
+        },
+        "boundary_flags": {
+          "type": "object",
+          "properties": {
+            "validation_only": { "const": true },
+            "placement_authorized": { "const": false },
+            "execution_authorized": { "const": false },
+            "queue_write_allowed": { "const": false },
+            "active_task_write_allowed": { "const": false },
+            "approval_record_creation_allowed": { "const": false }
+          },
+          "required": [
+            "validation_only",
+            "placement_authorized",
+            "execution_authorized",
+            "queue_write_allowed",
+            "active_task_write_allowed",
+            "approval_record_creation_allowed"
+          ],
+          "additionalProperties": false
+        },
+        "findings": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "warnings": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "blockers": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "non_authority_markers": {
+          "type": "array",
+          "items": { "type": "string" },
+          "allOf": [
+            { "contains": { "const": "CANDIDATE_VALIDATION_IS_NOT_APPROVAL" } },
+            { "contains": { "const": "CANDIDATE_VALIDATION_DOES_NOT_AUTHORIZE_EXECUTION" } },
+            { "contains": { "const": "CANDIDATE_VALIDATION_DOES_NOT_AUTHORIZE_QUEUE_PLACEMENT" } },
+            { "contains": { "const": "CANDIDATE_VALIDATION_DOES_NOT_AUTHORIZE_ACTIVE_TASK_REPLACEMENT" } },
+            { "contains": { "const": "CANDIDATE_VALIDATION_DOES_NOT_CREATE_LIFECYCLE_STATE" } },
+            { "contains": { "const": "CANDIDATE_VALIDATION_REQUIRES_M53_PLACEMENT_REVIEW" } }
+          ]
+        },
+        "m53_review_input_candidate": {
+          "type": "boolean"
+        },
+        "placement_authorized": {
+          "const": false
+        },
+        "execution_authorized": {
+          "const": false
+        },
+        "active_task_write_allowed": {
+          "const": false
+        },
+        "queue_write_allowed": {
+          "const": false
+        },
+        "approval_record_creation_allowed": {
+          "const": false
+        }
+      },
+      "required": [
+        "result",
+        "exit_code",
+        "validated",
+        "checked_path",
+        "candidate_id",
+        "source_generated_artifact",
+        "source_candidate_origin",
+        "source_traceability",
+        "required_sections",
+        "carry_forward",
+        "boundary_flags",
+        "findings",
+        "warnings",
+        "blockers",
+        "non_authority_markers",
+        "m53_review_input_candidate",
+        "placement_authorized",
+        "execution_authorized",
+        "active_task_write_allowed",
+        "queue_write_allowed",
+        "approval_record_creation_allowed"
+      ],
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "result": { "const": "TASK_CONTRACT_CANDIDATE_VALIDATION_OK" }
+            },
+            "required": ["result"]
+          },
+          "then": {
+            "properties": {
+              "exit_code": { "const": 0 },
+              "validated": { "const": true },
+              "m53_review_input_candidate": { "const": true }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "result": { "const": "TASK_CONTRACT_CANDIDATE_VALIDATION_OK_WITH_LIMITATIONS" }
+            },
+            "required": ["result"]
+          },
+          "then": {
+            "properties": {
+              "exit_code": { "const": 0 },
+              "validated": { "const": true },
+              "m53_review_input_candidate": { "const": true }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "result": { "const": "TASK_CONTRACT_CANDIDATE_VALIDATION_FAILED" }
+            },
+            "required": ["result"]
+          },
+          "then": {
+            "properties": {
+              "exit_code": { "const": 1 },
+              "validated": { "const": false },
+              "m53_review_input_candidate": { "const": false }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "result": { "const": "TASK_CONTRACT_CANDIDATE_VALIDATION_BLOCKED" }
+            },
+            "required": ["result"]
+          },
+          "then": {
+            "properties": {
+              "exit_code": { "const": 2 },
+              "validated": { "const": false },
+              "m53_review_input_candidate": { "const": false }
+            }
+          }
+        }
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": ["candidate_validation_result"],
+  "additionalProperties": false
+}

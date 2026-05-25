@@ -1,0 +1,34 @@
+{
+  "cases": [
+    {
+      "case_id": "positive-clean-confirmed",
+      "input": "clean-input.json",
+      "preconditions": "clean-preconditions.json",
+      "m56_completion_review": "m56-complete.md",
+      "expected_result": "EXECUTION_AUTHORIZATION_CONFIRMED",
+      "expected_exit_code": 0,
+      "positive_case": true,
+      "non_authority": true
+    },
+    {
+      "case_id": "positive-confirmed-with-limitations",
+      "input": "limitations-input.json",
+      "preconditions": "limitations-preconditions.json",
+      "m56_completion_review": "m56-complete-with-limitations.md",
+      "expected_result": "EXECUTION_AUTHORIZATION_CONFIRMED_WITH_LIMITATIONS",
+      "expected_exit_code": 0,
+      "positive_case": true,
+      "non_authority": true
+    },
+    {
+      "case_id": "positive-markdown-input-confirmed",
+      "input": "markdown-input.md",
+      "preconditions": "markdown-preconditions.md",
+      "m56_completion_review": "m56-complete.md",
+      "expected_result": "EXECUTION_AUTHORIZATION_CONFIRMED",
+      "expected_exit_code": 0,
+      "positive_case": true,
+      "non_authority": true
+    }
+  ]
+}

@@ -137,6 +137,11 @@ task_contract_candidate:
   task_id: m50-example-task-agent-action-review-001
   source_proposal: m49-agent-action-review-proposal-v1
   source_authorization: example-human-auth-ref-agent-action-review-001
+  source_conversion_package: m50-example-conv-agent-action-review-001
+  source_generated_artifact: generated/task-contract-candidates/agent-action-review.generated-conversion-package.md
+  source_candidate_origin: M51_GENERATED_STAGING_ARTIFACT
+  m50_traceability: conversion_id:m50-example-conv-agent-action-review-001
+  m51_generator_evidence: reports/m49-readiness-agent-action-review-reference-only.md
   mode: EXECUTION_SHAPE
   goal:
     - produce bounded review artifact for agent-action-review proposal scope

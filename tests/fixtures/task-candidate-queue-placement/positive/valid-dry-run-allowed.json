@@ -1,0 +1,39 @@
+{
+  "queue_placement_dry_run": {
+    "result": "M54_QUEUE_PLACEMENT_DRY_RUN_ALLOWED",
+    "exit_code": 0,
+    "would_materialize": true,
+    "would_create_queue_entry": true,
+    "target_queue_path": "tasks/queue/candidate-for-validation.md",
+    "checked_input": "M54_POSITIVE_CANONICAL_ROOT_INPUT",
+    "blockers": [],
+    "warnings": [],
+    "carry_forward": {
+      "accepted_limitations": [],
+      "warnings": [],
+      "open_questions": [],
+      "downstream_limits": [],
+      "known_gaps": [],
+      "non_authority_boundary": [
+        "M54 CLI is not approval.",
+        "M54 CLI does not authorize execution.",
+        "M54 CLI does not replace active-task.md.",
+        "M54 CLI does not create approval records.",
+        "M54 CLI does not authorize M55."
+      ]
+    },
+    "boundary_flags": {
+      "execution_authorized": false,
+      "active_task_replacement_authorized": false,
+      "approval_created": false,
+      "m55_authorized": false
+    },
+    "non_authority_markers": [
+      "M54 CLI is not approval.",
+      "M54 CLI does not authorize execution.",
+      "M54 CLI does not replace active-task.md.",
+      "M54 CLI does not create approval records.",
+      "M54 CLI does not authorize M55."
+    ]
+  }
+}

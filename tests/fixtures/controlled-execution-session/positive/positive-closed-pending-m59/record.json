@@ -1,0 +1,19 @@
+{
+  "task_id": "task-closed-pending",
+  "session_id": "session-closed-pending",
+  "request_id": "request-closed-pending",
+  "preconditions_id": "preconditions-closed-pending",
+  "boundary_id": "boundary-closed-pending",
+  "record_status": "EXECUTION_SESSION_RECORD_CLOSED_PENDING_M59_VERIFICATION",
+  "m59_handoff": {
+    "handoff_required": true,
+    "handoff_ready": true
+  },
+  "session_close": {
+    "task_completion_claimed": false,
+    "result_verification_claimed": false,
+    "lifecycle_mutation_claimed": false
+  },
+  "warnings": [],
+  "blockers": []
+}

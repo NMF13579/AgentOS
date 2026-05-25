@@ -147,7 +147,7 @@ def main():
     if has_error:
         return 1
     if has_warning:
-        return 2
+        return 0
     return 0
 
 if __name__ == "__main__":

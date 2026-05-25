@@ -1,6 +1,15 @@
 {
+  "name": "invalid-root-violation",
   "expected_result": "FAIL",
   "expected_exit_code": 1,
-  "initial_files": {},
-  "operations": []
+  "initial_files": {
+    "docs/root.md": "v1\n"
+  },
+  "operations": [
+    {
+      "action": "write",
+      "path": "docs/root.md",
+      "content": "v2\n"
+    }
+  ]
 }

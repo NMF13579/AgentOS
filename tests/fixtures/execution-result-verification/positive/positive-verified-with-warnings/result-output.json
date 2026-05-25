@@ -1,0 +1,9 @@
+{
+  "verification_result_status": "EXECUTION_RESULT_VERIFIED",
+  "human_review_handoff": {
+    "human_review_required": true,
+    "handoff_ready": true
+  },
+  "warnings": [],
+  "blockers": []
+}

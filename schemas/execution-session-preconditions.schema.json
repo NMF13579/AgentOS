@@ -1,0 +1,326 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ExecutionSessionPreconditions",
+  "description": "Schema for an M58 Execution Session Preconditions result artifact. Does not open a session. Does not authorize execution. Does not approve task completion. Does not verify execution result. Does not mutate lifecycle state. Only classifies readiness for boundary evaluation.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "preconditions_id",
+    "task_id",
+    "request_id",
+    "preconditions_status",
+    "checked_at",
+    "checked_by",
+    "source_references",
+    "m57_completion_status",
+    "m58_intake_status",
+    "m58_architecture_status",
+    "request_contract_status",
+    "request_status",
+    "request_validity",
+    "authorization_consistency",
+    "source_artifact_checks",
+    "request_field_checks",
+    "boundary_input_checks",
+    "forbidden_action_checks",
+    "premature_downstream_artifact_checks",
+    "performed_actions",
+    "warnings",
+    "blockers",
+    "handoff_to_boundary_contract",
+    "non_authority_acknowledgement"
+  ],
+  "properties": {
+    "preconditions_id": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Unique identifier for this preconditions result."
+    },
+    "task_id": {
+      "type": "string",
+      "minLength": 1,
+      "description": "The task being checked for execution session eligibility."
+    },
+    "request_id": {
+      "type": "string",
+      "minLength": 1,
+      "description": "The execution session request being checked."
+    },
+    "preconditions_status": {
+      "type": "string",
+      "enum": [
+        "EXECUTION_SESSION_PRECONDITIONS_READY",
+        "EXECUTION_SESSION_PRECONDITIONS_READY_WITH_WARNINGS",
+        "EXECUTION_SESSION_PRECONDITIONS_NOT_READY",
+        "EXECUTION_SESSION_PRECONDITIONS_BLOCKED"
+      ]
+    },
+    "checked_at": {
+      "type": "string",
+      "minLength": 1
+    },
+    "checked_by": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Metadata only. Must not be treated as approval."
+    },
+    "source_references": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "m57_completion_review_path",
+        "m58_intake_report_path",
+        "m58_architecture_path",
+        "request_contract_path",
+        "request_schema_path",
+        "request_template_path",
+        "execution_session_request_path"
+      ],
+      "properties": {
+        "m57_completion_review_path": { "type": "string", "minLength": 1 },
+        "m58_intake_report_path": { "type": "string", "minLength": 1 },
+        "m58_architecture_path": { "type": "string", "minLength": 1 },
+        "request_contract_path": { "type": "string", "minLength": 1 },
+        "request_schema_path": { "type": "string", "minLength": 1 },
+        "request_template_path": { "type": "string", "minLength": 1 },
+        "execution_session_request_path": { "type": "string", "minLength": 1 }
+      }
+    },
+    "m57_completion_status": {
+      "type": "string",
+      "enum": [
+        "M57_EXECUTION_AUTHORIZATION_COMPLETE",
+        "M57_EXECUTION_AUTHORIZATION_COMPLETE_WITH_WARNINGS",
+        "M57_EXECUTION_AUTHORIZATION_INCOMPLETE",
+        "M57_EXECUTION_AUTHORIZATION_BLOCKED",
+        "UNKNOWN",
+        "MISSING",
+        "MALFORMED"
+      ]
+    },
+    "m58_intake_status": {
+      "type": "string",
+      "enum": [
+        "M58_INTAKE_READY",
+        "M58_INTAKE_READY_WITH_WARNINGS",
+        "M58_INTAKE_BLOCKED",
+        "UNKNOWN",
+        "MISSING",
+        "MALFORMED"
+      ]
+    },
+    "m58_architecture_status": {
+      "type": "string",
+      "enum": [
+        "M58_ARCHITECTURE_DEFINED",
+        "UNKNOWN",
+        "MISSING",
+        "MALFORMED"
+      ]
+    },
+    "request_contract_status": {
+      "type": "string",
+      "enum": [
+        "M58_EXECUTION_SESSION_REQUEST_CONTRACT_DEFINED",
+        "UNKNOWN",
+        "MISSING",
+        "MALFORMED"
+      ]
+    },
+    "request_status": {
+      "type": "string",
+      "enum": [
+        "EXECUTION_SESSION_REQUEST_DRAFT",
+        "EXECUTION_SESSION_REQUEST_READY_FOR_PRECONDITIONS",
+        "EXECUTION_SESSION_REQUEST_BLOCKED"
+      ]
+    },
+    "request_validity": {
+      "type": "string",
+      "enum": [
+        "REQUEST_VALID",
+        "REQUEST_INVALID",
+        "REQUEST_MALFORMED",
+        "REQUEST_MISSING",
+        "REQUEST_NEEDS_REVIEW"
+      ]
+    },
+    "authorization_consistency": {
+      "type": "string",
+      "enum": [
+        "AUTHORIZATION_CONSISTENT",
+        "AUTHORIZATION_LIMITED_BUT_CONSISTENT",
+        "AUTHORIZATION_MISSING",
+        "AUTHORIZATION_CONTRADICTORY",
+        "AUTHORIZATION_UNKNOWN"
+      ]
+    },
+    "source_artifact_checks": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "m57_completion_review_exists",
+        "m58_intake_report_exists",
+        "m58_architecture_exists",
+        "request_contract_exists",
+        "request_schema_exists",
+        "request_template_exists",
+        "execution_session_request_exists",
+        "source_paths_consistent"
+      ],
+      "properties": {
+        "m57_completion_review_exists": { "type": "boolean" },
+        "m58_intake_report_exists": { "type": "boolean" },
+        "m58_architecture_exists": { "type": "boolean" },
+        "request_contract_exists": { "type": "boolean" },
+        "request_schema_exists": { "type": "boolean" },
+        "request_template_exists": { "type": "boolean" },
+        "execution_session_request_exists": { "type": "boolean" },
+        "source_paths_consistent": { "type": "boolean" }
+      }
+    },
+    "request_field_checks": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "required_fields_present",
+        "request_status_allowed",
+        "requested_execution_mode_allowed",
+        "requested_scope_present",
+        "requested_write_paths_present",
+        "requested_commands_present",
+        "forbidden_commands_acknowledged",
+        "protected_paths_acknowledged",
+        "handoff_to_m59_required",
+        "non_authority_acknowledgement_present"
+      ],
+      "properties": {
+        "required_fields_present": { "type": "boolean" },
+        "request_status_allowed": { "type": "boolean" },
+        "requested_execution_mode_allowed": { "type": "boolean" },
+        "requested_scope_present": { "type": "boolean" },
+        "requested_write_paths_present": { "type": "boolean" },
+        "requested_commands_present": { "type": "boolean" },
+        "forbidden_commands_acknowledged": { "type": "boolean" },
+        "protected_paths_acknowledged": { "type": "boolean" },
+        "handoff_to_m59_required": { "type": "boolean" },
+        "non_authority_acknowledgement_present": { "type": "boolean" }
+      }
+    },
+    "boundary_input_checks": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "scope_input_available",
+        "write_path_input_available",
+        "command_input_available",
+        "protected_path_input_available",
+        "session_state_input_available",
+        "boundary_evaluation_possible"
+      ],
+      "properties": {
+        "scope_input_available": { "type": "boolean" },
+        "write_path_input_available": { "type": "boolean" },
+        "command_input_available": { "type": "boolean" },
+        "protected_path_input_available": { "type": "boolean" },
+        "session_state_input_available": { "type": "boolean" },
+        "boundary_evaluation_possible": { "type": "boolean" }
+      }
+    },
+    "forbidden_action_checks": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "execution_already_started",
+        "execution_session_already_open",
+        "task_marked_complete",
+        "approval_created",
+        "lifecycle_mutation_performed",
+        "commit_created",
+        "push_performed",
+        "merge_performed",
+        "result_verification_claimed"
+      ],
+      "properties": {
+        "execution_already_started": { "type": "boolean" },
+        "execution_session_already_open": { "type": "boolean" },
+        "task_marked_complete": { "type": "boolean" },
+        "approval_created": { "type": "boolean" },
+        "lifecycle_mutation_performed": { "type": "boolean" },
+        "commit_created": { "type": "boolean" },
+        "push_performed": { "type": "boolean" },
+        "merge_performed": { "type": "boolean" },
+        "result_verification_claimed": { "type": "boolean" }
+      }
+    },
+    "premature_downstream_artifact_checks": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "m58_boundary_contract_created",
+        "m58_policy_created",
+        "m58_cli_created",
+        "m58_fixtures_created",
+        "m58_evidence_report_created",
+        "m58_completion_review_created",
+        "m59_artifact_created"
+      ],
+      "properties": {
+        "m58_boundary_contract_created": { "type": "boolean" },
+        "m58_policy_created": { "type": "boolean" },
+        "m58_cli_created": { "type": "boolean" },
+        "m58_fixtures_created": { "type": "boolean" },
+        "m58_evidence_report_created": { "type": "boolean" },
+        "m58_completion_review_created": { "type": "boolean" },
+        "m59_artifact_created": { "type": "boolean" }
+      }
+    },
+    "performed_actions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "execution_session_started",
+        "execution_session_opened",
+        "execution_performed",
+        "task_marked_done",
+        "result_verified",
+        "approval_record_created",
+        "lifecycle_mutation_performed",
+        "commit_created",
+        "push_performed",
+        "merge_performed",
+        "m59_artifact_created"
+      ],
+      "properties": {
+        "execution_session_started": { "type": "boolean", "const": false },
+        "execution_session_opened": { "type": "boolean", "const": false },
+        "execution_performed": { "type": "boolean", "const": false },
+        "task_marked_done": { "type": "boolean", "const": false },
+        "result_verified": { "type": "boolean", "const": false },
+        "approval_record_created": { "type": "boolean", "const": false },
+        "lifecycle_mutation_performed": { "type": "boolean", "const": false },
+        "commit_created": { "type": "boolean", "const": false },
+        "push_performed": { "type": "boolean", "const": false },
+        "merge_performed": { "type": "boolean", "const": false },
+        "m59_artifact_created": { "type": "boolean", "const": false }
+      }
+    },
+    "warnings": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "blockers": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "handoff_to_boundary_contract": {
+      "type": "boolean",
+      "description": "true only when preconditions_status is READY or READY_WITH_WARNINGS."
+    },
+    "non_authority_acknowledgement": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Must include required non-authority acknowledgement text."
+    }
+  }
+}

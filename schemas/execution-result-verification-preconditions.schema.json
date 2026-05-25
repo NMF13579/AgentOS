@@ -1,0 +1,486 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ExecutionResultVerificationPreconditions",
+  "type": "object",
+  "properties": {
+    "preconditions_id": {
+      "type": "string"
+    },
+    "task_id": {
+      "type": "string"
+    },
+    "verification_input_id": {
+      "type": "string"
+    },
+    "preconditions_status": {
+      "type": "string",
+      "enum": [
+        "EXECUTION_RESULT_PRECONDITIONS_READY",
+        "EXECUTION_RESULT_PRECONDITIONS_READY_WITH_WARNINGS",
+        "EXECUTION_RESULT_PRECONDITIONS_NOT_READY",
+        "EXECUTION_RESULT_PRECONDITIONS_BLOCKED"
+      ]
+    },
+    "checked_at": {
+      "type": "string"
+    },
+    "checked_by": {
+      "type": "string"
+    },
+    "source_references": {
+      "type": "object",
+      "properties": {
+        "m58_completion_review_path": { "type": "string" },
+        "m59_intake_report_path": { "type": "string" },
+        "m59_architecture_path": { "type": "string" },
+        "input_contract_path": { "type": "string" },
+        "input_schema_path": { "type": "string" },
+        "input_template_path": { "type": "string" },
+        "verification_input_path": { "type": "string" },
+        "execution_session_record_path": { "type": "string" }
+      },
+      "required": [
+        "m58_completion_review_path",
+        "m59_intake_report_path",
+        "m59_architecture_path",
+        "input_contract_path",
+        "input_schema_path",
+        "input_template_path",
+        "verification_input_path",
+        "execution_session_record_path"
+      ],
+      "additionalProperties": false
+    },
+    "m58_completion_status": {
+      "type": "string",
+      "enum": [
+        "M58_CONTROLLED_EXECUTION_SESSION_COMPLETE",
+        "M58_CONTROLLED_EXECUTION_SESSION_COMPLETE_WITH_WARNINGS",
+        "M58_CONTROLLED_EXECUTION_SESSION_INCOMPLETE",
+        "M58_CONTROLLED_EXECUTION_SESSION_BLOCKED",
+        "UNKNOWN",
+        "MISSING",
+        "MALFORMED"
+      ]
+    },
+    "m59_intake_status": {
+      "type": "string",
+      "enum": [
+        "M59_INTAKE_READY",
+        "M59_INTAKE_READY_WITH_WARNINGS",
+        "M59_INTAKE_BLOCKED",
+        "UNKNOWN",
+        "MISSING",
+        "MALFORMED"
+      ]
+    },
+    "m59_architecture_status": {
+      "type": "string",
+      "enum": ["M59_ARCHITECTURE_DEFINED"]
+    },
+    "input_contract_status": {
+      "type": "string",
+      "enum": ["M59_EXECUTION_RESULT_VERIFICATION_INPUT_CONTRACT_DEFINED"]
+    },
+    "input_status": {
+      "type": "string",
+      "enum": [
+        "EXECUTION_RESULT_VERIFICATION_INPUT_DRAFT",
+        "EXECUTION_RESULT_VERIFICATION_INPUT_READY_FOR_PRECONDITIONS",
+        "EXECUTION_RESULT_VERIFICATION_INPUT_BLOCKED"
+      ]
+    },
+    "input_validity": {
+      "type": "string",
+      "enum": [
+        "VERIFICATION_INPUT_VALID",
+        "VERIFICATION_INPUT_INVALID",
+        "VERIFICATION_INPUT_MALFORMED",
+        "VERIFICATION_INPUT_MISSING",
+        "VERIFICATION_INPUT_NEEDS_REVIEW"
+      ]
+    },
+    "execution_session_record_check": {
+      "type": "object",
+      "properties": {
+        "record_path_present": { "type": "boolean" },
+        "record_status_detected": { "type": "string" },
+        "record_closed_pending_m59": { "type": "boolean" },
+        "record_blocked": { "type": "boolean" },
+        "record_aborted": { "type": "boolean" },
+        "record_has_m59_handoff": { "type": "boolean" },
+        "record_check_result": {
+          "type": "string",
+          "enum": [
+            "EXECUTION_SESSION_RECORD_READY",
+            "EXECUTION_SESSION_RECORD_READY_WITH_WARNINGS",
+            "EXECUTION_SESSION_RECORD_NOT_READY",
+            "EXECUTION_SESSION_RECORD_BLOCKED"
+          ]
+        }
+      },
+      "required": [
+        "record_path_present",
+        "record_status_detected",
+        "record_closed_pending_m59",
+        "record_blocked",
+        "record_aborted",
+        "record_has_m59_handoff",
+        "record_check_result"
+      ],
+      "additionalProperties": false
+    },
+    "declared_result_check": {
+      "type": "object",
+      "properties": {
+        "summary_present": { "type": "boolean" },
+        "claimed_complete_present": { "type": "boolean" },
+        "known_limitations_present": { "type": "boolean" },
+        "unresolved_items_present": { "type": "boolean" },
+        "declared_result_check_result": {
+          "type": "string",
+          "enum": [
+            "DECLARED_RESULT_READY",
+            "DECLARED_RESULT_READY_WITH_WARNINGS",
+            "DECLARED_RESULT_NOT_READY",
+            "DECLARED_RESULT_BLOCKED"
+          ]
+        }
+      },
+      "required": [
+        "summary_present",
+        "claimed_complete_present",
+        "known_limitations_present",
+        "unresolved_items_present",
+        "declared_result_check_result"
+      ],
+      "additionalProperties": false
+    },
+    "declared_changes_check": {
+      "type": "object",
+      "properties": {
+        "files_changed_declared": { "type": "boolean" },
+        "files_created_declared": { "type": "boolean" },
+        "files_deleted_declared": { "type": "boolean" },
+        "behavior_changed_declared": { "type": "boolean" },
+        "docs_changed_declared": { "type": "boolean" },
+        "tests_changed_declared": { "type": "boolean" },
+        "declared_changes_check_result": {
+          "type": "string",
+          "enum": [
+            "DECLARED_CHANGES_READY",
+            "DECLARED_CHANGES_READY_WITH_WARNINGS",
+            "DECLARED_CHANGES_NOT_READY",
+            "DECLARED_CHANGES_BLOCKED"
+          ]
+        }
+      },
+      "required": [
+        "files_changed_declared",
+        "files_created_declared",
+        "files_deleted_declared",
+        "behavior_changed_declared",
+        "docs_changed_declared",
+        "tests_changed_declared",
+        "declared_changes_check_result"
+      ],
+      "additionalProperties": false
+    },
+    "actual_changed_files_check": {
+      "type": "object",
+      "properties": {
+        "source": { "type": "string" },
+        "files_present": { "type": "boolean" },
+        "git_diff_available": { "type": "boolean" },
+        "actual_changed_files_check_result": {
+          "type": "string",
+          "enum": [
+            "ACTUAL_CHANGED_FILES_READY",
+            "ACTUAL_CHANGED_FILES_READY_WITH_WARNINGS",
+            "ACTUAL_CHANGED_FILES_NOT_READY",
+            "ACTUAL_CHANGED_FILES_BLOCKED"
+          ]
+        }
+      },
+      "required": [
+        "source",
+        "files_present",
+        "git_diff_available",
+        "actual_changed_files_check_result"
+      ],
+      "additionalProperties": false
+    },
+    "git_diff_evidence_check": {
+      "type": "object",
+      "properties": {
+        "diff_available": { "type": "boolean" },
+        "diff_source": { "type": "boolean" },
+        "diff_summary_present": { "type": "boolean" },
+        "diff_artifact_path_present": { "type": "boolean" },
+        "git_diff_evidence_check_result": {
+          "type": "string",
+          "enum": [
+            "GIT_DIFF_EVIDENCE_READY",
+            "GIT_DIFF_EVIDENCE_READY_WITH_WARNINGS",
+            "GIT_DIFF_EVIDENCE_NOT_READY",
+            "GIT_DIFF_EVIDENCE_BLOCKED"
+          ]
+        }
+      },
+      "required": [
+        "diff_available",
+        "diff_source",
+        "diff_summary_present",
+        "diff_artifact_path_present",
+        "git_diff_evidence_check_result"
+      ],
+      "additionalProperties": false
+    },
+    "scope_input_check": {
+      "type": "object",
+      "properties": {
+        "allowed_files_or_dirs_present": { "type": "boolean" },
+        "forbidden_files_present": { "type": "boolean" },
+        "forbidden_dirs_present": { "type": "boolean" },
+        "protected_paths_present": { "type": "boolean" },
+        "out_of_scope_present": { "type": "boolean" },
+        "scope_expansion_allowed": { "type": "boolean" },
+        "scope_input_check_result": {
+          "type": "string",
+          "enum": [
+            "SCOPE_INPUT_READY",
+            "SCOPE_INPUT_READY_WITH_WARNINGS",
+            "SCOPE_INPUT_NOT_READY",
+            "SCOPE_INPUT_BLOCKED"
+          ]
+        }
+      },
+      "required": [
+        "allowed_files_or_dirs_present",
+        "forbidden_files_present",
+        "forbidden_dirs_present",
+        "protected_paths_present",
+        "out_of_scope_present",
+        "scope_expansion_allowed",
+        "scope_input_check_result"
+      ],
+      "additionalProperties": false
+    },
+    "validation_evidence_check": {
+      "type": "object",
+      "properties": {
+        "claimed_validation_run": { "type": "boolean" },
+        "validation_commands_present": { "type": "boolean" },
+        "validation_artifacts_present": { "type": "boolean" },
+        "validation_exit_codes_present": { "type": "boolean" },
+        "validation_summary_present": { "type": "boolean" },
+        "validation_missing_reason_present": { "type": "boolean" },
+        "validation_evidence_check_result": {
+          "type": "string",
+          "enum": [
+            "VALIDATION_EVIDENCE_INPUT_READY",
+            "VALIDATION_EVIDENCE_INPUT_READY_WITH_WARNINGS",
+            "VALIDATION_EVIDENCE_INPUT_NOT_READY",
+            "VALIDATION_EVIDENCE_INPUT_BLOCKED"
+          ]
+        }
+      },
+      "required": [
+        "claimed_validation_run",
+        "validation_commands_present",
+        "validation_artifacts_present",
+        "validation_exit_codes_present",
+        "validation_summary_present",
+        "validation_missing_reason_present",
+        "validation_evidence_check_result"
+      ],
+      "additionalProperties": false
+    },
+    "test_evidence_check": {
+      "type": "object",
+      "properties": {
+        "claimed_tests_run": { "type": "boolean" },
+        "test_commands_present": { "type": "boolean" },
+        "test_artifacts_present": { "type": "boolean" },
+        "test_exit_codes_present": { "type": "boolean" },
+        "test_summary_present": { "type": "boolean" },
+        "tests_missing_reason_present": { "type": "boolean" },
+        "test_evidence_check_result": {
+          "type": "string",
+          "enum": [
+            "TEST_EVIDENCE_INPUT_READY",
+            "TEST_EVIDENCE_INPUT_READY_WITH_WARNINGS",
+            "TEST_EVIDENCE_INPUT_NOT_READY",
+            "TEST_EVIDENCE_INPUT_BLOCKED"
+          ]
+        }
+      },
+      "required": [
+        "claimed_tests_run",
+        "test_commands_present",
+        "test_artifacts_present",
+        "test_exit_codes_present",
+        "test_summary_present",
+        "tests_missing_reason_present",
+        "test_evidence_check_result"
+      ],
+      "additionalProperties": false
+    },
+    "forbidden_change_rule_checks": {
+      "type": "object",
+      "properties": {
+        "no_approval_artifacts": { "type": "boolean" },
+        "no_lifecycle_mutation": { "type": "boolean" },
+        "no_merge_push_release": { "type": "boolean" },
+        "no_human_review_replacement": { "type": "boolean" },
+        "no_m60_cleanup_artifacts": { "type": "boolean" },
+        "forbidden_change_rules_result": {
+          "type": "string",
+          "enum": [
+            "FORBIDDEN_CHANGE_RULES_OK",
+            "FORBIDDEN_CHANGE_RULES_WARNING",
+            "FORBIDDEN_CHANGE_RULES_BLOCKED"
+          ]
+        }
+      },
+      "required": [
+        "no_approval_artifacts",
+        "no_lifecycle_mutation",
+        "no_merge_push_release",
+        "no_human_review_replacement",
+        "no_m60_cleanup_artifacts",
+        "forbidden_change_rules_result"
+      ],
+      "additionalProperties": false
+    },
+    "human_review_handoff_check": {
+      "type": "object",
+      "properties": {
+        "human_review_handoff_required": { "type": "boolean" },
+        "human_review_replacement_claim_absent": { "type": "boolean" },
+        "human_review_handoff_result": {
+          "type": "string",
+          "enum": [
+            "HUMAN_REVIEW_HANDOFF_OK",
+            "HUMAN_REVIEW_HANDOFF_WARNING",
+            "HUMAN_REVIEW_HANDOFF_BLOCKED"
+          ]
+        }
+      },
+      "required": [
+        "human_review_handoff_required",
+        "human_review_replacement_claim_absent",
+        "human_review_handoff_result"
+      ],
+      "additionalProperties": false
+    },
+    "forbidden_action_checks": {
+      "type": "object",
+      "properties": {
+        "result_already_verified": { "type": "boolean" },
+        "task_marked_complete": { "type": "boolean" },
+        "approval_record_created": { "type": "boolean" },
+        "lifecycle_mutation_performed": { "type": "boolean" },
+        "commit_created": { "type": "boolean" },
+        "push_performed": { "type": "boolean" },
+        "merge_performed": { "type": "boolean" },
+        "release_performed": { "type": "boolean" },
+        "m60_cleanup_started": { "type": "boolean" }
+      },
+      "required": [
+        "result_already_verified",
+        "task_marked_complete",
+        "approval_record_created",
+        "lifecycle_mutation_performed",
+        "commit_created",
+        "push_performed",
+        "merge_performed",
+        "release_performed",
+        "m60_cleanup_started"
+      ],
+      "additionalProperties": false
+    },
+    "premature_downstream_artifact_checks": {
+      "type": "object",
+      "properties": {
+        "m59_diff_scope_contract_created": { "type": "boolean" },
+        "m59_validation_evidence_contract_created": { "type": "boolean" },
+        "m59_result_output_contract_created": { "type": "boolean" },
+        "m59_policy_created": { "type": "boolean" },
+        "m59_cli_created": { "type": "boolean" },
+        "m59_fixtures_created": { "type": "boolean" },
+        "m59_fixture_runner_created": { "type": "boolean" },
+        "m59_integration_summary_created": { "type": "boolean" },
+        "m59_action_review_created": { "type": "boolean" },
+        "m59_evidence_report_created": { "type": "boolean" },
+        "m59_completion_review_created": { "type": "boolean" },
+        "m60_cleanup_artifact_created": { "type": "boolean" }
+      },
+      "required": [
+        "m59_diff_scope_contract_created",
+        "m59_validation_evidence_contract_created",
+        "m59_result_output_contract_created",
+        "m59_policy_created",
+        "m59_cli_created",
+        "m59_fixtures_created",
+        "m59_fixture_runner_created",
+        "m59_integration_summary_created",
+        "m59_action_review_created",
+        "m59_evidence_report_created",
+        "m59_completion_review_created",
+        "m60_cleanup_artifact_created"
+      ],
+      "additionalProperties": false
+    },
+    "warnings": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "blockers": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "handoff_to_git_diff_scope_verification": {
+      "type": "boolean"
+    },
+    "handoff_to_validation_evidence_verification": {
+      "type": "boolean"
+    },
+    "non_authority_acknowledgement": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "preconditions_id",
+    "task_id",
+    "verification_input_id",
+    "preconditions_status",
+    "checked_at",
+    "checked_by",
+    "source_references",
+    "m58_completion_status",
+    "m59_intake_status",
+    "m59_architecture_status",
+    "input_contract_status",
+    "input_status",
+    "input_validity",
+    "execution_session_record_check",
+    "declared_result_check",
+    "declared_changes_check",
+    "actual_changed_files_check",
+    "git_diff_evidence_check",
+    "scope_input_check",
+    "validation_evidence_check",
+    "test_evidence_check",
+    "forbidden_change_rule_checks",
+    "human_review_handoff_check",
+    "forbidden_action_checks",
+    "premature_downstream_artifact_checks",
+    "warnings",
+    "blockers",
+    "handoff_to_git_diff_scope_verification",
+    "handoff_to_validation_evidence_verification",
+    "non_authority_acknowledgement"
+  ],
+  "additionalProperties": false
+}

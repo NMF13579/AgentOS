@@ -1,0 +1,112 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Task Queue Placement Artifact",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["queue_placement_artifact"],
+  "properties": {
+    "queue_placement_artifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "task_id",
+        "queue_status",
+        "source_candidate_id",
+        "source_m53_completion_review",
+        "source_m53_placement_result",
+        "source_m52_validation_result",
+        "source_generated_candidate",
+        "placement_created_by",
+        "placement_created_at",
+        "placement_authority",
+        "approval_status",
+        "execution_status",
+        "active_task_status",
+        "required_traceability",
+        "carry_forward",
+        "boundaries"
+      ],
+      "properties": {
+        "task_id": {"type": "string", "minLength": 1},
+        "queue_status": {"type": "string", "const": "QUEUED_CANDIDATE"},
+        "source_candidate_id": {"type": "string", "minLength": 1},
+        "source_m53_completion_review": {"type": "string", "minLength": 1},
+        "source_m53_placement_result": {"type": "string", "minLength": 1},
+        "source_m52_validation_result": {"type": "string", "minLength": 1},
+        "source_generated_candidate": {"type": "string", "minLength": 1},
+        "placement_created_by": {"type": "string", "const": "M54"},
+        "placement_created_at": {"type": "string", "format": "date-time"},
+        "placement_authority": {"type": "string", "const": "QUEUE_PLACEMENT_ONLY"},
+        "approval_status": {"type": "string", "const": "NOT_APPROVED"},
+        "execution_status": {"type": "string", "const": "NOT_STARTED"},
+        "active_task_status": {"type": "string", "const": "NOT_ACTIVE"},
+        "required_traceability": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "source_proposal",
+            "source_authorization",
+            "source_conversion_package",
+            "source_generated_artifact",
+            "m50_traceability",
+            "m51_generator_evidence",
+            "m52_validation_evidence",
+            "m53_placement_review_evidence",
+            "m54_materialization_evidence"
+          ],
+          "properties": {
+            "source_proposal": {"type": "string", "minLength": 1},
+            "source_authorization": {"type": "string", "minLength": 1},
+            "source_conversion_package": {"type": "string", "minLength": 1},
+            "source_generated_artifact": {"type": "string", "minLength": 1},
+            "m50_traceability": {"type": "string", "minLength": 1},
+            "m51_generator_evidence": {"type": "string", "minLength": 1},
+            "m52_validation_evidence": {"type": "string", "minLength": 1},
+            "m53_placement_review_evidence": {"type": "string", "minLength": 1},
+            "m54_materialization_evidence": {"type": "string", "minLength": 1}
+          }
+        },
+        "carry_forward": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "accepted_limitations",
+            "warnings",
+            "open_questions",
+            "downstream_limits",
+            "known_gaps",
+            "non_authority_boundary"
+          ],
+          "properties": {
+            "accepted_limitations": {"type": "array", "minItems": 0, "items": {"type": "string", "minLength": 1}},
+            "warnings": {"type": "array", "minItems": 0, "items": {"type": "string", "minLength": 1}},
+            "open_questions": {"type": "array", "minItems": 0, "items": {"type": "string", "minLength": 1}},
+            "downstream_limits": {"type": "array", "minItems": 0, "items": {"type": "string", "minLength": 1}},
+            "known_gaps": {"type": "array", "minItems": 0, "items": {"type": "string", "minLength": 1}},
+            "non_authority_boundary": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}}
+          }
+        },
+        "boundaries": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "queue_entry_created",
+            "active_task_replacement_performed",
+            "execution_authorized",
+            "approval_created",
+            "lifecycle_active_transition_performed",
+            "m55_start_authorized"
+          ],
+          "properties": {
+            "queue_entry_created": {"type": "boolean", "const": true},
+            "active_task_replacement_performed": {"type": "boolean", "const": false},
+            "execution_authorized": {"type": "boolean", "const": false},
+            "approval_created": {"type": "boolean", "const": false},
+            "lifecycle_active_transition_performed": {"type": "boolean", "const": false},
+            "m55_start_authorized": {"type": "boolean", "const": false}
+          }
+        }
+      }
+    }
+  }
+}

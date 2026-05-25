@@ -1,0 +1,63 @@
+{
+  "placement_review_result": {
+    "result": "PLACEMENT_REVIEW_ELIGIBLE_WITH_LIMITATIONS",
+    "exit_code": 0,
+    "reviewed": true,
+    "eligible_for_downstream_placement": true,
+    "eligible_as_m54_queue_materialization_input": true,
+    "eligible_as_m54_active_task_proposal_input": false,
+    "checked_candidate_id": "CANDIDATE_WITH_LIMITATIONS",
+    "m54_independent_validation_required": true,
+    "m54_may_not_start_without_own_gate": true,
+    "m54_materialization_authorized": false,
+    "queue_placement_performed": false,
+    "active_task_replacement_performed": false,
+    "approval_created": false,
+    "boundary_flags": {
+      "review_only": true,
+      "queue_write_allowed": false,
+      "active_task_write_allowed": false,
+      "execution_authorized": false,
+      "approval_record_creation_allowed": false,
+      "lifecycle_mutation_allowed": false,
+      "m54_materialization_authorized": false
+    },
+    "source_m52_completion_review": "reports/m52-completion-review.md",
+    "source_m52_validation_result": "reports/m52-candidate-validation-result-agent-action-review.json",
+    "source_generated_artifact": "generated/agent-action-review-task-candidate.md",
+    "source_traceability": {
+      "source_proposal": "SOURCE_PROPOSAL_REFERENCE",
+      "source_authorization": "SOURCE_AUTHORIZATION_REFERENCE",
+      "source_conversion_package": "SOURCE_CONVERSION_PACKAGE_REFERENCE",
+      "source_generated_artifact": "SOURCE_GENERATED_ARTIFACT_REFERENCE",
+      "m50_traceability": "M50_TRACEABILITY_REFERENCE",
+      "m51_generator_evidence": "M51_GENERATOR_EVIDENCE_REFERENCE",
+      "m52_validation_evidence": "M52_VALIDATION_EVIDENCE_REFERENCE"
+    },
+    "carry_forward": {
+      "accepted_limitations": [
+        "M53 limitation carried into M54 queue placement fixture."
+      ],
+      "warnings": [],
+      "open_questions": [],
+      "downstream_limits": [],
+      "known_gaps": [],
+      "non_authority_boundary": [
+        "M53 placement review result is not approval.",
+        "M53 placement review result does not authorize execution.",
+        "M53 placement review result does not authorize queue placement.",
+        "M53 placement review result does not authorize active-task replacement.",
+        "M53 placement review result does not authorize lifecycle mutation.",
+        "M53 placement review result does not authorize M54 materialization."
+      ]
+    },
+    "non_authority_markers": [
+      "M53 placement review result is not approval.",
+      "M53 placement review result does not authorize execution.",
+      "M53 placement review result does not authorize queue placement.",
+      "M53 placement review result does not authorize active-task replacement.",
+      "M53 placement review result does not authorize lifecycle mutation.",
+      "M53 placement review result does not authorize M54 materialization."
+    ]
+  }
+}

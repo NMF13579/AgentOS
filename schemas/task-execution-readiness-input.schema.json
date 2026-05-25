@@ -1,0 +1,323 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Task Execution Readiness Input",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "execution_readiness_input"
+  ],
+  "properties": {
+    "execution_readiness_input": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "input_id",
+        "input_status",
+        "source_m55_completion_review",
+        "source_m55_readiness_result",
+        "source_active_task",
+        "source_queue_entry",
+        "source_m54_materialization_result",
+        "source_m53_placement_result",
+        "source_m52_validation_result",
+        "target_execution_subject",
+        "active_task_path",
+        "required_traceability",
+        "required_scope",
+        "required_validation",
+        "required_boundaries",
+        "carry_forward",
+        "boundary_flags",
+        "non_authority_markers"
+      ],
+      "properties": {
+        "input_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "input_status": {
+          "type": "string",
+          "enum": [
+            "EXECUTION_READINESS_INPUT_DRAFT",
+            "EXECUTION_READINESS_INPUT_READY",
+            "EXECUTION_READINESS_INPUT_READY_WITH_LIMITATIONS",
+            "EXECUTION_READINESS_INPUT_BLOCKED"
+          ]
+        },
+        "source_m55_completion_review": {
+          "type": "string",
+          "const": "reports/m55-completion-review.md"
+        },
+        "source_m55_readiness_result": {
+          "type": "string",
+          "const": "reports/m55-active-task-readiness-result-agent-action-review.json"
+        },
+        "source_active_task": {
+          "type": "string",
+          "const": "tasks/active-task.md"
+        },
+        "source_queue_entry": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_m54_materialization_result": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_m53_placement_result": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_m52_validation_result": {
+          "type": "string",
+          "minLength": 1
+        },
+        "target_execution_subject": {
+          "type": "string",
+          "const": "active_task"
+        },
+        "active_task_path": {
+          "type": "string",
+          "const": "tasks/active-task.md"
+        },
+        "required_traceability": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "source_m55_completion_review",
+            "source_m55_readiness_result",
+            "source_m54_materialization_result",
+            "source_m53_placement_result",
+            "source_m52_validation_result",
+            "source_queue_entry",
+            "source_active_task"
+          ],
+          "properties": {
+            "source_m55_completion_review": {
+              "type": "string",
+              "minLength": 1
+            },
+            "source_m55_readiness_result": {
+              "type": "string",
+              "minLength": 1
+            },
+            "source_m54_materialization_result": {
+              "type": "string",
+              "minLength": 1
+            },
+            "source_m53_placement_result": {
+              "type": "string",
+              "minLength": 1
+            },
+            "source_m52_validation_result": {
+              "type": "string",
+              "minLength": 1
+            },
+            "source_queue_entry": {
+              "type": "string",
+              "minLength": 1
+            },
+            "source_active_task": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        "required_scope": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "goal_present",
+            "scope_present",
+            "allowed_changes_present",
+            "forbidden_changes_present",
+            "non_goals_present",
+            "risk_boundary_present"
+          ],
+          "properties": {
+            "goal_present": {
+              "type": "boolean"
+            },
+            "scope_present": {
+              "type": "boolean"
+            },
+            "allowed_changes_present": {
+              "type": "boolean"
+            },
+            "forbidden_changes_present": {
+              "type": "boolean"
+            },
+            "non_goals_present": {
+              "type": "boolean"
+            },
+            "risk_boundary_present": {
+              "type": "boolean"
+            }
+          }
+        },
+        "required_validation": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "validation_present",
+            "validation_commands_present",
+            "expected_final_report_present",
+            "evidence_requirements_present"
+          ],
+          "properties": {
+            "validation_present": {
+              "type": "boolean"
+            },
+            "validation_commands_present": {
+              "type": "boolean"
+            },
+            "expected_final_report_present": {
+              "type": "boolean"
+            },
+            "evidence_requirements_present": {
+              "type": "boolean"
+            }
+          }
+        },
+        "required_boundaries": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "execution_readiness_is_not_execution",
+            "execution_readiness_is_not_approval",
+            "execution_readiness_is_not_lifecycle_mutation",
+            "execution_readiness_is_not_m57_authorization",
+            "execution_does_not_start",
+            "m57_does_not_start"
+          ],
+          "properties": {
+            "execution_readiness_is_not_execution": {
+              "type": "boolean"
+            },
+            "execution_readiness_is_not_approval": {
+              "type": "boolean"
+            },
+            "execution_readiness_is_not_lifecycle_mutation": {
+              "type": "boolean"
+            },
+            "execution_readiness_is_not_m57_authorization": {
+              "type": "boolean"
+            },
+            "execution_does_not_start": {
+              "type": "boolean"
+            },
+            "m57_does_not_start": {
+              "type": "boolean"
+            }
+          }
+        },
+        "carry_forward": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "accepted_limitations",
+            "warnings",
+            "open_questions",
+            "downstream_limits",
+            "known_gaps",
+            "non_authority_boundary"
+          ],
+          "properties": {
+            "accepted_limitations": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "warnings": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "open_questions": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "downstream_limits": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "known_gaps": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "non_authority_boundary": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "minItems": 1
+            }
+          }
+        },
+        "boundary_flags": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "input_only",
+            "execution_readiness_authorized",
+            "execution_authorized",
+            "execution_started",
+            "approval_created",
+            "lifecycle_mutation_authorized",
+            "m57_authorized",
+            "m57_started"
+          ],
+          "properties": {
+            "input_only": {
+              "type": "boolean",
+              "const": true
+            },
+            "execution_readiness_authorized": {
+              "type": "boolean",
+              "const": false
+            },
+            "execution_authorized": {
+              "type": "boolean",
+              "const": false
+            },
+            "execution_started": {
+              "type": "boolean",
+              "const": false
+            },
+            "approval_created": {
+              "type": "boolean",
+              "const": false
+            },
+            "lifecycle_mutation_authorized": {
+              "type": "boolean",
+              "const": false
+            },
+            "m57_authorized": {
+              "type": "boolean",
+              "const": false
+            },
+            "m57_started": {
+              "type": "boolean",
+              "const": false
+            }
+          }
+        },
+        "non_authority_markers": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1
+        }
+      }
+    }
+  }
+}
