@@ -1,0 +1,571 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ValidationEvidence",
+  "type": "object",
+  "properties": {
+    "validation_evidence_id": {
+      "type": "string"
+    },
+    "task_id": {
+      "type": "string"
+    },
+    "verification_input_id": {
+      "type": "string"
+    },
+    "preconditions_id": {
+      "type": "string"
+    },
+    "diff_scope_verification_id": {
+      "type": "string"
+    },
+    "validation_evidence_status": {
+      "type": "string",
+      "enum": [
+        "VALIDATION_EVIDENCE_CONFIRMED",
+        "VALIDATION_EVIDENCE_CONFIRMED_WITH_WARNINGS",
+        "VALIDATION_EVIDENCE_NOT_CONFIRMED",
+        "VALIDATION_EVIDENCE_BLOCKED"
+      ]
+    },
+    "checked_at": {
+      "type": "string"
+    },
+    "checked_by": {
+      "type": "string"
+    },
+    "source_references": {
+      "type": "object",
+      "properties": {
+        "m59_intake_report_path": { "type": "string" },
+        "m59_architecture_path": { "type": "string" },
+        "input_contract_path": { "type": "string" },
+        "preconditions_contract_path": { "type": "string" },
+        "diff_scope_contract_path": { "type": "string" },
+        "verification_input_path": { "type": "string" },
+        "verification_preconditions_path": { "type": "string" },
+        "diff_scope_verification_path": { "type": "string" },
+        "source_task_path": { "type": "string" },
+        "execution_session_record_path": { "type": "string" }
+      },
+      "required": [
+        "m59_intake_report_path",
+        "m59_architecture_path",
+        "input_contract_path",
+        "preconditions_contract_path",
+        "diff_scope_contract_path",
+        "verification_input_path",
+        "verification_preconditions_path",
+        "diff_scope_verification_path",
+        "source_task_path",
+        "execution_session_record_path"
+      ],
+      "additionalProperties": false
+    },
+    "validation_claim_check": {
+      "type": "object",
+      "properties": {
+        "claimed_validation_run": { "type": "boolean" },
+        "validation_claims_present": { "type": "boolean" },
+        "validation_claims_supported_by_artifacts": { "type": "boolean" },
+        "unsupported_validation_claims": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "validation_claim_result": {
+          "type": "string",
+          "enum": [
+            "VALIDATION_CLAIMS_SUPPORTED",
+            "VALIDATION_CLAIMS_SUPPORTED_WITH_WARNINGS",
+            "VALIDATION_CLAIMS_NOT_CONFIRMED",
+            "VALIDATION_CLAIMS_BLOCKED"
+          ]
+        }
+      },
+      "required": [
+        "claimed_validation_run",
+        "validation_claims_present",
+        "validation_claims_supported_by_artifacts",
+        "unsupported_validation_claims",
+        "validation_claim_result"
+      ],
+      "additionalProperties": false
+    },
+    "validation_command_check": {
+      "type": "object",
+      "properties": {
+        "validation_commands_declared": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "validation_commands_executed": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "command_evidence_present": { "type": "boolean" },
+        "commands_match_declared": { "type": "boolean" },
+        "unexpected_validation_commands": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "validation_command_result": {
+          "type": "string",
+          "enum": [
+            "VALIDATION_COMMANDS_CONFIRMED",
+            "VALIDATION_COMMANDS_CONFIRMED_WITH_WARNINGS",
+            "VALIDATION_COMMANDS_NOT_CONFIRMED",
+            "VALIDATION_COMMANDS_BLOCKED"
+          ]
+        }
+      },
+      "required": [
+        "validation_commands_declared",
+        "validation_commands_executed",
+        "command_evidence_present",
+        "commands_match_declared",
+        "unexpected_validation_commands",
+        "validation_command_result"
+      ],
+      "additionalProperties": false
+    },
+    "validation_artifact_check": {
+      "type": "object",
+      "properties": {
+        "validation_artifacts_declared": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "validation_artifacts_present": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "validation_artifacts_readable": { "type": "boolean" },
+        "validation_artifacts_match_commands": { "type": "boolean" },
+        "validation_artifact_result": {
+          "type": "string",
+          "enum": [
+            "VALIDATION_ARTIFACTS_CONFIRMED",
+            "VALIDATION_ARTIFACTS_CONFIRMED_WITH_WARNINGS",
+            "VALIDATION_ARTIFACTS_NOT_CONFIRMED",
+            "VALIDATION_ARTIFACTS_BLOCKED"
+          ]
+        }
+      },
+      "required": [
+        "validation_artifacts_declared",
+        "validation_artifacts_present",
+        "validation_artifacts_readable",
+        "validation_artifacts_match_commands",
+        "validation_artifact_result"
+      ],
+      "additionalProperties": false
+    },
+    "validation_exit_code_check": {
+      "type": "object",
+      "properties": {
+        "exit_codes_present": { "type": "boolean" },
+        "exit_codes_all_zero": { "type": "boolean" },
+        "nonzero_exit_codes": {
+          "type": "array",
+          "items": { "type": "integer" }
+        },
+        "exit_code_meaning_documented": { "type": "boolean" },
+        "validation_exit_code_result": {
+          "type": "string",
+          "enum": [
+            "VALIDATION_EXIT_CODES_PASS",
+            "VALIDATION_EXIT_CODES_PASS_WITH_WARNINGS",
+            "VALIDATION_EXIT_CODES_NOT_CONFIRMED",
+            "VALIDATION_EXIT_CODES_BLOCKED"
+          ]
+        }
+      },
+      "required": [
+        "exit_codes_present",
+        "exit_codes_all_zero",
+        "nonzero_exit_codes",
+        "exit_code_meaning_documented",
+        "validation_exit_code_result"
+      ],
+      "additionalProperties": false
+    },
+    "validation_freshness_check": {
+      "type": "object",
+      "properties": {
+        "evidence_timestamp_present": { "type": "boolean" },
+        "evidence_after_changes": { "type": "boolean" },
+        "evidence_matches_current_diff": { "type": "boolean" },
+        "stale_evidence_detected": { "type": "boolean" },
+        "validation_freshness_result": {
+          "type": "string",
+          "enum": [
+            "VALIDATION_FRESHNESS_CONFIRMED",
+            "VALIDATION_FRESHNESS_CONFIRMED_WITH_WARNINGS",
+            "VALIDATION_FRESHNESS_NOT_CONFIRMED",
+            "VALIDATION_FRESHNESS_BLOCKED"
+          ]
+        }
+      },
+      "required": [
+        "evidence_timestamp_present",
+        "evidence_after_changes",
+        "evidence_matches_current_diff",
+        "stale_evidence_detected",
+        "validation_freshness_result"
+      ],
+      "additionalProperties": false
+    },
+    "validation_relevance_check": {
+      "type": "object",
+      "properties": {
+        "validation_targets_changed_files": { "type": "boolean" },
+        "validation_targets_task_scope": { "type": "boolean" },
+        "unrelated_validation_detected": { "type": "boolean" },
+        "validation_relevance_result": {
+          "type": "string",
+          "enum": [
+            "VALIDATION_RELEVANCE_CONFIRMED",
+            "VALIDATION_RELEVANCE_CONFIRMED_WITH_WARNINGS",
+            "VALIDATION_RELEVANCE_NOT_CONFIRMED",
+            "VALIDATION_RELEVANCE_BLOCKED"
+          ]
+        }
+      },
+      "required": [
+        "validation_targets_changed_files",
+        "validation_targets_task_scope",
+        "unrelated_validation_detected",
+        "validation_relevance_result"
+      ],
+      "additionalProperties": false
+    },
+    "test_claim_check": {
+      "type": "object",
+      "properties": {
+        "claimed_tests_run": { "type": "boolean" },
+        "test_claims_present": { "type": "boolean" },
+        "test_claims_supported_by_artifacts": { "type": "boolean" },
+        "unsupported_test_claims": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "test_claim_result": {
+          "type": "string",
+          "enum": [
+            "TEST_CLAIMS_SUPPORTED",
+            "TEST_CLAIMS_SUPPORTED_WITH_WARNINGS",
+            "TEST_CLAIMS_NOT_CONFIRMED",
+            "TEST_CLAIMS_BLOCKED"
+          ]
+        }
+      },
+      "required": [
+        "claimed_tests_run",
+        "test_claims_present",
+        "test_claims_supported_by_artifacts",
+        "unsupported_test_claims",
+        "test_claim_result"
+      ],
+      "additionalProperties": false
+    },
+    "test_command_check": {
+      "type": "object",
+      "properties": {
+        "test_commands_declared": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "test_commands_executed": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "command_evidence_present": { "type": "boolean" },
+        "commands_match_declared": { "type": "boolean" },
+        "unexpected_test_commands": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "test_command_result": {
+          "type": "string",
+          "enum": [
+            "TEST_COMMANDS_CONFIRMED",
+            "TEST_COMMANDS_CONFIRMED_WITH_WARNINGS",
+            "TEST_COMMANDS_NOT_CONFIRMED",
+            "TEST_COMMANDS_BLOCKED"
+          ]
+        }
+      },
+      "required": [
+        "test_commands_declared",
+        "test_commands_executed",
+        "command_evidence_present",
+        "commands_match_declared",
+        "unexpected_test_commands",
+        "test_command_result"
+      ],
+      "additionalProperties": false
+    },
+    "test_artifact_check": {
+      "type": "object",
+      "properties": {
+        "test_artifacts_declared": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "test_artifacts_present": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "test_artifacts_readable": { "type": "boolean" },
+        "test_artifacts_match_commands": { "type": "boolean" },
+        "test_artifact_result": {
+          "type": "string",
+          "enum": [
+            "TEST_ARTIFACTS_CONFIRMED",
+            "TEST_ARTIFACTS_CONFIRMED_WITH_WARNINGS",
+            "TEST_ARTIFACTS_NOT_CONFIRMED",
+            "TEST_ARTIFACTS_BLOCKED"
+          ]
+        }
+      },
+      "required": [
+        "test_artifacts_declared",
+        "test_artifacts_present",
+        "test_artifacts_readable",
+        "test_artifacts_match_commands",
+        "test_artifact_result"
+      ],
+      "additionalProperties": false
+    },
+    "test_exit_code_check": {
+      "type": "object",
+      "properties": {
+        "exit_codes_present": { "type": "boolean" },
+        "exit_codes_all_zero": { "type": "boolean" },
+        "nonzero_exit_codes": {
+          "type": "array",
+          "items": { "type": "integer" }
+        },
+        "exit_code_meaning_documented": { "type": "boolean" },
+        "test_exit_code_result": {
+          "type": "string",
+          "enum": [
+            "TEST_EXIT_CODES_PASS",
+            "TEST_EXIT_CODES_PASS_WITH_WARNINGS",
+            "TEST_EXIT_CODES_NOT_CONFIRMED",
+            "TEST_EXIT_CODES_BLOCKED"
+          ]
+        }
+      },
+      "required": [
+        "exit_codes_present",
+        "exit_codes_all_zero",
+        "nonzero_exit_codes",
+        "exit_code_meaning_documented",
+        "test_exit_code_result"
+      ],
+      "additionalProperties": false
+    },
+    "test_freshness_check": {
+      "type": "object",
+      "properties": {
+        "evidence_timestamp_present": { "type": "boolean" },
+        "evidence_after_changes": { "type": "boolean" },
+        "evidence_matches_current_diff": { "type": "boolean" },
+        "stale_evidence_detected": { "type": "boolean" },
+        "test_freshness_result": {
+          "type": "string",
+          "enum": [
+            "TEST_FRESHNESS_CONFIRMED",
+            "TEST_FRESHNESS_CONFIRMED_WITH_WARNINGS",
+            "TEST_FRESHNESS_NOT_CONFIRMED",
+            "TEST_FRESHNESS_BLOCKED"
+          ]
+        }
+      },
+      "required": [
+        "evidence_timestamp_present",
+        "evidence_after_changes",
+        "evidence_matches_current_diff",
+        "stale_evidence_detected",
+        "test_freshness_result"
+      ],
+      "additionalProperties": false
+    },
+    "test_relevance_check": {
+      "type": "object",
+      "properties": {
+        "tests_target_changed_files": { "type": "boolean" },
+        "tests_target_task_scope": { "type": "boolean" },
+        "unrelated_tests_detected": { "type": "boolean" },
+        "test_relevance_result": {
+          "type": "string",
+          "enum": [
+            "TEST_RELEVANCE_CONFIRMED",
+            "TEST_RELEVANCE_CONFIRMED_WITH_WARNINGS",
+            "TEST_RELEVANCE_NOT_CONFIRMED",
+            "TEST_RELEVANCE_BLOCKED"
+          ]
+        }
+      },
+      "required": [
+        "tests_target_changed_files",
+        "tests_target_task_scope",
+        "unrelated_tests_detected",
+        "test_relevance_result"
+      ],
+      "additionalProperties": false
+    },
+    "missing_evidence_check": {
+      "type": "object",
+      "properties": {
+        "validation_evidence_missing": { "type": "boolean" },
+        "validation_missing_reason_present": { "type": "boolean" },
+        "test_evidence_missing": { "type": "boolean" },
+        "test_missing_reason_present": { "type": "boolean" },
+        "missing_evidence_result": {
+          "type": "string",
+          "enum": [
+            "NO_REQUIRED_EVIDENCE_MISSING",
+            "MISSING_EVIDENCE_WITH_EXPLANATION",
+            "MISSING_EVIDENCE_NOT_CONFIRMED",
+            "MISSING_EVIDENCE_BLOCKED"
+          ]
+        }
+      },
+      "required": [
+        "validation_evidence_missing",
+        "validation_missing_reason_present",
+        "test_evidence_missing",
+        "test_missing_reason_present",
+        "missing_evidence_result"
+      ],
+      "additionalProperties": false
+    },
+    "stale_evidence_check": {
+      "type": "object",
+      "properties": {
+        "stale_validation_evidence_detected": { "type": "boolean" },
+        "stale_test_evidence_detected": { "type": "boolean" },
+        "stale_evidence_affects_changed_files": { "type": "boolean" },
+        "stale_evidence_result": {
+          "type": "string",
+          "enum": [
+            "NO_STALE_EVIDENCE",
+            "STALE_EVIDENCE_WARNING",
+            "STALE_EVIDENCE_NOT_CONFIRMED",
+            "STALE_EVIDENCE_BLOCKED"
+          ]
+        }
+      },
+      "required": [
+        "stale_validation_evidence_detected",
+        "stale_test_evidence_detected",
+        "stale_evidence_affects_changed_files",
+        "stale_evidence_result"
+      ],
+      "additionalProperties": false
+    },
+    "wrong_validation_check": {
+      "type": "object",
+      "properties": {
+        "wrong_validation_detected": { "type": "boolean" },
+        "wrong_tests_detected": { "type": "boolean" },
+        "unrelated_commands_detected": { "type": "boolean" },
+        "wrong_validation_result": {
+          "type": "string",
+          "enum": [
+            "NO_WRONG_VALIDATION_DETECTED",
+            "WRONG_VALIDATION_WARNING",
+            "WRONG_VALIDATION_NOT_CONFIRMED",
+            "WRONG_VALIDATION_BLOCKED"
+          ]
+        }
+      },
+      "required": [
+        "wrong_validation_detected",
+        "wrong_tests_detected",
+        "unrelated_commands_detected",
+        "wrong_validation_result"
+      ],
+      "additionalProperties": false
+    },
+    "authority_claim_check": {
+      "type": "object",
+      "properties": {
+        "claims_result_verified": { "type": "boolean" },
+        "claims_task_complete": { "type": "boolean" },
+        "claims_task_approved": { "type": "boolean" },
+        "claims_human_review_replaced": { "type": "boolean" },
+        "claims_merge_allowed": { "type": "boolean" },
+        "claims_push_allowed": { "type": "boolean" },
+        "claims_release_allowed": { "type": "boolean" },
+        "claims_lifecycle_mutation_allowed": { "type": "boolean" },
+        "authority_claim_result": {
+          "type": "string",
+          "enum": [
+            "AUTHORITY_CLAIMS_CLEAR",
+            "AUTHORITY_CLAIMS_BLOCKED"
+          ]
+        }
+      },
+      "required": [
+        "claims_result_verified",
+        "claims_task_complete",
+        "claims_task_approved",
+        "claims_human_review_replaced",
+        "claims_merge_allowed",
+        "claims_push_allowed",
+        "claims_release_allowed",
+        "claims_lifecycle_mutation_allowed",
+        "authority_claim_result"
+      ],
+      "additionalProperties": false
+    },
+    "warnings": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "blockers": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "handoff_to_result_output": {
+      "type": "boolean"
+    },
+    "non_authority_acknowledgement": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "validation_evidence_id",
+    "task_id",
+    "verification_input_id",
+    "preconditions_id",
+    "diff_scope_verification_id",
+    "validation_evidence_status",
+    "checked_at",
+    "checked_by",
+    "source_references",
+    "validation_claim_check",
+    "validation_command_check",
+    "validation_artifact_check",
+    "validation_exit_code_check",
+    "validation_freshness_check",
+    "validation_relevance_check",
+    "test_claim_check",
+    "test_command_check",
+    "test_artifact_check",
+    "test_exit_code_check",
+    "test_freshness_check",
+    "test_relevance_check",
+    "missing_evidence_check",
+    "stale_evidence_check",
+    "wrong_validation_check",
+    "authority_claim_check",
+    "warnings",
+    "blockers",
+    "handoff_to_result_output",
+    "non_authority_acknowledgement"
+  ],
+  "additionalProperties": false
+}
