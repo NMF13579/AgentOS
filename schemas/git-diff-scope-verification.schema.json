@@ -1,0 +1,494 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "GitDiffScopeVerification",
+  "type": "object",
+  "properties": {
+    "diff_scope_verification_id": {
+      "type": "string"
+    },
+    "task_id": {
+      "type": "string"
+    },
+    "verification_input_id": {
+      "type": "string"
+    },
+    "preconditions_id": {
+      "type": "string"
+    },
+    "diff_scope_status": {
+      "type": "string",
+      "enum": [
+        "SCOPE_VERIFICATION_PASS",
+        "SCOPE_VERIFICATION_PASS_WITH_WARNINGS",
+        "SCOPE_VERIFICATION_NOT_READY",
+        "SCOPE_VERIFICATION_BLOCKED"
+      ]
+    },
+    "checked_at": {
+      "type": "string"
+    },
+    "checked_by": {
+      "type": "string"
+    },
+    "source_references": {
+      "type": "object",
+      "properties": {
+        "m59_intake_report_path": { "type": "string" },
+        "m59_architecture_path": { "type": "string" },
+        "input_contract_path": { "type": "string" },
+        "preconditions_contract_path": { "type": "string" },
+        "verification_input_path": { "type": "string" },
+        "verification_preconditions_path": { "type": "string" },
+        "source_task_path": { "type": "string" },
+        "execution_session_record_path": { "type": "string" }
+      },
+      "required": [
+        "m59_intake_report_path",
+        "m59_architecture_path",
+        "input_contract_path",
+        "preconditions_contract_path",
+        "verification_input_path",
+        "verification_preconditions_path",
+        "source_task_path",
+        "execution_session_record_path"
+      ],
+      "additionalProperties": false
+    },
+    "git_state_source": {
+      "type": "object",
+      "properties": {
+        "source_type": {
+          "type": "string",
+          "enum": ["provided", "read_only_git_diff", "not_available"]
+        },
+        "git_diff_available": { "type": "boolean" },
+        "git_status_available": { "type": "boolean" },
+        "diff_source_description": { "type": "string" },
+        "generated_at": { "type": "string" }
+      },
+      "required": [
+        "source_type",
+        "git_diff_available",
+        "git_status_available",
+        "diff_source_description",
+        "generated_at"
+      ],
+      "additionalProperties": false
+    },
+    "actual_changed_files_check": {
+      "type": "object",
+      "properties": {
+        "changed_files_present": { "type": "boolean" },
+        "changed_files": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "created_files": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "modified_files": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "deleted_files": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "renamed_files": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "actual_changed_files_result": {
+          "type": "string",
+          "enum": [
+            "ACTUAL_CHANGED_FILES_MATCH_INPUT",
+            "ACTUAL_CHANGED_FILES_MATCH_WITH_WARNINGS",
+            "ACTUAL_CHANGED_FILES_NOT_READY",
+            "ACTUAL_CHANGED_FILES_BLOCKED"
+          ]
+        }
+      },
+      "required": [
+        "changed_files_present",
+        "changed_files",
+        "created_files",
+        "modified_files",
+        "deleted_files",
+        "renamed_files",
+        "actual_changed_files_result"
+      ],
+      "additionalProperties": false
+    },
+    "git_diff_summary_check": {
+      "type": "object",
+      "properties": {
+        "diff_summary_present": { "type": "boolean" },
+        "files_changed_count": { "type": "integer" },
+        "additions_present": { "type": "boolean" },
+        "deletions_present": { "type": "boolean" },
+        "binary_or_unreadable_changes_present": { "type": "boolean" },
+        "git_diff_summary_result": {
+          "type": "string",
+          "enum": [
+            "GIT_DIFF_SUMMARY_READY",
+            "GIT_DIFF_SUMMARY_READY_WITH_WARNINGS",
+            "GIT_DIFF_SUMMARY_NOT_READY",
+            "GIT_DIFF_SUMMARY_BLOCKED"
+          ]
+        }
+      },
+      "required": [
+        "diff_summary_present",
+        "files_changed_count",
+        "additions_present",
+        "deletions_present",
+        "binary_or_unreadable_changes_present",
+        "git_diff_summary_result"
+      ],
+      "additionalProperties": false
+    },
+    "declared_changes_comparison": {
+      "type": "object",
+      "properties": {
+        "declared_files_changed": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "actual_files_changed": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "undeclared_actual_changes": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "declared_but_missing_changes": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "declared_vs_actual_result": {
+          "type": "string",
+          "enum": [
+            "DECLARED_CHANGES_MATCH_ACTUAL",
+            "DECLARED_CHANGES_MATCH_WITH_WARNINGS",
+            "DECLARED_CHANGES_DO_NOT_MATCH",
+            "DECLARED_CHANGES_COMPARISON_NOT_READY",
+            "DECLARED_CHANGES_COMPARISON_BLOCKED"
+          ]
+        }
+      },
+      "required": [
+        "declared_files_changed",
+        "actual_files_changed",
+        "undeclared_actual_changes",
+        "declared_but_missing_changes",
+        "declared_vs_actual_result"
+      ],
+      "additionalProperties": false
+    },
+    "allowed_scope_check": {
+      "type": "object",
+      "properties": {
+        "allowed_files": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "allowed_dirs": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "files_within_allowed_scope": { "type": "boolean" },
+        "files_outside_allowed_scope": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "allowed_scope_result": {
+          "type": "string",
+          "enum": [
+            "ALLOWED_SCOPE_PASS",
+            "ALLOWED_SCOPE_PASS_WITH_WARNINGS",
+            "ALLOWED_SCOPE_NOT_READY",
+            "ALLOWED_SCOPE_BLOCKED"
+          ]
+        }
+      },
+      "required": [
+        "allowed_files",
+        "allowed_dirs",
+        "files_within_allowed_scope",
+        "files_outside_allowed_scope",
+        "allowed_scope_result"
+      ],
+      "additionalProperties": false
+    },
+    "forbidden_scope_check": {
+      "type": "object",
+      "properties": {
+        "forbidden_files": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "forbidden_dirs": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "forbidden_files_touched": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "forbidden_dirs_touched": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "forbidden_scope_result": {
+          "type": "string",
+          "enum": [
+            "FORBIDDEN_SCOPE_CLEAR",
+            "FORBIDDEN_SCOPE_WARNING",
+            "FORBIDDEN_SCOPE_BLOCKED",
+            "FORBIDDEN_SCOPE_NOT_READY"
+          ]
+        }
+      },
+      "required": [
+        "forbidden_files",
+        "forbidden_dirs",
+        "forbidden_files_touched",
+        "forbidden_dirs_touched",
+        "forbidden_scope_result"
+      ],
+      "additionalProperties": false
+    },
+    "protected_path_check": {
+      "type": "object",
+      "properties": {
+        "protected_paths": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "protected_paths_touched": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "protected_path_override_present": { "type": "boolean" },
+        "protected_path_human_checkpoint_present": { "type": "boolean" },
+        "protected_path_result": {
+          "type": "string",
+          "enum": [
+            "PROTECTED_PATHS_CLEAR",
+            "PROTECTED_PATHS_WARNING",
+            "PROTECTED_PATHS_BLOCKED",
+            "PROTECTED_PATHS_NOT_READY"
+          ]
+        }
+      },
+      "required": [
+        "protected_paths",
+        "protected_paths_touched",
+        "protected_path_override_present",
+        "protected_path_human_checkpoint_present",
+        "protected_path_result"
+      ],
+      "additionalProperties": false
+    },
+    "out_of_scope_change_check": {
+      "type": "object",
+      "properties": {
+        "out_of_scope_rules_present": { "type": "boolean" },
+        "out_of_scope_files_detected": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "out_of_scope_change_result": {
+          "type": "string",
+          "enum": [
+            "OUT_OF_SCOPE_CLEAR",
+            "OUT_OF_SCOPE_WARNING",
+            "OUT_OF_SCOPE_BLOCKED",
+            "OUT_OF_SCOPE_NOT_READY"
+          ]
+        }
+      },
+      "required": [
+        "out_of_scope_rules_present",
+        "out_of_scope_files_detected",
+        "out_of_scope_change_result"
+      ],
+      "additionalProperties": false
+    },
+    "deletion_check": {
+      "type": "object",
+      "properties": {
+        "deleted_files": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "deleted_files_declared": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "unexpected_deletions": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "deletion_check_result": {
+          "type": "string",
+          "enum": [
+            "DELETIONS_CLEAR",
+            "DELETIONS_WARNING",
+            "DELETIONS_BLOCKED",
+            "DELETIONS_NOT_READY"
+          ]
+        }
+      },
+      "required": [
+        "deleted_files",
+        "deleted_files_declared",
+        "unexpected_deletions",
+        "deletion_check_result"
+      ],
+      "additionalProperties": false
+    },
+    "generated_artifact_check": {
+      "type": "object",
+      "properties": {
+        "generated_files": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "expected_generated_files": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "unexpected_generated_files": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "m60_cleanup_artifacts_detected": { "type": "boolean" },
+        "approval_artifacts_detected": { "type": "boolean" },
+        "lifecycle_artifacts_detected": { "type": "boolean" },
+        "generated_artifact_result": {
+          "type": "string",
+          "enum": [
+            "GENERATED_ARTIFACTS_CLEAR",
+            "GENERATED_ARTIFACTS_WARNING",
+            "GENERATED_ARTIFACTS_BLOCKED",
+            "GENERATED_ARTIFACTS_NOT_READY"
+          ]
+        }
+      },
+      "required": [
+        "generated_files",
+        "expected_generated_files",
+        "unexpected_generated_files",
+        "m60_cleanup_artifacts_detected",
+        "approval_artifacts_detected",
+        "lifecycle_artifacts_detected",
+        "generated_artifact_result"
+      ],
+      "additionalProperties": false
+    },
+    "scope_expansion_check": {
+      "type": "object",
+      "properties": {
+        "scope_expansion_claimed": { "type": "boolean" },
+        "scope_expansion_allowed": { "type": "boolean" },
+        "human_checkpoint_present": { "type": "boolean" },
+        "scope_expansion_result": {
+          "type": "string",
+          "enum": [
+            "SCOPE_EXPANSION_CLEAR",
+            "SCOPE_EXPANSION_WARNING",
+            "SCOPE_EXPANSION_BLOCKED",
+            "SCOPE_EXPANSION_NOT_READY"
+          ]
+        }
+      },
+      "required": [
+        "scope_expansion_claimed",
+        "scope_expansion_allowed",
+        "human_checkpoint_present",
+        "scope_expansion_result"
+      ],
+      "additionalProperties": false
+    },
+    "authority_claim_check": {
+      "type": "object",
+      "properties": {
+        "claims_result_verified": { "type": "boolean" },
+        "claims_task_complete": { "type": "boolean" },
+        "claims_task_approved": { "type": "boolean" },
+        "claims_human_review_replaced": { "type": "boolean" },
+        "claims_merge_allowed": { "type": "boolean" },
+        "claims_push_allowed": { "type": "boolean" },
+        "claims_release_allowed": { "type": "boolean" },
+        "claims_lifecycle_mutation_allowed": { "type": "boolean" },
+        "authority_claim_result": {
+          "type": "string",
+          "enum": [
+            "AUTHORITY_CLAIMS_CLEAR",
+            "AUTHORITY_CLAIMS_BLOCKED"
+          ]
+        }
+      },
+      "required": [
+        "claims_result_verified",
+        "claims_task_complete",
+        "claims_task_approved",
+        "claims_human_review_replaced",
+        "claims_merge_allowed",
+        "claims_push_allowed",
+        "claims_release_allowed",
+        "claims_lifecycle_mutation_allowed",
+        "authority_claim_result"
+      ],
+      "additionalProperties": false
+    },
+    "warnings": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "blockers": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "handoff_to_validation_evidence_verification": {
+      "type": "boolean"
+    },
+    "handoff_to_result_output": {
+      "type": "boolean"
+    },
+    "non_authority_acknowledgement": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "diff_scope_verification_id",
+    "task_id",
+    "verification_input_id",
+    "preconditions_id",
+    "diff_scope_status",
+    "checked_at",
+    "checked_by",
+    "source_references",
+    "git_state_source",
+    "actual_changed_files_check",
+    "git_diff_summary_check",
+    "declared_changes_comparison",
+    "allowed_scope_check",
+    "forbidden_scope_check",
+    "protected_path_check",
+    "out_of_scope_change_check",
+    "deletion_check",
+    "generated_artifact_check",
+    "scope_expansion_check",
+    "authority_claim_check",
+    "warnings",
+    "blockers",
+    "handoff_to_validation_evidence_verification",
+    "handoff_to_result_output",
+    "non_authority_acknowledgement"
+  ],
+  "additionalProperties": false
+}
