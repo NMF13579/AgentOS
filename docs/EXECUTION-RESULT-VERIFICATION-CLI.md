@@ -216,13 +216,13 @@ The runner automates verifying CLI classification outcomes against fixtures.
 
 The documentation must not claim that the task is complete, approved, or that human review is bypassed.
 
-## Final CLI Foundation Status
+## Final CLI Status
 
 ```text
-FINAL_STATUS: M59_EXECUTION_RESULT_VERIFICATION_CLI_FOUNDATION_DEFINED
+FINAL_STATUS: M59_EXECUTION_RESULT_VERIFICATION_CLI_DEFINED
 ```
 
-This status means only that the CLI foundation exists.
-It does not mean the full 59.7 policy matrix is implemented.
+This status means only that the Execution Result Verification CLI is defined.
 It does not mean execution result was verified.
 It does not mean task completion was approved.
+
