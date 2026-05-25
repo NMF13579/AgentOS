@@ -1,0 +1,21 @@
+{
+  "policy_version": "M59.1",
+  "expected_result": "EXECUTION_RESULT_BLOCKED",
+  "expected_policy_decision": "M59_VERIFICATION_POLICY_BLOCKED",
+  "expected_exit_code": 2,
+  "expected_upstream_state": "UNKNOWN",
+  "expected_output_state": "UNKNOWN",
+  "expected_strict": false,
+  "expected_strict_upgrades_applied": 0,
+  "expected_min_warnings": 0,
+  "expected_min_blockers": 1,
+  "expected_min_not_verified_reasons": 0,
+  "expected_min_authority_claims_detected": 0,
+  "expected_warning_contains": [],
+  "forbidden_warning_contains": [],
+  "expected_blocker_contains": [
+    "malformed"
+  ],
+  "expected_not_verified_contains": [],
+  "expected_authority_claim_contains": []
+}
