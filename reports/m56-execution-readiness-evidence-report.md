@@ -109,7 +109,7 @@ No timed-out cases were carried forward.
 ## 11. Completion Review Readiness
 completion_review_ready: true
 `may_proceed_to_56_12` is `true`.
-M56 execution readiness evidence is ready for 56.12 completion review, but this is not approval.
+M56 execution readiness evidence is ready for review (56.12 completion review), but this is not approval.
 
 ## 12. Non-Authority Boundary
 The evidence report is non-authority only.

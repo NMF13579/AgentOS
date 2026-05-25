@@ -219,7 +219,7 @@ None.
 
 ## Evidence Decision
 
-The M58 controlled execution session mechanism is fully integrated, fixture-tested, and action-reviewed, and is ready for the completion review milestone.
+The M58 controlled execution session mechanism is fully integrated, fixture-tested, and action-reviewed, and is prepared for the completion review milestone.
 
 Evidence status is `M58_CONTROLLED_EXECUTION_EVIDENCE_READY`.
 
