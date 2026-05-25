@@ -1,0 +1,24 @@
+{
+  "policy_version": "M59.1",
+  "expected_result": "EXECUTION_RESULT_VERIFIED_WITH_WARNINGS",
+  "expected_policy_decision": "M59_VERIFICATION_POLICY_VERIFIED_WITH_WARNINGS",
+  "expected_exit_code": 0,
+  "expected_upstream_state": "VERIFIED_WITH_WARNINGS",
+  "expected_output_state": "VERIFIED",
+  "expected_strict": false,
+  "expected_strict_upgrades_applied": 0,
+  "expected_min_warnings": 1,
+  "expected_min_blockers": 0,
+  "expected_min_not_verified_reasons": 0,
+  "expected_min_authority_claims_detected": 0,
+  "expected_warning_contains": [
+    "minor documentation warning"
+  ],
+  "forbidden_warning_contains": [
+    "source integrity uncertainty",
+    "evidence freshness uncertainty",
+    "path safety uncertainty",
+    "unknown authority claims",
+    "human review handoff uncertainty"
+  ]
+}
