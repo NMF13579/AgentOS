@@ -1,0 +1,97 @@
+# Execution Verification Reusable Checks
+
+## Purpose
+
+Define the minimal reusable execution verification checks approved for M60.8.
+
+## Scope
+
+Only consolidate-now checks are implemented in `scripts/check-execution-verification-chain.py`.
+
+## Relationship to M60.7 Plan
+
+This implementation follows `reports/m60-validator-consolidation-plan.md` and includes only checks classified as consolidate-now.
+
+## Implemented Checks
+
+- registry
+- non-authority
+- source-artifact-existence
+- no-premature-downstream-artifacts
+- schema-json-validity
+- policy-version-presence
+- final-status-presence
+
+## Checks Not Implemented
+
+Not implemented in 60.8:
+- checks classified as leave-local
+- checks classified as unsafe-to-consolidate
+- checks classified as future-candidate
+- checks classified as manual-review-required
+
+## CLI Usage
+
+```bash
+python3 scripts/check-execution-verification-chain.py --help
+python3 scripts/check-execution-verification-chain.py --json
+python3 scripts/check-execution-verification-chain.py --strict --json
+python3 scripts/check-execution-verification-chain.py --check all --json
+python3 scripts/check-execution-verification-chain.py --check registry --json
+```
+
+## Result Values
+
+- `EXECUTION_VERIFICATION_CHAIN_VALID`
+- `EXECUTION_VERIFICATION_CHAIN_VALID_WITH_WARNINGS`
+- `EXECUTION_VERIFICATION_CHAIN_INVALID`
+
+## Exit Code Mapping
+
+- `EXECUTION_VERIFICATION_CHAIN_VALID` -> `0`
+- `EXECUTION_VERIFICATION_CHAIN_VALID_WITH_WARNINGS` -> `0`
+- `EXECUTION_VERIFICATION_CHAIN_INVALID` -> `2`
+
+## JSON Output
+
+With `--json`, checker outputs valid JSON only and includes result, exit code, checks, warnings/blockers, and non_authority statements.
+
+## Strict Mode
+
+`--strict` may promote warnings to blockers for critical uncertainty.
+`--strict` never downgrades blockers and never converts invalid input into pass.
+
+## Non-Authority Boundary
+
+Execution verification reusable checks are not approval.
+Execution verification reusable checks do not start cleanup execution.
+Execution verification reusable checks do not mutate lifecycle state.
+Execution verification reusable checks do not authorize merge, push, or release.
+Execution verification reusable checks do not change M56–M59 safety semantics.
+Execution verification reusable checks do not replace human review.
+Execution verification reusable checks do not verify a real execution result.
+Execution verification reusable checks do not authorize starting 60.9 automatically.
+
+## Semantics Preservation Boundary
+
+The checker preserves existing pass/fail/block semantics and does not redefine policy/status/authority semantics.
+
+## Forbidden Uses
+
+- using checker output as approval
+- using checker output as execution authorization
+- using checker output to replace human review
+
+## Known Limitations
+
+- local milestone-specific checks intentionally remain outside reusable scope
+- some policy version nuances remain warning-level unless strict mode escalates
+
+## Final Reusable Checks Status
+
+FINAL_STATUS: M60_REUSABLE_CHECKS_DEFINED
+
+This means only that minimal reusable checks exist.
+It does not mean documentation pruning started.
+It does not mean regression runner exists.
+It does not mean M60 is complete.

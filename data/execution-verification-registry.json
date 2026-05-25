@@ -1,0 +1,268 @@
+{
+  "registry_version": "M60.1",
+  "generated_by": "manual-contract-or-future-builder",
+  "generated_at": "2026-05-26T00:00:00Z",
+  "source_contract": "docs/AGENTOS-EXECUTION-VERIFICATION-REGISTRY-CONTRACT.md",
+  "source_classification": "docs/EXECUTION-VERIFICATION-SOURCE-OF-TRUTH.md",
+  "source_inventory": "reports/m60-artifact-inventory.md",
+  "source_duplication_drift_audit": "reports/m60-duplication-drift-audit.md",
+  "non_authority": [
+    "Registry is a navigation and validation aid.",
+    "Registry does not override canonical Markdown contracts, policy documents, schemas, CLI contracts, fixture oracles, or completion reviews.",
+    "Registry must not introduce new authority.",
+    "Registry must not create approval.",
+    "Registry must not change execution verification semantics."
+  ],
+  "artifacts": [
+    {
+      "artifact_id": "m56-policy",
+      "path": "docs/TASK-EXECUTION-READINESS-POLICY.md",
+      "milestone": "M56",
+      "task_id": "56.7",
+      "artifact_type": "policy_doc",
+      "semantics_role": "policy",
+      "source_of_truth_role": "canonical",
+      "authority_level": "canonical",
+      "status": "present",
+      "depends_on": [],
+      "validated_by": [
+        "scripts/check-execution-readiness.py"
+      ],
+      "owned_by_layer": "M56_EXECUTION_READINESS",
+      "deprecated": false,
+      "replacement_path": null,
+      "do_not_delete": true,
+      "notes": "Readiness policy source."
+    },
+    {
+      "artifact_id": "m57-policy",
+      "path": "docs/TASK-EXECUTION-AUTHORIZATION-POLICY.md",
+      "milestone": "M57",
+      "task_id": "57.7",
+      "artifact_type": "policy_doc",
+      "semantics_role": "policy",
+      "source_of_truth_role": "canonical",
+      "authority_level": "canonical",
+      "status": "present",
+      "depends_on": [],
+      "validated_by": [
+        "scripts/check-execution-authorization.py"
+      ],
+      "owned_by_layer": "M57_EXECUTION_AUTHORIZATION",
+      "deprecated": false,
+      "replacement_path": null,
+      "do_not_delete": true,
+      "notes": "Authorization policy source."
+    },
+    {
+      "artifact_id": "m58-policy",
+      "path": "docs/CONTROLLED-EXECUTION-SESSION-POLICY.md",
+      "milestone": "M58",
+      "task_id": "58.6",
+      "artifact_type": "policy_doc",
+      "semantics_role": "policy",
+      "source_of_truth_role": "canonical",
+      "authority_level": "canonical",
+      "status": "present",
+      "depends_on": [],
+      "validated_by": [
+        "scripts/check-controlled-execution-session.py"
+      ],
+      "owned_by_layer": "M58_CONTROLLED_EXECUTION_SESSION",
+      "deprecated": false,
+      "replacement_path": null,
+      "do_not_delete": true,
+      "notes": "Controlled session policy source."
+    },
+    {
+      "artifact_id": "m59-completion-review",
+      "path": "reports/m59-completion-review.md",
+      "milestone": "M59",
+      "task_id": "59.14",
+      "artifact_type": "completion_review",
+      "semantics_role": "completion_review",
+      "source_of_truth_role": "do-not-delete",
+      "authority_level": "supporting",
+      "status": "present",
+      "depends_on": [
+        "m59-policy"
+      ],
+      "validated_by": [
+        "reports/m59-execution-result-verification-evidence-report.md"
+      ],
+      "owned_by_layer": "M59_EXECUTION_RESULT_VERIFICATION",
+      "deprecated": false,
+      "replacement_path": null,
+      "do_not_delete": true,
+      "notes": "Milestone closure evidence."
+    },
+    {
+      "artifact_id": "m59-policy",
+      "path": "docs/EXECUTION-RESULT-VERIFICATION-POLICY.md",
+      "milestone": "M59",
+      "task_id": "59.7",
+      "artifact_type": "policy_doc",
+      "semantics_role": "policy",
+      "source_of_truth_role": "canonical",
+      "authority_level": "canonical",
+      "status": "present",
+      "depends_on": [],
+      "validated_by": [
+        "scripts/check-execution-result-verification.py"
+      ],
+      "owned_by_layer": "M59_EXECUTION_RESULT_VERIFICATION",
+      "deprecated": false,
+      "replacement_path": null,
+      "do_not_delete": true,
+      "notes": "Result verification policy source."
+    },
+    {
+      "artifact_id": "m60-architecture",
+      "path": "docs/REPOSITORY-CLEANUP-CONSOLIDATION-ARCHITECTURE.md",
+      "milestone": "M60",
+      "task_id": "60.1",
+      "artifact_type": "architecture_doc",
+      "semantics_role": "architecture",
+      "source_of_truth_role": "canonical",
+      "authority_level": "canonical",
+      "status": "present",
+      "depends_on": [
+        "m60-intake"
+      ],
+      "validated_by": [],
+      "owned_by_layer": "M60_CLEANUP_CONSOLIDATION",
+      "deprecated": false,
+      "replacement_path": null,
+      "do_not_delete": true,
+      "notes": "M60 architecture boundary."
+    },
+    {
+      "artifact_id": "m60-intake",
+      "path": "reports/m60-m59-completion-intake.md",
+      "milestone": "M60",
+      "task_id": "60.0",
+      "artifact_type": "intake_report",
+      "semantics_role": "intake_report",
+      "source_of_truth_role": "supporting",
+      "authority_level": "supporting",
+      "status": "present",
+      "depends_on": [
+        "m59-completion-review"
+      ],
+      "validated_by": [],
+      "owned_by_layer": "M60_CLEANUP_CONSOLIDATION",
+      "deprecated": false,
+      "replacement_path": null,
+      "do_not_delete": true,
+      "notes": "M60 planning gate intake."
+    },
+    {
+      "artifact_id": "m60-registry-contract",
+      "path": "docs/AGENTOS-EXECUTION-VERIFICATION-REGISTRY-CONTRACT.md",
+      "milestone": "M60",
+      "task_id": "60.5",
+      "artifact_type": "registry_contract",
+      "semantics_role": "registry_contract",
+      "source_of_truth_role": "canonical",
+      "authority_level": "canonical",
+      "status": "present",
+      "depends_on": [
+        "m60-sot"
+      ],
+      "validated_by": [],
+      "owned_by_layer": "M60_CLEANUP_CONSOLIDATION",
+      "deprecated": false,
+      "replacement_path": null,
+      "do_not_delete": true,
+      "notes": "Contract for registry structure and boundaries."
+    },
+    {
+      "artifact_id": "m60-registry-data",
+      "path": "data/execution-verification-registry.json",
+      "milestone": "M60",
+      "task_id": "60.6b",
+      "artifact_type": "registry_data",
+      "semantics_role": "generated_index",
+      "source_of_truth_role": "generated",
+      "authority_level": "generated",
+      "status": "present",
+      "depends_on": [
+        "m60-registry-schema"
+      ],
+      "validated_by": [
+        "scripts/check-execution-verification-registry.py"
+      ],
+      "owned_by_layer": "M60_CLEANUP_CONSOLIDATION",
+      "deprecated": false,
+      "replacement_path": null,
+      "do_not_delete": false,
+      "notes": "Generated/maintained registry data."
+    },
+    {
+      "artifact_id": "m60-registry-doc",
+      "path": "docs/EXECUTION-VERIFICATION-REGISTRY.md",
+      "milestone": "M60",
+      "task_id": "60.6b",
+      "artifact_type": "doc",
+      "semantics_role": "supporting_doc",
+      "source_of_truth_role": "supporting",
+      "authority_level": "supporting",
+      "status": "present",
+      "depends_on": [
+        "m60-registry-contract",
+        "m60-registry-schema",
+        "m60-registry-data"
+      ],
+      "validated_by": [
+        "scripts/check-execution-verification-registry.py"
+      ],
+      "owned_by_layer": "M60_CLEANUP_CONSOLIDATION",
+      "deprecated": false,
+      "replacement_path": null,
+      "do_not_delete": true,
+      "notes": "Human-readable registry guide and boundaries."
+    },
+    {
+      "artifact_id": "m60-registry-schema",
+      "path": "schemas/execution-verification-registry.schema.json",
+      "milestone": "M60",
+      "task_id": "60.5",
+      "artifact_type": "registry_schema",
+      "semantics_role": "registry_schema",
+      "source_of_truth_role": "canonical",
+      "authority_level": "canonical",
+      "status": "present",
+      "depends_on": [
+        "m60-registry-contract"
+      ],
+      "validated_by": [
+        "scripts/check-execution-verification-registry.py"
+      ],
+      "owned_by_layer": "M60_CLEANUP_CONSOLIDATION",
+      "deprecated": false,
+      "replacement_path": null,
+      "do_not_delete": true,
+      "notes": "Schema for registry data."
+    },
+    {
+      "artifact_id": "m60-sot",
+      "path": "docs/EXECUTION-VERIFICATION-SOURCE-OF-TRUTH.md",
+      "milestone": "M60",
+      "task_id": "60.3",
+      "artifact_type": "doc",
+      "semantics_role": "supporting_doc",
+      "source_of_truth_role": "supporting",
+      "authority_level": "supporting",
+      "status": "present",
+      "depends_on": [
+        "m60-architecture"
+      ],
+      "validated_by": [],
+      "owned_by_layer": "M60_CLEANUP_CONSOLIDATION",
+      "deprecated": false,
+      "replacement_path": null,
+      "do_not_delete": true,
+      "notes": "Classification input for registry."
+    }
+  ]
+}
