@@ -1,0 +1,21 @@
+{
+  "task_id": "task-negative-test",
+  "session_id": "session-negative-test",
+  "request_id": "request-negative-test",
+  "preconditions_id": "preconditions-negative-test",
+  "boundary_id": "boundary-negative-test",
+  "record_status": "EXECUTION_SESSION_RECORD_ABORTED",
+  "m59_handoff": {
+    "handoff_required": true,
+    "handoff_ready": true
+  },
+  "session_close": {
+    "task_completion_claimed": false,
+    "result_verification_claimed": false,
+    "lifecycle_mutation_claimed": false
+  },
+  "warnings": [],
+  "blockers": [
+    "Session was aborted"
+  ]
+}

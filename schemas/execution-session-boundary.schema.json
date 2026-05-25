@@ -1,0 +1,296 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ExecutionSessionBoundary",
+  "description": "Schema for an M58 Execution Session Boundary result artifact. Does not open a session. Does not authorize execution. Does not approve task completion. Does not verify execution result. Does not mutate lifecycle state. Boundary satisfaction is not execution authorization.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "boundary_id",
+    "task_id",
+    "request_id",
+    "preconditions_id",
+    "boundary_status",
+    "checked_at",
+    "checked_by",
+    "source_references",
+    "scope_boundary",
+    "command_boundary",
+    "write_boundary",
+    "protected_path_boundary",
+    "session_state_boundary",
+    "session_close_boundary",
+    "violation_classification",
+    "warnings",
+    "blockers",
+    "handoff_to_record_output_contract",
+    "non_authority_acknowledgement"
+  ],
+  "properties": {
+    "boundary_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "task_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "request_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "preconditions_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "boundary_status": {
+      "type": "string",
+      "enum": [
+        "EXECUTION_SESSION_BOUNDARY_SATISFIED",
+        "EXECUTION_SESSION_BOUNDARY_SATISFIED_WITH_WARNINGS",
+        "EXECUTION_SESSION_BOUNDARY_NOT_SATISFIED",
+        "EXECUTION_SESSION_BOUNDARY_BLOCKED"
+      ]
+    },
+    "checked_at": {
+      "type": "string",
+      "minLength": 1
+    },
+    "checked_by": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Metadata only. Must not be treated as approval."
+    },
+    "source_references": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "m58_intake_report_path",
+        "m58_architecture_path",
+        "request_contract_path",
+        "request_schema_path",
+        "preconditions_contract_path",
+        "preconditions_schema_path",
+        "execution_session_request_path",
+        "execution_session_preconditions_path"
+      ],
+      "properties": {
+        "m58_intake_report_path": { "type": "string", "minLength": 1 },
+        "m58_architecture_path": { "type": "string", "minLength": 1 },
+        "request_contract_path": { "type": "string", "minLength": 1 },
+        "request_schema_path": { "type": "string", "minLength": 1 },
+        "preconditions_contract_path": { "type": "string", "minLength": 1 },
+        "preconditions_schema_path": { "type": "string", "minLength": 1 },
+        "execution_session_request_path": { "type": "string", "minLength": 1 },
+        "execution_session_preconditions_path": { "type": "string", "minLength": 1 }
+      }
+    },
+    "scope_boundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "scope_summary_present",
+        "allowed_files_declared",
+        "allowed_dirs_declared",
+        "out_of_scope_declared",
+        "max_file_count_declared",
+        "scope_expansion_allowed",
+        "scope_expansion_policy",
+        "scope_boundary_result"
+      ],
+      "properties": {
+        "scope_summary_present": { "type": "boolean" },
+        "allowed_files_declared": { "type": "boolean" },
+        "allowed_dirs_declared": { "type": "boolean" },
+        "out_of_scope_declared": { "type": "boolean" },
+        "max_file_count_declared": { "type": "boolean" },
+        "scope_expansion_allowed": {
+          "type": "boolean",
+          "const": false,
+          "description": "Must be false unless a future human checkpoint explicitly permits expansion."
+        },
+        "scope_expansion_policy": { "type": "string" },
+        "scope_boundary_result": {
+          "type": "string",
+          "enum": [
+            "SCOPE_BOUNDARY_SATISFIED",
+            "SCOPE_BOUNDARY_SATISFIED_WITH_WARNINGS",
+            "SCOPE_BOUNDARY_NOT_SATISFIED",
+            "SCOPE_BOUNDARY_BLOCKED"
+          ]
+        }
+      }
+    },
+    "command_boundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "allowed_commands_declared",
+        "forbidden_commands_declared",
+        "unknown_commands_policy",
+        "dangerous_commands_absent_from_allowed",
+        "human_checkpoint_commands_declared",
+        "command_boundary_result"
+      ],
+      "properties": {
+        "allowed_commands_declared": { "type": "boolean" },
+        "forbidden_commands_declared": { "type": "boolean" },
+        "unknown_commands_policy": { "type": "string" },
+        "dangerous_commands_absent_from_allowed": { "type": "boolean" },
+        "human_checkpoint_commands_declared": { "type": "boolean" },
+        "command_boundary_result": {
+          "type": "string",
+          "enum": [
+            "COMMAND_BOUNDARY_SATISFIED",
+            "COMMAND_BOUNDARY_SATISFIED_WITH_WARNINGS",
+            "COMMAND_BOUNDARY_NOT_SATISFIED",
+            "COMMAND_BOUNDARY_BLOCKED"
+          ]
+        }
+      }
+    },
+    "write_boundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "requested_write_paths_declared",
+        "write_paths_within_scope",
+        "write_paths_exclude_m59_artifacts",
+        "write_paths_exclude_approval_records",
+        "write_paths_exclude_lifecycle_state",
+        "write_paths_exclude_unscoped_protected_reports",
+        "write_boundary_result"
+      ],
+      "properties": {
+        "requested_write_paths_declared": { "type": "boolean" },
+        "write_paths_within_scope": { "type": "boolean" },
+        "write_paths_exclude_m59_artifacts": { "type": "boolean" },
+        "write_paths_exclude_approval_records": { "type": "boolean" },
+        "write_paths_exclude_lifecycle_state": { "type": "boolean" },
+        "write_paths_exclude_unscoped_protected_reports": { "type": "boolean" },
+        "write_boundary_result": {
+          "type": "string",
+          "enum": [
+            "WRITE_BOUNDARY_SATISFIED",
+            "WRITE_BOUNDARY_SATISFIED_WITH_WARNINGS",
+            "WRITE_BOUNDARY_NOT_SATISFIED",
+            "WRITE_BOUNDARY_BLOCKED"
+          ]
+        }
+      }
+    },
+    "protected_path_boundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "protected_paths_declared",
+        "protected_paths_acknowledged",
+        "protected_paths_excluded_from_writes",
+        "protected_path_override_requested",
+        "protected_path_human_checkpoint_required",
+        "protected_path_boundary_result"
+      ],
+      "properties": {
+        "protected_paths_declared": { "type": "boolean" },
+        "protected_paths_acknowledged": { "type": "boolean" },
+        "protected_paths_excluded_from_writes": { "type": "boolean" },
+        "protected_path_override_requested": { "type": "boolean" },
+        "protected_path_human_checkpoint_required": { "type": "boolean" },
+        "protected_path_boundary_result": {
+          "type": "string",
+          "enum": [
+            "PROTECTED_PATH_BOUNDARY_SATISFIED",
+            "PROTECTED_PATH_BOUNDARY_SATISFIED_WITH_WARNINGS",
+            "PROTECTED_PATH_BOUNDARY_NOT_SATISFIED",
+            "PROTECTED_PATH_BOUNDARY_BLOCKED"
+          ]
+        }
+      }
+    },
+    "session_state_boundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "session_already_open",
+        "conflicting_session_record_exists",
+        "session_state_claimed_by_request",
+        "allowed_initial_state",
+        "session_state_boundary_result"
+      ],
+      "properties": {
+        "session_already_open": { "type": "boolean" },
+        "conflicting_session_record_exists": { "type": "boolean" },
+        "session_state_claimed_by_request": { "type": "string" },
+        "allowed_initial_state": { "type": "boolean" },
+        "session_state_boundary_result": {
+          "type": "string",
+          "enum": [
+            "SESSION_STATE_BOUNDARY_SATISFIED",
+            "SESSION_STATE_BOUNDARY_SATISFIED_WITH_WARNINGS",
+            "SESSION_STATE_BOUNDARY_NOT_SATISFIED",
+            "SESSION_STATE_BOUNDARY_BLOCKED"
+          ]
+        }
+      }
+    },
+    "session_close_boundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "allowed_close_state",
+        "m59_handoff_required",
+        "task_completion_claim_absent",
+        "result_verification_claim_absent",
+        "lifecycle_mutation_claim_absent",
+        "session_close_boundary_result"
+      ],
+      "properties": {
+        "allowed_close_state": { "type": "string" },
+        "m59_handoff_required": {
+          "type": "boolean",
+          "const": true,
+          "description": "Must be true. M58 may close only as pending M59 verification."
+        },
+        "task_completion_claim_absent": { "type": "boolean" },
+        "result_verification_claim_absent": { "type": "boolean" },
+        "lifecycle_mutation_claim_absent": { "type": "boolean" },
+        "session_close_boundary_result": {
+          "type": "string",
+          "enum": [
+            "SESSION_CLOSE_BOUNDARY_SATISFIED",
+            "SESSION_CLOSE_BOUNDARY_SATISFIED_WITH_WARNINGS",
+            "SESSION_CLOSE_BOUNDARY_NOT_SATISFIED",
+            "SESSION_CLOSE_BOUNDARY_BLOCKED"
+          ]
+        }
+      }
+    },
+    "violation_classification": {
+      "type": "string",
+      "enum": [
+        "NO_BOUNDARY_VIOLATION",
+        "BOUNDARY_WARNING",
+        "BOUNDARY_NOT_SATISFIED",
+        "BOUNDARY_BLOCKER",
+        "BOUNDARY_UNSAFE",
+        "BOUNDARY_CONTRADICTORY",
+        "BOUNDARY_PREMATURE_DOWNSTREAM"
+      ]
+    },
+    "warnings": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "blockers": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "handoff_to_record_output_contract": {
+      "type": "boolean",
+      "description": "true only when boundary_status is SATISFIED or SATISFIED_WITH_WARNINGS."
+    },
+    "non_authority_acknowledgement": {
+      "type": "string",
+      "minLength": 1
+    }
+  }
+}

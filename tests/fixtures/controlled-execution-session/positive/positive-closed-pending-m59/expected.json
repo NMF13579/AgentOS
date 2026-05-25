@@ -1,0 +1,9 @@
+{
+  "expected_result": "CONTROLLED_EXECUTION_SESSION_READY",
+  "expected_policy_decision": "M58_SESSION_POLICY_READY",
+  "expected_exit_code": 0,
+  "strict_expected_result": null,
+  "strict_expected_policy_decision": null,
+  "strict_expected_exit_code": null,
+  "non_authority_required": true
+}

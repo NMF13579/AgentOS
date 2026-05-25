@@ -1,0 +1,8 @@
+{
+  "task_id": "task-closed-pending",
+  "request_id": "request-closed-pending",
+  "request_status": "EXECUTION_SESSION_REQUEST_READY_FOR_PRECONDITIONS",
+  "handoff_to_m59_required": true,
+  "warnings": [],
+  "blockers": []
+}

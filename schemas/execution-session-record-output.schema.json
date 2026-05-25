@@ -1,0 +1,270 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ExecutionSessionRecordOutput",
+  "description": "Schema for an M58 Execution Session Record/Output artifact. Does not approve task completion. Does not verify execution result. Does not authorize merge, push, or release. Does not mutate lifecycle state. M58 record/output is input for M59 verification.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "record_id",
+    "task_id",
+    "session_id",
+    "request_id",
+    "preconditions_id",
+    "boundary_id",
+    "record_status",
+    "created_at",
+    "created_by",
+    "source_references",
+    "session_state_summary",
+    "boundary_snapshot",
+    "command_records",
+    "write_records",
+    "blocked_action_records",
+    "session_close",
+    "m59_handoff",
+    "warnings",
+    "blockers",
+    "non_authority_acknowledgement"
+  ],
+  "properties": {
+    "record_id": { "type": "string", "minLength": 1 },
+    "task_id": { "type": "string", "minLength": 1 },
+    "session_id": { "type": "string", "minLength": 1 },
+    "request_id": { "type": "string", "minLength": 1 },
+    "preconditions_id": { "type": "string", "minLength": 1 },
+    "boundary_id": { "type": "string", "minLength": 1 },
+    "record_status": {
+      "type": "string",
+      "enum": [
+        "EXECUTION_SESSION_RECORD_DRAFT",
+        "EXECUTION_SESSION_RECORD_READY_FOR_POLICY",
+        "EXECUTION_SESSION_RECORD_CLOSED_PENDING_M59_VERIFICATION",
+        "EXECUTION_SESSION_RECORD_BLOCKED",
+        "EXECUTION_SESSION_RECORD_ABORTED"
+      ]
+    },
+    "created_at": { "type": "string", "minLength": 1 },
+    "created_by": { "type": "string", "minLength": 1, "description": "Metadata only. Must not be treated as approval." },
+    "source_references": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "m58_intake_report_path",
+        "m58_architecture_path",
+        "request_contract_path",
+        "preconditions_contract_path",
+        "boundary_contract_path",
+        "execution_session_request_path",
+        "execution_session_preconditions_path",
+        "execution_session_boundary_path"
+      ],
+      "properties": {
+        "m58_intake_report_path": { "type": "string", "minLength": 1 },
+        "m58_architecture_path": { "type": "string", "minLength": 1 },
+        "request_contract_path": { "type": "string", "minLength": 1 },
+        "preconditions_contract_path": { "type": "string", "minLength": 1 },
+        "boundary_contract_path": { "type": "string", "minLength": 1 },
+        "execution_session_request_path": { "type": "string", "minLength": 1 },
+        "execution_session_preconditions_path": { "type": "string", "minLength": 1 },
+        "execution_session_boundary_path": { "type": "string", "minLength": 1 }
+      }
+    },
+    "session_state_summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "initial_state",
+        "final_state",
+        "session_opened",
+        "session_paused",
+        "session_blocked",
+        "session_aborted",
+        "session_closed_pending_m59"
+      ],
+      "properties": {
+        "initial_state": {
+          "type": "string",
+          "enum": ["SESSION_NOT_STARTED", "SESSION_READY_FOR_CONTROLLED_OPEN"]
+        },
+        "final_state": {
+          "type": "string",
+          "enum": [
+            "SESSION_NOT_STARTED",
+            "SESSION_BLOCKED",
+            "SESSION_ABORTED",
+            "SESSION_CLOSED_PENDING_M59_VERIFICATION"
+          ]
+        },
+        "session_opened": { "type": "boolean" },
+        "session_paused": { "type": "boolean" },
+        "session_blocked": { "type": "boolean" },
+        "session_aborted": { "type": "boolean" },
+        "session_closed_pending_m59": { "type": "boolean" }
+      }
+    },
+    "boundary_snapshot": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "scope_boundary_result",
+        "command_boundary_result",
+        "write_boundary_result",
+        "protected_path_boundary_result",
+        "session_state_boundary_result",
+        "session_close_boundary_result",
+        "violation_classification"
+      ],
+      "properties": {
+        "scope_boundary_result": {
+          "type": "string",
+          "enum": ["SCOPE_BOUNDARY_SATISFIED", "SCOPE_BOUNDARY_SATISFIED_WITH_WARNINGS", "SCOPE_BOUNDARY_NOT_SATISFIED", "SCOPE_BOUNDARY_BLOCKED"]
+        },
+        "command_boundary_result": {
+          "type": "string",
+          "enum": ["COMMAND_BOUNDARY_SATISFIED", "COMMAND_BOUNDARY_SATISFIED_WITH_WARNINGS", "COMMAND_BOUNDARY_NOT_SATISFIED", "COMMAND_BOUNDARY_BLOCKED"]
+        },
+        "write_boundary_result": {
+          "type": "string",
+          "enum": ["WRITE_BOUNDARY_SATISFIED", "WRITE_BOUNDARY_SATISFIED_WITH_WARNINGS", "WRITE_BOUNDARY_NOT_SATISFIED", "WRITE_BOUNDARY_BLOCKED"]
+        },
+        "protected_path_boundary_result": {
+          "type": "string",
+          "enum": ["PROTECTED_PATH_BOUNDARY_SATISFIED", "PROTECTED_PATH_BOUNDARY_SATISFIED_WITH_WARNINGS", "PROTECTED_PATH_BOUNDARY_NOT_SATISFIED", "PROTECTED_PATH_BOUNDARY_BLOCKED"]
+        },
+        "session_state_boundary_result": {
+          "type": "string",
+          "enum": ["SESSION_STATE_BOUNDARY_SATISFIED", "SESSION_STATE_BOUNDARY_SATISFIED_WITH_WARNINGS", "SESSION_STATE_BOUNDARY_NOT_SATISFIED", "SESSION_STATE_BOUNDARY_BLOCKED"]
+        },
+        "session_close_boundary_result": {
+          "type": "string",
+          "enum": ["SESSION_CLOSE_BOUNDARY_SATISFIED", "SESSION_CLOSE_BOUNDARY_SATISFIED_WITH_WARNINGS", "SESSION_CLOSE_BOUNDARY_NOT_SATISFIED", "SESSION_CLOSE_BOUNDARY_BLOCKED"]
+        },
+        "violation_classification": {
+          "type": "string",
+          "enum": ["NO_BOUNDARY_VIOLATION", "BOUNDARY_WARNING", "BOUNDARY_NOT_SATISFIED", "BOUNDARY_BLOCKER", "BOUNDARY_UNSAFE", "BOUNDARY_CONTRADICTORY", "BOUNDARY_PREMATURE_DOWNSTREAM"]
+        }
+      }
+    },
+    "command_records": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "commands_requested",
+        "commands_allowed",
+        "commands_blocked",
+        "unknown_commands_detected",
+        "dangerous_commands_detected"
+      ],
+      "properties": {
+        "commands_requested": { "type": "array", "items": { "type": "string" } },
+        "commands_allowed": { "type": "array", "items": { "type": "string" } },
+        "commands_blocked": { "type": "array", "items": { "type": "string" } },
+        "unknown_commands_detected": { "type": "boolean" },
+        "dangerous_commands_detected": { "type": "boolean" }
+      }
+    },
+    "write_records": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "write_paths_requested",
+        "write_paths_allowed",
+        "write_paths_blocked",
+        "protected_write_attempts",
+        "m59_artifact_write_attempts",
+        "approval_record_write_attempts",
+        "lifecycle_state_write_attempts"
+      ],
+      "properties": {
+        "write_paths_requested": { "type": "array", "items": { "type": "string" } },
+        "write_paths_allowed": { "type": "array", "items": { "type": "string" } },
+        "write_paths_blocked": { "type": "array", "items": { "type": "string" } },
+        "protected_write_attempts": { "type": "integer", "minimum": 0 },
+        "m59_artifact_write_attempts": { "type": "integer", "minimum": 0 },
+        "approval_record_write_attempts": { "type": "integer", "minimum": 0 },
+        "lifecycle_state_write_attempts": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "blocked_action_records": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "execution_start_blocked",
+        "command_blocked",
+        "write_blocked",
+        "protected_path_blocked",
+        "approval_creation_blocked",
+        "lifecycle_mutation_blocked",
+        "commit_blocked",
+        "push_blocked",
+        "merge_blocked",
+        "m59_artifact_blocked"
+      ],
+      "properties": {
+        "execution_start_blocked": { "type": "boolean" },
+        "command_blocked": { "type": "boolean" },
+        "write_blocked": { "type": "boolean" },
+        "protected_path_blocked": { "type": "boolean" },
+        "approval_creation_blocked": { "type": "boolean" },
+        "lifecycle_mutation_blocked": { "type": "boolean" },
+        "commit_blocked": { "type": "boolean" },
+        "push_blocked": { "type": "boolean" },
+        "merge_blocked": { "type": "boolean" },
+        "m59_artifact_blocked": { "type": "boolean" }
+      }
+    },
+    "session_close": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "close_status",
+        "closed_at",
+        "close_reason",
+        "closed_pending_m59_verification",
+        "task_completion_claimed",
+        "result_verification_claimed",
+        "lifecycle_mutation_claimed"
+      ],
+      "properties": {
+        "close_status": {
+          "type": "string",
+          "enum": [
+            "SESSION_CLOSE_NOT_CLOSED",
+            "SESSION_CLOSE_PENDING_M59_VERIFICATION",
+            "SESSION_CLOSE_ABORTED",
+            "SESSION_CLOSE_BLOCKED"
+          ]
+        },
+        "closed_at": { "type": ["string", "null"] },
+        "close_reason": { "type": "string" },
+        "closed_pending_m59_verification": { "type": "boolean" },
+        "task_completion_claimed": { "type": "boolean", "const": false },
+        "result_verification_claimed": { "type": "boolean", "const": false },
+        "lifecycle_mutation_claimed": { "type": "boolean", "const": false }
+      }
+    },
+    "m59_handoff": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "handoff_required",
+        "handoff_ready",
+        "expected_m59_inputs",
+        "known_warnings",
+        "known_blockers",
+        "unresolved_questions"
+      ],
+      "properties": {
+        "handoff_required": { "type": "boolean", "const": true },
+        "handoff_ready": { "type": "boolean" },
+        "expected_m59_inputs": { "type": "array", "items": { "type": "string" } },
+        "known_warnings": { "type": "array", "items": { "type": "string" } },
+        "known_blockers": { "type": "array", "items": { "type": "string" } },
+        "unresolved_questions": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "warnings": { "type": "array", "items": { "type": "string" } },
+    "blockers": { "type": "array", "items": { "type": "string" } },
+    "non_authority_acknowledgement": { "type": "string", "minLength": 1 }
+  }
+}

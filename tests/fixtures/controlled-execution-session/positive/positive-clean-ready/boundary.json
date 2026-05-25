@@ -1,0 +1,9 @@
+{
+  "task_id": "task-clean-ready",
+  "request_id": "request-clean-ready",
+  "preconditions_id": "preconditions-clean-ready",
+  "boundary_id": "boundary-clean-ready",
+  "boundary_status": "EXECUTION_SESSION_BOUNDARY_SATISFIED",
+  "warnings": [],
+  "blockers": []
+}

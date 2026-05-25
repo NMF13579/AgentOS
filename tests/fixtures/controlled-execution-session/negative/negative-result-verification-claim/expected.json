@@ -1,0 +1,7 @@
+{
+  "expected_result": "CONTROLLED_EXECUTION_SESSION_BLOCKED",
+  "expected_policy_decision": "M58_SESSION_POLICY_BLOCKED",
+  "expected_exit_code": 2,
+  "negative_reason": "unauthorized result verification claim",
+  "non_authority_required": true
+}

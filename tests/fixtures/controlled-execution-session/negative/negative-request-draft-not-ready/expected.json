@@ -1,0 +1,7 @@
+{
+  "expected_result": "CONTROLLED_EXECUTION_SESSION_NOT_READY",
+  "expected_policy_decision": "M58_SESSION_POLICY_NOT_READY",
+  "expected_exit_code": 1,
+  "negative_reason": "request status is draft",
+  "non_authority_required": true
+}

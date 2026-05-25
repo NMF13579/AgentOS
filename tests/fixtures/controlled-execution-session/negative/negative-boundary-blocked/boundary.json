@@ -1,0 +1,11 @@
+{
+  "task_id": "task-negative-test",
+  "request_id": "request-negative-test",
+  "preconditions_id": "preconditions-negative-test",
+  "boundary_id": "boundary-negative-test",
+  "boundary_status": "EXECUTION_SESSION_BOUNDARY_BLOCKED",
+  "warnings": [],
+  "blockers": [
+    "Boundary violation detected"
+  ]
+}
