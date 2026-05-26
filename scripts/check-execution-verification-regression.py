@@ -262,17 +262,36 @@ def run_check_final_status(root: Path, state: dict) -> None:
 
 def run_check_no_premature(root: Path, state: dict) -> None:
     check = "no-premature-downstream"
+    summary = root / "reports/m60-cleanup-integration-summary.md"
+    m60_12_created = False
+    if summary.exists():
+        txt = read_text(summary)
+        m60_12_created = any(
+            marker in txt
+            for marker in [
+                "FINAL_STATUS: M60_INTEGRATION_PASS",
+                "FINAL_STATUS: M60_INTEGRATION_PASS_WITH_WARNINGS",
+                "FINAL_STATUS: M60_INTEGRATION_BLOCKED",
+            ]
+        )
+
+    if summary.exists() and not m60_12_created:
+        add_blocker(
+            state,
+            check,
+            "forbidden downstream artifact exists for current phase: reports/m60-cleanup-integration-summary.md",
+        )
+
     for rel in [
-        "reports/m60-cleanup-integration-summary.md",
         "reports/m60-cleanup-action-review.json",
         "reports/m60-cleanup-evidence-report.md",
         "reports/m60-completion-review.md",
     ]:
         if (root / rel).exists():
-            add_blocker(state, check, f"forbidden downstream artifact exists: {rel}")
+            add_blocker(state, check, f"forbidden downstream artifact exists before allowed phase: {rel}")
 
     roots = ["reports", "docs", "scripts", "tests", "templates", "schemas", "data"]
-    needles = ("m61", "m62", "hardening", "dogfooding", "real-task-trial", "diagnostic-trial")
+    needles = ("m61", "m62")
     for top in roots:
         base = root / top
         if not base.exists():
@@ -283,9 +302,6 @@ def run_check_no_premature(root: Path, state: dict) -> None:
             rel = fp.relative_to(root).as_posix()
             low = rel.lower()
             if any(n in low for n in needles) and not is_legacy_exempt(rel):
-                # Maintain legacy behavior compatibility in current repo state.
-                if ("m61" not in low and "m62" not in low) and any(k in low for k in ("hardening", "dogfooding", "real-task-trial", "diagnostic-trial")):
-                    continue
                 add_blocker(state, check, f"premature downstream artifact detected: {rel}")
 
 

@@ -44,10 +44,10 @@ PHASE_GATED_ARTIFACTS = [
     "reports/m60-documentation-consolidation-report.md",
     "scripts/check-execution-verification-regression.py",
     "docs/EXECUTION-VERIFICATION-REGRESSION-RUNNER.md",
+    "reports/m60-cleanup-integration-summary.md",
 ]
 
 ALWAYS_FORBIDDEN_UNTIL_LATER = [
-    "reports/m60-cleanup-integration-summary.md",
     "reports/m60-cleanup-action-review.json",
     "reports/m60-cleanup-evidence-report.md",
     "reports/m60-completion-review.md",
@@ -214,6 +214,7 @@ def detect_m60_phase(root: Path):
         "m60_9_complete": False,
         "m60_10_complete": False,
         "m60_11_complete": False,
+        "m60_12_created": False,
     }
     phase["m60_9_complete"] = file_contains_any(
         root / "reports/m60-documentation-pruning-plan.md",
@@ -232,6 +233,14 @@ def detect_m60_phase(root: Path):
     phase["m60_11_complete"] = file_contains_any(
         root / "docs/EXECUTION-VERIFICATION-REGRESSION-RUNNER.md",
         ["FINAL_STATUS: M60_REGRESSION_RUNNER_DEFINED"],
+    )
+    phase["m60_12_created"] = file_contains_any(
+        root / "reports/m60-cleanup-integration-summary.md",
+        [
+            "FINAL_STATUS: M60_INTEGRATION_PASS",
+            "FINAL_STATUS: M60_INTEGRATION_PASS_WITH_WARNINGS",
+            "FINAL_STATUS: M60_INTEGRATION_BLOCKED",
+        ],
     )
     return phase
 
@@ -268,6 +277,8 @@ def run_no_premature(state, root):
             "scripts/check-execution-verification-regression.py",
             "docs/EXECUTION-VERIFICATION-REGRESSION-RUNNER.md",
         ) and phase["m60_11_complete"]:
+            continue
+        if p == "reports/m60-cleanup-integration-summary.md" and phase["m60_12_created"]:
             continue
         add_blocker(state, check, f"forbidden downstream artifact exists for current phase: {p}")
 

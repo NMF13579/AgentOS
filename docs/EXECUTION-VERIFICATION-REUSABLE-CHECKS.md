@@ -27,6 +27,7 @@ M60 phase-aware downstream artifact detection:
 - После подтверждённого завершения 60.9 не блокируется `reports/m60-documentation-pruning-plan.md`.
 - После подтверждённого завершения 60.10 не блокируется `reports/m60-documentation-consolidation-report.md`.
 - После появления `docs/EXECUTION-VERIFICATION-REGRESSION-RUNNER.md` с `FINAL_STATUS: M60_REGRESSION_RUNNER_DEFINED` не блокируются артефакты 60.11 regression runner.
+- После появления `reports/m60-cleanup-integration-summary.md` с `FINAL_STATUS: M60_INTEGRATION_PASS`, `FINAL_STATUS: M60_INTEGRATION_PASS_WITH_WARNINGS` или `FINAL_STATUS: M60_INTEGRATION_BLOCKED` не блокируется сам артефакт 60.12.
 - Преждевременные downstream-артефакты 60.12–60.15 продолжают блокироваться.
 - Реальные M61/M62 артефакты продолжают блокироваться по наличию `m61`/`m62` в пути.
 

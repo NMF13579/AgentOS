@@ -17,6 +17,7 @@ The runner checks that required M59 artifacts exist directly and that M56–M58 
 
 The runner validates required M60 artifacts up to 60.10, then checks registry and reusable-chain checkers as dependencies.
 It blocks premature downstream outputs beyond allowed phase boundaries.
+`no-premature-downstream` is phase-aware through 60.12: after `reports/m60-cleanup-integration-summary.md` exists with `FINAL_STATUS: M60_INTEGRATION_PASS`, `FINAL_STATUS: M60_INTEGRATION_PASS_WITH_WARNINGS`, or `FINAL_STATUS: M60_INTEGRATION_BLOCKED`, the 60.12 report itself is treated as a valid current-phase artifact and is not blocked by existence alone.
 
 ## Implemented Checks
 
