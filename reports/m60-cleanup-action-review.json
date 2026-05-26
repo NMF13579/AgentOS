@@ -1,0 +1,74 @@
+{
+  "review_version": "M60.1",
+  "task_id": "60.13",
+  "review_type": "M60_CLEANUP_ACTION_REVIEW",
+  "source_integration_summary": "reports/m60-cleanup-integration-summary.md",
+  "status": "M60_CLEANUP_ACTION_REVIEW_PASS_WITH_WARNINGS",
+  "final_status": "M60_CLEANUP_ACTION_REVIEW_PASS_WITH_WARNINGS",
+  "integration_summary": {
+    "present": true,
+    "json_block_present": true,
+    "json_block_valid": true,
+    "final_status": "M60_INTEGRATION_PASS_WITH_WARNINGS",
+    "runtime_correlation_present": true
+  },
+  "runtime_checks": {
+    "registry_result": "EXECUTION_VERIFICATION_REGISTRY_VALID",
+    "registry_exit_code": 0,
+    "reusable_chain_result": "EXECUTION_VERIFICATION_CHAIN_VALID_WITH_WARNINGS",
+    "reusable_chain_exit_code": 0,
+    "regression_result": "EXECUTION_VERIFICATION_REGRESSION_PASS_WITH_WARNINGS",
+    "regression_exit_code": 0
+  },
+  "performed_actions": {
+    "approval_created": false,
+    "lifecycle_mutation_performed": false,
+    "human_review_replaced": false,
+    "merge_authorized": false,
+    "push_authorized": false,
+    "release_authorized": false,
+    "real_execution_result_verified": false,
+    "m56_m59_safety_semantics_changed": false,
+    "m56_m59_artifacts_modified_by_this_task": false,
+    "prior_m60_artifacts_modified_by_this_task": false,
+    "registry_modified_by_this_task": false,
+    "reusable_checker_modified_by_this_task": false,
+    "regression_runner_modified_by_this_task": false,
+    "artifacts_deleted": false,
+    "artifacts_renamed": false,
+    "artifacts_moved": false,
+    "artifacts_archived": false,
+    "artifacts_deprecated": false,
+    "artifacts_consolidated": false,
+    "m61_started": false,
+    "m62_started": false
+  },
+  "forbidden_artifacts": {
+    "m60_evidence_report_created": false,
+    "m60_completion_review_created": false,
+    "m61_artifacts_created": false,
+    "m62_artifacts_created": false
+  },
+  "protected_paths": {
+    "status": "PROTECTED_PATHS_UNCHANGED",
+    "modified_by_this_task": [],
+    "git_diff_name_only": [],
+    "git_diff_head_name_only": []
+  },
+  "warnings": [
+    "reusable chain checker returned warnings",
+    "regression runner returned warnings"
+  ],
+  "blockers": [],
+  "non_authority": [
+    "M60 cleanup action review is not approval.",
+    "M60 cleanup action review does not start cleanup execution.",
+    "M60 cleanup action review does not mutate lifecycle state.",
+    "M60 cleanup action review does not authorize merge, push, or release.",
+    "M60 cleanup action review does not change M56–M59 safety semantics.",
+    "M60 cleanup action review does not replace human review.",
+    "M60 cleanup action review does not verify a real execution result.",
+    "M60 cleanup action review does not create evidence report or completion review.",
+    "M60 cleanup action review does not authorize starting 60.14 automatically."
+  ]
+}
