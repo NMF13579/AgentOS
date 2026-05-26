@@ -1,0 +1,5 @@
+{
+  "changed_files": [
+    "tests/fixtures/m62-task-acceptance-mvp/valid-minimal-task-result/expected-artifacts/result.txt"
+  ]
+}

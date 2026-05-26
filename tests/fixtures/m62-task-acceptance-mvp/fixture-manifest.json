@@ -1,0 +1,63 @@
+{
+  "milestone": "M62",
+  "fixture_suite": "m62-task-acceptance-mvp",
+  "purpose": "Controlled trial fixtures for the thin M62 task acceptance MVP runner.",
+  "full_false_pass_suite": false,
+  "human_review_required": true,
+  "fixtures": [
+    {
+      "name": "valid-minimal-task-result",
+      "expected_result": "TASK_VALIDATION_PASS",
+      "category": "positive",
+      "description": "Minimal valid packaged task result."
+    },
+    {
+      "name": "valid-with-warning",
+      "expected_result": "TASK_VALIDATION_PASS_WITH_WARNINGS",
+      "category": "positive",
+      "description": "Valid package with non-blocking warning via known limitations."
+    },
+    {
+      "name": "missing-evidence",
+      "expected_result": "TASK_VALIDATION_BLOCKED",
+      "category": "negative",
+      "description": "Required evidence file is intentionally missing."
+    },
+    {
+      "name": "missing-expected-artifact",
+      "expected_result": "TASK_VALIDATION_BLOCKED",
+      "category": "negative",
+      "description": "Expected artifact is declared but absent."
+    },
+    {
+      "name": "forbidden-path-changed",
+      "expected_result": "TASK_VALIDATION_BLOCKED",
+      "category": "negative",
+      "description": "Changed files include forbidden future-milestone path."
+    },
+    {
+      "name": "human-review-disabled",
+      "expected_result": "TASK_VALIDATION_BLOCKED",
+      "category": "negative",
+      "description": "Input attempts to disable mandatory human review."
+    },
+    {
+      "name": "approval-claim-present",
+      "expected_result": "TASK_VALIDATION_BLOCKED",
+      "category": "negative",
+      "description": "Evidence includes affirmative approval claim."
+    },
+    {
+      "name": "malformed-changed-files-json",
+      "expected_result": "TASK_VALIDATION_BLOCKED",
+      "category": "negative",
+      "description": "changed-files input is malformed JSON."
+    },
+    {
+      "name": "not-enough-evidence",
+      "expected_result": "TASK_VALIDATION_NOT_ENOUGH_EVIDENCE",
+      "category": "negative",
+      "description": "Evidence exists but lacks sufficient correlation and summary."
+    }
+  ]
+}
