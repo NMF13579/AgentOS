@@ -29,6 +29,8 @@ M60 phase-aware downstream artifact detection:
 - После появления `docs/EXECUTION-VERIFICATION-REGRESSION-RUNNER.md` с `FINAL_STATUS: M60_REGRESSION_RUNNER_DEFINED` не блокируются артефакты 60.11 regression runner.
 - После появления `reports/m60-cleanup-integration-summary.md` с `FINAL_STATUS: M60_INTEGRATION_PASS`, `FINAL_STATUS: M60_INTEGRATION_PASS_WITH_WARNINGS` или `FINAL_STATUS: M60_INTEGRATION_BLOCKED` не блокируется сам артефакт 60.12.
 - После появления `reports/m60-cleanup-action-review.json` с `final_status` из семейства `M60_CLEANUP_ACTION_REVIEW_*` не блокируется сам артефакт 60.13.
+- После появления `reports/m60-cleanup-evidence-report.md` с `FINAL_STATUS: M60_CLEANUP_EVIDENCE_COMPLETE`, `FINAL_STATUS: M60_CLEANUP_EVIDENCE_COMPLETE_WITH_WARNINGS` или `FINAL_STATUS: M60_CLEANUP_EVIDENCE_BLOCKED` не блокируется сам артефакт 60.14.
+- После появления `reports/m60-completion-review.md` с `FINAL_STATUS: M60_CLEANUP_COMPLETE`, `FINAL_STATUS: M60_CLEANUP_COMPLETE_WITH_WARNINGS` или `FINAL_STATUS: M60_CLEANUP_BLOCKED` не блокируется сам артефакт 60.15.
 - Преждевременные downstream-артефакты 60.12–60.15 продолжают блокироваться.
 - Реальные M61/M62 артефакты продолжают блокироваться по наличию `m61`/`m62` в пути.
 

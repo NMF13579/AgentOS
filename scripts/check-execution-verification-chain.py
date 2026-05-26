@@ -46,11 +46,11 @@ PHASE_GATED_ARTIFACTS = [
     "docs/EXECUTION-VERIFICATION-REGRESSION-RUNNER.md",
     "reports/m60-cleanup-integration-summary.md",
     "reports/m60-cleanup-action-review.json",
+    "reports/m60-cleanup-evidence-report.md",
+    "reports/m60-completion-review.md",
 ]
 
 ALWAYS_FORBIDDEN_UNTIL_LATER = [
-    "reports/m60-cleanup-evidence-report.md",
-    "reports/m60-completion-review.md",
 ]
 
 SOURCE_PATHS = [
@@ -216,6 +216,8 @@ def detect_m60_phase(root: Path):
         "m60_11_complete": False,
         "m60_12_created": False,
         "m60_13_created": False,
+        "m60_14_created": False,
+        "m60_15_created": False,
     }
     phase["m60_9_complete"] = file_contains_any(
         root / "reports/m60-documentation-pruning-plan.md",
@@ -254,6 +256,25 @@ def detect_m60_phase(root: Path):
             }
         except Exception:
             phase["m60_13_created"] = False
+
+    evidence_report = root / "reports/m60-cleanup-evidence-report.md"
+    phase["m60_14_created"] = file_contains_any(
+        evidence_report,
+        [
+            "FINAL_STATUS: M60_CLEANUP_EVIDENCE_COMPLETE",
+            "FINAL_STATUS: M60_CLEANUP_EVIDENCE_COMPLETE_WITH_WARNINGS",
+            "FINAL_STATUS: M60_CLEANUP_EVIDENCE_BLOCKED",
+        ],
+    )
+    completion_review = root / "reports/m60-completion-review.md"
+    phase["m60_15_created"] = file_contains_any(
+        completion_review,
+        [
+            "FINAL_STATUS: M60_CLEANUP_COMPLETE",
+            "FINAL_STATUS: M60_CLEANUP_COMPLETE_WITH_WARNINGS",
+            "FINAL_STATUS: M60_CLEANUP_BLOCKED",
+        ],
+    )
     return phase
 
 
@@ -293,6 +314,10 @@ def run_no_premature(state, root):
         if p == "reports/m60-cleanup-integration-summary.md" and phase["m60_12_created"]:
             continue
         if p == "reports/m60-cleanup-action-review.json" and phase["m60_13_created"]:
+            continue
+        if p == "reports/m60-cleanup-evidence-report.md" and phase["m60_14_created"]:
+            continue
+        if p == "reports/m60-completion-review.md" and phase["m60_15_created"]:
             continue
         add_blocker(state, check, f"forbidden downstream artifact exists for current phase: {p}")
 

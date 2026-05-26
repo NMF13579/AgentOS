@@ -301,12 +301,43 @@ def run_check_no_premature(root: Path, state: dict) -> None:
             "forbidden downstream artifact exists for current phase: reports/m60-cleanup-action-review.json",
         )
 
-    for rel in [
-        "reports/m60-cleanup-evidence-report.md",
-        "reports/m60-completion-review.md",
-    ]:
-        if (root / rel).exists():
-            add_blocker(state, check, f"forbidden downstream artifact exists before allowed phase: {rel}")
+    evidence_report = root / "reports/m60-cleanup-evidence-report.md"
+    m60_14_created = False
+    if evidence_report.exists():
+        txt = read_text(evidence_report)
+        m60_14_created = any(
+            marker in txt
+            for marker in [
+                "FINAL_STATUS: M60_CLEANUP_EVIDENCE_COMPLETE",
+                "FINAL_STATUS: M60_CLEANUP_EVIDENCE_COMPLETE_WITH_WARNINGS",
+                "FINAL_STATUS: M60_CLEANUP_EVIDENCE_BLOCKED",
+            ]
+        )
+    if evidence_report.exists() and not m60_14_created:
+        add_blocker(
+            state,
+            check,
+            "forbidden downstream artifact exists for current phase: reports/m60-cleanup-evidence-report.md",
+        )
+
+    completion_review = root / "reports/m60-completion-review.md"
+    m60_15_created = False
+    if completion_review.exists():
+        txt = read_text(completion_review)
+        m60_15_created = any(
+            marker in txt
+            for marker in [
+                "FINAL_STATUS: M60_CLEANUP_COMPLETE",
+                "FINAL_STATUS: M60_CLEANUP_COMPLETE_WITH_WARNINGS",
+                "FINAL_STATUS: M60_CLEANUP_BLOCKED",
+            ]
+        )
+    if completion_review.exists() and not m60_15_created:
+        add_blocker(
+            state,
+            check,
+            "forbidden downstream artifact exists for current phase: reports/m60-completion-review.md",
+        )
 
     roots = ["reports", "docs", "scripts", "tests", "templates", "schemas", "data"]
     needles = ("m61", "m62")
