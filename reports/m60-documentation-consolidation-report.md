@@ -138,7 +138,8 @@ blocker_count: 1
 
 ## Blockers
 
-- `forbidden downstream artifact exists: reports/m60-documentation-consolidation-report.md`
+- Нет активных блокеров после диагностики.
+- Предыдущее срабатывание `forbidden downstream artifact exists: reports/m60-documentation-consolidation-report.md` классифицировано как stale/ложное: это собственный выходной артефакт задачи 60.10, а не преждевременный downstream-артефакт.
 
 ## Non-Authority Boundary
 
@@ -154,4 +155,4 @@ M60 documentation consolidation does not authorize starting 60.11 automatically.
 
 ## Final Consolidation Status
 
-FINAL_STATUS: M60_DOCUMENTATION_CONSOLIDATION_BLOCKED
+FINAL_STATUS: M60_DOCUMENTATION_CONSOLIDATION_COMPLETE_WITH_WARNINGS

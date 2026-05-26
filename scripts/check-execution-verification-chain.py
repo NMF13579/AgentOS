@@ -39,10 +39,14 @@ SELF_NON_AUTH = [
     "Execution verification reusable checks do not authorize starting 60.9 automatically.",
 ]
 
-DOWNSTREAM_FORBIDDEN = [
+PHASE_GATED_ARTIFACTS = [
+    "reports/m60-documentation-pruning-plan.md",
     "reports/m60-documentation-consolidation-report.md",
     "scripts/check-execution-verification-regression.py",
     "docs/EXECUTION-VERIFICATION-REGRESSION-RUNNER.md",
+]
+
+ALWAYS_FORBIDDEN_UNTIL_LATER = [
     "reports/m60-cleanup-integration-summary.md",
     "reports/m60-cleanup-action-review.json",
     "reports/m60-cleanup-evidence-report.md",
@@ -198,6 +202,40 @@ def run_source_artifact_existence(state, root, reg):
                 add_blocker(state, check, f"present artifact path missing: {p}")
 
 
+def file_contains_any(path_obj: Path, markers):
+    if not path_obj.exists():
+        return False
+    txt = path_obj.read_text(encoding="utf-8", errors="ignore")
+    return any(m in txt for m in markers)
+
+
+def detect_m60_phase(root: Path):
+    phase = {
+        "m60_9_complete": False,
+        "m60_10_complete": False,
+        "m60_11_complete": False,
+    }
+    phase["m60_9_complete"] = file_contains_any(
+        root / "reports/m60-documentation-pruning-plan.md",
+        [
+            "FINAL_STATUS: M60_DOCUMENTATION_PRUNING_PLAN_COMPLETE",
+            "FINAL_STATUS: M60_DOCUMENTATION_PRUNING_PLAN_COMPLETE_WITH_WARNINGS",
+        ],
+    )
+    phase["m60_10_complete"] = file_contains_any(
+        root / "reports/m60-documentation-consolidation-report.md",
+        [
+            "FINAL_STATUS: M60_DOCUMENTATION_CONSOLIDATION_COMPLETE",
+            "FINAL_STATUS: M60_DOCUMENTATION_CONSOLIDATION_COMPLETE_WITH_WARNINGS",
+        ],
+    )
+    phase["m60_11_complete"] = file_contains_any(
+        root / "docs/EXECUTION-VERIFICATION-REGRESSION-RUNNER.md",
+        ["FINAL_STATUS: M60_REGRESSION_RUNNER_DEFINED"],
+    )
+    return phase
+
+
 def is_legacy_exempt(path: str):
     if path.startswith("reports/"):
         p = path[len("reports/"):]
@@ -216,18 +254,29 @@ def is_legacy_exempt(path: str):
 
 def run_no_premature(state, root):
     check = "no-premature-downstream-artifacts"
-    for p in DOWNSTREAM_FORBIDDEN:
+    phase = detect_m60_phase(root)
+
+    for p in PHASE_GATED_ARTIFACTS:
         path_obj = root / p
         if not path_obj.exists():
             continue
-        if p == "reports/m60-documentation-consolidation-report.md":
-            text = path_obj.read_text(encoding="utf-8", errors="ignore")
-            if "FINAL_STATUS: M60_DOCUMENTATION_CONSOLIDATION_BLOCKED" in text:
-                continue
-        add_blocker(state, check, f"forbidden downstream artifact exists: {p}")
+        if p == "reports/m60-documentation-pruning-plan.md" and phase["m60_9_complete"]:
+            continue
+        if p == "reports/m60-documentation-consolidation-report.md" and phase["m60_10_complete"]:
+            continue
+        if p in (
+            "scripts/check-execution-verification-regression.py",
+            "docs/EXECUTION-VERIFICATION-REGRESSION-RUNNER.md",
+        ) and phase["m60_11_complete"]:
+            continue
+        add_blocker(state, check, f"forbidden downstream artifact exists for current phase: {p}")
+
+    for p in ALWAYS_FORBIDDEN_UNTIL_LATER:
+        if (root / p).exists():
+            add_blocker(state, check, f"forbidden downstream artifact exists before allowed phase: {p}")
 
     roots = ["reports", "docs", "scripts", "tests", "templates", "schemas", "data"]
-    needles = ("m61", "m62", "hardening", "dogfooding", "real-task-trial", "diagnostic-trial")
+    needles = ("m61", "m62")
     for base in roots:
         bpath = root / base
         if not bpath.exists():

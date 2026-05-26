@@ -22,6 +22,14 @@ This implementation follows `reports/m60-validator-consolidation-plan.md` and in
 - policy-version-presence
 - final-status-presence
 
+M60 phase-aware downstream artifact detection:
+- `no-premature-downstream-artifacts` теперь учитывает завершённую фазу M60 по `FINAL_STATUS` в уже созданных M60-артефактах.
+- После подтверждённого завершения 60.9 не блокируется `reports/m60-documentation-pruning-plan.md`.
+- После подтверждённого завершения 60.10 не блокируется `reports/m60-documentation-consolidation-report.md`.
+- После появления `docs/EXECUTION-VERIFICATION-REGRESSION-RUNNER.md` с `FINAL_STATUS: M60_REGRESSION_RUNNER_DEFINED` не блокируются артефакты 60.11 regression runner.
+- Преждевременные downstream-артефакты 60.12–60.15 продолжают блокироваться.
+- Реальные M61/M62 артефакты продолжают блокироваться по наличию `m61`/`m62` в пути.
+
 ## Checks Not Implemented
 
 Not implemented in 60.8:
