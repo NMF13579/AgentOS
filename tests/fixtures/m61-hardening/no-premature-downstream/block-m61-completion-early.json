@@ -1,0 +1,9 @@
+{
+  "case_id": "M61-RP-NP-BLOCK-001",
+  "description": "Premature M61 completion artifacts must be blocked.",
+  "paths": [
+    "reports/m61-completion-review.md",
+    "reports/m61-hardening-evidence-report.md"
+  ],
+  "expected_result": "blocker"
+}

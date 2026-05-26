@@ -1,0 +1,10 @@
+{
+  "case_id": "M61-RP-NP-ALLOW-001",
+  "description": "M61 working artifacts may exist during M61 and must not trigger no-premature blocker.",
+  "paths": [
+    "reports/m61-m60-completion-intake.md",
+    "reports/m61-false-pass-risk-map.md",
+    "reports/m61-checker-hardening-plan.md"
+  ],
+  "expected_result": "no_blocker_from_m61_working_artifacts"
+}

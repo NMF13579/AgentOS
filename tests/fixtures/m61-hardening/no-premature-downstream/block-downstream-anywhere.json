@@ -1,0 +1,10 @@
+{
+  "case_id": "M61-RP-NP-BLOCK-002",
+  "description": "Any M62 artifact path must be blocked before M62.",
+  "paths": [
+    "reports/m62-intake.md",
+    "docs/m62-something.md",
+    "scripts/check-m62-something.py"
+  ],
+  "expected_result": "blocker"
+}

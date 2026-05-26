@@ -340,7 +340,10 @@ def run_check_no_premature(root: Path, state: dict) -> None:
         )
 
     roots = ["reports", "docs", "scripts", "tests", "templates", "schemas", "data"]
-    needles = ("m61", "m62")
+    premature_m61 = {
+        "reports/m61-completion-review.md",
+        "reports/m61-hardening-evidence-report.md",
+    }
     for top in roots:
         base = root / top
         if not base.exists():
@@ -350,7 +353,10 @@ def run_check_no_premature(root: Path, state: dict) -> None:
                 continue
             rel = fp.relative_to(root).as_posix()
             low = rel.lower()
-            if any(n in low for n in needles) and not is_legacy_exempt(rel):
+            if "m62" in low and not is_legacy_exempt(rel):
+                add_blocker(state, check, f"premature downstream artifact detected: {rel}")
+                continue
+            if rel in premature_m61 and not is_legacy_exempt(rel):
                 add_blocker(state, check, f"premature downstream artifact detected: {rel}")
 
 

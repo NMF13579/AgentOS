@@ -53,6 +53,11 @@ PHASE_GATED_ARTIFACTS = [
 ALWAYS_FORBIDDEN_UNTIL_LATER = [
 ]
 
+PREMATURE_M61_ARTIFACTS = [
+    "reports/m61-completion-review.md",
+    "reports/m61-hardening-evidence-report.md",
+]
+
 SOURCE_PATHS = [
     "docs/AGENTOS-EXECUTION-VERIFICATION-REGISTRY-CONTRACT.md",
     "docs/EXECUTION-VERIFICATION-SOURCE-OF-TRUTH.md",
@@ -326,7 +331,6 @@ def run_no_premature(state, root):
             add_blocker(state, check, f"forbidden downstream artifact exists before allowed phase: {p}")
 
     roots = ["reports", "docs", "scripts", "tests", "templates", "schemas", "data"]
-    needles = ("m61", "m62")
     for base in roots:
         bpath = root / base
         if not bpath.exists():
@@ -336,7 +340,10 @@ def run_no_premature(state, root):
                 continue
             rel = fp.relative_to(root).as_posix()
             low = rel.lower()
-            if any(n in low for n in needles) and not is_legacy_exempt(rel):
+            if "m62" in low and not is_legacy_exempt(rel):
+                add_blocker(state, check, f"premature artifact detected: {rel}")
+                continue
+            if rel in PREMATURE_M61_ARTIFACTS and not is_legacy_exempt(rel):
                 add_blocker(state, check, f"premature artifact detected: {rel}")
 
 
