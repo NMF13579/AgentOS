@@ -45,10 +45,10 @@ PHASE_GATED_ARTIFACTS = [
     "scripts/check-execution-verification-regression.py",
     "docs/EXECUTION-VERIFICATION-REGRESSION-RUNNER.md",
     "reports/m60-cleanup-integration-summary.md",
+    "reports/m60-cleanup-action-review.json",
 ]
 
 ALWAYS_FORBIDDEN_UNTIL_LATER = [
-    "reports/m60-cleanup-action-review.json",
     "reports/m60-cleanup-evidence-report.md",
     "reports/m60-completion-review.md",
 ]
@@ -215,6 +215,7 @@ def detect_m60_phase(root: Path):
         "m60_10_complete": False,
         "m60_11_complete": False,
         "m60_12_created": False,
+        "m60_13_created": False,
     }
     phase["m60_9_complete"] = file_contains_any(
         root / "reports/m60-documentation-pruning-plan.md",
@@ -242,6 +243,17 @@ def detect_m60_phase(root: Path):
             "FINAL_STATUS: M60_INTEGRATION_BLOCKED",
         ],
     )
+    action_review = root / "reports/m60-cleanup-action-review.json"
+    if action_review.exists():
+        try:
+            review = load_json(action_review)
+            phase["m60_13_created"] = review.get("final_status") in {
+                "M60_CLEANUP_ACTION_REVIEW_PASS",
+                "M60_CLEANUP_ACTION_REVIEW_PASS_WITH_WARNINGS",
+                "M60_CLEANUP_ACTION_REVIEW_BLOCKED",
+            }
+        except Exception:
+            phase["m60_13_created"] = False
     return phase
 
 
@@ -279,6 +291,8 @@ def run_no_premature(state, root):
         ) and phase["m60_11_complete"]:
             continue
         if p == "reports/m60-cleanup-integration-summary.md" and phase["m60_12_created"]:
+            continue
+        if p == "reports/m60-cleanup-action-review.json" and phase["m60_13_created"]:
             continue
         add_blocker(state, check, f"forbidden downstream artifact exists for current phase: {p}")
 

@@ -282,8 +282,26 @@ def run_check_no_premature(root: Path, state: dict) -> None:
             "forbidden downstream artifact exists for current phase: reports/m60-cleanup-integration-summary.md",
         )
 
+    action_review = root / "reports/m60-cleanup-action-review.json"
+    m60_13_created = False
+    if action_review.exists():
+        try:
+            review = json.loads(read_text(action_review))
+            m60_13_created = review.get("final_status") in {
+                "M60_CLEANUP_ACTION_REVIEW_PASS",
+                "M60_CLEANUP_ACTION_REVIEW_PASS_WITH_WARNINGS",
+                "M60_CLEANUP_ACTION_REVIEW_BLOCKED",
+            }
+        except Exception:
+            m60_13_created = False
+    if action_review.exists() and not m60_13_created:
+        add_blocker(
+            state,
+            check,
+            "forbidden downstream artifact exists for current phase: reports/m60-cleanup-action-review.json",
+        )
+
     for rel in [
-        "reports/m60-cleanup-action-review.json",
         "reports/m60-cleanup-evidence-report.md",
         "reports/m60-completion-review.md",
     ]:
