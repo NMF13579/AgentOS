@@ -1,0 +1,248 @@
+{
+  "review_id": "m65-acceptance-criteria-action-review",
+  "milestone": "M65",
+  "task_id": "65.8",
+  "review_type": "action_review",
+  "contract_version": "1.0.0",
+  "shell_execution_available": true,
+  "git_state_available": true,
+  "comparison_baseline": {
+    "baseline_known": false,
+    "baseline_sha": null,
+    "comparison_method": "git status --short plus git diff --name-only",
+    "risk": "dirty working tree may include unrelated changes",
+    "notes": "Baseline unknown; unrelated dirty changes must not be ignored."
+  },
+  "input_artifacts": {
+    "reports/m65-m64-completion-intake.md": {
+      "path": "reports/m65-m64-completion-intake.md",
+      "exists": true,
+      "detected_status": "M65_INTAKE_READY_WITH_WARNINGS",
+      "notes": ""
+    },
+    "docs/ACCEPTANCE-CRITERIA-CHECKER-ARCHITECTURE.md": {
+      "path": "docs/ACCEPTANCE-CRITERIA-CHECKER-ARCHITECTURE.md",
+      "exists": true,
+      "detected_status": "M65_ACCEPTANCE_CRITERIA_ARCHITECTURE_DEFINED_WITH_WARNINGS",
+      "notes": ""
+    },
+    "schemas/acceptance-criteria-check-package.schema.json": {
+      "path": "schemas/acceptance-criteria-check-package.schema.json",
+      "exists": true,
+      "detected_status": "present",
+      "notes": ""
+    },
+    "docs/ACCEPTANCE-CRITERIA-CHECK-PACKAGE-CONTRACT.md": {
+      "path": "docs/ACCEPTANCE-CRITERIA-CHECK-PACKAGE-CONTRACT.md",
+      "exists": true,
+      "detected_status": "M65_ACCEPTANCE_CRITERIA_CONTRACT_DEFINED_WITH_WARNINGS",
+      "notes": ""
+    },
+    "docs/ACCEPTANCE-CRITERIA-DECISION-SEMANTICS.md": {
+      "path": "docs/ACCEPTANCE-CRITERIA-DECISION-SEMANTICS.md",
+      "exists": true,
+      "detected_status": "M65_ACCEPTANCE_DECISION_SEMANTICS_DEFINED_WITH_WARNINGS",
+      "notes": ""
+    },
+    "docs/ACCEPTANCE-CRITERIA-CLAIM-BOUNDARY.md": {
+      "path": "docs/ACCEPTANCE-CRITERIA-CLAIM-BOUNDARY.md",
+      "exists": true,
+      "detected_status": "M65_ACCEPTANCE_CLAIM_BOUNDARY_DEFINED_WITH_WARNINGS",
+      "notes": ""
+    },
+    "scripts/check-acceptance-criteria.py": {
+      "path": "scripts/check-acceptance-criteria.py",
+      "exists": true,
+      "detected_status": "present",
+      "notes": ""
+    },
+    "docs/ACCEPTANCE-CRITERIA-CHECKER.md": {
+      "path": "docs/ACCEPTANCE-CRITERIA-CHECKER.md",
+      "exists": true,
+      "detected_status": "M65_ACCEPTANCE_CHECKER_DEFINED_WITH_WARNINGS",
+      "notes": ""
+    },
+    "tests/fixtures/m65-acceptance-criteria/README.md": {
+      "path": "tests/fixtures/m65-acceptance-criteria/README.md",
+      "exists": true,
+      "detected_status": "M65_ACCEPTANCE_FIXTURES_COMPLETE_WITH_WARNINGS",
+      "notes": ""
+    },
+    "tests/fixtures/m65-acceptance-criteria/expected-results.json": {
+      "path": "tests/fixtures/m65-acceptance-criteria/expected-results.json",
+      "exists": true,
+      "detected_status": "present",
+      "notes": ""
+    },
+    "reports/m65-acceptance-criteria-integration-summary.md": {
+      "path": "reports/m65-acceptance-criteria-integration-summary.md",
+      "exists": true,
+      "detected_status": "M65_INTEGRATION_PASS_WITH_WARNINGS",
+      "notes": ""
+    }
+  },
+  "expected_artifacts": {
+    "reports/m65-m64-completion-intake.md": {
+      "path": "reports/m65-m64-completion-intake.md",
+      "expected": true,
+      "exists": true,
+      "created_by_m65_task": "65.0",
+      "notes": ""
+    },
+    "docs/ACCEPTANCE-CRITERIA-CHECKER-ARCHITECTURE.md": {
+      "path": "docs/ACCEPTANCE-CRITERIA-CHECKER-ARCHITECTURE.md",
+      "expected": true,
+      "exists": true,
+      "created_by_m65_task": "65.1",
+      "notes": ""
+    },
+    "schemas/acceptance-criteria-check-package.schema.json": {
+      "path": "schemas/acceptance-criteria-check-package.schema.json",
+      "expected": true,
+      "exists": true,
+      "created_by_m65_task": "65.2",
+      "notes": ""
+    },
+    "docs/ACCEPTANCE-CRITERIA-CHECK-PACKAGE-CONTRACT.md": {
+      "path": "docs/ACCEPTANCE-CRITERIA-CHECK-PACKAGE-CONTRACT.md",
+      "expected": true,
+      "exists": true,
+      "created_by_m65_task": "65.2",
+      "notes": ""
+    },
+    "docs/ACCEPTANCE-CRITERIA-DECISION-SEMANTICS.md": {
+      "path": "docs/ACCEPTANCE-CRITERIA-DECISION-SEMANTICS.md",
+      "expected": true,
+      "exists": true,
+      "created_by_m65_task": "65.3",
+      "notes": ""
+    },
+    "docs/ACCEPTANCE-CRITERIA-CLAIM-BOUNDARY.md": {
+      "path": "docs/ACCEPTANCE-CRITERIA-CLAIM-BOUNDARY.md",
+      "expected": true,
+      "exists": true,
+      "created_by_m65_task": "65.4",
+      "notes": ""
+    },
+    "scripts/check-acceptance-criteria.py": {
+      "path": "scripts/check-acceptance-criteria.py",
+      "expected": true,
+      "exists": true,
+      "created_by_m65_task": "65.5",
+      "notes": ""
+    },
+    "docs/ACCEPTANCE-CRITERIA-CHECKER.md": {
+      "path": "docs/ACCEPTANCE-CRITERIA-CHECKER.md",
+      "expected": true,
+      "exists": true,
+      "created_by_m65_task": "65.5",
+      "notes": ""
+    },
+    "tests/fixtures/m65-acceptance-criteria/": {
+      "path": "tests/fixtures/m65-acceptance-criteria/",
+      "expected": true,
+      "exists": true,
+      "created_by_m65_task": "65.6",
+      "notes": ""
+    },
+    "tests/fixtures/m65-acceptance-criteria/README.md": {
+      "path": "tests/fixtures/m65-acceptance-criteria/README.md",
+      "expected": true,
+      "exists": true,
+      "created_by_m65_task": "65.6",
+      "notes": ""
+    },
+    "tests/fixtures/m65-acceptance-criteria/expected-results.json": {
+      "path": "tests/fixtures/m65-acceptance-criteria/expected-results.json",
+      "expected": true,
+      "exists": true,
+      "created_by_m65_task": "65.6",
+      "notes": ""
+    },
+    "reports/m65-acceptance-criteria-integration-summary.md": {
+      "path": "reports/m65-acceptance-criteria-integration-summary.md",
+      "expected": true,
+      "exists": true,
+      "created_by_m65_task": "65.7",
+      "notes": ""
+    },
+    "reports/m65-acceptance-criteria-action-review.json": {
+      "path": "reports/m65-acceptance-criteria-action-review.json",
+      "expected": true,
+      "exists": false,
+      "created_by_m65_task": "65.8",
+      "notes": ""
+    }
+  },
+  "missing_expected_artifacts": [],
+  "unexpected_artifacts": [],
+  "forbidden_artifacts": [],
+  "protected_prior_layer_artifacts": {
+    "checked": true,
+    "modified": [],
+    "status": "PASS"
+  },
+  "protected_m65_artifacts": {
+    "checked": true,
+    "modified_during_65_8": [],
+    "status": "PASS"
+  },
+  "validation_summary": {
+    "schema_validation": {
+      "status": "PASS",
+      "evidence": "python3 -m json.tool schemas/acceptance-criteria-check-package.schema.json"
+    },
+    "checker_compile": {
+      "status": "PASS",
+      "evidence": "python3 -m py_compile scripts/check-acceptance-criteria.py"
+    },
+    "checker_help": {
+      "status": "PASS",
+      "evidence": "python3 scripts/check-acceptance-criteria.py --help"
+    },
+    "fixture_manifest_validation": {
+      "status": "PASS",
+      "evidence": "python3 -m json.tool tests/fixtures/m65-acceptance-criteria/expected-results.json"
+    },
+    "integration_summary_status": {
+      "status": "M65_INTEGRATION_PASS_WITH_WARNINGS",
+      "source": "reports/m65-acceptance-criteria-integration-summary.md"
+    }
+  },
+  "boundary_review": {
+    "human_review_required_preserved": true,
+    "not_approval_preserved": true,
+    "not_task_completion_preserved": true,
+    "not_production_readiness_preserved": true,
+    "no_completion_gate_integration": true,
+    "no_m66_auto_start": true,
+    "no_m67_auto_start": true,
+    "structured_package_boundary_preserved": true,
+    "no_free_form_markdown_magic_evaluator": true,
+    "status": "PASS"
+  },
+  "human_review": {
+    "human_review_required": true,
+    "task_completion_approved": false,
+    "approval_claim_made": false,
+    "completion_claim_made": false,
+    "merge_authorized": false,
+    "push_authorized": false,
+    "release_authorized": false,
+    "production_ready_claim_made": false,
+    "notes": "M65 action review is not approval and does not complete the task."
+  },
+  "warnings": [
+    "integration_status_with_warnings",
+    "comparison_baseline_unknown"
+  ],
+  "blockers": [],
+  "non_authority_boundary": [
+    "M65 action review is not approval.",
+    "M65 action review does not complete M65.",
+    "M65 action review does not authorize M66 or M67.",
+    "Human review remains required."
+  ],
+  "final_status": "M65_ACTION_REVIEW_PASS_WITH_WARNINGS",
+  "ready_for_65_9_evidence_report": "true_with_warnings"
+}

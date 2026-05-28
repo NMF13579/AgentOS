@@ -1,0 +1,21 @@
+{
+  "contract_version": "1.0.0",
+  "package_type": "acceptance_criteria_check_package",
+  "task_id": "65.6-neg-4",
+  "task_brief_path": "tasks/active-task.md",
+  "acceptance_criteria": [
+    {"criterion_id": "AC-VAL", "description": "Required validation", "required": true, "check_method": "validation_output", "expected_evidence": ["unit-tests"], "notes": ""}
+  ],
+  "expected_artifacts": [],
+  "actual_artifacts": [],
+  "changed_files": [],
+  "evidence_result": {"source_path": "reports/evidence.json", "result": "M64_EVIDENCE_CHECK_PASS"},
+  "validation_outputs": [
+    {"name": "unit-tests", "command": "pytest", "result": "FAIL", "correlates_to_criteria": ["AC-VAL"]}
+  ],
+  "known_limitations": [],
+  "warnings": [],
+  "blockers": [],
+  "human_review_required": true,
+  "non_authority_boundary": ["Acceptance criteria check package is not approval.", "Acceptance criteria check package does not complete the task.", "Human review remains required."]
+}

@@ -1,0 +1,21 @@
+{
+  "contract_version": "1.0.0",
+  "package_type": "acceptance_criteria_check_package",
+  "task_id": "65.6-warn-4",
+  "task_brief_path": "tasks/active-task.md",
+  "acceptance_criteria": [
+    {"criterion_id": "AC-1", "description": "Required artifact", "required": true, "check_method": "artifact_presence", "expected_evidence": ["docs/c1.md"], "notes": ""}
+  ],
+  "expected_artifacts": [{"path": "docs/c1.md", "artifact_type": "document", "required": true}],
+  "actual_artifacts": [{"path": "docs/c1.md", "artifact_type": "document", "required": true}],
+  "changed_files": ["docs/c1.md"],
+  "evidence_result": {"source_path": "reports/evidence.json", "result": "M64_EVIDENCE_CHECK_PASS"},
+  "validation_outputs": [
+    {"name": "lint", "command": "run lint", "result": "PASS", "correlates_to_criteria": ["AC-X"]}
+  ],
+  "known_limitations": [],
+  "warnings": [],
+  "blockers": [],
+  "human_review_required": true,
+  "non_authority_boundary": ["Acceptance criteria check package is not approval.", "Acceptance criteria check package does not complete the task.", "Human review remains required."]
+}

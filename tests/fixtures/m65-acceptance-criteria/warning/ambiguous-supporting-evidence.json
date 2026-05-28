@@ -1,0 +1,19 @@
+{
+  "contract_version": "1.0.0",
+  "package_type": "acceptance_criteria_check_package",
+  "task_id": "65.6-warn-2",
+  "task_brief_path": "tasks/active-task.md",
+  "acceptance_criteria": [
+    {"criterion_id": "AC-1", "description": "Required declared change", "required": true, "check_method": "declared_change", "expected_evidence": ["docs/core.md"], "notes": ""}
+  ],
+  "expected_artifacts": [{"path": "docs/core.md", "artifact_type": "document", "required": true}],
+  "actual_artifacts": [{"path": "docs/core.md", "artifact_type": "document", "required": true}],
+  "changed_files": ["docs/core.md"],
+  "evidence_result": {"source_path": "reports/evidence.json", "result": "M64_EVIDENCE_CHECK_PASS"},
+  "validation_outputs": [],
+  "known_limitations": ["optional evidence is ambiguous for non-required details"],
+  "warnings": [],
+  "blockers": [],
+  "human_review_required": true,
+  "non_authority_boundary": ["Acceptance criteria check package is not approval.", "Acceptance criteria check package does not complete the task.", "Human review remains required."]
+}
