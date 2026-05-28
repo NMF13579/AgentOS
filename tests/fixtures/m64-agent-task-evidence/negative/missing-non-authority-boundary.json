@@ -1,0 +1,18 @@
+{
+  "contract_version": "m64.agent_task_output_evidence.v1",
+  "evidence_type": "agent_task_output_evidence",
+  "task_id": "64.6",
+  "task_brief_path": "tasks/active-task.md",
+  "agent_identity": {"agent_name": "agent", "agent_role": "implementer"},
+  "files_changed": ["a.txt"],
+  "created_artifacts": ["a.txt"],
+  "modified_artifacts": [],
+  "deleted_artifacts": [],
+  "commands_run": [],
+  "validation_results": [],
+  "known_limitations": [],
+  "warnings": [],
+  "blockers": [],
+  "forbidden_actions_performed": false,
+  "human_review_required": true
+}
