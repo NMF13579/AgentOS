@@ -38,8 +38,8 @@ Human review remains required.
 Checked premature M67/M68 artifacts:
 - `docs/FALSE-PASS-RESISTANCE-ARCHITECTURE.md`
 - `docs/COMPLETION-GATE-POLICY-CONTRACT.md`
-- `docs/FALSE-PASS-DECISION-SEMANTICS.md`
-- `docs/FALSE-PASS-CLAIM-BOUNDARY.md`
+- `docs/FALSE-PASS-RESISTANCE-SEMANTICS.md`
+- `docs/FALSE-PASS-RESISTANCE-CLAIM-BOUNDARY.md`
 - `scripts/check-false-pass-resistance.py`
 - `docs/FALSE-PASS-RESISTANCE-CHECKER.md`
 - `tests/fixtures/m67-false-pass-resistance/`

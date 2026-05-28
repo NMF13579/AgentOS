@@ -1,7 +1,8 @@
 {
   "contract_version": "m64.action_review.v1",
   "review_scope": "m64_task_output_evidence_model",
-  "review_result": "M64_ACTION_REVIEW_PASS_WITH_WARNINGS",
+  "final_status": "M64_ACTION_REVIEW_PASS_WITH_WARNINGS",
+  "ready_for_64_9_evidence_report": "true_with_warnings",
   "created_expected_artifacts": [
     "reports/m64-m63-completion-intake.md",
     "docs/TASK-OUTPUT-EVIDENCE-MODEL-ARCHITECTURE.md",
@@ -49,7 +50,6 @@
     "Integration summary status is M64_INTEGRATION_PASS_WITH_WARNINGS; proceed to 64.9 with warnings visibility preserved."
   ],
   "blockers": [],
-  "ready_for_64_9_evidence_report": "true_with_warnings",
   "non_authority_boundary": [
     "M64 action review is not approval.",
     "M64 action review does not replace human review.",

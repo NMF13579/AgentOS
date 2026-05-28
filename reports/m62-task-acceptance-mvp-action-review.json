@@ -1,5 +1,8 @@
 {
-  "result": "M62_ACTION_REVIEW_PASS_WITH_WARNINGS",
+  "contract_version": "m62.action_review.v1",
+  "review_scope": "m62_task_acceptance_mvp",
+  "final_status": "M62_ACTION_REVIEW_PASS_WITH_WARNINGS",
+  "ready_for_62_9_evidence_report": "true_with_warnings",
   "git_status_checked": true,
   "git_diff_checked": true,
   "git_diff_stat_checked": true,

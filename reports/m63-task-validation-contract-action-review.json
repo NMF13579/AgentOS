@@ -1,5 +1,8 @@
 {
-  "result": "M63_ACTION_REVIEW_PASS",
+  "contract_version": "m63.action_review.v1",
+  "review_scope": "m63_task_validation_contract",
+  "final_status": "M63_ACTION_REVIEW_PASS",
+  "ready_for_63_10_evidence_report": "true",
   "git_status_checked": true,
   "git_diff_checked": true,
   "changed_files": [],

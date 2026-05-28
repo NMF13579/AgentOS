@@ -69,7 +69,7 @@ The checker must not use network access.
 | `docs/COMPLETION-GATE-HARDENING-CONTRACT.md` | yes | yes | `67.7` | `FINAL_STATUS: M67_COMPLETION_GATE_HARDENING_DEFINED` | present |
 | `reports/m67-false-pass-integration-summary.md` | yes | yes | `67.8` | `FINAL_STATUS: M67_INTEGRATION_PASS_WITH_WARNINGS` | present |
 | `reports/m67-false-pass-action-review.json` | yes | yes | `67.9` | `"final_status": "M67_ACTION_REVIEW_PASS_WITH_WARNINGS"` | present |
-| `reports/m67-false-pass-evidence-report.md` | yes | yes | `67.10` | this report | being created now |
+| `reports/m67-false-pass-evidence-report.md` | yes | yes | `67.10` | `FINAL_STATUS: M67_EVIDENCE_REPORT_COMPLETE_WITH_WARNINGS` | present |
 
 ## 5. Prior M67 Status Evidence
 - `reports/m67-m66-completion-intake.md` → `M67_INTAKE_READY_WITH_WARNINGS`
