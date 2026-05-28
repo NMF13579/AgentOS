@@ -1,0 +1,17 @@
+{
+  "version": "1.0.0",
+  "runner_options": {
+    "execution_mode": "execute",
+    "json": true
+  },
+  "human_review_required": false,
+  "input_path_field": "test_field",
+  "test_field": "some/path.json",
+  "timeout_seconds": 30,
+  "expected_checkers": [
+    {
+      "checker_id": "M63_TASK_VALIDATION",
+      "script_path": "scripts/check-task-validation-contract.py"
+    }
+  ]
+}
