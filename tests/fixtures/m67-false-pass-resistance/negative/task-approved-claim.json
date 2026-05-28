@@ -1,0 +1,42 @@
+{
+  "blockers": [],
+  "claims": [
+    {
+      "claim_id": "c1",
+      "context_type": "operative",
+      "source": "fixture",
+      "text": "task approved"
+    }
+  ],
+  "completion_gate": {
+    "completion_gate_allowed": false,
+    "completion_gate_evidence": "",
+    "completion_gate_policy_reference": "",
+    "completion_gate_requested": false,
+    "completion_gate_result": "COMPLETION_GATE_NOT_REQUESTED"
+  },
+  "contract_version": "1.0.0",
+  "human_review": {
+    "human_review_evidence": "human-review-evidence-ref-35",
+    "human_review_required": true,
+    "human_review_status": "approved_by_human"
+  },
+  "m66_result": "M66_UNIFIED_RUN_PASS",
+  "m66_result_source": "M66_UNIFIED_RUN_PASS",
+  "non_authority_boundary": [
+    "M67 result is not approval.",
+    "M67 result does not complete tasks.",
+    "M67 result does not mutate lifecycle state.",
+    "M67 result does not start M68.",
+    "Human review remains required."
+  ],
+  "operative_fields": {
+    "acceptance_check_reference": "acceptance-check-ref-35",
+    "false_pass_check_reference": "M67_FALSE_PASS_CHECK_BLOCKED",
+    "runner_evidence_reference": "runner-evidence-ref-35",
+    "validation_result_reference": "M66_UNIFIED_RUN_PASS"
+  },
+  "package_type": "false_pass_check_input",
+  "task_id": "m67-neg-5",
+  "warnings": []
+}

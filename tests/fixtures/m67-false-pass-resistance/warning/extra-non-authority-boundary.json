@@ -1,0 +1,56 @@
+{
+  "blockers": [],
+  "claims": [
+    {
+      "claim_id": "c1",
+      "context_type": "safe_boundary",
+      "source": "fixture",
+      "text": "M67 result is not approval."
+    },
+    {
+      "claim_id": "c2",
+      "context_type": "policy_explanation",
+      "source": "fixture",
+      "text": "Human review remains required."
+    },
+    {
+      "claim_id": "c3",
+      "context_type": "documentation_example",
+      "source": "fixture",
+      "text": "example: this is a documentation example boundary."
+    }
+  ],
+  "completion_gate": {
+    "completion_gate_allowed": true,
+    "completion_gate_evidence": "gate-evidence-ref-13",
+    "completion_gate_policy_reference": "policy-ref-13",
+    "completion_gate_requested": true,
+    "completion_gate_result": "COMPLETION_GATE_PASS_WITH_WARNINGS"
+  },
+  "contract_version": "1.0.0",
+  "human_review": {
+    "human_review_evidence": "human-review-evidence-ref-13",
+    "human_review_required": true,
+    "human_review_status": "approved_by_human"
+  },
+  "m66_result": "M66_UNIFIED_RUN_PASS",
+  "m66_result_source": "M66_UNIFIED_RUN_PASS_WITH_WARNINGS",
+  "non_authority_boundary": [
+    "M67 result is not approval.",
+    "M67 result does not complete tasks.",
+    "M67 result does not mutate lifecycle state.",
+    "M67 result does not start M68.",
+    "Human review remains required."
+  ],
+  "operative_fields": {
+    "acceptance_check_reference": "acceptance-check-ref-13",
+    "false_pass_check_reference": "M67_FALSE_PASS_CHECK_PASS_WITH_WARNINGS",
+    "runner_evidence_reference": "runner-evidence-ref-13",
+    "validation_result_reference": "M66_UNIFIED_RUN_PASS_WITH_WARNINGS"
+  },
+  "package_type": "false_pass_check_input",
+  "task_id": "m67-warn-3",
+  "warnings": [
+    "documentation note: extra boundary text is visible."
+  ]
+}
