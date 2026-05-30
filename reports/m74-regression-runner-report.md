@@ -98,6 +98,9 @@ execution_report_created: false
 m74_9_started: false
 m75_started: false
 
+Note: This report covers only the validation-only behavior and safety properties of the regression runner. Controlled dispatcher regression execution, including fixture-level PASS/FAIL outcomes, is documented explicitly in the separate M74.9 full regression execution report.
+
+
 ## Scope Verification
 No files outside the permitted scope were modified. Only `scripts/check-m74-dispatcher-regression.py` and `reports/m74-regression-runner-report.md` were touched.
 

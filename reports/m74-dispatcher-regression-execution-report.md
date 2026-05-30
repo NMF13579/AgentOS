@@ -115,6 +115,9 @@ fixtures_modified: false
 schema_modified: false
 runner_modified: false
 
+Controlled dispatcher regression execution via the regression runner’s `--execute` mode was performed only within the scope of M74.9 and based on may_prepare_m74_9 from M74.8. No additional executions outside this scope modified repository artifacts or lifecycle state.
+
+
 ## Safety Boundary Review
 approval_claim_created: false
 lifecycle_mutation_occurred: false
