@@ -1,26 +1,24 @@
 ---
-id: task-72.1
+id: task-72.2
 milestone: M72
-name: "Protected Artifact Model"
+name: "Protected Artifact Registry"
 status: active
-mode: "GOVERNANCE MODEL / READ-ONLY INPUTS / NO REGISTRY CREATION"
+mode: "REGISTRY CREATION / PROTECTED ARTIFACTS ONLY / NO CANONICAL REGISTRY"
 branch: dev
 started_at: "2026-05-29"
 ---
 
-# Active Task: 72.1 — Protected Artifact Model
+# Active Task: 72.2 — Protected Artifact Registry
 
 ## Purpose
 
-Declare the active task identity for M72.1 protected artifact model creation.
+Declare the active task identity for M72.2 protected artifact registry creation.
 
 ## Task Boundary
 
 This file records the active task only.
 
 It does not approve M72.
-
-It does not create protected artifact registry.
 
 It does not create canonical artifact registry.
 
@@ -44,18 +42,16 @@ It does not configure branch protection.
 
 It does not create JSON artifacts.
 
-It does not create registries.
-
 It does not authorize cleanup.
 
 It does not authorize protected artifact changes.
 
 It does not mutate lifecycle state.
 
-It does not start M72.2.
+It does not start M72.3.
 
-It authorizes only creation of one Markdown model document.
+It authorizes only creation of one Markdown protected artifact registry.
 
 ## Current Task
 
-72.1 — Protected Artifact Model
+72.2 — Protected Artifact Registry
