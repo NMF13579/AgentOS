@@ -1,0 +1,3044 @@
+{
+  "artifact_role": "derived_navigation_only",
+  "source_of_truth": "reports/m71-script-inventory.md",
+  "generated_from": "reports/m71-script-inventory.md",
+  "milestone": "M71",
+  "task_id": "71.1",
+  "status": "M71_SCRIPT_INVENTORY_COMPLETE_WITH_WARNINGS",
+  "boundary": {
+    "json_is_source_of_truth": false,
+    "markdown_is_source_of_truth": true,
+    "registry_authority": false,
+    "cleanup_authorized": false,
+    "classification_finalized": false
+  },
+  "counts": {
+    "total_scripts_entries": 231,
+    "python_scripts_count": 213,
+    "shell_scripts_count": 11,
+    "run_all_variant_count": 1,
+    "copy_backup_signal_count": 23,
+    "generated_cache_signal_count": 6,
+    "workflow_reference_count": 29,
+    "documentation_reference_count": 743,
+    "unknown_reference_count": 1
+  },
+  "entries": [
+    {
+      "path": "scripts/VALIDATORS.md",
+      "kind": "documentation",
+      "extension": ".md",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/__pycache__/agent-complete.cpython-314.pyc",
+      "kind": "cache",
+      "extension": ".pyc",
+      "raw_signals": [
+        "raw_signal_cache_like_path"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": false,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/__pycache__/agent-fail.cpython-314.pyc",
+      "kind": "cache",
+      "extension": ".pyc",
+      "raw_signals": [
+        "raw_signal_cache_like_path"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": false,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/__pycache__/agent-next.cpython-314.pyc",
+      "kind": "cache",
+      "extension": ".pyc",
+      "raw_signals": [
+        "raw_signal_cache_like_path"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": false,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/__pycache__/generate-task-contract.cpython-314.pyc",
+      "kind": "cache",
+      "extension": ".pyc",
+      "raw_signals": [
+        "raw_signal_cache_like_path"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": false,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/__pycache__/validate-task.cpython-314.pyc",
+      "kind": "cache",
+      "extension": ".pyc",
+      "raw_signals": [
+        "raw_signal_cache_like_path"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": false,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/__pycache__/validate-verification.cpython-314.pyc",
+      "kind": "cache",
+      "extension": ".pyc",
+      "raw_signals": [
+        "raw_signal_cache_like_path"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": false,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/activate-task.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/agent-complete.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": true,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/agent-fail.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": true,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/agent-next.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/agentos-audit-log.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": true,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/agentos-command-guard.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": true,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/agentos-enforce.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": true,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/agentos-explain.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/agentos-git-guard.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": true,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/agentos-human-gate.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": true,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/agentos-next-step.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/agentos-permission-state.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": true,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/agentos-retry-enforce.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": true,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/agentos-status.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/agentos-tui.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/agentos-validate.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": true,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": true,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/agentos-view-model.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/agentos-violation-enforce.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": true,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/agentos-write-guard.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": true,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/agentos.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": true,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/apply-transition.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/audit-agentos.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/audit-approval-boundary.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": false,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/audit-context-layer.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": false,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/audit-enforcement.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/audit-execution-control.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/audit-gate-contract.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/audit-lifecycle-mutation.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/audit-m27 3.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_copy_like_filename"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/audit-m27-level1 3.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_copy_like_filename"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/audit-m27-level1.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/audit-m27.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/audit-m30-context-pipeline.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/audit-m31-tui-tutor.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/audit-metadata-consistency 3.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_copy_like_filename"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/audit-metadata-consistency.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/audit-mvp-readiness.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/audit-policy-boundary.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": false,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/audit-pre-merge-corridor 3.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_copy_like_filename"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/audit-pre-merge-corridor.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/audit-release-readiness.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/audit-template-packaging.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/audit-validation-integration 3.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_copy_like_filename"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/audit-validation-integration.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/build-context-cache.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/build-context-index.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/build-execution-verification-registry.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/build-index 3.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_copy_like_filename"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/build-index.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/build-task-dependency-map.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/canonical-cleanup.sh",
+      "kind": "shell",
+      "extension": ".sh",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": false,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/check-acceptance-criteria.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/check-active-task-readiness.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": false,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/check-agent-task-evidence.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/check-apply-preconditions.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/check-bypass-fixtures.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/check-bypass-resistance.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/check-canary-integrity.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": false,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/check-commit-push-preconditions 3.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_copy_like_filename"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/check-commit-push-preconditions.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/check-completion-readiness.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/check-context-compliance.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/check-context-index-freshness.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/check-context-pipeline.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": true,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/check-context-required.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/check-controlled-execution-session.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/check-dangerous-commands.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": true,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/check-evidence-amendments.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/check-evidence-binding.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/check-evidence-immutability.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/check-execution-authorization.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/check-execution-readiness.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/check-execution-result-verification.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/check-execution-scope.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/check-execution-verification-chain.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/check-execution-verification-registry.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/check-execution-verification-regression.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/check-false-pass-resistance.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/check-github-platform-enforcement 3.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_copy_like_filename"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/check-github-platform-enforcement.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/check-identity-drift.sh",
+      "kind": "shell",
+      "extension": ".sh",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": true,
+      "referenced_by_docs": false,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/check-interview-completeness.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": false,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/check-links.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/check-llms-graph-files.sh",
+      "kind": "shell",
+      "extension": ".sh",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": true,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/check-m54-queue-placement-fixtures.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": false,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/check-m55-active-task-readiness-fixtures.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/check-m56-execution-readiness-fixtures.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/check-m57-execution-authorization-fixtures.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/check-m58-controlled-execution-session-fixtures.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/check-m59-execution-result-verification-fixtures.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/check-m61-hardening-regression.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/check-pr-quality.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": true,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": true,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/check-pre-merge-scope 3.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_copy_like_filename"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/check-pre-merge-scope.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/check-premature-artifacts.sh",
+      "kind": "shell",
+      "extension": ".sh",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": false,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/check-private-evaluator-consistency.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/check-process-trace.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/check-product-spec-readiness.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/check-readiness-assertions.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": false,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/check-required-context-compliance.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/check-required-context-pack.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/check-risk.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": true,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/check-role-separation.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": false,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/check-scope-compliance 3.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_copy_like_filename"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/check-scope-compliance.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/check-single-role-execution.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/check-task-acceptance-mvp.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/check-task-validation-contract.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/check-template-cleanliness.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": true,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/check-template-integrity.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/check-transition.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/check-use-template-readiness.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": false,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": true,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/check-validator-authority-boundary.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/complete-active-task.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/detect-task-state.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/generate-repo-map.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/generate-task-contract-candidate.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/generate-task-contract.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/generate-tasks-from-spec.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/generate-tasks-from-ux.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/health-check.sh",
+      "kind": "shell",
+      "extension": ".sh",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": true,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/install-agentos.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": true,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/install-hooks.sh",
+      "kind": "shell",
+      "extension": ".sh",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/lib/__init__.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": false,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/lib/path_utils.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": false,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/lint-task-contract.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": false,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/materialize-task-candidate-placement.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": false,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/prepare-clean-template.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": false,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": true,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/renderers/__init__.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": false,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/renderers/plain_status_renderer.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/renderers/rich_status_renderer.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/repo-scan.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": false,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/review-task-candidate-placement.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/run-active-task.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/run-all.sh",
+      "kind": "shell",
+      "extension": ".sh",
+      "raw_signals": [
+        "raw_signal_run_all_variant"
+      ],
+      "referenced_by_workflow": true,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": true,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/run-execution-verification.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/run-task-validation.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/select-context.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/smoke-interview-layer.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/smoke-m44-decomposition.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": false,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/sync-context.sh",
+      "kind": "shell",
+      "extension": ".sh",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/sync-task-ids.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": true,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": true,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/task-health.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": false,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/test-activation-fixtures.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/test-active-task-fixtures.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": false,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/test-apply-transition-fixtures.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": false,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/test-approval-fixtures.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": false,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/test-approval-flow-smoke.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": false,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/test-approval-marker-fixtures.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": false,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/test-ci-advisory-config 3.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_copy_like_filename"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/test-ci-advisory-config.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": false,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/test-commit-push-preconditions-fixtures 3.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_copy_like_filename"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/test-commit-push-preconditions-fixtures.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": false,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/test-completion-flow-smoke.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": false,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/test-enforcement-fixtures 3.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_copy_like_filename"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/test-enforcement-fixtures.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": false,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/test-example-project.sh",
+      "kind": "shell",
+      "extension": ".sh",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/test-execution-runner-fixtures.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/test-gate-regression-fixtures.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": false,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/test-guard-failures.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/test-honest-pass-fixtures.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": false,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/test-human-approval-fixtures.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": false,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/test-install.sh",
+      "kind": "shell",
+      "extension": ".sh",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/test-integrity-regression.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/test-m22-guardrails 3.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_copy_like_filename"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/test-m22-guardrails.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": false,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/test-m27-level1-fixtures 3.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_copy_like_filename"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/test-m27-level1-fixtures.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/test-m40-runtime-bypass-smoke.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": false,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/test-negative-fixtures.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/test-policy-enforcement-fixtures.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": false,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/test-policy-fixtures.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": false,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/test-policy-flow-smoke.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": false,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/test-pre-merge-corridor-fixtures 3.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_copy_like_filename"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": false,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/test-pre-merge-corridor-fixtures.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": false,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/test-pre-merge-scope-fixtures 3.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_copy_like_filename"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/test-pre-merge-scope-fixtures.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": false,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/test-readiness-fixtures.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": false,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/test-scope-compliance-fixtures 3.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_copy_like_filename"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/test-scope-compliance-fixtures.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/test-single-role-execution-fixtures.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": false,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/test-state-fixtures.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": false,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/test-template-integrity-fixtures.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/test-template-integrity.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/test-unified-gate-smoke.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/validate-active-task.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/validate-approval-marker.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/validate-architecture.sh",
+      "kind": "shell",
+      "extension": ".sh",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": true,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/validate-boundary-claims 3.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_copy_like_filename"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": false,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/validate-boundary-claims.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/validate-commit-msg.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/validate-contract-draft.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": false,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/validate-docs.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/validate-frontmatter 3.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_copy_like_filename"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/validate-frontmatter.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/validate-gate-contract.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/validate-handoff.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": false,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/validate-human-approval.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/validate-incident.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": false,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/validate-index 3.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_copy_like_filename"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/validate-index.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/validate-lessons.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": false,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/validate-lifecycle-apply.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/validate-policy.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/validate-product-spec.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/validate-proposal-to-task-conversion.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/validate-queue-entry.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/validate-queue.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/validate-required-sections 3.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_copy_like_filename"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/validate-required-sections.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/validate-review.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/validate-route.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/validate-runner-protocol.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/validate-status-semantics 3.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_copy_like_filename"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/validate-status-semantics.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/validate-task-brief.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": true,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/validate-task-contract-candidate.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/validate-task-state.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/validate-task.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": true,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": true,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/validate-trace.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": false,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/validate-ux-contract.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/validate-ux-planning-readiness.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/validate-ux-to-task-proposal.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "scripts/validate-verification.py",
+      "kind": "python",
+      "extension": ".py",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": true,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    },
+    {
+      "path": "install.sh",
+      "kind": "shell",
+      "extension": ".sh",
+      "raw_signals": [
+        "raw_signal_reference_unknown"
+      ],
+      "referenced_by_workflow": false,
+      "referenced_by_docs": true,
+      "referenced_by_reports": true,
+      "referenced_by_tasks": false,
+      "needs_later_classification": true
+    }
+  ]
+}
