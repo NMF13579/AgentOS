@@ -1,0 +1,21 @@
+{
+  "fixture_id": "pass_with_warnings_exit_0_warning_visible",
+  "fixture_name": "Pass with warnings exit 0 warning visible",
+  "category": "exit-code",
+  "category_class": "ESSENTIAL",
+  "gap_id": "pass_with_warnings_exit_0",
+  "gap_status": "OPEN",
+  "input_mode": "dispatcher_cli",
+  "dispatcher_command": "python3 scripts/agentos-validate.py --simulate-pass-warnings",
+  "mock_child_behavior": "none",
+  "mock_child_path": "",
+  "expected_dispatcher_result": "DISPATCHER_PASS_WITH_WARNINGS",
+  "expected_exit_code": 0,
+  "expected_stdout_contains": ["Overall result: PASS", "warning"],
+  "expected_stderr_contains": [],
+  "must_not_contain": [],
+  "expected_report_fields": {},
+  "approval_created_expected": false,
+  "lifecycle_mutation_expected": false,
+  "m74_scope": "exit-code-regression-fixtures"
+}
