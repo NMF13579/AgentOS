@@ -1,0 +1,21 @@
+{
+  "fixture_id": "child_stderr_preserved_or_reflected",
+  "fixture_name": "Child stderr preserved or reflected",
+  "category": "child-validator-failures",
+  "category_class": "ESSENTIAL",
+  "gap_id": "child_failure_propagation",
+  "gap_status": "OPEN",
+  "input_mode": "dispatcher_cli_with_mock_child",
+  "dispatcher_command": "python3 scripts/agentos-validate.py --child-validator fixtures/m74-dispatcher-regression/mock-child-validators/stderr-child",
+  "mock_child_behavior": "stderr_output",
+  "mock_child_path": "fixtures/m74-dispatcher-regression/mock-child-validators/stderr-child",
+  "expected_dispatcher_result": "DISPATCHER_BLOCKED",
+  "expected_exit_code": 1,
+  "expected_stdout_contains": ["blocked"],
+  "expected_stderr_contains": ["child stderr content"],
+  "must_not_contain": ["Overall result: PASS"],
+  "expected_report_fields": {},
+  "approval_created_expected": false,
+  "lifecycle_mutation_expected": false,
+  "m74_scope": "child-validator-failure-regression-fixtures"
+}

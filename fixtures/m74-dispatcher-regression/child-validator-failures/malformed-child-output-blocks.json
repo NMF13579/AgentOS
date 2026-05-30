@@ -1,0 +1,21 @@
+{
+  "fixture_id": "malformed_child_output_blocks",
+  "fixture_name": "Malformed child output blocks",
+  "category": "child-validator-failures",
+  "category_class": "ESSENTIAL",
+  "gap_id": "malformed_child_output",
+  "gap_status": "OPEN",
+  "input_mode": "dispatcher_cli_with_mock_child",
+  "dispatcher_command": "python3 scripts/agentos-validate.py --child-validator fixtures/m74-dispatcher-regression/mock-child-validators/malformed-child",
+  "mock_child_behavior": "malformed_output",
+  "mock_child_path": "fixtures/m74-dispatcher-regression/mock-child-validators/malformed-child",
+  "expected_dispatcher_result": "DISPATCHER_BLOCKED",
+  "expected_exit_code": 1,
+  "expected_stdout_contains": ["blocked", "malformed"],
+  "expected_stderr_contains": [],
+  "must_not_contain": ["Overall result: PASS"],
+  "expected_report_fields": {},
+  "approval_created_expected": false,
+  "lifecycle_mutation_expected": false,
+  "m74_scope": "child-validator-failure-regression-fixtures"
+}
