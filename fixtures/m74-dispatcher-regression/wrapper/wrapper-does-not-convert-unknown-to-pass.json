@@ -1,0 +1,21 @@
+{
+  "fixture_id": "wrapper_does_not_convert_unknown_to_pass",
+  "fixture_name": "Wrapper does not convert unknown to pass",
+  "category": "wrapper",
+  "category_class": "CONDITIONAL",
+  "gap_id": "unknown_not_pass_requires_m74_regression_fixture",
+  "gap_status": "OPEN",
+  "input_mode": "wrapper_cli",
+  "dispatcher_command": "bash scripts/run-all.sh --simulate-unknown",
+  "mock_child_behavior": "none",
+  "mock_child_path": "none",
+  "expected_dispatcher_result": "DISPATCHER_BLOCKED",
+  "expected_exit_code": 1,
+  "expected_stdout_contains": ["UNKNOWN"],
+  "expected_stderr_contains": [],
+  "must_not_contain": ["Overall result: PASS"],
+  "expected_report_fields": {},
+  "approval_created_expected": false,
+  "lifecycle_mutation_expected": false,
+  "m74_scope": "wrapper-regression-fixtures"
+}

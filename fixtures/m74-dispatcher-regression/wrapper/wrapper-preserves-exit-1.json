@@ -1,0 +1,21 @@
+{
+  "fixture_id": "wrapper_preserves_exit_1",
+  "fixture_name": "Wrapper preserves exit 1",
+  "category": "wrapper",
+  "category_class": "CONDITIONAL",
+  "gap_id": "exit_2_semantics",
+  "gap_status": "OPEN",
+  "input_mode": "wrapper_cli",
+  "dispatcher_command": "bash scripts/run-all.sh --simulate-blocker",
+  "mock_child_behavior": "none",
+  "mock_child_path": "none",
+  "expected_dispatcher_result": "DISPATCHER_BLOCKED",
+  "expected_exit_code": 1,
+  "expected_stdout_contains": ["blocked"],
+  "expected_stderr_contains": [],
+  "must_not_contain": [],
+  "expected_report_fields": {},
+  "approval_created_expected": false,
+  "lifecycle_mutation_expected": false,
+  "m74_scope": "wrapper-regression-fixtures"
+}
