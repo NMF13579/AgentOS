@@ -1,3 +1,8 @@
+# =============================================================
+# AgentOS Validation Workflow (Execution Surface Only)
+# Note: CI PASS is not approval. This workflow does not claim
+# branch protection or platform enforcement.
+# =============================================================
 name: AgentOS Validate
 
 on:

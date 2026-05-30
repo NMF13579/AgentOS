@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-python3 scripts/validate-docs.py
-python3 scripts/validate-route.py
-python3 scripts/check-links.py
+# Now delegates to the canonical thin dispatcher.
+# =============================================================
+PYTHON_BIN="${PYTHON_BIN:-python3}"
+
+exec "$PYTHON_BIN" scripts/agentos-validate.py all

@@ -22,9 +22,9 @@ NOT_READY = "NOT_READY"
 RESULT_TO_EXIT = {
     PASS: 0,
     FAIL: 1,
-    WARN: 2,
-    ERROR: 3,
-    NOT_RUN: 3,
+    WARN: 0,
+    ERROR: 2,
+    NOT_RUN: 1,
 }
 
 HONEST_PASS_OK = "HONEST_PASS_OK"
@@ -231,8 +231,8 @@ def run_child(repo_root, command_name, command_list):
             return {
                 "name": command_name,
                 "command": " ".join(command_list),
-                "exit_code": 3,
-                "result": ERROR,
+                "exit_code": 1,
+                "result": FAIL,
                 "output_summary": f"missing child script: {child_script}",
                 "human_action_required": True,
                 "ran": True,
@@ -249,7 +249,7 @@ def run_child(repo_root, command_name, command_list):
         return {
             "name": command_name,
             "command": " ".join(command_list),
-            "exit_code": 3,
+            "exit_code": 2,
             "result": ERROR,
             "output_summary": f"subprocess failure: {exc}",
             "human_action_required": True,
@@ -284,7 +284,7 @@ def not_run_check(name, command_text, reason):
     return {
         "name": name,
         "command": command_text,
-        "exit_code": 3,
+        "exit_code": 1,
         "result": NOT_RUN,
         "output_summary": reason,
         "human_action_required": True,
@@ -933,7 +933,7 @@ def main(argv):
                 {
                     "name": "argument-error",
                     "command": "agentos-validate",
-                    "exit_code": 3,
+                    "exit_code": 2,
                     "result": ERROR,
                     "output_summary": str(exc),
                     "human_action_required": True,
@@ -944,7 +944,7 @@ def main(argv):
             emit_json(payload)
         else:
             print_human(payload)
-        return 3
+        return 2
 
     repo_root = Path(os.getcwd()).resolve()
 

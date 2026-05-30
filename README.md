@@ -81,11 +81,18 @@ python3 scripts/audit-mvp-readiness.py
 
 When you run validation commands, you will see one of the following results:
 
-- **PASS:** The checked area passed completely.
-- **PASS_WITH_WARNINGS:** The checked area is usable, but known (non-blocking) gaps remain.
+- **PASS:** The checked area passed completely. (Note: PASS is a validation signal, not human approval.)
+- **PASS_WITH_WARNINGS:** The checked area is usable, but known (non-blocking) gaps remain. (Note: PASS_WITH_WARNINGS is not clean PASS.)
 - **BLOCKED:** Execution or readiness is stopped until a specific blocker is resolved.
 - **NOT_READY:** The system is not ready for the claimed use yet.
 - **INCONCLUSIVE:** The check could not produce trustworthy evidence.
+
+**Validation and Authority Boundaries:**
+- **PASS is not approval.** Human approval cannot be simulated.
+- **CI PASS is not approval.** Workflows serve as execution surfaces only.
+- **Dispatcher PASS is not task completion** or lifecycle mutation. The dispatcher is for routing and orchestration only.
+- **Wrappers are compatibility surfaces only** and do not create independent validation authority.
+- **Generated reports are evidence only** and do not authorize changes or mark tasks complete.
 
 **If validation fails:**
 - Do **not** treat failure as success.
@@ -154,12 +161,11 @@ python3 scripts/agentos-validate.py all --json
 Focused validation commands remain available for debugging specific checks:
 
 ```bash
-python3 scripts/agentos-validate.py template
-python3 scripts/agentos-validate.py negative
-python3 scripts/agentos-validate.py guard
-python3 scripts/agentos-validate.py audit
-python3 scripts/agentos-validate.py queue
-python3 scripts/agentos-validate.py runner
+python3 scripts/agentos-validate.py scope
+python3 scripts/agentos-validate.py scope-fixtures
+python3 scripts/agentos-validate.py execution-audit
+python3 scripts/agentos-validate.py readiness-assertions
+python3 scripts/agentos-validate.py single-role
 ```
 
 See [docs/GETTING-STARTED.md](docs/GETTING-STARTED.md) for detailed getting started guide.
@@ -172,7 +178,7 @@ AgentOS provides validation at multiple layers:
 |---|---|---|
 | **Unified Validation** | `scripts/agentos-validate.py all` | Official human-readable full validation |
 | **Unified Validation JSON** | `scripts/agentos-validate.py all --json` | Official machine-readable validation |
-| **Focused Validation** | `scripts/agentos-validate.py template`, `negative`, `guard`, `audit`, `queue`, `runner` | Debugging focused checks |
+| **Focused Validation** | `scripts/agentos-validate.py scope`, `scope-fixtures`, `execution-audit`, `readiness-assertions`, `single-role` | Debugging focused checks |
 | **Underlying Validators** | `scripts/check-template-integrity.py --strict`, `scripts/test-negative-fixtures.py`, `scripts/test-guard-failures.py`, `scripts/audit-agentos.py`, `scripts/validate-queue.py`, `scripts/validate-runner-protocol.py` | Advanced validator-specific reference |
 
 For detailed information, see [docs/VALIDATION.md](docs/VALIDATION.md).
