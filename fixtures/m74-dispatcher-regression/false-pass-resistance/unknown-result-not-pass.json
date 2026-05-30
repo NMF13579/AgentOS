@@ -1,0 +1,21 @@
+{
+  "fixture_id": "unknown_result_not_pass",
+  "fixture_name": "UNKNOWN result not pass",
+  "category": "false-pass-resistance",
+  "category_class": "ESSENTIAL",
+  "gap_id": "unknown_not_pass_requires_m74_regression_fixture",
+  "gap_status": "OPEN",
+  "input_mode": "dispatcher_cli_with_mock_child",
+  "dispatcher_command": "python3 scripts/agentos-validate.py --child-validator fixtures/m74-dispatcher-regression/mock-child-validators/unknown-result-child",
+  "mock_child_behavior": "unknown_result",
+  "mock_child_path": "fixtures/m74-dispatcher-regression/mock-child-validators/unknown-result-child",
+  "expected_dispatcher_result": "DISPATCHER_BLOCKED",
+  "expected_exit_code": 1,
+  "expected_stdout_contains": ["blocked", "UNKNOWN"],
+  "expected_stderr_contains": [],
+  "must_not_contain": ["Overall result: PASS"],
+  "expected_report_fields": {},
+  "approval_created_expected": false,
+  "lifecycle_mutation_expected": false,
+  "m74_scope": "false-pass-resistance-regression-fixtures"
+}
