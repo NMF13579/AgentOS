@@ -1,18 +1,18 @@
 ---
-id: task-72.4
+id: task-72.5
 milestone: M72
-name: "Ownership Gap Map"
+name: "CODEOWNERS / Branch Protection Alignment Review"
 status: active
-mode: "OWNERSHIP AUDIT / GAP MAPPING ONLY / NO OWNER RESOLUTION"
+mode: "PLATFORM ALIGNMENT REVIEW / READ-ONLY CODEOWNERS / NO PLATFORM ENFORCEMENT"
 branch: dev
 started_at: "2026-05-29"
 ---
 
-# Active Task: 72.4 — Ownership Gap Map
+# Active Task: 72.5 — CODEOWNERS / Branch Protection Alignment Review
 
 ## Purpose
 
-Declare the active task identity for M72.4 ownership gap mapping.
+Declare the active task identity for M72.5 CODEOWNERS and branch protection alignment review.
 
 ## Task Boundary
 
@@ -26,9 +26,21 @@ It does not modify protected artifact registry.
 
 It does not modify canonical artifact registry.
 
+It does not modify ownership gap map.
+
 It does not modify CODEOWNERS.
 
+It does not create CODEOWNERS.
+
 It does not configure branch protection.
+
+It does not create GitHub rulesets.
+
+It does not claim platform enforcement.
+
+It does not assign owners.
+
+It does not resolve ownership gaps.
 
 It does not create protected change policy.
 
@@ -48,24 +60,20 @@ It does not authorize protected artifact changes.
 
 It does not authorize canonical artifact changes.
 
-It does not assign real owners.
-
-It does not resolve ownership gaps.
-
 It does not mutate lifecycle state.
 
-It does not start M72.5.
+It does not start M72.6.
 
-It authorizes only creation of one Markdown ownership gap map.
+It authorizes only creation of one Markdown CODEOWNERS / Branch Protection Alignment Review.
 
 ## Current Task
 
-72.4 — Ownership Gap Map
+72.5 — CODEOWNERS / Branch Protection Alignment Review
 Validate:
 test -f tasks/active-task.md
-grep -q "^id: task-72.4$" tasks/active-task.md
+grep -q "^id: task-72.5$" tasks/active-task.md
 grep -q "^milestone: M72$" tasks/active-task.md
-grep -q '^name: "Ownership Gap Map"$' tasks/active-task.md
+grep -q '^name: "CODEOWNERS / Branch Protection Alignment Review"$' tasks/active-task.md
 grep -q "^status: active$" tasks/active-task.md
-grep -q '^mode: "OWNERSHIP AUDIT / GAP MAPPING ONLY / NO OWNER RESOLUTION"$' tasks/active-task.md
+grep -q '^mode: "PLATFORM ALIGNMENT REVIEW / READ-ONLY CODEOWNERS / NO PLATFORM ENFORCEMENT"$' tasks/active-task.md
 grep -q "^branch: dev$" tasks/active-task.md
