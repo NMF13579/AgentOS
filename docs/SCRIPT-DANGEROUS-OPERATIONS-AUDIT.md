@@ -316,6 +316,7 @@ milestone: M71
 task_name: Dangerous Script Operations Audit
 status: COMPLETE
 final_status: M71_DANGEROUS_OPERATIONS_AUDIT_COMPLETE
+FINAL_STATUS: M71_DANGEROUS_SCRIPT_AUDIT_COMPLETE
 files_scanned: 236
 total_operation_signal_hits: 579
 total_secret_like_signal_hits: 728
@@ -328,6 +329,8 @@ files_with_os_system: 3
 files_with_cross_category_concentration: 9
 backup_copies_with_dangerous_signals: 11
 may_prepare_m71_5: true
+source_lines_printed: false
+secret_values_printed: false
 produced_artifact: docs/SCRIPT-DANGEROUS-OPERATIONS-AUDIT.md
 notes: >
   Audit is read-only signal record only.

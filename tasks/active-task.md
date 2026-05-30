@@ -1,18 +1,18 @@
 ---
-id: task-71.4
+id: task-71.5
 milestone: M71
-name: "Dangerous Script Operations Audit"
+name: "Script Output / Exit-Code Contract Review"
 status: active
-mode: "AUDIT / READ-ONLY RISK SIGNALS / NO SCRIPT CHANGES"
+mode: "AUDIT / READ-ONLY CONTRACT REVIEW / NO SCRIPT CHANGES"
 branch: dev
 started_at: "2026-05-29"
 ---
 
-# Active Task: 71.4 — Dangerous Script Operations Audit
+# Active Task: 71.5 — Script Output / Exit-Code Contract Review
 
 ## Purpose
 
-Declare the active task identity for M71.4 dangerous script operations audit.
+Declare the active task identity for M71.5 script output and exit-code contract review.
 
 ## Task Boundary
 
@@ -26,7 +26,9 @@ It does not execute scripts.
 
 It does not run validators.
 
-It does not perform cleanup.
+It does not change exit codes.
+
+It does not standardize script output.
 
 It does not create registries.
 
@@ -34,16 +36,10 @@ It does not create validators.
 
 It does not create JSON artifacts.
 
-It does not perform secret audit.
+It authorizes only creation of one Markdown output / exit-code contract review.
 
-It does not print source lines.
-
-It does not print secret values.
-
-It authorizes only creation of one Markdown dangerous operations audit.
-
-It does not authorize cleanup, deletion, archiving, script modification, registry creation, validator creation, fixture creation, lifecycle mutation, M71.5 execution, or M72+ work.
+It does not authorize cleanup, deletion, archiving, script modification, registry creation, validator creation, fixture creation, lifecycle mutation, M71.6 execution, or M72+ work.
 
 ## Current Task
 
-71.4 — Dangerous Script Operations Audit
+71.5 — Script Output / Exit-Code Contract Review
