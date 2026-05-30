@@ -1,18 +1,18 @@
 ---
-id: task-72.2
+id: task-72.3
 milestone: M72
-name: "Protected Artifact Registry"
+name: "Canonical Artifact Registry"
 status: active
-mode: "REGISTRY CREATION / PROTECTED ARTIFACTS ONLY / NO CANONICAL REGISTRY"
+mode: "REGISTRY CREATION / CANONICAL ARTIFACTS ONLY / NO OWNERSHIP MAP"
 branch: dev
 started_at: "2026-05-29"
 ---
 
-# Active Task: 72.2 — Protected Artifact Registry
+# Active Task: 72.3 — Canonical Artifact Registry
 
 ## Purpose
 
-Declare the active task identity for M72.2 protected artifact registry creation.
+Declare the active task identity for M72.3 canonical artifact registry creation.
 
 ## Task Boundary
 
@@ -20,7 +20,9 @@ This file records the active task only.
 
 It does not approve M72.
 
-It does not create canonical artifact registry.
+It does not modify protected artifact model.
+
+It does not modify protected artifact registry.
 
 It does not create ownership gap map.
 
@@ -46,12 +48,22 @@ It does not authorize cleanup.
 
 It does not authorize protected artifact changes.
 
+It does not authorize canonical artifact changes.
+
 It does not mutate lifecycle state.
 
-It does not start M72.3.
+It does not start M72.4.
 
-It authorizes only creation of one Markdown protected artifact registry.
+It authorizes only creation of one Markdown canonical artifact registry.
 
 ## Current Task
 
-72.2 — Protected Artifact Registry
+72.3 — Canonical Artifact Registry
+Validate:
+test -f tasks/active-task.md
+grep -q "^id: task-72.3$" tasks/active-task.md
+grep -q "^milestone: M72$" tasks/active-task.md
+grep -q '^name: "Canonical Artifact Registry"$' tasks/active-task.md
+grep -q "^status: active$" tasks/active-task.md
+grep -q '^mode: "REGISTRY CREATION / CANONICAL ARTIFACTS ONLY / NO OWNERSHIP MAP"$' tasks/active-task.md
+grep -q "^branch: dev$" tasks/active-task.md
