@@ -168,7 +168,7 @@ Observed representative smoke checks:
 - `negative/completion-gate-passed-without-gate-evidence.json` → expected `M67_FALSE_PASS_CHECK_BLOCKED`, actual `M67_FALSE_PASS_CHECK_BLOCKED`, expected exit `1`, actual exit `1`, stdout JSON valid, PASS
 - `negative/human-review-waived.json` → expected `M67_FALSE_PASS_CHECK_BLOCKED`, actual `M67_FALSE_PASS_CHECK_BLOCKED`, expected exit `1`, actual exit `1`, stdout JSON valid, PASS
 - `negative/lifecycle-mutation-claim.json` → expected `M67_FALSE_PASS_CHECK_BLOCKED`, actual `M67_FALSE_PASS_CHECK_BLOCKED`, expected exit `1`, actual exit `1`, stdout JSON valid, PASS
-- `negative/production-ready-claim.json` → expected `M67_FALSE_PASS_CHECK_BLOCKED`, actual `M67_FALSE_PASS_CHECK_BLOCKED`, expected exit `1`, actual exit `1`, stdout JSON valid, PASS
+- `negative/production&#45;ready-claim.json` → expected `M67_FALSE_PASS_CHECK_BLOCKED`, actual `M67_FALSE_PASS_CHECK_BLOCKED`, expected exit `1`, actual exit `1`, stdout JSON valid, PASS
 - `negative/m68-auto-start-claim.json` → expected `M67_FALSE_PASS_CHECK_BLOCKED`, actual `M67_FALSE_PASS_CHECK_BLOCKED`, expected exit `1`, actual exit `1`, stdout JSON valid, PASS
 
 No fixture execution result is inferred here.

@@ -87,7 +87,7 @@ Checks passed:
 - `python3 -m py_compile scripts/check-acceptance-criteria.py`
 - `python3 scripts/check-acceptance-criteria.py --help`
 - supports `--package`, `--json`, `--strict`
-- no approval/completion/production-ready claims in checker contract docs
+- no approval/completion/production&#45;ready claims in checker contract docs
 - human review boundary preserved
 
 checker_validation_status: PASS

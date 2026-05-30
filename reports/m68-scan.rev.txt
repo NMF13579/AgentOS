@@ -1,0 +1,25 @@
+branch: dev
+commit_sha: 49e29d3f13c2f232f44d409db4277131b352c743
+scan_timestamp_utc: 2026-05-29T16:33:39Z
+scanner_path: scripts/repo-scan.py
+active_task_id: task-68.0
+scanner_boundary: read-only scanner; no cleanup; no approval; no lifecycle mutation
+git_status_short:
+ M tasks/active-task.md
+?? reports/m68-anomaly-grep.txt
+?? reports/m68-docs-to-code-drift.json
+?? reports/m68-duplicates.json
+?? reports/m68-inventory.json
+?? reports/m68-owner-gaps.json
+?? reports/m68-pre-scan-status.txt
+?? reports/m68-prompt-metrics.json
+?? reports/m68-protected-artifacts.json
+?? reports/m68-repo-raw-inventory.md
+?? reports/m68-tree.json
+?? reports/m68-tree.txt
+?? scripts/repo-scan.py
+
+This revision file is scan evidence only.
+It is not approval.
+It is not lifecycle mutation.
+It does not authorize M68.1 or M69.

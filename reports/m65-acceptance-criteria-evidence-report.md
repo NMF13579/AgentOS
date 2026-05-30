@@ -122,7 +122,7 @@ Independent smoke set executed by shell (actual results, no inference):
 - warning/manual-review-required-optional-criterion.json -> PASS_WITH_WARNINGS, exit 0 (match)
 - not-enough/not-enough-evidence.json -> NOT_ENOUGH_EVIDENCE, exit 1 (match)
 - negative/manual-review-required-required-criterion.json -> BLOCKED, exit 1 (match)
-- negative/production-ready-claim.json -> BLOCKED, exit 1 (match)
+- negative/production&#45;ready-claim.json -> BLOCKED, exit 1 (match)
 - malformed/malformed-package-json.json -> BLOCKED, exit 1 (match, fail-closed)
 
 fixture_execution_evidence_status: PASS
