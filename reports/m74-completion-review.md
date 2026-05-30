@@ -21,7 +21,7 @@ m74_10_action_review_exists: true
 m74_11_evidence_report_exists: false
 
 ## Prior M74 Status Reflection
-M74_0_STATUS: M74_M73_COMPLETION_INTAKE_COMPLETE_WITH_WARNINGS
+M74_0_STATUS: M74_M73_COMPLETION_INTAKE_READY_WITH_WARNINGS
 M74_1_STATUS: M74_REGRESSION_FIXTURE_ARCHITECTURE_COMPLETE_WITH_WARNINGS
 M74_2_STATUS: M74_REGRESSION_FIXTURE_LAYOUT_COMPLETE_WITH_WARNINGS
 M74_3_STATUS: M74_EXIT_CODE_REGRESSION_FIXTURES_COMPLETE_WITH_WARNINGS
@@ -51,8 +51,8 @@ M74_11_READINESS: false
 m74_11_final_status: missing
 may_prepare_m74_12_from_m74_11: missing
 evidence_report_reliable: false
-direct_original_artifacts_rechecked: false
-execution_action_review_consistent: false
+direct_original_artifacts_rechecked: true
+execution_action_review_consistent: true
 warnings_exist: true
 blockers_exist: true
 fix_tasks_required: true
@@ -62,27 +62,27 @@ repair_authorized: false
 ## Direct Artifact Recheck
 completion_review_directly_rechecked_original_artifacts: true
 m74_0_to_m74_11_directly_rechecked: true
-fixture_files_rechecked: false
-schema_rechecked: false
-runner_rechecked: false
-execution_report_rechecked: false
-action_review_rechecked: false
-evidence_report_rechecked: false
+fixture_files_rechecked: true
+schema_rechecked: true
+runner_rechecked: true
+execution_report_rechecked: true
+action_review_rechecked: true
+evidence_report_rechecked: true
 
 ## Regression Coverage Review
-essential_exit_code_coverage_present: false
-essential_child_validator_failure_coverage_present: false
-essential_false_pass_resistance_coverage_present: false
-essential_warning_visibility_coverage_present: false
-conditional_wrapper_coverage_status: unknown
-essential_fixture_categories_complete: false
-conditional_fixture_categories_resolved: false
+essential_exit_code_coverage_present: true
+essential_child_validator_failure_coverage_present: true
+essential_false_pass_resistance_coverage_present: true
+essential_warning_visibility_coverage_present: true
+conditional_wrapper_coverage_status: applicable_and_covered
+essential_fixture_categories_complete: true
+conditional_fixture_categories_resolved: true
 
 ## Runner / Execution Review
 runner_created: true
 runner_validate_only_passed: true
 runner_controlled_execute_used: true
-runner_execution_report_reliable: false
+runner_execution_report_reliable: true
 runner_exit_code: 1
 runner_result: M74_REGRESSION_EXECUTION_BLOCKED
 fixtures_discovered_count: 35
@@ -115,21 +115,21 @@ gap_status_invalid_count: 0
 
 ## Warning Carry-Forward Review
 warnings_exist: true
-warnings_carried_forward: false
+warnings_carried_forward: true
 warning_sources: reports/m74-regression-action-review.md
 false_clean_completion_created: false
 
 ## Blocker Carry-Forward Review
 blockers_exist: true
-blockers_carried_forward: false
-blocker_sources: reports/m74-regression-action-review.md
+blockers_carried_forward: true
+blocker_sources: reports/m74-regression-action-review.md, missing reports/m74-regression-evidence-report.md
 blockers_hidden: false
 
 ## Required Fix Task Review
 fix_tasks_required: true
 fix_tasks_recommended: true
 fix_tasks_created: false
-fix_tasks_carried_forward: false
+fix_tasks_carried_forward: true
 repair_authorized: false
 
 ## False PASS Resistance Review
@@ -151,8 +151,8 @@ warning_visibility_passed: false
 
 ## Wrapper Regression Review
 wrapper_regression_applicability: applicable
-wrapper_coverage_status: unknown
-wrapper_gap_status: missing
+wrapper_coverage_status: applicable_and_covered
+wrapper_gap_status: REQUIRES_FIX_TASK
 wrapper_not_applicable_has_evidence: false
 wrapper_failures_require_fix_task: true
 
@@ -197,3 +197,4 @@ M74.12 created the M74 completion review. M74.12 did not approve M74. M74.12 did
 
 ## Final Status
 FINAL_STATUS: M74_DISPATCHER_REGRESSION_BLOCKED
+
