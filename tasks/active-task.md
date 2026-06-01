@@ -1,81 +1,35 @@
 ---
-id: task-72.9
-milestone: M72
-name: "M72 Completion Review"
-status: active
-mode: "COMPLETION REVIEW / READINESS ONLY / NO APPROVAL"
-branch: dev
-started_at: "2026-05-29"
+task:
+  id: "task-76.1"
+  goal: "Compile repository cleanup candidates and baseline current repository status without performing any physical cleanup."
+  expected_result: "Create reports/m76-cleanup-candidates.md containing detailed lists of candidates, repository baseline metrics, and boundaries."
+  in_scope:
+    - "Identifying duplicate scripts ending with ' 3.py' under scripts/"
+    - "Identifying tracked pycache bytecode files under scripts/__pycache__/"
+    - "Identifying legacy entrypoint scripts under scripts/"
+    - "Recording current repository baseline metrics"
+    - "Creating reports/m76-cleanup-candidates.md"
+  out_of_scope:
+    - "Physical deletion, renaming, or moving of any files"
+    - "Modifying scripts or runtime code"
+    - "Starting subsequent tasks or milestones"
+  files_or_areas:
+    - "tasks/active-task.md"
+    - "reports/m76-cleanup-candidates.md"
+  risk_level: "LOW"
+  risk_reason: "This is a read-only candidate identification and baseline reporting task. No files are modified or deleted."
+  requires_owner_approval: false
+  rollback_plan: "Discard changes to tasks/active-task.md and delete reports/m76-cleanup-candidates.md."
+  acceptance_criteria:
+    - "reports/m76-cleanup-candidates.md exists and is readable"
+    - "The report correctly identifies the 23 duplicate scripts ending in ' 3.py'"
+    - "The report correctly identifies the 6 tracked pycache files"
+    - "The report lists the 5 legacy entrypoint scripts"
+    - "The report records repo baseline metrics (git clean status, file counts)"
+    - "The report has FINAL_STATUS: M76_CLEANUP_CANDIDATES_COMPLETE_WITH_WARNINGS"
+    - "No physical file deletion or modification of runtime code occurred"
+  verification_plan:
+    - "python3 scripts/validate-task.py"
+    - "python3 scripts/audit-agentos.py"
+    - "git status"
 ---
-
-# Active Task: 72.9 — M72 Completion Review
-
-## Purpose
-
-Declare the active task identity for M72.9 completion review.
-
-## Task Boundary
-
-This file records the active task only.
-
-It does not approve M72.
-
-It does not create human approval.
-
-It does not mutate lifecycle state.
-
-It does not modify protected artifact model.
-
-It does not modify protected artifact registry.
-
-It does not modify canonical artifact registry.
-
-It does not modify ownership gap map.
-
-It does not modify CODEOWNERS alignment review.
-
-It does not modify protected change policy.
-
-It does not modify protected artifact audit checklist.
-
-It does not modify M72.8 evidence report.
-
-It does not modify CODEOWNERS.
-
-It does not configure branch protection.
-
-It does not create GitHub rulesets.
-
-It does not claim platform enforcement.
-
-It does not assign owners.
-
-It does not resolve ownership gaps.
-
-It does not authorize protected artifact changes.
-
-It does not authorize canonical artifact changes.
-
-It does not authorize cleanup.
-
-It does not modify scripts.
-
-It does not create JSON artifacts.
-
-It does not mutate lifecycle state.
-
-It does not start M73.
-
-It authorizes only creation of one Markdown M72 completion review.
-
-## Current Task
-
-72.9 — M72 Completion Review
-Validate:
-test -f tasks/active-task.md
-grep -q "^id: task-72.9$" tasks/active-task.md
-grep -q "^milestone: M72$" tasks/active-task.md
-grep -q '^name: "M72 Completion Review"$' tasks/active-task.md
-grep -q "^status: active$" tasks/active-task.md
-grep -q '^mode: "COMPLETION REVIEW / READINESS ONLY / NO APPROVAL"$' tasks/active-task.md
-grep -q "^branch: dev$" tasks/active-task.md
