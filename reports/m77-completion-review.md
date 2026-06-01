@@ -275,8 +275,8 @@ autopilot_enabled: false
 
 human_review_required_before_m78: true
 
-FINAL_STATUS: "M77_CLEANUP_PLAN_COMPLETE_WITH_WARNINGS"
-ready_for_m78_execution: "true_with_warnings"
+FINAL_STATUS: M77_COMPLETION_REVIEW_COMPLETE_WITH_WARNINGS
+ready_for_m78_execution: true_with_warnings
 
 blocker_codes:
   - "none"

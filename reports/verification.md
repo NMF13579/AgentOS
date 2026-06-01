@@ -1,6 +1,6 @@
 ---
 verification:
-  task_id: task-m39-8-1-completion-review
+  task_id: task-77.6
   gate_1:
     name: structure
     status: TODO

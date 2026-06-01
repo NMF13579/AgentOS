@@ -1619,10 +1619,10 @@ checkpoint_requirements:
   - `NON_BLOCKING_M76_CONTRADICTIONS_CARRIED_FORWARD`
 
 ## Local Final Status
-- `FINAL_STATUS: "M77_HUMAN_CHECKPOINT_REQUIREMENTS_COMPLETE_WITH_WARNINGS"`
+FINAL_STATUS: M77_HUMAN_CHECKPOINT_REQUIREMENTS_COMPLETE_WITH_WARNINGS
 
 ## Readiness for 77.7
-- `may_prepare_m77_7: "true_with_warnings"`
+may_prepare_m77_7: true_with_warnings
 
 ## Final Boundary Statement
 This report only records human checkpoint requirements.
