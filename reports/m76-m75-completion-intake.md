@@ -55,6 +55,7 @@ No cleanup was performed, and no milestone or cleanup structures were initialize
 ## 10. Warnings
 - `warning_codes:`
   - "none"
+- `warnings_carried_forward: true`
 
 ## 11. Local Final Status
 - `FINAL_STATUS: "M76_M75_COMPLETION_INTAKE_READY_WITH_WARNINGS"`
@@ -105,5 +106,6 @@ task_id: '76.0'
 task_name: M75 Completion Intake
 warning_codes:
 - none
+warnings_carried_forward: true
 
 ```
