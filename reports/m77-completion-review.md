@@ -22,32 +22,32 @@ This report verifies that the full M77 package is present, internally consistent
 - All required M77 artifacts are readable: true
 
 ## 77.0 Intake Review
-- `m77_0_final_status_detected: "M77_M76_COMPLETION_INTAKE_READY_WITH_WARNINGS"
-- `m77_0_readiness_detected: "true_with_warnings"
+- `m77_0_final_status_detected: "M77_M76_COMPLETION_INTAKE_READY_WITH_WARNINGS"`
+- `m77_0_readiness_detected: "true_with_warnings"`
 
 ## 77.1 Classification Review
-- `m77_1_final_status_detected: "M77_CLASSIFICATION_REVIEW_COMPLETE_WITH_WARNINGS"
-- `m77_1_readiness_detected: "true_with_warnings"
+- `m77_1_final_status_detected: "M77_CLASSIFICATION_REVIEW_COMPLETE_WITH_WARNINGS"`
+- `m77_1_readiness_detected: "true_with_warnings"`
 
 ## 77.2 Protected Artifact Review
-- `m77_2_final_status_detected: "M77_PROTECTED_ARTIFACT_REVIEW_COMPLETE_WITH_WARNINGS"
-- `m77_2_readiness_detected: "true_with_warnings"
+- `m77_2_final_status_detected: "M77_PROTECTED_ARTIFACT_REVIEW_COMPLETE_WITH_WARNINGS"`
+- `m77_2_readiness_detected: "true_with_warnings"`
 
 ## 77.3 Cleanup Plan Draft Review
-- `m77_3_final_status_detected: "M77_CLEANUP_PLAN_DRAFT_COMPLETE_WITH_WARNINGS"
-- `m77_3_readiness_detected: "true_with_warnings"
+- `m77_3_final_status_detected: "M77_CLEANUP_PLAN_DRAFT_COMPLETE_WITH_WARNINGS"`
+- `m77_3_readiness_detected: "true_with_warnings"`
 
 ## 77.4 Prewrite Check Review
-- `m77_4_final_status_detected: "M77_PREWRITE_CHECK_COMPLETE_WITH_WARNINGS"
-- `m77_4_readiness_detected: "true_with_warnings"
+- `m77_4_final_status_detected: "M77_PREWRITE_CHECK_COMPLETE_WITH_WARNINGS"`
+- `m77_4_readiness_detected: "true_with_warnings"`
 
 ## 77.5 Rollback Plan Review
-- `m77_5_final_status_detected: "M77_ROLLBACK_PLAN_COMPLETE_WITH_WARNINGS"
-- `m77_5_readiness_detected: "true_with_warnings"
+- `m77_5_final_status_detected: "M77_ROLLBACK_PLAN_COMPLETE_WITH_WARNINGS"`
+- `m77_5_readiness_detected: "true_with_warnings"`
 
 ## 77.6 Human Checkpoint Requirements Review
-- `m77_6_final_status_detected: "M77_HUMAN_CHECKPOINT_REQUIREMENTS_COMPLETE_WITH_WARNINGS"
-- `m77_6_readiness_detected: "true_with_warnings"
+- `m77_6_final_status_detected: "M77_HUMAN_CHECKPOINT_REQUIREMENTS_COMPLETE_WITH_WARNINGS"`
+- `m77_6_readiness_detected: "true_with_warnings"`
 
 ## Cleanup Item Template Completeness Review
 - `cleanup_plan_draft_created: true`
