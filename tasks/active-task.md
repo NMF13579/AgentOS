@@ -1,6 +1,6 @@
 ---
 task:
-  id: "task-78.0"
+  id: "task-78.1"
   goal: "Create reports/m77-human-checkpoint-requirements.md"
   expected_result: "Human checkpoint requirements package for all cleanup items requiring human review before M78 or M80."
   in_scope:

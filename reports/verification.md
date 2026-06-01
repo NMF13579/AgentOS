@@ -1,6 +1,6 @@
 ---
 verification:
-  task_id: task-78.0
+  task_id: task-78.1
   gate_1:
     name: structure
     status: TODO
