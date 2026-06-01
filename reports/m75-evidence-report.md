@@ -4,11 +4,11 @@
 This evidence report aggregates and directly rechecks evidence from M75.0 through M75.10. It reviews artifact presence, status validity, readiness, warnings, blockers, unknowns, and preserves all milestone and lifecycle boundaries.
 
 ## 2. Precondition Check
-The precondition check failed because the planning readiness facts report indicates a blocked status.
+The precondition check passed.
 - `precondition_artifact_exists: True`
 - `precondition_artifact_readable: True`
-- `precondition_final_status_value: "M75_M76_PLANNING_READINESS_FACTS_BLOCKED"`
-- `precondition_readiness_value: "false"`
+- `precondition_final_status_value: "M75_M76_PLANNING_READINESS_FACTS_COMPLETE_WITH_WARNINGS"`
+- `precondition_readiness_value: "true_with_warnings"`
 
 ## 3. Evidence Report Boundary
 This report aggregates evidence and does not constitute milestone approval, completion review, repair authorization, or milestone start.
@@ -23,32 +23,32 @@ This report aggregates evidence and does not constitute milestone approval, comp
 - `reports/m75-regression-protection-facts-review.md`
 - `reports/m75-drift-repo-hygiene-facts-review.md`
 - `reports/m75-carry-forward-gap-register.md`
-- `reports/m75-core-readiness-facts-matrix.md` (Missing)
+- `reports/m75-core-readiness-facts-matrix.md`
 - `reports/m75-m76-planning-readiness-facts.md`
 
 ## 5. M75 Artifact Presence Recheck
-Recheck shows 10 present out of 11 expected artifacts.
+Recheck shows 11 present out of 11 expected artifacts.
 - `m75_expected_artifact_count: 11`
-- `m75_artifact_exists_count: 10`
-- `m75_artifact_missing_count: 1`
+- `m75_artifact_exists_count: 11`
+- `m75_artifact_missing_count: 0`
 
 ## 6. Local Final Status Recheck
 Final statuses were inspected for all present files.
-- `m75_final_status_missing_count: 1`
-- `m75_final_status_unacceptable_count: 1`
+- `m75_final_status_missing_count: 0`
+- `m75_final_status_unacceptable_count: 0`
 
 ## 7. Readiness Field Recheck
 Readiness fields were parsed for all present files.
-- `m75_readiness_missing_count: 1`
+- `m75_readiness_missing_count: 0`
 - `m75_readiness_unacceptable_count: 0`
 
 ## 8. Cross-Artifact Consistency Checks
 A total of 10 cross-checks were conducted.
 - `cross_check_count: 10`
-- `cross_check_pass_count: 5`
+- `cross_check_pass_count: 10`
 - `cross_check_warning_count: 0`
 - `cross_check_blocked_count: 0`
-- `cross_check_unknown_count: 5`
+- `cross_check_unknown_count: 0`
 
 ## 9. Warning Carry-Forward Recheck
 Warnings remain visible.
@@ -70,7 +70,7 @@ Gaps are consistent with the gap register.
 ## 13. M76 Planning Facts Boundary Recheck
 M76 planning facts boundary was verified.
 - `m76_planning_facts_status_present: true`
-- `m76_planning_facts_status_value: "FACTS_INSUFFICIENT"`
+- `m76_planning_facts_status_value: "FACTS_SUPPORT_M76_PLANNING_WITH_WARNINGS"`
 - `m76_planning_facts_status_is_recommendation: false`
 - `m76_planning_facts_status_is_approval: false`
 - `m76_planning_facts_status_starts_m76: false`
@@ -90,28 +90,25 @@ Milestone boundary fields checked.
 - `fix_tasks_created: false`
 
 ## 15. Evidence Reliability Summary
-- `evidence_reliable: false`
-Evidence is unreliable due to missing artifacts and blocked precondition status.
+- `evidence_reliable: true`
+Evidence is reliable with warnings.
 
 ## 16. Warning Summary
 - `warnings_carried_forward: true`
-- `warning_count: 3`
+- `warning_count: 2`
 - `warnings:`
-  - "Precondition M76 Planning Readiness Facts is in BLOCKED status."
-  - "Precondition readiness may_prepare_m75_11 is false."
-  - "M75.9 core readiness facts matrix is missing from repository."
+  - "Milestone facts matrix contains warnings and carried-forward gaps."
+  - "Upstream warnings exist across all analyzed milestones M68-M74."
 
 ## 17. Blocker Summary
-- `blocker_count: 2`
-- `blockers:`
-  - "Task blocked due to failed precondition reports/m75-m76-planning-readiness-facts.md readiness value (false)."
-  - "M75.9 core readiness facts matrix is missing, preventing complete verification."
+- `blocker_count: 0`
+- `blockers: []`
 
 ## 18. Local Final Status
-- `FINAL_STATUS: "M75_EVIDENCE_REPORT_BLOCKED"`
+- `FINAL_STATUS: "M75_EVIDENCE_REPORT_COMPLETE_WITH_WARNINGS"`
 
 ## 19. Output Readiness
-- `may_prepare_m75_12: "false"`
+- `may_prepare_m75_12: "true_with_warnings"`
 
 ## 20. Boundary Statement
 M75.11 created the evidence report. This report does not approve M74, M75, or AgentOS core. It does not create M75 completion review, nor does it authorize repair, create fix tasks, or start subsequent milestones. Output readiness represents roadmap preparation readiness only and does not constitute approval or start the next task. Human review remains required.
@@ -120,18 +117,15 @@ M75.11 created the evidence report. This report does not approve M74, M75, or Ag
 
 ### Machine-Readable Metadata
 ```yaml
-FINAL_STATUS: M75_EVIDENCE_REPORT_BLOCKED
+FINAL_STATUS: M75_EVIDENCE_REPORT_COMPLETE_WITH_WARNINGS
 approval_claim_created: false
-blocker_count: 2
-blockers:
-- Task blocked due to failed precondition reports/m75-m76-planning-readiness-facts.md
-  readiness value (false).
-- M75.9 core readiness facts matrix is missing, preventing complete verification.
+blocker_count: 0
+blockers: []
 blockers_visible: true
 carry_forward_gaps_visible: true
 cross_check_blocked_count: 0
 cross_check_count: 10
-cross_check_pass_count: 5
+cross_check_pass_count: 10
 cross_check_results:
 - check_id: intake_vs_inventory
   check_name: 75.0 Intake vs 75.1 Inventory
@@ -151,9 +145,9 @@ cross_check_results:
   - reports/m75-evidence-completeness-facts-review.md
 - check_id: predicates_vs_matrix
   check_name: 75.2 Capability Predicates vs 75.9 Facts Matrix
-  finding: M75.9 facts matrix is missing, so capability predicates cannot be verified
-    in the matrix.
-  result: UNKNOWN
+  finding: Capability predicates are represented in the core readiness facts matrix
+    without becoming scores or approval gates.
+  result: PASS
   source_artifacts:
   - reports/m75-core-capability-predicate-model.md
   - reports/m75-core-readiness-facts-matrix.md
@@ -167,33 +161,32 @@ cross_check_results:
   - reports/m75-drift-repo-hygiene-facts-review.md
 - check_id: governance_vs_matrix
   check_name: 75.5 Governance Facts vs 75.9 Matrix
-  finding: M75.9 facts matrix is missing, so governance controls cannot be verified
-    in the matrix.
-  result: UNKNOWN
+  finding: Governance controls align between governance report and core readiness
+    facts matrix.
+  result: PASS
   source_artifacts:
   - reports/m75-governance-validation-facts-review.md
   - reports/m75-core-readiness-facts-matrix.md
 - check_id: regression_vs_matrix
   check_name: 75.6 Regression Facts vs 75.9 Matrix
-  finding: M75.9 facts matrix is missing, so regression protection cannot be verified
-    in the matrix.
-  result: UNKNOWN
+  finding: Regression protection and visibility facts align between regression report
+    and core readiness facts matrix.
+  result: PASS
   source_artifacts:
   - reports/m75-regression-protection-facts-review.md
   - reports/m75-core-readiness-facts-matrix.md
 - check_id: gaps_vs_matrix
   check_name: 75.8 Gap Register vs 75.9 Matrix
-  finding: M75.9 facts matrix is missing, so gap register consistency cannot be verified
-    against the matrix.
-  result: UNKNOWN
+  finding: Gap register count matches gap registry summary in the core readiness facts
+    matrix.
+  result: PASS
   source_artifacts:
   - reports/m75-carry-forward-gap-register.md
   - reports/m75-core-readiness-facts-matrix.md
 - check_id: matrix_vs_planning
   check_name: 75.9 Matrix vs 75.10 M76 Planning Facts
-  finding: M75.9 facts matrix is missing, so alignment with M76 planning readiness
-    facts cannot be verified.
-  result: UNKNOWN
+  finding: Core readiness facts matrix aligns with M76 planning readiness facts.
+  result: PASS
   source_artifacts:
   - reports/m75-core-readiness-facts-matrix.md
   - reports/m75-m76-planning-readiness-facts.md
@@ -211,39 +204,38 @@ cross_check_results:
   - reports/m75-regression-protection-facts-review.md
   - reports/m75-drift-repo-hygiene-facts-review.md
   - reports/m75-carry-forward-gap-register.md
-  - reports/m75-m76-planning-readiness-facts.md
+  - reports/m75-core-readiness-facts-matrix.md
 - check_id: m76_artifact_boundary
   check_name: M76 Artifact Boundary Check
-  finding: No M76 planning artifacts or task briefs exist.
+  finding: No M76 planning artifacts or task briefs exist (excluding allowed intake).
   result: PASS
   source_artifacts: []
-cross_check_unknown_count: 5
+cross_check_unknown_count: 0
 cross_check_warning_count: 0
-evidence_reliability_issues:
-- M75.9 facts matrix is missing from repository.
-- M75.10 planning readiness facts are blocked.
-evidence_reliable: false
+evidence_reliability_issues: []
+evidence_reliable: true
 fix_required_gaps_visible: true
 fix_tasks_created: false
 lifecycle_mutation_occurred: false
-m75_artifact_exists_count: 10
-m75_artifact_missing_count: 1
+m75_artifact_exists_count: 11
+m75_artifact_missing_count: 0
 m75_artifact_recheck:
 - artifact_exists: true
   artifact_path: reports/m75-m74-completion-intake.md
   artifact_readable: true
-  blockers_present: false
+  blockers_present: true
   boundary_fields_present: true
   final_status_acceptable_for_evidence: true
   final_status_present: true
   final_status_value: M75_M74_COMPLETION_INTAKE_READY_WITH_WARNINGS
-  notes: 'Failed to read file: name ''r_unacceptable_count'' is not defined'
-  readiness_field_acceptable_for_next_step: false
+  notes: 'Rechecked: Status M75_M74_COMPLETION_INTAKE_READY_WITH_WARNINGS, Readiness
+    True.'
+  readiness_field_acceptable_for_next_step: true
   readiness_field_name: ready_for_m75_present
   readiness_field_present: true
   readiness_field_value: 'True'
   unknowns_present: false
-  warnings_present: false
+  warnings_present: true
 - artifact_exists: true
   artifact_path: reports/m75-evidence-inventory.md
   artifact_readable: true
@@ -372,37 +364,39 @@ m75_artifact_recheck:
   readiness_field_value: true_with_warnings
   unknowns_present: true
   warnings_present: true
-- artifact_exists: false
+- artifact_exists: true
   artifact_path: reports/m75-core-readiness-facts-matrix.md
-  artifact_readable: false
-  blockers_present: false
+  artifact_readable: true
+  blockers_present: true
   boundary_fields_present: true
-  final_status_acceptable_for_evidence: false
-  final_status_present: false
-  final_status_value: unknown
-  notes: File is missing.
-  readiness_field_acceptable_for_next_step: false
-  readiness_field_name: unknown
-  readiness_field_present: false
-  readiness_field_value: unknown
-  unknowns_present: false
-  warnings_present: false
+  final_status_acceptable_for_evidence: true
+  final_status_present: true
+  final_status_value: M75_CORE_READINESS_FACTS_MATRIX_COMPLETE_WITH_WARNINGS
+  notes: 'Rechecked: Status M75_CORE_READINESS_FACTS_MATRIX_COMPLETE_WITH_WARNINGS,
+    Readiness true_with_warnings.'
+  readiness_field_acceptable_for_next_step: true
+  readiness_field_name: may_prepare_m75_10
+  readiness_field_present: true
+  readiness_field_value: true_with_warnings
+  unknowns_present: true
+  warnings_present: true
 - artifact_exists: true
   artifact_path: reports/m75-m76-planning-readiness-facts.md
   artifact_readable: true
-  blockers_present: false
+  blockers_present: true
   boundary_fields_present: true
-  final_status_acceptable_for_evidence: false
+  final_status_acceptable_for_evidence: true
   final_status_present: true
-  final_status_value: M75_M76_PLANNING_READINESS_FACTS_BLOCKED
-  notes: 'Failed to read file: name ''r_unacceptable_count'' is not defined'
-  readiness_field_acceptable_for_next_step: false
+  final_status_value: M75_M76_PLANNING_READINESS_FACTS_COMPLETE_WITH_WARNINGS
+  notes: 'Rechecked: Status M75_M76_PLANNING_READINESS_FACTS_COMPLETE_WITH_WARNINGS,
+    Readiness true_with_warnings.'
+  readiness_field_acceptable_for_next_step: true
   readiness_field_name: may_prepare_m75_11
   readiness_field_present: true
-  readiness_field_value: 'false'
-  unknowns_present: false
-  warnings_present: false
-m75_artifact_unreadable_count: 2
+  readiness_field_value: true_with_warnings
+  unknowns_present: true
+  warnings_present: true
+m75_artifact_unreadable_count: 0
 m75_artifacts_expected: &id001
 - reports/m75-m74-completion-intake.md
 - reports/m75-evidence-inventory.md
@@ -417,9 +411,9 @@ m75_artifacts_expected: &id001
 - reports/m75-m76-planning-readiness-facts.md
 m75_completion_review_created: false
 m75_expected_artifact_count: 11
-m75_final_status_missing_count: 1
-m75_final_status_unacceptable_count: 1
-m75_readiness_missing_count: 1
+m75_final_status_missing_count: 0
+m75_final_status_unacceptable_count: 0
+m75_readiness_missing_count: 0
 m75_readiness_unacceptable_count: 0
 m76_artifacts_created: false
 m76_plan_created: false
@@ -427,31 +421,30 @@ m76_planning_facts_status_is_approval: false
 m76_planning_facts_status_is_recommendation: false
 m76_planning_facts_status_present: true
 m76_planning_facts_status_starts_m76: false
-m76_planning_facts_status_value: FACTS_INSUFFICIENT
+m76_planning_facts_status_value: FACTS_SUPPORT_M76_PLANNING_WITH_WARNINGS
 m76_recommendation_created: false
 m76_reports_created: false
 m76_started: false
 m76_task_briefs_created: false
-may_prepare_m75_12: 'false'
+may_prepare_m75_12: true_with_warnings
 precondition_artifact: reports/m75-m76-planning-readiness-facts.md
 precondition_artifact_exists: true
 precondition_artifact_readable: true
-precondition_final_status_acceptable: false
+precondition_final_status_acceptable: true
 precondition_final_status_present: true
-precondition_final_status_value: M75_M76_PLANNING_READINESS_FACTS_BLOCKED
-precondition_readiness_acceptable: false
+precondition_final_status_value: M75_M76_PLANNING_READINESS_FACTS_COMPLETE_WITH_WARNINGS
+precondition_readiness_acceptable: true
 precondition_readiness_present: true
-precondition_readiness_value: 'false'
+precondition_readiness_value: true_with_warnings
 repair_authorized: false
 source_artifacts_checked: *id001
 task_id: '75.11'
 task_name: M75 Evidence Report
 unknowns_visible: true
-warning_count: 3
+warning_count: 2
 warnings:
-- Precondition M76 Planning Readiness Facts is in BLOCKED status.
-- Precondition readiness may_prepare_m75_11 is false.
-- M75.9 core readiness facts matrix is missing from repository.
+- Milestone facts matrix contains warnings and carried-forward gaps.
+- Upstream warnings exist across all analyzed milestones M68-M74.
 warnings_carried_forward: true
 warnings_visible: true
 
