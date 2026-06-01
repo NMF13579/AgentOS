@@ -134,9 +134,7 @@ Files containing signals classified as git-state-mutating operations (`GIT_PUSH`
 | `.github/workflows/setup-repository.yml` | GIT_PUSH, RM, RM_RF | — | Workflow: push + destructive delete; setup bootstrap |
 | `scripts/audit-context-layer.py` | GIT_PUSH, SUBPROCESS | AUTHORIZATION | Audit script: push signal present; purpose is context-layer audit |
 | `scripts/audit-pre-merge-corridor.py` | GIT_PUSH, OS_SYSTEM, SUBPROCESS | — | Canonical audit script: OS_SYSTEM + GIT_PUSH; highest-risk combination in audit category |
-| `scripts/audit-pre-merge-corridor 3.py` | GIT_PUSH, OS_SYSTEM, SUBPROCESS | — | **BACKUP COPY** of `audit-pre-merge-corridor.py` (per M71.3); same signals as canonical |
 | `scripts/check-commit-push-preconditions.py` | GIT_PUSH, SUBPROCESS | AUTHORIZATION | Precondition checker: push signal is part of gate check logic |
-| `scripts/check-commit-push-preconditions 3.py` | GIT_PUSH, SUBPROCESS | AUTHORIZATION | **BACKUP COPY** of `check-commit-push-preconditions.py` (per M71.3) |
 | `scripts/check-use-template-readiness.py` | GIT_PUSH, SHELL_TRUE, SUBPROCESS | — | SHELL_TRUE + GIT_PUSH combination: elevated risk signal; checks readiness before template use |
 
 ---
@@ -154,10 +152,8 @@ Files containing signals classified as destructive deletion (`RM_RF`, `RM`, `SHU
 | `scripts/test-example-project.sh` | RM, RM_RF | — | Test shell script: cleanup at start/end of test run |
 | `scripts/test-install.sh` | RM, RM_RF | — | Install test: destructive delete of test dirs |
 | `scripts/test-m27-level1-fixtures.py` | RM, RM_RF, SUBPROCESS | — | Fixture: uses rm -rf for tmp fixture dir teardown |
-| `scripts/test-m27-level1-fixtures 3.py` | RM, RM_RF, SUBPROCESS | — | **BACKUP COPY** of `test-m27-level1-fixtures.py` (per M71.3) |
 | `scripts/test-m40-runtime-bypass-smoke.py` | SHUTIL_RMTREE, CHMOD, CURL, MKDIR, SUBPROCESS, WRITE_TEXT | GITHUB_TOKEN, SECRET, TOKEN | **Highest multi-signal risk**: destructive + network + secret-like + chmod; bypass smoke test |
 | `scripts/test-scope-compliance-fixtures.py` | UNLINK, RENAME, MKDIR, SUBPROCESS, WRITE_TEXT | — | Fixture: unlink + rename for temp fixture management |
-| `scripts/test-scope-compliance-fixtures 3.py` | UNLINK, RENAME, MKDIR, SUBPROCESS, WRITE_TEXT | — | **BACKUP COPY** of `test-scope-compliance-fixtures.py` (per M71.3) |
 
 ---
 
@@ -172,10 +168,8 @@ Files containing signals classified as network access (`CURL`, `REQUESTS`, `URLL
 | `scripts/agentos-command-guard.py` | CURL | — | Guard script: curl signal; verify intended network use |
 | `scripts/audit-m31-tui-tutor.py` | REQUESTS, URLLIB, OS_SYSTEM | — | Legacy audit: REQUESTS + URLLIB + OS_SYSTEM combination |
 | `scripts/audit-validation-integration.py` | REQUESTS, SUBPROCESS | — | Audit script: REQUESTS for validation integration check |
-| `scripts/audit-validation-integration 3.py` | REQUESTS, SUBPROCESS | — | **BACKUP COPY** of `audit-validation-integration.py` (per M71.3) |
 | `scripts/check-bypass-fixtures.py` | CURL, CHMOD, REPLACE | AUTHORIZATION, BEARER, PASSWORD, SECRET, TOKEN | **Highest secret-like signal breadth**: CURL + BEARER + PASSWORD + SECRET — fixture for bypass checks |
 | `scripts/test-ci-advisory-config.py` | REQUESTS | SECRET, TOKEN | Network + SECRET signal; CI advisory config test |
-| `scripts/test-ci-advisory-config 3.py` | REQUESTS | SECRET, TOKEN | **BACKUP COPY** of `test-ci-advisory-config.py` (per M71.3) |
 | `scripts/test-m40-runtime-bypass-smoke.py` | CURL, SHUTIL_RMTREE, CHMOD, MKDIR, SUBPROCESS, WRITE_TEXT | GITHUB_TOKEN, SECRET, TOKEN | **Highest multi-signal risk** (also listed under DESTRUCTIVE_DELETE) |
 
 ---
@@ -196,7 +190,6 @@ Files with `SHELL_TRUE` or `OS_SYSTEM` signals (elevated subprocess risk). SUBPR
 |---|---|---|---|
 | `scripts/audit-m31-tui-tutor.py` | OS_SYSTEM, REQUESTS, URLLIB | — | Legacy audit: OS_SYSTEM present; classified LEGACY_CANDIDATE in M71.3 |
 | `scripts/audit-pre-merge-corridor.py` | OS_SYSTEM, GIT_PUSH, SUBPROCESS | — | Canonical audit: OS_SYSTEM + GIT_PUSH; highest risk in audit scripts |
-| `scripts/audit-pre-merge-corridor 3.py` | OS_SYSTEM, GIT_PUSH, SUBPROCESS | — | **BACKUP COPY** of above (per M71.3) |
 
 ### 4.3 Subprocess Breadth Summary
 
@@ -231,18 +224,6 @@ These files are flagged because dangerous signals in non-canonical copies increa
 
 | File | Classification (M71.3) | Operation Signals | Notes |
 |---|---|---|---|
-| `scripts/audit-pre-merge-corridor 3.py` | BACKUP_COPY | GIT_PUSH, OS_SYSTEM, SUBPROCESS | Carries GIT_PUSH + OS_SYSTEM — same as canonical copy |
-| `scripts/check-commit-push-preconditions 3.py` | BACKUP_COPY | GIT_PUSH, SUBPROCESS | Carries GIT_PUSH — same as canonical |
-| `scripts/test-m27-level1-fixtures 3.py` | BACKUP_COPY | RM, RM_RF, SUBPROCESS | Carries destructive delete |
-| `scripts/test-scope-compliance-fixtures 3.py` | BACKUP_COPY | UNLINK, RENAME, MKDIR, SUBPROCESS, WRITE_TEXT | Carries destructive operations |
-| `scripts/audit-validation-integration 3.py` | BACKUP_COPY | REQUESTS, SUBPROCESS | Carries network signal |
-| `scripts/test-ci-advisory-config 3.py` | BACKUP_COPY | REQUESTS | Carries network signal |
-| `scripts/test-m22-guardrails 3.py` | BACKUP_COPY | SUBPROCESS | Subprocess only |
-| `scripts/test-pre-merge-corridor-fixtures 3.py` | BACKUP_COPY | SUBPROCESS | Subprocess only |
-| `scripts/test-pre-merge-scope-fixtures 3.py` | BACKUP_COPY | SUBPROCESS | Subprocess only |
-| `scripts/test-scope-compliance-fixtures 3.py` | BACKUP_COPY | UNLINK, RENAME, MKDIR, SUBPROCESS, WRITE_TEXT | Destructive + file-write |
-| `scripts/test-m27-level1-fixtures 3.py` | BACKUP_COPY | RM, RM_RF, SUBPROCESS | Destructive |
-| `scripts/check-github-platform-enforcement 3.py` | BACKUP_COPY | — | No op signals; secret-like signals: AUTHORIZATION |
 
 > Note: " 3" suffix files were classified as BACKUP_COPY candidates in M71.3. Their dangerous signals are recorded here for completeness. No cleanup is performed in M71.4.
 

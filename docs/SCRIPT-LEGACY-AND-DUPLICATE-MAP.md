@@ -56,7 +56,6 @@ The responsibility map [docs/SCRIPT-RESPONSIBILITY-MAP.md](file:///Users/muhamme
 The classification categorizes scripts into the following candidate statuses:
 - `ACTIVE_CANDIDATE`: Mapped active scripts needed for repository support.
 - `LEGACY_CANDIDATE`: Older versions of scripts requiring review.
-- `DUPLICATE_CANDIDATE`: Redundant copies (e.g. ` 3.py` duplicates).
 - `BACKUP_CANDIDATE`: Backup scripts.
 - `ORPHAN_CANDIDATE`: Scripts without any active callers.
 - `GENERATED_CACHE_CANDIDATE`: Compiled python cache files.
@@ -68,7 +67,6 @@ The classification categorizes scripts into the following candidate statuses:
 ## Copy-Like Filename Signals
 
 - copy_like_signal_count: 23
-Files ending in ` 3.py` or similar copy suffixes.
 
 ## Backup-Like Filename Signals
 
@@ -140,26 +138,20 @@ Validation and enforcement authority scripts.
 | `scripts/audit-execution-control.py` | needs_later_classification | BLOCKED_PROTECTED | completion_gate_boundary | docs, reports | docs, reports | governance_critical_validator_or_runner | M71.4, M71.5 | false | |
 | `scripts/audit-gate-contract.py` | needs_later_classification | BLOCKED_PROTECTED | workflow_validation | docs, reports | docs, reports | governance_critical_validator_or_runner | M71.4, M71.5 | false | |
 | `scripts/audit-lifecycle-mutation.py` | needs_later_classification | BLOCKED_PROTECTED | workflow_validation | docs, reports | docs, reports | governance_critical_validator_or_runner | M71.4, M71.5 | false | |
-| `scripts/audit-m27 3.py` | raw_signal_copy_like_filename, raw_signal_legacy_like_filename | NEEDS_REVIEW | legacy_runner_candidate | docs, reports | docs, reports | none | NEEDS_REVIEW | false | |
-| `scripts/audit-m27-level1 3.py` | raw_signal_copy_like_filename, raw_signal_legacy_like_filename | NEEDS_REVIEW | legacy_runner_candidate | docs, reports | docs, reports | none | NEEDS_REVIEW | false | |
 | `scripts/audit-m27-level1.py` | needs_later_classification | BLOCKED_PROTECTED | workflow_validation | docs, reports | docs, reports | governance_critical_validator_or_runner | M71.4, M71.5 | false | |
 | `scripts/audit-m27.py` | needs_later_classification | BLOCKED_PROTECTED | workflow_validation | docs, reports | docs, reports | governance_critical_validator_or_runner | M71.4, M71.5 | false | |
 | `scripts/audit-m30-context-pipeline.py` | needs_later_classification | BLOCKED_PROTECTED | workflow_validation | docs, reports | docs, reports | governance_critical_validator_or_runner | M71.4, M71.5 | false | |
 | `scripts/audit-m31-tui-tutor.py` | needs_later_classification | BLOCKED_PROTECTED | workflow_validation | docs, reports | docs, reports | governance_critical_validator_or_runner | M71.4, M71.5 | false | |
-| `scripts/audit-metadata-consistency 3.py` | raw_signal_copy_like_filename, raw_signal_legacy_like_filename | NEEDS_REVIEW | legacy_runner_candidate | docs, reports | docs, reports | none | NEEDS_REVIEW | false | |
 | `scripts/audit-metadata-consistency.py` | needs_later_classification | BLOCKED_PROTECTED | workflow_validation | docs, reports | docs, reports | governance_critical_validator_or_runner | M71.4, M71.5 | false | |
 | `scripts/audit-mvp-readiness.py` | needs_later_classification | BLOCKED_PROTECTED | workflow_validation | docs, reports | docs, reports | governance_critical_validator_or_runner | M71.4, M71.5 | false | |
 | `scripts/audit-policy-boundary.py` | needs_later_classification | BLOCKED_PROTECTED | workflow_validation | docs, reports, fixtures | docs, reports, fixtures | governance_critical_validator_or_runner | M71.4, M71.5 | false | |
-| `scripts/audit-pre-merge-corridor 3.py` | raw_signal_copy_like_filename, raw_signal_legacy_like_filename | NEEDS_REVIEW | legacy_runner_candidate | docs, reports | docs, reports | none | NEEDS_REVIEW | false | |
 | `scripts/audit-pre-merge-corridor.py` | needs_later_classification | BLOCKED_PROTECTED | workflow_validation | docs, reports | docs, reports | governance_critical_validator_or_runner | M71.4, M71.5 | false | |
 | `scripts/audit-release-readiness.py` | needs_later_classification | BLOCKED_PROTECTED | workflow_validation | docs, reports | docs, reports | governance_critical_validator_or_runner | M71.4, M71.5 | false | |
 | `scripts/audit-template-packaging.py` | raw_signal_backup_like_filename | BLOCKED_PROTECTED | workflow_validation | docs, reports | docs, reports | governance_critical_validator_or_runner | M71.4, M71.5 | false | |
-| `scripts/audit-validation-integration 3.py` | raw_signal_copy_like_filename, raw_signal_legacy_like_filename | NEEDS_REVIEW | legacy_runner_candidate | docs, reports | docs, reports | none | NEEDS_REVIEW | false | |
 | `scripts/audit-validation-integration.py` | needs_later_classification | BLOCKED_PROTECTED | workflow_validation | docs, reports | docs, reports | governance_critical_validator_or_runner | M71.4, M71.5 | false | |
 | `scripts/build-context-cache.py` | needs_later_classification | ACTIVE_CANDIDATE | unknown | docs, reports | docs, reports | none | NEEDS_REVIEW | false | |
 | `scripts/build-context-index.py` | needs_later_classification | ACTIVE_CANDIDATE | unknown | docs, reports, fixtures | docs, reports, fixtures | none | NEEDS_REVIEW | false | |
 | `scripts/build-execution-verification-registry.py` | needs_later_classification | ACTIVE_CANDIDATE | unknown | docs, reports | docs, reports | none | NEEDS_REVIEW | false | |
-| `scripts/build-index 3.py` | raw_signal_copy_like_filename, raw_signal_legacy_like_filename | NEEDS_REVIEW | legacy_runner_candidate | docs, reports | docs, reports | none | NEEDS_REVIEW | false | |
 | `scripts/build-index.py` | needs_later_classification | ACTIVE_CANDIDATE | context_indexing | docs, reports | docs, reports | none | NEEDS_REVIEW | false | |
 | `scripts/build-task-dependency-map.py` | needs_later_classification | ACTIVE_CANDIDATE | unknown | docs, reports | docs, reports | none | NEEDS_REVIEW | false | |
 | `scripts/canonical-cleanup.sh` | needs_later_classification | ACTIVE_CANDIDATE | unknown | docs, reports | docs, reports | none | NEEDS_REVIEW | false | |
@@ -170,7 +162,6 @@ Validation and enforcement authority scripts.
 | `scripts/check-bypass-fixtures.py` | needs_later_classification | BLOCKED_PROTECTED | task_validation | docs, reports | docs, reports | governance_critical_validator_or_runner | M71.4, M71.5 | false | |
 | `scripts/check-bypass-resistance.py` | needs_later_classification | BLOCKED_PROTECTED | task_validation | docs, reports | docs, reports | governance_critical_validator_or_runner | M71.4, M71.5 | false | |
 | `scripts/check-canary-integrity.py` | needs_later_classification | BLOCKED_PROTECTED | task_validation | docs, reports | docs, reports | governance_critical_validator_or_runner | M71.4, M71.5 | false | |
-| `scripts/check-commit-push-preconditions 3.py` | raw_signal_copy_like_filename, raw_signal_legacy_like_filename | NEEDS_REVIEW | legacy_runner_candidate | docs, reports | docs, reports | none | NEEDS_REVIEW | false | |
 | `scripts/check-commit-push-preconditions.py` | needs_later_classification | BLOCKED_PROTECTED | task_validation | docs, reports, fixtures | docs, reports, fixtures | governance_critical_validator_or_runner | M71.4, M71.5 | false | |
 | `scripts/check-completion-readiness.py` | needs_later_classification | BLOCKED_PROTECTED | task_validation | docs, reports | docs, reports | governance_critical_validator_or_runner | M71.4, M71.5 | false | |
 | `scripts/check-context-compliance.py` | needs_later_classification | ACTIVE_CANDIDATE | context_indexing | docs, reports, fixtures | docs, reports, fixtures | none | NEEDS_REVIEW | false | |
@@ -190,7 +181,6 @@ Validation and enforcement authority scripts.
 | `scripts/check-execution-verification-registry.py` | needs_later_classification | BLOCKED_PROTECTED | task_validation | docs, reports | docs, reports | governance_critical_validator_or_runner | M71.4, M71.5 | false | |
 | `scripts/check-execution-verification-regression.py` | needs_later_classification | BLOCKED_PROTECTED | task_validation | docs, reports | docs, reports | governance_critical_validator_or_runner | M71.4, M71.5 | false | |
 | `scripts/check-false-pass-resistance.py` | needs_later_classification | BLOCKED_PROTECTED | false_pass_resistance | docs, reports, fixtures | docs, reports, fixtures | governance_critical_validator_or_runner | M71.4, M71.5 | false | |
-| `scripts/check-github-platform-enforcement 3.py` | raw_signal_copy_like_filename, raw_signal_legacy_like_filename | NEEDS_REVIEW | legacy_runner_candidate | docs, reports | docs, reports | none | NEEDS_REVIEW | false | |
 | `scripts/check-github-platform-enforcement.py` | needs_later_classification | BLOCKED_PROTECTED | task_validation | docs, reports | docs, reports | governance_critical_validator_or_runner | M71.4, M71.5 | false | |
 | `scripts/check-identity-drift.sh` | needs_later_classification | BLOCKED_PROTECTED | task_validation | workflow, docs, reports | workflow, docs, reports | governance_critical_validator_or_runner | M71.4, M71.5 | false | |
 | `scripts/check-interview-completeness.py` | needs_later_classification | BLOCKED_PROTECTED | task_validation | docs, reports | docs, reports | governance_critical_validator_or_runner | M71.4, M71.5 | false | |
@@ -204,7 +194,6 @@ Validation and enforcement authority scripts.
 | `scripts/check-m59-execution-result-verification-fixtures.py` | needs_later_classification | BLOCKED_PROTECTED | task_validation | docs, reports | docs, reports | governance_critical_validator_or_runner | M71.4, M71.5 | false | |
 | `scripts/check-m61-hardening-regression.py` | needs_later_classification | BLOCKED_PROTECTED | task_validation | docs, reports | docs, reports | governance_critical_validator_or_runner | M71.4, M71.5 | false | |
 | `scripts/check-pr-quality.py` | needs_later_classification | BLOCKED_PROTECTED | task_validation | workflow, docs, reports, tasks | workflow, docs, reports, tasks | governance_critical_validator_or_runner | M71.4, M71.5 | false | |
-| `scripts/check-pre-merge-scope 3.py` | raw_signal_copy_like_filename, raw_signal_legacy_like_filename | NEEDS_REVIEW | legacy_runner_candidate | docs, reports | docs, reports | none | NEEDS_REVIEW | false | |
 | `scripts/check-pre-merge-scope.py` | needs_later_classification | BLOCKED_PROTECTED | task_validation | docs, reports, fixtures | docs, reports, fixtures | governance_critical_validator_or_runner | M71.4, M71.5 | false | |
 | `scripts/check-premature-artifacts.sh` | needs_later_classification | BLOCKED_PROTECTED | task_validation | docs, reports | docs, reports | governance_critical_validator_or_runner | M71.4, M71.5 | false | |
 | `scripts/check-private-evaluator-consistency.py` | needs_later_classification | BLOCKED_PROTECTED | task_validation | docs, reports | docs, reports | governance_critical_validator_or_runner | M71.4, M71.5 | false | |
@@ -215,7 +204,6 @@ Validation and enforcement authority scripts.
 | `scripts/check-required-context-pack.py` | needs_later_classification | ACTIVE_CANDIDATE | context_indexing | docs, reports | docs, reports | none | NEEDS_REVIEW | false | |
 | `scripts/check-risk.py` | needs_later_classification | BLOCKED_PROTECTED | task_validation | workflow, docs, reports | workflow, docs, reports | governance_critical_validator_or_runner | M71.4, M71.5 | false | |
 | `scripts/check-role-separation.py` | needs_later_classification | BLOCKED_PROTECTED | task_validation | docs, reports | docs, reports | governance_critical_validator_or_runner | M71.4, M71.5 | false | |
-| `scripts/check-scope-compliance 3.py` | raw_signal_copy_like_filename, raw_signal_legacy_like_filename | NEEDS_REVIEW | legacy_runner_candidate | docs, reports | docs, reports | none | NEEDS_REVIEW | false | |
 | `scripts/check-scope-compliance.py` | needs_later_classification | BLOCKED_PROTECTED | task_validation | docs, reports | docs, reports | governance_critical_validator_or_runner | M71.4, M71.5 | false | |
 | `scripts/check-single-role-execution.py` | needs_later_classification | BLOCKED_PROTECTED | task_validation | docs, reports | docs, reports | governance_critical_validator_or_runner | M71.4, M71.5 | false | |
 | `scripts/check-task-acceptance-mvp.py` | needs_later_classification | BLOCKED_PROTECTED | task_validation | docs, reports, fixtures | docs, reports, fixtures | governance_critical_validator_or_runner | M71.4, M71.5 | false | |
@@ -261,12 +249,9 @@ Validation and enforcement authority scripts.
 | `scripts/test-approval-fixtures.py` | needs_later_classification | ACTIVE_CANDIDATE | test_fixture_helper | docs, reports | docs, reports | none | NEEDS_REVIEW | false | |
 | `scripts/test-approval-flow-smoke.py` | needs_later_classification | ACTIVE_CANDIDATE | test_fixture_helper | docs, reports | docs, reports | none | NEEDS_REVIEW | false | |
 | `scripts/test-approval-marker-fixtures.py` | needs_later_classification | ACTIVE_CANDIDATE | test_fixture_helper | docs, reports | docs, reports | none | NEEDS_REVIEW | false | |
-| `scripts/test-ci-advisory-config 3.py` | raw_signal_copy_like_filename, raw_signal_legacy_like_filename | NEEDS_REVIEW | legacy_runner_candidate | docs, reports | docs, reports | none | NEEDS_REVIEW | false | |
 | `scripts/test-ci-advisory-config.py` | needs_later_classification | ACTIVE_CANDIDATE | test_fixture_helper | docs, reports | docs, reports | none | NEEDS_REVIEW | false | |
-| `scripts/test-commit-push-preconditions-fixtures 3.py` | raw_signal_copy_like_filename, raw_signal_legacy_like_filename | NEEDS_REVIEW | legacy_runner_candidate | docs, reports | docs, reports | none | NEEDS_REVIEW | false | |
 | `scripts/test-commit-push-preconditions-fixtures.py` | needs_later_classification | ACTIVE_CANDIDATE | test_fixture_helper | docs, reports | docs, reports | none | NEEDS_REVIEW | false | |
 | `scripts/test-completion-flow-smoke.py` | needs_later_classification | ACTIVE_CANDIDATE | test_fixture_helper | docs, reports, fixtures | docs, reports, fixtures | none | NEEDS_REVIEW | false | |
-| `scripts/test-enforcement-fixtures 3.py` | raw_signal_copy_like_filename, raw_signal_legacy_like_filename | NEEDS_REVIEW | legacy_runner_candidate | docs, reports | docs, reports | none | NEEDS_REVIEW | false | |
 | `scripts/test-enforcement-fixtures.py` | needs_later_classification | ACTIVE_CANDIDATE | test_fixture_helper | docs, reports | docs, reports | none | NEEDS_REVIEW | false | |
 | `scripts/test-example-project.sh` | needs_later_classification | ACTIVE_CANDIDATE | test_fixture_helper | docs, reports | docs, reports | none | NEEDS_REVIEW | false | |
 | `scripts/test-execution-runner-fixtures.py` | needs_later_classification | ACTIVE_CANDIDATE | test_fixture_helper | docs, reports | docs, reports | none | NEEDS_REVIEW | false | |
@@ -276,21 +261,16 @@ Validation and enforcement authority scripts.
 | `scripts/test-human-approval-fixtures.py` | needs_later_classification | ACTIVE_CANDIDATE | test_fixture_helper | docs, reports | docs, reports | none | NEEDS_REVIEW | false | |
 | `scripts/test-install.sh` | needs_later_classification | ACTIVE_CANDIDATE | test_fixture_helper | docs, reports | docs, reports | none | NEEDS_REVIEW | false | |
 | `scripts/test-integrity-regression.py` | needs_later_classification | ACTIVE_CANDIDATE | test_fixture_helper | docs, reports | docs, reports | none | NEEDS_REVIEW | false | |
-| `scripts/test-m22-guardrails 3.py` | raw_signal_copy_like_filename, raw_signal_legacy_like_filename | NEEDS_REVIEW | legacy_runner_candidate | docs, reports | docs, reports | none | NEEDS_REVIEW | false | |
 | `scripts/test-m22-guardrails.py` | needs_later_classification | ACTIVE_CANDIDATE | test_fixture_helper | docs, reports | docs, reports | none | NEEDS_REVIEW | false | |
-| `scripts/test-m27-level1-fixtures 3.py` | raw_signal_copy_like_filename, raw_signal_legacy_like_filename | NEEDS_REVIEW | legacy_runner_candidate | docs, reports | docs, reports | none | NEEDS_REVIEW | false | |
 | `scripts/test-m27-level1-fixtures.py` | needs_later_classification | ACTIVE_CANDIDATE | test_fixture_helper | docs, reports | docs, reports | none | NEEDS_REVIEW | false | |
 | `scripts/test-m40-runtime-bypass-smoke.py` | needs_later_classification | ACTIVE_CANDIDATE | test_fixture_helper | docs, reports | docs, reports | none | NEEDS_REVIEW | false | |
 | `scripts/test-negative-fixtures.py` | needs_later_classification | ACTIVE_CANDIDATE | test_fixture_helper | docs, reports, fixtures | docs, reports, fixtures | none | NEEDS_REVIEW | false | |
 | `scripts/test-policy-enforcement-fixtures.py` | needs_later_classification | ACTIVE_CANDIDATE | test_fixture_helper | docs, reports, fixtures | docs, reports, fixtures | none | NEEDS_REVIEW | false | |
 | `scripts/test-policy-fixtures.py` | needs_later_classification | ACTIVE_CANDIDATE | test_fixture_helper | docs, reports | docs, reports | none | NEEDS_REVIEW | false | |
 | `scripts/test-policy-flow-smoke.py` | needs_later_classification | ACTIVE_CANDIDATE | test_fixture_helper | docs, reports, fixtures | docs, reports, fixtures | none | NEEDS_REVIEW | false | |
-| `scripts/test-pre-merge-corridor-fixtures 3.py` | raw_signal_copy_like_filename, raw_signal_legacy_like_filename | NEEDS_REVIEW | legacy_runner_candidate | docs, reports | docs, reports | none | NEEDS_REVIEW | false | |
 | `scripts/test-pre-merge-corridor-fixtures.py` | needs_later_classification | ACTIVE_CANDIDATE | test_fixture_helper | docs, reports | docs, reports | none | NEEDS_REVIEW | false | |
-| `scripts/test-pre-merge-scope-fixtures 3.py` | raw_signal_copy_like_filename, raw_signal_legacy_like_filename | NEEDS_REVIEW | legacy_runner_candidate | docs, reports | docs, reports | none | NEEDS_REVIEW | false | |
 | `scripts/test-pre-merge-scope-fixtures.py` | needs_later_classification | ACTIVE_CANDIDATE | test_fixture_helper | docs, reports | docs, reports | none | NEEDS_REVIEW | false | |
 | `scripts/test-readiness-fixtures.py` | needs_later_classification | ACTIVE_CANDIDATE | test_fixture_helper | docs, reports | docs, reports | none | NEEDS_REVIEW | false | |
-| `scripts/test-scope-compliance-fixtures 3.py` | raw_signal_copy_like_filename, raw_signal_legacy_like_filename | NEEDS_REVIEW | legacy_runner_candidate | docs, reports | docs, reports | none | NEEDS_REVIEW | false | |
 | `scripts/test-scope-compliance-fixtures.py` | needs_later_classification | ACTIVE_CANDIDATE | test_fixture_helper | docs, reports | docs, reports | none | NEEDS_REVIEW | false | |
 | `scripts/test-single-role-execution-fixtures.py` | needs_later_classification | ACTIVE_CANDIDATE | test_fixture_helper | docs, reports | docs, reports | none | NEEDS_REVIEW | false | |
 | `scripts/test-state-fixtures.py` | needs_later_classification | ACTIVE_CANDIDATE | test_fixture_helper | docs, reports | docs, reports | none | NEEDS_REVIEW | false | |
@@ -300,18 +280,15 @@ Validation and enforcement authority scripts.
 | `scripts/validate-active-task.py` | needs_later_classification | BLOCKED_PROTECTED | task_validation | docs, reports, fixtures | docs, reports, fixtures | governance_critical_validator_or_runner | M71.4, M71.5 | false | |
 | `scripts/validate-approval-marker.py` | needs_later_classification | BLOCKED_PROTECTED | task_validation | docs, reports, fixtures | docs, reports, fixtures | governance_critical_validator_or_runner | M71.4, M71.5 | false | |
 | `scripts/validate-architecture.sh` | needs_later_classification | BLOCKED_PROTECTED | task_validation | workflow, docs, reports | workflow, docs, reports | governance_critical_validator_or_runner | M71.4, M71.5 | false | |
-| `scripts/validate-boundary-claims 3.py` | raw_signal_copy_like_filename, raw_signal_legacy_like_filename | NEEDS_REVIEW | legacy_runner_candidate | docs, reports | docs, reports | none | NEEDS_REVIEW | false | |
 | `scripts/validate-boundary-claims.py` | needs_later_classification | BLOCKED_PROTECTED | task_validation | docs, reports | docs, reports | governance_critical_validator_or_runner | M71.4, M71.5 | false | |
 | `scripts/validate-commit-msg.py` | needs_later_classification | BLOCKED_PROTECTED | workflow_validation | docs, reports | docs, reports | governance_critical_validator_or_runner | M71.4, M71.5 | false | |
 | `scripts/validate-contract-draft.py` | needs_later_classification | BLOCKED_PROTECTED | task_validation | docs, reports | docs, reports | governance_critical_validator_or_runner | M71.4, M71.5 | false | |
 | `scripts/validate-docs.py` | needs_later_classification | ACTIVE_CANDIDATE | documentation_helper | docs, reports | docs, reports | none | NEEDS_REVIEW | false | |
-| `scripts/validate-frontmatter 3.py` | raw_signal_copy_like_filename, raw_signal_legacy_like_filename | NEEDS_REVIEW | legacy_runner_candidate | docs, reports | docs, reports | none | NEEDS_REVIEW | false | |
 | `scripts/validate-frontmatter.py` | needs_later_classification | ACTIVE_CANDIDATE | documentation_helper | docs, reports | docs, reports | none | NEEDS_REVIEW | false | |
 | `scripts/validate-gate-contract.py` | needs_later_classification | BLOCKED_PROTECTED | task_validation | docs, reports | docs, reports | governance_critical_validator_or_runner | M71.4, M71.5 | false | |
 | `scripts/validate-handoff.py` | needs_later_classification | BLOCKED_PROTECTED | task_validation | docs, reports | docs, reports | governance_critical_validator_or_runner | M71.4, M71.5 | false | |
 | `scripts/validate-human-approval.py` | needs_later_classification | BLOCKED_PROTECTED | task_validation | docs, reports, fixtures | docs, reports, fixtures | governance_critical_validator_or_runner | M71.4, M71.5 | false | |
 | `scripts/validate-incident.py` | needs_later_classification | BLOCKED_PROTECTED | task_validation | docs, reports | docs, reports | governance_critical_validator_or_runner | M71.4, M71.5 | false | |
-| `scripts/validate-index 3.py` | raw_signal_copy_like_filename, raw_signal_legacy_like_filename | NEEDS_REVIEW | legacy_runner_candidate | docs, reports | docs, reports | none | NEEDS_REVIEW | false | |
 | `scripts/validate-index.py` | needs_later_classification | BLOCKED_PROTECTED | task_validation | docs, reports | docs, reports | governance_critical_validator_or_runner | M71.4, M71.5 | false | |
 | `scripts/validate-lessons.py` | needs_later_classification | ACTIVE_CANDIDATE | documentation_helper | docs, reports | docs, reports | none | NEEDS_REVIEW | false | |
 | `scripts/validate-lifecycle-apply.py` | needs_later_classification | BLOCKED_PROTECTED | task_validation | docs, reports | docs, reports | governance_critical_validator_or_runner | M71.4, M71.5 | false | |
@@ -320,12 +297,10 @@ Validation and enforcement authority scripts.
 | `scripts/validate-proposal-to-task-conversion.py` | needs_later_classification | BLOCKED_PROTECTED | task_validation | docs, reports, fixtures | docs, reports, fixtures | governance_critical_validator_or_runner | M71.4, M71.5 | false | |
 | `scripts/validate-queue-entry.py` | needs_later_classification | BLOCKED_PROTECTED | task_validation | docs, reports | docs, reports | governance_critical_validator_or_runner | M71.4, M71.5 | false | |
 | `scripts/validate-queue.py` | needs_later_classification | BLOCKED_PROTECTED | task_validation | docs, reports | docs, reports | governance_critical_validator_or_runner | M71.4, M71.5 | false | |
-| `scripts/validate-required-sections 3.py` | raw_signal_copy_like_filename, raw_signal_legacy_like_filename | NEEDS_REVIEW | legacy_runner_candidate | docs, reports | docs, reports | none | NEEDS_REVIEW | false | |
 | `scripts/validate-required-sections.py` | needs_later_classification | BLOCKED_PROTECTED | task_validation | docs, reports | docs, reports | governance_critical_validator_or_runner | M71.4, M71.5 | false | |
 | `scripts/validate-review.py` | needs_later_classification | BLOCKED_PROTECTED | task_validation | docs, reports | docs, reports | governance_critical_validator_or_runner | M71.4, M71.5 | false | |
 | `scripts/validate-route.py` | needs_later_classification | BLOCKED_PROTECTED | task_validation | docs, reports | docs, reports | governance_critical_validator_or_runner | M71.4, M71.5 | false | |
 | `scripts/validate-runner-protocol.py` | needs_later_classification | BLOCKED_PROTECTED | task_validation | docs, reports | docs, reports | governance_critical_validator_or_runner | M71.4, M71.5 | false | |
-| `scripts/validate-status-semantics 3.py` | raw_signal_copy_like_filename, raw_signal_legacy_like_filename | NEEDS_REVIEW | legacy_runner_candidate | docs, reports | docs, reports | none | NEEDS_REVIEW | false | |
 | `scripts/validate-status-semantics.py` | needs_later_classification | BLOCKED_PROTECTED | task_validation | docs, reports | docs, reports | governance_critical_validator_or_runner | M71.4, M71.5 | false | |
 | `scripts/validate-task-brief.py` | needs_later_classification | BLOCKED_PROTECTED | task_validation | docs, reports, tasks, fixtures | docs, reports, tasks, fixtures | governance_critical_validator_or_runner | M71.4, M71.5 | false | |
 | `scripts/validate-task-contract-candidate.py` | needs_later_classification | BLOCKED_PROTECTED | task_validation | docs, reports | docs, reports | governance_critical_validator_or_runner | M71.4, M71.5 | false | |
@@ -339,33 +314,10 @@ Validation and enforcement authority scripts.
 
 ## NEEDS_REVIEW Items
 
-Total needs review items: 26
-- `scripts/audit-m27 3.py`
-- `scripts/audit-m27-level1 3.py`
-- `scripts/audit-metadata-consistency 3.py`
-- `scripts/audit-pre-merge-corridor 3.py`
-- `scripts/audit-validation-integration 3.py`
-- `scripts/build-index 3.py`
-- `scripts/check-commit-push-preconditions 3.py`
-- `scripts/check-github-platform-enforcement 3.py`
-- `scripts/check-pre-merge-scope 3.py`
-- `scripts/check-scope-compliance 3.py`
+Total needs review items: 3
 - `scripts/prepare-clean-template.py`
-- `scripts/test-ci-advisory-config 3.py`
-- `scripts/test-commit-push-preconditions-fixtures 3.py`
-- `scripts/test-enforcement-fixtures 3.py`
-- `scripts/test-m22-guardrails 3.py`
-- `scripts/test-m27-level1-fixtures 3.py`
-- `scripts/test-pre-merge-corridor-fixtures 3.py`
-- `scripts/test-pre-merge-scope-fixtures 3.py`
-- `scripts/test-scope-compliance-fixtures 3.py`
 - `scripts/test-template-integrity-fixtures.py`
 - `scripts/test-template-integrity.py`
-- `scripts/validate-boundary-claims 3.py`
-- `scripts/validate-frontmatter 3.py`
-- `scripts/validate-index 3.py`
-- `scripts/validate-required-sections 3.py`
-- `scripts/validate-status-semantics 3.py`
 
 ## BLOCKED_UNKNOWN Items
 

@@ -85,29 +85,11 @@ Protected classification only means modification requires human checkpoint.
 - Numbered duplicate-name files may look replace-like, but that is not yet a final replacement decision.
 
 ## CANDIDATE_FOR_MERGE Classifications
-- `scripts/audit-m27.py` and `scripts/audit-m27 3.py` family
-- `scripts/audit-m27-level1.py` and `scripts/audit-m27-level1 3.py` family
-- `scripts/test-scope-compliance-fixtures.py` and `scripts/test-scope-compliance-fixtures 3.py` family
-- `scripts/validate-frontmatter.py` and `scripts/validate-frontmatter 3.py` family
-- `scripts/validate-status-semantics.py` and `scripts/validate-status-semantics 3.py` family
-- `scripts/validate-required-sections.py` and `scripts/validate-required-sections 3.py` family
 - candidate only
 - requires human review
 - not approved for cleanup
 
 ## CANDIDATE_FOR_REMOVAL Classifications
-- `scripts/audit-metadata-consistency 3.py`
-- `scripts/audit-pre-merge-corridor 3.py`
-- `scripts/audit-validation-integration 3.py`
-- `scripts/build-index 3.py`
-- `scripts/check-commit-push-preconditions 3.py`
-- `scripts/check-github-platform-enforcement 3.py`
-- `scripts/check-pre-merge-scope 3.py`
-- `scripts/check-scope-compliance 3.py`
-- `scripts/test-ci-advisory-config 3.py`
-- `scripts/test-enforcement-fixtures 3.py`
-- `scripts/test-m22-guardrails 3.py`
-- `scripts/test-m27-level1-fixtures 3.py`
 - candidate only
 - requires human review
 - not approved for cleanup
@@ -191,7 +173,6 @@ Protected classification only means modification requires human checkpoint.
 - The policy records drift signals only and does not decide a final winner
 
 ## Active-Tree Ambiguity Classification Notes
-- Numbered variants such as `scripts/* 3.py` remain ambiguous and require later review
 - `scripts/run-all.sh` and template run-all copies remain a key later review surface
 - `__pycache__` and HANDOFF 2.md signals remain part of the later active-tree review surface
 

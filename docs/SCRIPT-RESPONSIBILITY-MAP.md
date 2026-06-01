@@ -100,26 +100,20 @@ The mapped scripts belong to the following responsibility categories:
 | `scripts/audit-execution-control.py` | completion_gate_boundary | Audits execution control artifacts | docs, reports | argparse / sys.argv CLI options | JSON stdout / JSON file | false | false | true | none | M71.4 | |
 | `scripts/audit-gate-contract.py` | workflow_validation | Audits workspace and validation authority boundaries | docs, reports | argparse / sys.argv CLI options | JSON stdout / JSON file | false | false | true | none | M71.4 | |
 | `scripts/audit-lifecycle-mutation.py` | workflow_validation | Audits workspace and validation authority boundaries | docs, reports | reads input file | UNKNOWN_OUTPUT_CONTRACT | false | false | false | none | NEEDS_REVIEW | |
-| `scripts/audit-m27 3.py` | legacy_runner_candidate | Legacy duplicate of audit-m27.py | docs, reports | argparse / sys.argv CLI options | JSON stdout / JSON file | false | true | true | destructive commands found | M71.3, M71.4, M71.5 | |
-| `scripts/audit-m27-level1 3.py` | legacy_runner_candidate | Legacy duplicate of audit-m27-level1.py | docs, reports | argparse / sys.argv CLI options | JSON stdout / JSON file | false | true | true | potential credential token variables | M71.3, M71.4, M71.5 | |
 | `scripts/audit-m27-level1.py` | workflow_validation | Audits workspace and validation authority boundaries | docs, reports | argparse / sys.argv CLI options | JSON stdout / JSON file | false | true | true | potential credential token variables | M71.4, M71.5 | |
 | `scripts/audit-m27.py` | workflow_validation | Audits workspace and validation authority boundaries | docs, reports | argparse / sys.argv CLI options | JSON stdout / JSON file | false | true | true | destructive commands found | M71.4, M71.5 | |
 | `scripts/audit-m30-context-pipeline.py` | workflow_validation | Audits workspace and validation authority boundaries | docs, reports | argparse / sys.argv CLI options | JSON stdout / JSON file | false | false | false | none | NEEDS_REVIEW | |
 | `scripts/audit-m31-tui-tutor.py` | workflow_validation | Audits workspace and validation authority boundaries | docs, reports | argparse / sys.argv CLI options | JSON stdout / JSON file | true | false | true | none | M71.4 | |
-| `scripts/audit-metadata-consistency 3.py` | legacy_runner_candidate | Legacy duplicate of audit-metadata-consistency.py | docs, reports | argparse / sys.argv CLI options | exit status code | true | false | false | none | M71.3, M71.4 | |
 | `scripts/audit-metadata-consistency.py` | workflow_validation | Audits workspace and validation authority boundaries | docs, reports | argparse / sys.argv CLI options | exit status code | true | false | false | none | M71.4 | |
 | `scripts/audit-mvp-readiness.py` | workflow_validation | Audits workspace and validation authority boundaries | docs, reports | argparse / sys.argv CLI options | exit status code | false | false | true | none | M71.4 | |
 | `scripts/audit-policy-boundary.py` | workflow_validation | Audits workspace and validation authority boundaries | docs, reports, fixtures | reads input file | UNKNOWN_OUTPUT_CONTRACT | false | false | false | none | NEEDS_REVIEW | |
-| `scripts/audit-pre-merge-corridor 3.py` | legacy_runner_candidate | Legacy duplicate of audit-pre-merge-corridor.py | docs, reports | argparse / sys.argv CLI options | JSON stdout / JSON file | true | true | true | none | M71.3, M71.4, M71.5 | |
 | `scripts/audit-pre-merge-corridor.py` | workflow_validation | Audits workspace and validation authority boundaries | docs, reports | argparse / sys.argv CLI options | JSON stdout / JSON file | true | true | true | none | M71.4, M71.5 | |
 | `scripts/audit-release-readiness.py` | workflow_validation | Audits workspace and validation authority boundaries | docs, reports | argparse / sys.argv CLI options | JSON stdout / JSON file | false | false | true | none | M71.4 | |
 | `scripts/audit-template-packaging.py` | workflow_validation | Audits workspace and validation authority boundaries | docs, reports | argparse / sys.argv CLI options | JSON stdout / JSON file | false | false | true | none | M71.4 | |
-| `scripts/audit-validation-integration 3.py` | legacy_runner_candidate | Legacy duplicate of audit-validation-integration.py | docs, reports | argparse / sys.argv CLI options | exit status code | false | true | true | potential credential token variables | M71.3, M71.4, M71.5 | |
 | `scripts/audit-validation-integration.py` | workflow_validation | Audits workspace and validation authority boundaries | docs, reports | argparse / sys.argv CLI options | exit status code | false | true | true | potential credential token variables | M71.4, M71.5 | |
 | `scripts/build-context-cache.py` | unknown | UNKNOWN_PURPOSE | docs, reports | argparse / sys.argv CLI options | JSON stdout / JSON file | true | false | false | none | M71.4 | |
 | `scripts/build-context-index.py` | unknown | UNKNOWN_PURPOSE | docs, reports, fixtures | argparse / sys.argv CLI options | JSON stdout / JSON file | true | true | true | none | M71.4, M71.5 | |
 | `scripts/build-execution-verification-registry.py` | unknown | UNKNOWN_PURPOSE | docs, reports | reads input file | JSON stdout / JSON file | true | false | false | none | M71.4 | |
-| `scripts/build-index 3.py` | legacy_runner_candidate | Legacy duplicate of build-index.py | docs, reports | argparse / sys.argv CLI options | JSON stdout / JSON file | true | false | false | none | M71.3, M71.4 | |
 | `scripts/build-index.py` | context_indexing | Indexes directory context files | docs, reports | argparse / sys.argv CLI options | JSON stdout / JSON file | true | false | false | none | M71.4 | |
 | `scripts/build-task-dependency-map.py` | unknown | UNKNOWN_PURPOSE | docs, reports | argparse / sys.argv CLI options | JSON stdout / JSON file | true | false | false | potential credential token variables | M71.4 | |
 | `scripts/canonical-cleanup.sh` | unknown | UNKNOWN_PURPOSE | docs, reports | UNKNOWN_INPUT_CONTRACT | UNKNOWN_OUTPUT_CONTRACT | false | true | false | destructive commands found | M71.5 | |
@@ -130,7 +124,6 @@ The mapped scripts belong to the following responsibility categories:
 | `scripts/check-bypass-fixtures.py` | task_validation | Performs task-level static validation checks | docs, reports | argparse / sys.argv CLI options | JSON stdout / JSON file | true | false | false | potential credential token variables | M71.4 | |
 | `scripts/check-bypass-resistance.py` | task_validation | Performs task-level static validation checks | docs, reports | argparse / sys.argv CLI options | JSON stdout / JSON file | true | false | true | destructive commands found | M71.4 | |
 | `scripts/check-canary-integrity.py` | task_validation | Performs task-level static validation checks | docs, reports | argparse / sys.argv CLI options | JSON stdout / JSON file | false | false | false | none | NEEDS_REVIEW | |
-| `scripts/check-commit-push-preconditions 3.py` | legacy_runner_candidate | Legacy duplicate of check-commit-push-preconditions.py | docs, reports | argparse / sys.argv CLI options | JSON stdout / JSON file | false | true | false | none | M71.3, M71.5 | |
 | `scripts/check-commit-push-preconditions.py` | task_validation | Performs task-level static validation checks | docs, reports, fixtures | argparse / sys.argv CLI options | JSON stdout / JSON file | false | true | false | none | M71.5 | |
 | `scripts/check-completion-readiness.py` | task_validation | Performs task-level static validation checks | docs, reports | argparse / sys.argv CLI options | UNKNOWN_OUTPUT_CONTRACT | false | false | false | destructive commands found | NEEDS_REVIEW | |
 | `scripts/check-context-compliance.py` | context_indexing | Ensures integrity and freshness of context index files | docs, reports, fixtures | argparse / sys.argv CLI options | JSON stdout / JSON file | true | true | true | destructive commands found | M71.4, M71.5 | |
@@ -150,7 +143,6 @@ The mapped scripts belong to the following responsibility categories:
 | `scripts/check-execution-verification-registry.py` | task_validation | Performs task-level static validation checks | docs, reports | argparse / sys.argv CLI options | JSON stdout / JSON file | true | false | false | none | M71.4 | |
 | `scripts/check-execution-verification-regression.py` | task_validation | Performs task-level static validation checks | docs, reports | argparse / sys.argv CLI options | JSON stdout / JSON file | true | true | true | none | M71.4, M71.5 | |
 | `scripts/check-false-pass-resistance.py` | false_pass_resistance | Checks for false-pass scenarios in validation runs | docs, reports, fixtures | argparse / sys.argv CLI options | JSON stdout / JSON file | true | false | false | destructive commands found | M71.4 | |
-| `scripts/check-github-platform-enforcement 3.py` | legacy_runner_candidate | Legacy duplicate of check-github-platform-enforcement.py | docs, reports | argparse / sys.argv CLI options | JSON stdout / JSON file | false | false | false | destructive commands found | M71.3 | |
 | `scripts/check-github-platform-enforcement.py` | task_validation | Performs task-level static validation checks | docs, reports | argparse / sys.argv CLI options | JSON stdout / JSON file | false | false | false | destructive commands found | NEEDS_REVIEW | |
 | `scripts/check-identity-drift.sh` | task_validation | Performs task-level static validation checks | workflow, docs, reports | UNKNOWN_INPUT_CONTRACT | UNKNOWN_OUTPUT_CONTRACT | false | false | false | none | NEEDS_REVIEW | |
 | `scripts/check-interview-completeness.py` | task_validation | Performs task-level static validation checks | docs, reports | argparse / sys.argv CLI options | JSON stdout / JSON file | false | false | false | none | NEEDS_REVIEW | |
@@ -164,7 +156,6 @@ The mapped scripts belong to the following responsibility categories:
 | `scripts/check-m59-execution-result-verification-fixtures.py` | task_validation | Performs task-level static validation checks | docs, reports | argparse / sys.argv CLI options | JSON stdout / JSON file | true | false | true | none | M71.4 | |
 | `scripts/check-m61-hardening-regression.py` | task_validation | Performs task-level static validation checks | docs, reports | argparse / sys.argv CLI options | JSON stdout / JSON file | false | false | true | none | M71.4 | |
 | `scripts/check-pr-quality.py` | task_validation | Performs task-level static validation checks | workflow, docs, reports, tasks | reads input file | exit status code | false | false | false | none | NEEDS_REVIEW | |
-| `scripts/check-pre-merge-scope 3.py` | legacy_runner_candidate | Legacy duplicate of check-pre-merge-scope.py | docs, reports | argparse / sys.argv CLI options | JSON stdout / JSON file | true | true | true | none | M71.3, M71.4, M71.5 | |
 | `scripts/check-pre-merge-scope.py` | task_validation | Performs task-level static validation checks | docs, reports, fixtures | argparse / sys.argv CLI options | JSON stdout / JSON file | true | true | true | none | M71.4, M71.5 | |
 | `scripts/check-premature-artifacts.sh` | task_validation | Performs task-level static validation checks | docs, reports | UNKNOWN_INPUT_CONTRACT | UNKNOWN_OUTPUT_CONTRACT | false | false | false | none | NEEDS_REVIEW | |
 | `scripts/check-private-evaluator-consistency.py` | task_validation | Performs task-level static validation checks | docs, reports | argparse / sys.argv CLI options | JSON stdout / JSON file | false | false | false | none | NEEDS_REVIEW | |
@@ -175,7 +166,6 @@ The mapped scripts belong to the following responsibility categories:
 | `scripts/check-required-context-pack.py` | context_indexing | Ensures integrity and freshness of context index files | docs, reports | argparse / sys.argv CLI options | JSON stdout / JSON file | false | true | true | none | M71.4, M71.5 | |
 | `scripts/check-risk.py` | task_validation | Performs task-level static validation checks | workflow, docs, reports | argparse / sys.argv CLI options | exit status code | false | false | false | none | NEEDS_REVIEW | |
 | `scripts/check-role-separation.py` | task_validation | Performs task-level static validation checks | docs, reports | argparse / sys.argv CLI options | JSON stdout / JSON file | false | false | false | none | NEEDS_REVIEW | |
-| `scripts/check-scope-compliance 3.py` | legacy_runner_candidate | Legacy duplicate of check-scope-compliance.py | docs, reports | argparse / sys.argv CLI options | JSON stdout / JSON file | true | true | true | none | M71.3, M71.4, M71.5 | |
 | `scripts/check-scope-compliance.py` | task_validation | Performs task-level static validation checks | docs, reports | argparse / sys.argv CLI options | JSON stdout / JSON file | true | true | true | none | M71.4, M71.5 | |
 | `scripts/check-single-role-execution.py` | task_validation | Performs task-level static validation checks | docs, reports | argparse / sys.argv CLI options | JSON stdout / JSON file | true | false | false | potential credential token variables | M71.4 | |
 | `scripts/check-task-acceptance-mvp.py` | task_validation | Performs task-level static validation checks | docs, reports, fixtures | argparse / sys.argv CLI options | JSON stdout / JSON file | true | false | false | destructive commands found | M71.4 | |
@@ -221,12 +211,9 @@ The mapped scripts belong to the following responsibility categories:
 | `scripts/test-approval-fixtures.py` | test_fixture_helper | Validation test fixture / smoke test execution helper | docs, reports, fixtures | reads input file | UNKNOWN_OUTPUT_CONTRACT | true | false | true | potential credential token variables | M71.4 | |
 | `scripts/test-approval-flow-smoke.py` | test_fixture_helper | Validation test fixture / smoke test execution helper | docs, reports, fixtures | reads input file | UNKNOWN_OUTPUT_CONTRACT | true | false | true | potential credential token variables | M71.4 | |
 | `scripts/test-approval-marker-fixtures.py` | test_fixture_helper | Validation test fixture / smoke test execution helper | docs, reports, fixtures | argparse / sys.argv CLI options | exit status code | true | false | true | none | M71.4 | |
-| `scripts/test-ci-advisory-config 3.py` | legacy_runner_candidate | Legacy duplicate of test-ci-advisory-config.py | docs, reports | argparse / sys.argv CLI options | exit status code | false | false | false | potential credential token variables | M71.3 | |
 | `scripts/test-ci-advisory-config.py` | test_fixture_helper | Validation test fixture / smoke test execution helper | docs, reports, fixtures | argparse / sys.argv CLI options | exit status code | false | false | false | potential credential token variables | NEEDS_REVIEW | |
-| `scripts/test-commit-push-preconditions-fixtures 3.py` | legacy_runner_candidate | Legacy duplicate of test-commit-push-preconditions-fixtures.py | docs, reports | argparse / sys.argv CLI options | exit status code | false | false | true | none | M71.3, M71.4 | |
 | `scripts/test-commit-push-preconditions-fixtures.py` | test_fixture_helper | Validation test fixture / smoke test execution helper | docs, reports, fixtures | argparse / sys.argv CLI options | exit status code | false | false | true | none | M71.4 | |
 | `scripts/test-completion-flow-smoke.py` | test_fixture_helper | Validation test fixture / smoke test execution helper | docs, reports, fixtures | argparse / sys.argv CLI options | UNKNOWN_OUTPUT_CONTRACT | true | false | true | potential credential token variables | M71.4 | |
-| `scripts/test-enforcement-fixtures 3.py` | legacy_runner_candidate | Legacy duplicate of test-enforcement-fixtures.py | docs, reports | UNKNOWN_INPUT_CONTRACT | UNKNOWN_OUTPUT_CONTRACT | false | false | true | none | M71.3, M71.4 | |
 | `scripts/test-enforcement-fixtures.py` | test_fixture_helper | Validation test fixture / smoke test execution helper | docs, reports, fixtures | UNKNOWN_INPUT_CONTRACT | UNKNOWN_OUTPUT_CONTRACT | false | false | true | none | M71.4 | |
 | `scripts/test-example-project.sh` | test_fixture_helper | Validation test fixture / smoke test execution helper | docs, reports, fixtures | UNKNOWN_INPUT_CONTRACT | UNKNOWN_OUTPUT_CONTRACT | false | true | false | destructive commands found | M71.5 | |
 | `scripts/test-execution-runner-fixtures.py` | test_fixture_helper | Validation test fixture / smoke test execution helper | docs, reports, fixtures | argparse / sys.argv CLI options | UNKNOWN_OUTPUT_CONTRACT | true | false | true | none | M71.4 | |
@@ -236,21 +223,16 @@ The mapped scripts belong to the following responsibility categories:
 | `scripts/test-human-approval-fixtures.py` | test_fixture_helper | Validation test fixture / smoke test execution helper | docs, reports, fixtures | UNKNOWN_INPUT_CONTRACT | UNKNOWN_OUTPUT_CONTRACT | false | false | true | none | M71.4 | |
 | `scripts/test-install.sh` | test_fixture_helper | Validation test fixture / smoke test execution helper | docs, reports, fixtures | UNKNOWN_INPUT_CONTRACT | UNKNOWN_OUTPUT_CONTRACT | true | true | false | destructive commands found | M71.4, M71.5 | |
 | `scripts/test-integrity-regression.py` | test_fixture_helper | Validation test fixture / smoke test execution helper | docs, reports, fixtures | argparse / sys.argv CLI options | JSON stdout / JSON file | true | false | true | potential credential token variables | M71.4 | |
-| `scripts/test-m22-guardrails 3.py` | legacy_runner_candidate | Legacy duplicate of test-m22-guardrails.py | docs, reports | UNKNOWN_INPUT_CONTRACT | exit status code | false | false | true | none | M71.3, M71.4 | |
 | `scripts/test-m22-guardrails.py` | test_fixture_helper | Validation test fixture / smoke test execution helper | docs, reports, fixtures | UNKNOWN_INPUT_CONTRACT | exit status code | false | false | true | none | M71.4 | |
-| `scripts/test-m27-level1-fixtures 3.py` | legacy_runner_candidate | Legacy duplicate of test-m27-level1-fixtures.py | docs, reports | argparse / sys.argv CLI options | JSON stdout / JSON file | false | true | true | destructive commands found | M71.3, M71.4, M71.5 | |
 | `scripts/test-m27-level1-fixtures.py` | test_fixture_helper | Validation test fixture / smoke test execution helper | docs, reports, fixtures | argparse / sys.argv CLI options | JSON stdout / JSON file | false | true | true | destructive commands found | M71.4, M71.5 | |
 | `scripts/test-m40-runtime-bypass-smoke.py` | test_fixture_helper | Validation test fixture / smoke test execution helper | docs, reports, fixtures | argparse / sys.argv CLI options | JSON stdout / JSON file | true | true | true | potential credential token variables | M71.4, M71.5 | |
 | `scripts/test-negative-fixtures.py` | test_fixture_helper | Validation test fixture / smoke test execution helper | docs, reports, fixtures | reads input file | exit status code | true | true | true | none | M71.4, M71.5 | |
 | `scripts/test-policy-enforcement-fixtures.py` | test_fixture_helper | Validation test fixture / smoke test execution helper | docs, reports, fixtures | UNKNOWN_INPUT_CONTRACT | UNKNOWN_OUTPUT_CONTRACT | false | false | true | none | M71.4 | |
 | `scripts/test-policy-fixtures.py` | test_fixture_helper | Validation test fixture / smoke test execution helper | docs, reports, fixtures | UNKNOWN_INPUT_CONTRACT | UNKNOWN_OUTPUT_CONTRACT | false | false | true | none | M71.4 | |
 | `scripts/test-policy-flow-smoke.py` | test_fixture_helper | Validation test fixture / smoke test execution helper | docs, reports, fixtures | UNKNOWN_INPUT_CONTRACT | UNKNOWN_OUTPUT_CONTRACT | false | false | true | none | M71.4 | |
-| `scripts/test-pre-merge-corridor-fixtures 3.py` | legacy_runner_candidate | Legacy duplicate of test-pre-merge-corridor-fixtures.py | docs, reports | argparse / sys.argv CLI options | exit status code | false | false | true | none | M71.3, M71.4 | |
 | `scripts/test-pre-merge-corridor-fixtures.py` | test_fixture_helper | Validation test fixture / smoke test execution helper | docs, reports, fixtures | argparse / sys.argv CLI options | exit status code | false | false | true | none | M71.4 | |
-| `scripts/test-pre-merge-scope-fixtures 3.py` | legacy_runner_candidate | Legacy duplicate of test-pre-merge-scope-fixtures.py | docs, reports | argparse / sys.argv CLI options | exit status code | false | false | true | none | M71.3, M71.4 | |
 | `scripts/test-pre-merge-scope-fixtures.py` | test_fixture_helper | Validation test fixture / smoke test execution helper | docs, reports, fixtures | argparse / sys.argv CLI options | exit status code | false | false | true | none | M71.4 | |
 | `scripts/test-readiness-fixtures.py` | test_fixture_helper | Validation test fixture / smoke test execution helper | docs, reports, fixtures | reads input file | UNKNOWN_OUTPUT_CONTRACT | false | false | true | none | M71.4 | |
-| `scripts/test-scope-compliance-fixtures 3.py` | legacy_runner_candidate | Legacy duplicate of test-scope-compliance-fixtures.py | docs, reports | argparse / sys.argv CLI options | exit status code | true | true | true | none | M71.3, M71.4, M71.5 | |
 | `scripts/test-scope-compliance-fixtures.py` | test_fixture_helper | Validation test fixture / smoke test execution helper | docs, reports, fixtures | argparse / sys.argv CLI options | exit status code | true | true | true | none | M71.4, M71.5 | |
 | `scripts/test-single-role-execution-fixtures.py` | test_fixture_helper | Validation test fixture / smoke test execution helper | docs, reports, fixtures | UNKNOWN_INPUT_CONTRACT | exit status code | false | false | true | potential credential token variables | M71.4 | |
 | `scripts/test-state-fixtures.py` | test_fixture_helper | Validation test fixture / smoke test execution helper | docs, reports, fixtures | argparse / sys.argv CLI options | UNKNOWN_OUTPUT_CONTRACT | true | false | true | none | M71.4 | |
@@ -260,18 +242,15 @@ The mapped scripts belong to the following responsibility categories:
 | `scripts/validate-active-task.py` | task_validation | Validates task structure and state schemas | docs, reports, fixtures | argparse / sys.argv CLI options | UNKNOWN_OUTPUT_CONTRACT | false | false | false | none | NEEDS_REVIEW | |
 | `scripts/validate-approval-marker.py` | task_validation | Validates task structure and state schemas | docs, reports, fixtures | argparse / sys.argv CLI options | exit status code | false | false | false | none | NEEDS_REVIEW | |
 | `scripts/validate-architecture.sh` | task_validation | Validates task structure and state schemas | workflow, docs, reports | UNKNOWN_INPUT_CONTRACT | UNKNOWN_OUTPUT_CONTRACT | false | false | false | none | NEEDS_REVIEW | |
-| `scripts/validate-boundary-claims 3.py` | legacy_runner_candidate | Legacy duplicate of validate-boundary-claims.py | docs, reports | argparse / sys.argv CLI options | exit status code | true | false | false | none | M71.3, M71.4 | |
 | `scripts/validate-boundary-claims.py` | task_validation | Validates task structure and state schemas | docs, reports | argparse / sys.argv CLI options | exit status code | true | false | false | none | M71.4 | |
 | `scripts/validate-commit-msg.py` | workflow_validation | Commit message format compliance validator | docs, reports | argparse / sys.argv CLI options | exit status code | true | false | false | none | M71.4 | |
 | `scripts/validate-contract-draft.py` | task_validation | Validates task structure and state schemas | docs, reports | argparse / sys.argv CLI options | exit status code | true | false | false | none | M71.4 | |
 | `scripts/validate-docs.py` | documentation_helper | Validates markdown structure and documentation frontmatter | docs, reports | reads input file | exit status code | false | false | false | none | NEEDS_REVIEW | |
-| `scripts/validate-frontmatter 3.py` | legacy_runner_candidate | Legacy duplicate of validate-frontmatter.py | docs, reports | argparse / sys.argv CLI options | exit status code | false | false | false | none | M71.3 | |
 | `scripts/validate-frontmatter.py` | documentation_helper | Validates markdown structure and documentation frontmatter | docs, reports | argparse / sys.argv CLI options | exit status code | false | false | false | none | NEEDS_REVIEW | |
 | `scripts/validate-gate-contract.py` | task_validation | Validates task structure and state schemas | docs, reports | UNKNOWN_INPUT_CONTRACT | exit status code | false | false | false | none | NEEDS_REVIEW | |
 | `scripts/validate-handoff.py` | task_validation | Validates task structure and state schemas | docs, reports | argparse / sys.argv CLI options | exit status code | false | false | false | none | NEEDS_REVIEW | |
 | `scripts/validate-human-approval.py` | task_validation | Validates task structure and state schemas | docs, reports, fixtures | argparse / sys.argv CLI options | UNKNOWN_OUTPUT_CONTRACT | false | false | false | destructive commands found | NEEDS_REVIEW | |
 | `scripts/validate-incident.py` | task_validation | Validates task structure and state schemas | docs, reports | argparse / sys.argv CLI options | exit status code | false | false | false | none | NEEDS_REVIEW | |
-| `scripts/validate-index 3.py` | legacy_runner_candidate | Legacy duplicate of validate-index.py | docs, reports | argparse / sys.argv CLI options | exit status code | false | false | false | none | M71.3 | |
 | `scripts/validate-index.py` | task_validation | Validates task structure and state schemas | docs, reports | argparse / sys.argv CLI options | exit status code | false | false | false | none | NEEDS_REVIEW | |
 | `scripts/validate-lessons.py` | documentation_helper | Validates markdown structure and documentation frontmatter | docs, reports | argparse / sys.argv CLI options | exit status code | false | false | false | none | NEEDS_REVIEW | |
 | `scripts/validate-lifecycle-apply.py` | task_validation | Validates task structure and state schemas | docs, reports | reads input file | UNKNOWN_OUTPUT_CONTRACT | false | false | false | none | NEEDS_REVIEW | |
@@ -280,12 +259,10 @@ The mapped scripts belong to the following responsibility categories:
 | `scripts/validate-proposal-to-task-conversion.py` | task_validation | Validates task structure and state schemas | docs, reports, fixtures | argparse / sys.argv CLI options | JSON stdout / JSON file | true | false | false | none | M71.4 | |
 | `scripts/validate-queue-entry.py` | task_validation | Validates task structure and state schemas | docs, reports | argparse / sys.argv CLI options | exit status code | false | false | false | none | NEEDS_REVIEW | |
 | `scripts/validate-queue.py` | task_validation | Validates task structure and state schemas | docs, reports | argparse / sys.argv CLI options | exit status code | false | true | true | none | M71.4, M71.5 | |
-| `scripts/validate-required-sections 3.py` | legacy_runner_candidate | Legacy duplicate of validate-required-sections.py | docs, reports | argparse / sys.argv CLI options | exit status code | false | false | false | none | M71.3 | |
 | `scripts/validate-required-sections.py` | task_validation | Validates task structure and state schemas | docs, reports | argparse / sys.argv CLI options | exit status code | false | false | false | none | NEEDS_REVIEW | |
 | `scripts/validate-review.py` | task_validation | Validates task structure and state schemas | docs, reports | argparse / sys.argv CLI options | exit status code | false | false | false | none | NEEDS_REVIEW | |
 | `scripts/validate-route.py` | task_validation | Validates task structure and state schemas | docs, reports | reads input file | exit status code | false | false | false | destructive commands found | NEEDS_REVIEW | |
 | `scripts/validate-runner-protocol.py` | task_validation | Validates task structure and state schemas | docs, reports | argparse / sys.argv CLI options | exit status code | true | false | false | none | M71.4 | |
-| `scripts/validate-status-semantics 3.py` | legacy_runner_candidate | Legacy duplicate of validate-status-semantics.py | docs, reports | argparse / sys.argv CLI options | exit status code | false | false | false | none | M71.3 | |
 | `scripts/validate-status-semantics.py` | task_validation | Validates task structure and state schemas | docs, reports | argparse / sys.argv CLI options | exit status code | false | false | false | none | NEEDS_REVIEW | |
 | `scripts/validate-task-brief.py` | task_validation | Validates task structure and state schemas | docs, reports, tasks, fixtures | argparse / sys.argv CLI options | exit status code | false | false | false | none | NEEDS_REVIEW | |
 | `scripts/validate-task-contract-candidate.py` | task_validation | Validates task structure and state schemas | docs, reports | argparse / sys.argv CLI options | JSON stdout / JSON file | true | false | false | potential credential token variables | M71.4 | |
@@ -371,26 +348,20 @@ Total scripts referenced by documentation: 232
 - `scripts/audit-execution-control.py`
 - `scripts/audit-gate-contract.py`
 - `scripts/audit-lifecycle-mutation.py`
-- `scripts/audit-m27 3.py`
-- `scripts/audit-m27-level1 3.py`
 - `scripts/audit-m27-level1.py`
 - `scripts/audit-m27.py`
 - `scripts/audit-m30-context-pipeline.py`
 - `scripts/audit-m31-tui-tutor.py`
-- `scripts/audit-metadata-consistency 3.py`
 - `scripts/audit-metadata-consistency.py`
 - `scripts/audit-mvp-readiness.py`
 - `scripts/audit-policy-boundary.py`
-- `scripts/audit-pre-merge-corridor 3.py`
 - `scripts/audit-pre-merge-corridor.py`
 - `scripts/audit-release-readiness.py`
 - `scripts/audit-template-packaging.py`
-- `scripts/audit-validation-integration 3.py`
 - `scripts/audit-validation-integration.py`
 - `scripts/build-context-cache.py`
 - `scripts/build-context-index.py`
 - `scripts/build-execution-verification-registry.py`
-- `scripts/build-index 3.py`
 - `scripts/build-index.py`
 - `scripts/build-task-dependency-map.py`
 - `scripts/canonical-cleanup.sh`
@@ -401,7 +372,6 @@ Total scripts referenced by documentation: 232
 - `scripts/check-bypass-fixtures.py`
 - `scripts/check-bypass-resistance.py`
 - `scripts/check-canary-integrity.py`
-- `scripts/check-commit-push-preconditions 3.py`
 - `scripts/check-commit-push-preconditions.py`
 - `scripts/check-completion-readiness.py`
 - `scripts/check-context-compliance.py`
@@ -421,7 +391,6 @@ Total scripts referenced by documentation: 232
 - `scripts/check-execution-verification-registry.py`
 - `scripts/check-execution-verification-regression.py`
 - `scripts/check-false-pass-resistance.py`
-- `scripts/check-github-platform-enforcement 3.py`
 - `scripts/check-github-platform-enforcement.py`
 - `scripts/check-identity-drift.sh`
 - `scripts/check-interview-completeness.py`
@@ -435,7 +404,6 @@ Total scripts referenced by documentation: 232
 - `scripts/check-m59-execution-result-verification-fixtures.py`
 - `scripts/check-m61-hardening-regression.py`
 - `scripts/check-pr-quality.py`
-- `scripts/check-pre-merge-scope 3.py`
 - `scripts/check-pre-merge-scope.py`
 - `scripts/check-premature-artifacts.sh`
 - `scripts/check-private-evaluator-consistency.py`
@@ -446,7 +414,6 @@ Total scripts referenced by documentation: 232
 - `scripts/check-required-context-pack.py`
 - `scripts/check-risk.py`
 - `scripts/check-role-separation.py`
-- `scripts/check-scope-compliance 3.py`
 - `scripts/check-scope-compliance.py`
 - `scripts/check-single-role-execution.py`
 - `scripts/check-task-acceptance-mvp.py`
@@ -492,12 +459,9 @@ Total scripts referenced by documentation: 232
 - `scripts/test-approval-fixtures.py`
 - `scripts/test-approval-flow-smoke.py`
 - `scripts/test-approval-marker-fixtures.py`
-- `scripts/test-ci-advisory-config 3.py`
 - `scripts/test-ci-advisory-config.py`
-- `scripts/test-commit-push-preconditions-fixtures 3.py`
 - `scripts/test-commit-push-preconditions-fixtures.py`
 - `scripts/test-completion-flow-smoke.py`
-- `scripts/test-enforcement-fixtures 3.py`
 - `scripts/test-enforcement-fixtures.py`
 - `scripts/test-example-project.sh`
 - `scripts/test-execution-runner-fixtures.py`
@@ -507,21 +471,16 @@ Total scripts referenced by documentation: 232
 - `scripts/test-human-approval-fixtures.py`
 - `scripts/test-install.sh`
 - `scripts/test-integrity-regression.py`
-- `scripts/test-m22-guardrails 3.py`
 - `scripts/test-m22-guardrails.py`
-- `scripts/test-m27-level1-fixtures 3.py`
 - `scripts/test-m27-level1-fixtures.py`
 - `scripts/test-m40-runtime-bypass-smoke.py`
 - `scripts/test-negative-fixtures.py`
 - `scripts/test-policy-enforcement-fixtures.py`
 - `scripts/test-policy-fixtures.py`
 - `scripts/test-policy-flow-smoke.py`
-- `scripts/test-pre-merge-corridor-fixtures 3.py`
 - `scripts/test-pre-merge-corridor-fixtures.py`
-- `scripts/test-pre-merge-scope-fixtures 3.py`
 - `scripts/test-pre-merge-scope-fixtures.py`
 - `scripts/test-readiness-fixtures.py`
-- `scripts/test-scope-compliance-fixtures 3.py`
 - `scripts/test-scope-compliance-fixtures.py`
 - `scripts/test-single-role-execution-fixtures.py`
 - `scripts/test-state-fixtures.py`
@@ -531,18 +490,15 @@ Total scripts referenced by documentation: 232
 - `scripts/validate-active-task.py`
 - `scripts/validate-approval-marker.py`
 - `scripts/validate-architecture.sh`
-- `scripts/validate-boundary-claims 3.py`
 - `scripts/validate-boundary-claims.py`
 - `scripts/validate-commit-msg.py`
 - `scripts/validate-contract-draft.py`
 - `scripts/validate-docs.py`
-- `scripts/validate-frontmatter 3.py`
 - `scripts/validate-frontmatter.py`
 - `scripts/validate-gate-contract.py`
 - `scripts/validate-handoff.py`
 - `scripts/validate-human-approval.py`
 - `scripts/validate-incident.py`
-- `scripts/validate-index 3.py`
 - `scripts/validate-index.py`
 - `scripts/validate-lessons.py`
 - `scripts/validate-lifecycle-apply.py`
@@ -551,12 +507,10 @@ Total scripts referenced by documentation: 232
 - `scripts/validate-proposal-to-task-conversion.py`
 - `scripts/validate-queue-entry.py`
 - `scripts/validate-queue.py`
-- `scripts/validate-required-sections 3.py`
 - `scripts/validate-required-sections.py`
 - `scripts/validate-review.py`
 - `scripts/validate-route.py`
 - `scripts/validate-runner-protocol.py`
-- `scripts/validate-status-semantics 3.py`
 - `scripts/validate-status-semantics.py`
 - `scripts/validate-task-brief.py`
 - `scripts/validate-task-contract-candidate.py`
@@ -607,26 +561,20 @@ Total scripts referenced by reports: 229
 - `scripts/audit-execution-control.py`
 - `scripts/audit-gate-contract.py`
 - `scripts/audit-lifecycle-mutation.py`
-- `scripts/audit-m27 3.py`
-- `scripts/audit-m27-level1 3.py`
 - `scripts/audit-m27-level1.py`
 - `scripts/audit-m27.py`
 - `scripts/audit-m30-context-pipeline.py`
 - `scripts/audit-m31-tui-tutor.py`
-- `scripts/audit-metadata-consistency 3.py`
 - `scripts/audit-metadata-consistency.py`
 - `scripts/audit-mvp-readiness.py`
 - `scripts/audit-policy-boundary.py`
-- `scripts/audit-pre-merge-corridor 3.py`
 - `scripts/audit-pre-merge-corridor.py`
 - `scripts/audit-release-readiness.py`
 - `scripts/audit-template-packaging.py`
-- `scripts/audit-validation-integration 3.py`
 - `scripts/audit-validation-integration.py`
 - `scripts/build-context-cache.py`
 - `scripts/build-context-index.py`
 - `scripts/build-execution-verification-registry.py`
-- `scripts/build-index 3.py`
 - `scripts/build-index.py`
 - `scripts/build-task-dependency-map.py`
 - `scripts/canonical-cleanup.sh`
@@ -636,7 +584,6 @@ Total scripts referenced by reports: 229
 - `scripts/check-bypass-fixtures.py`
 - `scripts/check-bypass-resistance.py`
 - `scripts/check-canary-integrity.py`
-- `scripts/check-commit-push-preconditions 3.py`
 - `scripts/check-commit-push-preconditions.py`
 - `scripts/check-completion-readiness.py`
 - `scripts/check-context-compliance.py`
@@ -656,7 +603,6 @@ Total scripts referenced by reports: 229
 - `scripts/check-execution-verification-registry.py`
 - `scripts/check-execution-verification-regression.py`
 - `scripts/check-false-pass-resistance.py`
-- `scripts/check-github-platform-enforcement 3.py`
 - `scripts/check-github-platform-enforcement.py`
 - `scripts/check-identity-drift.sh`
 - `scripts/check-interview-completeness.py`
@@ -669,7 +615,6 @@ Total scripts referenced by reports: 229
 - `scripts/check-m59-execution-result-verification-fixtures.py`
 - `scripts/check-m61-hardening-regression.py`
 - `scripts/check-pr-quality.py`
-- `scripts/check-pre-merge-scope 3.py`
 - `scripts/check-pre-merge-scope.py`
 - `scripts/check-premature-artifacts.sh`
 - `scripts/check-private-evaluator-consistency.py`
@@ -680,7 +625,6 @@ Total scripts referenced by reports: 229
 - `scripts/check-required-context-pack.py`
 - `scripts/check-risk.py`
 - `scripts/check-role-separation.py`
-- `scripts/check-scope-compliance 3.py`
 - `scripts/check-scope-compliance.py`
 - `scripts/check-single-role-execution.py`
 - `scripts/check-task-acceptance-mvp.py`
@@ -725,12 +669,9 @@ Total scripts referenced by reports: 229
 - `scripts/test-approval-fixtures.py`
 - `scripts/test-approval-flow-smoke.py`
 - `scripts/test-approval-marker-fixtures.py`
-- `scripts/test-ci-advisory-config 3.py`
 - `scripts/test-ci-advisory-config.py`
-- `scripts/test-commit-push-preconditions-fixtures 3.py`
 - `scripts/test-commit-push-preconditions-fixtures.py`
 - `scripts/test-completion-flow-smoke.py`
-- `scripts/test-enforcement-fixtures 3.py`
 - `scripts/test-enforcement-fixtures.py`
 - `scripts/test-example-project.sh`
 - `scripts/test-execution-runner-fixtures.py`
@@ -740,21 +681,16 @@ Total scripts referenced by reports: 229
 - `scripts/test-human-approval-fixtures.py`
 - `scripts/test-install.sh`
 - `scripts/test-integrity-regression.py`
-- `scripts/test-m22-guardrails 3.py`
 - `scripts/test-m22-guardrails.py`
-- `scripts/test-m27-level1-fixtures 3.py`
 - `scripts/test-m27-level1-fixtures.py`
 - `scripts/test-m40-runtime-bypass-smoke.py`
 - `scripts/test-negative-fixtures.py`
 - `scripts/test-policy-enforcement-fixtures.py`
 - `scripts/test-policy-fixtures.py`
 - `scripts/test-policy-flow-smoke.py`
-- `scripts/test-pre-merge-corridor-fixtures 3.py`
 - `scripts/test-pre-merge-corridor-fixtures.py`
-- `scripts/test-pre-merge-scope-fixtures 3.py`
 - `scripts/test-pre-merge-scope-fixtures.py`
 - `scripts/test-readiness-fixtures.py`
-- `scripts/test-scope-compliance-fixtures 3.py`
 - `scripts/test-scope-compliance-fixtures.py`
 - `scripts/test-single-role-execution-fixtures.py`
 - `scripts/test-state-fixtures.py`
@@ -764,18 +700,15 @@ Total scripts referenced by reports: 229
 - `scripts/validate-active-task.py`
 - `scripts/validate-approval-marker.py`
 - `scripts/validate-architecture.sh`
-- `scripts/validate-boundary-claims 3.py`
 - `scripts/validate-boundary-claims.py`
 - `scripts/validate-commit-msg.py`
 - `scripts/validate-contract-draft.py`
 - `scripts/validate-docs.py`
-- `scripts/validate-frontmatter 3.py`
 - `scripts/validate-frontmatter.py`
 - `scripts/validate-gate-contract.py`
 - `scripts/validate-handoff.py`
 - `scripts/validate-human-approval.py`
 - `scripts/validate-incident.py`
-- `scripts/validate-index 3.py`
 - `scripts/validate-index.py`
 - `scripts/validate-lessons.py`
 - `scripts/validate-lifecycle-apply.py`
@@ -784,12 +717,10 @@ Total scripts referenced by reports: 229
 - `scripts/validate-proposal-to-task-conversion.py`
 - `scripts/validate-queue-entry.py`
 - `scripts/validate-queue.py`
-- `scripts/validate-required-sections 3.py`
 - `scripts/validate-required-sections.py`
 - `scripts/validate-review.py`
 - `scripts/validate-route.py`
 - `scripts/validate-runner-protocol.py`
-- `scripts/validate-status-semantics 3.py`
 - `scripts/validate-status-semantics.py`
 - `scripts/validate-task-brief.py`
 - `scripts/validate-task-contract-candidate.py`
@@ -923,30 +854,7 @@ All items are mapped with uncertainty labels (NEEDS_REVIEW) or specific stage ca
 
 ## M71.3 Candidates
 
-Total duplicate candidate scripts flagged for legacy/duplicate review: 23
-- `scripts/audit-m27 3.py`
-- `scripts/audit-m27-level1 3.py`
-- `scripts/audit-metadata-consistency 3.py`
-- `scripts/audit-pre-merge-corridor 3.py`
-- `scripts/audit-validation-integration 3.py`
-- `scripts/build-index 3.py`
-- `scripts/check-commit-push-preconditions 3.py`
-- `scripts/check-github-platform-enforcement 3.py`
-- `scripts/check-pre-merge-scope 3.py`
-- `scripts/check-scope-compliance 3.py`
-- `scripts/test-ci-advisory-config 3.py`
-- `scripts/test-commit-push-preconditions-fixtures 3.py`
-- `scripts/test-enforcement-fixtures 3.py`
-- `scripts/test-m22-guardrails 3.py`
-- `scripts/test-m27-level1-fixtures 3.py`
-- `scripts/test-pre-merge-corridor-fixtures 3.py`
-- `scripts/test-pre-merge-scope-fixtures 3.py`
-- `scripts/test-scope-compliance-fixtures 3.py`
-- `scripts/validate-boundary-claims 3.py`
-- `scripts/validate-frontmatter 3.py`
-- `scripts/validate-index 3.py`
-- `scripts/validate-required-sections 3.py`
-- `scripts/validate-status-semantics 3.py`
+Total duplicate candidate scripts flagged for legacy/duplicate review: 0
 
 ## M71.4 Candidates
 
@@ -974,24 +882,18 @@ Total scripts flagged for write/subprocess execution review: 147
 - `scripts/audit-context-layer.py`
 - `scripts/audit-execution-control.py`
 - `scripts/audit-gate-contract.py`
-- `scripts/audit-m27 3.py`
-- `scripts/audit-m27-level1 3.py`
 - `scripts/audit-m27-level1.py`
 - `scripts/audit-m27.py`
 - `scripts/audit-m31-tui-tutor.py`
-- `scripts/audit-metadata-consistency 3.py`
 - `scripts/audit-metadata-consistency.py`
 - `scripts/audit-mvp-readiness.py`
-- `scripts/audit-pre-merge-corridor 3.py`
 - `scripts/audit-pre-merge-corridor.py`
 - `scripts/audit-release-readiness.py`
 - `scripts/audit-template-packaging.py`
-- `scripts/audit-validation-integration 3.py`
 - `scripts/audit-validation-integration.py`
 - `scripts/build-context-cache.py`
 - `scripts/build-context-index.py`
 - `scripts/build-execution-verification-registry.py`
-- `scripts/build-index 3.py`
 - `scripts/build-index.py`
 - `scripts/build-task-dependency-map.py`
 - `scripts/check-active-task-readiness.py`
@@ -1016,12 +918,10 @@ Total scripts flagged for write/subprocess execution review: 147
 - `scripts/check-m58-controlled-execution-session-fixtures.py`
 - `scripts/check-m59-execution-result-verification-fixtures.py`
 - `scripts/check-m61-hardening-regression.py`
-- `scripts/check-pre-merge-scope 3.py`
 - `scripts/check-pre-merge-scope.py`
 - `scripts/check-product-spec-readiness.py`
 - `scripts/check-required-context-compliance.py`
 - `scripts/check-required-context-pack.py`
-- `scripts/check-scope-compliance 3.py`
 - `scripts/check-scope-compliance.py`
 - `scripts/check-single-role-execution.py`
 - `scripts/check-task-acceptance-mvp.py`
@@ -1054,10 +954,8 @@ Total scripts flagged for write/subprocess execution review: 147
 - `scripts/test-approval-fixtures.py`
 - `scripts/test-approval-flow-smoke.py`
 - `scripts/test-approval-marker-fixtures.py`
-- `scripts/test-commit-push-preconditions-fixtures 3.py`
 - `scripts/test-commit-push-preconditions-fixtures.py`
 - `scripts/test-completion-flow-smoke.py`
-- `scripts/test-enforcement-fixtures 3.py`
 - `scripts/test-enforcement-fixtures.py`
 - `scripts/test-execution-runner-fixtures.py`
 - `scripts/test-gate-regression-fixtures.py`
@@ -1066,28 +964,22 @@ Total scripts flagged for write/subprocess execution review: 147
 - `scripts/test-human-approval-fixtures.py`
 - `scripts/test-install.sh`
 - `scripts/test-integrity-regression.py`
-- `scripts/test-m22-guardrails 3.py`
 - `scripts/test-m22-guardrails.py`
-- `scripts/test-m27-level1-fixtures 3.py`
 - `scripts/test-m27-level1-fixtures.py`
 - `scripts/test-m40-runtime-bypass-smoke.py`
 - `scripts/test-negative-fixtures.py`
 - `scripts/test-policy-enforcement-fixtures.py`
 - `scripts/test-policy-fixtures.py`
 - `scripts/test-policy-flow-smoke.py`
-- `scripts/test-pre-merge-corridor-fixtures 3.py`
 - `scripts/test-pre-merge-corridor-fixtures.py`
-- `scripts/test-pre-merge-scope-fixtures 3.py`
 - `scripts/test-pre-merge-scope-fixtures.py`
 - `scripts/test-readiness-fixtures.py`
-- `scripts/test-scope-compliance-fixtures 3.py`
 - `scripts/test-scope-compliance-fixtures.py`
 - `scripts/test-single-role-execution-fixtures.py`
 - `scripts/test-state-fixtures.py`
 - `scripts/test-template-integrity-fixtures.py`
 - `scripts/test-template-integrity.py`
 - `scripts/test-unified-gate-smoke.py`
-- `scripts/validate-boundary-claims 3.py`
 - `scripts/validate-boundary-claims.py`
 - `scripts/validate-commit-msg.py`
 - `scripts/validate-contract-draft.py`
@@ -1106,17 +998,12 @@ Total scripts flagged for Git integration review: 46
 - `scripts/agentos-enforce.py`
 - `scripts/agentos-git-guard.py`
 - `scripts/audit-context-layer.py`
-- `scripts/audit-m27 3.py`
-- `scripts/audit-m27-level1 3.py`
 - `scripts/audit-m27-level1.py`
 - `scripts/audit-m27.py`
-- `scripts/audit-pre-merge-corridor 3.py`
 - `scripts/audit-pre-merge-corridor.py`
-- `scripts/audit-validation-integration 3.py`
 - `scripts/audit-validation-integration.py`
 - `scripts/build-context-index.py`
 - `scripts/canonical-cleanup.sh`
-- `scripts/check-commit-push-preconditions 3.py`
 - `scripts/check-commit-push-preconditions.py`
 - `scripts/check-context-compliance.py`
 - `scripts/check-context-index-freshness.py`
@@ -1127,11 +1014,9 @@ Total scripts flagged for Git integration review: 46
 - `scripts/check-execution-verification-regression.py`
 - `scripts/check-m54-queue-placement-fixtures.py`
 - `scripts/check-m55-active-task-readiness-fixtures.py`
-- `scripts/check-pre-merge-scope 3.py`
 - `scripts/check-pre-merge-scope.py`
 - `scripts/check-required-context-compliance.py`
 - `scripts/check-required-context-pack.py`
-- `scripts/check-scope-compliance 3.py`
 - `scripts/check-scope-compliance.py`
 - `scripts/check-use-template-readiness.py`
 - `scripts/install-agentos.py`
@@ -1141,11 +1026,9 @@ Total scripts flagged for Git integration review: 46
 - `scripts/sync-context.sh`
 - `scripts/test-example-project.sh`
 - `scripts/test-install.sh`
-- `scripts/test-m27-level1-fixtures 3.py`
 - `scripts/test-m27-level1-fixtures.py`
 - `scripts/test-m40-runtime-bypass-smoke.py`
 - `scripts/test-negative-fixtures.py`
-- `scripts/test-scope-compliance-fixtures 3.py`
 - `scripts/test-scope-compliance-fixtures.py`
 - `scripts/validate-queue.py`
 
