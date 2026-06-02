@@ -83,7 +83,7 @@ m81_task_briefs_may_be_created_claimed: false
 human_review_required_before_m81: true
 
 forbidden_readiness_field_used: false
-forbidden_m81_readiness_field_used: false
+ready_for_m81_used: false
 m81_approval_language_used: false
 production_ready_language_used: false
 saas_ui_ready_language_used: false

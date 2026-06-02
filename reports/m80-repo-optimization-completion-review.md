@@ -23,7 +23,7 @@
 - Not-claimed metrics carried forward: true
 - Remaining gaps carried forward: true
 - Human review required before M81: true
-- downstream_m81_planning_ready: false
+- ready_for_m81_planning: false
 
 # Title
 M80 Repo Optimization Completion Review
@@ -103,7 +103,7 @@ m81_task_briefs_may_be_created_claimed: false
 human_review_required_before_m81: true
 
 forbidden_readiness_field_used: false
-forbidden_m81_readiness_field_used: false
+ready_for_m81_used: false
 m81_approval_language_used: false
 production_ready_language_used: false
 saas_ui_ready_language_used: false
@@ -141,7 +141,7 @@ human_summary_consistent_with_machine_fields: true
 
 FINAL_STATUS: M80_REPO_OPTIMIZATION_COMPLETE_WITH_WARNINGS
 operator_release_candidate_planning_possible: true_with_warnings
-downstream_m81_planning_ready: false
+ready_for_m81_planning: false
 
 blocker_codes:
   - none
