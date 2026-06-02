@@ -161,7 +161,16 @@ The scope lock keeps the M77 plan unchanged, sorts each item into one later-use 
 - This report does not authorize physical file changes.
 
 ## Premature Artifact Check
-- No premature M78/M79/M80/M81 artifact was found in `reports/` when checked.
+- Existing M78 artifacts are already present in `reports/` and were not created by 78.1.
+- Present M78 artifacts:
+  - `reports/m78-human-checkpoint-intake.md`
+  - `reports/m78-wave-1-cleanup-report.md`
+  - `reports/m78-wave-2-cleanup-report.md`
+  - `reports/m78-wave-3-cleanup-report.md`
+  - `reports/m78-wave-4-cleanup-report.md`
+  - `reports/m78-physical-cleanup-diff-summary.md`
+  - `reports/m78-validation-summary.md`
+  - `reports/m78-completion-review.md`
 
 ## Boundary Check
 - Physical cleanup did not occur.
