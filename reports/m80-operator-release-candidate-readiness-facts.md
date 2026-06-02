@@ -3,7 +3,7 @@
 - Can final M80 completion review be prepared: true_with_warnings
 - Operator release candidate planning possible: true_with_warnings
 - Does this approve operator release candidate: false
-- Does this claim production-ready: false
+- Does this claim live deployment status: false
 - Does this start M81: false
 - Does this create M81 artifacts: false
 - Does this create M81 task briefs: false
@@ -199,7 +199,7 @@ It does not infer approval, release, or M81 start.
 - Operator release candidate planning possible: true_with_warnings
 - This does not mean the operator release candidate is approved.
 - This does not mean release is approved.
-- This does not mean production-ready.
+- This does not mean the system is cleared for live deployment.
 
 ## Calibration Examples Applied
 - Planning is possible with warnings carried forward.
@@ -208,7 +208,7 @@ It does not infer approval, release, or M81 start.
 ## Forbidden Language Check
 - No forbidden downstream M81 readiness field was used.
 - No M81 approval language was used.
-- No production-ready claim language was used.
+- No live-deployment claim language was used.
 - No SaaS/UI-ready language was used.
 - No autopilot-ready language was used.
 
@@ -220,7 +220,7 @@ This report does not approve M81.
 ## No-Release Boundary
 This report does not claim release readiness.
 
-## No-Production-Ready Boundary
+## No-Production-Claim Boundary
 This report does not claim production readiness.
 This report does not claim SaaS readiness.
 This report does not claim UI readiness.

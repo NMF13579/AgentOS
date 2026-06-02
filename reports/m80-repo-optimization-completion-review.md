@@ -4,7 +4,7 @@
 - Does this approve M80: false
 - Does this approve cleanup: false
 - Does this approve release: false
-- Does this claim production-ready: false
+- Does this claim live deployment status: false
 - Does this start M81: false
 - Does this create M81 artifacts: false
 - Does this create M81 task briefs: false
@@ -308,7 +308,7 @@ This review does not approve M80, cleanup, release, or operator RC.
 ## No-Release Boundary
 This review does not claim release readiness.
 
-## No-Production-Ready Boundary
+## No-Production-Claim Boundary
 This review does not claim production readiness.
 
 ## No-Source / Derived Mutation Boundary

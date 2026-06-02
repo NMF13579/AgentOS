@@ -4,7 +4,7 @@
 - Does this create factual baseline report: true
 - Does this approve cleanup: false
 - Does this approve release: false
-- Does this claim production-ready: false
+- Does this claim live deployment status: false
 - Does this update source files: false
 - Does this update derived artifacts: false
 - Does this start M81: false

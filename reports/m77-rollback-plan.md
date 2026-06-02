@@ -108,7 +108,7 @@ This report verifies rollback planning for every cleanup plan item and confirms 
 - Both remain carried forward for human review, not resolved by agent judgment.
 
 ## Protected Hard Stop Review
-- No M76 `PROTECTED_DO_NOT_TOUCH` item is rollback-ready for M78.
+- No M76 `PROTECTED_DO_NOT_TOUCH` item is eligible for rollback in M78.
 - Protected canonical items remain blocked.
 - Wave 5 derived/index items remain M80-only and not M78-executable.
 
