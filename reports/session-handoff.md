@@ -170,6 +170,67 @@ Next conceptual stage: Milestone 13 — Controlled Execution Runner.
 - Branch `dev` pushed to `origin/dev`.
 - Working tree clean.
 
+---
+
+## Amendment
+
+### Timestamp
+
+- 2026-06-03 19:10:00 +05
+
+### Updated Status
+
+- M82 archive-reduction line is closed as no-action for this line.
+- M83 remains blocked.
+- M84.0 remains blocked from M83.
+- Current workspace contains uncommitted context artifacts for M82.7R and M82.9.
+
+### New Completed Work
+
+- Created safe archive candidate review:
+  - `reports/m82-safe-archive-candidate-review.md`
+- Confirmed no safe archive candidate exists for the reviewed archive-reduction line:
+  - `M82_7R_STATUS: M82_7R_NO_SAFE_ARCHIVE_CANDIDATE_FOUND`
+  - `may_prepare_human_selected_subset_for_m83_recovery: false`
+- Created archive-reduction debt closure report:
+  - `reports/m82-archive-reduction-debt-closure.md`
+- Closed the archive-reduction debt for this line as no-action:
+  - `FINAL_STATUS: M82_ARCHIVE_REDUCTION_DEBT_CLOSED_NO_ACTION`
+- Switched active task contract to:
+  - `tasks/active-task.md` -> `m82.9`
+
+### Verification Snapshot
+
+- `python3 scripts/audit-agentos.py`: PASS_WITH_WARNINGS
+- `test -f reports/m82-safe-archive-candidate-review.md`: PASS
+- `grep M82_7R_NO_SAFE_ARCHIVE_CANDIDATE_FOUND reports/m82-safe-archive-candidate-review.md`: PASS
+- `grep may_prepare_human_selected_subset_for_m83_recovery: false reports/m82-safe-archive-candidate-review.md`: PASS
+- `test -f reports/m82-archive-reduction-debt-closure.md`: PASS
+- `grep FINAL_STATUS: M82_ARCHIVE_REDUCTION_DEBT_CLOSED_NO_ACTION reports/m82-archive-reduction-debt-closure.md`: PASS
+- `grep FINAL_STATUS: M83_CONTROLLED_REDUCTION_BLOCKED reports/m83-completion-review.md`: PASS
+- `grep M84_0_M83_COMPLETION_INTAKE_BLOCKED reports/m84-m83-completion-intake.md`: PASS
+- Forbidden downstream artifact check for `m83-recovery`, `m84-retry`, and `m85-m91`: PASS
+
+### Current Workspace State
+
+- Branch: `dev`
+- Working tree is not clean.
+- Modified:
+  - `tasks/active-task.md`
+- Untracked:
+  - `reports/m82-safe-archive-candidate-review.md`
+  - `reports/m82-archive-reduction-debt-closure.md`
+- M82 archive-reduction line is closed for this line only.
+- Future work, if any, must be framed as a new independent planning line and not as M84 unblock for the closed archive-reduction line.
+
+### Next
+
+- If the user wants to preserve this state in git, the next step is review and intentional commit of:
+  - `tasks/active-task.md`
+  - `reports/m82-safe-archive-candidate-review.md`
+  - `reports/m82-archive-reduction-debt-closure.md`
+- If the user wants to continue work, it should be opened as a separate independent line, not as continuation of the closed M82->M83->M84 archive-reduction path.
+
 ### Next
 
 - Awaiting next user instructions.

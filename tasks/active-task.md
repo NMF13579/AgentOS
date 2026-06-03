@@ -1,23 +1,24 @@
 ---
 task:
-  id: "m84.0"
-  goal: "M84.0 M83 Completion Intake"
-  expected_result: "reports/m84-m83-completion-intake.md created with blocked status"
+  id: "m82.9"
+  goal: "M82.9 Archive Reduction Debt Closure Decision"
+  expected_result: "reports/m82-archive-reduction-debt-closure.md created with final no-action closure decision"
   in_scope:
-    - "Create reports/m84-m83-completion-intake.md"
+    - "Create reports/m82-archive-reduction-debt-closure.md"
   out_of_scope:
-    - "Perform physical repo changes"
-    - "Create M84 task briefs"
-    - "Implement automation"
+    - "Claim M82 reduction succeeded"
+    - "Start M83 recovery"
+    - "Unblock M84"
+    - "Archive or move files"
   files_or_areas:
-    - "reports/m84-m83-completion-intake.md"
+    - "reports/m82-archive-reduction-debt-closure.md"
   risk_level: "LOW"
-  requires_owner_approval: false
+  requires_owner_approval: true
   acceptance_criteria:
-    - "M83 Completion Review Intake verified (blocks M84.0)"
-    - "reports/m84-m83-completion-intake.md created"
-    - "M84_0_STATUS set to BLOCKED"
-    - "may_prepare_84_1_source_inventory set to false"
+    - "M82.7R no-safe-candidate result verified"
+    - "Human closure decision verified from current task prompt"
+    - "Archive reduction debt closed as no-action for this line"
+    - "Only reports/m82-archive-reduction-debt-closure.md created"
   verification_plan:
     - "Run validation commands specified in task brief"
 ---
