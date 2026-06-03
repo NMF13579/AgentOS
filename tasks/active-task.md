@@ -1,23 +1,23 @@
 ---
 task:
-  id: "m83.7"
-  goal: "M83.7 M83 Completion Review"
-  expected_result: "reports/m83-completion-review.md created with blocked status"
+  id: "m84.0"
+  goal: "M84.0 M83 Completion Intake"
+  expected_result: "reports/m84-m83-completion-intake.md created with blocked status"
   in_scope:
-    - "Create reports/m83-completion-review.md"
+    - "Create reports/m84-m83-completion-intake.md"
   out_of_scope:
     - "Perform physical repo changes"
-    - "Create M84 task brief"
-    - "Start M84"
+    - "Create M84 task briefs"
+    - "Implement automation"
   files_or_areas:
-    - "reports/m83-completion-review.md"
+    - "reports/m84-m83-completion-intake.md"
   risk_level: "LOW"
   requires_owner_approval: false
   acceptance_criteria:
-    - "M83.6 Intake verified (blocks M83.7)"
-    - "reports/m83-completion-review.md created"
-    - "FINAL_STATUS set to BLOCKED"
-    - "may_prepare_m84 set to false"
+    - "M83 Completion Review Intake verified (blocks M84.0)"
+    - "reports/m84-m83-completion-intake.md created"
+    - "M84_0_STATUS set to BLOCKED"
+    - "may_prepare_84_1_source_inventory set to false"
   verification_plan:
     - "Run validation commands specified in task brief"
 ---
