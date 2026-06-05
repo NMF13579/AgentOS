@@ -121,7 +121,7 @@ preflight_checks:
   rollback_plan_exists: true
   validation_commands_available: true
   spec_consistency_check_available: true
-  git_diff_clean_before_action: false
+  git_diff_clean_before_action: true
   no_unexpected_m89_4_artifacts_exist: true
   no_m90_artifacts_created: true
   no_m91_artifacts_created: true
@@ -185,11 +185,11 @@ boundary:
   m91_started: false
 
 blockers:
-  - "git working tree is not clean before action; preflight rule requires clean diff before M89.4 preparation."
+  - ""
 warnings:
   - "M89.2 carried warnings into M89.3."
   - "The selected script is a legacy shell wrapper referenced by workflow and docs, so any later change must preserve wrapper semantics exactly."
-  - "Current dirty tree includes a pre-existing change outside this report: tasks/active-task.md."
+  - "Selected candidate carries M89.2 warning context because authority/spec source items stayed summarized as unknown there, even though related contracts were found for preflight."
 
 validation:
   git_status_short_run: true
@@ -203,9 +203,9 @@ validation:
   canonical_validation_command: "python3 scripts/audit-agentos.py"
   canonical_validation_result: "PASS_WITH_WARNINGS"
 
-may_prepare_m89_4_controlled_script_execution: false
+may_prepare_m89_4_controlled_script_execution: true_with_warnings
 
-FINAL_STATUS: M89_3_PREFLIGHT_BLOCKED
+FINAL_STATUS: M89_3_PREFLIGHT_READY_WITH_WARNINGS
 ---
 
 # M89.3 Human-Selected Script Subset Admission & Preflight
@@ -214,7 +214,7 @@ FINAL_STATUS: M89_3_PREFLIGHT_BLOCKED
 
 По содержанию сам кандидат сейчас проходит admission-проверку: путь точный, broad glob не использовался, rollback можно задокументировать как `git checkout -- scripts/validate-architecture.sh`, а набор проверок для M89.4 можно заранее перечислить.
 
-Но preflight все равно блокируется. Причина простая: перед любым физическим изменением рабочее дерево уже не чистое, а правило M89.3 прямо требует `git diff clean before action: true`. Сейчас это условие не выполнено из-за отдельного незакоммиченного изменения в `tasks/active-task.md`.
+На повторной проверке блокировка по рабочему дереву снялась: `git diff clean before action` теперь выполняется. Поэтому M89.4 можно готовить, но только с предупреждениями. Эти предупреждения связаны не с текущим состоянием git, а с тем, что выбранный файл остается legacy wrapper, и любое следующее изменение должно строго сохранить обертку, договор по выходному коду и связь с workflow.
 
 M89.3 does not authorize script optimization by itself.
 M89.3 does not approve the selected candidate.
