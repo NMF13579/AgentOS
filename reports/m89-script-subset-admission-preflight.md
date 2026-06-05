@@ -189,7 +189,7 @@ blockers:
 warnings:
   - "M89.2 carried warnings into M89.3."
   - "The selected script is a legacy shell wrapper referenced by workflow and docs, so any later change must preserve wrapper semantics exactly."
-  - "Current dirty tree includes pre-existing changes outside this report: tasks/active-task.md and uncommitted M89.0-M89.2 report files."
+  - "Current dirty tree includes a pre-existing change outside this report: tasks/active-task.md."
 
 validation:
   git_status_short_run: true
@@ -214,7 +214,7 @@ FINAL_STATUS: M89_3_PREFLIGHT_BLOCKED
 
 По содержанию сам кандидат сейчас проходит admission-проверку: путь точный, broad glob не использовался, rollback можно задокументировать как `git checkout -- scripts/validate-architecture.sh`, а набор проверок для M89.4 можно заранее перечислить.
 
-Но preflight все равно блокируется. Причина простая: перед любым физическим изменением рабочее дерево уже не чистое, а правило M89.3 прямо требует `git diff clean before action: true`. Сейчас это условие не выполнено из-за уже существующих незакоммиченных изменений и новых отчетов линии M89.
+Но preflight все равно блокируется. Причина простая: перед любым физическим изменением рабочее дерево уже не чистое, а правило M89.3 прямо требует `git diff clean before action: true`. Сейчас это условие не выполнено из-за отдельного незакоммиченного изменения в `tasks/active-task.md`.
 
 M89.3 does not authorize script optimization by itself.
 M89.3 does not approve the selected candidate.
