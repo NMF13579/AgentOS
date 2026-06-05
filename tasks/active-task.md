@@ -1,22 +1,22 @@
 ---
 task:
-  id: "m88.2"
-  goal: "M88.2 M88 Completion Review"
-  expected_result: "reports/m88-completion-review.md created"
+  id: "m90.0"
+  goal: "M90.0 M89 Completion Intake"
+  expected_result: "reports/m90-m89-completion-intake.md created"
   in_scope:
-    - "Create reports/m88-completion-review.md"
+    - "Verify M89 completion review status"
+    - "Create reports/m90-m89-completion-intake.md"
   out_of_scope:
-    - "Authorize physical cleanup"
-    - "Start M89"
+    - "Authorize Markdown optimization execution"
+    - "Modify existing documents"
+    - "Start M91"
   files_or_areas:
-    - "reports/m88-completion-review.md"
+    - "reports/m90-m89-completion-intake.md"
   risk_level: "LOW"
   requires_owner_approval: true
   acceptance_criteria:
-    - "All M88.0 through M88.1 artifacts reviewed"
-    - "New baseline creation confirmed"
-    - "No cleanup, physical action, approval, or lifecycle mutation authorized"
-    - "M89 not started"
+    - "M89 completion confirmed based on reports/m89-completion-review.md"
+    - "M90.0 report created and ready for review"
   verification_plan:
-    - "Run validation commands specified in task brief"
+    - "Run python3 scripts/audit-agentos.py"
 ---
