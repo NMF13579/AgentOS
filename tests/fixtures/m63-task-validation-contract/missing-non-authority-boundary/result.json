@@ -1,0 +1,14 @@
+{
+  "contract_version": "m63.task_validation_result.v1",
+  "result_type": "task_validation_result",
+  "task_id": "63.7",
+  "result": "TASK_VALIDATION_PASS",
+  "package_valid": true,
+  "schema_result": "PASS",
+  "scope_result": "PASS",
+  "evidence_ref_result": "PASS",
+  "validation_claims_result": "PASS",
+  "human_review_required": true,
+  "warnings": [],
+  "blockers": []
+}

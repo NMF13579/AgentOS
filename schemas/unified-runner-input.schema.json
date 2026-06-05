@@ -1,0 +1,194 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Unified Runner Input Package",
+  "description": "Production input schema for M66 Unified Runner.",
+  "type": "object",
+  "required": [
+    "contract_version",
+    "package_type",
+    "task_id",
+    "task_brief_path",
+    "task_validation_package_path",
+    "agent_evidence_path",
+    "acceptance_criteria_package_path",
+    "expected_checkers",
+    "runner_options",
+    "human_review_required",
+    "non_authority_boundary"
+  ],
+  "properties": {
+    "contract_version": {
+      "type": "string",
+      "const": "1.0.0"
+    },
+    "package_type": {
+      "type": "string",
+      "const": "unified_runner_input"
+    },
+    "task_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "task_brief_path": {
+      "type": "string",
+      "minLength": 1
+    },
+    "task_validation_package_path": {
+      "type": "string",
+      "minLength": 1
+    },
+    "agent_evidence_path": {
+      "type": "string",
+      "minLength": 1
+    },
+    "acceptance_criteria_package_path": {
+      "type": "string",
+      "minLength": 1
+    },
+    "expected_checkers": {
+      "type": "array",
+      "minItems": 3,
+      "items": {
+        "type": "object",
+        "required": [
+          "checker_id",
+          "script_path",
+          "input_arg",
+          "input_path_field",
+          "required"
+        ],
+        "properties": {
+          "checker_id": {
+            "type": "string",
+            "enum": [
+              "task_validation_contract_checker",
+              "agent_task_evidence_checker",
+              "acceptance_criteria_checker"
+            ]
+          },
+          "script_path": {
+            "type": "string",
+            "enum": [
+              "scripts/check-task-validation-contract.py",
+              "scripts/check-agent-task-evidence.py",
+              "scripts/check-acceptance-criteria.py"
+            ]
+          },
+          "input_arg": {
+            "type": "string",
+            "enum": [
+              "--package",
+              "--evidence"
+            ]
+          },
+          "input_path_field": {
+            "type": "string",
+            "enum": [
+              "task_validation_package_path",
+              "agent_evidence_path",
+              "acceptance_criteria_package_path"
+            ]
+          },
+          "required": {
+            "type": "boolean",
+            "const": true
+          }
+        },
+        "additionalProperties": false,
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "checker_id": {
+                  "const": "task_validation_contract_checker"
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "script_path": { "const": "scripts/check-task-validation-contract.py" },
+                "input_arg": { "const": "--package" },
+                "input_path_field": { "const": "task_validation_package_path" }
+              }
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "checker_id": {
+                  "const": "agent_task_evidence_checker"
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "script_path": { "const": "scripts/check-agent-task-evidence.py" },
+                "input_arg": { "const": "--evidence" },
+                "input_path_field": { "const": "agent_evidence_path" }
+              }
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "checker_id": {
+                  "const": "acceptance_criteria_checker"
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "script_path": { "const": "scripts/check-acceptance-criteria.py" },
+                "input_arg": { "const": "--package" },
+                "input_path_field": { "const": "acceptance_criteria_package_path" }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "runner_options": {
+      "type": "object",
+      "required": [
+        "strict",
+        "json",
+        "timeout_seconds",
+        "execution_mode"
+      ],
+      "properties": {
+        "strict": {
+          "type": "boolean"
+        },
+        "json": {
+          "type": "boolean"
+        },
+        "timeout_seconds": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 300,
+          "default": 30
+        },
+        "execution_mode": {
+          "type": "string",
+          "enum": [
+            "execute",
+            "no_execute"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "human_review_required": {
+      "type": "boolean",
+      "const": true
+    },
+    "non_authority_boundary": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "additionalProperties": false
+}

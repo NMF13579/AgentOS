@@ -1,0 +1,217 @@
+{
+  "contract_version": "m64.fixture_manifest.v1",
+  "fixture_scope": "agent_task_output_evidence_checker",
+  "checker_path": "scripts/check-agent-task-evidence.py",
+  "fixtures": [
+    {
+      "path": "tests/fixtures/m64-agent-task-evidence/positive/valid-minimal-evidence.json",
+      "expected_result": "M64_EVIDENCE_CHECK_PASS",
+      "expected_exit_code": 0,
+      "task_id_arg": null,
+      "category": "positive"
+    },
+    {
+      "path": "tests/fixtures/m64-agent-task-evidence/positive/valid-evidence-safe-forbidden-policy-terms.json",
+      "expected_result": "M64_EVIDENCE_CHECK_PASS",
+      "expected_exit_code": 0,
+      "task_id_arg": null,
+      "category": "positive"
+    },
+    {
+      "path": "tests/fixtures/m64-agent-task-evidence/warning/valid-evidence-with-warnings.json",
+      "expected_result": "M64_EVIDENCE_CHECK_PASS_WITH_WARNINGS",
+      "expected_exit_code": 0,
+      "task_id_arg": null,
+      "category": "warning"
+    },
+    {
+      "path": "tests/fixtures/m64-agent-task-evidence/warning/validation-results-without-commands-run.json",
+      "expected_result": "M64_EVIDENCE_CHECK_PASS_WITH_WARNINGS",
+      "expected_exit_code": 0,
+      "task_id_arg": null,
+      "category": "warning"
+    },
+    {
+      "path": "tests/fixtures/m64-agent-task-evidence/warning/created-artifact-claim-without-files-changed.json",
+      "expected_result": "M64_EVIDENCE_CHECK_PASS_WITH_WARNINGS",
+      "expected_exit_code": 0,
+      "task_id_arg": null,
+      "category": "warning"
+    },
+    {
+      "path": "tests/fixtures/m64-agent-task-evidence/warning/modified-artifact-claim-without-files-changed.json",
+      "expected_result": "M64_EVIDENCE_CHECK_PASS_WITH_WARNINGS",
+      "expected_exit_code": 0,
+      "task_id_arg": null,
+      "category": "warning"
+    },
+    {
+      "path": "tests/fixtures/m64-agent-task-evidence/warning/deleted-artifact-claim-without-files-changed.json",
+      "expected_result": "M64_EVIDENCE_CHECK_PASS_WITH_WARNINGS",
+      "expected_exit_code": 0,
+      "task_id_arg": null,
+      "category": "warning"
+    },
+    {
+      "path": "tests/fixtures/m64-agent-task-evidence/warning/hidden-blocker-as-warning.json",
+      "expected_result": "M64_EVIDENCE_CHECK_PASS_WITH_WARNINGS",
+      "expected_exit_code": 0,
+      "task_id_arg": null,
+      "category": "warning"
+    },
+    {
+      "path": "tests/fixtures/m64-agent-task-evidence/warning/mixed-pass-and-unknown-command.json",
+      "expected_result": "M64_EVIDENCE_CHECK_PASS_WITH_WARNINGS",
+      "expected_exit_code": 0,
+      "task_id_arg": null,
+      "category": "warning"
+    },
+    {
+      "path": "tests/fixtures/m64-agent-task-evidence/negative/missing-required-field.json",
+      "expected_result": "M64_EVIDENCE_CHECK_BLOCKED",
+      "expected_exit_code": 1,
+      "task_id_arg": null,
+      "category": "negative"
+    },
+    {
+      "path": "tests/fixtures/m64-agent-task-evidence/negative/unsupported-contract-version.json",
+      "expected_result": "M64_EVIDENCE_CHECK_BLOCKED",
+      "expected_exit_code": 1,
+      "task_id_arg": null,
+      "category": "negative"
+    },
+    {
+      "path": "tests/fixtures/m64-agent-task-evidence/negative/wrong-evidence-type.json",
+      "expected_result": "M64_EVIDENCE_CHECK_BLOCKED",
+      "expected_exit_code": 1,
+      "task_id_arg": null,
+      "category": "negative"
+    },
+    {
+      "path": "tests/fixtures/m64-agent-task-evidence/negative/task-id-mismatch.json",
+      "expected_result": "M64_EVIDENCE_CHECK_BLOCKED",
+      "expected_exit_code": 1,
+      "task_id_arg": "64.6",
+      "category": "negative"
+    },
+    {
+      "path": "tests/fixtures/m64-agent-task-evidence/negative/missing-agent-identity.json",
+      "expected_result": "M64_EVIDENCE_CHECK_BLOCKED",
+      "expected_exit_code": 1,
+      "task_id_arg": null,
+      "category": "negative"
+    },
+    {
+      "path": "tests/fixtures/m64-agent-task-evidence/negative/empty-agent-identity.json",
+      "expected_result": "M64_EVIDENCE_CHECK_BLOCKED",
+      "expected_exit_code": 1,
+      "task_id_arg": null,
+      "category": "negative"
+    },
+    {
+      "path": "tests/fixtures/m64-agent-task-evidence/negative/human-review-disabled.json",
+      "expected_result": "M64_EVIDENCE_CHECK_BLOCKED",
+      "expected_exit_code": 1,
+      "task_id_arg": null,
+      "category": "negative"
+    },
+    {
+      "path": "tests/fixtures/m64-agent-task-evidence/negative/forbidden-actions-performed.json",
+      "expected_result": "M64_EVIDENCE_CHECK_BLOCKED",
+      "expected_exit_code": 1,
+      "task_id_arg": null,
+      "category": "negative"
+    },
+    {
+      "path": "tests/fixtures/m64-agent-task-evidence/negative/approval-claim-present.json",
+      "expected_result": "M64_EVIDENCE_CHECK_BLOCKED",
+      "expected_exit_code": 1,
+      "task_id_arg": null,
+      "category": "negative"
+    },
+    {
+      "path": "tests/fixtures/m64-agent-task-evidence/negative/merge-authorized-claim-present.json",
+      "expected_result": "M64_EVIDENCE_CHECK_BLOCKED",
+      "expected_exit_code": 1,
+      "task_id_arg": null,
+      "category": "negative"
+    },
+    {
+      "path": "tests/fixtures/m64-agent-task-evidence/negative/completion-gate-passed-claim.json",
+      "expected_result": "M64_EVIDENCE_CHECK_BLOCKED",
+      "expected_exit_code": 1,
+      "task_id_arg": null,
+      "category": "negative"
+    },
+    {
+      "path": "tests/fixtures/m64-agent-task-evidence/negative/missing-non-authority-boundary.json",
+      "expected_result": "M64_EVIDENCE_CHECK_BLOCKED",
+      "expected_exit_code": 1,
+      "task_id_arg": null,
+      "category": "negative"
+    },
+    {
+      "path": "tests/fixtures/m64-agent-task-evidence/negative/missing-required-boundary-statement.json",
+      "expected_result": "M64_EVIDENCE_CHECK_BLOCKED",
+      "expected_exit_code": 1,
+      "task_id_arg": null,
+      "category": "negative"
+    },
+    {
+      "path": "tests/fixtures/m64-agent-task-evidence/negative/wrong-required-field-type.json",
+      "expected_result": "M64_EVIDENCE_CHECK_BLOCKED",
+      "expected_exit_code": 1,
+      "task_id_arg": null,
+      "category": "negative"
+    },
+    {
+      "path": "tests/fixtures/m64-agent-task-evidence/negative/numeric-boolean-human-review.json",
+      "expected_result": "M64_EVIDENCE_CHECK_BLOCKED",
+      "expected_exit_code": 1,
+      "task_id_arg": null,
+      "category": "negative"
+    },
+    {
+      "path": "tests/fixtures/m64-agent-task-evidence/negative/hidden-blocker-as-blocked.json",
+      "expected_result": "M64_EVIDENCE_CHECK_BLOCKED",
+      "expected_exit_code": 1,
+      "task_id_arg": null,
+      "category": "negative"
+    },
+    {
+      "path": "tests/fixtures/m64-agent-task-evidence/negative/required-command-failed.json",
+      "expected_result": "M64_EVIDENCE_CHECK_BLOCKED",
+      "expected_exit_code": 1,
+      "task_id_arg": null,
+      "category": "negative"
+    },
+    {
+      "path": "tests/fixtures/m64-agent-task-evidence/negative/required-validation-failed.json",
+      "expected_result": "M64_EVIDENCE_CHECK_BLOCKED",
+      "expected_exit_code": 1,
+      "task_id_arg": null,
+      "category": "negative"
+    },
+    {
+      "path": "tests/fixtures/m64-agent-task-evidence/negative/not-enough-evidence.json",
+      "expected_result": "M64_EVIDENCE_CHECK_NOT_ENOUGH_EVIDENCE",
+      "expected_exit_code": 1,
+      "task_id_arg": null,
+      "category": "negative"
+    },
+    {
+      "path": "tests/fixtures/m64-agent-task-evidence/negative/m65-m67-scope-absorption.json",
+      "expected_result": "M64_EVIDENCE_CHECK_BLOCKED",
+      "expected_exit_code": 1,
+      "task_id_arg": null,
+      "category": "negative"
+    },
+    {
+      "path": "tests/fixtures/m64-agent-task-evidence/malformed/malformed-evidence-json.json",
+      "expected_result": "M64_EVIDENCE_CHECK_BLOCKED",
+      "expected_exit_code": 1,
+      "task_id_arg": null,
+      "category": "malformed"
+    }
+  ]
+}

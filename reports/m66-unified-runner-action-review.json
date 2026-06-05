@@ -1,0 +1,111 @@
+{
+  "review_id": "m66-unified-runner-action-review",
+  "milestone": "M66",
+  "task_id": "66.8",
+  "review_type": "action_review",
+  "contract_version": "1.0.0",
+  "git_state_available": true,
+  "comparison_baseline": {
+    "baseline_known": true,
+    "baseline_sha": "23ec3b9",
+    "comparison_method": "git diff 23ec3b9..HEAD --name-only plus git status --short",
+    "notes": "Baseline is the commit immediately before M66.0 started."
+  },
+  "input_artifacts": {
+    "reports/m66-m65-completion-intake.md": {"exists": true, "detected_status": "M66_INTAKE_READY_WITH_WARNINGS", "notes": ""},
+    "docs/UNIFIED-RUNNER-ARCHITECTURE.md": {"exists": true, "detected_status": "M66_UNIFIED_RUNNER_ARCHITECTURE_DEFINED_WITH_WARNINGS", "notes": ""},
+    "schemas/unified-runner-input.schema.json": {"exists": true, "detected_status": "PASS", "notes": ""},
+    "docs/UNIFIED-RUNNER-INPUT-CONTRACT.md": {"exists": true, "detected_status": "M66_UNIFIED_RUNNER_INPUT_CONTRACT_DEFINED_WITH_WARNINGS", "notes": ""},
+    "docs/UNIFIED-RUNNER-AGGREGATION-SEMANTICS.md": {"exists": true, "detected_status": "M66_UNIFIED_RUNNER_AGGREGATION_SEMANTICS_DEFINED_WITH_WARNINGS", "notes": ""},
+    "docs/UNIFIED-RUNNER-CLAIM-BOUNDARY.md": {"exists": true, "detected_status": "M66_UNIFIED_RUNNER_CLAIM_BOUNDARY_DEFINED_WITH_WARNINGS", "notes": ""},
+    "scripts/run-task-validation.py": {"exists": true, "detected_status": "PASS", "notes": ""},
+    "docs/UNIFIED-RUNNER.md": {"exists": true, "detected_status": "M66_UNIFIED_RUNNER_DEFINED_WITH_WARNINGS", "notes": ""},
+    "tests/fixtures/m66-unified-runner/README.md": {"exists": true, "detected_status": "M66_UNIFIED_RUNNER_FIXTURES_COMPLETE_WITH_WARNINGS", "notes": ""},
+    "tests/fixtures/m66-unified-runner/expected-results.json": {"exists": true, "detected_status": "PASS", "notes": ""},
+    "reports/m66-unified-runner-integration-summary.md": {"exists": true, "detected_status": "M66_INTEGRATION_PASS_WITH_WARNINGS", "notes": ""}
+  },
+  "expected_artifacts": {
+    "reports/m66-m65-completion-intake.md": {"path": "reports/m66-m65-completion-intake.md", "expected": true, "exists": true, "created_by_m66_task": "66.0", "notes": ""},
+    "docs/UNIFIED-RUNNER-ARCHITECTURE.md": {"path": "docs/UNIFIED-RUNNER-ARCHITECTURE.md", "expected": true, "exists": true, "created_by_m66_task": "66.1", "notes": ""},
+    "schemas/unified-runner-input.schema.json": {"path": "schemas/unified-runner-input.schema.json", "expected": true, "exists": true, "created_by_m66_task": "66.2", "notes": ""},
+    "docs/UNIFIED-RUNNER-INPUT-CONTRACT.md": {"path": "docs/UNIFIED-RUNNER-INPUT-CONTRACT.md", "expected": true, "exists": true, "created_by_m66_task": "66.2", "notes": ""},
+    "docs/UNIFIED-RUNNER-AGGREGATION-SEMANTICS.md": {"path": "docs/UNIFIED-RUNNER-AGGREGATION-SEMANTICS.md", "expected": true, "exists": true, "created_by_m66_task": "66.3", "notes": ""},
+    "docs/UNIFIED-RUNNER-CLAIM-BOUNDARY.md": {"path": "docs/UNIFIED-RUNNER-CLAIM-BOUNDARY.md", "expected": true, "exists": true, "created_by_m66_task": "66.4", "notes": ""},
+    "scripts/run-task-validation.py": {"path": "scripts/run-task-validation.py", "expected": true, "exists": true, "created_by_m66_task": "66.5", "notes": ""},
+    "docs/UNIFIED-RUNNER.md": {"path": "docs/UNIFIED-RUNNER.md", "expected": true, "exists": true, "created_by_m66_task": "66.5", "notes": ""},
+    "tests/fixtures/m66-unified-runner/": {"path": "tests/fixtures/m66-unified-runner/", "expected": true, "exists": true, "created_by_m66_task": "66.6", "notes": ""},
+    "tests/fixtures/m66-unified-runner/README.md": {"path": "tests/fixtures/m66-unified-runner/README.md", "expected": true, "exists": true, "created_by_m66_task": "66.6", "notes": ""},
+    "tests/fixtures/m66-unified-runner/expected-results.json": {"path": "tests/fixtures/m66-unified-runner/expected-results.json", "expected": true, "exists": true, "created_by_m66_task": "66.6", "notes": ""},
+    "reports/m66-unified-runner-integration-summary.md": {"path": "reports/m66-unified-runner-integration-summary.md", "expected": true, "exists": true, "created_by_m66_task": "66.7", "notes": ""},
+    "reports/m66-unified-runner-action-review.json": {"path": "reports/m66-unified-runner-action-review.json", "expected": true, "exists": true, "created_by_m66_task": "66.8", "notes": ""}
+  },
+  "missing_expected_artifacts": [],
+  "unexpected_artifacts": [],
+  "forbidden_artifacts": [],
+  "protected_prior_layer_artifacts": {
+    "checked": true,
+    "modified": [],
+    "status": "PASS"
+  },
+  "protected_m66_artifacts": {
+    "checked": true,
+    "modified_during_66_8": [],
+    "status": "PASS"
+  },
+  "validation_summary": {
+    "schema_validation": {
+      "status": "PASS",
+      "evidence": "python3 -m json.tool schemas/unified-runner-input.schema.json"
+    },
+    "runner_compile": {
+      "status": "PASS",
+      "evidence": "python3 -m py_compile scripts/run-task-validation.py"
+    },
+    "runner_help": {
+      "status": "PASS",
+      "evidence": "python3 scripts/run-task-validation.py --help"
+    },
+    "fixture_manifest_validation": {
+      "status": "PASS",
+      "evidence": "python3 -m json.tool tests/fixtures/m66-unified-runner/expected-results.json"
+    },
+    "integration_summary_status": {
+      "status": "M66_INTEGRATION_PASS_WITH_WARNINGS",
+      "source": "reports/m66-unified-runner-integration-summary.md"
+    }
+  },
+  "boundary_review": {
+    "human_review_required_preserved": true,
+    "not_approval_preserved": true,
+    "not_task_completion_preserved": true,
+    "not_production_readiness_preserved": true,
+    "no_completion_gate_integration": true,
+    "no_m67_auto_start": true,
+    "runner_read_only_boundary_preserved": true,
+    "status": "PASS"
+  },
+  "human_review": {
+    "human_review_required": true,
+    "task_completion_approved": false,
+    "approval_claim_made": false,
+    "completion_claim_made": false,
+    "merge_authorized": false,
+    "push_authorized": false,
+    "release_authorized": false,
+    "production_ready_claim_made": false,
+    "notes": "M66 action review is not approval and does not complete M66."
+  },
+  "warnings": [
+    "Prior M66 artifacts carry WITH_WARNINGS final statuses.",
+    "M66.7 Integration Status is PASS_WITH_WARNINGS due to real execution fixtures marked NOT_EXECUTABLE."
+  ],
+  "blockers": [],
+  "non_authority_boundary": [
+    "M66 action review is not approval.",
+    "M66 action review does not complete M66.",
+    "M66 action review does not authorize M67.",
+    "Human review remains required."
+  ],
+  "final_status": "M66_ACTION_REVIEW_PASS_WITH_WARNINGS",
+  "ready_for_66_9_evidence_report": "true_with_warnings"
+}

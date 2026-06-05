@@ -1,0 +1,63 @@
+{
+  "contract_version": "m64.action_review.v1",
+  "review_scope": "m64_task_output_evidence_model",
+  "final_status": "M64_ACTION_REVIEW_PASS_WITH_WARNINGS",
+  "ready_for_64_9_evidence_report": "true_with_warnings",
+  "created_expected_artifacts": [
+    "reports/m64-m63-completion-intake.md",
+    "docs/TASK-OUTPUT-EVIDENCE-MODEL-ARCHITECTURE.md",
+    "schemas/agent-task-output-evidence.schema.json",
+    "docs/AGENT-TASK-OUTPUT-EVIDENCE-CONTRACT.md",
+    "docs/AGENT-EVIDENCE-INTEGRITY-RULES.md",
+    "docs/AGENT-EVIDENCE-CLAIM-BOUNDARY.md",
+    "scripts/check-agent-task-evidence.py",
+    "docs/AGENT-TASK-EVIDENCE-CHECKER.md",
+    "tests/fixtures/m64-agent-task-evidence/README.md",
+    "tests/fixtures/m64-agent-task-evidence/expected-results.json",
+    "reports/m64-task-output-evidence-integration-summary.md"
+  ],
+  "missing_expected_artifacts": [],
+  "unexpected_artifacts": [],
+  "forbidden_artifacts_found": [],
+  "protected_files_modified": [],
+  "validation_summary": {
+    "schema_json_valid": true,
+    "fixture_manifest_json_valid": true,
+    "checker_py_compile_ok": true,
+    "checker_help_ok": true,
+    "fixture_execution_validation_run": true,
+    "fixture_execution_validation_passed": true,
+    "integration_summary_exists": true,
+    "integration_summary_final_status": "M64_INTEGRATION_PASS_WITH_WARNINGS"
+  },
+  "boundary_review": {
+    "acceptance_criteria_checker_created": false,
+    "unified_runner_created": false,
+    "false_pass_suite_created": false,
+    "completion_gate_integrated": false,
+    "m65_m67_artifacts_created": false,
+    "approval_claim_found": false,
+    "merge_push_release_authorization_found": false,
+    "lifecycle_mutation_found": false
+  },
+  "human_review": {
+    "human_review_required": true,
+    "human_review_replaced": false,
+    "task_completion_approved": false,
+    "approval_authority_claimed": false
+  },
+  "warnings": [
+    "Integration summary status is M64_INTEGRATION_PASS_WITH_WARNINGS; proceed to 64.9 with warnings visibility preserved."
+  ],
+  "blockers": [],
+  "non_authority_boundary": [
+    "M64 action review is not approval.",
+    "M64 action review does not replace human review.",
+    "M64 action review does not complete M64.",
+    "M64 action review does not start M65.",
+    "M64 action review does not validate completed agent tasks as a production gate.",
+    "M64 action review does not approve any agent task result.",
+    "M64 action review does not authorize merge, push, or release.",
+    "Human review remains required."
+  ]
+}

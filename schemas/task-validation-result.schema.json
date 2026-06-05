@@ -1,0 +1,96 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "agentos://schemas/task-validation-result.schema.json",
+  "title": "AgentOS Task Validation Result",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "contract_version",
+    "result_type",
+    "task_id",
+    "result",
+    "package_valid",
+    "schema_result",
+    "scope_result",
+    "evidence_ref_result",
+    "validation_claims_result",
+    "human_review_required",
+    "warnings",
+    "blockers",
+    "non_authority_boundary"
+  ],
+  "properties": {
+    "contract_version": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^m63\\.task_validation_result\\.v[0-9]+$"
+    },
+    "result_type": {
+      "type": "string",
+      "const": "task_validation_result"
+    },
+    "task_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "result": {
+      "type": "string",
+      "enum": [
+        "TASK_VALIDATION_PASS",
+        "TASK_VALIDATION_PASS_WITH_WARNINGS",
+        "TASK_VALIDATION_BLOCKED",
+        "TASK_VALIDATION_NOT_ENOUGH_EVIDENCE"
+      ]
+    },
+    "package_valid": {
+      "type": "boolean"
+    },
+    "schema_result": {
+      "$ref": "#/$defs/subresult"
+    },
+    "scope_result": {
+      "$ref": "#/$defs/subresult"
+    },
+    "evidence_ref_result": {
+      "$ref": "#/$defs/subresult"
+    },
+    "validation_claims_result": {
+      "$ref": "#/$defs/subresult"
+    },
+    "human_review_required": {
+      "type": "boolean",
+      "const": true
+    },
+    "warnings": {
+      "type": "array",
+      "items": {
+        "type": ["string", "object"]
+      }
+    },
+    "blockers": {
+      "type": "array",
+      "items": {
+        "type": ["string", "object"]
+      }
+    },
+    "non_authority_boundary": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "$defs": {
+    "subresult": {
+      "type": "string",
+      "enum": [
+        "PASS",
+        "PASS_WITH_WARNINGS",
+        "BLOCKED",
+        "NOT_ENOUGH_EVIDENCE",
+        "NOT_RUN"
+      ]
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "contract_version": "m63.task_validation_result.v1",
+  "result_type": "task_validation_result",
+  "task_id": "63.7",
+  "result": "TASK_VALIDATION_PASS",
+  "package_valid": true,
+  "schema_result": "APPROVED",
+  "scope_result": "PASS",
+  "evidence_ref_result": "PASS",
+  "validation_claims_result": "PASS",
+  "human_review_required": true,
+  "warnings": [],
+  "blockers": [],
+  "non_authority_boundary": [
+    "TASK_VALIDATION_PASS is not approval.",
+    "TASK_VALIDATION_PASS does not complete the task.",
+    "TASK_VALIDATION_PASS does not replace human review.",
+    "TASK_VALIDATION_PASS does not authorize merge, push, or release.",
+    "Human review remains required."
+  ]
+}

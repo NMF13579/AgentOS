@@ -1,0 +1,55 @@
+{
+  "contract_version": "m64.agent_task_output_evidence.v1",
+  "evidence_type": "agent_task_output_evidence",
+  "task_id": "64.6",
+  "task_brief_path": "tasks/active-task.md",
+  "agent_identity": {
+    "agent_name": "agent",
+    "agent_role": "implementer"
+  },
+  "files_changed": [
+    "tests/fixtures/m64-agent-task-evidence/warning/valid-evidence-with-warnings.json"
+  ],
+  "created_artifacts": [
+    "tests/fixtures/m64-agent-task-evidence/warning/valid-evidence-with-warnings.json"
+  ],
+  "modified_artifacts": [],
+  "deleted_artifacts": [],
+  "commands_run": [
+    {
+      "command": "python3 -m json.tool schemas/agent-task-output-evidence.schema.json",
+      "purpose": "required validation command",
+      "exit_code": 0,
+      "result": "PASS",
+      "notes": ""
+    },
+    {
+      "command": "python3 optional-note.py",
+      "purpose": "optional non-blocking command",
+      "exit_code": -1,
+      "result": "UNKNOWN",
+      "notes": "optional command result unavailable"
+    }
+  ],
+  "validation_results": [
+    {
+      "check_name": "required validation check",
+      "result": "PASS",
+      "notes": ""
+    }
+  ],
+  "known_limitations": [],
+  "warnings": [
+    "Minor non-blocking formatting note."
+  ],
+  "blockers": [],
+  "forbidden_actions_performed": false,
+  "human_review_required": true,
+  "non_authority_boundary": [
+    "Agent evidence is not approval.",
+    "Agent evidence does not complete the task.",
+    "Agent evidence does not replace human review.",
+    "Agent evidence does not authorize merge, push, or release.",
+    "Human review remains required."
+  ]
+}

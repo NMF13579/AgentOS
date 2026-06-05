@@ -1,0 +1,175 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AgentOS Execution Verification Registry",
+  "description": "Registry metadata for execution verification artifacts. Non-authority metadata only.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "registry_version",
+    "generated_by",
+    "generated_at",
+    "source_contract",
+    "source_classification",
+    "source_inventory",
+    "source_duplication_drift_audit",
+    "non_authority",
+    "artifacts"
+  ],
+  "properties": {
+    "registry_version": { "type": "string" },
+    "generated_by": { "type": "string" },
+    "generated_at": { "type": "string" },
+    "source_contract": { "type": "string" },
+    "source_classification": { "type": "string" },
+    "source_inventory": { "type": "string" },
+    "source_duplication_drift_audit": { "type": "string" },
+    "non_authority": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "artifacts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "artifact_id",
+          "path",
+          "milestone",
+          "task_id",
+          "artifact_type",
+          "semantics_role",
+          "source_of_truth_role",
+          "authority_level",
+          "status",
+          "depends_on",
+          "validated_by",
+          "owned_by_layer",
+          "deprecated",
+          "replacement_path",
+          "do_not_delete",
+          "notes"
+        ],
+        "properties": {
+          "artifact_id": { "type": "string" },
+          "path": { "type": "string" },
+          "milestone": { "type": "string" },
+          "task_id": { "type": "string" },
+          "artifact_type": {
+            "type": "string",
+            "enum": [
+              "doc",
+              "schema",
+              "template",
+              "script",
+              "fixture",
+              "fixture_oracle",
+              "runner",
+              "report",
+              "intake_report",
+              "architecture_doc",
+              "contract_doc",
+              "policy_doc",
+              "cli_doc",
+              "integration_summary",
+              "action_review",
+              "evidence_report",
+              "completion_review",
+              "registry_contract",
+              "registry_schema",
+              "registry_data",
+              "generated_index",
+              "unknown"
+            ]
+          },
+          "semantics_role": {
+            "type": "string",
+            "enum": [
+              "policy",
+              "contract",
+              "implementation",
+              "schema",
+              "template",
+              "fixture",
+              "fixture_oracle",
+              "runner",
+              "report",
+              "completion_review",
+              "action_review",
+              "evidence_report",
+              "integration_summary",
+              "intake_report",
+              "architecture",
+              "supporting_doc",
+              "generated_index",
+              "registry_contract",
+              "registry_schema",
+              "deprecated_candidate",
+              "unknown"
+            ]
+          },
+          "source_of_truth_role": {
+            "type": "string",
+            "enum": [
+              "canonical",
+              "supporting",
+              "generated",
+              "test-only",
+              "deprecated-candidate",
+              "do-not-delete",
+              "unknown"
+            ]
+          },
+          "authority_level": {
+            "type": "string",
+            "enum": [
+              "canonical",
+              "supporting",
+              "non-authoritative",
+              "generated",
+              "test-only",
+              "deprecated-candidate",
+              "unknown"
+            ]
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "present",
+              "missing",
+              "planned",
+              "blocked",
+              "stale",
+              "invalid",
+              "deprecated-candidate",
+              "manual-review-required"
+            ]
+          },
+          "depends_on": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "validated_by": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "owned_by_layer": {
+            "type": "string",
+            "enum": [
+              "M56_EXECUTION_READINESS",
+              "M57_EXECUTION_AUTHORIZATION",
+              "M58_CONTROLLED_EXECUTION_SESSION",
+              "M59_EXECUTION_RESULT_VERIFICATION",
+              "M60_CLEANUP_CONSOLIDATION",
+              "UNKNOWN"
+            ]
+          },
+          "deprecated": { "type": "boolean" },
+          "replacement_path": { "type": ["string", "null"] },
+          "do_not_delete": { "type": "boolean" },
+          "notes": { "type": "string" }
+        }
+      }
+    }
+  }
+}

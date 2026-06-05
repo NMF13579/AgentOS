@@ -1,0 +1,252 @@
+{
+  "review_id": "m67-false-pass-action-review",
+  "milestone": "M67",
+  "task_id": "67.9",
+  "review_type": "action_review",
+  "contract_version": "1.0.0",
+  "git_state_available": true,
+  "comparison_baseline": {
+    "baseline_known": true,
+    "baseline_sha": "5f85a4c5428d068a44078251e2a8ace0dabd3546",
+    "comparison_method": "git diff 5f85a4c5428d068a44078251e2a8ace0dabd3546..HEAD --name-only plus git status --short",
+    "notes": "Baseline is commit before M67.0. Current M67 work is uncommitted relative to that commit."
+  },
+  "input_artifacts": {
+    "reports/m67-m66-completion-intake.md": {
+      "path": "reports/m67-m66-completion-intake.md",
+      "exists": true,
+      "detected_status": "M67_INTAKE_READY_WITH_WARNINGS",
+      "notes": ""
+    },
+    "docs/FALSE-PASS-RESISTANCE-ARCHITECTURE.md": {
+      "path": "docs/FALSE-PASS-RESISTANCE-ARCHITECTURE.md",
+      "exists": true,
+      "detected_status": "M67_FALSE_PASS_RESISTANCE_ARCHITECTURE_DEFINED_WITH_WARNINGS",
+      "notes": ""
+    },
+    "docs/COMPLETION-GATE-POLICY-CONTRACT.md": {
+      "path": "docs/COMPLETION-GATE-POLICY-CONTRACT.md",
+      "exists": true,
+      "detected_status": "M67_COMPLETION_GATE_POLICY_DEFINED_WITH_WARNINGS",
+      "notes": ""
+    },
+    "docs/FALSE-PASS-RESISTANCE-SEMANTICS.md": {
+      "path": "docs/FALSE-PASS-RESISTANCE-SEMANTICS.md",
+      "exists": true,
+      "detected_status": "M67_FALSE_PASS_RESISTANCE_SEMANTICS_DEFINED_WITH_WARNINGS",
+      "notes": ""
+    },
+    "docs/FALSE-PASS-RESISTANCE-CLAIM-BOUNDARY.md": {
+      "path": "docs/FALSE-PASS-RESISTANCE-CLAIM-BOUNDARY.md",
+      "exists": true,
+      "detected_status": "M67_FALSE_PASS_RESISTANCE_CLAIM_BOUNDARY_DEFINED_WITH_WARNINGS",
+      "notes": ""
+    },
+    "scripts/check-false-pass-resistance.py": {
+      "path": "scripts/check-false-pass-resistance.py",
+      "exists": true,
+      "detected_status": "exists_no_final_status",
+      "notes": "Script file has no FINAL_STATUS line."
+    },
+    "docs/FALSE-PASS-RESISTANCE-CHECKER.md": {
+      "path": "docs/FALSE-PASS-RESISTANCE-CHECKER.md",
+      "exists": true,
+      "detected_status": "M67_FALSE_PASS_CHECKER_DEFINED_WITH_WARNINGS",
+      "notes": ""
+    },
+    "tests/fixtures/m67-false-pass-resistance/README.md": {
+      "path": "tests/fixtures/m67-false-pass-resistance/README.md",
+      "exists": true,
+      "detected_status": "M67_FALSE_PASS_FIXTURES_COMPLETE_WITH_WARNINGS",
+      "notes": ""
+    },
+    "tests/fixtures/m67-false-pass-resistance/expected-results.json": {
+      "path": "tests/fixtures/m67-false-pass-resistance/expected-results.json",
+      "exists": true,
+      "detected_status": "exists_no_final_status",
+      "notes": "Manifest file has no FINAL_STATUS line."
+    },
+    "docs/COMPLETION-GATE-HARDENING-CONTRACT.md": {
+      "path": "docs/COMPLETION-GATE-HARDENING-CONTRACT.md",
+      "exists": true,
+      "detected_status": "M67_COMPLETION_GATE_HARDENING_DEFINED",
+      "notes": ""
+    },
+    "reports/m67-false-pass-integration-summary.md": {
+      "path": "reports/m67-false-pass-integration-summary.md",
+      "exists": true,
+      "detected_status": "M67_INTEGRATION_PASS_WITH_WARNINGS",
+      "notes": "ready_for_67_9_action_review is true_with_warnings."
+    }
+  },
+  "expected_artifacts": {
+    "reports/m67-m66-completion-intake.md": {
+      "path": "reports/m67-m66-completion-intake.md",
+      "expected": true,
+      "exists": true,
+      "created_by_m67_task": "67.0",
+      "notes": ""
+    },
+    "docs/FALSE-PASS-RESISTANCE-ARCHITECTURE.md": {
+      "path": "docs/FALSE-PASS-RESISTANCE-ARCHITECTURE.md",
+      "expected": true,
+      "exists": true,
+      "created_by_m67_task": "67.1",
+      "notes": ""
+    },
+    "docs/COMPLETION-GATE-POLICY-CONTRACT.md": {
+      "path": "docs/COMPLETION-GATE-POLICY-CONTRACT.md",
+      "expected": true,
+      "exists": true,
+      "created_by_m67_task": "67.2",
+      "notes": ""
+    },
+    "docs/FALSE-PASS-RESISTANCE-SEMANTICS.md": {
+      "path": "docs/FALSE-PASS-RESISTANCE-SEMANTICS.md",
+      "expected": true,
+      "exists": true,
+      "created_by_m67_task": "67.3",
+      "notes": ""
+    },
+    "docs/FALSE-PASS-RESISTANCE-CLAIM-BOUNDARY.md": {
+      "path": "docs/FALSE-PASS-RESISTANCE-CLAIM-BOUNDARY.md",
+      "expected": true,
+      "exists": true,
+      "created_by_m67_task": "67.4",
+      "notes": ""
+    },
+    "scripts/check-false-pass-resistance.py": {
+      "path": "scripts/check-false-pass-resistance.py",
+      "expected": true,
+      "exists": true,
+      "created_by_m67_task": "67.5",
+      "notes": ""
+    },
+    "docs/FALSE-PASS-RESISTANCE-CHECKER.md": {
+      "path": "docs/FALSE-PASS-RESISTANCE-CHECKER.md",
+      "expected": true,
+      "exists": true,
+      "created_by_m67_task": "67.5",
+      "notes": ""
+    },
+    "tests/fixtures/m67-false-pass-resistance/": {
+      "path": "tests/fixtures/m67-false-pass-resistance/",
+      "expected": true,
+      "exists": true,
+      "created_by_m67_task": "67.6",
+      "notes": ""
+    },
+    "tests/fixtures/m67-false-pass-resistance/README.md": {
+      "path": "tests/fixtures/m67-false-pass-resistance/README.md",
+      "expected": true,
+      "exists": true,
+      "created_by_m67_task": "67.6",
+      "notes": ""
+    },
+    "tests/fixtures/m67-false-pass-resistance/expected-results.json": {
+      "path": "tests/fixtures/m67-false-pass-resistance/expected-results.json",
+      "expected": true,
+      "exists": true,
+      "created_by_m67_task": "67.6",
+      "notes": ""
+    },
+    "docs/COMPLETION-GATE-HARDENING-CONTRACT.md": {
+      "path": "docs/COMPLETION-GATE-HARDENING-CONTRACT.md",
+      "expected": true,
+      "exists": true,
+      "created_by_m67_task": "67.7",
+      "notes": ""
+    },
+    "reports/m67-false-pass-integration-summary.md": {
+      "path": "reports/m67-false-pass-integration-summary.md",
+      "expected": true,
+      "exists": true,
+      "created_by_m67_task": "67.8",
+      "notes": ""
+    },
+    "reports/m67-false-pass-action-review.json": {
+      "path": "reports/m67-false-pass-action-review.json",
+      "expected": true,
+      "exists": true,
+      "created_by_m67_task": "67.9",
+      "notes": "Created by this task."
+    }
+  },
+  "missing_expected_artifacts": [],
+  "unexpected_artifacts": [],
+  "forbidden_artifacts": [],
+  "forbidden_completion_lifecycle_artifacts": [],
+  "protected_prior_layer_artifacts": {
+    "checked": true,
+    "modified": [],
+    "status": "PASS"
+  },
+  "protected_m67_artifacts": {
+    "checked": true,
+    "modified_during_67_9": [],
+    "status": "PASS"
+  },
+  "validation_summary": {
+    "checker_compile": {
+      "status": "PASS",
+      "evidence": "python3 -m py_compile scripts/check-false-pass-resistance.py"
+    },
+    "checker_help": {
+      "status": "PASS",
+      "evidence": "python3 scripts/check-false-pass-resistance.py --help"
+    },
+    "fixture_manifest_validation": {
+      "status": "PASS",
+      "evidence": "python3 -m json.tool tests/fixtures/m67-false-pass-resistance/expected-results.json"
+    },
+    "integration_summary_status": {
+      "status": "PASS_WITH_WARNINGS",
+      "source": "reports/m67-false-pass-integration-summary.md"
+    },
+    "hardening_contract_status": {
+      "status": "PASS",
+      "source": "docs/COMPLETION-GATE-HARDENING-CONTRACT.md"
+    },
+    "status": "PASS_WITH_WARNINGS"
+  },
+  "boundary_review": {
+    "human_review_required_preserved": true,
+    "not_approval_preserved": true,
+    "not_task_completion_preserved": true,
+    "not_completion_gate_pass_preserved": true,
+    "not_lifecycle_mutation_preserved": true,
+    "not_production_readiness_preserved": true,
+    "no_m68_auto_start": true,
+    "no_automatic_completion_gate": true,
+    "checker_read_only_boundary_preserved": true,
+    "status": "PASS"
+  },
+  "human_review": {
+    "human_review_required": true,
+    "task_completion_approved": false,
+    "approval_claim_made": false,
+    "completion_claim_made": false,
+    "completion_gate_passed_claim_made": false,
+    "lifecycle_mutation_claim_made": false,
+    "merge_authorized": false,
+    "push_authorized": false,
+    "release_authorized": false,
+    "production_ready_claim_made": false,
+    "m68_started": false,
+    "notes": "M67 action review is not approval and does not complete M67."
+  },
+  "warnings": [
+    "Prior M67 artifacts carry forward warnings from statuses ending in WITH_WARNINGS.",
+    "Integration summary status is PASS_WITH_WARNINGS."
+  ],
+  "blockers": [],
+  "non_authority_boundary": [
+    "M67 action review is not approval.",
+    "M67 action review does not complete M67.",
+    "M67 action review does not pass completion gate.",
+    "M67 action review does not authorize M68.",
+    "Human review remains required."
+  ],
+  "final_status": "M67_ACTION_REVIEW_PASS_WITH_WARNINGS",
+  "ready_for_67_10_evidence_report": "true_with_warnings"
+}

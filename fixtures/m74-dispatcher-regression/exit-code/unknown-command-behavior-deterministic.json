@@ -1,0 +1,21 @@
+{
+  "fixture_id": "unknown_command_behavior_deterministic",
+  "fixture_name": "Unknown command behavior deterministic",
+  "category": "exit-code",
+  "category_class": "ESSENTIAL",
+  "gap_id": "exit_2_semantics",
+  "gap_status": "OPEN",
+  "input_mode": "dispatcher_cli",
+  "dispatcher_command": "python3 scripts/agentos-validate.py --simulate-unknown",
+  "mock_child_behavior": "none",
+  "mock_child_path": "",
+  "expected_dispatcher_result": "DISPATCHER_ERROR",
+  "expected_exit_code": 2,
+  "expected_stdout_contains": [],
+  "expected_stderr_contains": ["unknown"],
+  "must_not_contain": ["Overall result: PASS"],
+  "expected_report_fields": {},
+  "approval_created_expected": false,
+  "lifecycle_mutation_expected": false,
+  "m74_scope": "exit-code-regression-fixtures"
+}

@@ -1,0 +1,117 @@
+{
+  "milestone": "M63",
+  "fixture_suite": "m63-task-validation-contract",
+  "purpose": "Controlled positive and negative fixtures for the M63 task validation contract validator.",
+  "full_false_pass_suite": false,
+  "human_review_required": true,
+  "fixtures": [
+    {
+      "name": "valid-minimal-package-and-result",
+      "expected_validator_result": "M63_CONTRACT_VALIDATION_PASS",
+      "category": "positive",
+      "description": "Полностью валидная минимальная пара package/result без предупреждений."
+    },
+    {
+      "name": "valid-package-result-with-warnings",
+      "expected_validator_result": "M63_CONTRACT_VALIDATION_PASS_WITH_WARNINGS",
+      "category": "positive",
+      "description": "Валидная пара с предупреждением (запрещённый термин только в безопасном поле forbidden_claims)."
+    },
+    {
+      "name": "missing-package-field",
+      "expected_validator_result": "M63_CONTRACT_VALIDATION_BLOCKED",
+      "category": "negative",
+      "description": "Удалено обязательное поле package: agent_evidence_ref."
+    },
+    {
+      "name": "missing-result-field",
+      "expected_validator_result": "M63_CONTRACT_VALIDATION_BLOCKED",
+      "category": "negative",
+      "description": "Удалено обязательное поле result: package_valid."
+    },
+    {
+      "name": "malformed-package-json",
+      "expected_validator_result": "M63_CONTRACT_VALIDATION_BLOCKED",
+      "category": "negative",
+      "description": "package.json специально сделан невалидным JSON."
+    },
+    {
+      "name": "malformed-result-json",
+      "expected_validator_result": "M63_CONTRACT_VALIDATION_BLOCKED",
+      "category": "negative",
+      "description": "result.json специально сделан невалидным JSON."
+    },
+    {
+      "name": "unsupported-contract-version",
+      "expected_validator_result": "M63_CONTRACT_VALIDATION_BLOCKED",
+      "category": "negative",
+      "description": "Поставлена неподдерживаемая версия контракта."
+    },
+    {
+      "name": "task-id-mismatch",
+      "expected_validator_result": "M63_CONTRACT_VALIDATION_BLOCKED",
+      "category": "negative",
+      "description": "task_id в package и result не совпадает."
+    },
+    {
+      "name": "unknown-result-value",
+      "expected_validator_result": "M63_CONTRACT_VALIDATION_BLOCKED",
+      "category": "negative",
+      "description": "В result указан неизвестный верхний статус."
+    },
+    {
+      "name": "unknown-subresult-value",
+      "expected_validator_result": "M63_CONTRACT_VALIDATION_BLOCKED",
+      "category": "negative",
+      "description": "В одном из подстатусов указано неизвестное значение."
+    },
+    {
+      "name": "human-review-disabled",
+      "expected_validator_result": "M63_CONTRACT_VALIDATION_BLOCKED",
+      "category": "negative",
+      "description": "human_review_required выставлен в false."
+    },
+    {
+      "name": "numeric-boolean-human-review",
+      "expected_validator_result": "M63_CONTRACT_VALIDATION_BLOCKED",
+      "category": "negative",
+      "description": "human_review_required указан как число 1 вместо boolean true."
+    },
+    {
+      "name": "wrong-required-field-type",
+      "expected_validator_result": "M63_CONTRACT_VALIDATION_BLOCKED",
+      "category": "negative",
+      "description": "declared_scope задан как массив вместо объекта."
+    },
+    {
+      "name": "package-valid-contradiction",
+      "expected_validator_result": "M63_CONTRACT_VALIDATION_BLOCKED",
+      "category": "negative",
+      "description": "package_valid=true при заведомо невалидном package."
+    },
+    {
+      "name": "approval-claim-present",
+      "expected_validator_result": "M63_CONTRACT_VALIDATION_BLOCKED",
+      "category": "negative",
+      "description": "Добавлен явный запрещённый утвердительный текст вне safe-context: task is approved."
+    },
+    {
+      "name": "missing-non-authority-boundary",
+      "expected_validator_result": "M63_CONTRACT_VALIDATION_BLOCKED",
+      "category": "negative",
+      "description": "Поле non_authority_boundary удалено."
+    },
+    {
+      "name": "missing-required-boundary-statement",
+      "expected_validator_result": "M63_CONTRACT_VALIDATION_BLOCKED",
+      "category": "negative",
+      "description": "В non_authority_boundary убрана обязательная строка про human review."
+    },
+    {
+      "name": "m64-m67-scope-absorption",
+      "expected_validator_result": "M63_CONTRACT_VALIDATION_BLOCKED",
+      "category": "negative",
+      "description": "Добавлена попытка включить зону M64-M67: full task output evidence model."
+    }
+  ]
+}

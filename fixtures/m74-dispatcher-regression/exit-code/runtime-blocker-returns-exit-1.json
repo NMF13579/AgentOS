@@ -1,0 +1,21 @@
+{
+  "fixture_id": "runtime_blocker_returns_exit_1",
+  "fixture_name": "Runtime blocker returns exit 1",
+  "category": "exit-code",
+  "category_class": "ESSENTIAL",
+  "gap_id": "exit_2_semantics",
+  "gap_status": "OPEN",
+  "input_mode": "dispatcher_cli",
+  "dispatcher_command": "python3 scripts/agentos-validate.py --simulate-blocker",
+  "mock_child_behavior": "none",
+  "mock_child_path": "",
+  "expected_dispatcher_result": "DISPATCHER_BLOCKED",
+  "expected_exit_code": 1,
+  "expected_stdout_contains": ["blocked"],
+  "expected_stderr_contains": [],
+  "must_not_contain": ["Overall result: PASS"],
+  "expected_report_fields": {},
+  "approval_created_expected": false,
+  "lifecycle_mutation_expected": false,
+  "m74_scope": "exit-code-regression-fixtures"
+}

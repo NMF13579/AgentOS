@@ -62,24 +62,10 @@ done
 
 echo ""
 echo "--- Canonical validators ---"
-if bash "$REPO_ROOT/scripts/validate-architecture.sh" > /dev/null 2>&1; then
-  echo "  OK  validate-architecture.sh"
+if python3 "$REPO_ROOT/scripts/agentos-validate.py" all > /dev/null 2>&1; then
+  echo "  OK  agentos-validate.py all"
 else
-  echo "  FAIL  validate-architecture.sh"
-  ERRORS=$((ERRORS + 1))
-fi
-
-if python3 "$REPO_ROOT/scripts/validate-route.py" > /dev/null 2>&1; then
-  echo "  OK  validate-route.py"
-else
-  echo "  FAIL  validate-route.py"
-  ERRORS=$((ERRORS + 1))
-fi
-
-if python3 "$REPO_ROOT/scripts/validate-docs.py" > /dev/null 2>&1; then
-  echo "  OK  validate-docs.py"
-else
-  echo "  FAIL  validate-docs.py"
+  echo "  FAIL  agentos-validate.py all"
   ERRORS=$((ERRORS + 1))
 fi
 

@@ -1,0 +1,140 @@
+{
+  "artifacts": [
+    {
+      "exists": true,
+      "file_type": "file",
+      "hash": "68631fa70a41fd513dbfd3947f1e27ce5133cd5acd60f594af96676ee6d8d40d",
+      "notes": "presence evidence only",
+      "owner_signal_if_any": "present_codeowners_file",
+      "path": "schemas/task-validation-package.schema.json"
+    },
+    {
+      "exists": true,
+      "file_type": "file",
+      "hash": "e0d301466d1dcc386bd954664848086b75defd87140e817a369082f309e5133d",
+      "notes": "presence evidence only",
+      "owner_signal_if_any": "present_codeowners_file",
+      "path": "schemas/task-validation-result.schema.json"
+    },
+    {
+      "exists": true,
+      "file_type": "file",
+      "hash": "796671f2ae768569d87b17b7cb9a81e4226a629067667933e52a94f9421cc62a",
+      "notes": "presence evidence only",
+      "owner_signal_if_any": "present_codeowners_file",
+      "path": "scripts/check-task-validation-contract.py"
+    },
+    {
+      "exists": true,
+      "file_type": "file",
+      "hash": "8efb324ffa1410635b52c37d84429359e47da155964f8fb7de0235d240a7b2fd",
+      "notes": "presence evidence only",
+      "owner_signal_if_any": "present_codeowners_file",
+      "path": "schemas/agent-task-output-evidence.schema.json"
+    },
+    {
+      "exists": true,
+      "file_type": "file",
+      "hash": "81cceee536bc14a3348ff04692a518d91162c85fc47bbe6032f55a10fc9da420",
+      "notes": "presence evidence only",
+      "owner_signal_if_any": "present_codeowners_file",
+      "path": "scripts/check-agent-task-evidence.py"
+    },
+    {
+      "exists": true,
+      "file_type": "file",
+      "hash": "cda91cb32fc2d1ab0ae3951ad2f1b50fd68a52b758524af7f10a74abea1161a1",
+      "notes": "presence evidence only",
+      "owner_signal_if_any": "present_codeowners_file",
+      "path": "schemas/acceptance-criteria-check-package.schema.json"
+    },
+    {
+      "exists": true,
+      "file_type": "file",
+      "hash": "5a5ca23c9ccef791f56362e456d178e650a8cb95e904f27f61f9eee5fa0f11ec",
+      "notes": "presence evidence only",
+      "owner_signal_if_any": "present_codeowners_file",
+      "path": "scripts/check-acceptance-criteria.py"
+    },
+    {
+      "exists": true,
+      "file_type": "file",
+      "hash": "a4b0b738d4f3c23e519c7f3154b49a026690f6122fc419799735f10387dc9562",
+      "notes": "presence evidence only",
+      "owner_signal_if_any": "present_codeowners_file",
+      "path": "schemas/unified-runner-input.schema.json"
+    },
+    {
+      "exists": true,
+      "file_type": "file",
+      "hash": "8a454b1e02304737b8c1b2eaa5995a73cab16c320510f201abc0bbe080f0de2b",
+      "notes": "presence evidence only",
+      "owner_signal_if_any": "present_codeowners_file",
+      "path": "scripts/run-task-validation.py"
+    },
+    {
+      "exists": true,
+      "file_type": "file",
+      "hash": "9799afdc5cfdd8077ccf5c42e477bc0ea0564363fc5c336415f71c7055ea5ff0",
+      "notes": "presence evidence only",
+      "owner_signal_if_any": "present_codeowners_file",
+      "path": "scripts/check-false-pass-resistance.py"
+    },
+    {
+      "exists": true,
+      "file_type": "directory",
+      "hash": "",
+      "notes": "presence evidence only",
+      "owner_signal_if_any": "present_codeowners_file",
+      "path": "tests/fixtures/m67-false-pass-resistance/"
+    },
+    {
+      "exists": true,
+      "file_type": "file",
+      "hash": "50d64ec1c4e700cf8f4f51096f6c288bc64e6619b890954a5342ae9901776bb7",
+      "notes": "presence evidence only",
+      "owner_signal_if_any": "present_codeowners_file",
+      "path": "docs/COMPLETION-GATE-HARDENING-CONTRACT.md"
+    },
+    {
+      "exists": true,
+      "file_type": "file",
+      "hash": "9c57499c3382e4a5061b43703b353bca2b2d70f9b4e2c18a9b6e28e04a76c93a",
+      "notes": "presence evidence only",
+      "owner_signal_if_any": "present_codeowners_file",
+      "path": "reports/m63-completion-review.md"
+    },
+    {
+      "exists": true,
+      "file_type": "file",
+      "hash": "704efbf2902b9c87acc375e7fa166347e424d7ec75aa944332bf436bd0e5b39e",
+      "notes": "presence evidence only",
+      "owner_signal_if_any": "present_codeowners_file",
+      "path": "reports/m64-completion-review.md"
+    },
+    {
+      "exists": true,
+      "file_type": "file",
+      "hash": "738a09053757fdbc0e2ba7e0cf1b67da6912612d6c3952493a0979d3a1ac9c40",
+      "notes": "presence evidence only",
+      "owner_signal_if_any": "present_codeowners_file",
+      "path": "reports/m65-completion-review.md"
+    },
+    {
+      "exists": true,
+      "file_type": "file",
+      "hash": "810f7fbabc81ff8d6171459f1119c0e579942604da546acf6e4ef567356b0389",
+      "notes": "presence evidence only",
+      "owner_signal_if_any": "present_codeowners_file",
+      "path": "reports/m66-completion-review.md"
+    },
+    {
+      "exists": true,
+      "file_type": "file",
+      "hash": "c552e2fb4639e6e4663f6796d24c55478a26434fb996209367cfb9d2bc892374",
+      "notes": "presence evidence only",
+      "owner_signal_if_any": "present_codeowners_file",
+      "path": "reports/m67-completion-review.md"
+    }
+  ]
+}

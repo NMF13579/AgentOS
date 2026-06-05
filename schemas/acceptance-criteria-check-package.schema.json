@@ -1,0 +1,302 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agentos.local/schemas/acceptance-criteria-check-package.schema.json",
+  "title": "Acceptance Criteria Check Package",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "contract_version",
+    "package_type",
+    "task_id",
+    "task_brief_path",
+    "acceptance_criteria",
+    "expected_artifacts",
+    "actual_artifacts",
+    "changed_files",
+    "evidence_result",
+    "validation_outputs",
+    "known_limitations",
+    "warnings",
+    "blockers",
+    "human_review_required",
+    "non_authority_boundary"
+  ],
+  "properties": {
+    "contract_version": {
+      "type": "string",
+      "const": "1.0.0"
+    },
+    "package_type": {
+      "type": "string",
+      "const": "acceptance_criteria_check_package"
+    },
+    "task_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "task_brief_path": {
+      "type": "string",
+      "minLength": 1
+    },
+    "acceptance_criteria": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "criterion_id",
+          "description",
+          "required",
+          "check_method",
+          "expected_evidence",
+          "notes"
+        ],
+        "properties": {
+          "criterion_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "description": {
+            "type": "string",
+            "minLength": 1
+          },
+          "required": {
+            "type": "boolean"
+          },
+          "check_method": {
+            "type": "string",
+            "enum": [
+              "artifact_presence",
+              "validation_output",
+              "declared_change",
+              "manual_review_required"
+            ]
+          },
+          "expected_evidence": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "notes": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "expected_artifacts": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/artifact"
+      }
+    },
+    "actual_artifacts": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/artifact"
+      }
+    },
+    "changed_files": {
+      "type": "array",
+      "items": {
+        "oneOf": [
+          {
+            "type": "string",
+            "minLength": 1
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "path",
+              "change_type"
+            ],
+            "properties": {
+              "path": {
+                "type": "string",
+                "minLength": 1
+              },
+              "change_type": {
+                "type": "string",
+                "enum": [
+                  "created",
+                  "modified",
+                  "deleted",
+                  "renamed",
+                  "unknown"
+                ]
+              },
+              "notes": {
+                "type": "string"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "evidence_result": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source_path",
+        "result"
+      ],
+      "properties": {
+        "source_path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "result": {
+          "type": "string",
+          "enum": [
+            "M64_EVIDENCE_CHECK_PASS",
+            "M64_EVIDENCE_CHECK_PASS_WITH_WARNINGS",
+            "M64_EVIDENCE_CHECK_BLOCKED",
+            "M64_EVIDENCE_CHECK_NOT_ENOUGH_EVIDENCE",
+            "UNKNOWN"
+          ]
+        },
+        "task_id_match": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "warnings": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "blockers": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "notes": {
+          "type": "string"
+        }
+      }
+    },
+    "validation_outputs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "command",
+          "result"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "command": {
+            "type": "string"
+          },
+          "result": {
+            "type": "string",
+            "enum": [
+              "PASS",
+              "PASS_WITH_WARNINGS",
+              "FAIL",
+              "BLOCKED",
+              "NOT_RUN",
+              "UNKNOWN"
+            ]
+          },
+          "exit_code": {
+            "type": "integer"
+          },
+          "output_path": {
+            "type": "string"
+          },
+          "correlates_to_criteria": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "notes": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "known_limitations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "warnings": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "blockers": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "human_review_required": {
+      "type": "boolean",
+      "const": true
+    },
+    "non_authority_boundary": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    }
+  },
+  "$defs": {
+    "artifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "artifact_type",
+        "required"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "artifact_type": {
+          "type": "string",
+          "enum": [
+            "document",
+            "schema",
+            "script",
+            "fixture",
+            "report",
+            "directory",
+            "other"
+          ]
+        },
+        "required": {
+          "type": "boolean"
+        },
+        "description": {
+          "type": "string"
+        },
+        "exists": {
+          "type": "boolean"
+        },
+        "source": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

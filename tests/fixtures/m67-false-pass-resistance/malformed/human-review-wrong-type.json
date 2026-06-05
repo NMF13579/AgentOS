@@ -1,0 +1,39 @@
+{
+  "contract_version": "1.0.0",
+  "package_type": "false_pass_check_input",
+  "task_id": "m67-mal-7",
+  "m66_result": "M66_UNIFIED_RUN_PASS",
+  "m66_result_source": "fixture",
+  "claims": [
+    {
+      "claim_id": "c1",
+      "source": "fixture",
+      "text": "M67 result is not approval.",
+      "context_type": "safe_boundary"
+    },
+    {
+      "claim_id": "c2",
+      "source": "fixture",
+      "text": "Human review remains required.",
+      "context_type": "policy_explanation"
+    }
+  ],
+  "operative_fields": {},
+  "completion_gate": {
+    "completion_gate_requested": false,
+    "completion_gate_allowed": false,
+    "completion_gate_result": "COMPLETION_GATE_NOT_REQUESTED",
+    "completion_gate_evidence": "",
+    "completion_gate_policy_reference": ""
+  },
+  "human_review": "wrong type",
+  "warnings": [],
+  "blockers": [],
+  "non_authority_boundary": [
+    "M67 result is not approval.",
+    "M67 result does not complete tasks.",
+    "M67 result does not mutate lifecycle state.",
+    "M67 result does not start M68.",
+    "Human review remains required."
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "contract_version": "m64.agent_task_output_evidence.v1",
+  "evidence_type": "agent_task_output_evidence",
+  "task_id": "64.6",
+  "task_brief_path": "tasks/active-task.md",
+  "agent_identity": {"agent_name": "agent", "agent_role": "implementer"},
+  "files_changed": ["a.txt"],
+  "created_artifacts": ["a.txt"],
+  "modified_artifacts": [],
+  "deleted_artifacts": [],
+  "commands_run": [
+    {
+      "command": "python3 required-check.py",
+      "purpose": "required validation command",
+      "exit_code": 0,
+      "result": "PASS",
+      "notes": "Required check failed."
+    }
+  ],
+  "validation_results": [
+    {
+      "check_name": "required validation",
+      "result": "PASS",
+      "notes": ""
+    }
+  ],
+  "known_limitations": [],
+  "warnings": [],
+  "blockers": [],
+  "forbidden_actions_performed": false,
+  "human_review_required": true,
+  "non_authority_boundary": [
+    "Agent evidence is not approval.",
+    "Agent evidence does not complete the task.",
+    "Agent evidence does not replace human review.",
+    "Agent evidence does not authorize merge, push, or release.",
+    "Human review remains required."
+  ]
+}

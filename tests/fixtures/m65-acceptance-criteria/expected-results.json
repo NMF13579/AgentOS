@@ -1,0 +1,40 @@
+{
+  "contract_version": "1.0.0",
+  "fixture_suite": "m65-acceptance-criteria",
+  "checker": "scripts/check-acceptance-criteria.py",
+  "categories": {
+    "positive": {"expected_result": "M65_ACCEPTANCE_CHECK_PASS", "expected_exit_code": 0},
+    "warning": {"expected_result": "M65_ACCEPTANCE_CHECK_PASS_WITH_WARNINGS", "expected_exit_code": 0},
+    "not-enough": {"expected_result": "M65_ACCEPTANCE_CHECK_NOT_ENOUGH_EVIDENCE", "expected_exit_code": 1},
+    "negative": {"expected_result": "M65_ACCEPTANCE_CHECK_BLOCKED", "expected_exit_code": 1},
+    "malformed": {"expected_result": "M65_ACCEPTANCE_CHECK_BLOCKED", "expected_exit_code": 1}
+  },
+  "fixtures": [
+    {"path": "tests/fixtures/m65-acceptance-criteria/positive/valid-required-criteria-satisfied.json", "category": "positive", "expected_result": "M65_ACCEPTANCE_CHECK_PASS", "expected_exit_code": 0, "purpose": "single required artifact criterion satisfied", "primary_rule_tested": "required artifact_presence pass"},
+    {"path": "tests/fixtures/m65-acceptance-criteria/positive/valid-multiple-required-criteria-satisfied.json", "category": "positive", "expected_result": "M65_ACCEPTANCE_CHECK_PASS", "expected_exit_code": 0, "purpose": "multiple required criteria satisfied", "primary_rule_tested": "required artifact_presence + declared_change pass"},
+
+    {"path": "tests/fixtures/m65-acceptance-criteria/warning/optional-criterion-not-checked.json", "category": "warning", "expected_result": "M65_ACCEPTANCE_CHECK_PASS_WITH_WARNINGS", "expected_exit_code": 0, "purpose": "optional criterion missing support", "primary_rule_tested": "optional missing support warns"},
+    {"path": "tests/fixtures/m65-acceptance-criteria/warning/ambiguous-supporting-evidence.json", "category": "warning", "expected_result": "M65_ACCEPTANCE_CHECK_PASS_WITH_WARNINGS", "expected_exit_code": 0, "purpose": "ambiguous non-required support", "primary_rule_tested": "known_limitations warning"},
+    {"path": "tests/fixtures/m65-acceptance-criteria/warning/extra-artifact-not-required.json", "category": "warning", "expected_result": "M65_ACCEPTANCE_CHECK_PASS_WITH_WARNINGS", "expected_exit_code": 0, "purpose": "extra non-required artifact", "primary_rule_tested": "extra artifacts warning"},
+    {"path": "tests/fixtures/m65-acceptance-criteria/warning/validation-output-present-but-not-correlated.json", "category": "warning", "expected_result": "M65_ACCEPTANCE_CHECK_PASS_WITH_WARNINGS", "expected_exit_code": 0, "purpose": "uncorrelated validation output", "primary_rule_tested": "validation correlation warning"},
+    {"path": "tests/fixtures/m65-acceptance-criteria/warning/manual-review-required-optional-criterion.json", "category": "warning", "expected_result": "M65_ACCEPTANCE_CHECK_PASS_WITH_WARNINGS", "expected_exit_code": 0, "purpose": "optional manual review criterion", "primary_rule_tested": "optional manual_review_required warns"},
+
+    {"path": "tests/fixtures/m65-acceptance-criteria/not-enough/not-enough-evidence.json", "category": "not-enough", "expected_result": "M65_ACCEPTANCE_CHECK_NOT_ENOUGH_EVIDENCE", "expected_exit_code": 1, "purpose": "overall evidence insufficiency", "primary_rule_tested": "M64 not enough evidence propagation"},
+    {"path": "tests/fixtures/m65-acceptance-criteria/not-enough/optional-criterion-uncheckable.json", "category": "not-enough", "expected_result": "M65_ACCEPTANCE_CHECK_NOT_ENOUGH_EVIDENCE", "expected_exit_code": 1, "purpose": "optional validation uncheckable", "primary_rule_tested": "optional uncheckable -> not enough evidence"},
+    {"path": "tests/fixtures/m65-acceptance-criteria/not-enough/ambiguous-criteria-package.json", "category": "not-enough", "expected_result": "M65_ACCEPTANCE_CHECK_NOT_ENOUGH_EVIDENCE", "expected_exit_code": 1, "purpose": "ambiguous optional package", "primary_rule_tested": "ambiguous optional evidence -> not enough evidence"},
+
+    {"path": "tests/fixtures/m65-acceptance-criteria/negative/no-acceptance-criteria.json", "category": "negative", "expected_result": "M65_ACCEPTANCE_CHECK_BLOCKED", "expected_exit_code": 1, "purpose": "empty acceptance criteria", "primary_rule_tested": "empty acceptance_criteria blocked"},
+    {"path": "tests/fixtures/m65-acceptance-criteria/negative/missing-required-criterion.json", "category": "negative", "expected_result": "M65_ACCEPTANCE_CHECK_BLOCKED", "expected_exit_code": 1, "purpose": "criterion field missing", "primary_rule_tested": "missing criterion field blocked"},
+    {"path": "tests/fixtures/m65-acceptance-criteria/negative/required-artifact-missing.json", "category": "negative", "expected_result": "M65_ACCEPTANCE_CHECK_BLOCKED", "expected_exit_code": 1, "purpose": "required artifact absent", "primary_rule_tested": "required artifact missing blocked"},
+    {"path": "tests/fixtures/m65-acceptance-criteria/negative/required-validation-failed.json", "category": "negative", "expected_result": "M65_ACCEPTANCE_CHECK_BLOCKED", "expected_exit_code": 1, "purpose": "required validation fail", "primary_rule_tested": "required validation fail blocked"},
+    {"path": "tests/fixtures/m65-acceptance-criteria/negative/required-criterion-uncheckable.json", "category": "negative", "expected_result": "M65_ACCEPTANCE_CHECK_BLOCKED", "expected_exit_code": 1, "purpose": "required unsupported method", "primary_rule_tested": "required uncheckable blocked"},
+    {"path": "tests/fixtures/m65-acceptance-criteria/negative/manual-review-required-required-criterion.json", "category": "negative", "expected_result": "M65_ACCEPTANCE_CHECK_BLOCKED", "expected_exit_code": 1, "purpose": "required manual review", "primary_rule_tested": "required manual_review_required blocked"},
+    {"path": "tests/fixtures/m65-acceptance-criteria/negative/human-review-disabled.json", "category": "negative", "expected_result": "M65_ACCEPTANCE_CHECK_BLOCKED", "expected_exit_code": 1, "purpose": "human review disabled", "primary_rule_tested": "human_review_required must be true"},
+    {"path": "tests/fixtures/m65-acceptance-criteria/negative/approval-claim-present.json", "category": "negative", "expected_result": "M65_ACCEPTANCE_CHECK_BLOCKED", "expected_exit_code": 1, "purpose": "forbidden approval claim", "primary_rule_tested": "forbidden claim blocked"},
+    {"path": "tests/fixtures/m65-acceptance-criteria/negative/production-ready-claim.json", "category": "negative", "expected_result": "M65_ACCEPTANCE_CHECK_BLOCKED", "expected_exit_code": 1, "purpose": "forbidden production-ready claim", "primary_rule_tested": "forbidden claim blocked"},
+    {"path": "tests/fixtures/m65-acceptance-criteria/negative/completion-gate-passed-claim.json", "category": "negative", "expected_result": "M65_ACCEPTANCE_CHECK_BLOCKED", "expected_exit_code": 1, "purpose": "forbidden completion-gate claim", "primary_rule_tested": "forbidden claim blocked"},
+    {"path": "tests/fixtures/m65-acceptance-criteria/negative/wrong-required-field-type.json", "category": "negative", "expected_result": "M65_ACCEPTANCE_CHECK_BLOCKED", "expected_exit_code": 1, "purpose": "strict boolean and type violations", "primary_rule_tested": "wrong types blocked"},
+
+    {"path": "tests/fixtures/m65-acceptance-criteria/malformed/malformed-package-json.json", "category": "malformed", "expected_result": "M65_ACCEPTANCE_CHECK_BLOCKED", "expected_exit_code": 1, "purpose": "malformed JSON input", "primary_rule_tested": "fail-closed malformed JSON"}
+  ]
+}

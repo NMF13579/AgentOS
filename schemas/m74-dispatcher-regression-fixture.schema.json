@@ -1,0 +1,148 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "M74 Dispatcher Regression Fixture Schema",
+  "type": "object",
+  "required": [
+    "fixture_id",
+    "fixture_name",
+    "category",
+    "category_class",
+    "gap_id",
+    "gap_status",
+    "input_mode",
+    "dispatcher_command",
+    "mock_child_behavior",
+    "mock_child_path",
+    "expected_dispatcher_result",
+    "expected_exit_code",
+    "expected_stdout_contains",
+    "expected_stderr_contains",
+    "must_not_contain",
+    "expected_report_fields",
+    "approval_created_expected",
+    "lifecycle_mutation_expected",
+    "m74_scope"
+  ],
+  "properties": {
+    "fixture_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "fixture_name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "exit-code",
+        "child-validator-failures",
+        "false-pass-resistance",
+        "warning-visibility",
+        "wrapper",
+        "supporting-boundary"
+      ]
+    },
+    "category_class": {
+      "type": "string",
+      "enum": [
+        "ESSENTIAL",
+        "CONDITIONAL",
+        "SUPPORTING"
+      ]
+    },
+    "gap_id": {
+      "type": "string"
+    },
+    "gap_status": {
+      "type": "string",
+      "enum": [
+        "OPEN",
+        "CLOSED_BY_FIXTURE",
+        "NOT_APPLICABLE_WITH_EVIDENCE",
+        "BLOCKED",
+        "REQUIRES_FIX_TASK"
+      ]
+    },
+    "input_mode": {
+      "type": "string",
+      "enum": [
+        "dispatcher_cli",
+        "dispatcher_cli_with_mock_child",
+        "wrapper_cli",
+        "static_boundary_check"
+      ]
+    },
+    "dispatcher_command": {
+      "type": "string",
+      "minLength": 1
+    },
+    "mock_child_behavior": {
+      "type": "string",
+      "enum": [
+        "none",
+        "missing_child",
+        "malformed_output",
+        "exit_result_mismatch",
+        "child_failure",
+        "stderr_output",
+        "timeout",
+        "unknown_result",
+        "not_run_result",
+        "pass_with_warnings"
+      ]
+    },
+    "mock_child_path": {
+      "type": "string"
+    },
+    "expected_dispatcher_result": {
+      "type": "string",
+      "enum": [
+        "DISPATCHER_PASS",
+        "DISPATCHER_PASS_WITH_WARNINGS",
+        "DISPATCHER_BLOCKED",
+        "DISPATCHER_NOT_RUN",
+        "DISPATCHER_UNKNOWN",
+        "DISPATCHER_ERROR"
+      ]
+    },
+    "expected_exit_code": {
+      "type": "integer",
+      "enum": [0, 1, 2]
+    },
+    "expected_stdout_contains": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "expected_stderr_contains": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "must_not_contain": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "expected_report_fields": {
+      "type": "object"
+    },
+    "approval_created_expected": {
+      "type": "boolean",
+      "enum": [false]
+    },
+    "lifecycle_mutation_expected": {
+      "type": "boolean",
+      "enum": [false]
+    },
+    "m74_scope": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "additionalProperties": false
+}

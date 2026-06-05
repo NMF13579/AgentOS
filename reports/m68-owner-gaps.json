@@ -1,0 +1,124 @@
+{
+  "codeowners_present": true,
+  "paths_with_no_obvious_owner_coverage": [],
+  "placeholder_owner_signals": [
+    {
+      "line": 7,
+      "text": "# REPLACE_WITH_REAL_OWNER_OR_TEAM: @OWNER_OR_ADMIN_REPLACE_ME"
+    },
+    {
+      "line": 9,
+      "text": ".github/workflows/ @OWNER_OR_ADMIN_REPLACE_ME"
+    },
+    {
+      "line": 10,
+      "text": ".github/CODEOWNERS @OWNER_OR_ADMIN_REPLACE_ME"
+    },
+    {
+      "line": 11,
+      "text": "scripts/agentos-*.py @OWNER_OR_ADMIN_REPLACE_ME"
+    },
+    {
+      "line": 12,
+      "text": "scripts/*enforce*.py @OWNER_OR_ADMIN_REPLACE_ME"
+    },
+    {
+      "line": 13,
+      "text": "scripts/*guard*.py @OWNER_OR_ADMIN_REPLACE_ME"
+    },
+    {
+      "line": 14,
+      "text": "docs/*POLICY*.md @OWNER_OR_ADMIN_REPLACE_ME"
+    },
+    {
+      "line": 15,
+      "text": "docs/M27-*.md @OWNER_OR_ADMIN_REPLACE_ME"
+    },
+    {
+      "line": 16,
+      "text": "templates/*record*.md @OWNER_OR_ADMIN_REPLACE_ME"
+    },
+    {
+      "line": 17,
+      "text": "templates/*review*.md @OWNER_OR_ADMIN_REPLACE_ME"
+    },
+    {
+      "line": 18,
+      "text": "reports/milestone-* @OWNER_OR_ADMIN_REPLACE_ME"
+    },
+    {
+      "line": 19,
+      "text": "tests/fixtures/m27-*/ @OWNER_OR_ADMIN_REPLACE_ME"
+    }
+  ],
+  "protected_artifact_owner_coverage_signals": [
+    {
+      "owner_signal_if_any": "present_codeowners_file",
+      "path": "schemas/task-validation-package.schema.json"
+    },
+    {
+      "owner_signal_if_any": "present_codeowners_file",
+      "path": "schemas/task-validation-result.schema.json"
+    },
+    {
+      "owner_signal_if_any": "present_codeowners_file",
+      "path": "scripts/check-task-validation-contract.py"
+    },
+    {
+      "owner_signal_if_any": "present_codeowners_file",
+      "path": "schemas/agent-task-output-evidence.schema.json"
+    },
+    {
+      "owner_signal_if_any": "present_codeowners_file",
+      "path": "scripts/check-agent-task-evidence.py"
+    },
+    {
+      "owner_signal_if_any": "present_codeowners_file",
+      "path": "schemas/acceptance-criteria-check-package.schema.json"
+    },
+    {
+      "owner_signal_if_any": "present_codeowners_file",
+      "path": "scripts/check-acceptance-criteria.py"
+    },
+    {
+      "owner_signal_if_any": "present_codeowners_file",
+      "path": "schemas/unified-runner-input.schema.json"
+    },
+    {
+      "owner_signal_if_any": "present_codeowners_file",
+      "path": "scripts/run-task-validation.py"
+    },
+    {
+      "owner_signal_if_any": "present_codeowners_file",
+      "path": "scripts/check-false-pass-resistance.py"
+    },
+    {
+      "owner_signal_if_any": "present_codeowners_file",
+      "path": "tests/fixtures/m67-false-pass-resistance/"
+    },
+    {
+      "owner_signal_if_any": "present_codeowners_file",
+      "path": "docs/COMPLETION-GATE-HARDENING-CONTRACT.md"
+    },
+    {
+      "owner_signal_if_any": "present_codeowners_file",
+      "path": "reports/m63-completion-review.md"
+    },
+    {
+      "owner_signal_if_any": "present_codeowners_file",
+      "path": "reports/m64-completion-review.md"
+    },
+    {
+      "owner_signal_if_any": "present_codeowners_file",
+      "path": "reports/m65-completion-review.md"
+    },
+    {
+      "owner_signal_if_any": "present_codeowners_file",
+      "path": "reports/m66-completion-review.md"
+    },
+    {
+      "owner_signal_if_any": "present_codeowners_file",
+      "path": "reports/m67-completion-review.md"
+    }
+  ]
+}

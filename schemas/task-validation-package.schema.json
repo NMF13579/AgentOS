@@ -1,0 +1,178 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "agentos://schemas/task-validation-package.schema.json",
+  "title": "AgentOS Task Validation Package",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "contract_version",
+    "package_type",
+    "task_id",
+    "task_brief_path",
+    "declared_scope",
+    "declared_forbidden_changes",
+    "expected_artifacts",
+    "changed_files",
+    "diff_reference",
+    "agent_evidence_ref",
+    "validation_claims_ref",
+    "human_review_required"
+  ],
+  "properties": {
+    "contract_version": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^m63\\.task_validation_package\\.v[0-9]+$"
+    },
+    "package_type": {
+      "type": "string",
+      "const": "task_validation_package"
+    },
+    "task_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "task_brief_path": {
+      "$ref": "#/$defs/repoRelativePath"
+    },
+    "declared_scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["allowed_paths"],
+      "properties": {
+        "allowed_paths": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/repoRelativePath"
+          }
+        },
+        "allowed_reports": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/repoRelativePath"
+          }
+        },
+        "allowed_docs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/repoRelativePath"
+          }
+        },
+        "allowed_scripts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/repoRelativePath"
+          }
+        },
+        "notes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "declared_forbidden_changes": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["forbidden_paths", "forbidden_claims", "forbidden_operations"],
+      "properties": {
+        "forbidden_paths": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/repoRelativePath"
+          }
+        },
+        "forbidden_claims": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "forbidden_operations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "notes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "expected_artifacts": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/repoRelativePath"
+      }
+    },
+    "changed_files": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/repoRelativePath"
+      }
+    },
+    "diff_reference": {
+      "type": "string",
+      "minLength": 1
+    },
+    "agent_evidence_ref": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "kind"],
+      "properties": {
+        "path": {
+          "$ref": "#/$defs/repoRelativePath"
+        },
+        "kind": {
+          "type": "string",
+          "const": "reference_only"
+        }
+      }
+    },
+    "validation_claims_ref": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "kind"],
+      "properties": {
+        "path": {
+          "$ref": "#/$defs/repoRelativePath"
+        },
+        "kind": {
+          "type": "string",
+          "const": "reference_only"
+        }
+      }
+    },
+    "human_review_required": {
+      "type": "boolean",
+      "const": true
+    }
+  },
+  "$defs": {
+    "repoRelativePath": {
+      "type": "string",
+      "minLength": 1,
+      "allOf": [
+        {
+          "not": {
+            "pattern": "^/"
+          }
+        },
+        {
+          "not": {
+            "pattern": "(^|/)\\.\\.(/|$)"
+          }
+        },
+        {
+          "not": {
+            "pattern": "^[A-Za-z]:"
+          }
+        }
+      ]
+    }
+  }
+}

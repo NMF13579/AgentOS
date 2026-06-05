@@ -1,0 +1,40 @@
+{
+  "contract_version": "m63.task_validation_package.v1",
+  "package_type": "task_validation_package",
+  "task_id": "63.7",
+  "task_brief_path": "tasks/active-task.md",
+  "declared_scope": {
+    "allowed_paths": [
+      "tests/fixtures/m63-task-validation-contract"
+    ],
+    "notes": []
+  },
+  "declared_forbidden_changes": {
+    "forbidden_paths": [
+      "schemas/agent-evidence.schema.json"
+    ],
+    "forbidden_claims": [
+      "no-human-review-needed"
+    ],
+    "forbidden_operations": [
+      "lifecycle-update-operation"
+    ],
+    "notes": []
+  },
+  "expected_artifacts": [
+    "tests/fixtures/m63-task-validation-contract/fixture-manifest.json"
+  ],
+  "changed_files": [
+    "tests/fixtures/m63-task-validation-contract/valid-minimal-package-and-result/package.json"
+  ],
+  "diff_reference": "manual_changed_files_input",
+  "agent_evidence_ref": {
+    "path": "reports/m63-task-validation-contract-integration-summary.md",
+    "kind": "reference_only"
+  },
+  "validation_claims_ref": {
+    "path": "reports/m63-task-validation-contract-integration-summary.md",
+    "kind": "reference_only"
+  },
+  "human_review_required": 1
+}

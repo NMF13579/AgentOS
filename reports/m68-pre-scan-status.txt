@@ -1,0 +1,13 @@
+ M tasks/active-task.md
+?? reports/m68-anomaly-grep.txt
+?? reports/m68-docs-to-code-drift.json
+?? reports/m68-duplicates.json
+?? reports/m68-inventory.json
+?? reports/m68-owner-gaps.json
+?? reports/m68-pre-scan-status.txt
+?? reports/m68-prompt-metrics.json
+?? reports/m68-protected-artifacts.json
+?? reports/m68-repo-raw-inventory.md
+?? reports/m68-tree.json
+?? reports/m68-tree.txt
+?? scripts/repo-scan.py

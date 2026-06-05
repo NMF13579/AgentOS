@@ -1,0 +1,32 @@
+{
+  "contract_version": "1.0.0",
+  "package_type": "false_pass_check_input",
+  "task_id": "m67-mal-5",
+  "m66_result": "M66_UNIFIED_RUN_PASS",
+  "m66_result_source": "fixture",
+  "claims": {
+    "wrong": "type"
+  },
+  "operative_fields": {},
+  "completion_gate": {
+    "completion_gate_requested": false,
+    "completion_gate_allowed": false,
+    "completion_gate_result": "COMPLETION_GATE_NOT_REQUESTED",
+    "completion_gate_evidence": "",
+    "completion_gate_policy_reference": ""
+  },
+  "human_review": {
+    "human_review_required": true,
+    "human_review_status": "pending",
+    "human_review_evidence": []
+  },
+  "warnings": [],
+  "blockers": [],
+  "non_authority_boundary": [
+    "M67 result is not approval.",
+    "M67 result does not complete tasks.",
+    "M67 result does not mutate lifecycle state.",
+    "M67 result does not start M68.",
+    "Human review remains required."
+  ]
+}

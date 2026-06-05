@@ -1,0 +1,21 @@
+{
+  "fixture_id": "wrapper_help_has_no_side_effects",
+  "fixture_name": "Wrapper help has no side effects",
+  "category": "wrapper",
+  "category_class": "CONDITIONAL",
+  "gap_id": "exit_2_semantics",
+  "gap_status": "OPEN",
+  "input_mode": "wrapper_cli",
+  "dispatcher_command": "bash scripts/run-all.sh --help",
+  "mock_child_behavior": "none",
+  "mock_child_path": "none",
+  "expected_dispatcher_result": "DISPATCHER_PASS",
+  "expected_exit_code": 0,
+  "expected_stdout_contains": ["Usage"],
+  "expected_stderr_contains": [],
+  "must_not_contain": ["created", "modified", "executed", "started", "mutated", "approval", "lifecycle"],
+  "expected_report_fields": {},
+  "approval_created_expected": false,
+  "lifecycle_mutation_expected": false,
+  "m74_scope": "wrapper-regression-fixtures"
+}
